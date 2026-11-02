@@ -1,0 +1,10 @@
+{
+  "plate": "china-east-hs0",
+  "markers": [
+    {
+      "lon": 116.4,
+      "lat": 39.9,
+      "label": "Beijing"
+    }
+  ]
+}

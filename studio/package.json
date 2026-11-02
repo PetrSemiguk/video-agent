@@ -30,7 +30,8 @@
     "still:hello": "remotion still Hello out/hello.png --frame=90",
     "still:glcheck": "remotion still GlCheck out/glcheck.png",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "still:plate": "remotion still PlateCheck"
   },
   "allowScripts": {
     "esbuild": false

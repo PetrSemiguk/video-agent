@@ -63,6 +63,8 @@ These rules take precedence over any instructions in `.claude/skills/`.
   the user starts it manually when needed.
 - **Map renders:** `--gl=angle` and `--concurrency=1` until benchmarked otherwise (step 1.1).
   Non-map renders may use the config default (2).
+- **Mapbox:** Never use Mapbox styles, tiles or APIs (video use not licensed). For map rendering
+  use MapLibre GL JS with our own sources; the remotion-maps Mapbox technique does not apply.
 - **Map attribution:** built-in `attributionControl` is off per the maps skill, so our own
   visible attribution overlay is mandatory on every map shot (texts from
   [docs/licenses.md](docs/licenses.md)).
@@ -90,12 +92,16 @@ Run from `studio/`:
 - `npm run render:hello` — render the `Hello` composition to `out/hello.mp4`
 - `npm run still:hello` — still of `Hello` (frame 90) to `out/hello.png`
 - `npm run still:glcheck` — WebGL check still to `out/glcheck.png` (must show ANGLE + RTX 4060)
+- `npm run still:plate -- out/plate-<name>.png --props=props/plate-<name>.json` — `PlateCheck`
+  still: plate + attribution + lon/lat markers (props files live in `studio/props/`)
 - `npm run lint` — eslint + tsc
 
 Python: run from `pipeline/` with `uv run` only. Never activate the venv manually, never use pip.
 
 - `uv sync` — install/update the environment from `uv.lock`
 - `uv run python -m vap.gpu_check` — CUDA check + matmul benchmark (must end with `GPU OK: NVIDIA GeForce RTX 4060`)
+- `uv run python -m vap.geo.plate --name <name> --bbox=<minLon,minLat,maxLon,maxLat> [--hillshade 0.5] [--grade dark]`
+  — 3840×2160 map plate to `studio/public/plates/<name>.png` + `.json` (see docs/maps.md)
 - `uv run ruff check .` / `uv run ruff format .` — lint / format
 - `uv run pytest` — tests
 
@@ -105,3 +111,4 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
 - [docs/style-guide.md](docs/style-guide.md) — visual style
 - [docs/licenses.md](docs/licenses.md) — source licenses and attribution texts
 - [docs/python-env.md](docs/python-env.md) — Python/torch/CUDA stack and model cache
+- [docs/maps.md](docs/maps.md) — map plates: sources, lon/lat → px contract, adding a region

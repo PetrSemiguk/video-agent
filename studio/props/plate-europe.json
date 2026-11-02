@@ -1,0 +1,10 @@
+{
+  "plate": "europe",
+  "markers": [
+    {
+      "lon": 2.35,
+      "lat": 48.86,
+      "label": "Paris"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "europe",
+  "image": "plates/europe.png",
+  "width": 3840,
+  "height": 2160,
+  "crs": "EPSG:3857",
+  "requested_bbox_lonlat": [
+    -11.0,
+    35.0,
+    32.0,
+    60.0
+  ],
+  "bbox_lonlat": [
+    -23.32342094,
+    35.0,
+    44.32342094,
+    60.0
+  ],
+  "bbox_3857": [
+    -2596351.343,
+    4163881.144,
+    4934060.65,
+    8399737.89
+  ],
+  "pixel_size_m": 1961.04479,
+  "zoom": {
+    "tile512": 5.3188,
+    "tile256": 6.3188
+  },
+  "projection": {
+    "radius_m": 6378137.0,
+    "lonlat_to_px": "x_m = R * radians(lon); y_m = R * ln(tan(pi/4 + radians(lat)/2)); px = (x_m - bbox_3857[0]) / (bbox_3857[2] - bbox_3857[0]) * width; py = (bbox_3857[3] - y_m) / (bbox_3857[3] - bbox_3857[1]) * height; (0,0) = top-left corner of the image, pixel centres at +0.5"
+  },
+  "params": {
+    "hillshade": 0.5,
+    "exaggeration": 3.0,
+    "azimuth": 315.0,
+    "altitude": 45.0,
+    "grade": "dark",
+    "bluemarble_month": "2004-08",
+    "terrain_zoom": 7
+  },
+  "attribution": {
+    "sources": [
+      {
+        "id": "nasa-bmng",
+        "name": "NASA Blue Marble: Next Generation (topography + bathymetry, 500 m)",
+        "license": "Public domain (NASA)",
+        "url": "https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/",
+        "on_screen": "Imagery: NASA Earth Observatory",
+        "full": "Blue Marble: Next Generation imagery courtesy of \"NASA Earth Observatory\" (Reto Stöckli, NASA Goddard Space Flight Center)."
+      },
+      {
+        "id": "aws-terrain-tiles",
+        "name": "AWS Terrain Tiles (Mapzen/Tilezen joerd), terrarium",
+        "license": "Mixed open sources, per-source terms (see tilezen/joerd docs/attribution.md)",
+        "url": "https://registry.opendata.aws/terrain-tiles/",
+        "on_screen": "Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles",
+        "full": "* ArcticDEM terrain data DEM(s) were created from DigitalGlobe, Inc., imagery and\n  funded under National Science Foundation awards 1043681, 1559691, and 1542736;\n* Australia terrain data © Commonwealth of Australia (Geoscience Australia) 2017;\n* Austria terrain data © offene Daten Österreichs – Digitales Geländemodell (DGM)\n  Österreich;\n* Canada terrain data contains information licensed under the Open Government\n  Licence – Canada;\n* Europe terrain data produced using Copernicus data and information funded by the\n  European Union - EU-DEM layers;\n* Global ETOPO1 terrain data U.S. National Oceanic and Atmospheric Administration\n* Mexico terrain data source: INEGI, Continental relief, 2016;\n* New Zealand terrain data Copyright 2011 Crown copyright (c) Land Information New\n  Zealand and the New Zealand Government (All rights reserved);\n* Norway terrain data © Kartverket;\n* United Kingdom terrain data © Environment Agency copyright and/or database right\n  2015. All rights reserved;\n* United States 3DEP (formerly NED) and global GMTED2010 and SRTM terrain data\n  courtesy of the U.S. Geological Survey."
+      }
+    ],
+    "on_screen": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles",
+    "full": "Blue Marble: Next Generation imagery courtesy of \"NASA Earth Observatory\" (Reto Stöckli, NASA Goddard Space Flight Center).\n\n* ArcticDEM terrain data DEM(s) were created from DigitalGlobe, Inc., imagery and\n  funded under National Science Foundation awards 1043681, 1559691, and 1542736;\n* Australia terrain data © Commonwealth of Australia (Geoscience Australia) 2017;\n* Austria terrain data © offene Daten Österreichs – Digitales Geländemodell (DGM)\n  Österreich;\n* Canada terrain data contains information licensed under the Open Government\n  Licence – Canada;\n* Europe terrain data produced using Copernicus data and information funded by the\n  European Union - EU-DEM layers;\n* Global ETOPO1 terrain data U.S. National Oceanic and Atmospheric Administration\n* Mexico terrain data source: INEGI, Continental relief, 2016;\n* New Zealand terrain data Copyright 2011 Crown copyright (c) Land Information New\n  Zealand and the New Zealand Government (All rights reserved);\n* Norway terrain data © Kartverket;\n* United Kingdom terrain data © Environment Agency copyright and/or database right\n  2015. All rights reserved;\n* United States 3DEP (formerly NED) and global GMTED2010 and SRTM terrain data\n  courtesy of the U.S. Geological Survey."
+  },
+  "generator": "vap.geo.plate"
+}
