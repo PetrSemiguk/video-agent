@@ -217,6 +217,107 @@ Output: `data/processed/<plate>/rivers/<slug>.geojson`, one `LineString`. Natura
 ends rivers where wide estuaries begin (the Yangtze stops at Zhenjiang; below it the
 estuary is part of the coastline).
 
+### River mouths (`vap.geo.mouth`, used by `vap.geo.river`)
+
+A river must reach the water it flows into. After orienting the main stem, `river` tries,
+in order:
+
+1. **Manual:** `data/processed/<plate>/rivers/<slug>.extend.json` = `{"points": [[lon, lat], …]}`
+   is appended to the mouth (Catmull-Rom). Always wins when the file exists.
+2. **Estuary (automatic):** if the mouth touches the NE ocean polygon (NE ends rivers where
+   a wide estuary starts), the ocean around it is rasterised (0.5 km cells). Distance to
+   shore comes from repeated erosion of the water mask. Dijkstra with a step cost that grows
+   near the shore follows the centre line to open water (≥ 15 km from shore). The path is cut
+   at its last point within 5 km of the coastline (the estuary exit) and smoothed.
+   Yangtze: Zhenjiang → South Branch → mouth at 121.90° E, 31.41° N (+277 km).
+3. **Nearest shore:** a mouth more than 5 km from coastline/lakes gets a straight segment to
+   the nearest shore (≤ 60 km). Yellow River: 7.6 km → 0 km.
+
+The properties record `extended`, `extend_method` and the mouth-to-water distance before
+and after. `--from lon,lat --to lon,lat --slug <name>` cuts a reach instead (e.g. the Danube
+from Vienna to Belgrade); cut reaches are not extended.
+
+### Plate resolution (oversampling)
+
+`vap.geo.plate` reports `resolution.center` and `resolution.edge`: plate px per Blue Marble
+px (the max of x/y). Mercator stretches latitude by 1/cos(lat), so the edge value is the
+largest. Above 1.25 the plate is upscaled (soft): the generator warns and prints the
+narrowest bbox width that stays sharp; `--strict` turns this into an error. PlateStage
+caps the camera magnification of every plate at `min(1, 1 / resolution.edge)`.
+
+| Plate | centre | edge |
+|---|---|---|
+| china-east | 0.33 | 0.40 |
+| europe | 0.36 | 0.47 |
+| central-europe | 0.82 | 0.91 |
+
+## Camera (`studio/src/camera/`)
+
+Rules:
+- **The camera almost never stands still.** Use `drift()` for "static" shots; `hold()` only for
+  QA and deliberate pauses.
+- **Velocity is continuous.** Presets only emit keys. `cameraTimeline()` runs one C2 cubic
+  spline through all keys per channel (centre x/y in Mercator metres, zoom = log2 scale,
+  pitch, bearing), so velocity and acceleration are continuous across preset joints. Keys of
+  `hold()` are clamped to zero velocity, so the camera eases into a hold and stays exactly
+  still. Splines can overshoot between keys; the plate check catches that at render time.
+- **Zoom limits:** `plateZoomLimits(meta)` gives `cover` (whole plate), `native` (1:1) and
+  `max` (`native` + log2 of the oversampling cap). Pass `maxZoom` to `focusOn` near the limit.
+  Pseudo-pitch magnifies the near edge (~5 % at 6°, ~15 % at 25°), so keep a margin.
+- **Every frame is verified** (plate edges never visible, magnification within limits) before
+  rendering; `npm test` runs the same check on the showreel timeline.
+
+Presets (`presets.ts`; all frames counted from the segment start, all zooms absolute):
+
+```ts
+const tl = cameraTimeline([
+  establish({ center: { lon: 10.6, lat: 48.6 }, zoom: E.cover + 0.12 }, 120), // 8 % push + drift
+  flyTo({ center: { lon: 11.6, lat: 47.3 }, zoom: 5.2 }, 105),  // far → van Wijk zoom-out arc
+  focusOn(alpsGeojson, 30, { tilt: 6, maxZoom: E.max - 0.16 }),  // fit into safe area − padding
+  followLine(river, progress, 336, { zoom: 6.4, lead: 0.05, lag: 8, smooth: 24, blend: 60 }),
+  drift(90),
+  hold(30),
+], { fps: 30, width: 1920, height: 1080 });
+<PlateStage plate="…" camera={tl.path} … />
+```
+
+| Preset | What it does |
+|---|---|
+| `establish(target, frames, {push, drift})` | Opening pose plus a slow 6–10 % push-in with a light drift. Must be the first segment. |
+| `flyTo(to, frames, {from})` | If the target is more than 1.2 frame widths away: van Wijk & Nuij optimal path (as map `flyTo`), zooming out mid-way in proportion to distance. Otherwise a direct pan. |
+| `focusOn(geojson \| bbox, frames, {padding, tilt, bearing, maxZoom})` | Fits the object into the safe area minus `space.focusPadding`. |
+| `followLine(line, progress, frames, {lead, lag, smooth, zoom, blend})` | Aims `lead` (length fraction) ahead of where the drawing head was `lag` frames ago, averaged over ±`smooth` frames, so the river's bends do not jerk the camera. Pass the same `progress` as `RiverLine`. Land on the aim point before the drawing starts, otherwise the camera has to chase the head. |
+| `drift(frames, {dir, amount, zoom})` | Barely perceptible motion. |
+| `hold(frames)` | Exactly static. |
+
+### PlateSequence (several plates, one camera)
+
+```tsx
+<PlateSequence plates={["europe", "central-europe"]} transitionAt={300}
+               transitionFrames={45} camera={tl.path} geo={…} screen={…} />
+```
+
+- One geo-camera (centre in lon/lat, zoom = metres per screen px) drives every plate. Each
+  plate converts it into its own pixels, so a city lands on the same screen pixel on both
+  plates: 0.015 px in vitest, 0.019 px measured in Chromium (`TransitionCheck` composition).
+- Plate B crossfades over plate A. The geo layer (one copy) sits in its own container with
+  the active plate's transform and switches plates mid-transition; it neither fades nor jumps.
+  The screen layer is never duplicated.
+- **Zoom-through window:** the next plate covers the frame only from a certain zoom, so the
+  plate being replaced may be magnified up to `FADE_OUT_MAX_MAG` (1.4) from one transition
+  length before the crossfade until it ends. In the showreel europe peaks at 1.35× for about
+  1.5 s while zooming. The next plate must still cover the frame whenever it is visible.
+  Size the next plate so that it covers the frame at the outgoing plate's sharp limit plus
+  this window. That is why central-europe is 28.5° wide, not a tight 6° box around the Danube.
+
+### Motion QA
+
+`uv run python -m vap.qa.motion <mp4> [--marks 4,9.5]` estimates the image shift between
+consecutive frames by phase correlation (grey, 480×270, Hann window, sub-pixel peak). It
+writes `<video>-motion.png` (speed in blue, jump = change of the shift vector in red, joints
+marked) and prints max speed, max/p99 jump and the max jump near each mark. Pure zooms read as
+~0 speed, and fading overlays add measurement noise of ~1 px/frame².
+
 ## PlateStage (map engine)
 
 `studio/src/map/PlateStage.tsx` packages the variant-B engine:

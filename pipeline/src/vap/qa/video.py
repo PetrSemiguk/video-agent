@@ -26,12 +26,13 @@ def frames(
     end: float | None = None,
     pix_fmt: str = "gray",
     max_frames: int | None = None,
+    size: tuple[int, int] | None = None,
 ) -> Iterator[np.ndarray]:
     """Yield decoded frames (uint8; HxW for gray, HxWx3 for rgb24) between start and end.
 
     Pass max_frames when the caller stops early, so ffmpeg is not cut off mid-stream.
     """
-    width, height = probe_size(path)
+    width, height = size or probe_size(path)
     channels = {"gray": 1, "rgb24": 3}[pix_fmt]
     cmd = ["ffmpeg", "-v", "error"]
     # -ss/-to after -i: frame-accurate decoding (input seeking may land on a keyframe).
@@ -42,6 +43,8 @@ def frames(
         cmd += ["-to", f"{end}"]
     if max_frames is not None:
         cmd += ["-frames:v", str(max_frames)]
+    if size is not None:
+        cmd += ["-vf", f"scale={size[0]}:{size[1]}:flags=area"]
     cmd += ["-f", "rawvideo", "-pix_fmt", pix_fmt, "-"]
     frame_bytes = width * height * channels
     shape = (height, width) if channels == 1 else (height, width, channels)

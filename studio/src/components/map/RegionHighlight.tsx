@@ -29,12 +29,17 @@ export const RegionHighlight: React.FC<{
   enterFrames?: number;
   outline?: boolean;
   dimOutside?: boolean;
+  /** Frame (from the Sequence start) where the highlight starts fading out. */
+  exitAt?: number;
+  exitFrames?: number;
 }> = ({
   geojson,
   color,
   enterFrames = motion.frames.slow,
   outline = true,
   dimOutside = false,
+  exitAt,
+  exitFrames = motion.frames.slow,
 }) => {
   const frame = useCurrentFrame();
   const { meta, view, toPlatePx } = useMapProjection();
@@ -62,6 +67,14 @@ export const RegionHighlight: React.FC<{
     extrapolateRight: "clamp",
     easing: motion.easing.out,
   });
+  const exit =
+    exitAt === undefined
+      ? 1
+      : interpolate(frame, [exitAt, exitAt + exitFrames], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+          easing: motion.easing.inOut,
+        });
   const fillColor = regionColor[color];
   const k = 1 / view.scale; // plate px per screen px
   const all = rings.join("");
@@ -70,7 +83,7 @@ export const RegionHighlight: React.FC<{
   const outer = `M${-pad} ${-pad}H${meta.width + pad}V${meta.height + pad}H${-pad}Z`;
 
   return (
-    <GeoSvg>
+    <GeoSvg style={{ opacity: exit }}>
       {dimOutside ? (
         <path
           d={outer + all}

@@ -1,6 +1,9 @@
 import { Composition, Still } from "remotion";
 import "./design/fonts";
 import { ProjectionCheck } from "./qa/ProjectionCheck";
+import { TransitionCheck } from "./qa/TransitionCheck";
+import { CameraShowreel } from "./demo/CameraShowreel";
+import { SHOWREEL } from "./demo/showreelCamera";
 import {
   DEMO_CHINA_RIVERS_FRAMES,
   DemoChinaRivers,
@@ -62,6 +65,22 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="CameraShowreel"
+        component={CameraShowreel}
+        durationInFrames={SHOWREEL.frames}
+        fps={SHOWREEL.fps}
+        width={SHOWREEL.width}
+        height={SHOWREEL.height}
+      />
+      <Composition
+        id="TransitionCheck"
+        component={TransitionCheck}
+        durationInFrames={SHOWREEL.transitionFrames + 1}
+        fps={SHOWREEL.fps}
+        width={SHOWREEL.width}
+        height={SHOWREEL.height}
       />
       <Composition
         id="ProjectionCheck"

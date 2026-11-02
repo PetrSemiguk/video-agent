@@ -1,8 +1,12 @@
 """Checks on the committed main-stem river files (data/processed/<plate>/rivers/)."""
 
 import json
+import math
 
+import numpy as np
 import pytest
+import shapely
+from shapely.geometry import Point, shape
 
 from vap.geo.extract import PROCESSED_DIR
 
@@ -33,3 +37,17 @@ def test_cumfrac_is_monotonic_per_vertex(slug):
     assert len(cum) == len(f["geometry"]["coordinates"])
     assert cum[0] == 0 and cum[-1] == 1
     assert all(b >= a for a, b in zip(cum, cum[1:], strict=False))
+
+
+@pytest.mark.parametrize("slug", ["yellow", "yangtze"])
+def test_mouth_reaches_the_coast(slug):
+    """The mouth must be within 5 km of the (committed, simplified) plate coastline."""
+    lon, lat = _river(slug)["geometry"]["coordinates"][-1]
+    coast = json.loads((PROCESSED_DIR / PLATE / "coastline.geojson").read_text(encoding="utf-8"))
+    lines = shapely.union_all([shape(f["geometry"]) for f in coast["features"]])
+    kx = 111.32 * math.cos(math.radians(lat))
+
+    km = shapely.transform(
+        lines, lambda c: np.column_stack([(c[:, 0] - lon) * kx, (c[:, 1] - lat) * 111.32])
+    )
+    assert shapely.distance(Point(0, 0), km) <= 5.0

@@ -22,6 +22,13 @@ export type PlateMeta = {
   zoom: { tile512: number; tile256: number };
   projection: { radius_m: number; lonlat_to_px: string };
   attribution: { sources: PlateSource[]; on_screen: string; full: string };
+  /** Plate px per Blue Marble px (> 1 = upscaled); absent on very old plates. */
+  resolution?: {
+    center: number;
+    edge: number;
+    limit: number;
+    min_width_deg_at_limit: number;
+  };
 };
 
 export type LonLat = { lon: number; lat: number };

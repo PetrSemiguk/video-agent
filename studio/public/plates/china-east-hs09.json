@@ -40,6 +40,14 @@
     "bluemarble_month": "2004-08",
     "terrain_zoom": 7
   },
+  "resolution": {
+    "source": "NASA Blue Marble NG, 15 arc-seconds",
+    "definition": "plate px per Blue Marble px (max of x/y); > 1 = upscaled",
+    "center": 0.331,
+    "edge": 0.395,
+    "limit": 1.25,
+    "min_width_deg_at_limit": 18.1
+  },
   "attribution": {
     "sources": [
       {

@@ -24,12 +24,14 @@ from collections import defaultdict
 
 import numpy as np
 import shapely
+import shapely.ops
 from PIL import Image
 from shapely.geometry import LineString, shape
 
 from .download import download_many
 from .extract import DECIMALS, PROCESSED_DIR, TOLERANCE_PX, _to_lonlat, _to_merc, mirror_to_public
 from .mercator import WORLD_M, Extent, lat_to_y, lon_to_x
+from .mouth import extend_to_water
 from .paths import PLATES_DIR
 from .terrain import TILE, URL, decode_terrarium, tile_path
 from .vectors import features
@@ -141,7 +143,21 @@ def _components(adj) -> int:
     return count
 
 
-def build(plate: str, name: str, also: list[str] | None = None) -> tuple[dict, dict]:
+def cut_between(coords: np.ndarray, a: tuple[float, float], b: tuple[float, float]) -> np.ndarray:
+    """Sub-line between the points of the line nearest to a and b (in line order)."""
+    line = shapely.LineString(coords)
+    da, db = line.project(shapely.Point(a)), line.project(shapely.Point(b))
+    lo, hi = sorted((da, db))
+    return np.asarray(shapely.ops.substring(line, lo, hi).coords)
+
+
+def build(
+    plate: str,
+    name: str,
+    also: list[str] | None = None,
+    slug: str | None = None,
+    cut: tuple[tuple[float, float], tuple[float, float]] | None = None,
+) -> tuple[dict, dict]:
     meta = json.loads((PLATES_DIR / f"{plate}.json").read_text(encoding="utf-8"))
     ext = Extent(*meta["bbox_3857"], meta["width"], meta["height"])
     wanted = {name.casefold()} | {a.casefold() for a in ALIASES.get(name.casefold(), [])}
@@ -169,10 +185,19 @@ def build(plate: str, name: str, also: list[str] | None = None) -> tuple[dict, d
     e_first, e_last = end_elevation(coords), end_elevation(coords[::-1])
     if e_first < e_last:
         coords, e_first, e_last = coords[::-1], e_last, e_first
+    slug = slug or slugify(name)
+    ext_info: dict = {}
+    if cut is None:
+        manual = PROCESSED_DIR / plate / "rivers" / f"{slug}.extend.json"
+        coords, ext_info = extend_to_water(coords, manual)
+    else:
+        coords = cut_between(coords, *cut)
+        e_first, e_last = end_elevation(coords), end_elevation(coords[::-1])
+        ext_info = {"cut_from": list(cut[0]), "cut_to": list(cut[1])}
     seg_km = geodesic_km(coords)
     cum = np.concatenate([[0.0], np.cumsum(seg_km)])
     props = {
-        "id": f"river-{slugify(name)}",
+        "id": f"river-{slug}",
         "name_en": name,
         "type": "River main stem",
         "scalerank": None,
@@ -180,6 +205,7 @@ def build(plate: str, name: str, also: list[str] | None = None) -> tuple[dict, d
         "length_km": round(float(cum[-1]), 1),
         "source_elev_m": round(e_first),
         "mouth_elev_m": round(e_last),
+        **ext_info,
         "cumfrac": [round(float(v), 5) for v in cum / cum[-1]],
     }
     feature = {
@@ -205,12 +231,22 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--plate", required=True)
     ap.add_argument("--name", required=True, help='Natural Earth name, e.g. "Yellow"')
     ap.add_argument("--also", default="", help="extra NE reach names, comma-separated")
+    ap.add_argument("--slug", default=None, help="output name (default: slug of --name)")
+    ap.add_argument("--from", dest="cut_from", default=None, help="lon,lat: keep from here...")
+    ap.add_argument("--to", dest="cut_to", default=None, help="lon,lat: ...to here")
     args = ap.parse_args(argv)
     also = [a.strip() for a in args.also.split(",") if a.strip()]
+    cut = None
+    if args.cut_from or args.cut_to:
+        if not (args.cut_from and args.cut_to):
+            ap.error("--from and --to go together")
+        a = tuple(float(v) for v in args.cut_from.split(","))
+        b = tuple(float(v) for v in args.cut_to.split(","))
+        cut = (a, b)
 
-    feature, diag = build(args.plate, args.name, also)
+    feature, diag = build(args.plate, args.name, also, args.slug, cut)
     p = feature["properties"]
-    out = PROCESSED_DIR / args.plate / "rivers" / f"{slugify(args.name)}.geojson"
+    out = PROCESSED_DIR / args.plate / "rivers" / f"{args.slug or slugify(args.name)}.geojson"
     out.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(
         {"type": "FeatureCollection", "features": [feature]},
@@ -223,6 +259,11 @@ def main(argv: list[str] | None = None) -> int:
           f"{diag['pieces']} merged piece(s), {diag['components']} component(s) -> 1 LineString "
           f"of {len(p['cumfrac'])} vertices, {p['length_km']:.0f} km")  # fmt: skip
     print(f"  source {start} at {p['source_elev_m']} m -> mouth {end} at {p['mouth_elev_m']} m")
+    if p.get("extended"):
+        print(f"  extended ({p['extend_method']}): mouth→water {p['mouth_to_water_km_before']} km "
+              f"-> {p['mouth_to_water_km']} km")  # fmt: skip
+    elif "mouth_to_water_km" in p:
+        print(f"  mouth→water {p['mouth_to_water_km']} km (no extension needed)")
     print(f"  -> {out} ({out.stat().st_size / 1e3:.1f} kB)")
     mirror_to_public(args.plate)
     return 0

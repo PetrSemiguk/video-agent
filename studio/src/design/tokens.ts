@@ -90,6 +90,8 @@ export const space = {
   /** Label entrance slide distance, px. */
   enterShift: 8,
   debugMarker: 12,
+  /** Padding around objects framed by the focusOn camera preset, px (inside the safe area). */
+  focusPadding: 60,
   /** Gap between a title and its subtitle, px. */
   titleGap: 24,
   /** Inset of corner elements (e.g. frame counter) from the frame edge, px. */
