@@ -17,3 +17,4 @@ The channel is monetized, so only sources allowing commercial use are acceptable
 | Pexels | Pexels License | ✅ Yes | Not required; credit when practical. |
 | Pixabay | Pixabay Content License | ✅ Yes | Not required; credit when practical. |
 | Wikimedia Commons | Per file (CC BY, CC BY-SA, PD, …) | ⚠️ Per file | Check the license of **every** file. Record each one in `episodes/<slug>/attributions.md` (file URL, author, license, required credit). Never use NC/ND files. |
+| Remotion (software) | Remotion License | ✅ Yes — free for individuals and companies of up to 3 people, commercial use allowed | Not required. ⚠️ A company license is required if the team grows to 4+ people. |

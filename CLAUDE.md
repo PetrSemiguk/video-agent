@@ -18,6 +18,7 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 - `assets/fonts/` — fonts (committed); `assets/music/`, `assets/broll/` — git-ignored
 - `episodes/<slug>/` — script.md, facts.md, storyboard.json, attributions.md, audio/, renders/
 - `.claude/` — project settings (permissions), agents, skills
+- `.claude/skills/` — official Remotion Agent Skills (from remotion-dev/skills)
 
 ## Environment
 
@@ -27,7 +28,8 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
   System python is 3.14 — never use it, never `pip install` globally.
 - ffmpeg 9 is in PATH.
 - GPU: RTX 4060, 8 GB VRAM — run TTS and whisper sequentially, never concurrently.
-- RAM: 16 GB — Remotion render concurrency ≤ 3.
+- RAM: 16 GB — Remotion render concurrency ≤ 3 (config uses 2).
+- Remotion 4.0.539 (`studio/`). Render with gl=angle (set in `studio/remotion.config.ts`) — required for GPU WebGL on Windows.
 
 ## Git policy
 
@@ -51,6 +53,28 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 - All colors, fonts and spacing come from design tokens only (introduced in step 5).
   No hardcoded visual values in components.
 
+## Overrides for Remotion skills
+
+These rules take precedence over any instructions in `.claude/skills/`.
+
+- **Package runner:** npm/npx only, never bun/bunx (even if a skill shows only bun).
+- **Rendering:** every step ends with a rendered artifact (still or MP4) — this overrides
+  "don't render unless asked". Do not leave Remotion Studio running in the background;
+  the user starts it manually when needed.
+- **Map renders:** `--gl=angle` and `--concurrency=1` until benchmarked otherwise (step 1.1).
+  Non-map renders may use the config default (2).
+- **Map attribution:** built-in `attributionControl` is off per the maps skill, so our own
+  visible attribution overlay is mandatory on every map shot (texts from
+  [docs/licenses.md](docs/licenses.md)).
+- **Styling:** all visual values come from design tokens — ignore remotion-interactivity's
+  "inline styles only" guidance.
+- **Captions/transcription:** use faster-whisper in `pipeline/`, not `@remotion/whisper-webgpu`.
+- **ffmpeg:** system ffmpeg 9 for final mixing; `npx remotion ffmpeg` is fine for ad-hoc probing.
+- **Upgrades:** never run `npx remotion upgrade` or `npx skills update` without asking the user;
+  skills are updated from the repo root, Remotion packages from `studio/`.
+- **Note:** skills contain nested duplicate copies that may diverge; when they conflict,
+  prefer the top-level `.claude/skills/<name>/` version.
+
 ## Workflow
 
 - The user writes in Russian; reply in Russian.
@@ -60,7 +84,13 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 
 ## Commands
 
-TBD — filled in as steps land.
+Run from `studio/`:
+
+- `npm run studio` — open Remotion Studio
+- `npm run render:hello` — render the `Hello` composition to `out/hello.mp4`
+- `npm run still:hello` — still of `Hello` (frame 90) to `out/hello.png`
+- `npm run still:glcheck` — WebGL check still to `out/glcheck.png` (must show ANGLE + RTX 4060)
+- `npm run lint` — eslint + tsc
 
 ## Reference docs (read instead of duplicating here)
 
