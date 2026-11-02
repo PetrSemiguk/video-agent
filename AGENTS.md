@@ -30,6 +30,7 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 - Node 26.
 - Python ONLY via uv, pinned to 3.11 inside `pipeline/`.
   System python is 3.14 — never use it, never `pip install` globally.
+- Keep torch and torchaudio at 2.6.0+cu126 and numpy below 2; see `docs/python-env.md`.
 - ffmpeg 9 is in PATH.
 - GPU: RTX 4060, 8 GB VRAM — run TTS and whisper sequentially, never concurrently.
 - RAM: 16 GB — Remotion render concurrency ≤ 3 (config uses 2).
@@ -41,7 +42,7 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 
 - Allowed: `git status`, `git diff`, `git log`, `git show`, `git check-ignore`, `git ls-files`.
 - Never stage, commit, push, reset, rebase, merge, checkout, switch, restore, stash,
-  clean, tag, or change remotes. Never use `gh`.
+  clean, tag, manage worktrees, or change remotes. Never use `gh`.
 - Run git from the repo root without `-C` / `-c` (those forms are denied too).
 - In Claude Code, these rules are enforced by deny rules in `.claude/settings.json`; do not try to work around them.
 - At the end of each task: show `git status` and propose a Conventional Commit message
