@@ -94,6 +94,8 @@ Run from `studio/`:
 - `npm run still:glcheck` — WebGL check still to `out/glcheck.png` (must show ANGLE + RTX 4060)
 - `npm run still:plate -- out/plate-<name>.png --props=props/plate-<name>.json` — `PlateCheck`
   still: plate + attribution + lon/lat markers (props files live in `studio/props/`)
+- `npm run still:geodebug -- out/geodebug-<name>.png --props=props/geodebug-<name>.json` —
+  plate + Natural Earth debug overlay (needs `vap.geo.extract` for that plate first)
 - `npm run render:ab-a` / `npm run render:ab-b` — step 1.2 camera A/B test (MapLibre 3D /
   plate + CSS) to `out/ab-a-maplibre.mp4` / `out/ab-b-plate.mp4`; `npm run ab:side-by-side`
   stacks them into `out/ab-side-by-side.mp4`. Variant A needs `npm run prepare:maplibre`
@@ -108,6 +110,10 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
   — 3840×2160 map plate to `studio/public/plates/<name>.png` + `.json` (see docs/maps.md)
 - `uv run python -m vap.geo.terrain_export --plate <name> --min-zoom 0 --max-zoom 7` — copy
   terrarium tiles for a plate to `studio/public/terrain/` (git-ignored) for MapLibre terrain
+- `uv run python -m vap.geo.extract --plate <name> [--layers …] [--min-rank N]` — Natural Earth
+  layers for a plate to `data/processed/<name>/` (committed) + `studio/public/geo/<name>/`
+- `uv run python -m vap.geo.find "<name>" [--layer rivers|regions|places|countries|admin1|lakes]`
+  — look up Natural Earth ids by name
 - `uv run python -m vap.qa.flicker <mp4> --from 9.2 --to 12` — luma flicker on a static section
 - `uv run python -m vap.qa.contact <mp4>... --times 0,2,4 --out <png>` — contact sheet
 - `uv run ruff check .` / `uv run ruff format .` — lint / format

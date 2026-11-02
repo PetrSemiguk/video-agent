@@ -36,7 +36,8 @@
     "prepare:maplibre": "node scripts/prepare-maplibre.mjs",
     "render:ab-a": "node scripts/prepare-maplibre.mjs && remotion render AbMapLibre out/ab-a-maplibre.mp4 --gl=angle --concurrency=1",
     "render:ab-b": "remotion render AbPlate out/ab-b-plate.mp4 --gl=angle --concurrency=1",
-    "ab:side-by-side": "node scripts/ab-side-by-side.mjs"
+    "ab:side-by-side": "node scripts/ab-side-by-side.mjs",
+    "still:geodebug": "remotion still GeoDebug"
   },
   "allowScripts": {
     "esbuild": false

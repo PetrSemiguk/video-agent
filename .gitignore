@@ -51,3 +51,4 @@ Thumbs.db
 studio/public/plates/*.png
 studio/public/terrain/
 studio/public/maplibre/
+studio/public/geo/

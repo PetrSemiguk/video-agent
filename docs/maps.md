@@ -89,6 +89,89 @@ Tests: `pipeline/tests/test_mercator.py` (centre → centre, bbox corners → im
 To draw on a plate placed with `object-fit: cover` in a frame, use `coverFit` from
 `studio/src/geo/plate.ts`: `frame = offset + px · scale`.
 
+## Vector layers (Natural Earth)
+
+Source: Natural Earth **v5.1.2** (latest release; public domain, credit "Made with Natural
+Earth"), downloaded as GeoJSON from `github.com/nvkelso/natural-earth-vector` (tag v5.1.2) into
+`data/raw/naturalearth/v5.1.2/` (git-ignored, cached). 10m and 50m variants of:
+admin_0_countries, admin_1_states_provinces (10m only), coastline, land, ocean,
+rivers_lake_centerlines (+ 10m rivers_europe, rivers_north_america), lakes,
+geography_regions_polys/points, geography_marine_polys, populated_places.
+
+**Disputed borders.** Natural Earth ships `admin_0_countries` in the default *de facto* view
+and also in point-of-view variants (`admin_0_countries_<iso>`, e.g. how China, India or
+Pakistan see Kashmir, Arunachal Pradesh, Aksai Chin and similar areas). We currently use the
+default de facto file. Which view to show for disputed territories is an editorial decision
+made per episode and recorded in that episode's notes; it is not a pipeline default.
+
+### Output layers (`data/processed/<plate>/<layer>.geojson`, committed)
+
+| Layer | Sources | Geometry |
+|---|---|---|
+| `countries` | admin_0_countries | polygons, coverage-simplified |
+| `admin1` | admin_1_states_provinces | polygons, coverage-simplified |
+| `coastline` | coastline | lines |
+| `rivers` | rivers_lake_centerlines (+ rivers_europe/north_america at 10m), one feature per river | lines |
+| `lakes` | lakes | polygons |
+| `regions` | geography_regions_polys + points + marine_polys | polygons (with `label` point) and points |
+| `places` | populated_places | points |
+| `land`, `ocean` | land, ocean (only with `--layers`) | polygons |
+
+Properties: `id`, `name_en`, `type` (Natural Earth `featurecla`), `scalerank` (+ `label` for
+region polygons). Ids: countries use ISO_A3 (ADM0_A3 where ISO_A3 is −99, e.g. France,
+Norway); rivers from rivers_lake_centerlines use `rivernum-<n>` (that layer has no ne_id); all
+others use `ne-<ne_id>`. Coordinates are rounded to 4 decimals (~11 m).
+
+### How the extractor works (`vap.geo.extract`)
+
+1. Clip box = plate `bbox_3857` + 10 % on every side.
+2. Scale: 10m when the plate zoom (tile512) is ≥ 3, otherwise 50m.
+3. Rank filter (Natural Earth scalerank, 0 = most important): with z = floor(zoom tile256),
+   rivers/lakes/regions keep `scalerank ≤ z + 1` and places keep `scalerank ≤ z − 1`.
+   `--min-rank N` overrides this with `scalerank ≤ N` for all ranked layers.
+4. Geometry is projected to EPSG:3857 and simplified there with a tolerance of 0.75 plate
+   pixels (`0.75 × pixel_size_m`).
+   - **Topology:** `countries` and `admin1` are simplified as a polygon coverage with
+     `shapely.coverage_simplify` (GEOS ≥ 3.12). Every shared edge is simplified once, so both
+     neighbours keep identical border vertices: no gaps, no slivers. Tested on CHN/MNG
+     (`tests/test_extract.py`).
+   - Other polygons and lines: `simplify(preserve_topology=True)` per feature. Polygons
+     smaller than ~2×2 px are dropped.
+5. Size limits: ≤ 1.5 MB per file and ≤ 5 MB per plate. If a file is too big, its tolerance
+   is raised ×1.5 until it fits, and the log says so (Europe `admin1` needs 2.5 px: Natural
+   Earth has ~2000 units there).
+6. The files are also mirrored to `studio/public/geo/<plate>/` (git-ignored), where Remotion
+   loads them.
+
+### Generate for a new plate
+
+```
+cd pipeline
+uv run python -m vap.geo.extract --plate <name>            # default layers
+uv run python -m vap.geo.extract --plate <name> --layers rivers,places --min-rank 5
+```
+
+Check the result (from `studio/`). `GeoDebug` draws every layer with the plate's own lon/lat →
+px formula, inside the variant-B transform:
+
+```
+npm run still:geodebug -- out/geodebug-<name>.png --props=props/geodebug-<name>.json
+```
+
+With props `{"plate": "<name>"}`, or add `"focus": {"lon": …, "lat": …}, "scale": 1` for a 1:1
+crop.
+
+### Find an object by name
+
+```
+uv run python -m vap.geo.find "Yellow" --layer rivers      # whole 10m dataset
+uv run python -m vap.geo.find "Sichuan"                     # all layers
+uv run python -m vap.geo.find "Tibet" --layer regions --plate china-east-hs05
+```
+
+It prints layer, id, name_en, type and scalerank; the ids match the extracted files. Note that
+Natural Earth uses English short names, e.g. the Huang He is "Yellow" (`rivernum-95`).
+
 ## Camera moves: plate + CSS vs MapLibre 3D (step 1.2)
 
 The shared trajectory lives in `studio/src/camera/flyover.ts` (centre/zoom keys, easing, and

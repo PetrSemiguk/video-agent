@@ -5,7 +5,7 @@ The channel is monetized, so only sources allowing commercial use are acceptable
 
 | Source | License | Commercial use? | Attribution text |
 |---|---|---|---|
-| Natural Earth | Public domain | ✅ Yes | Not required, but we credit: "Made with Natural Earth." |
+| Natural Earth (v5.1.2 vector layers) | Public domain | ✅ Yes | Not required; recommended credit, which we use: "Made with Natural Earth". |
 | CShapes 2.0 | ⚠️ Check license before use | ❓ TBD | TBD |
 | historical-basemaps | ⚠️ Check license before use | ❓ TBD | TBD |
 | Mapbox (all products: styles, tiles, Satellite, Terrain, APIs) | Mapbox Product Terms | ⛔ **FORBIDDEN** — Licensed Map Content may not be used in video without separately purchased print/video rights | — |
@@ -18,6 +18,7 @@ The channel is monetized, so only sources allowing commercial use are acceptable
 | Pexels | Pexels License | ✅ Yes | Not required; credit when practical. |
 | Pixabay | Pixabay Content License | ✅ Yes | Not required; credit when practical. |
 | Wikimedia Commons | Per file (CC BY, CC BY-SA, PD, …) | ⚠️ Per file | Check the license of **every** file. Record each one in `episodes/<slug>/attributions.md` (file URL, author, license, required credit). Never use NC/ND files. |
+| maplibre-gl (software library) | BSD-3-Clause | ✅ Yes | Not required on screen; keep the license notice (shipped in the package). |
 | Remotion (software) | Remotion License | ✅ Yes — free for individuals and companies of up to 3 people, commercial use allowed | Not required. ⚠️ A company license is required if the team grows to 4+ people. |
 
 ## AWS Terrain Tiles attribution

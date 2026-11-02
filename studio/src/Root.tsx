@@ -2,6 +2,7 @@ import { Composition, Still } from "remotion";
 import { AbMapLibre } from "./ab/AbMapLibre";
 import { AbPlate } from "./ab/AbPlate";
 import { FLYOVER_FPS, FLYOVER_FRAMES } from "./camera/flyover";
+import { GeoDebug, geoDebugDefaults } from "./GeoDebug";
 import { GlCheck } from "./GlCheck";
 import { Hello } from "./Hello";
 import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
@@ -24,6 +25,13 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
         defaultProps={plateCheckDefaults}
+      />
+      <Still
+        id="GeoDebug"
+        component={GeoDebug}
+        width={1920}
+        height={1080}
+        defaultProps={geoDebugDefaults}
       />
       <Composition
         id="AbMapLibre"
