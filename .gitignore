@@ -1,0 +1,48 @@
+# --- Dependencies / environments ---
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# --- Secrets (only .env.example is committed) ---
+.env
+.env.*
+!.env.example
+
+# --- Claude Code personal overrides ---
+.claude/settings.local.json
+
+# --- Large / licensed media and downloads (folders kept via .gitkeep) ---
+data/raw/*
+!data/raw/.gitkeep
+assets/music/*
+!assets/music/.gitkeep
+assets/broll/*
+!assets/broll/.gitkeep
+
+# --- Per-episode generated output ---
+episodes/*/audio/
+episodes/*/renders/
+studio/out/
+
+# --- Media files anywhere ---
+*.wav
+*.mp3
+*.flac
+*.mp4
+*.mov
+*.webm
+
+# --- Model and tile caches ---
+.cache/
+tiles-cache/
+
+# --- OS junk ---
+Thumbs.db
+.DS_Store
+
+# --- IDE settings ---
+.vscode/
+.idea/
+*.swp
+*.code-workspace
