@@ -1,0 +1,46 @@
+[project]
+name = "vap"
+version = "0.1.0"
+description = "video-agent pipeline: TTS, alignment and geo tooling"
+readme = "README.md"
+requires-python = "==3.11.*"
+dependencies = [
+    # Pinned to 2.6.0: chatterbox-tts 0.1.7 hard-pins torch==2.6.0 / torchaudio==2.6.0
+    # on Python < 3.14 (see docs/python-env.md).
+    "torch==2.6.0",
+    "torchaudio==2.6.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[build-system]
+requires = ["uv_build>=0.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv]
+# The pipeline runs on Windows only (see CLAUDE.md); keeps the lockfile to one platform.
+environments = ["sys_platform == 'win32'"]
+
+# Always take the CUDA 12.6 builds of torch/torchaudio, never the CPU builds from PyPI.
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu126" }]
+torchaudio = [{ index = "pytorch-cu126" }]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

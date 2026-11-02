@@ -92,8 +92,16 @@ Run from `studio/`:
 - `npm run still:glcheck` — WebGL check still to `out/glcheck.png` (must show ANGLE + RTX 4060)
 - `npm run lint` — eslint + tsc
 
+Python: run from `pipeline/` with `uv run` only. Never activate the venv manually, never use pip.
+
+- `uv sync` — install/update the environment from `uv.lock`
+- `uv run python -m vap.gpu_check` — CUDA check + matmul benchmark (must end with `GPU OK: NVIDIA GeForce RTX 4060`)
+- `uv run ruff check .` / `uv run ruff format .` — lint / format
+- `uv run pytest` — tests
+
 ## Reference docs (read instead of duplicating here)
 
 - [docs/pipeline.md](docs/pipeline.md) — the 8 pipeline stages
 - [docs/style-guide.md](docs/style-guide.md) — visual style
 - [docs/licenses.md](docs/licenses.md) — source licenses and attribution texts
+- [docs/python-env.md](docs/python-env.md) — Python/torch/CUDA stack and model cache
