@@ -2,6 +2,10 @@
 // All keyframes live here; both variants call flyoverCamera() for every frame.
 import { Easing, interpolate } from "remotion";
 import type { LonLat, PlateMeta } from "../geo/plate";
+import { plateCenter, plateZooms } from "./keyframes";
+import type { CameraState } from "./types";
+
+export type { CameraState } from "./types";
 
 export const FLYOVER_PLATE = "china-east-hs05";
 export const FLYOVER_FPS = 30;
@@ -37,14 +41,6 @@ export const TILT: Record<"maplibre" | "plate", TiltProfile> = {
   plate: { pitchEnd: 25, bearingEnd: 5 },
 };
 
-export type CameraState = {
-  center: LonLat;
-  /** Web-mercator zoom for 512 px tiles (MapLibre convention). */
-  zoom: number;
-  pitch: number;
-  bearing: number;
-};
-
 const R = 6378137;
 const toMerc = ({ lon, lat }: LonLat) => ({
   x: (R * lon * Math.PI) / 180,
@@ -54,24 +50,6 @@ const fromMerc = (x: number, y: number): LonLat => ({
   lon: ((x / R) * 180) / Math.PI,
   lat: ((2 * Math.atan(Math.exp(y / R)) - Math.PI / 2) * 180) / Math.PI,
 });
-
-export const plateZooms = (
-  meta: PlateMeta,
-  frameWidth: number,
-  frameHeight: number,
-) => {
-  // At zoom `native` one plate pixel is one CSS pixel of the frame.
-  const native = meta.zoom.tile512;
-  const cover =
-    native -
-    Math.log2(Math.min(meta.width / frameWidth, meta.height / frameHeight));
-  return { native, cover };
-};
-
-const plateCenter = (meta: PlateMeta): LonLat => {
-  const [minX, minY, maxX, maxY] = meta.bbox_3857;
-  return fromMerc((minX + maxX) / 2, (minY + maxY) / 2);
-};
 
 /** Progress of the flight segment, 0 before 2 s and 1 after 9 s. */
 const flightProgress = (t: number) =>

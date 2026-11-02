@@ -109,11 +109,11 @@ made per episode and recorded in that episode's notes; it is not a pipeline defa
 | Layer | Sources | Geometry |
 |---|---|---|
 | `countries` | admin_0_countries | polygons, coverage-simplified |
-| `admin1` | admin_1_states_provinces | polygons, coverage-simplified |
+| `admin1` | admin_1_states_provinces — **opt-in**: `--admin1-countries CHN,MNG` (only those countries) | polygons, coverage-simplified |
 | `coastline` | coastline | lines |
 | `rivers` | rivers_lake_centerlines (+ rivers_europe/north_america at 10m), one feature per river | lines |
 | `lakes` | lakes | polygons |
-| `regions` | geography_regions_polys + points + marine_polys | polygons (with `label` point) and points |
+| `regions` | geography_regions_polys + points + marine_polys | polygons (with `label` point) and points; marine areas (seas, bays, straits) are stored as their label point only |
 | `places` | populated_places | points |
 | `land`, `ocean` | land, ocean (only with `--layers`) | polygons |
 
@@ -138,10 +138,16 @@ others use `ne-<ne_id>`. Coordinates are rounded to 4 decimals (~11 m).
    - Other polygons and lines: `simplify(preserve_topology=True)` per feature. Polygons
      smaller than ~2×2 px are dropped.
 5. Size limits: ≤ 1.5 MB per file and ≤ 5 MB per plate. If a file is too big, its tolerance
-   is raised ×1.5 until it fits, and the log says so (Europe `admin1` needs 2.5 px: Natural
-   Earth has ~2000 units there).
-6. The files are also mirrored to `studio/public/geo/<plate>/` (git-ignored), where Remotion
-   loads them.
+   is raised ×1.5 until it fits, and the log says so. `admin1` is therefore opt-in and limited
+   to the countries in focus (`--admin1-countries`), which keeps it at 0.75 px.
+6. Regions filter: classes `Continent`, `Geoarea` (e.g. "Siberia", "East Antarctica") and
+   `Dragons-be-here` are dropped, as is any region polygon larger than 20 % of the plate area
+   ("Polynesia" and similar super-regions). Marine polygons become label points.
+7. The files (including `custom/` and `rivers/`) are mirrored to `studio/public/geo/<plate>/`
+   (git-ignored), where Remotion loads them; stale mirrored files are removed.
+
+> **Rule:** NE geography_regions polygons are schematic — use them for labels only, never as
+> highlighted shapes. Highlight real units built with `vap.geo.compose` instead.
 
 ### Generate for a new plate
 
@@ -171,6 +177,86 @@ uv run python -m vap.geo.find "Tibet" --layer regions --plate china-east-hs05
 
 It prints layer, id, name_en, type and scalerank; the ids match the extracted files. Note that
 Natural Earth uses English short names, e.g. the Huang He is "Yellow" (`rivernum-95`).
+
+### Custom regions (`vap.geo.compose`)
+
+```
+uv run python -m vap.geo.compose --plate china-east-hs05 --name heartland \
+    --admin1 "Henan,Shandong,Hebei,Shanxi,Shaanxi,Beijing,Tianjin" --admin1-country CHN
+uv run python -m vap.geo.compose --plate europe --name low-countries --countries NLD,BEL,LUX
+```
+
+Unions the selected Natural Earth 10m countries and/or admin1 units (names match `name_en`
+or the local name; `--admin1-country` disambiguates). Before the union every part is
+buffered by +½ tolerance and the result by −½ tolerance, which closes slivers between
+neighbours, so there are no internal borders. The result is simplified like `extract`.
+Holes smaller than ~2×2 px are dropped (`--fill-holes` removes all holes). Output:
+`data/processed/<plate>/custom/<name>.geojson`, one feature with a `label` point and
+`parts`. Beware of enclaves: e.g. Beijing and Tianjin sit inside Hebei, so leaving them out
+cuts a notch into the region.
+
+### River main stems (`vap.geo.river`)
+
+```
+uv run python -m vap.geo.river --plate china-east-hs05 --name "Yellow"
+uv run python -m vap.geo.river --plate china-east-hs05 --name "Yangtze" [--also "Jinsha"]
+```
+
+1. Collects all 10m segments named `--name`. Natural Earth splits some rivers into reaches
+   with different names, so known ones are added automatically (`ALIASES`: Yellow ← "Huang",
+   Yangtze ← "Tongtian"); add others with `--also`.
+2. `line_merge`, then the longest simple path through the graph of pieces (endpoints snapped
+   within 3 plate px). That path is the main stem: branches, distributaries and lake stubs are
+   dropped, and diagnostics are printed when pieces do not connect.
+3. Orients the line source → mouth with terrarium elevations at z9 (median of the 5 end
+   vertices; the source end must be higher).
+4. Simplifies like `extract` and stores `cumfrac` (cumulative length fraction per vertex),
+   `length_km`, `source_elev_m` and `mouth_elev_m`.
+
+Output: `data/processed/<plate>/rivers/<slug>.geojson`, one `LineString`. Natural Earth
+ends rivers where wide estuaries begin (the Yangtze stops at Zhenjiang; below it the
+estuary is part of the coastline).
+
+## PlateStage (map engine)
+
+`studio/src/map/PlateStage.tsx` packages the variant-B engine:
+
+```tsx
+<PlateStage plate="china-east-hs05" camera={keyframedCamera([...])}
+            geo={<RiverLine … />} screen={<PlaceLabel … />} />
+```
+
+- **Camera:** a `CameraPath` (`studio/src/camera/types.ts`). Build one with
+  `keyframedCamera` (`camera/keyframes.ts`): keys `{t, center, zoom, pitch, bearing, ease}`.
+  Zoom can be `{cover: d}` (relative to "the plate fills the frame") or `{native: d}`
+  (relative to 1 plate px = 1 frame px), and the centre is interpolated in Mercator. Before
+  rendering, every frame is checked: no plate edge may become visible and nothing may be
+  magnified above 1:1, otherwise the render fails and names the frame.
+- **`geo` layer:** rendered inside the transformed plate container in plate pixels (use
+  `GeoSvg`). It moves, scales and tilts with the map.
+- **`screen` layer:** untransformed, on top of the map. Position elements with
+  `useMapProjection().toScreen([lon, lat])`; they follow the map but keep a constant size
+  (labels).
+- **`useMapProjection()`** returns `toPlatePx`, `toScreen`, `plateToScreen`, `view` (centre,
+  scale, pitch, bearing) and `meta`. `toScreen` is the exact forward form of the CSS
+  transform + perspective (`projectToScreen` in `camera/plateProjection.ts`). It is tested
+  two ways:
+  - `npm test` (vitest): composes the CSS matrices from the very `transform` string;
+    error ~1e-13 px;
+  - the `ProjectionCheck` composition in Chromium: `getBoundingClientRect` of probes in the
+    geo layer; max error 0.014 px over 10 tilted frames.
+- **Stroke widths:** `vector-effect: non-scaling-stroke` does **not** compensate the CSS
+  transform of an HTML ancestor: a 10 px stroke rendered at 6 px at scale 0.6, measured in
+  `ProjectionCheck`. Geo components therefore divide widths by `view.scale` themselves.
+
+Components (`studio/src/components/map/`; timings in frames from the enclosing `<Sequence>`,
+styles only from `studio/src/design/tokens.ts`):
+
+| Component | Layer | What it does |
+|---|---|---|
+| `RegionHighlight` | geo | Fill fades to `opacity.regionFill`. The outline draws around the perimeter (`pathLength=1` + dash offset per ring). `dimOutside` adds an even-odd mask built from the same rings, so there are no seams. |
+| `RiverLine` | geo | Draws source → mouth at constant speed along the length (`cumfrac`). Width tapers min→max over 24 pieces, optional glow, bright head while growing. |
+| `PlaceLabel` | screen | City dot + text with halo; fade + slide entrance; constant size; label box kept inside the 5 % safe area. |
 
 ## Camera moves: plate + CSS vs MapLibre 3D (step 1.2)
 

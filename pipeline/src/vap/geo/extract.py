@@ -21,6 +21,7 @@ import math
 import shutil
 import sys
 from collections import defaultdict
+from pathlib import Path
 
 import numpy as np
 import shapely
@@ -39,6 +40,12 @@ MAX_FILE_BYTES = 1_500_000
 MAX_TOTAL_BYTES = 5_000_000
 DECIMALS = 4  # ~11 m, far below one plate pixel (1.2-1.5 km)
 MIN_AREA_PX2 = 4.0  # drop polygons smaller than ~2x2 plate px (not for coverages)
+
+# Regions: Natural Earth geography_regions polygons are schematic (labels only). Drop classes
+# that are never useful on a regional plate, and any polygon larger than 20 % of the plate.
+REGION_TYPES_EXCLUDED = {"Continent", "Geoarea", "Dragons-be-here"}
+REGION_MAX_PLATE_SHARE = 0.20
+LABEL_ONLY_STEMS = {"geography_marine_polys"}  # seas, bays, straits -> label point only
 
 
 # --- projection helpers (vectorised; same formulas as mercator.py) -----------------------
@@ -78,22 +85,41 @@ def _clean_polygonal(geom):
     return geom
 
 
-def build_layer(layer: str, scale: str, clip_box, tol: float, max_rank: int | None) -> list:
+def build_layer(
+    layer: str,
+    scale: str,
+    clip_box,
+    tol: float,
+    max_rank: int | None,
+    admin1_countries: set[str] | None = None,
+) -> list:
     """Return [(props, geometry in EPSG:3857)] for one output layer."""
     records = []
-    for props, geom_json in source_features(layer, scale):
+    plate_area = clip_box.area / (1 + 2 * MARGIN) ** 2
+    for src in source_features(layer, scale):
+        props = src.props
         if layer in RANKED_LAYERS and max_rank is not None:
             rank = props["scalerank"]
             if rank is not None and rank > max_rank:
                 continue
-        geom = shapely.transform(shape(geom_json), _to_merc)
+        if layer == "admin1" and admin1_countries is not None:
+            if src.raw.get("adm0_a3") not in admin1_countries:
+                continue
+        if layer == "regions" and props["type"] in REGION_TYPES_EXCLUDED:
+            continue
+        geom = shapely.transform(shape(src.geometry), _to_merc)
         if not geom.intersects(clip_box):
             continue
+        if layer == "regions" and geom.area > REGION_MAX_PLATE_SHARE * plate_area:
+            continue  # super-regions ("Polynesia", "Siberia"): too big to mean anything here
         geom = shapely.clip_by_rect(geom, *clip_box.bounds)
         if layer in POLYGON_LAYERS or geom.geom_type in ("Polygon", "MultiPolygon"):
             geom = _clean_polygonal(geom)
         if geom.is_empty:
             continue
+        if layer == "regions" and src.stem in LABEL_ONLY_STEMS:
+            props = {**props, "label": None}
+            geom = geom.point_on_surface()  # marine areas: label point only
         records.append((props, geom))
 
     if layer == "rivers":  # one feature per river: merge the pieces that share an id
@@ -122,12 +148,28 @@ def build_layer(layer: str, scale: str, clip_box, tol: float, max_rank: int | No
         if geom.geom_type in ("Polygon", "MultiPolygon") and layer not in COVERAGE_LAYERS:
             if geom.area < min_area:
                 continue
-        props = dict(props)
+        props = {k: v for k, v in props.items() if k != "label"}
         if layer == "regions" and original.geom_type in ("Polygon", "MultiPolygon"):
             label = shapely.transform(original.point_on_surface(), _to_lonlat)
             props["label"] = [round(label.x, DECIMALS), round(label.y, DECIMALS)]
         out.append((props, geom))
     return out
+
+
+def mirror_to_public(plate: str) -> Path:
+    """Copy data/processed/<plate>/ (recursively) to studio/public/geo/<plate>/, dropping
+    files that no longer exist in the source."""
+    src_root = PROCESSED_DIR / plate
+    dst_root = PUBLIC_GEO_DIR / plate
+    wanted = {p.relative_to(src_root) for p in src_root.rglob("*.geojson")}
+    if dst_root.exists():
+        for p in dst_root.rglob("*.geojson"):
+            if p.relative_to(dst_root) not in wanted:
+                p.unlink()
+    for rel in wanted:
+        (dst_root / rel).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(src_root / rel, dst_root / rel)
+    return dst_root
 
 
 def _round_coords(obj):
@@ -168,11 +210,23 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="keep ranked features with scalerank <= N (overrides zoom default)",
     )
+    ap.add_argument(
+        "--admin1-countries",
+        default=None,
+        help="ADM0_A3 codes, e.g. CHN,MNG: also extract admin1 for these countries only",
+    )
     args = ap.parse_args(argv)
     layers = [x.strip() for x in args.layers.split(",") if x.strip()]
     unknown = set(layers) - set(LAYERS)
     if unknown:
         ap.error(f"unknown layers: {sorted(unknown)}")
+    admin1_countries = None
+    if args.admin1_countries:
+        admin1_countries = {c.strip().upper() for c in args.admin1_countries.split(",")}
+        if "admin1" not in layers:
+            layers.append("admin1")
+    elif "admin1" in layers:
+        ap.error("admin1 needs --admin1-countries (it is never extracted for the whole plate)")
 
     meta = json.loads((PLATES_DIR / f"{args.plate}.json").read_text(encoding="utf-8"))
     ext = Extent(*meta["bbox_3857"], meta["width"], meta["height"])
@@ -194,7 +248,9 @@ def main(argv: list[str] | None = None) -> int:
             max_rank = default_max_rank(layer, meta["zoom"]["tile256"])
         tol_px = TOLERANCE_PX
         while True:
-            records = build_layer(layer, scale, clip_box, tol_px * ext.pixel_size, max_rank)
+            records = build_layer(
+                layer, scale, clip_box, tol_px * ext.pixel_size, max_rank, admin1_countries
+            )
             text = to_geojson(records)
             size = len(text.encode("utf-8"))
             if size <= MAX_FILE_BYTES or tol_px > 8:
@@ -215,11 +271,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"WARNING: total exceeds {MAX_TOTAL_BYTES / 1e6:.0f} MB; raise TOLERANCE_PX")
         return 1
 
-    public = PUBLIC_GEO_DIR / args.plate
-    public.mkdir(parents=True, exist_ok=True)
-    for f in out_dir.glob("*.geojson"):
-        shutil.copyfile(f, public / f.name)
-    print(f"mirrored to {public}")
+    print(f"mirrored to {mirror_to_public(args.plate)}")
     return 0
 
 

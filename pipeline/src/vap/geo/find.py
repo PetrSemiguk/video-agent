@@ -31,7 +31,9 @@ def search_raw(query: str, layers: list[str]) -> list[dict]:
                 if not any(q in str(n).casefold() for n in names):
                     continue
                 props = normalise(layer, stem, i, raw)
-                hits.setdefault((layer, props["id"]), {"layer": layer, **props})
+                geom = feat["geometry"]
+                at = geom["coordinates"] if geom and geom["type"] == "Point" else None
+                hits.setdefault((layer, props["id"]), {"layer": layer, **props, "at": at})
     return list(hits.values())
 
 
@@ -45,10 +47,12 @@ def search_plate(query: str, layers: list[str], plate: str) -> list[dict]:
         for feat in json.loads(path.read_text(encoding="utf-8"))["features"]:
             p = feat["properties"]
             if p.get("name_en") and q in p["name_en"].casefold():
+                g = feat["geometry"]
                 hits.append(
                     {
                         "layer": layer,
                         **{k: p.get(k) for k in ("id", "name_en", "type", "scalerank")},
+                        "at": g["coordinates"] if g["type"] == "Point" else p.get("label"),
                     }
                 )
     return hits
@@ -74,7 +78,11 @@ def main(argv: list[str] | None = None) -> int:
     hits.sort(key=lambda h: (h["layer"], h["scalerank"] if h["scalerank"] is not None else 99))
     for h in hits:
         rank = "-" if h["scalerank"] is None else h["scalerank"]
-        print(f"{h['layer']:<10} {h['id']:<16} {h['name_en']!s:<40} {h['type']}  rank {rank}")
+        at = h.get("at")
+        where = f"  at {at[0]:.4f},{at[1]:.4f}" if at else ""
+        print(
+            f"{h['layer']:<10} {h['id']:<16} {h['name_en']!s:<40} {h['type']}  rank {rank}{where}"
+        )
     print(f"{len(hits)} match(es)")
     return 0 if hits else 1
 

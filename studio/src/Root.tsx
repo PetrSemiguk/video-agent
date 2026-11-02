@@ -1,4 +1,10 @@
 import { Composition, Still } from "remotion";
+import "./design/fonts";
+import { ProjectionCheck } from "./qa/ProjectionCheck";
+import {
+  DEMO_CHINA_RIVERS_FRAMES,
+  DemoChinaRivers,
+} from "./demo/DemoChinaRivers";
 import { AbMapLibre } from "./ab/AbMapLibre";
 import { AbPlate } from "./ab/AbPlate";
 import { FLYOVER_FPS, FLYOVER_FRAMES } from "./camera/flyover";
@@ -46,6 +52,22 @@ export const RemotionRoot: React.FC = () => {
         component={AbPlate}
         durationInFrames={FLYOVER_FRAMES}
         fps={FLYOVER_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="DemoChinaRivers"
+        component={DemoChinaRivers}
+        durationInFrames={DEMO_CHINA_RIVERS_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="ProjectionCheck"
+        component={ProjectionCheck}
+        durationInFrames={300}
+        fps={30}
         width={1920}
         height={1080}
       />

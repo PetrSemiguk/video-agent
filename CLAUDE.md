@@ -15,7 +15,8 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 - `pipeline/` — Python project on uv: TTS, whisper alignment, geo scripts
 - `data/raw/` — downloaded source datasets (git-ignored)
 - `data/processed/` — trimmed GeoJSON used by episodes (committed, keep files small)
-- `assets/fonts/` — fonts (committed); `assets/music/`, `assets/broll/` — git-ignored
+- `assets/fonts/` — fonts for non-Remotion use; fonts used in renders live in
+  `studio/public/fonts/` (committed: Remotion serves only `public/`); `assets/music/`, `assets/broll/` — git-ignored
 - `episodes/<slug>/` — script.md, facts.md, storyboard.json, attributions.md, audio/, renders/
 - `.claude/` — project settings (permissions), agents, skills
 - `.claude/skills/` — official Remotion Agent Skills (from remotion-dev/skills)
@@ -50,7 +51,8 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 - Follow [docs/licenses.md](docs/licenses.md). Sources marked FORBIDDEN are never used, in any form.
 - Before using a new data or media source, add it to `docs/licenses.md` first.
 - Wikimedia Commons: check each file's license and record it in `episodes/<slug>/attributions.md`.
-- All colors, fonts and spacing come from design tokens only (introduced in step 5).
+- All colors, fonts, sizes, spacing and motion come from design tokens only:
+  `studio/src/design/tokens.ts` (v0 draft; final values in step 2.1).
   No hardcoded visual values in components.
 
 ## Overrides for Remotion skills
@@ -100,6 +102,9 @@ Run from `studio/`:
   plate + CSS) to `out/ab-a-maplibre.mp4` / `out/ab-b-plate.mp4`; `npm run ab:side-by-side`
   stacks them into `out/ab-side-by-side.mp4`. Variant A needs `npm run prepare:maplibre`
   (local worker, run by `render:ab-a`) and exported terrain tiles (below).
+- `npm run render:demo-china-rivers` — PlateStage demo (rivers, region, labels) to
+  `out/demo-china-rivers.mp4`
+- `npm test` — vitest (toScreen vs CSS transform matrices)
 - `npm run lint` — eslint + tsc
 
 Python: run from `pipeline/` with `uv run` only. Never activate the venv manually, never use pip.
@@ -110,8 +115,12 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
   — 3840×2160 map plate to `studio/public/plates/<name>.png` + `.json` (see docs/maps.md)
 - `uv run python -m vap.geo.terrain_export --plate <name> --min-zoom 0 --max-zoom 7` — copy
   terrarium tiles for a plate to `studio/public/terrain/` (git-ignored) for MapLibre terrain
-- `uv run python -m vap.geo.extract --plate <name> [--layers …] [--min-rank N]` — Natural Earth
+- `uv run python -m vap.geo.extract --plate <name> [--layers …] [--min-rank N] [--admin1-countries CHN,…]` — Natural Earth
   layers for a plate to `data/processed/<name>/` (committed) + `studio/public/geo/<name>/`
+- `uv run python -m vap.geo.compose --plate <p> --name <slug> [--countries CHN,...] [--admin1 "Henan,..." --admin1-country CHN]`
+  — union of units into `data/processed/<p>/custom/<slug>.geojson`
+- `uv run python -m vap.geo.river --plate <p> --name "Yellow" [--also "..."]` — main stem
+  source→mouth with `cumfrac` into `data/processed/<p>/rivers/<slug>.geojson`
 - `uv run python -m vap.geo.find "<name>" [--layer rivers|regions|places|countries|admin1|lakes]`
   — look up Natural Earth ids by name
 - `uv run python -m vap.qa.flicker <mp4> --from 9.2 --to 12` — luma flicker on a static section

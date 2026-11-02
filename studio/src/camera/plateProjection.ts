@@ -8,7 +8,7 @@
 // check on every frame that the frame corners land inside the plate (no visible edges)
 // and that the plate is never magnified above 1:1.
 import type { PlateMeta } from "../geo/plate";
-import { CameraState } from "./flyover";
+import type { CameraState } from "./types";
 import { lonLatToPlatePx } from "../geo/plate";
 
 export const PERSPECTIVE_PX = 2000;
@@ -48,6 +48,36 @@ export const plateTransform = (
   ].join(" ");
 
 const rad = (deg: number) => (deg * Math.PI) / 180;
+
+/**
+ * Plate px → screen (frame) px: the exact forward version of the CSS transform above.
+ * Throws for points behind the camera (P - z <= 0), which never happens at our pitches.
+ */
+export const projectToScreen = (
+  view: PlateView,
+  px: number,
+  py: number,
+  width: number,
+  height: number,
+  P = PERSPECTIVE_PX,
+): { x: number; y: number } => {
+  const t = rad(view.pitchDeg);
+  const phi = rad(-view.bearingDeg);
+  const a = (px - view.cx) * view.scale;
+  const b = (py - view.cy) * view.scale;
+  // rotateZ(phi), then rotateX(t): y' = y cos t, z' = y sin t.
+  const X = a * Math.cos(phi) - b * Math.sin(phi);
+  const Y = a * Math.sin(phi) + b * Math.cos(phi);
+  const z = Y * Math.sin(t);
+  const w = P - z;
+  if (w <= 0) {
+    throw new Error("point is behind the camera");
+  }
+  return {
+    x: width / 2 + (X * P) / w,
+    y: height / 2 + (Y * Math.cos(t) * P) / w,
+  };
+};
 
 /** Screen point (frame px) → plate px. */
 export const unprojectToPlate = (

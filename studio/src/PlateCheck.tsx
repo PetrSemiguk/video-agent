@@ -1,11 +1,8 @@
 import { AbsoluteFill, Img, staticFile, useVideoConfig } from "remotion";
 import { MapAttribution } from "./components/MapAttribution";
+import { colors, space } from "./design/tokens";
 import { coverFit, LonLat, lonLatToPlatePx } from "./geo/plate";
 import { usePlateMeta } from "./geo/usePlateMeta";
-
-// TODO(step 5): replace hardcoded colors and sizes with design tokens.
-const MARKER = "#ff2d2d";
-const MARKER_SIZE = 12;
 
 export type PlateCheckProps = {
   plate: string;
@@ -26,9 +23,10 @@ export const PlateCheck: React.FC<PlateCheckProps> = ({ plate, markers }) => {
   }
 
   const fit = coverFit(meta, width, height);
+  const size = space.debugMarker;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "black" }}>
+    <AbsoluteFill style={{ backgroundColor: colors.background }}>
       <Img
         src={staticFile(meta.image)}
         style={{
@@ -47,12 +45,12 @@ export const PlateCheck: React.FC<PlateCheckProps> = ({ plate, markers }) => {
             title={m.label}
             style={{
               position: "absolute",
-              left: fit.offsetX + p.x * fit.scale - MARKER_SIZE / 2,
-              top: fit.offsetY + p.y * fit.scale - MARKER_SIZE / 2,
-              width: MARKER_SIZE,
-              height: MARKER_SIZE,
-              borderRadius: MARKER_SIZE / 2,
-              backgroundColor: MARKER,
+              left: fit.offsetX + p.x * fit.scale - size / 2,
+              top: fit.offsetY + p.y * fit.scale - size / 2,
+              width: size,
+              height: size,
+              borderRadius: size / 2,
+              backgroundColor: colors.debugMarker,
             }}
           />
         );
