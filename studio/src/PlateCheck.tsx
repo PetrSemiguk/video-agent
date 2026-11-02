@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
-import {
-  AbsoluteFill,
-  Img,
-  staticFile,
-  useDelayRender,
-  useVideoConfig,
-} from "remotion";
-import { coverFit, LonLat, lonLatToPlatePx, PlateMeta } from "./geo/plate";
+import { AbsoluteFill, Img, staticFile, useVideoConfig } from "remotion";
+import { MapAttribution } from "./components/MapAttribution";
+import { coverFit, LonLat, lonLatToPlatePx } from "./geo/plate";
+import { usePlateMeta } from "./geo/usePlateMeta";
 
-// TODO(step 5): replace hardcoded colors, fonts and spacing with design tokens.
+// TODO(step 5): replace hardcoded colors and sizes with design tokens.
 const MARKER = "#ff2d2d";
-const ATTRIBUTION_TEXT = "rgba(255, 255, 255, 0.85)";
-const ATTRIBUTION_BG = "rgba(0, 0, 0, 0.55)";
 const MARKER_SIZE = 12;
 
 export type PlateCheckProps = {
@@ -26,24 +19,7 @@ export const plateCheckDefaults: PlateCheckProps = {
 
 export const PlateCheck: React.FC<PlateCheckProps> = ({ plate, markers }) => {
   const { width, height } = useVideoConfig();
-  const { delayRender, continueRender, cancelRender } = useDelayRender();
-  const [handle] = useState(() => delayRender(`Loading plate ${plate}`));
-  const [meta, setMeta] = useState<PlateMeta | null>(null);
-
-  useEffect(() => {
-    fetch(staticFile(`plates/${plate}.json`))
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`plates/${plate}.json: HTTP ${res.status}`);
-        }
-        return res.json() as Promise<PlateMeta>;
-      })
-      .then((json) => {
-        setMeta(json);
-        continueRender(handle);
-      })
-      .catch((err) => cancelRender(err));
-  }, [plate, handle, continueRender, cancelRender]);
+  const meta = usePlateMeta(plate);
 
   if (!meta) {
     return null;
@@ -81,21 +57,7 @@ export const PlateCheck: React.FC<PlateCheckProps> = ({ plate, markers }) => {
           />
         );
       })}
-      <div
-        style={{
-          position: "absolute",
-          right: 16,
-          bottom: 16,
-          padding: "6px 12px",
-          borderRadius: 4,
-          backgroundColor: ATTRIBUTION_BG,
-          color: ATTRIBUTION_TEXT,
-          fontFamily: "Arial, Helvetica, sans-serif",
-          fontSize: 18,
-        }}
-      >
-        {meta.attribution.on_screen}
-      </div>
+      <MapAttribution text={meta.attribution.on_screen} />
     </AbsoluteFill>
   );
 };

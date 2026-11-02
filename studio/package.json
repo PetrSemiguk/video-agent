@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "@remotion/cli": "4.0.539",
+    "maplibre-gl": "6.16.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.539"
@@ -31,7 +32,11 @@
     "still:glcheck": "remotion still GlCheck out/glcheck.png",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc",
-    "still:plate": "remotion still PlateCheck"
+    "still:plate": "remotion still PlateCheck",
+    "prepare:maplibre": "node scripts/prepare-maplibre.mjs",
+    "render:ab-a": "node scripts/prepare-maplibre.mjs && remotion render AbMapLibre out/ab-a-maplibre.mp4 --gl=angle --concurrency=1",
+    "render:ab-b": "remotion render AbPlate out/ab-b-plate.mp4 --gl=angle --concurrency=1",
+    "ab:side-by-side": "node scripts/ab-side-by-side.mjs"
   },
   "allowScripts": {
     "esbuild": false

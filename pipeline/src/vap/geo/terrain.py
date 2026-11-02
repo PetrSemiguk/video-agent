@@ -48,7 +48,7 @@ def decode_terrarium(rgb: np.ndarray) -> np.ndarray:
     return rgb[..., 0] * 256.0 + rgb[..., 1] + rgb[..., 2] / 256.0 - 32768.0
 
 
-def _tile_path(z: int, x: int, y: int):
+def tile_path(z: int, x: int, y: int):
     return TERRAIN_DIR / "terrarium" / str(z) / str(x) / f"{y}.png"
 
 
@@ -57,11 +57,11 @@ def render(ext: Extent) -> tuple[np.ndarray, int]:
     z = pick_zoom(ext)
     x0, x1, y0, y1 = tile_range(ext, z)
     coords = [(x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)]
-    download_many([(URL.format(z=z, x=x, y=y), _tile_path(z, x, y)) for x, y in coords], 16)
+    download_many([(URL.format(z=z, x=x, y=y), tile_path(z, x, y)) for x, y in coords], 16)
 
     mosaic = np.zeros(((y1 - y0 + 1) * TILE, (x1 - x0 + 1) * TILE), dtype=np.float32)
     for x, y in coords:
-        path = _tile_path(z, x, y)
+        path = tile_path(z, x, y)
         if path.stat().st_size == 0:  # tile missing upstream (404) -> sea level
             continue
         with Image.open(path) as im:

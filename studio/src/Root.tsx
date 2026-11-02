@@ -1,4 +1,7 @@
 import { Composition, Still } from "remotion";
+import { AbMapLibre } from "./ab/AbMapLibre";
+import { AbPlate } from "./ab/AbPlate";
+import { FLYOVER_FPS, FLYOVER_FRAMES } from "./camera/flyover";
 import { GlCheck } from "./GlCheck";
 import { Hello } from "./Hello";
 import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
@@ -21,6 +24,22 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
         defaultProps={plateCheckDefaults}
+      />
+      <Composition
+        id="AbMapLibre"
+        component={AbMapLibre}
+        durationInFrames={FLYOVER_FRAMES}
+        fps={FLYOVER_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="AbPlate"
+        component={AbPlate}
+        durationInFrames={FLYOVER_FRAMES}
+        fps={FLYOVER_FPS}
+        width={1920}
+        height={1080}
       />
     </>
   );

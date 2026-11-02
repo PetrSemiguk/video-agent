@@ -89,6 +89,26 @@ Tests: `pipeline/tests/test_mercator.py` (centre → centre, bbox corners → im
 To draw on a plate placed with `object-fit: cover` in a frame, use `coverFit` from
 `studio/src/geo/plate.ts`: `frame = offset + px · scale`.
 
+## Camera moves: plate + CSS vs MapLibre 3D (step 1.2)
+
+The shared trajectory lives in `studio/src/camera/flyover.ts` (centre/zoom keys, easing, and
+the tilt profile of each variant).
+
+- **B, plate + CSS** (`studio/src/ab/AbPlate.tsx`, `camera/plateProjection.ts`): the plate is
+  moved with `translate(W/2,H/2) rotateX(pitch) rotateZ(-bearing) scale(s) translate(-cx,-cy)`
+  under `perspective: 2000px`. `unprojectToPlate()` inverts this exactly. Before rendering,
+  every frame is checked: the frame corners must land ≥ 2 plate px inside the plate, and the
+  plate must never be magnified above 1:1 (the render fails otherwise). With 25° of
+  pseudo-pitch the near edge is magnified ~15 %, so the end zoom stays 0.25 below native.
+  Overlays sit inside the transformed layer at `lonLatToPlatePx()` positions.
+- **A, MapLibre 3D** (`studio/src/ab/AbMapLibre.tsx`): a fully local style. The plate is an
+  `image` source at `bbox_lonlat`, the terrain is a terrarium `raster-dem` from
+  `studio/public/terrain/` (export with `vap.geo.terrain_export`), and markers are GeoJSON
+  layers. The worker is served from `public/maplibre/` (`npm run prepare:maplibre`).
+  Per-frame sync: `delayRender → jumpTo → triggerRepaint → once('idle') → continueRender`.
+  Caveat: with high pitch the far edge of the plate (and the background behind it) comes
+  into view, so 3D shots need a plate that extends well beyond the visible horizon.
+
 ## Adding a region
 
 1. Choose a bbox (it is grown to 16:9 in Mercator around its centre; see `bbox_lonlat` in the

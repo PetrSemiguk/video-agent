@@ -94,6 +94,10 @@ Run from `studio/`:
 - `npm run still:glcheck` — WebGL check still to `out/glcheck.png` (must show ANGLE + RTX 4060)
 - `npm run still:plate -- out/plate-<name>.png --props=props/plate-<name>.json` — `PlateCheck`
   still: plate + attribution + lon/lat markers (props files live in `studio/props/`)
+- `npm run render:ab-a` / `npm run render:ab-b` — step 1.2 camera A/B test (MapLibre 3D /
+  plate + CSS) to `out/ab-a-maplibre.mp4` / `out/ab-b-plate.mp4`; `npm run ab:side-by-side`
+  stacks them into `out/ab-side-by-side.mp4`. Variant A needs `npm run prepare:maplibre`
+  (local worker, run by `render:ab-a`) and exported terrain tiles (below).
 - `npm run lint` — eslint + tsc
 
 Python: run from `pipeline/` with `uv run` only. Never activate the venv manually, never use pip.
@@ -102,6 +106,10 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
 - `uv run python -m vap.gpu_check` — CUDA check + matmul benchmark (must end with `GPU OK: NVIDIA GeForce RTX 4060`)
 - `uv run python -m vap.geo.plate --name <name> --bbox=<minLon,minLat,maxLon,maxLat> [--hillshade 0.5] [--grade dark]`
   — 3840×2160 map plate to `studio/public/plates/<name>.png` + `.json` (see docs/maps.md)
+- `uv run python -m vap.geo.terrain_export --plate <name> --min-zoom 0 --max-zoom 7` — copy
+  terrarium tiles for a plate to `studio/public/terrain/` (git-ignored) for MapLibre terrain
+- `uv run python -m vap.qa.flicker <mp4> --from 9.2 --to 12` — luma flicker on a static section
+- `uv run python -m vap.qa.contact <mp4>... --times 0,2,4 --out <png>` — contact sheet
 - `uv run ruff check .` / `uv run ruff format .` — lint / format
 - `uv run pytest` — tests
 
