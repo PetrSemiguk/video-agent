@@ -1,5 +1,6 @@
+import { InfoDemo, InfoSheet } from "./demo/Info";
 import { TextLayersDemo, TextLayersSheet } from "./demo/TextLayers";
-import { motion, textLayer } from "./design/tokens";
+import { infoLayer, motion, textLayer } from "./design/tokens";
 import { GradeCompare } from "./design/GradeCompare";
 import { StyleSheet } from "./design/StyleSheet";
 import { Composition, Still } from "remotion";
@@ -23,6 +24,23 @@ import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="InfoSheet"
+        component={InfoSheet}
+        durationInFrames={infoLayer.defaultDuration}
+        fps={motion.fps}
+        width={infoLayer.review.width}
+        height={infoLayer.review.height}
+        defaultProps={{ stress: false }}
+      />
+      <Composition
+        id="Info"
+        component={InfoDemo}
+        durationInFrames={infoLayer.demo.duration}
+        fps={motion.fps}
+        width={infoLayer.demo.width}
+        height={infoLayer.demo.height}
+      />
       <Composition
         id="TextLayersSheet"
         component={TextLayersSheet}
