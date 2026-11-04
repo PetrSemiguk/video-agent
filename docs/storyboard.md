@@ -153,3 +153,94 @@ validated camera render. Step 4.2 will build Episode; 4.3 will resolve/check tim
 
 `studio/out/storyboard-schema.png` is the rendered contract review card, not an
 assembled episode frame. Report and validation evidence are in docs/reports/4.1/.
+
+## Episode assembler (step 4.2)
+
+The `Episode` composition is registered in Root.tsx. Run from studio:
+
+```powershell
+npm run prepare:episode
+npm run render:episode
+```
+
+`prepare:episode` validates the sandbox storyboard and local references, checks
+the WAV/alignment SHA-256, copies only that WAV into ignored
+`studio/public/episodes/tts-test/voice.wav`, and writes ignored
+`studio/out/episode-props.json`. Remotion serves public/, not arbitrary repository
+paths. The render helper uses the existing Rspack Node API, ANGLE, concurrency 1,
+H.264/AAC, yuv420p and limited-range BT.709. Output is
+`studio/out/episode-tts-test.mp4`, plus six illustrative review stills and metadata.
+It does not start Studio. `--stills-only` skips MP4; `--map-smoke` renders a
+separate QA variant using an existing alternate plate and Natural Earth river.
+Those QA changes are in memory; the authored storyboard is not rewritten.
+
+Input props for `Episode`:
+
+| Prop | Contents |
+| --- | --- |
+| `storyboard` | Authoring JSON using schemaVersion 1 above. |
+| `words` | Complete original-script alignment JSON bound to the exact WAV hash. |
+| `audioSrc` | Public-relative local WAV path, e.g. episodes/tts-test/voice.wav. |
+| `timing` | Explicit compiled frame windows, described below. |
+| `prepared` | Internal calculateMetadata result; callers should omit it. |
+
+`calculateMetadata` fetches and hashes actual WAV bytes, parses the RIFF PCM16
+sample contract and computes `ceil(samples * fps / sampleRate)`. It does not infer
+duration from the authored last shot or trust alignment duration alone. The
+current narration is mono 24 kHz, 593760 samples, 24.74 s -> **743 frames**.
+Alignment hash/duration must agree. Input must be nonempty mono PCM16 RIFF WAV;
+RF64, float WAV and compressed inputs are rejected rather than mismeasured.
+The composition defaults to the sandbox inputs; `prepare:episode` must stage its
+audio before selecting it in Studio on a new workspace. If fresh synthesis
+changes the WAV hash, re-align and update the storyboard's words reference;
+do not silently edit historical report evidence to hide a mismatch.
+
+### Explicit frame plan until step 4.3
+
+`episodes/_sandbox/tts-test/assembly.json` is a deliberately authored **frame
+plan**, not an automatic anchor resolver. This keeps phrase lookup, label lead,
+pause snapping, minimum-shot policy, drift gap filling and the first-frame/text
+preview sheet in 4.3. The authoring anchors remain unchanged in storyboard.json.
+Use the plan as an explicit preview schedule, not a final synchronization claim.
+
+```json
+{
+  "shots": [{
+    "id": "opening", "from": 0, "durationInFrames": 101,
+    "layers": [{ "id": "title", "from": 0, "durationInFrames": 101 }]
+  }]
+}
+```
+
+Shot `from` is absolute; layer `from` is relative to its shot. Every shot/layer
+must appear exactly once in authoring order. Shot windows must be contiguous,
+cover the measured frame count and contain their layer windows. Component Zod
+schemas validate actual scheduled durations, overriding optional duration defaults
+and mismatched authored duration props for the rendered Sequence. EndCard still
+requires its exact twenty-second window. This is runtime assembly integrity, not
+the automatic editing policy deferred to 4.3.
+
+The existing camera preset functions feed one C2 global camera timeline. Local
+shot camera wrappers preserve absolute time. Plate coverage/magnification is
+verified over every frame, including outgoing transition extensions, before
+rendering and by PlateStage itself. A valid JSON camera descriptor alone does
+not guarantee coverage; unsafe plans fail instead of showing plate edges.
+
+Each shot becomes a TransitionSeries scene containing PlateStage and local
+layer Sequences. RegionHighlight/RiverLine use the geo slot; other registered
+layers use screen. An animated outgoing plate change uses PlateSequence; a cut
+switches PlateStage at the boundary. Geo data is inline as defined by v1. Current
+geographic data follows the Natural Earth workflow; provide additional licensed
+source credit with a MapAttribution layer when appropriate.
+
+Outgoing scenes extend by the transition duration and TransitionSeries subtracts
+the same overlap: subsequent absolute shot starts and total voice duration are
+preserved. A single Html5Audio track sits outside all scene overlaps, at unity
+volume without trimming, time stretching, final-mix processing or repetition.
+
+Episode renders one combined visible attribution overlay outside transitions.
+Inline credit components inside scene scope are suppressed; ordinary standalone
+PlateStage/BRollClip behavior is unchanged. During overlaps, union the credits
+of both visible scenes, plus Natural Earth, approved B-roll and explicit credit
+layers, deduplicating identical strings. This prevents crossfaded source strings
+from becoming unreadable and keeps attribution visible during dip-to-dark.

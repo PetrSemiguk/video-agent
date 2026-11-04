@@ -1,4 +1,9 @@
 import { Showreel } from "./demo/Showreel";
+import { Episode } from "./episode/Episode";
+import { calculateEpisodeMetadata } from "./episode/metadata";
+import sandboxStoryboard from "../../episodes/_sandbox/tts-test/storyboard.json";
+import sandboxWords from "../../docs/reports/3.3/words.json";
+import sandboxAssembly from "../../episodes/_sandbox/tts-test/assembly.json";
 import { CardCheck } from "./qa/CardCheck";
 import { InfoDemo, InfoSheet } from "./demo/Info";
 import { TextLayersDemo, TextLayersSheet } from "./demo/TextLayers";
@@ -26,6 +31,21 @@ import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="Episode"
+        component={Episode}
+        durationInFrames={motion.fps}
+        fps={motion.fps}
+        width={cards.showreel.width}
+        height={cards.showreel.height}
+        calculateMetadata={calculateEpisodeMetadata}
+        defaultProps={{
+          storyboard: sandboxStoryboard,
+          words: sandboxWords,
+          timing: sandboxAssembly,
+          audioSrc: "episodes/tts-test/voice.wav",
+        }}
+      />
       <Composition
         id="Showreel"
         component={Showreel}

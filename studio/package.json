@@ -27,6 +27,8 @@
     "vitest": "5.0.5"
   },
   "scripts": {
+    "prepare:episode": "node scripts/prepare-episode.mjs",
+    "render:episode": "node scripts/render-episode.mjs",
     "schema:storyboard": "node scripts/storyboard.cjs export",
     "validate:storyboard": "node scripts/storyboard.cjs validate",
     "studio": "remotion studio",

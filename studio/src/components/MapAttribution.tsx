@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { useContext } from "react";
+import { InlineAttributionContext } from "../map/AttributionContext";
 import { shortText } from "./text/shared";
 export const mapAttributionSchema = z.strictObject({ text: shortText(512) });
 // Mandatory on-screen attribution, secondary to the map labels.
@@ -29,4 +31,9 @@ const AttributionView: React.FC<{ text: string }> = ({ text }) => (
 
 export const MapAttribution: React.FC<z.input<typeof mapAttributionSchema>> = (
   props,
-) => <AttributionView {...mapAttributionSchema.parse(props)} />;
+) => {
+  const inline = useContext(InlineAttributionContext);
+  return inline ? (
+    <AttributionView {...mapAttributionSchema.parse(props)} />
+  ) : null;
+};
