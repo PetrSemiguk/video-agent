@@ -36,7 +36,49 @@ const collection = z.object({
   type: z.literal("FeatureCollection"),
   features: z.array(feature).min(1),
 });
-const regionGeo = z.custom<GeoCollection | GeoFeature>((value) => {
+export const regionGeoContract = z.union([
+  feature.extend({
+    geometry: z.discriminatedUnion("type", [
+      z.object({
+        type: z.literal("Polygon"),
+        coordinates: z.array(ring).min(1),
+      }),
+      z.object({
+        type: z.literal("MultiPolygon"),
+        coordinates: z.array(z.array(ring).min(1)).min(1),
+      }),
+    ]),
+  }),
+  collection.extend({
+    features: z
+      .array(
+        feature.extend({
+          geometry: z.discriminatedUnion("type", [
+            z.object({
+              type: z.literal("Polygon"),
+              coordinates: z.array(ring).min(1),
+            }),
+            z.object({
+              type: z.literal("MultiPolygon"),
+              coordinates: z.array(z.array(ring).min(1)).min(1),
+            }),
+          ]),
+        }),
+      )
+      .min(1),
+  }),
+]);
+export const riverGeoContract = collection.extend({
+  features: z.tuple([
+    feature.extend({
+      geometry: z.object({ type: z.literal("LineString"), coordinates: line }),
+      properties: z.looseObject({
+        cumfrac: z.array(z.number().min(0).max(1)).min(2),
+      }),
+    }),
+  ]),
+});
+export const regionGeo = z.custom<GeoCollection | GeoFeature>((value) => {
   const p = z.union([collection, feature]).safeParse(value);
   return (
     p.success &&
@@ -46,7 +88,7 @@ const regionGeo = z.custom<GeoCollection | GeoFeature>((value) => {
     )
   );
 }, "Expected nonempty Polygon/MultiPolygon GeoJSON with closed lon/lat rings");
-const riverGeo = z.custom<GeoCollection>((value) => {
+export const riverGeo = z.custom<GeoCollection>((value) => {
   const p = collection.safeParse(value);
   if (!p.success || p.data.features.length !== 1) return false;
   const f = p.data.features[0],

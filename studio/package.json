@@ -27,6 +27,8 @@
     "vitest": "5.0.5"
   },
   "scripts": {
+    "schema:storyboard": "node scripts/storyboard.cjs export",
+    "validate:storyboard": "node scripts/storyboard.cjs validate",
     "studio": "remotion studio",
     "dev": "remotion studio",
     "build": "remotion bundle",

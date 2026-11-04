@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "episode": {
+    "slug": "tts-test",
+    "title": "China: Landscape and Unity",
+    "language": "en",
+    "fps": 30
+  },
+  "plates": [{ "id": "china", "name": "china-east-hs05" }],
+  "audio": {
+    "src": "studio/out/voice-3.2/voice.wav",
+    "words": "docs/reports/3.3/words.json"
+  },
+  "shots": [
+    {
+      "id": "opening",
+      "plate": "china",
+      "start": { "time": 0 },
+      "end": { "word": 10 },
+      "camera": {
+        "preset": "establish",
+        "params": {
+          "target": { "center": { "lon": 110, "lat": 32 }, "zoom": 5 }
+        }
+      },
+      "layers": [
+        {
+          "id": "title",
+          "type": "TitleCard",
+          "props": { "title": "CHINA", "subtitle": "Landscape and unity" }
+        }
+      ],
+      "transition": { "kind": "crossfade" }
+    },
+    {
+      "id": "plateau",
+      "plate": "china",
+      "start": { "word": 11 },
+      "end": { "phrase": "into the sky" },
+      "camera": {
+        "preset": "focusOn",
+        "params": { "bounds": [96, 28, 105, 36], "maxZoom": 5.2 }
+      },
+      "layers": [
+        {
+          "id": "plateau-name",
+          "type": "LowerThird",
+          "props": {
+            "title": "Tibetan Plateau",
+            "subtitle": "The western highlands"
+          }
+        }
+      ],
+      "transition": { "kind": "cut" }
+    },
+    {
+      "id": "desert",
+      "plate": "china",
+      "start": { "phrase": "In the north" },
+      "end": { "word": 34 },
+      "camera": {
+        "preset": "flyTo",
+        "params": { "to": { "center": { "lon": 105, "lat": 37 }, "zoom": 5.45 } }
+      },
+      "layers": [
+        {
+          "id": "desert-name",
+          "type": "LowerThird",
+          "props": { "title": "Gobi Desert", "color": "regionB" }
+        }
+      ],
+      "transition": { "kind": "dip-to-dark" }
+    },
+    {
+      "id": "rivers",
+      "plate": "china",
+      "start": { "phrase": "And in between" },
+      "end": { "word": 47 },
+      "camera": { "preset": "drift", "params": {} },
+      "layers": [
+        {
+          "id": "rivers-tag",
+          "type": "SectionTag",
+          "props": { "text": "Two great rivers" },
+          "start": { "phrase": "two great rivers" }
+        }
+      ],
+      "transition": { "kind": "map-to-graphic-wipe" }
+    },
+    {
+      "id": "unity",
+      "plate": "china",
+      "start": { "word": 48 },
+      "end": { "word": 59 },
+      "camera": { "preset": "hold", "params": {} },
+      "layers": [
+        {
+          "id": "unity-fact",
+          "type": "KeyFact",
+          "props": {
+            "statement": "More than 2,000 years of shared history",
+            "emphasis": "2,000 years"
+          }
+        }
+      ],
+      "transition": { "kind": "crossfade" }
+    },
+    {
+      "id": "test-of-unity",
+      "plate": "china",
+      "start": { "word": 60 },
+      "end": { "time": 24.74 },
+      "camera": { "preset": "drift", "params": {} },
+      "layers": [
+        {
+          "id": "date",
+          "type": "BigDate",
+          "start": { "word": 62 },
+          "props": { "year": 1644, "caption": "A test of unity" }
+        }
+      ]
+    }
+  ]
+}

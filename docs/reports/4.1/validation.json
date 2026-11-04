@@ -1,0 +1,54 @@
+{
+  "positive": {
+    "exit_code": 0,
+    "valid": true,
+    "file": "episodes/_sandbox/tts-test/storyboard.json",
+    "schemaVersion": 1,
+    "shots": 6,
+    "issues": []
+  },
+  "negative_cases": [
+    {
+      "name": "unknown-layer",
+      "exit_code": 1,
+      "valid": false,
+      "file": "studio/out/storyboard-unknown-layer.json",
+      "schemaVersion": null,
+      "shots": 0,
+      "issues": [
+        {
+          "path": "$.shots[0].layers[0].type",
+          "message": "Invalid discriminator value. Expected 'TitleCard' | 'EndCard' | 'BRollClip' | 'LowerThird' | 'SectionTag' | 'BigDate' | 'KeyFact' | 'BarCompare' | 'TimelineBar' | 'NumberedList' | 'RecapCards' | 'StatCounter' | 'RegionHighlight' | 'RiverLine' | 'PlaceLabel' | 'MapAttribution'"
+        }
+      ]
+    },
+    {
+      "name": "invalid-props",
+      "exit_code": 1,
+      "valid": false,
+      "file": "studio/out/storyboard-invalid-props.json",
+      "schemaVersion": null,
+      "shots": 0,
+      "issues": [
+        {
+          "path": "$.shots[4].layers[0].props.emphasis",
+          "message": "Emphasis must occur exactly once in statement (case sensitive)"
+        }
+      ]
+    },
+    {
+      "name": "unknown-plate",
+      "exit_code": 1,
+      "valid": false,
+      "file": "studio/out/storyboard-unknown-plate.json",
+      "schemaVersion": null,
+      "shots": 0,
+      "issues": [
+        {
+          "path": "$.shots[0].plate",
+          "message": "Unknown plate id"
+        }
+      ]
+    }
+  ]
+}
