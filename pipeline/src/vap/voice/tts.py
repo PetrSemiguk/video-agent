@@ -17,8 +17,16 @@ from pathlib import Path
 import numpy as np
 import soundfile as sf
 
-from .chunk import DEFAULT_MAX_CHARS, chunks
+from .chunk import DEFAULT_MAX_CHARS, Chunk, chunks
 from .normalize import VERSION as NORMALIZER_VERSION
+from .postprocess import (
+    TRIM_DB,
+    TRIM_FRAME_SECONDS,
+    TRIM_PAD_SECONDS,
+    join_check,
+    normalize_loudness,
+    trim_edges,
+)
 
 ROOT = Path(__file__).resolve().parents[4]
 MODEL_REPO = "ResembleAI/chatterbox"
@@ -33,6 +41,7 @@ MODEL_FILES = [
 SAMPLE_RATE = 24000
 SENTENCE_PAUSE = 0.25
 PARAGRAPH_PAUSE = 0.60
+SECTION_PAUSE = 1.0
 FADE_SECONDS = 0.005
 OUTPUT_PEAK = 0.98
 
@@ -101,8 +110,15 @@ def headroom(audio: np.ndarray) -> tuple[np.ndarray, float, float]:
     return audio * gain, gain, peak
 
 
-def assemble(parts: list[np.ndarray], paragraphs: list[int]) -> tuple[np.ndarray, list[dict]]:
+def assemble(
+    parts: list[np.ndarray],
+    paragraphs: list[int],
+    prepared: list[Chunk] | None = None,
+) -> tuple[np.ndarray, list[dict]]:
     joined, spans, cursor = [], [], 0
+    if prepared and prepared[0].pause_before:
+        cursor = round(prepared[0].pause_before * SAMPLE_RATE)
+        joined.append(np.zeros(cursor, dtype=np.float32))
     for index, (audio, paragraph) in enumerate(zip(parts, paragraphs, strict=True)):
         joined.append(fade(audio))
         end = cursor + len(audio)
@@ -118,6 +134,18 @@ def assemble(parts: list[np.ndarray], paragraphs: list[int]) -> tuple[np.ndarray
             if index + 1 < len(parts)
             else 0
         )
+        if prepared:
+            current = prepared[index]
+            if current.pause_after is not None:
+                pause = round(current.pause_after * SAMPLE_RATE)
+            elif index + 1 < len(parts):
+                following = prepared[index + 1]
+                if following.section != current.section:
+                    pause = round(SECTION_PAUSE * SAMPLE_RATE)
+                elif (
+                    following.paragraph == current.paragraph and current.boundary == "continuation"
+                ):
+                    pause = 0
         spans.append(
             {
                 "start_sample": cursor,
@@ -233,14 +261,21 @@ def run(args: argparse.Namespace) -> dict:
             del model
             gc.collect()
             torch.cuda.empty_cache()
-    audio, spans = assemble(outputs, [chunk.paragraph for chunk in prepared])
+    trimmed = [trim_edges(part, SAMPLE_RATE) for part in outputs]
+    audio, spans = assemble(
+        [part for part, _ in trimmed], [c.paragraph for c in prepared], prepared
+    )
     audio, output_gain, pre_gain_peak = headroom(audio)
-    sf.write(args.out / "voice.wav", audio, SAMPLE_RATE, subtype="PCM_16")
-    for record, span in zip(records, spans, strict=True):
+    before_joins = join_check(audio, spans)
+    source = args.out / "voice.pre-loudnorm.wav"
+    sf.write(source, audio, SAMPLE_RATE, subtype="FLOAT")
+    loudness = normalize_loudness(source, args.out / "voice.wav", SAMPLE_RATE, spans)
+    for record, span, (_, trim) in zip(records, spans, trimmed, strict=True):
         record.update(span)
+        record["trim"] = trim
     speech_seconds = sum(len(part) for part in outputs) / SAMPLE_RATE
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
         "python": platform.python_version(),
         "script_sha256": sha256_file(args.script),
         "model": {
@@ -276,6 +311,15 @@ def run(args: argparse.Namespace) -> dict:
         "duration": len(audio) / SAMPLE_RATE,
         "sentence_pause": SENTENCE_PAUSE,
         "paragraph_pause": PARAGRAPH_PAUSE,
+        "section_pause": SECTION_PAUSE,
+        "postprocess": {
+            "version": 1,
+            "trim_threshold_dbfs": TRIM_DB,
+            "trim_frame_seconds": TRIM_FRAME_SECONDS,
+            "trim_pad_seconds": TRIM_PAD_SECONDS,
+            "before_join_check": before_joins,
+            "loudness": loudness,
+        },
         "edge_fade_seconds": FADE_SECONDS,
         "output_gain": output_gain,
         "pre_gain_peak": pre_gain_peak,

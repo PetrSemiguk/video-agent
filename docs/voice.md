@@ -1,4 +1,4 @@
-# Voice pipeline (step 3.1)
+# Voice pipeline (steps 3.1–3.2)
 
 Run Python only through uv from pipeline. Original English ChatterboxTTS **0.1.7**
 uses the MIT-licensed ResembleAI/chatterbox model, pinned to revision
@@ -9,11 +9,12 @@ Code/model/Perth sources are recorded in licenses.md before use.
 
 ```powershell
 $env:UV_CACHE_DIR='C:/Users/semig/video-agent/studio/out/uv-cache'
-uv run python -m vap.voice.tts --script ../episodes/_sandbox/tts-test/script.md --out ../episodes/_sandbox/tts-test/audio/ex05 --exaggeration 0.5 --cfg 0.5 --seed 42
+uv run python -m vap.voice.tts --script ../episodes/_sandbox/tts-test/script.md --out ../studio/out/voice-3.2
 ```
 
 `--script` accepts UTF-8 Markdown/plain text. `--out` receives `voice.wav` (mono
-24 kHz PCM16) and `voice.manifest.json`. Manifest records original and normalized
+24 kHz PCM16), `voice.pre-loudnorm.wav` (float audit input), and
+`voice.manifest.json` (schema version 2). Manifest records original and normalized
 chunk text, paragraph, effective seed, parameters, cache key/hit, sample/second
 spans, pauses, audio SHA-256, package versions and pinned model revision. The
 sample end is exclusive; pauses follow that end. `metrics` describes the latest
@@ -36,7 +37,16 @@ precedence over a bare four-digit year. Otherwise unseparated 1000–2999 is tre
 as a year; ambiguous quantities should include a unit/context word or separator.
 St. before a capitalized name is Saint; elsewhere Street. These are deliberate
 English heuristics, not a general semantic parser; review the manifest text.
-Episode-specific pronunciation lexicon and explicit pause markup belong to 3.2.
+
+`pipeline/src/vap/voice/lexicon.yaml` holds editable English TTS respellings:
+Qing -> Ching, Xi'an -> Shee ahn, Chongqing -> Chong ching, Wrocław -> Vrots wahf.
+It uses JSON-compatible YAML (a flat string dictionary), parsed by the standard
+library without a new dependency. Matching is case-insensitive, whole-name only;
+curly apostrophes are normalized first. Replacements are applied once, before
+number expansion. Original text stays intact in the manifest. These are English
+voice steering hints, not IPA or guarantees of native-language pronunciation;
+listen to `pronunciation.md` output when changing them. Lexicon changes affect
+normalized text/cache keys; normalizer version is now 3.
 
 Markdown headings and HTML comments are omitted; links retain visible text and
 simple emphasis markup is removed. Paragraphs split on blank lines. Sentence
@@ -62,12 +72,43 @@ collects objects and empties the CUDA allocator, including on inference failure.
 The process also exits between variant generations. **Never run TTS and whisper
 concurrently or keep both models resident.** No whisper is installed by this step.
 
-Join behavior: 0.25 s sentence pause, 0.60 s paragraph pause, 5 ms linear chunk-edge
-fades, no final trailing pause. A gain of at most 1 attenuates only when peak exceeds
-0.98 before PCM16 encoding. `output_gain` and `pre_gain_peak` record this clipping
-protection; it is not compression, loudness normalization or silence trimming.
-LUFS/true-peak mastering is explicitly deferred to 3.2. Float caches remain raw,
-so assembly fixes do not require GPU regeneration or remove the built-in watermark.
+## Trimming, pauses and loudness
+
+Before joining, trim edge-only silence with 10 ms RMS frames at -50 dBFS and
+retain 20 ms safety handles on each side. Internal silence is untouched; an
+entirely silent chunk is rejected. Handles reduce the risk of cutting quiet word
+onsets/tails, but listening remains necessary. Each manifest chunk records source,
+trimmed-start, trimmed-end and retained sample counts. Raw float caches stay intact.
+
+Join behavior: 0.25 s sentence, 0.60 s paragraph, 1.00 s section pause. Markdown
+headings are unspoken section boundaries. Budget-split continuations have no
+automatic sentence pause. Apply 5 ms linear edge fades, then sample-accurate gaps.
+These durations specify inserted gaps; retained handles can add quiet time.
+
+`[pause 1.0]` inserts exactly one second, overriding the automatic gap at that
+boundary. Use 0–30 seconds per directive, decimal point, lowercase `pause`;
+consecutive directives add. Leading/trailing explicit pauses are retained, while
+no automatic trailing pause is appended. Directives never reach TTS. Malformed
+directives fail before GPU work. Mid-sentence directives split the spoken chunk.
+
+Pre-loudnorm headroom attenuation only reduces peaks above 0.98; the audit file
+and `output_gain` record it. System ffmpeg 9 then measures loudness (pass 1) and
+applies all measured values and offset (pass 2), targeting **-16 LUFS** integrated,
+LRA 11, filter true peak -1.6 dBTP (0.1 dB delivery margin). Linear mode is requested;
+ffmpeg can fall back to dynamic when peak/LRA constraints require it. Force output
+back to mono 24 kHz PCM16. Independently remeasure the encoded WAV and require
+-16 +/-0.2 LUFS, true peak <= -1.5 dBTP, unchanged sample count and valid format.
+This is the voice-stem target; final mix -14 LUFS belongs to stage 6.
+
+Check sample steps at every chunk start/end and file edge both before and after
+mastering. Reject steps above 0.001 (-60 dBFS). This catches splice discontinuities,
+not every possible audible click inside generated speech. Manifest postprocess
+records ffmpeg version, both passes, final measurement and individual join checks.
+Final WAV replaces its destination only after all checks pass. Float chunks keep
+the real upstream watermark; post-processing does not deliberately remove it.
+
+FFmpeg's [official loudnorm documentation](https://ffmpeg.org/pipermail/ffmpeg-cvslog/2020-January/120713.html)
+explains measured parameters, dynamic fallback and explicit output sample rate.
 
 ## Rights and watermark
 

@@ -34,6 +34,7 @@ def main():
         manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
         valid = (
             manifest
+            and manifest.get("schema_version") == 2
             and "output_gain" in manifest
             and manifest["script_sha256"] == sha256_file(script)
             and manifest["model"]["revision"] == MODEL_REVISION
@@ -68,7 +69,7 @@ def main():
             shutil.copyfile(manifest_path, audio_dir / f"voice-ex{tag}.manifest.json")
         audio, sr = sf.read(directory / "voice.wav", dtype="float32")
         assert sr == 24000 and np.isfinite(audio).all()
-        assert audio[0] == audio[-1] == 0
+        assert abs(audio[0]) <= 0.001 and abs(audio[-1]) <= 0.001
         normalized = [chunk["normalized"] for chunk in manifest["chunks"]]
         rows.append(
             {

@@ -1,4 +1,5 @@
 import json
+import shutil
 from argparse import Namespace
 
 import numpy as np
@@ -105,6 +106,12 @@ def test_cache_keys_include_model_settings_voice_and_seed():
 
 def test_cache_only_run_joins_without_loading_gpu(tmp_path, monkeypatch):
     monkeypatch.setattr(tts, "ROOT", tmp_path)
+
+    def fake_loudness(source, destination, sr, spans):
+        shutil.copyfile(source, destination)
+        return {"test": "cache integration only"}
+
+    monkeypatch.setattr(tts, "normalize_loudness", fake_loudness)
     script = tmp_path / "script.md"
     script.write_text("A river.\n\nA valley.")
     settings = {
@@ -119,7 +126,7 @@ def test_cache_only_run_joins_without_loading_gpu(tmp_path, monkeypatch):
     cache.mkdir(parents=True)
     for index, chunk in enumerate(chunks(script.read_text())):
         key = tts.cache_key(chunk.normalized, settings, "publisher-built-in-conds", 42 + index)
-        sf.write(cache / f"{key}.wav", np.zeros(2400), tts.SAMPLE_RATE, subtype="FLOAT")
+        sf.write(cache / f"{key}.wav", np.ones(2400) * 0.1, tts.SAMPLE_RATE, subtype="FLOAT")
     manifest = tts.run(
         Namespace(
             script=script,

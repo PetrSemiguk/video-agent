@@ -1,0 +1,792 @@
+{
+  "sample": {
+    "artifact": "studio/out/voice-3.2/voice.wav",
+    "manifest": {
+      "schema_version": 2,
+      "python": "3.11.15",
+      "script_sha256": "eb51e103b332050cbfb4ca851d0080edc9e6c55d1b148bfb95bb4969d579ae38",
+      "model": {
+        "repo": "ResembleAI/chatterbox",
+        "revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+        "package": "0.1.7"
+      },
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "torchaudio": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "Pillow": "12.3.0",
+        "rasterio": "1.4.4",
+        "shapely": "2.2.0",
+        "transformers": "5.2.0",
+        "diffusers": "0.29.0",
+        "resemble-perth": "1.0.1",
+        "setuptools": "80.10.2"
+      },
+      "settings": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "seed": 42,
+      "max_chars": 240,
+      "voice": {
+        "kind": "publisher-built-in",
+        "sha256": "publisher-built-in-conds"
+      },
+      "watermark": "PerthImplicitWatermarker; enabled in upstream generate",
+      "sample_rate": 24000,
+      "samples": 593760,
+      "duration": 24.74,
+      "sentence_pause": 0.25,
+      "paragraph_pause": 0.6,
+      "section_pause": 1.0,
+      "postprocess": {
+        "version": 1,
+        "trim_threshold_dbfs": -50.0,
+        "trim_frame_seconds": 0.01,
+        "trim_pad_seconds": 0.02,
+        "before_join_check": {
+          "maximum_step": 0.0,
+          "limit": 0.001,
+          "boundaries": [
+            {
+              "sample": 0,
+              "step": 0.0
+            },
+            {
+              "sample": 74400,
+              "step": 0.0
+            },
+            {
+              "sample": 80400,
+              "step": 0.0
+            },
+            {
+              "sample": 185520,
+              "step": 0.0
+            },
+            {
+              "sample": 191520,
+              "step": 0.0
+            },
+            {
+              "sample": 271920,
+              "step": 0.0
+            },
+            {
+              "sample": 286320,
+              "step": 0.0
+            },
+            {
+              "sample": 369120,
+              "step": 0.0
+            },
+            {
+              "sample": 375120,
+              "step": 0.0
+            },
+            {
+              "sample": 458880,
+              "step": 0.0
+            },
+            {
+              "sample": 464880,
+              "step": 0.0
+            },
+            {
+              "sample": 593760,
+              "step": 0.0
+            }
+          ],
+          "passed": true
+        },
+        "loudness": {
+          "ffmpeg": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+          "target_i": -16.0,
+          "target_tp": -1.5,
+          "filter_tp": -1.6,
+          "before": {
+            "input_i": "-18.20",
+            "input_tp": "-0.05",
+            "input_lra": "2.30",
+            "input_thresh": "-28.42",
+            "output_i": "-16.45",
+            "output_tp": "-1.60",
+            "output_lra": "2.50",
+            "output_thresh": "-26.70",
+            "normalization_type": "dynamic",
+            "target_offset": "0.45"
+          },
+          "applied": {
+            "input_i": "-18.20",
+            "input_tp": "-0.05",
+            "input_lra": "2.30",
+            "input_thresh": "-28.42",
+            "output_i": "-16.09",
+            "output_tp": "-1.60",
+            "output_lra": "2.60",
+            "output_thresh": "-26.33",
+            "normalization_type": "dynamic",
+            "target_offset": "0.09"
+          },
+          "after": {
+            "input_i": "-16.09",
+            "input_tp": "-1.59",
+            "input_lra": "2.60",
+            "input_thresh": "-26.29",
+            "output_i": "-15.95",
+            "output_tp": "-1.60",
+            "output_lra": "2.40",
+            "output_thresh": "-26.18",
+            "normalization_type": "dynamic",
+            "target_offset": "-0.05"
+          },
+          "join_check": {
+            "maximum_step": 0.0,
+            "limit": 0.001,
+            "boundaries": [
+              {
+                "sample": 0,
+                "step": 0.0
+              },
+              {
+                "sample": 74400,
+                "step": 0.0
+              },
+              {
+                "sample": 80400,
+                "step": 0.0
+              },
+              {
+                "sample": 185520,
+                "step": 0.0
+              },
+              {
+                "sample": 191520,
+                "step": 0.0
+              },
+              {
+                "sample": 271920,
+                "step": 0.0
+              },
+              {
+                "sample": 286320,
+                "step": 0.0
+              },
+              {
+                "sample": 369120,
+                "step": 0.0
+              },
+              {
+                "sample": 375120,
+                "step": 0.0
+              },
+              {
+                "sample": 458880,
+                "step": 0.0
+              },
+              {
+                "sample": 464880,
+                "step": 0.0
+              },
+              {
+                "sample": 593760,
+                "step": 0.0
+              }
+            ],
+            "passed": true
+          }
+        }
+      },
+      "edge_fade_seconds": 0.005,
+      "output_gain": 1.0,
+      "pre_gain_peak": 0.965462327003479,
+      "chunks": [
+        {
+          "id": 0,
+          "original": "Look at a map of China, and one thing stands out.",
+          "normalized": "Look at a map of China, and one thing stands out.",
+          "paragraph": 0,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 42,
+          "cache_key": "f8dfb1c7d2ccaad43af8e2f3fbd16c90e8addf901ec3feb8d6c7a9265cc0b23a",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 0,
+          "end_sample": 74400,
+          "start": 0.0,
+          "end": 3.1,
+          "pause_after_samples": 6000,
+          "trim": {
+            "source_samples": 79680,
+            "trim_start_samples": 3360,
+            "trim_end_samples": 1920,
+            "retained_samples": 74400
+          }
+        },
+        {
+          "id": 1,
+          "original": "In the west, the Tibetan Plateau rises nearly five kilometers into the sky.",
+          "normalized": "In the west, the Tibetan Plateau rises nearly five kilometers into the sky.",
+          "paragraph": 0,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 43,
+          "cache_key": "389909d1748a3c11bb86fee94c4fa0d4c4aba773a8f543d5cd13a599c04da938",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 80400,
+          "end_sample": 185520,
+          "start": 3.35,
+          "end": 7.73,
+          "pause_after_samples": 6000,
+          "trim": {
+            "source_samples": 118080,
+            "trim_start_samples": 3600,
+            "trim_end_samples": 9360,
+            "retained_samples": 105120
+          }
+        },
+        {
+          "id": 2,
+          "original": "In the north, the Gobi Desert stretches for a thousand miles.",
+          "normalized": "In the north, the Gobi Desert stretches for a thousand miles.",
+          "paragraph": 0,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 44,
+          "cache_key": "ce48bebf824e6369e15c7287fafd9490a6afe3e255e2001eda0079b989403242",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 191520,
+          "end_sample": 271920,
+          "start": 7.98,
+          "end": 11.33,
+          "pause_after_samples": 14400,
+          "trim": {
+            "source_samples": 86400,
+            "trim_start_samples": 1920,
+            "trim_end_samples": 4080,
+            "retained_samples": 80400
+          }
+        },
+        {
+          "id": 3,
+          "original": "And in between, two great rivers carve their way east, toward the sea.",
+          "normalized": "And in between, two great rivers carve their way east, toward the sea.",
+          "paragraph": 1,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 45,
+          "cache_key": "f0223cee51eb1e206f256055cbba8b94b8f16bf1d07636a370f84d6d7b5bae08",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 286320,
+          "end_sample": 369120,
+          "start": 11.93,
+          "end": 15.38,
+          "pause_after_samples": 6000,
+          "trim": {
+            "source_samples": 92160,
+            "trim_start_samples": 5760,
+            "trim_end_samples": 3600,
+            "retained_samples": 82800
+          }
+        },
+        {
+          "id": 4,
+          "original": "For more than 2,000 years, this landscape has pushed its people together.",
+          "normalized": "For more than two thousand years, this landscape has pushed its people together.",
+          "paragraph": 1,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 46,
+          "cache_key": "46c4987929c4b69ffd76b38890662b36f0507527324531f3b0a702b11fb3dd73",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 375120,
+          "end_sample": 458880,
+          "start": 15.63,
+          "end": 19.12,
+          "pause_after_samples": 6000,
+          "trim": {
+            "source_samples": 86400,
+            "trim_start_samples": 1440,
+            "trim_end_samples": 1200,
+            "retained_samples": 83760
+          }
+        },
+        {
+          "id": 5,
+          "original": "But in 1644, a small army from beyond the Great Wall would test that unity like never before.",
+          "normalized": "But in sixteen forty-four, a small army from beyond the Great Wall would test that unity like never before.",
+          "paragraph": 1,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 47,
+          "cache_key": "18d9c9b84cc6ba7e68d7ca39fdbbf4ccf3535b3392db6d177a76c71003d1bb71",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 464880,
+          "end_sample": 593760,
+          "start": 19.37,
+          "end": 24.74,
+          "pause_after_samples": 0,
+          "trim": {
+            "source_samples": 135360,
+            "trim_start_samples": 3840,
+            "trim_end_samples": 2640,
+            "retained_samples": 128880
+          }
+        }
+      ],
+      "metrics": {
+        "cache_hits": 6,
+        "chunk_count": 6,
+        "model_load_seconds": 0.0,
+        "synthesis_seconds": 0.0,
+        "speech_seconds": 24.92,
+        "synthesis_rtf": 0.0,
+        "peak_allocated_mib": 0,
+        "peak_reserved_mib": 0,
+        "wall_seconds": 1.0897704999988491
+      },
+      "audio_sha256": "6ce8df31653cc01eb85ed84d9d2cc0eefbabf19626c405bda401e02fdd127126",
+      "first_generation_metrics": {
+        "cache_hits": 0,
+        "chunk_count": 6,
+        "model_load_seconds": 9.516753600000811,
+        "synthesis_seconds": 28.541652199994132,
+        "speech_seconds": 24.92,
+        "synthesis_rtf": 1.1453311476723167,
+        "peak_allocated_mib": 3225.12158203125,
+        "peak_reserved_mib": 3418.0,
+        "wall_seconds": 48.564261200001056
+      }
+    },
+    "rerun_metrics": {
+      "cache_hits": 6,
+      "chunk_count": 6,
+      "model_load_seconds": 0.0,
+      "synthesis_seconds": 0.0,
+      "speech_seconds": 24.92,
+      "synthesis_rtf": 0.0,
+      "peak_allocated_mib": 0,
+      "peak_reserved_mib": 0,
+      "wall_seconds": 1.076695200001268
+    },
+    "bit_identical_rerun": true,
+    "clipped_samples": 0,
+    "perth_detector_mean": 1.0
+  },
+  "pronunciation": {
+    "artifact": "studio/out/voice-3.2-pronunciation/voice.wav",
+    "manifest": {
+      "schema_version": 2,
+      "python": "3.11.15",
+      "script_sha256": "8e6437ce3eadf806f695a74f9ea42eac41e29812579da976965134b7cb2cae6e",
+      "model": {
+        "repo": "ResembleAI/chatterbox",
+        "revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+        "package": "0.1.7"
+      },
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "torchaudio": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "Pillow": "12.3.0",
+        "rasterio": "1.4.4",
+        "shapely": "2.2.0",
+        "transformers": "5.2.0",
+        "diffusers": "0.29.0",
+        "resemble-perth": "1.0.1",
+        "setuptools": "80.10.2"
+      },
+      "settings": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "seed": 42,
+      "max_chars": 240,
+      "voice": {
+        "kind": "publisher-built-in",
+        "sha256": "publisher-built-in-conds"
+      },
+      "watermark": "PerthImplicitWatermarker; enabled in upstream generate",
+      "sample_rate": 24000,
+      "samples": 229920,
+      "duration": 9.58,
+      "sentence_pause": 0.25,
+      "paragraph_pause": 0.6,
+      "section_pause": 1.0,
+      "postprocess": {
+        "version": 1,
+        "trim_threshold_dbfs": -50.0,
+        "trim_frame_seconds": 0.01,
+        "trim_pad_seconds": 0.02,
+        "before_join_check": {
+          "maximum_step": 0.0,
+          "limit": 0.001,
+          "boundaries": [
+            {
+              "sample": 0,
+              "step": 0.0
+            },
+            {
+              "sample": 46320,
+              "step": 0.0
+            },
+            {
+              "sample": 70320,
+              "step": 0.0
+            },
+            {
+              "sample": 114480,
+              "step": 0.0
+            },
+            {
+              "sample": 138480,
+              "step": 0.0
+            },
+            {
+              "sample": 183120,
+              "step": 0.0
+            },
+            {
+              "sample": 189120,
+              "step": 0.0
+            },
+            {
+              "sample": 229920,
+              "step": 0.0
+            }
+          ],
+          "passed": true
+        },
+        "loudness": {
+          "ffmpeg": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+          "target_i": -16.0,
+          "target_tp": -1.5,
+          "filter_tp": -1.6,
+          "before": {
+            "input_i": "-18.49",
+            "input_tp": "-0.90",
+            "input_lra": "3.10",
+            "input_thresh": "-28.94",
+            "output_i": "-15.97",
+            "output_tp": "-1.60",
+            "output_lra": "2.50",
+            "output_thresh": "-26.47",
+            "normalization_type": "dynamic",
+            "target_offset": "-0.03"
+          },
+          "applied": {
+            "input_i": "-18.49",
+            "input_tp": "-0.90",
+            "input_lra": "3.10",
+            "input_thresh": "-28.94",
+            "output_i": "-15.99",
+            "output_tp": "-1.60",
+            "output_lra": "2.40",
+            "output_thresh": "-26.49",
+            "normalization_type": "dynamic",
+            "target_offset": "-0.01"
+          },
+          "after": {
+            "input_i": "-16.17",
+            "input_tp": "-1.59",
+            "input_lra": "2.40",
+            "input_thresh": "-26.62",
+            "output_i": "-15.96",
+            "output_tp": "-1.60",
+            "output_lra": "2.60",
+            "output_thresh": "-26.46",
+            "normalization_type": "dynamic",
+            "target_offset": "-0.04"
+          },
+          "join_check": {
+            "maximum_step": 0.0,
+            "limit": 0.001,
+            "boundaries": [
+              {
+                "sample": 0,
+                "step": 0.0
+              },
+              {
+                "sample": 46320,
+                "step": 0.0
+              },
+              {
+                "sample": 70320,
+                "step": 0.0
+              },
+              {
+                "sample": 114480,
+                "step": 0.0
+              },
+              {
+                "sample": 138480,
+                "step": 0.0
+              },
+              {
+                "sample": 183120,
+                "step": 0.0
+              },
+              {
+                "sample": 189120,
+                "step": 0.0
+              },
+              {
+                "sample": 229920,
+                "step": 0.0
+              }
+            ],
+            "passed": true
+          }
+        }
+      },
+      "edge_fade_seconds": 0.005,
+      "output_gain": 1.0,
+      "pre_gain_peak": 0.888858437538147,
+      "chunks": [
+        {
+          "id": 0,
+          "original": "The Qing dynasty ruled China.",
+          "normalized": "The Ching dynasty ruled China.",
+          "paragraph": 0,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": 1.0,
+          "pause_before": 0.0,
+          "seed": 42,
+          "cache_key": "fd1e99cccee2bd95121b711a6d0e956446f0005aeca2e208528796877a3670d5",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 0,
+          "end_sample": 46320,
+          "start": 0.0,
+          "end": 1.93,
+          "pause_after_samples": 24000,
+          "trim": {
+            "source_samples": 54720,
+            "trim_start_samples": 5280,
+            "trim_end_samples": 3120,
+            "retained_samples": 46320
+          }
+        },
+        {
+          "id": 1,
+          "original": "Xi'an stands near the Wei River.",
+          "normalized": "Shee ahn stands near the Wei River.",
+          "paragraph": 0,
+          "section": 1,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 43,
+          "cache_key": "7722d8af6b5e393a1d88673cdd012812eef440985420baf702b8741574a9caee",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 70320,
+          "end_sample": 114480,
+          "start": 2.93,
+          "end": 4.77,
+          "pause_after_samples": 24000,
+          "trim": {
+            "source_samples": 48960,
+            "trim_start_samples": 2400,
+            "trim_end_samples": 2400,
+            "retained_samples": 44160
+          }
+        },
+        {
+          "id": 2,
+          "original": "Chongqing lies on the Yangtze.",
+          "normalized": "Chong ching lies on the Yangtze.",
+          "paragraph": 1,
+          "section": 2,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 44,
+          "cache_key": "b82399ecfec38e9ae615736607bce88c4dc13b1760f2005c3f78b5ad8731526a",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 138480,
+          "end_sample": 183120,
+          "start": 5.77,
+          "end": 7.63,
+          "pause_after_samples": 6000,
+          "trim": {
+            "source_samples": 48960,
+            "trim_start_samples": 2160,
+            "trim_end_samples": 2160,
+            "retained_samples": 44640
+          }
+        },
+        {
+          "id": 3,
+          "original": "Wrocław stands on the Oder.",
+          "normalized": "Vrots wahf stands on the Oder.",
+          "paragraph": 1,
+          "section": 2,
+          "boundary": "sentence",
+          "pause_after": null,
+          "pause_before": 0.0,
+          "seed": 45,
+          "cache_key": "36b7f82fbab7ec4edadff5d0a9a9a4a6910b872208a15ef4ecbf085954e647cc",
+          "cache_hit": true,
+          "generation_seconds": 0.0,
+          "params": {
+            "exaggeration": 0.3,
+            "cfg_weight": 0.5,
+            "temperature": 0.8,
+            "repetition_penalty": 1.2,
+            "min_p": 0.05,
+            "top_p": 1.0
+          },
+          "start_sample": 189120,
+          "end_sample": 229920,
+          "start": 7.88,
+          "end": 9.58,
+          "pause_after_samples": 0,
+          "trim": {
+            "source_samples": 48960,
+            "trim_start_samples": 4560,
+            "trim_end_samples": 3600,
+            "retained_samples": 40800
+          }
+        }
+      ],
+      "metrics": {
+        "cache_hits": 4,
+        "chunk_count": 4,
+        "model_load_seconds": 0.0,
+        "synthesis_seconds": 0.0,
+        "speech_seconds": 8.4,
+        "synthesis_rtf": 0.0,
+        "peak_allocated_mib": 0,
+        "peak_reserved_mib": 0,
+        "wall_seconds": 0.5617047999985516
+      },
+      "audio_sha256": "efe02591d2b84c42e41775b5aff6ae89ec779513e46349c899b7012ce5f7c7e0",
+      "first_generation_metrics": {
+        "cache_hits": 0,
+        "chunk_count": 4,
+        "model_load_seconds": 7.872666300001583,
+        "synthesis_seconds": 11.406678600000305,
+        "speech_seconds": 8.4,
+        "synthesis_rtf": 1.3579379285714648,
+        "peak_allocated_mib": 3163.4658203125,
+        "peak_reserved_mib": 3250.0,
+        "wall_seconds": 28.467940599999565
+      }
+    },
+    "rerun_metrics": {
+      "cache_hits": 4,
+      "chunk_count": 4,
+      "model_load_seconds": 0.0,
+      "synthesis_seconds": 0.0,
+      "speech_seconds": 8.4,
+      "synthesis_rtf": 0.0,
+      "peak_allocated_mib": 0,
+      "peak_reserved_mib": 0,
+      "wall_seconds": 0.5405810000011115
+    },
+    "bit_identical_rerun": true,
+    "clipped_samples": 0,
+    "perth_detector_mean": 1.0
+  }
+}

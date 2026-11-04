@@ -1,8 +1,10 @@
 """Conservative English speech normalization; context beats bare-year heuristics."""
 
+import json
 import re
+from pathlib import Path
 
-VERSION = "2"
+VERSION = "3"
 SMALL = (
     "zero one two three four five six seven eight nine ten eleven twelve thirteen "
     "fourteen fifteen sixteen seventeen eighteen nineteen"
@@ -81,6 +83,16 @@ NUM = r"\d+(?:,\d{3})*(?:\.\d+)?"
 def normalize(text: str) -> str:
     """Normalize a prose sentence, retaining punctuation and ordinary words."""
     text = text.replace("’", "'").replace("–", "-").replace("—", ", ")
+    # JSON is a YAML subset: no new parser dependency for a flat string dictionary.
+    lexicon = json.loads(Path(__file__).with_name("lexicon.yaml").read_text(encoding="utf-8"))
+    pattern = "|".join(re.escape(name) for name in sorted(lexicon, key=len, reverse=True))
+    lookup = {key.casefold(): value for key, value in lexicon.items()}
+    text = re.sub(
+        rf"(?<!\w)(?:{pattern})(?!\w)",
+        lambda m: lookup[m[0].casefold()],
+        text,
+        flags=re.IGNORECASE,
+    )
     for pattern, spoken in [
         (r"\bU\.S\.(?:A\.)?", "United States"),
         (r"\bU\.K\.", "United Kingdom"),
