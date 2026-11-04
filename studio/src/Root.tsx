@@ -3,11 +3,16 @@ import { Episode } from "./episode/Episode";
 import { calculateEpisodeMetadata } from "./episode/metadata";
 import sandboxStoryboard from "../../episodes/_sandbox/tts-test/storyboard.json";
 import sandboxWords from "../../docs/reports/3.3/words.json";
-import sandboxAssembly from "../../episodes/_sandbox/tts-test/assembly.json";
 import { CardCheck } from "./qa/CardCheck";
 import { InfoDemo, InfoSheet } from "./demo/Info";
 import { TextLayersDemo, TextLayersSheet } from "./demo/TextLayers";
-import { cards, infoLayer, motion, textLayer } from "./design/tokens";
+import {
+  cards,
+  infoLayer,
+  motion,
+  textLayer,
+  voiceSync,
+} from "./design/tokens";
 import { GradeCompare } from "./design/GradeCompare";
 import { StyleSheet } from "./design/StyleSheet";
 import { Composition, Still } from "remotion";
@@ -42,7 +47,8 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           storyboard: sandboxStoryboard,
           words: sandboxWords,
-          timing: sandboxAssembly,
+          timing: null,
+          sync: { labelLeadFrames: voiceSync.labelLeadFrames },
           audioSrc: "episodes/tts-test/voice.wav",
         }}
       />

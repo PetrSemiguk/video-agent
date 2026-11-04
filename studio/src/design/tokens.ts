@@ -138,6 +138,16 @@ export const motion = {
   },
 } as const;
 
+/** Narration-driven editing policy; frame values use the channel's 30 fps. */
+export const voiceSync = {
+  labelLeadFrames: 3,
+  minShotFrames: motion.fps * 2,
+  minPauseFrames: 3,
+  snapWindowFrames: motion.frames.base,
+  silenceWindowMs: 10,
+  silenceThresholdDbfs: -45,
+};
+
 /** Review sheet keeps all three alternatives; Barlow Condensed was selected. */
 export const styleReview = {
   width: 1920,

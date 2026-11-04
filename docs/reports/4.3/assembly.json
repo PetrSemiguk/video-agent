@@ -1,0 +1,80 @@
+{
+  "shots": [
+    {
+      "id": "opening",
+      "from": 0,
+      "durationInFrames": 97,
+      "cameraWindow": {
+        "from": 0,
+        "durationInFrames": 89
+      },
+      "layers": [
+        {
+          "id": "title",
+          "from": 0,
+          "durationInFrames": 89
+        }
+      ]
+    },
+    {
+      "id": "plateau",
+      "from": 97,
+      "durationInFrames": 138,
+      "layers": [
+        {
+          "id": "plateau-name",
+          "from": 26,
+          "durationInFrames": 112
+        }
+      ]
+    },
+    {
+      "id": "desert",
+      "from": 235,
+      "durationInFrames": 114,
+      "layers": [
+        {
+          "id": "desert-name",
+          "from": 32,
+          "durationInFrames": 82
+        }
+      ]
+    },
+    {
+      "id": "rivers",
+      "from": 349,
+      "durationInFrames": 116,
+      "layers": [
+        {
+          "id": "rivers-tag",
+          "from": 33,
+          "durationInFrames": 83
+        }
+      ]
+    },
+    {
+      "id": "unity",
+      "from": 465,
+      "durationInFrames": 112,
+      "layers": [
+        {
+          "id": "unity-fact",
+          "from": 14,
+          "durationInFrames": 98
+        }
+      ]
+    },
+    {
+      "id": "test-of-unity",
+      "from": 577,
+      "durationInFrames": 166,
+      "layers": [
+        {
+          "id": "date",
+          "from": 10,
+          "durationInFrames": 156
+        }
+      ]
+    }
+  ]
+}

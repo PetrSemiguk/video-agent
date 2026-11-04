@@ -14,6 +14,9 @@ export const assemblySchema = z.strictObject({
         id: z.string(),
         from: frame,
         durationInFrames: duration,
+        cameraWindow: z
+          .strictObject({ from: frame, durationInFrames: duration })
+          .optional(),
         layers: z.array(
           z.strictObject({
             id: z.string(),
@@ -132,6 +135,12 @@ export const compilePlan = (
       );
     if (scheduled.layers.length !== shot.layers.length)
       throw new Error(`Assembly shot ${shot.id}: schedule every layer`);
+    if (
+      scheduled.cameraWindow &&
+      scheduled.cameraWindow.from + scheduled.cameraWindow.durationInFrames >
+        scheduled.durationInFrames
+    )
+      throw new Error(`Assembly shot ${shot.id}: camera window exceeds scene`);
     shot.layers.forEach((layer, j) => {
       const window = scheduled.layers[j];
       if (

@@ -22,37 +22,50 @@ export const buildCamera = (
   width: number,
   height: number,
 ) => {
-  const segments = storyboard.shots.map((shot, i): Segment => {
-    const frames = assembly.shots[i].durationInFrames;
+  const segments = storyboard.shots.flatMap((shot, i): Segment[] => {
+    const window = assembly.shots[i];
+    const active = window.cameraWindow ?? {
+      from: 0,
+      durationInFrames: window.durationInFrames,
+    };
+    const frames = active.durationInFrames;
     const spec = shot.camera;
-    switch (spec.preset) {
-      case "establish": {
-        const { target, ...options } = spec.params;
-        return establish(target, frames, options);
+    const preset = (): Segment => {
+      switch (spec.preset) {
+        case "establish": {
+          const { target, ...options } = spec.params;
+          return establish(target, frames, options);
+        }
+        case "drift":
+          return drift(frames, spec.params);
+        case "hold":
+          return hold(frames);
+        case "focusOn": {
+          const { bounds, ...options } = spec.params;
+          return focusOn(bounds, frames, options);
+        }
+        case "flyTo": {
+          const { to, ...options } = spec.params;
+          return flyTo(to, frames, options);
+        }
+        case "followLine": {
+          const { line, drawFrames, ...options } = spec.params;
+          const start = window.from + active.from;
+          return followLine(
+            line,
+            (f) => Math.max(0, Math.min(1, (f - start) / drawFrames)),
+            frames,
+            options,
+          );
+        }
       }
-      case "drift":
-        return drift(frames, spec.params);
-      case "hold":
-        return hold(frames);
-      case "focusOn": {
-        const { bounds, ...options } = spec.params;
-        return focusOn(bounds, frames, options);
-      }
-      case "flyTo": {
-        const { to, ...options } = spec.params;
-        return flyTo(to, frames, options);
-      }
-      case "followLine": {
-        const { line, drawFrames, ...options } = spec.params;
-        const start = assembly.shots[i].from;
-        return followLine(
-          line,
-          (f) => Math.max(0, Math.min(1, (f - start) / drawFrames)),
-          frames,
-          options,
-        );
-      }
-    }
+    };
+    const suffix = window.durationInFrames - active.from - frames;
+    return [
+      ...(active.from ? [drift(active.from)] : []),
+      preset(),
+      ...(suffix ? [drift(suffix)] : []),
+    ];
   });
   const first = metas[storyboard.shots[0].plate];
   const center = toMerc(plateCenter(first));

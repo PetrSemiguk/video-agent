@@ -1,0 +1,468 @@
+{
+  "metadata": {
+    "durationInFrames": 743,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "audioSha256": "6ce8df31653cc01eb85ed84d9d2cc0eefbabf19626c405bda401e02fdd127126",
+    "storyboard": "tts-test",
+    "coverage": [
+      {
+        "id": "opening",
+        "reports": [
+          {
+            "minMargin": 244.0374814666377,
+            "maxMag": 0.7555304722687749
+          }
+        ]
+      },
+      {
+        "id": "plateau",
+        "reports": [
+          {
+            "minMargin": 52.687210831475795,
+            "maxMag": 0.7784859666419361
+          }
+        ]
+      },
+      {
+        "id": "desert",
+        "reports": [
+          {
+            "minMargin": 42.1991315038008,
+            "maxMag": 0.9411165082191058
+          }
+        ]
+      },
+      {
+        "id": "rivers",
+        "reports": [
+          {
+            "minMargin": 101.99094443709089,
+            "maxMag": 0.9453369107549929
+          }
+        ]
+      },
+      {
+        "id": "unity",
+        "reports": [
+          {
+            "minMargin": 135.9060376311984,
+            "maxMag": 0.9366045745957396
+          }
+        ]
+      },
+      {
+        "id": "test-of-unity",
+        "reports": [
+          {
+            "minMargin": 135.9060376311984,
+            "maxMag": 0.9460343410552995
+          }
+        ]
+      }
+    ],
+    "sync": {
+      "config": {
+        "labelLeadFrames": 3,
+        "minShotFrames": 60,
+        "minPauseFrames": 3,
+        "snapWindowFrames": 18,
+        "silenceWindowMs": 10,
+        "silenceThresholdDbfs": -45
+      },
+      "pauses": [
+        {
+          "from": 39,
+          "to": 44
+        },
+        {
+          "from": 88,
+          "to": 91
+        },
+        {
+          "from": 93,
+          "to": 102
+        },
+        {
+          "from": 121,
+          "to": 124
+        },
+        {
+          "from": 232,
+          "to": 240
+        },
+        {
+          "from": 262,
+          "to": 267
+        },
+        {
+          "from": 340,
+          "to": 359
+        },
+        {
+          "from": 383,
+          "to": 386
+        },
+        {
+          "from": 461,
+          "to": 470
+        },
+        {
+          "from": 573,
+          "to": 582
+        },
+        {
+          "from": 628,
+          "to": 631
+        }
+      ],
+      "cuts": [
+        {
+          "id": "opening",
+          "rawStart": 0,
+          "rawEnd": 2.92,
+          "from": 0,
+          "to": 89
+        },
+        {
+          "id": "plateau",
+          "rawStart": 3.35,
+          "rawEnd": 7.49,
+          "from": 97,
+          "to": 235
+        },
+        {
+          "id": "desert",
+          "rawStart": 7.98,
+          "rawEnd": 11.02,
+          "from": 235,
+          "to": 349
+        },
+        {
+          "id": "rivers",
+          "rawStart": 11.93,
+          "rawEnd": 15.23,
+          "from": 349,
+          "to": 465
+        },
+        {
+          "id": "unity",
+          "rawStart": 15.63,
+          "rawEnd": 18.830000000000002,
+          "from": 465,
+          "to": 577
+        },
+        {
+          "id": "test-of-unity",
+          "rawStart": 19.37,
+          "rawEnd": 24.74,
+          "from": 577,
+          "to": 743
+        }
+      ],
+      "leads": [
+        {
+          "shot": "plateau",
+          "layer": "plateau-name",
+          "anchorFrame": 126,
+          "from": 123,
+          "leadFrames": 3
+        },
+        {
+          "shot": "desert",
+          "layer": "desert-name",
+          "anchorFrame": 270,
+          "from": 267,
+          "leadFrames": 3
+        },
+        {
+          "shot": "rivers",
+          "layer": "rivers-tag",
+          "anchorFrame": 385,
+          "from": 382,
+          "leadFrames": 3
+        },
+        {
+          "shot": "unity",
+          "layer": "unity-fact",
+          "anchorFrame": 482,
+          "from": 479,
+          "leadFrames": 3
+        },
+        {
+          "shot": "test-of-unity",
+          "layer": "date",
+          "anchorFrame": 590,
+          "from": 587,
+          "leadFrames": 3
+        }
+      ],
+      "shots": [
+        {
+          "id": "opening",
+          "from": 0,
+          "durationInFrames": 97,
+          "layers": [
+            {
+              "id": "title",
+              "from": 0,
+              "durationInFrames": 89
+            }
+          ],
+          "cameraWindow": {
+            "from": 0,
+            "durationInFrames": 89
+          },
+          "generated": false,
+          "text": "Look at a map of China, and one thing stands out."
+        },
+        {
+          "id": "plateau",
+          "from": 97,
+          "durationInFrames": 138,
+          "layers": [
+            {
+              "id": "plateau-name",
+              "from": 26,
+              "durationInFrames": 112
+            }
+          ],
+          "generated": false,
+          "text": "In the west, the Tibetan Plateau rises nearly five kilometers into the sky."
+        },
+        {
+          "id": "desert",
+          "from": 235,
+          "durationInFrames": 114,
+          "layers": [
+            {
+              "id": "desert-name",
+              "from": 32,
+              "durationInFrames": 82
+            }
+          ],
+          "generated": false,
+          "text": "In the north, the Gobi Desert stretches for a thousand miles."
+        },
+        {
+          "id": "rivers",
+          "from": 349,
+          "durationInFrames": 116,
+          "layers": [
+            {
+              "id": "rivers-tag",
+              "from": 33,
+              "durationInFrames": 83
+            }
+          ],
+          "generated": false,
+          "text": "And in between, two great rivers carve their way east, toward the sea."
+        },
+        {
+          "id": "unity",
+          "from": 465,
+          "durationInFrames": 112,
+          "layers": [
+            {
+              "id": "unity-fact",
+              "from": 14,
+              "durationInFrames": 98
+            }
+          ],
+          "generated": false,
+          "text": "For more than 2,000 years, this landscape has pushed its people together."
+        },
+        {
+          "id": "test-of-unity",
+          "from": 577,
+          "durationInFrames": 166,
+          "layers": [
+            {
+              "id": "date",
+              "from": 10,
+              "durationInFrames": 156
+            }
+          ],
+          "generated": false,
+          "text": "But in 1644, a small army from beyond the Great Wall would test that unity like never before."
+        }
+      ]
+    }
+  },
+  "quiet_cut_checks": [
+    {
+      "frame": 97,
+      "rms": 0.0
+    },
+    {
+      "frame": 235,
+      "rms": 0.0
+    },
+    {
+      "frame": 349,
+      "rms": 0.0
+    },
+    {
+      "frame": 465,
+      "rms": 0.0
+    },
+    {
+      "frame": 577,
+      "rms": 0.0
+    }
+  ],
+  "preview_size": [
+    1920,
+    2414
+  ],
+  "source_audio_sha256": "6ce8df31653cc01eb85ed84d9d2cc0eefbabf19626c405bda401e02fdd127126",
+  "mp4_sha256": "31e000a1cdcc026583b5ac78be70e7a9cd9de19dbc90d80ac885896d31297718",
+  "container": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "chroma_location": "center",
+        "field_order": "progressive",
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/90000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 2229000,
+        "duration": "24.766667",
+        "bit_rate": "12671464",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "743",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "mime_codec_string": "mp4a.40.2",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 2048,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 1188864,
+        "duration": "24.768000",
+        "bit_rate": "317374",
+        "nb_frames": "1163",
+        "extradata_size": 2,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "C:\\Users\\semig\\video-agent\\studio\\out\\episode-tts-test-synced.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "24.768000",
+      "size": "40241414",
+      "bit_rate": "12997872",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf61.7.100",
+        "comment": "Made with Remotion 4.0.539"
+      }
+    }
+  },
+  "audio_comparison": {
+    "lag_samples": 0,
+    "correlation": 0.9999615550041199
+  },
+  "short_gap_drift_frames": 8,
+  "nominal_overlaps": 0,
+  "unfilled_frames": 0
+}

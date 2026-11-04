@@ -44,6 +44,7 @@
       "layers": [
         {
           "id": "plateau-name",
+          "start": { "phrase": "Tibetan Plateau" },
           "type": "LowerThird",
           "props": {
             "title": "Tibetan Plateau",
@@ -65,6 +66,7 @@
       "layers": [
         {
           "id": "desert-name",
+          "start": { "phrase": "Gobi Desert" },
           "type": "LowerThird",
           "props": { "title": "Gobi Desert", "color": "regionB" }
         }
@@ -96,6 +98,7 @@
       "layers": [
         {
           "id": "unity-fact",
+          "start": { "phrase": "2,000 years" },
           "type": "KeyFact",
           "props": {
             "statement": "More than 2,000 years of shared history",

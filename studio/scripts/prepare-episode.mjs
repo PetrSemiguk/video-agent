@@ -11,7 +11,8 @@ export const prepareEpisode = ({
     root,
     "episodes/_sandbox/tts-test/storyboard.json",
   ),
-  timingFile = path.join(root, "episodes/_sandbox/tts-test/assembly.json"),
+  timingFile = null,
+  sync = {},
 } = {}) => {
   const report = JSON.parse(
     execFileSync(
@@ -25,7 +26,9 @@ export const prepareEpisode = ({
   const words = JSON.parse(
     fs.readFileSync(path.join(root, storyboard.audio.words), "utf8"),
   );
-  const timing = JSON.parse(fs.readFileSync(timingFile, "utf8"));
+  const timing = timingFile
+    ? JSON.parse(fs.readFileSync(timingFile, "utf8"))
+    : null;
   const bytes = fs.readFileSync(path.join(root, storyboard.audio.src));
   const audioSha256 = crypto.createHash("sha256").update(bytes).digest("hex");
   if (audioSha256 !== words.audio_sha256) throw new Error("Voice hash changed");
@@ -34,7 +37,7 @@ export const prepareEpisode = ({
   fs.mkdirSync(path.dirname(destination), { recursive: true });
   fs.writeFileSync(destination, bytes);
   fs.mkdirSync(path.join(studio, "out"), { recursive: true });
-  const inputProps = { storyboard, words, timing, audioSrc };
+  const inputProps = { storyboard, words, timing, sync, audioSrc };
   fs.writeFileSync(
     path.join(studio, "out/episode-props.json"),
     JSON.stringify(inputProps, null, 2) + "\n",

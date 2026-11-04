@@ -1,5 +1,5 @@
 /** Duration from actual RIFF PCM WAV bytes; no manifest-duration shortcut. */
-export const pcmWavInfo = (buffer: ArrayBuffer) => {
+const readPcmWav = (buffer: ArrayBuffer) => {
   const view = new DataView(buffer);
   const text = (offset: number, count: number) =>
     String.fromCharCode(...new Uint8Array(buffer, offset, count));
@@ -11,6 +11,7 @@ export const pcmWavInfo = (buffer: ArrayBuffer) => {
     blockAlign = 0,
     channels = 0,
     dataBytes = 0;
+  const chunks: { start: number; bytes: number }[] = [];
   for (let offset = 12; offset + 8 <= limit; ) {
     const kind = text(offset, 4),
       bytes = view.getUint32(offset + 4, true),
@@ -34,7 +35,10 @@ export const pcmWavInfo = (buffer: ArrayBuffer) => {
       )
         throw new Error("Invalid WAV format rates");
     }
-    if (kind === "data") dataBytes += bytes;
+    if (kind === "data") {
+      dataBytes += bytes;
+      chunks.push({ start, bytes });
+    }
     offset = start + bytes + (bytes % 2);
   }
   if (!sampleRate || channels !== 1 || !dataBytes || dataBytes % blockAlign)
@@ -43,5 +47,25 @@ export const pcmWavInfo = (buffer: ArrayBuffer) => {
     sampleRate,
     samples: dataBytes / blockAlign,
     duration: dataBytes / blockAlign / sampleRate,
+    chunks,
   };
+};
+
+export const pcmWavInfo = (buffer: ArrayBuffer) => {
+  const { sampleRate, samples, duration } = readPcmWav(buffer);
+  return { sampleRate, samples, duration };
+};
+export const pcmWavSamples = (buffer: ArrayBuffer) => {
+  const info = readPcmWav(buffer),
+    view = new DataView(buffer);
+  const samples = new Float32Array(info.samples);
+  let cursor = 0;
+  for (const chunk of info.chunks)
+    for (
+      let offset = chunk.start;
+      offset < chunk.start + chunk.bytes;
+      offset += 2
+    )
+      samples[cursor++] = view.getInt16(offset, true) / 32768;
+  return samples;
 };

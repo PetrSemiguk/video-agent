@@ -5,17 +5,20 @@ import { fileRefSchema } from "../storyboard/schema";
 import type { PlateMeta } from "../geo/plate";
 import { compilePlan, wordsSchema } from "./plan";
 import { verifyEpisodeCamera } from "./camera";
-import { pcmWavInfo } from "./wav";
+import { pcmWavInfo, pcmWavSamples } from "./wav";
+import { detectPauses, resolveStoryboard } from "./sync";
 
 export type PreparedEpisode = ReturnType<typeof compilePlan> & {
   words: ReturnType<typeof wordsSchema.parse>;
   metas: Record<string, PlateMeta>;
   coverage: ReturnType<typeof verifyEpisodeCamera>;
+  syncReport: ReturnType<typeof resolveStoryboard>["syncReport"] | null;
 };
 export type EpisodeProps = {
   storyboard: unknown;
   words: unknown;
-  timing: unknown;
+  timing?: unknown;
+  sync?: { labelLeadFrames?: number };
   audioSrc: string;
   prepared?: PreparedEpisode;
 };
@@ -43,7 +46,18 @@ export const calculateEpisodeMetadata: CalculateMetadataFunction<
   const durationInFrames = Math.ceil(
     (audio.samples * motion.fps) / audio.sampleRate,
   );
-  const plan = compilePlan(props.storyboard, props.timing, durationInFrames);
+  const resolved =
+    props.timing == null
+      ? resolveStoryboard(
+          props.storyboard,
+          words,
+          detectPauses(pcmWavSamples(bytes), audio.sampleRate),
+          durationInFrames,
+          props.sync ?? {},
+        )
+      : null;
+  const plan =
+    resolved ?? compilePlan(props.storyboard, props.timing, durationInFrames);
   const metas = Object.fromEntries(
     await Promise.all(
       plan.storyboard.plates.map(async (plate) => {
@@ -75,7 +89,16 @@ export const calculateEpisodeMetadata: CalculateMetadataFunction<
     fps: motion.fps,
     width: cards.showreel.width,
     height: cards.showreel.height,
-    props: { ...props, prepared: { ...plan, words, metas, coverage } },
+    props: {
+      ...props,
+      prepared: {
+        ...plan,
+        words,
+        metas,
+        coverage,
+        syncReport: resolved?.syncReport ?? null,
+      },
+    },
     defaultOutName: plan.storyboard.episode.slug,
   };
 };

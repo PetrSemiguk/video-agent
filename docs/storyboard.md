@@ -4,7 +4,7 @@ The source of truth is `studio/src/storyboard/schema.ts`. It reuses all sixteen
 production props schemas from `components/registry.ts`; see `docs/components.md`
 for content/layout limits. Input is strict JSON, no functions, React nodes,
 arbitrary component names or inline styles. This step defines/validates data;
-Episode assembly and anchor resolution belong to steps 4.2 and 4.3.
+Episode assembly and automatic voice sync are described below (steps 4.2–4.3).
 
 ## Validate and export
 
@@ -88,17 +88,17 @@ An anchor has **exactly one** form:
 A start word/phrase means its first word's onset; an end word/phrase means its
 last word's end. Time endpoints delimit a half-open interval. Same-word start/end
 is allowed (one word); reversed same-kind word bounds or nonpositive time spans
-are rejected. Mixed anchors remain declarative until 4.3; this validator does
-not search phrases, check word-index availability or compute overlaps/gaps.
+are rejected. The authoring validator does not resolve mixed anchors, search
+phrases or check word availability. The voice-sync pass below performs those checks.
 
 Layers have `id`, `type`, `props`, optional `start` and optional `end`. Missing
 layer endpoints inherit that endpoint of the shot. Anchors always refer to the
-global stem, not relative shot time. Future resolution must enforce containment
-and positive resolved durations. Components use local Sequence frames. Their
+global stem, not relative shot time. Voice sync enforces containment and positive
+resolved durations. Components use local Sequence frames. Their
 `durationInFrames` defaults describe component input, **not shot timing**; assembly
 must pass the resolved layer duration to components that have that prop, rather
-than using a default to override audio anchors. Frame quantization and pause
-snapping are deferred; example text durations are intentionally omitted.
+than using a default to override audio anchors. Example text durations are omitted:
+the assembler receives computed layer windows from the voice-sync pass.
 
 ## Camera descriptors
 
@@ -148,8 +148,8 @@ timeline; the authoring validator does not compact or resolve that timeline.
 `episodes/_sandbox/tts-test/storyboard.json` contains six shots following the
 original narration: opening, plateau, desert, rivers, unity, 1644. It demonstrates
 all three anchor forms, five camera presets, outgoing transitions and layer
-windows. It is a schema example, not a sourced publication-ready episode or a
-validated camera render. Step 4.2 will build Episode; 4.3 will resolve/check timing.
+windows. It remains demonstration content. Episode now renders it with automatic
+timing and camera coverage checks; current evidence is in report 4.3.
 
 `studio/out/storyboard-schema.png` is the rendered contract review card, not an
 assembled episode frame. Report and validation evidence are in docs/reports/4.1/.
@@ -169,7 +169,8 @@ the WAV/alignment SHA-256, copies only that WAV into ignored
 `studio/out/episode-props.json`. Remotion serves public/, not arbitrary repository
 paths. The render helper uses the existing Rspack Node API, ANGLE, concurrency 1,
 H.264/AAC, yuv420p and limited-range BT.709. Output is
-`studio/out/episode-tts-test.mp4`, plus six illustrative review stills and metadata.
+`studio/out/episode-tts-test-synced.mp4`, plus exact first-frame stills, a preview
+sheet and metadata.
 It does not start Studio. `--stills-only` skips MP4; `--map-smoke` renders a
 separate QA variant using an existing alternate plate and Natural Earth river.
 Those QA changes are in memory; the authored storyboard is not rewritten.
@@ -181,7 +182,8 @@ Input props for `Episode`:
 | `storyboard` | Authoring JSON using schemaVersion 1 above. |
 | `words` | Complete original-script alignment JSON bound to the exact WAV hash. |
 | `audioSrc` | Public-relative local WAV path, e.g. episodes/tts-test/voice.wav. |
-| `timing` | Explicit compiled frame windows, described below. |
+| `timing` | Omit or null for automatic voice sync; an explicit plan selects manual compatibility mode. |
+| `sync` | Optional `{labelLeadFrames: 3}` override (0–30 frames). |
 | `prepared` | Internal calculateMetadata result; callers should omit it. |
 
 `calculateMetadata` fetches and hashes actual WAV bytes, parses the RIFF PCM16
@@ -195,13 +197,13 @@ audio before selecting it in Studio on a new workspace. If fresh synthesis
 changes the WAV hash, re-align and update the storyboard's words reference;
 do not silently edit historical report evidence to hide a mismatch.
 
-### Explicit frame plan until step 4.3
+### Manual frame-plan compatibility
 
 `episodes/_sandbox/tts-test/assembly.json` is a deliberately authored **frame
-plan**, not an automatic anchor resolver. This keeps phrase lookup, label lead,
-pause snapping, minimum-shot policy, drift gap filling and the first-frame/text
-preview sheet in 4.3. The authoring anchors remain unchanged in storyboard.json.
-Use the plan as an explicit preview schedule, not a final synchronization claim.
+plan** retained from 4.2 and its regression tests. It is no longer the default.
+Pass it explicitly in `timing` for an already compiled schedule. Otherwise the
+resolver consumes current anchors, word timestamps and WAV silence. This historical
+manual fixture does not describe the current automatically synchronized plan.
 
 ```json
 {
@@ -217,8 +219,9 @@ must appear exactly once in authoring order. Shot windows must be contiguous,
 cover the measured frame count and contain their layer windows. Component Zod
 schemas validate actual scheduled durations, overriding optional duration defaults
 and mismatched authored duration props for the rendered Sequence. EndCard still
-requires its exact twenty-second window. This is runtime assembly integrity, not
-the automatic editing policy deferred to 4.3.
+requires its exact twenty-second window. Optional `cameraWindow` selects the active
+preset window inside a scene; outside it the camera uses drift. Short uncovered
+intervals can thus remain subsegments instead of undersized scenes.
 
 The existing camera preset functions feed one C2 global camera timeline. Local
 shot camera wrappers preserve absolute time. Plate coverage/magnification is
@@ -244,3 +247,98 @@ PlateStage/BRollClip behavior is unchanged. During overlaps, union the credits
 of both visible scenes, plus Natural Earth, approved B-roll and explicit credit
 layers, deduplicating identical strings. This prevents crossfaded source strings
 from becoming unreadable and keeps attribution visible during dip-to-dark.
+
+## Automatic voice sync (step 4.3)
+
+Default Episode props now use `timing: null`; no manually maintained frame list
+is required. The resolver runs inside calculateMetadata against hash-matched
+original word data and the actual PCM waveform. To inspect without rendering:
+
+```powershell
+npm run sync:episode
+npm run sync:episode -- ../episodes/_sandbox/tts-test/storyboard.json --lead-frames=0
+npm run render:episode -- --lead-frames=3
+npm run render:episode -- --stills-only
+```
+
+The CPU sync command writes `out/<slug>-sync.json`, `<slug>-assembly.json` and
+`<slug>-runtime-storyboard.json`. Rendering also writes the effective plan/report,
+first-frame PNGs and **`out/<slug>-preview.png`**. Run the default sync command
+again after experimenting with an override if you want its disk reports restored
+to the default configuration. Generated artifacts never overwrite authored JSON.
+
+### Anchor matching and label lead
+
+Word anchors address the original zero-based words. Phrase matching uses contiguous
+original lexical tokens, case-insensitive NFKC text, normalized apostrophes and
+numeric grouping commas; `2,000 years` and `2000 years` select the same words.
+Punctuation/hyphens do not create false mismatches. Start maps to the first word's
+start; end to the last word's end. Multiple matches are an error: use explicit
+word indices. Missing words/phrases, out-of-audio times and reversed ranges fail
+with paths such as `$.shots[1].layers[0].start`.
+
+Explicit starts for text/infographic labels and PlaceLabel receive
+`sync.labelLeadFrames` (default **3**, 0–30). TitleCard, EndCard, geo drawing,
+B-roll and source-credit layers keep their own timing. An omitted layer start
+inherits the snapped shot start. Lead moves only the entrance, never the end,
+and is clamped inside the scene. This is the animation's first frame, not the
+point where its fade/count-up becomes fully opaque/settled. Reported lead is
+relative to the rounded aligned-word frame; ASR phonetic accuracy remains subject
+to the limitations in report 3.3.
+
+The sandbox now supplies explicit phrase starts for Tibetan Plateau, Gobi Desert
+and 2,000 years, alongside the existing rivers/date cues. All five use exactly
+three frames of lead, without changing the narration or displayed text.
+
+### Acoustic cut policy and gaps
+
+Policy lives in `design/tokens.ts` -> `voiceSync`:
+
+| Token | Default |
+| --- | --- |
+| labelLeadFrames | 3 |
+| minShotFrames | 60 (2 s at 30 fps) |
+| minPauseFrames | 3 |
+| snapWindowFrames | 18 |
+| silenceWindowMs / silenceThresholdDbfs | 10 ms / -45 dBFS RMS |
+
+Detect non-overlapping quiet runs on the actual mastered PCM samples, not only
+gaps in Whisper timestamps. Eligible pauses contain at least three frame starts.
+For short pauses, use their integer midpoint; for pauses longer than twice the
+snap window, use the nearest quiet frame, retaining long uncovered time for drift.
+Choose the closest admissible candidate to the rounded anchor, breaking ties
+toward the earlier frame. Require it within 18 frames of that rounded anchor;
+media start/end stay exact. These are configurable token defaults, not a claim
+that one RMS threshold identifies every perceptual pause in arbitrary audio.
+Failure to find a candidate is explicit; the resolver does not silently cut speech.
+
+Reject overlapping/out-of-order authored ranges before snapping, then reject
+overlapping snapped ranges and source shots shorter than the token minimum.
+Long gaps (>=60 frames) become generated `sync-gap-NNN` drift scenes, with collision
+free ids and inherited plate. Move an outgoing transition to the gap's end so it
+still leads into the next authored scene. Shorter gaps are drift camera tails of
+the preceding scene; short leading time becomes a drift prefix. Original label
+windows end before padding. Every resulting scene meets the minimum; a short
+drift subsegment is not a separate shot. Leading/trailing gaps are covered too.
+
+The incoming scene's snapped start remains its actual cut. If a preceding end
+candidate leaves a short gap, that scene carries drift until this incoming cut;
+the source end candidate still marks the end of its active camera/content window.
+Nominal windows cover the WAV frame count exactly without overlaps. Intentional
+visual transition extensions remain handled by the assembler and do not shift
+the single voice track. Component-specific duration/geometry/coverage checks still
+apply; this pass does not automatically stretch an unreadably short label.
+
+### Review sheet and current sandbox
+
+The preview sheet uses the exact final composition frame at each scheduled shot's
+start, with its original-script narration underneath. During a transition that
+frame can show the outgoing image; no midpoint is substituted to make labels look
+visible. Generated drift scenes are included and empty narration is labelled
+`Pause / drift`. Captions preserve the whole selected narration line and typography
+comes from design tokens. The sheet is a diagnostic artifact, not a video overlay.
+
+Current source-first frames are **0,97,235,349,465,577**, ending at 743. All five
+internal boundaries independently measured zero RMS in a 10 ms window of the WAV.
+The first scene has an **8-frame drift tail**; there is no undersized generated
+scene. See report 4.3 and its JSON evidence for the complete cut/lead/coverage data.

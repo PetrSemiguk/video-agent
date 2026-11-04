@@ -1,0 +1,227 @@
+{
+  "config": {
+    "labelLeadFrames": 3,
+    "minShotFrames": 60,
+    "minPauseFrames": 3,
+    "snapWindowFrames": 18,
+    "silenceWindowMs": 10,
+    "silenceThresholdDbfs": -45
+  },
+  "pauses": [
+    {
+      "from": 39,
+      "to": 44
+    },
+    {
+      "from": 88,
+      "to": 91
+    },
+    {
+      "from": 93,
+      "to": 102
+    },
+    {
+      "from": 121,
+      "to": 124
+    },
+    {
+      "from": 232,
+      "to": 240
+    },
+    {
+      "from": 262,
+      "to": 267
+    },
+    {
+      "from": 340,
+      "to": 359
+    },
+    {
+      "from": 383,
+      "to": 386
+    },
+    {
+      "from": 461,
+      "to": 470
+    },
+    {
+      "from": 573,
+      "to": 582
+    },
+    {
+      "from": 628,
+      "to": 631
+    }
+  ],
+  "cuts": [
+    {
+      "id": "opening",
+      "rawStart": 0,
+      "rawEnd": 2.92,
+      "from": 0,
+      "to": 89
+    },
+    {
+      "id": "plateau",
+      "rawStart": 3.35,
+      "rawEnd": 7.49,
+      "from": 97,
+      "to": 235
+    },
+    {
+      "id": "desert",
+      "rawStart": 7.98,
+      "rawEnd": 11.02,
+      "from": 235,
+      "to": 349
+    },
+    {
+      "id": "rivers",
+      "rawStart": 11.93,
+      "rawEnd": 15.23,
+      "from": 349,
+      "to": 465
+    },
+    {
+      "id": "unity",
+      "rawStart": 15.63,
+      "rawEnd": 18.830000000000002,
+      "from": 465,
+      "to": 577
+    },
+    {
+      "id": "test-of-unity",
+      "rawStart": 19.37,
+      "rawEnd": 24.74,
+      "from": 577,
+      "to": 743
+    }
+  ],
+  "leads": [
+    {
+      "shot": "plateau",
+      "layer": "plateau-name",
+      "anchorFrame": 126,
+      "from": 123,
+      "leadFrames": 3
+    },
+    {
+      "shot": "desert",
+      "layer": "desert-name",
+      "anchorFrame": 270,
+      "from": 267,
+      "leadFrames": 3
+    },
+    {
+      "shot": "rivers",
+      "layer": "rivers-tag",
+      "anchorFrame": 385,
+      "from": 382,
+      "leadFrames": 3
+    },
+    {
+      "shot": "unity",
+      "layer": "unity-fact",
+      "anchorFrame": 482,
+      "from": 479,
+      "leadFrames": 3
+    },
+    {
+      "shot": "test-of-unity",
+      "layer": "date",
+      "anchorFrame": 590,
+      "from": 587,
+      "leadFrames": 3
+    }
+  ],
+  "shots": [
+    {
+      "id": "opening",
+      "from": 0,
+      "durationInFrames": 97,
+      "layers": [
+        {
+          "id": "title",
+          "from": 0,
+          "durationInFrames": 89
+        }
+      ],
+      "cameraWindow": {
+        "from": 0,
+        "durationInFrames": 89
+      },
+      "generated": false,
+      "text": "Look at a map of China, and one thing stands out."
+    },
+    {
+      "id": "plateau",
+      "from": 97,
+      "durationInFrames": 138,
+      "layers": [
+        {
+          "id": "plateau-name",
+          "from": 26,
+          "durationInFrames": 112
+        }
+      ],
+      "generated": false,
+      "text": "In the west, the Tibetan Plateau rises nearly five kilometers into the sky."
+    },
+    {
+      "id": "desert",
+      "from": 235,
+      "durationInFrames": 114,
+      "layers": [
+        {
+          "id": "desert-name",
+          "from": 32,
+          "durationInFrames": 82
+        }
+      ],
+      "generated": false,
+      "text": "In the north, the Gobi Desert stretches for a thousand miles."
+    },
+    {
+      "id": "rivers",
+      "from": 349,
+      "durationInFrames": 116,
+      "layers": [
+        {
+          "id": "rivers-tag",
+          "from": 33,
+          "durationInFrames": 83
+        }
+      ],
+      "generated": false,
+      "text": "And in between, two great rivers carve their way east, toward the sea."
+    },
+    {
+      "id": "unity",
+      "from": 465,
+      "durationInFrames": 112,
+      "layers": [
+        {
+          "id": "unity-fact",
+          "from": 14,
+          "durationInFrames": 98
+        }
+      ],
+      "generated": false,
+      "text": "For more than 2,000 years, this landscape has pushed its people together."
+    },
+    {
+      "id": "test-of-unity",
+      "from": 577,
+      "durationInFrames": 166,
+      "layers": [
+        {
+          "id": "date",
+          "from": 10,
+          "durationInFrames": 156
+        }
+      ],
+      "generated": false,
+      "text": "But in 1644, a small army from beyond the Great Wall would test that unity like never before."
+    }
+  ]
+}
