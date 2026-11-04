@@ -1,0 +1,31 @@
+[
+  {
+    "check": "planet_metadata",
+    "url": "https://s3.amazonaws.com/planet.openhistoricalmap.org/",
+    "method": "GET",
+    "params": {
+      "list-type": "2",
+      "max-keys": "100",
+      "delimiter": "/",
+      "prefix": "planet/planet-2611"
+    },
+    "status": 200,
+    "content_type": "application/xml",
+    "objects": [
+      {
+        "key": "planet/planet-261101_0000.osm.pbf",
+        "bytes": "1332736680"
+      },
+      {
+        "key": "planet/planet-261101_0000.state.txt",
+        "bytes": "129"
+      },
+      {
+        "key": "planet/planet-261102_0000.osm.pbf",
+        "bytes": "1310645505"
+      }
+    ],
+    "listing_truncated": "false",
+    "prefixes": []
+  }
+]

@@ -1,0 +1,12 @@
+﻿{
+    "endpoint":  "https://qlever.dev/api/ohm-planet",
+    "method":  "POST",
+    "content_type":  "application/sparql-query",
+    "accept":  "application/sparql-results+json",
+    "query":  "SELECT ?s ?p ?o WHERE { ?s ?p ?o } LIMIT 1",
+    "http_status":  null,
+    "sample_result":  null,
+    "error_type":  "System.Net.WebException",
+    "error":  "Unable to connect to the remote server",
+    "inner_error":  "System.Net.Sockets.SocketException (0x80004005): A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 132.230.150.102:443\r\n   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)\r\n   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket\u0026 socket, IPAddress\u0026 address, ConnectSocketState state, IAsyncResult asyncResult, Exception\u0026 exception)"
+}

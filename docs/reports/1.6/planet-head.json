@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://planet.openhistoricalmap.org/planet/planet-261102_0000.osm.pbf",
+    "method": "HEAD",
+    "status": 200,
+    "content_length": "1310645505",
+    "etag": "\"e3b191df2ecc048d91f483ab9584d2c8-157\"",
+    "last_modified": "Mon, 02 Nov 2026 03:48:15 GMT"
+  },
+  {
+    "url": "https://s3.amazonaws.com/planet.openhistoricalmap.org/planet/planet-261102_0000.osm.pbf",
+    "method": "HEAD",
+    "status": 403,
+    "content_length": null,
+    "etag": null,
+    "last_modified": null
+  }
+]

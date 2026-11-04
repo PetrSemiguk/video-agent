@@ -1,0 +1,411 @@
+[
+  {
+    "check": "planet_metadata",
+    "url": "https://s3.amazonaws.com/planet.openhistoricalmap.org/",
+    "method": "GET",
+    "params": {
+      "list-type": "2",
+      "max-keys": "100",
+      "delimiter": "/",
+      "prefix": "planet/"
+    },
+    "status": 200,
+    "content_type": "application/xml",
+    "objects": [
+      {
+        "key": "planet/planet-200514_1030.osm.pbf",
+        "bytes": "775991369"
+      },
+      {
+        "key": "planet/planet-200515_0000.osm.pbf",
+        "bytes": "775979033"
+      },
+      {
+        "key": "planet/planet-200516_0000.osm.pbf",
+        "bytes": "775983096"
+      },
+      {
+        "key": "planet/planet-200517_0000.osm.pbf",
+        "bytes": "775997284"
+      },
+      {
+        "key": "planet/planet-200518_0000.osm.pbf",
+        "bytes": "776004294"
+      },
+      {
+        "key": "planet/planet-200519_0000.osm.pbf",
+        "bytes": "776020744"
+      },
+      {
+        "key": "planet/planet-200520_0000.osm.pbf",
+        "bytes": "776039426"
+      },
+      {
+        "key": "planet/planet-200521_0000.osm.pbf",
+        "bytes": "776051122"
+      },
+      {
+        "key": "planet/planet-200522_0430.osm.pbf",
+        "bytes": "776058074"
+      },
+      {
+        "key": "planet/planet-200522_0530.osm.pbf",
+        "bytes": "776058074"
+      },
+      {
+        "key": "planet/planet-200522_0630.osm.pbf",
+        "bytes": "776058074"
+      },
+      {
+        "key": "planet/planet-200523_0000.osm.pbf",
+        "bytes": "776083568"
+      },
+      {
+        "key": "planet/planet-200523_1200.osm.pbf",
+        "bytes": "776082586"
+      },
+      {
+        "key": "planet/planet-200523_1300.osm.pbf",
+        "bytes": "776082586"
+      },
+      {
+        "key": "planet/planet-200524_0000.osm.pbf",
+        "bytes": "776070236"
+      },
+      {
+        "key": "planet/planet-200524_1200.osm.pbf",
+        "bytes": "776076481"
+      },
+      {
+        "key": "planet/planet-200524_1300.osm.pbf",
+        "bytes": "776076481"
+      },
+      {
+        "key": "planet/planet-200525_0000.osm.pbf",
+        "bytes": "776082865"
+      },
+      {
+        "key": "planet/planet-200525_1200.osm.pbf",
+        "bytes": "776083746"
+      },
+      {
+        "key": "planet/planet-200525_1300.osm.pbf",
+        "bytes": "776103503"
+      },
+      {
+        "key": "planet/planet-200526_0000.osm.pbf",
+        "bytes": "776097825"
+      },
+      {
+        "key": "planet/planet-200526_1200.osm.pbf",
+        "bytes": "776098134"
+      },
+      {
+        "key": "planet/planet-200527_0000.osm.pbf",
+        "bytes": "776099610"
+      },
+      {
+        "key": "planet/planet-200528_0000.osm.pbf",
+        "bytes": "776048556"
+      },
+      {
+        "key": "planet/planet-200529_0000.osm.pbf",
+        "bytes": "776071123"
+      },
+      {
+        "key": "planet/planet-200530_0000.osm.pbf",
+        "bytes": "776386383"
+      },
+      {
+        "key": "planet/planet-200531_0000.osm.pbf",
+        "bytes": "776386375"
+      },
+      {
+        "key": "planet/planet-200601_0000.osm.pbf",
+        "bytes": "776376066"
+      },
+      {
+        "key": "planet/planet-200602_0000.osm.pbf",
+        "bytes": "776411999"
+      },
+      {
+        "key": "planet/planet-200603_0000.osm.pbf",
+        "bytes": "776423317"
+      },
+      {
+        "key": "planet/planet-200604_0000.osm.pbf",
+        "bytes": "776437224"
+      },
+      {
+        "key": "planet/planet-200605_0000.osm.pbf",
+        "bytes": "776454932"
+      },
+      {
+        "key": "planet/planet-200606_0000.osm.pbf",
+        "bytes": "776479644"
+      },
+      {
+        "key": "planet/planet-200607_0000.osm.pbf",
+        "bytes": "776522833"
+      },
+      {
+        "key": "planet/planet-200608_0000.osm.pbf",
+        "bytes": "776545975"
+      },
+      {
+        "key": "planet/planet-200609_0000.osm.pbf",
+        "bytes": "776579147"
+      },
+      {
+        "key": "planet/planet-200610_0000.osm.pbf",
+        "bytes": "776623289"
+      },
+      {
+        "key": "planet/planet-200611_0000.osm.pbf",
+        "bytes": "776653953"
+      },
+      {
+        "key": "planet/planet-200612_0000.osm.pbf",
+        "bytes": "776651339"
+      },
+      {
+        "key": "planet/planet-200613_0000.osm.pbf",
+        "bytes": "776702237"
+      },
+      {
+        "key": "planet/planet-200614_0000.osm.pbf",
+        "bytes": "776698732"
+      },
+      {
+        "key": "planet/planet-200615_0000.osm.pbf",
+        "bytes": "776700332"
+      },
+      {
+        "key": "planet/planet-200616_0000.osm.pbf",
+        "bytes": "776750783"
+      },
+      {
+        "key": "planet/planet-200617_0000.osm.pbf",
+        "bytes": "776745258"
+      },
+      {
+        "key": "planet/planet-200618_0000.osm.pbf",
+        "bytes": "776766183"
+      },
+      {
+        "key": "planet/planet-200619_0000.osm.pbf",
+        "bytes": "777857965"
+      },
+      {
+        "key": "planet/planet-200620_0000.osm.pbf",
+        "bytes": "777661701"
+      },
+      {
+        "key": "planet/planet-200621_0000.osm.pbf",
+        "bytes": "777649375"
+      },
+      {
+        "key": "planet/planet-200622_0000.osm.pbf",
+        "bytes": "777658871"
+      },
+      {
+        "key": "planet/planet-200623_0000.osm.pbf",
+        "bytes": "776829504"
+      },
+      {
+        "key": "planet/planet-200623_0800.osm.pbf",
+        "bytes": "779023981"
+      },
+      {
+        "key": "planet/planet-200624_0800.osm.pbf",
+        "bytes": "779186387"
+      },
+      {
+        "key": "planet/planet-200625_0800.osm.pbf",
+        "bytes": "779309450"
+      },
+      {
+        "key": "planet/planet-200626_0800.osm.pbf",
+        "bytes": "779334202"
+      },
+      {
+        "key": "planet/planet-200627_0800.osm.pbf",
+        "bytes": "779381181"
+      },
+      {
+        "key": "planet/planet-200628_0800.osm.pbf",
+        "bytes": "779431395"
+      },
+      {
+        "key": "planet/planet-200629_0800.osm.pbf",
+        "bytes": "776344506"
+      },
+      {
+        "key": "planet/planet-200630_0800.osm.pbf",
+        "bytes": "779526309"
+      },
+      {
+        "key": "planet/planet-200701_0800.osm.pbf",
+        "bytes": "779197915"
+      },
+      {
+        "key": "planet/planet-200702_0800.osm.pbf",
+        "bytes": "779229505"
+      },
+      {
+        "key": "planet/planet-200703_0800.osm.pbf",
+        "bytes": "782699917"
+      },
+      {
+        "key": "planet/planet-200704_0800.osm.pbf",
+        "bytes": "783132668"
+      },
+      {
+        "key": "planet/planet-200705_0800.osm.pbf",
+        "bytes": "783166524"
+      },
+      {
+        "key": "planet/planet-200706_0800.osm.pbf",
+        "bytes": "783178790"
+      },
+      {
+        "key": "planet/planet-200707_0800.osm.pbf",
+        "bytes": "783208758"
+      },
+      {
+        "key": "planet/planet-200708_0800.osm.pbf",
+        "bytes": "783216697"
+      },
+      {
+        "key": "planet/planet-200709_0800.osm.pbf",
+        "bytes": "783297045"
+      },
+      {
+        "key": "planet/planet-200710_0800.osm.pbf",
+        "bytes": "783344484"
+      },
+      {
+        "key": "planet/planet-200711_0800.osm.pbf",
+        "bytes": "783343295"
+      },
+      {
+        "key": "planet/planet-200712_0800.osm.pbf",
+        "bytes": "783354161"
+      },
+      {
+        "key": "planet/planet-200713_0800.osm.pbf",
+        "bytes": "783349355"
+      },
+      {
+        "key": "planet/planet-200714_0800.osm.pbf",
+        "bytes": "783408156"
+      },
+      {
+        "key": "planet/planet-200715_0800.osm.pbf",
+        "bytes": "783391307"
+      },
+      {
+        "key": "planet/planet-200716_0800.osm.pbf",
+        "bytes": "783431346"
+      },
+      {
+        "key": "planet/planet-200717_0800.osm.pbf",
+        "bytes": "783539731"
+      },
+      {
+        "key": "planet/planet-200718_0800.osm.pbf",
+        "bytes": "783591093"
+      },
+      {
+        "key": "planet/planet-200719_0800.osm.pbf",
+        "bytes": "783592037"
+      },
+      {
+        "key": "planet/planet-200720_0800.osm.pbf",
+        "bytes": "783603735"
+      },
+      {
+        "key": "planet/planet-200721_0800.osm.pbf",
+        "bytes": "783609695"
+      },
+      {
+        "key": "planet/planet-200722_0800.osm.pbf",
+        "bytes": "783640352"
+      },
+      {
+        "key": "planet/planet-200723_0800.osm.pbf",
+        "bytes": "783650830"
+      },
+      {
+        "key": "planet/planet-200724_0800.osm.pbf",
+        "bytes": "783653100"
+      },
+      {
+        "key": "planet/planet-200725_0800.osm.pbf",
+        "bytes": "783663321"
+      },
+      {
+        "key": "planet/planet-200726_0800.osm.pbf",
+        "bytes": "783682969"
+      },
+      {
+        "key": "planet/planet-200727_0800.osm.pbf",
+        "bytes": "783710781"
+      },
+      {
+        "key": "planet/planet-200728_0800.osm.pbf",
+        "bytes": "783746358"
+      },
+      {
+        "key": "planet/planet-200729_0800.osm.pbf",
+        "bytes": "783760699"
+      },
+      {
+        "key": "planet/planet-200730_0800.osm.pbf",
+        "bytes": "783773974"
+      },
+      {
+        "key": "planet/planet-200731_0800.osm.pbf",
+        "bytes": "783789932"
+      },
+      {
+        "key": "planet/planet-200801_0800.osm.pbf",
+        "bytes": "783837311"
+      },
+      {
+        "key": "planet/planet-200802_0800.osm.pbf",
+        "bytes": "783857852"
+      },
+      {
+        "key": "planet/planet-200803_0800.osm.pbf",
+        "bytes": "783929022"
+      },
+      {
+        "key": "planet/planet-200804_0800.osm.pbf",
+        "bytes": "783969386"
+      },
+      {
+        "key": "planet/planet-200805_0800.osm.pbf",
+        "bytes": "784034367"
+      },
+      {
+        "key": "planet/planet-200806_0800.osm.pbf",
+        "bytes": "784037000"
+      },
+      {
+        "key": "planet/planet-200807_0800.osm.pbf",
+        "bytes": "784087883"
+      },
+      {
+        "key": "planet/planet-200808_0800.osm.pbf",
+        "bytes": "784130637"
+      }
+    ],
+    "listing_truncated": "true",
+    "prefixes": [
+      "planet//",
+      "planet/changesets/",
+      "planet/full-history/"
+    ]
+  }
+]

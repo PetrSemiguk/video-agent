@@ -9,6 +9,7 @@ dependencies = [
     "numpy>=1.24,<2",
     # Pinned to 2.6.0: chatterbox-tts 0.1.7 hard-pins torch==2.6.0 / torchaudio==2.6.0
     # on Python < 3.14 (see docs/python-env.md).
+    "osmium>=4.3,<5",
     "pillow>=13.0.0",
     "rasterio>=1.4.4,<1.5",
     "shapely>=2.1,<3",

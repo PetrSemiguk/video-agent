@@ -1,0 +1,94 @@
+[
+  {
+    "check": "qlever_post",
+    "url": "https://qlever.dev/api/ohm-planet",
+    "method": "POST",
+    "params": {
+      "query": "SELECT * WHERE { ?s ?p ?o } LIMIT 1"
+    },
+    "error": "timed out"
+  },
+  {
+    "check": "rest_capabilities",
+    "url": "https://www.openhistoricalmap.org/api/0.6/capabilities",
+    "method": "GET",
+    "params": {},
+    "status": 403,
+    "content_type": "text/html; charset=UTF-8",
+    "error": "HTTP 403; no challenge bypass attempted"
+  },
+  {
+    "check": "rest_small_bbox",
+    "url": "https://www.openhistoricalmap.org/api/0.6/map",
+    "method": "GET",
+    "params": {
+      "bbox": "2.34,48.85,2.35,48.86"
+    },
+    "status": 403,
+    "content_type": "text/html; charset=UTF-8",
+    "error": "HTTP 403; no challenge bypass attempted"
+  },
+  {
+    "check": "rest_relation_full",
+    "url": "https://www.openhistoricalmap.org/api/0.6/relation/2749168/full",
+    "method": "GET",
+    "params": {},
+    "status": 403,
+    "content_type": "text/html; charset=UTF-8",
+    "error": "HTTP 403; no challenge bypass attempted"
+  },
+  {
+    "check": "planet_metadata",
+    "url": "https://s3.amazonaws.com/planet.openhistoricalmap.org/",
+    "method": "GET",
+    "params": {
+      "list-type": "2",
+      "max-keys": "10"
+    },
+    "status": 200,
+    "content_type": "application/xml",
+    "objects": [
+      {
+        "key": "/status.rss",
+        "bytes": "2783"
+      },
+      {
+        "key": "changeset_counts.csv",
+        "bytes": "42823"
+      },
+      {
+        "key": "cumulative_elements.csv",
+        "bytes": "162154"
+      },
+      {
+        "key": "current_elements.csv",
+        "bytes": "102"
+      },
+      {
+        "key": "historical-osm-data/sample_001_enriched/_SUCCESS",
+        "bytes": "0"
+      },
+      {
+        "key": "historical-osm-data/sample_001_enriched/node/part-00001-86d77634-f9f4-4fac-8351-6d3ad2e4c1cd.c000.snappy.parquet",
+        "bytes": "179115"
+      },
+      {
+        "key": "historical-osm-data/sample_001_enriched/way/part-00000-86d77634-f9f4-4fac-8351-6d3ad2e4c1cd.c000.snappy.parquet",
+        "bytes": "751515"
+      },
+      {
+        "key": "imposm/imposm3.json",
+        "bytes": "63857"
+      },
+      {
+        "key": "imposm/imposm3_expire_dir/191753.716.tiles",
+        "bytes": "5920"
+      },
+      {
+        "key": "imposm/imposm3_expire_dir/20200526/151512.481.tiles",
+        "bytes": "5733"
+      }
+    ],
+    "listing_truncated": "true"
+  }
+]

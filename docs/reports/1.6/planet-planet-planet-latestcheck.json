@@ -1,0 +1,18 @@
+[
+  {
+    "check": "planet_metadata",
+    "url": "https://s3.amazonaws.com/planet.openhistoricalmap.org/",
+    "method": "GET",
+    "params": {
+      "list-type": "2",
+      "max-keys": "100",
+      "delimiter": "/",
+      "prefix": "planet/planet-latest"
+    },
+    "status": 200,
+    "content_type": "application/xml",
+    "objects": [],
+    "listing_truncated": "false",
+    "prefixes": []
+  }
+]

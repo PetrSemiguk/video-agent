@@ -1,0 +1,62 @@
+[
+  {
+    "check": "planet_metadata",
+    "url": "https://s3.amazonaws.com/planet.openhistoricalmap.org/",
+    "method": "GET",
+    "params": {
+      "list-type": "2",
+      "max-keys": "100",
+      "delimiter": "/"
+    },
+    "status": 200,
+    "content_type": "application/xml",
+    "objects": [
+      {
+        "key": "changeset_counts.csv",
+        "bytes": "42823"
+      },
+      {
+        "key": "cumulative_elements.csv",
+        "bytes": "162154"
+      },
+      {
+        "key": "current_elements.csv",
+        "bytes": "102"
+      },
+      {
+        "key": "index.html",
+        "bytes": "849"
+      },
+      {
+        "key": "list.js",
+        "bytes": "14260"
+      },
+      {
+        "key": "test.txt",
+        "bytes": "5"
+      },
+      {
+        "key": "vtiles_languages.geojson",
+        "bytes": "369290"
+      },
+      {
+        "key": "vtiles_layers_info.json",
+        "bytes": "76945"
+      }
+    ],
+    "listing_truncated": "false",
+    "prefixes": [
+      "/",
+      "historical-osm-data/",
+      "imposm/",
+      "ohm-augmented-diffs/",
+      "osmdata/",
+      "planet-stats/",
+      "planet/",
+      "replication/",
+      "replication_monitoring/",
+      "taginfo/",
+      "tile_coverage/"
+    ]
+  }
+]

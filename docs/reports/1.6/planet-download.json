@@ -1,0 +1,9 @@
+{
+  "url": "https://planet.openhistoricalmap.org/planet/planet-261102_0000.osm.pbf",
+  "authorized_bytes": 1310645505,
+  "method": "GET",
+  "status": 403,
+  "server": "cloudflare",
+  "content_type": "text/html; charset=UTF-8",
+  "outcome": "No PBF payload downloaded; access denied; no bypass attempted"
+}

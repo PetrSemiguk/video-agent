@@ -6,8 +6,8 @@ The channel is monetized, so only sources allowing commercial use are acceptable
 | Source | License | Commercial use? | Attribution text |
 |---|---|---|---|
 | Natural Earth (v5.1.2 vector layers) | Public domain | ✅ Yes | Not required; recommended credit, which we use: "Made with Natural Earth". |
-| CShapes 2.0 | ⚠️ Check license before use | ❓ TBD | TBD |
-| historical-basemaps | ⚠️ Check license before use | ❓ TBD | TBD |
+| CShapes 2.0 / CShapes-Europe | CC BY-NC-SA 4.0 ([publisher](https://icr.ethz.ch/data/cshapes/)) | ⛔ **FORBIDDEN** for this monetized channel | — |
+| historical-basemaps | GPL-3.0 | **REFERENCE ONLY** by project policy; never rendered or traced | — |
 | Mapbox (all products: styles, tiles, Satellite, Terrain, APIs) | Mapbox Product Terms | ⛔ **FORBIDDEN** — Licensed Map Content may not be used in video without separately purchased print/video rights | — |
 | Sentinel-2 cloudless **2016** (EOX) | ⏸ **ON HOLD** — conflicting terms: the 2016 layer page says CC BY 4.0, the general EOX license says a commercial license is required | ⏸ Do not use until EOX confirms in writing | (only if confirmed) "Sentinel-2 cloudless – https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016)" |
 | Sentinel-2 cloudless **2018+** (EOX) | CC BY-NC-SA 4.0 | ⛔ **FORBIDDEN** | — |
@@ -52,3 +52,16 @@ Paste it verbatim into the description of every episode that uses terrain:
 
 The same texts are embedded in every plate's `studio/public/plates/<name>.json`
 (`attribution.on_screen`, `attribution.full`), generated from `pipeline/src/vap/geo/sources.py`.
+
+## Historical boundary sources
+
+Parser software: [pyosmium 4.3.2](https://github.com/osmcode/pyosmium/blob/master/LICENSE.TXT)
+is BSD-2-Clause, commercial use allowed. Keep the distributed license notice.
+Using this library does not change the licenses of the OHM elements it reads.
+
+See [historical-sources.md](historical-sources.md) for coverage, download methods and limitations.
+
+| Source | License | Commercial use? | Attribution text |
+|---|---|---|---|
+| OpenHistoricalMap boundary relations and geometry members | CC0 by default, per-element exceptions | Yes for CC0/untagged elements only; reject explicit other licenses on relation or members | OpenHistoricalMap contributors (CC0); retain relation URLs. |
+| Cliopatria (candidate only; not imported) | CC BY 4.0 | Yes, subject to attribution and per-record provenance review before use | Seshat Global History Databank, Cliopatria; https://creativecommons.org/licenses/by/4.0/; indicate changes. |

@@ -1,0 +1,26 @@
+{
+  "plate": "china-east",
+  "resolved_plate": "china-east-hs05",
+  "date": "1644-01-01",
+  "source": "ohm",
+  "status": "access_failed",
+  "backends": [
+    {
+      "backend": "overpass",
+      "status": "error",
+      "error": "Client error '403 Forbidden' for url 'https://overpass-api.openhistoricalmap.org/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A45%5D%3B%28relation%2818.0%2C81.38188737%2C45.0%2C138.61811263%29%5B%22boundary%22%3D%22administrative%22%5D%5B%22admin_level%22%3D%222%22%5D%3Brelation%2818.0%2C81.38188737%2C45.0%2C138.61811263%29%5B%22boundary%22%3D%22political%22%5D%3B%29%3B%28._%3B%3E%3E%3B%29%3Bout+body+geom%3B'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+    },
+    {
+      "backend": "qlever",
+      "status": "error",
+      "error": "timed out"
+    }
+  ],
+  "objects": null,
+  "cshapes": "FORBIDDEN: CC BY-NC-SA 4.0",
+  "candidates": null,
+  "names": null,
+  "skipped": [],
+  "exclusions": {},
+  "coverage": "unknown: access failed"
+}
