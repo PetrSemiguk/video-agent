@@ -56,6 +56,14 @@ The same texts are embedded in every plate's `studio/public/plates/<name>.json`
 
 ## Voice models and watermarking
 
+Step 3.3 alignment sources (checked 2026-11-04, before installation/download):
+
+| Source | License | Commercial use? | Attribution / handling |
+|---|---|---|---|
+| [faster-whisper 1.2.1](https://github.com/SYSTRAN/faster-whisper/blob/master/LICENSE) | MIT | Yes | Keep distributed copyright/license notices; no on-screen credit required. |
+| [CTranslate2 4.8.5](https://github.com/OpenNMT/CTranslate2/blob/master/LICENSE) | MIT | Yes | Keep distributed copyright/license notices. |
+| [Systran/faster-whisper-small.en weights](https://huggingface.co/Systran/faster-whisper-small.en/blob/main/README.md), converted from OpenAI Whisper small.en | MIT ([upstream license](https://github.com/openai/whisper/blob/main/LICENSE)) | Yes | Pinned revision `d1d751a5f8271d482d14ca55d9e2deeebbae577f`; retain notices. Used only for transcription/alignment; no external audio/media is imported. |
+
 | Source | License | Commercial use? | Attribution text |
 |---|---|---|---|
 | [Chatterbox TTS 0.1.7 code](https://github.com/resemble-ai/chatterbox/blob/master/LICENSE) | MIT | Yes | Retain the distributed copyright/license notice. No on-screen credit required. |

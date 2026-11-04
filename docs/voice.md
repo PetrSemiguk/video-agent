@@ -70,7 +70,8 @@ imports/loads Chatterbox onto the GPU. Model weights use HF_HOME (default ignore
 `.cache/huggingface`); no weights are committed. A finally block releases the model,
 collects objects and empties the CUDA allocator, including on inference failure.
 The process also exits between variant generations. **Never run TTS and whisper
-concurrently or keep both models resident.** No whisper is installed by this step.
+concurrently or keep both models resident.** Whisper is installed in step 3.3;
+its GPU worker always exits before any TTS repair worker starts.
 
 ## Trimming, pauses and loudness
 
@@ -146,3 +147,63 @@ separately; first-run compilation/warmup can still increase synthesis time. Peak
 memory is **torch CUDA allocator** allocated/reserved MiB, not total driver/GPU
 memory. Cache rerun time is the in-process run time; CLI interpreter startup is
 additional. No subjective quality winner is selected automatically.
+
+## Original-script word alignment (step 3.3)
+
+From pipeline:
+
+```powershell
+uv run python -m vap.align.words --script ../episodes/_sandbox/tts-test/script.md --audio ../studio/out/voice-3.2/voice.wav --out ../studio/out/voice-3.3-verified
+uv run python -m vap.align.qa --words ../studio/out/voice-3.3-verified/words.json --out ../docs/reports/3.3/onset-check.json
+```
+
+The voice manifest defaults to `voice.manifest.json` next to the WAV; override
+with `--manifest`. Source script/WAV hashes, sample count, rate, ordered chunk
+spans and current normalized text must agree. A changed script or lexicon requires
+regenerating narration before alignment. `--out` is a directory, containing
+`words.json`, per-attempt recognition JSON and worker logs.
+
+English `small.en` FP16, beam 5 is pinned to the MIT Systran revision listed in
+licenses.md. The clean sandbox matched all 78 original words within the 8 GB GPU
+budget. This is a practical default for English TTS, not a broad accuracy benchmark
+against larger models. Decode per manifest chunk with word timestamps, no initial
+script prompt, no previous-text conditioning and no VAD dependency/model download.
+Chunk offsets map recognition back into the mastered WAV timeline.
+
+Monotone edit-distance alignment compares normalized lexical tokens. Numbers,
+abbreviations, units, case, punctuation and the voice lexicon are handled before
+comparison; Whisper's split `2` + `,000` is joined before number expansion. Keep
+every original script word and its spelling (including `2,000` and `1644`) rather
+than substituting recognized words. Expanded speech maps back to the original
+word's union of observed spans. Sentence/paragraph spans use half-open word-index
+ranges; all times are seconds in the referenced audio.
+
+`complete=true` means all normalized words match and have positive-duration spans.
+Missing/substituted words and extra recognized words appear in `issues` with chunk
+ids, expected/recognized forms and available timing. Unresolved original words
+keep null times/status unresolved; no fabricated timestamps. CLI exits **2** for
+unresolved output, **0** for complete output. ASR mismatches are review candidates,
+not proof of a TTS mistake; homophones and recognition errors can still confuse it.
+
+Add `--fix` to regenerate affected chunks with new seeds and re-align. Default
+`--max-tries 3` is a hard maximum of three repair rounds, plus initial recognition.
+Only affected chunk seeds change (+100003 modulo 2^32); others reuse their exact
+raw cache keys. Each repair reassembles and masters the whole stem, so later times
+and final gain can change. Original input WAV is preserved. `repair-N/` holds each
+new stem/manifest, and final `words.json.audio` points to the actual final WAV.
+`repair_history` retains mismatches before/after each attempt. An exhausted repair
+stays unresolved and exits 2. For cloned narration supply the same owned/licensed
+`--voice` reference; its hash must match the original manifest.
+
+The parent does no GPU inference. It synchronously runs a Whisper subprocess,
+waits for process exit, and only then starts a TTS subprocess when needed. Import
+torch first and explicitly register torch/lib for Windows DLL lookup. Installed
+versions and the successful strategy are recorded in python-env.md. Cached ASR
+is reused only for matching WAV hash, model revision, chunk spans and options.
+
+The QA command selects ten matched original words with seed 33, independently
+detects waveform RMS rises, and reports median/max distance to the nearest
+acoustic onset. This is an **onset proxy**, not independently annotated phonetic
+word-boundary accuracy: connected speech and internal syllables can produce
+ambiguous landmarks. See the ten plotted windows and exact JSON in report 3.3;
+Whisper timestamps are not shifted to make this comparison look better.

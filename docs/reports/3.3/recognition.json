@@ -1,0 +1,581 @@
+{
+  "audio_sha256": "6ce8df31653cc01eb85ed84d9d2cc0eefbabf19626c405bda401e02fdd127126",
+  "options": {
+    "language": "en",
+    "beam_size": 5,
+    "temperature": 0,
+    "condition_on_previous_text": false,
+    "word_timestamps": true,
+    "vad_filter": false
+  },
+  "chunk_spans": [
+    [
+      0,
+      0,
+      74400
+    ],
+    [
+      1,
+      80400,
+      185520
+    ],
+    [
+      2,
+      191520,
+      271920
+    ],
+    [
+      3,
+      286320,
+      369120
+    ],
+    [
+      4,
+      375120,
+      458880
+    ],
+    [
+      5,
+      464880,
+      593760
+    ]
+  ],
+  "model": {
+    "repo": "Systran/faster-whisper-small.en",
+    "revision": "d1d751a5f8271d482d14ca55d9e2deeebbae577f",
+    "compute_type": "float16"
+  },
+  "runtime": {
+    "torch": "2.6.0+cu126",
+    "torchaudio": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "faster_whisper": "1.2.1",
+    "ctranslate2": "4.8.5",
+    "device": "NVIDIA GeForce RTX 4060",
+    "supported_compute_types": [
+      "bfloat16",
+      "float16",
+      "float32",
+      "int8",
+      "int8_bfloat16",
+      "int8_float16",
+      "int8_float32"
+    ],
+    "dll_strategy": "torch first; explicit torch/lib add_dll_directory on Windows",
+    "gpu_memory": {
+      "method": "CUDA driver snapshots before/after load and after each chunk; system-wide",
+      "total_mib": 8187.5,
+      "baseline_used_mib": 1081.5,
+      "observed_peak_used_mib": 1675.5,
+      "observed_increase_mib": 594.0
+    },
+    "load_seconds_including_download": 0.767274499998166,
+    "transcription_seconds": 1.432478099999571
+  },
+  "chunks": [
+    {
+      "chunk_id": 0,
+      "words": [
+        {
+          "text": "Look",
+          "start": 0.0,
+          "end": 0.16,
+          "probability": 0.72265625
+        },
+        {
+          "text": "at",
+          "start": 0.16,
+          "end": 0.3,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "a",
+          "start": 0.3,
+          "end": 0.42,
+          "probability": 0.98486328125
+        },
+        {
+          "text": "map",
+          "start": 0.42,
+          "end": 0.54,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "of",
+          "start": 0.54,
+          "end": 0.74,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "China,",
+          "start": 0.74,
+          "end": 1.1,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "and",
+          "start": 1.52,
+          "end": 1.74,
+          "probability": 0.994140625
+        },
+        {
+          "text": "one",
+          "start": 1.74,
+          "end": 2.08,
+          "probability": 0.9287109375
+        },
+        {
+          "text": "thing",
+          "start": 2.08,
+          "end": 2.26,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "stands",
+          "start": 2.26,
+          "end": 2.58,
+          "probability": 0.998046875
+        },
+        {
+          "text": "out.",
+          "start": 2.58,
+          "end": 2.92,
+          "probability": 0.99951171875
+        }
+      ]
+    },
+    {
+      "chunk_id": 1,
+      "words": [
+        {
+          "text": "In",
+          "start": 3.35,
+          "end": 3.49,
+          "probability": 0.6044921875
+        },
+        {
+          "text": "the",
+          "start": 3.49,
+          "end": 3.5700000000000003,
+          "probability": 0.998046875
+        },
+        {
+          "text": "west,",
+          "start": 3.5700000000000003,
+          "end": 3.89,
+          "probability": 0.755859375
+        },
+        {
+          "text": "the",
+          "start": 4.19,
+          "end": 4.21,
+          "probability": 0.990234375
+        },
+        {
+          "text": "Tibetan",
+          "start": 4.21,
+          "end": 4.51,
+          "probability": 0.998046875
+        },
+        {
+          "text": "Plateau",
+          "start": 4.51,
+          "end": 5.09,
+          "probability": 0.848388671875
+        },
+        {
+          "text": "rises",
+          "start": 5.09,
+          "end": 5.45,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "nearly",
+          "start": 5.45,
+          "end": 5.8100000000000005,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "5",
+          "start": 5.8100000000000005,
+          "end": 6.17,
+          "probability": 0.560546875
+        },
+        {
+          "text": "kilometers",
+          "start": 6.17,
+          "end": 6.59,
+          "probability": 0.58544921875
+        },
+        {
+          "text": "into",
+          "start": 6.59,
+          "end": 7.07,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "the",
+          "start": 7.07,
+          "end": 7.21,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "sky.",
+          "start": 7.21,
+          "end": 7.49,
+          "probability": 0.99853515625
+        }
+      ]
+    },
+    {
+      "chunk_id": 2,
+      "words": [
+        {
+          "text": "In",
+          "start": 7.98,
+          "end": 8.14,
+          "probability": 0.96728515625
+        },
+        {
+          "text": "the",
+          "start": 8.14,
+          "end": 8.24,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "north,",
+          "start": 8.24,
+          "end": 8.52,
+          "probability": 0.88916015625
+        },
+        {
+          "text": "the",
+          "start": 8.940000000000001,
+          "end": 9.0,
+          "probability": 0.98291015625
+        },
+        {
+          "text": "Gobi",
+          "start": 9.0,
+          "end": 9.22,
+          "probability": 0.962890625
+        },
+        {
+          "text": "Desert",
+          "start": 9.22,
+          "end": 9.540000000000001,
+          "probability": 0.81201171875
+        },
+        {
+          "text": "stretches",
+          "start": 9.540000000000001,
+          "end": 9.940000000000001,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "for",
+          "start": 9.940000000000001,
+          "end": 10.24,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "a",
+          "start": 10.24,
+          "end": 10.34,
+          "probability": 0.54443359375
+        },
+        {
+          "text": "thousand",
+          "start": 10.34,
+          "end": 10.600000000000001,
+          "probability": 0.970703125
+        },
+        {
+          "text": "miles.",
+          "start": 10.600000000000001,
+          "end": 11.02,
+          "probability": 0.99951171875
+        }
+      ]
+    },
+    {
+      "chunk_id": 3,
+      "words": [
+        {
+          "text": "and",
+          "start": 11.93,
+          "end": 12.07,
+          "probability": 0.72119140625
+        },
+        {
+          "text": "in",
+          "start": 12.07,
+          "end": 12.209999999999999,
+          "probability": 0.9765625
+        },
+        {
+          "text": "between,",
+          "start": 12.209999999999999,
+          "end": 12.549999999999999,
+          "probability": 0.89794921875
+        },
+        {
+          "text": "two",
+          "start": 12.83,
+          "end": 13.01,
+          "probability": 0.98779296875
+        },
+        {
+          "text": "great",
+          "start": 13.01,
+          "end": 13.25,
+          "probability": 0.9443359375
+        },
+        {
+          "text": "rivers",
+          "start": 13.25,
+          "end": 13.55,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "carve",
+          "start": 13.55,
+          "end": 13.85,
+          "probability": 0.908203125
+        },
+        {
+          "text": "their",
+          "start": 13.85,
+          "end": 14.03,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "way",
+          "start": 14.03,
+          "end": 14.209999999999999,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "east",
+          "start": 14.209999999999999,
+          "end": 14.49,
+          "probability": 0.970703125
+        },
+        {
+          "text": "toward",
+          "start": 14.49,
+          "end": 14.85,
+          "probability": 0.97119140625
+        },
+        {
+          "text": "the",
+          "start": 14.85,
+          "end": 15.01,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "sea.",
+          "start": 15.01,
+          "end": 15.23,
+          "probability": 0.994140625
+        }
+      ]
+    },
+    {
+      "chunk_id": 4,
+      "words": [
+        {
+          "text": "For",
+          "start": 15.63,
+          "end": 15.770000000000001,
+          "probability": 0.93701171875
+        },
+        {
+          "text": "more",
+          "start": 15.770000000000001,
+          "end": 15.89,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "than",
+          "start": 15.89,
+          "end": 16.05,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "2",
+          "start": 16.05,
+          "end": 16.21,
+          "probability": 0.69580078125
+        },
+        {
+          "text": ",000",
+          "start": 16.21,
+          "end": 16.53,
+          "probability": 0.993896484375
+        },
+        {
+          "text": "years,",
+          "start": 16.53,
+          "end": 16.85,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "this",
+          "start": 17.09,
+          "end": 17.23,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "landscape",
+          "start": 17.23,
+          "end": 17.650000000000002,
+          "probability": 0.998046875
+        },
+        {
+          "text": "has",
+          "start": 17.650000000000002,
+          "end": 17.91,
+          "probability": 0.9912109375
+        },
+        {
+          "text": "pushed",
+          "start": 17.91,
+          "end": 18.11,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "its",
+          "start": 18.11,
+          "end": 18.27,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "people",
+          "start": 18.27,
+          "end": 18.490000000000002,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "together.",
+          "start": 18.490000000000002,
+          "end": 18.830000000000002,
+          "probability": 0.998046875
+        }
+      ]
+    },
+    {
+      "chunk_id": 5,
+      "words": [
+        {
+          "text": "But",
+          "start": 19.37,
+          "end": 19.53,
+          "probability": 0.765625
+        },
+        {
+          "text": "in",
+          "start": 19.53,
+          "end": 19.650000000000002,
+          "probability": 0.97900390625
+        },
+        {
+          "text": "1644",
+          "start": 19.650000000000002,
+          "end": 20.71,
+          "probability": 0.99609375
+        },
+        {
+          "text": "a",
+          "start": 20.71,
+          "end": 21.130000000000003,
+          "probability": 0.36083984375
+        },
+        {
+          "text": "small",
+          "start": 21.130000000000003,
+          "end": 21.39,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "army",
+          "start": 21.39,
+          "end": 21.73,
+          "probability": 0.982421875
+        },
+        {
+          "text": "from",
+          "start": 21.73,
+          "end": 21.990000000000002,
+          "probability": 0.98876953125
+        },
+        {
+          "text": "beyond",
+          "start": 21.990000000000002,
+          "end": 22.25,
+          "probability": 0.986328125
+        },
+        {
+          "text": "the",
+          "start": 22.25,
+          "end": 22.39,
+          "probability": 0.98779296875
+        },
+        {
+          "text": "Great",
+          "start": 22.39,
+          "end": 22.53,
+          "probability": 0.939453125
+        },
+        {
+          "text": "Wall",
+          "start": 22.53,
+          "end": 22.79,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "would",
+          "start": 22.79,
+          "end": 22.990000000000002,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "test",
+          "start": 22.990000000000002,
+          "end": 23.21,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "that",
+          "start": 23.21,
+          "end": 23.39,
+          "probability": 0.95361328125
+        },
+        {
+          "text": "unity",
+          "start": 23.39,
+          "end": 23.650000000000002,
+          "probability": 0.9775390625
+        },
+        {
+          "text": "like",
+          "start": 23.650000000000002,
+          "end": 23.87,
+          "probability": 0.98876953125
+        },
+        {
+          "text": "never",
+          "start": 23.87,
+          "end": 24.07,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "before.",
+          "start": 24.07,
+          "end": 24.51,
+          "probability": 0.99609375
+        }
+      ]
+    }
+  ]
+}

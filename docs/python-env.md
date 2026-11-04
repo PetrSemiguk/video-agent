@@ -25,7 +25,7 @@ restricted to Windows (`tool.uv.environments`).
 |---|---|---|
 | chatterbox-tts | 0.1.7 | Python ≥3.10 (developed on 3.11). **Hard pins** `torch==2.6.0`, `torchaudio==2.6.0` on Python < 3.14 (≥2.9 only on 3.14). Also pins `numpy<2`, `transformers==5.2.0`. Multilingual model: `ChatterboxMultilingualTTS` (`chatterbox.mtl_tts`, HF repo `ResembleAI/chatterbox`, 23 languages). English: `ChatterboxTTS`, `ChatterboxTurboTTS`. |
 | faster-whisper | 1.2.1 | `ctranslate2>=4.0,<5`. GPU needs cuBLAS for CUDA 12 and cuDNN 9 (ctranslate2 ≥4.5). |
-| ctranslate2 | 4.8.4 | CUDA 12 build. The Windows wheel bundles `ctranslate2.dll` (cudart linked statically), `cudnn64_9.dll`; it loads **`cublas64_12.dll` dynamically** and does not ship it. cuDNN is optional since 4.6.3. |
+| ctranslate2 | 4.8.5 (verified in step 3.3) | CUDA 12 build. Uses cuBLAS/CUDA DLLs available through torch/lib on this Windows environment; see actual verification below. |
 
 - torch 2.6.0 exists for cu118, cu124 and cu126; **cu126** is the newest and satisfies
   ctranslate2's "CUDA 12 + cuDNN 9".
@@ -33,15 +33,30 @@ restricted to Windows (`tool.uv.environments`).
   `torch/lib`, and registers that folder as a DLL directory on `import torch`.
 - RTX 4060 is sm_89 and is supported by all of the above.
 
-### Known risk for step 3.3 (faster-whisper on Windows)
+### Verified step 3.3 (faster-whisper on Windows, 2026-11-04)
 
-DLL lookup on Windows is the usual failure (`Could not load library cublas64_12.dll` /
-`cudnn_ops64_9.dll`). Planned mitigation, to be verified in step 3.3:
-1. `import torch` before `faster_whisper`, so ctranslate2 finds cuBLAS in `torch/lib`.
-2. If ctranslate2 needs a newer cuBLAS than torch's 12.6, add `nvidia-cublas-cu12` and register
-   its `bin/` folder with `os.add_dll_directory` before importing ctranslate2.
+Installed via uv: faster-whisper **1.2.1**, CTranslate2 **4.8.5**, av **18.1.0**,
+onnxruntime **1.31.1**, flatbuffers **25.12.19**. torch/torchaudio remain
+**2.6.0+cu126**, numpy **1.26.4**. Full geo and audio tests still pass.
 
-The `nvidia-*-cu12` pip packages are not needed for torch itself.
+Actual successful DLL strategy: import torch first, retain an explicit
+`os.add_dll_directory(Path(torch.__file__).parent / "lib")` handle on Windows,
+then import CTranslate2/faster-whisper. GPU FP16 small.en transcription works on
+RTX 4060. **No nvidia-cublas-cu12 or additional CUDA/cuDNN install was needed.**
+No CPU fallback or torch downgrade was used.
+
+Pinned MIT model `Systran/faster-whisper-small.en` revision
+`d1d751a5f8271d482d14ca55d9e2deeebbae577f` is cached under the same ignored
+workspace HF_HOME as voice models. CUDA driver snapshots during the verified
+24.74 s sample observed 594 MiB additional system-wide usage, with about 1.64 GiB
+total used. This is checkpoint sampling, not an instrumented allocation peak.
+
+GPU transcription and TTS repair run in separate child processes, joined before
+the next starts. CTranslate2 owns allocations outside torch's allocator, so
+`torch.cuda.empty_cache()` alone is not treated as sufficient to unload Whisper.
+
+If a future environment reports missing DLLs, diagnose its exact versions before
+adding NVIDIA packages; they are not needed for torch itself or this verified run.
 
 ## Model cache
 

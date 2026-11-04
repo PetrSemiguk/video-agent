@@ -6,6 +6,8 @@ readme = "README.md"
 requires-python = "==3.11.*"
 dependencies = [
     "chatterbox-tts==0.1.7",
+    "ctranslate2==4.8.5",
+    "faster-whisper==1.2.1",
     "httpx>=0.28.1",
     "numpy>=1.24,<2",
     # Pinned to 2.6.0: chatterbox-tts 0.1.7 hard-pins torch==2.6.0 / torchaudio==2.6.0

@@ -188,7 +188,7 @@ def run(args: argparse.Namespace) -> dict:
     peak_allocated = peak_reserved = 0
     try:
         for index, chunk in enumerate(prepared):
-            seed = args.seed + index
+            seed = getattr(args, "seed_overrides", {}).get(str(index), args.seed + index)
             key = cache_key(chunk.normalized, settings, voice_hash, seed)
             path = cache / f"{key}.wav"
             audio = read_cached(path)

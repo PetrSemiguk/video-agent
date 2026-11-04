@@ -1,0 +1,82 @@
+{
+  "seed": 33,
+  "count": 10,
+  "method": "5 ms RMS / 2 ms hop; positive 8 ms rise; independent global peaks; nearest acoustic landmark",
+  "limitation": "Energy rises can be syllables within connected speech. These distances are an onset proxy, not independently labelled word-boundary accuracy.",
+  "median_error_ms": 33.50000000000097,
+  "max_error_ms": 52.50000000000021,
+  "landmark_count": 254,
+  "words": [
+    {
+      "word_index": 73,
+      "text": "that",
+      "whisper_start": 23.21,
+      "waveform_onset": 23.1865,
+      "absolute_error_ms": 23.500000000002075
+    },
+    {
+      "word_index": 21,
+      "text": "into",
+      "whisper_start": 6.59,
+      "waveform_onset": 6.6365,
+      "absolute_error_ms": 46.499999999999986
+    },
+    {
+      "word_index": 29,
+      "text": "Desert",
+      "whisper_start": 9.22,
+      "waveform_onset": 9.1725,
+      "absolute_error_ms": 47.50000000000121
+    },
+    {
+      "word_index": 35,
+      "text": "And",
+      "whisper_start": 11.93,
+      "waveform_onset": 11.9825,
+      "absolute_error_ms": 52.50000000000021
+    },
+    {
+      "word_index": 61,
+      "text": "in",
+      "whisper_start": 19.53,
+      "waveform_onset": 19.5325,
+      "absolute_error_ms": 2.4999999999977263
+    },
+    {
+      "word_index": 68,
+      "text": "the",
+      "whisper_start": 22.25,
+      "waveform_onset": 22.2585,
+      "absolute_error_ms": 8.500000000001506
+    },
+    {
+      "word_index": 67,
+      "text": "beyond",
+      "whisper_start": 21.990000000000002,
+      "waveform_onset": 21.9585,
+      "absolute_error_ms": 31.500000000001194
+    },
+    {
+      "word_index": 23,
+      "text": "sky.",
+      "whisper_start": 7.21,
+      "waveform_onset": 7.1705,
+      "absolute_error_ms": 39.50000000000031
+    },
+    {
+      "word_index": 64,
+      "text": "small",
+      "whisper_start": 21.130000000000003,
+      "waveform_onset": 21.1265,
+      "absolute_error_ms": 3.500000000002501
+    },
+    {
+      "word_index": 41,
+      "text": "carve",
+      "whisper_start": 13.55,
+      "waveform_onset": 13.5145,
+      "absolute_error_ms": 35.50000000000075
+    }
+  ],
+  "audio_sha256": "6ce8df31653cc01eb85ed84d9d2cc0eefbabf19626c405bda401e02fdd127126"
+}
