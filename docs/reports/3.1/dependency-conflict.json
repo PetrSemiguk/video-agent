@@ -1,0 +1,44 @@
+{
+  "step": "3.1",
+  "checked_on": "2026-11-04",
+  "status": "stopped_pending_dependency_decision",
+  "installed": {
+    "python": "3.11.15",
+    "torch": "2.6.0+cu126",
+    "torchaudio": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "Pillow": "13.0.0",
+    "rasterio": "1.4.4",
+    "shapely": "2.2.0",
+    "gpu": "NVIDIA GeForce RTX 4060",
+    "cuda_available": true,
+    "chatterbox_installed": false
+  },
+  "requested": "chatterbox-tts==0.1.7",
+  "constraints": {
+    "project": "pillow>=13.0.0",
+    "chatterbox-tts==0.1.7": "gradio==6.8.0",
+    "gradio==6.8.0": "pillow>=8.0,<13.0"
+  },
+  "resolver": {
+    "working_directory": "pipeline",
+    "command": "'chatterbox-tts==0.1.7' | uv pip compile pyproject.toml - --python-version 3.11 --torch-backend cu126 --output-file ../studio/out/tts-resolved.txt",
+    "exit_code": 1,
+    "message": "No solution found when resolving dependencies: gradio==6.8.0 requires pillow>=8.0,<13.0; chatterbox-tts==0.1.7 requires gradio==6.8.0; vap requires pillow>=13.0.0. Requirements are unsatisfiable.",
+    "dependencies_installed": false,
+    "project_or_lockfile_modified": false
+  },
+  "sources": {
+    "chatterbox_pypi": "https://pypi.org/pypi/chatterbox-tts/json",
+    "gradio_pypi": "https://pypi.org/pypi/gradio/6.8.0/json",
+    "chatterbox_code_license": "https://raw.githubusercontent.com/resemble-ai/chatterbox/master/LICENSE",
+    "chatterbox_model_card": "https://huggingface.co/ResembleAI/chatterbox/raw/main/README.md",
+    "perth_license": "https://raw.githubusercontent.com/resemble-ai/Perth/master/LICENSE"
+  },
+  "checks": {
+    "pytest_passed": 50,
+    "vitest_passed": 46,
+    "eslint": "passed",
+    "typescript": "passed"
+  }
+}

@@ -54,6 +54,14 @@ Paste it verbatim into the description of every episode that uses terrain:
 The same texts are embedded in every plate's `studio/public/plates/<name>.json`
 (`attribution.on_screen`, `attribution.full`), generated from `pipeline/src/vap/geo/sources.py`.
 
+## Voice models and watermarking
+
+| Source | License | Commercial use? | Attribution text |
+|---|---|---|---|
+| [Chatterbox TTS 0.1.7 code](https://github.com/resemble-ai/chatterbox/blob/master/LICENSE) | MIT | Yes | Retain the distributed copyright/license notice. No on-screen credit required. |
+| [ResembleAI/chatterbox weights](https://huggingface.co/ResembleAI/chatterbox) (original English model) | MIT, per publisher model card | Yes | Retain model provenance and revision in voice manifests. No voice-cloning rights are granted by a model license. |
+| [Resemble Perth watermarking](https://github.com/resemble-ai/Perth/blob/master/LICENSE) | MIT | Yes | Retain distributed copyright/license notices. Keep the built-in watermark enabled; do not substitute a dummy watermarker. |
+
 ## Historical boundary sources
 
 Parser software: [pyosmium 4.3.2](https://github.com/osmcode/pyosmium/blob/master/LICENSE.TXT)

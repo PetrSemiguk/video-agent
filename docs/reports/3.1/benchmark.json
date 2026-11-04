@@ -1,0 +1,115 @@
+{
+  "model_revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+  "selected_exaggeration": 0.3,
+  "cfg": 0.5,
+  "seed": 42,
+  "normalised_sentences": [
+    "Look at a map of China, and one thing stands out.",
+    "In the west, the Tibetan Plateau rises nearly five kilometers into the sky.",
+    "In the north, the Gobi Desert stretches for a thousand miles.",
+    "And in between, two great rivers carve their way east, toward the sea.",
+    "For more than two thousand years, this landscape has pushed its people together.",
+    "But in sixteen forty-four, a small army from beyond the Great Wall would test that unity like never before."
+  ],
+  "variants": [
+    {
+      "exaggeration": 0.3,
+      "audio": "episodes/_sandbox/tts-test/audio/voice-ex03.wav",
+      "duration": 26.52,
+      "original_metrics": {
+        "cache_hits": 0,
+        "chunk_count": 6,
+        "model_load_seconds": 12.799153300002217,
+        "synthesis_seconds": 29.23986660000446,
+        "speech_seconds": 24.92,
+        "synthesis_rtf": 1.1733493820226508,
+        "peak_allocated_mib": 3225.12158203125,
+        "peak_reserved_mib": 3418.0,
+        "wall_seconds": 50.8972947000002
+      },
+      "rerun_metrics": {
+        "cache_hits": 6,
+        "chunk_count": 6,
+        "model_load_seconds": 0.0,
+        "synthesis_seconds": 0.0,
+        "speech_seconds": 24.92,
+        "synthesis_rtf": 0.0,
+        "peak_allocated_mib": 0,
+        "peak_reserved_mib": 0,
+        "wall_seconds": 0.05906250000043656
+      },
+      "bit_identical_rerun": true,
+      "audio_sha256": "6eae58225d216d9d07bc15aa8d8a7c8429e248c1295885de619208f52cf195fc",
+      "peak_amplitude": 0.965484619140625,
+      "clipped_samples": 0,
+      "output_gain": 1.0,
+      "perth_detector_mean": 1.0
+    },
+    {
+      "exaggeration": 0.5,
+      "audio": "episodes/_sandbox/tts-test/audio/voice-ex05.wav",
+      "duration": 25.32,
+      "original_metrics": {
+        "cache_hits": 0,
+        "chunk_count": 6,
+        "model_load_seconds": 10.538399600001867,
+        "synthesis_seconds": 30.123977499995817,
+        "speech_seconds": 23.72,
+        "synthesis_rtf": 1.2699821880268052,
+        "peak_allocated_mib": 3221.736328125,
+        "peak_reserved_mib": 3422.0,
+        "wall_seconds": 49.3086441000014
+      },
+      "rerun_metrics": {
+        "cache_hits": 6,
+        "chunk_count": 6,
+        "model_load_seconds": 0.0,
+        "synthesis_seconds": 0.0,
+        "speech_seconds": 23.72,
+        "synthesis_rtf": 0.0,
+        "peak_allocated_mib": 0,
+        "peak_reserved_mib": 0,
+        "wall_seconds": 0.05660340000031283
+      },
+      "bit_identical_rerun": true,
+      "audio_sha256": "7e235a3b09d4aa54a88461270ca3d6974e89b5df974e70c36a4df218bd96a165",
+      "peak_amplitude": 0.980010986328125,
+      "clipped_samples": 0,
+      "output_gain": 0.9756369347607357,
+      "perth_detector_mean": 0.9989727735519409
+    },
+    {
+      "exaggeration": 0.7,
+      "audio": "episodes/_sandbox/tts-test/audio/voice-ex07.wav",
+      "duration": 23.48,
+      "original_metrics": {
+        "cache_hits": 0,
+        "chunk_count": 6,
+        "model_load_seconds": 12.840582200002245,
+        "synthesis_seconds": 25.28840929999933,
+        "speech_seconds": 21.88,
+        "synthesis_rtf": 1.1557773903107555,
+        "peak_allocated_mib": 3222.9306640625,
+        "peak_reserved_mib": 3416.0,
+        "wall_seconds": 38.499259000000166
+      },
+      "rerun_metrics": {
+        "cache_hits": 6,
+        "chunk_count": 6,
+        "model_load_seconds": 0.0,
+        "synthesis_seconds": 0.0,
+        "speech_seconds": 21.88,
+        "synthesis_rtf": 0.0,
+        "peak_allocated_mib": 0,
+        "peak_reserved_mib": 0,
+        "wall_seconds": 0.04767849999916507
+      },
+      "bit_identical_rerun": true,
+      "audio_sha256": "6d8703fafe97bbc21d64a24f7a04c89ae396d3e0b26bdf4517c57337697742d1",
+      "peak_amplitude": 0.9691162109375,
+      "clipped_samples": 0,
+      "output_gain": 1.0,
+      "perth_detector_mean": 0.9986801147460938
+    }
+  ]
+}

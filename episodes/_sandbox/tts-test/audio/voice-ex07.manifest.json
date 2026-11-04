@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "python": "3.11.15",
+  "script_sha256": "eb51e103b332050cbfb4ca851d0080edc9e6c55d1b148bfb95bb4969d579ae38",
+  "model": {
+    "repo": "ResembleAI/chatterbox",
+    "revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+    "package": "0.1.7"
+  },
+  "versions": {
+    "torch": "2.6.0+cu126",
+    "torchaudio": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "Pillow": "12.3.0",
+    "rasterio": "1.4.4",
+    "shapely": "2.2.0",
+    "transformers": "5.2.0",
+    "diffusers": "0.29.0",
+    "resemble-perth": "1.0.1",
+    "setuptools": "80.10.2"
+  },
+  "settings": {
+    "exaggeration": 0.7,
+    "cfg_weight": 0.5,
+    "temperature": 0.8,
+    "repetition_penalty": 1.2,
+    "min_p": 0.05,
+    "top_p": 1.0
+  },
+  "seed": 42,
+  "max_chars": 240,
+  "voice": {
+    "kind": "publisher-built-in",
+    "sha256": "publisher-built-in-conds"
+  },
+  "watermark": "PerthImplicitWatermarker; enabled in upstream generate",
+  "sample_rate": 24000,
+  "samples": 563520,
+  "duration": 23.48,
+  "sentence_pause": 0.25,
+  "paragraph_pause": 0.6,
+  "edge_fade_seconds": 0.005,
+  "output_gain": 1.0,
+  "pre_gain_peak": 0.9691267013549805,
+  "chunks": [
+    {
+      "id": 0,
+      "original": "Look at a map of China, and one thing stands out.",
+      "normalized": "Look at a map of China, and one thing stands out.",
+      "paragraph": 0,
+      "seed": 42,
+      "cache_key": "19d7d4dd800cea55f83ec5b19e600d3df3b35f873bacc052e0e8ce3be33d6c66",
+      "cache_hit": false,
+      "generation_seconds": 3.026178699998127,
+      "params": {
+        "exaggeration": 0.7,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 0,
+      "end_sample": 58560,
+      "start": 0.0,
+      "end": 2.44,
+      "pause_after_samples": 6000
+    },
+    {
+      "id": 1,
+      "original": "In the west, the Tibetan Plateau rises nearly five kilometers into the sky.",
+      "normalized": "In the west, the Tibetan Plateau rises nearly five kilometers into the sky.",
+      "paragraph": 0,
+      "seed": 43,
+      "cache_key": "63b0a3457212e7fa150692c7bf304263db3ca98222f00ddb368095bcee484187",
+      "cache_hit": false,
+      "generation_seconds": 4.407610099999147,
+      "params": {
+        "exaggeration": 0.7,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 64560,
+      "end_sample": 160560,
+      "start": 2.69,
+      "end": 6.69,
+      "pause_after_samples": 6000
+    },
+    {
+      "id": 2,
+      "original": "In the north, the Gobi Desert stretches for a thousand miles.",
+      "normalized": "In the north, the Gobi Desert stretches for a thousand miles.",
+      "paragraph": 0,
+      "seed": 44,
+      "cache_key": "21c534c2f7bfa22bdf96a95beea1aeffd68be6e14371919ff80e846c961680ad",
+      "cache_hit": false,
+      "generation_seconds": 3.437678300000698,
+      "params": {
+        "exaggeration": 0.7,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 166560,
+      "end_sample": 234720,
+      "start": 6.94,
+      "end": 9.78,
+      "pause_after_samples": 14400
+    },
+    {
+      "id": 3,
+      "original": "And in between, two great rivers carve their way east, toward the sea.",
+      "normalized": "And in between, two great rivers carve their way east, toward the sea.",
+      "paragraph": 1,
+      "seed": 45,
+      "cache_key": "67fb397817a569f66a59266739fcd8870f6db3c51d32a473582af3a311597d13",
+      "cache_hit": false,
+      "generation_seconds": 3.958987199999683,
+      "params": {
+        "exaggeration": 0.7,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 249120,
+      "end_sample": 332640,
+      "start": 10.38,
+      "end": 13.86,
+      "pause_after_samples": 6000
+    },
+    {
+      "id": 4,
+      "original": "For more than 2,000 years, this landscape has pushed its people together.",
+      "normalized": "For more than two thousand years, this landscape has pushed its people together.",
+      "paragraph": 1,
+      "seed": 46,
+      "cache_key": "d84b7d8ac6611008a6917c7dc51b79f64ad63a7808cb600bbcc7eca37bb3f697",
+      "cache_hit": false,
+      "generation_seconds": 4.433968700002879,
+      "params": {
+        "exaggeration": 0.7,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 338640,
+      "end_sample": 428880,
+      "start": 14.11,
+      "end": 17.87,
+      "pause_after_samples": 6000
+    },
+    {
+      "id": 5,
+      "original": "But in 1644, a small army from beyond the Great Wall would test that unity like never before.",
+      "normalized": "But in sixteen forty-four, a small army from beyond the Great Wall would test that unity like never before.",
+      "paragraph": 1,
+      "seed": 47,
+      "cache_key": "f0296ca43ac7baca047d0e1e4b3f9f77ab45773dc8bb914fa766d1d6ba8f44b6",
+      "cache_hit": false,
+      "generation_seconds": 6.023986299998796,
+      "params": {
+        "exaggeration": 0.7,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 434880,
+      "end_sample": 563520,
+      "start": 18.12,
+      "end": 23.48,
+      "pause_after_samples": 0
+    }
+  ],
+  "metrics": {
+    "cache_hits": 0,
+    "chunk_count": 6,
+    "model_load_seconds": 12.840582200002245,
+    "synthesis_seconds": 25.28840929999933,
+    "speech_seconds": 21.88,
+    "synthesis_rtf": 1.1557773903107555,
+    "peak_allocated_mib": 3222.9306640625,
+    "peak_reserved_mib": 3416.0,
+    "wall_seconds": 38.499259000000166
+  },
+  "audio_sha256": "6d8703fafe97bbc21d64a24f7a04c89ae396d3e0b26bdf4517c57337697742d1",
+  "first_generation_metrics": {
+    "cache_hits": 0,
+    "chunk_count": 6,
+    "model_load_seconds": 12.840582200002245,
+    "synthesis_seconds": 25.28840929999933,
+    "speech_seconds": 21.88,
+    "synthesis_rtf": 1.1557773903107555,
+    "peak_allocated_mib": 3222.9306640625,
+    "peak_reserved_mib": 3416.0,
+    "wall_seconds": 38.499259000000166
+  }
+}

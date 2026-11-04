@@ -45,9 +45,24 @@ The `nvidia-*-cu12` pip packages are not needed for torch itself.
 
 ## Model cache
 
-Hugging Face models (Chatterbox, faster-whisper) are cached under `HF_HOME`, which defaults to
-`%USERPROFILE%\.cache\huggingface` (models in `hub\`). This is outside the repo. To move the cache,
-set `HF_HOME` in `.env`. Never commit model weights.
+Step 3.1 verification (2026-11-04): installed chatterbox-tts 0.1.7 with
+transformers 5.2.0, diffusers 0.29.0 and resemble-perth 1.0.1. The owner approved
+Pillow `>=12,<13` (resolved 12.3.0) because Gradio 6.8.0 requires Pillow<13.
+torch/torchaudio remain **2.6.0+cu126**, numpy **1.26.4**, rasterio **1.4.4** and
+shapely **2.2.0**. All geo tests pass with this environment. Perth needs the
+otherwise undeclared `pkg_resources`; setuptools `>=75,<81` (80.10.2) supplies it.
+The genuine PerthImplicitWatermarker runs on Windows; no dummy/substitute is used.
+
+The voice CLI honors explicit cache environment overrides, otherwise sets HF_HOME
+to `.cache/huggingface`, TORCH_HOME to `.cache/torch` and NUMBA_CACHE_DIR to
+`.cache/numba` under the repository, all git-ignored and writable in the sandbox.
+Only the pinned original English checkpoint files are downloaded. These workspace
+defaults override the generic Hugging Face library default described below.
+
+Hugging Face normally defaults to `%USERPROFILE%\.cache\huggingface` outside the repo;
+the voice CLI overrides that default as described above. Other tools may retain the
+library default. Set `HF_HOME` in the shell before launching to share a different cache.
+Never commit model weights.
 
 ## VRAM rule
 
