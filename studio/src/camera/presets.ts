@@ -73,10 +73,15 @@ export const fitBounds = (
   const p0 = toMerc({ lon: bounds[0], lat: bounds[1] });
   const p1 = toMerc({ lon: bounds[2], lat: bounds[3] });
   const availW = width * (1 - 2 * space.safeArea) - 2 * padding;
-  const availH = height * (1 - 2 * space.safeArea) - 2 * padding;
+  const availH =
+    height * (1 - space.safeArea - space.bottomReserve) - 2 * padding;
   const mpp = Math.max((p1.x - p0.x) / availW, (p1.y - p0.y) / availH);
   return {
-    center: fromMerc((p0.x + p1.x) / 2, (p0.y + p1.y) / 2),
+    center: fromMerc(
+      (p0.x + p1.x) / 2,
+      (p0.y + p1.y) / 2 -
+        ((height * (space.bottomReserve - space.safeArea)) / 2) * mpp,
+    ),
     zoom: Math.log2(WORLD_M / (512 * mpp)),
   };
 };

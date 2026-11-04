@@ -18,7 +18,7 @@ import numpy as np
 from PIL import Image
 
 from . import bluemarble, terrain
-from .look import apply_grade, apply_hillshade, hillshade, load_grades
+from .look import apply_grade, apply_hillshade, hillshade, load_grades, load_plate_look
 from .mercator import Extent, R, fit_extent, y_to_lat
 from .paths import PLATES_DIR
 from .sources import attribution
@@ -101,7 +101,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--bbox", required=True, type=parse_bbox, help="minLon,minLat,maxLon,maxLat")
     ap.add_argument("--width", type=int, default=3840)
     ap.add_argument("--height", type=int, default=2160)
-    ap.add_argument("--hillshade", type=float, default=0.5, help="blend strength 0..1")
+    ap.add_argument(
+        "--hillshade",
+        type=float,
+        default=load_plate_look()["hillshade"],
+        help="blend strength 0..1",
+    )
     ap.add_argument("--exaggeration", type=float, default=3.0, help="vertical exaggeration")
     ap.add_argument("--grade", default="dark", choices=sorted(load_grades()))
     ap.add_argument("--strict", action="store_true", help="fail if oversampling > limit")
@@ -147,6 +152,7 @@ def main(argv: list[str] | None = None) -> int:
         "azimuth": 315.0,
         "altitude": 45.0,
         "grade": args.grade,
+        "grade_version": 2 if args.grade == "dark" else 1 if args.grade == "dark_v1" else 0,
         "bluemarble_month": f"2004-{bluemarble.MONTH:02d}",
     }
     meta = metadata(args.name, ext, args.bbox, params, tz)

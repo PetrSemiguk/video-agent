@@ -12,9 +12,8 @@ import { useGeoJson } from "../geo/useGeoJson";
 import { LonLatTuple, PlateStage } from "../map/PlateStage";
 
 const PLATE = "china-east-hs05";
-const S = 30; // frames per second
 
-export const DEMO_CHINA_RIVERS_FRAMES = 20 * S;
+export const DEMO_CHINA_RIVERS_FRAMES = motion.demo.duration;
 
 // City coordinates from Natural Earth populated_places
 // (`uv run python -m vap.geo.find "<name>" --layer places`).
@@ -45,16 +44,7 @@ const camera = keyframedCamera([
 ]);
 
 // Timeline (frames).
-const T = {
-  yellow: 3 * S,
-  yellowDraw: 4.5 * S,
-  yangtze: 8 * S,
-  yangtzeDraw: 3.5 * S,
-  heartland: 12 * S,
-  heartlandEnter: 1.2 * S,
-  cities: 16 * S,
-  cityStagger: 8,
-};
+const T = motion.demo;
 const YELLOW_LABEL_AT = 0.62; // middle course, past the Ordos loop
 const YANGTZE_LABEL_AT = 0.66;
 

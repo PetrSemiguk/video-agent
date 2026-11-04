@@ -1,3 +1,5 @@
+import { GradeCompare } from "./design/GradeCompare";
+import { StyleSheet } from "./design/StyleSheet";
 import { Composition, Still } from "remotion";
 import "./design/fonts";
 import { ProjectionCheck } from "./qa/ProjectionCheck";
@@ -19,6 +21,26 @@ import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Still
+        id="GradeCompareChina"
+        component={GradeCompare}
+        width={3840}
+        height={1080}
+        defaultProps={{ plate: "china" as const }}
+      />
+      <Still
+        id="GradeCompareEurope"
+        component={GradeCompare}
+        width={3840}
+        height={1080}
+        defaultProps={{ plate: "europe" as const }}
+      />
+      <Still
+        id="StyleSheet"
+        component={StyleSheet}
+        width={1920}
+        height={1080}
+      />
       <Composition
         id="Hello"
         component={Hello}

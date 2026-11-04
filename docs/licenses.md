@@ -65,3 +65,11 @@ See [historical-sources.md](historical-sources.md) for coverage, download method
 |---|---|---|---|
 | OpenHistoricalMap boundary relations and geometry members | CC0 by default, per-element exceptions | Yes for CC0/untagged elements only; reject explicit other licenses on relation or members | OpenHistoricalMap contributors (CC0); retain relation URLs. |
 | Cliopatria (candidate only; not imported) | CC BY 4.0 | Yes, subject to attribution and per-record provenance review before use | Seshat Global History Databank, Cliopatria; https://creativecommons.org/licenses/by/4.0/; indicate changes. |
+
+## Step 2.1 headline candidates (local, unmodified Google Fonts files)
+
+| Source | License | Commercial use? | Attribution text |
+|---|---|---|---|
+| Barlow Condensed Bold, [Google Fonts](https://github.com/google/fonts/tree/main/ofl/barlowcondensed), `studio/public/fonts/barlowcondensed/` | SIL Open Font License 1.1 ([license](https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/OFL.txt)) | Yes, including video embedding | No on-screen credit required; retain OFL.txt beside the unmodified font. |
+| Oswald variable, [Google Fonts](https://github.com/google/fonts/tree/main/ofl/oswald), `studio/public/fonts/oswald/` | SIL Open Font License 1.1 ([license](https://raw.githubusercontent.com/google/fonts/main/ofl/oswald/OFL.txt)) | Yes, including video embedding | No on-screen credit required; retain OFL.txt beside the unmodified font. |
+| Anton Regular, [Google Fonts](https://github.com/google/fonts/tree/main/ofl/anton), `studio/public/fonts/anton/` | SIL Open Font License 1.1 ([license](https://raw.githubusercontent.com/google/fonts/main/ofl/anton/OFL.txt)) | Yes, including video embedding | No on-screen credit required; retain OFL.txt beside the unmodified font. |

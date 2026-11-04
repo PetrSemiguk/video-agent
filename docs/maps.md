@@ -16,7 +16,7 @@ NASA Blue Marble NG ─┼─► reproject 4326 → 3857 onto the exact extent �
 (500 m JPEG tiles)   │                                                 │
 AWS Terrain Tiles ───┴─► terrarium z-tiles → elevation (m) → hillshade ┤
 (terrarium PNG)                                                        ▼
-                                          multiply blend (--hillshade) → grade (grades.json)
+                                          multiply blend (--hillshade) → grade (design tokens)
                                                                        ▼
                          studio/public/plates/<name>.png (git-ignored) + <name>.json (committed)
 ```
@@ -51,10 +51,18 @@ Code: `pipeline/src/vap/geo/` — `mercator.py` (math), `bluemarble.py`, `terrai
 
 ### Grade
 
-`pipeline/src/vap/geo/grades.json` (`dark`, `neutral`). Order: saturation → exposure → gamma →
-ocean (water = elevation ≤ 0 and blue-dominant, feathered; multiplied and tinted) → vignette
-(r = 1 at the corners, smoothstep from `inner` to `outer`). These values move to design tokens
-in step 5.
+`studio/src/design/tokens.ts` is the single source (`plateLookJson`, a JSON string
+read by Python without executing TypeScript). `dark` is grade v2; `dark_v1` is retained
+for reproducible comparisons; `neutral` bypasses styling. Order: saturation, exposure,
+gamma, land midtone lift (+12.5%) with a smooth highlight shoulder, ocean tint/multiply,
+and vignette. The land adjustment uses the inverse feathered ocean mask, so fully
+masked sea pixels match v1 exactly. Default hillshade is 0.65.
+
+`uv run python -m vap.geo.grade_review` rebuilds the China/europe review pairs from
+licensed source caches and refreshes their production PNG/metadata without changing
+projection extents. `china-east-hs05` is a legacy identifier; metadata records the
+current 0.65 hillshade. Other historical A/B plates retain their explicit settings.
+Run `node scripts/render-design-review.mjs` from studio for all 2.1 renders.
 
 ## Metadata contract (`<name>.json`)
 

@@ -8,6 +8,7 @@ import {
 import {
   colors,
   fontStack,
+  headlineStack,
   monoStack,
   motion,
   space,
@@ -18,7 +19,7 @@ export const Hello: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const appear = spring({ frame, fps, config: { damping: 200 } });
+  const appear = spring({ frame, fps, config: motion.spring });
   const opacity = interpolate(frame, [0, motion.frames.base], [0, 1], {
     extrapolateRight: "clamp",
     easing: motion.easing.out,
@@ -53,6 +54,7 @@ export const Hello: React.FC = () => {
           style={{
             color: colors.labelText,
             fontSize: type.size.title,
+            fontFamily: headlineStack,
             fontWeight: type.weight.bold,
             letterSpacing: `${type.tracking.title}em`,
           }}

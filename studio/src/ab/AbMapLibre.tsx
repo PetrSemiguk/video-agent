@@ -18,10 +18,10 @@ import { MapAttribution } from "../components/MapAttribution";
 import type { PlateMeta } from "../geo/plate";
 import { usePlateMeta } from "../geo/usePlateMeta";
 
-// TODO(step 5): replace hardcoded colors and sizes with design tokens.
-const BACKGROUND = "#05080b";
-const MARKER = "#ff2d2d";
-const MARKER_RADIUS = 6;
+import { colors, space } from "../design/tokens";
+const BACKGROUND = colors.dimOverlay;
+const MARKER = colors.debugMarker;
+const MARKER_RADIUS = space.debugMarker / 2;
 export const TERRAIN_EXAGGERATION = 1.8;
 const TERRAIN_MAXZOOM = 7;
 

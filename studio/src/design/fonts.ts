@@ -8,9 +8,30 @@ import {
 } from "remotion";
 import { type } from "./tokens";
 
-const FACES: { file: string; style: "normal" | "italic" }[] = [
-  { file: "fonts/inter/InterVariable.woff2", style: "normal" },
-  { file: "fonts/inter/InterVariable-Italic.woff2", style: "italic" },
+const FACES: {
+  file: string;
+  style: "normal" | "italic";
+  family: string;
+  weight: string;
+}[] = [
+  {
+    file: "fonts/inter/InterVariable.woff2",
+    style: "normal",
+    family: type.fontFamily,
+    weight: "100 900",
+  },
+  {
+    file: "fonts/inter/InterVariable-Italic.woff2",
+    style: "italic",
+    family: type.fontFamily,
+    weight: "100 900",
+  },
+  {
+    file: type.headlineFile,
+    style: "normal",
+    family: type.headlineFamily,
+    weight: "700",
+  },
 ];
 
 let loaded = false;
@@ -20,17 +41,13 @@ export const ensureFonts = () => {
     return;
   }
   loaded = true;
-  const handle = delayRender("Loading Inter");
+  const handle = delayRender("Loading local channel fonts");
   Promise.all(
     FACES.map((f) =>
-      new FontFace(
-        type.fontFamily,
-        `url(${staticFile(f.file)}) format("woff2")`,
-        {
-          style: f.style,
-          weight: "100 900",
-        },
-      ).load(),
+      new FontFace(f.family, `url(${staticFile(f.file)})`, {
+        style: f.style,
+        weight: f.weight,
+      }).load(),
     ),
   )
     .then((faces) => {

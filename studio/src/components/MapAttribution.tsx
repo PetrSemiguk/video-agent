@@ -1,4 +1,4 @@
-// Mandatory on-screen attribution for every map shot (CLAUDE.md overrides).
+// Mandatory on-screen attribution, secondary to the map labels.
 import { colors, fontStack, space, type } from "../design/tokens";
 
 export const MapAttribution: React.FC<{ text: string }> = ({ text }) => (
@@ -6,6 +6,11 @@ export const MapAttribution: React.FC<{ text: string }> = ({ text }) => (
     style={{
       position: "absolute",
       right: space.attributionInset,
+      left: space.attributionInset,
+      width: "fit-content",
+      marginLeft: "auto",
+      maxWidth: `calc(100% - ${2 * space.attributionInset}px)`,
+      lineHeight: type.lineHeight,
       bottom: space.attributionInset,
       padding: `${space.attributionPadY}px ${space.attributionPadX}px`,
       borderRadius: space.attributionRadius,

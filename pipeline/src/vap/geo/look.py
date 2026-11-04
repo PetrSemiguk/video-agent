@@ -4,19 +4,31 @@ from __future__ import annotations
 
 import json
 import math
-from pathlib import Path
+import re
 
 import numpy as np
 
 from .mercator import Extent, y_to_lat
+from .paths import REPO_ROOT
 
-GRADES_PATH = Path(__file__).with_name("grades.json")
+TOKENS_PATH = REPO_ROOT / "studio" / "src" / "design" / "tokens.ts"
 LUMA = np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
 
 
+def load_plate_look() -> dict:
+    """Read the JSON-compatible token block without executing TypeScript."""
+    match = re.search(
+        r"export const plateLookJson = String.raw`(\{.*?\})`;",
+        TOKENS_PATH.read_text(encoding="utf-8"),
+        re.DOTALL,
+    )
+    if match is None:
+        raise ValueError("Missing JSON-compatible plateLook design tokens")
+    return json.loads(match.group(1))
+
+
 def load_grades() -> dict:
-    data = json.loads(GRADES_PATH.read_text(encoding="utf-8"))
-    return {k: v for k, v in data.items() if not k.startswith("_")}
+    return load_plate_look()["grades"]
 
 
 def box_blur(a: np.ndarray, radius: int) -> np.ndarray:
@@ -83,6 +95,24 @@ def apply_grade(rgb: np.ndarray, grade: dict, elev: np.ndarray | None) -> np.nda
     luma = (out @ LUMA)[..., None]
     out = luma + grade["saturation"] * (out - luma)
     out = np.clip(out * grade["exposure"], 0.0, 1.0) ** grade["gamma"]
+
+    land = grade.get("land")
+    if land:
+        water_mask = ocean_mask(rgb, elev, int(grade["ocean"]["feather_px"]))
+        lum = out @ LUMA
+        # Smoothly isolate land midtones; the sea uses exactly the v1 transform.
+        low = np.clip(lum / land["mid_start"], 0, 1)
+        high = np.clip(
+            (land["highlight_start"] - lum) / (land["highlight_start"] - land["mid_end"]), 0, 1
+        )
+        gain = 1 + land["midtone_lift"] * low * low * (3 - 2 * low) * high * high * (3 - 2 * high)
+        lifted = out * gain[..., None]
+        ll = lifted @ LUMA
+        knee, scale = land["highlight_start"], land["highlight_scale"]
+        excess = np.maximum(ll - knee, 0)
+        target = np.minimum(ll, knee) + scale * (-np.expm1(-excess / scale))
+        lifted *= (target / np.maximum(ll, 1e-8))[..., None]
+        out += (1 - water_mask)[..., None] * (lifted - out)
 
     ocean = grade["ocean"]
     if ocean["multiply"] != 1.0 or ocean["tint_mix"] > 0:

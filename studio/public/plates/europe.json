@@ -32,13 +32,14 @@
     "lonlat_to_px": "x_m = R * radians(lon); y_m = R * ln(tan(pi/4 + radians(lat)/2)); px = (x_m - bbox_3857[0]) / (bbox_3857[2] - bbox_3857[0]) * width; py = (bbox_3857[3] - y_m) / (bbox_3857[3] - bbox_3857[1]) * height; (0,0) = top-left corner of the image, pixel centres at +0.5"
   },
   "params": {
-    "hillshade": 0.5,
+    "hillshade": 0.65,
     "exaggeration": 3.0,
     "azimuth": 315.0,
     "altitude": 45.0,
     "grade": "dark",
     "bluemarble_month": "2004-08",
-    "terrain_zoom": 7
+    "terrain_zoom": 7,
+    "grade_version": 2
   },
   "resolution": {
     "source": "NASA Blue Marble NG, 15 arc-seconds",

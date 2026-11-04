@@ -7,6 +7,7 @@ import { interpolate, useCurrentFrame } from "remotion";
 import {
   colors,
   fontStack,
+  headlineStack,
   motion,
   space,
   stroke,
@@ -38,7 +39,7 @@ const STYLE: Record<
   },
   region: {
     size: type.size.labelRegion,
-    weight: type.weight.semibold,
+    weight: type.weight.bold,
     italic: false,
     upper: true,
     tracking: type.tracking.region,
@@ -79,7 +80,8 @@ export const PlaceLabel: React.FC<{
   const resolvedAnchor: LabelAnchor =
     anchor ?? (kind === "city" ? "right" : kind === "river" ? "top" : "center");
 
-  const font = `${st.italic ? "italic " : ""}${st.weight} ${st.size}px ${type.fontFamily}`;
+  const family = kind === "region" ? type.headlineFamily : type.fontFamily;
+  const font = `${st.italic ? "italic " : ""}${st.weight} ${st.size}px ${family}`;
   const trackingPx = st.tracking * st.size;
   const textW = useMemo(
     () => measure(shown, font, trackingPx),
@@ -111,7 +113,10 @@ export const PlaceLabel: React.FC<{
   const sx = W * space.safeArea;
   const sy = H * space.safeArea;
   x = Math.min(Math.max(x, sx), W - sx - textW);
-  y = Math.min(Math.max(y, sy), H - sy - textH);
+  y = Math.min(
+    Math.max(y, sy),
+    H * (1 - space.bottomReserve) - textH - space.enterShift,
+  );
   const shift = space.enterShift * (1 - appear);
 
   return (
@@ -140,7 +145,7 @@ export const PlaceLabel: React.FC<{
           height: textH,
           lineHeight: `${textH}px`,
           whiteSpace: "nowrap",
-          fontFamily: fontStack,
+          fontFamily: kind === "region" ? headlineStack : fontStack,
           fontSize: st.size,
           fontWeight: st.weight,
           fontStyle: st.italic ? "italic" : "normal",
