@@ -272,3 +272,41 @@ export const plateLookJson = String.raw`{
 export const polityPalette = styleReview.polity;
 export const radii = { card: 12, chip: space.attributionRadius };
 export const shadow = { halo: stroke.labelHalo, color: colors.labelHalo };
+
+/** Text layers use native 1080p pixels and never shrink text to fit. */
+export const textLayer = {
+  maxWidth: 1120,
+  padding: 24,
+  gap: 16,
+  bar: 8,
+  radius: 12,
+  background: "rgba(11, 15, 20, 0.88)",
+  titleSize: 48,
+  bodySize: 32,
+  tagSize: 34,
+  factSize: 44,
+  dateSize: 140,
+  eraSize: 44,
+  defaultDuration: 120,
+  maxDuration: 1800,
+  limits: {
+    title: 64,
+    subtitle: 96,
+    tag: 32,
+    caption: 80,
+    statement: 120,
+    emphasis: 24,
+  },
+  review: {
+    width: 1920,
+    height: 2160,
+    padding: 64,
+    gap: 24,
+    rowHeight: 440,
+    labelWidth: 320,
+    labelSize: 26,
+    titleSize: 44,
+    settledFrame: 60,
+  },
+  demo: { width: 1920, height: 1080, slot: 112, duration: 450 },
+} as const;

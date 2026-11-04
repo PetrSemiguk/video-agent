@@ -1,3 +1,5 @@
+import { TextLayersDemo, TextLayersSheet } from "./demo/TextLayers";
+import { motion, textLayer } from "./design/tokens";
 import { GradeCompare } from "./design/GradeCompare";
 import { StyleSheet } from "./design/StyleSheet";
 import { Composition, Still } from "remotion";
@@ -21,6 +23,23 @@ import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="TextLayersSheet"
+        component={TextLayersSheet}
+        durationInFrames={textLayer.defaultDuration}
+        fps={motion.fps}
+        width={textLayer.review.width}
+        height={textLayer.review.height}
+        defaultProps={{ stress: false }}
+      />
+      <Composition
+        id="TextLayers"
+        component={TextLayersDemo}
+        durationInFrames={textLayer.demo.duration}
+        fps={motion.fps}
+        width={textLayer.demo.width}
+        height={textLayer.demo.height}
+      />
       <Still
         id="GradeCompareChina"
         component={GradeCompare}

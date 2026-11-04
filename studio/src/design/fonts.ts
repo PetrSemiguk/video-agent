@@ -35,6 +35,8 @@ const FACES: {
 ];
 
 let loaded = false;
+/** Consumers that measure text must wait for the registered local faces. */
+export let fontsReady: Promise<void> = Promise.resolve();
 
 export const ensureFonts = () => {
   if (loaded || typeof document === "undefined") {
@@ -42,7 +44,7 @@ export const ensureFonts = () => {
   }
   loaded = true;
   const handle = delayRender("Loading local channel fonts");
-  Promise.all(
+  fontsReady = Promise.all(
     FACES.map((f) =>
       new FontFace(f.family, `url(${staticFile(f.file)})`, {
         style: f.style,
