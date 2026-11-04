@@ -1,3 +1,6 @@
+import { z } from "zod";
+import { placeLabelSchema } from "./schemas";
+export { placeLabelSchema } from "./schemas";
 // Map label in the PlateStage screen layer: follows its [lon, lat] through camera moves but
 // keeps a constant on-screen size. City labels get a dot. Entrance: fade + small slide.
 // The label box is pushed back inside the 5 % safe area if it would leave the frame
@@ -65,7 +68,7 @@ const measure = (text: string, font: string, trackingPx: number) => {
   );
 };
 
-export const PlaceLabel: React.FC<{
+const PlaceLabelView: React.FC<{
   lonLat: LonLatTuple;
   text: string;
   kind: LabelKind;
@@ -161,3 +164,7 @@ export const PlaceLabel: React.FC<{
     </>
   );
 };
+
+export const PlaceLabel: React.FC<z.input<typeof placeLabelSchema>> = (
+  props,
+) => <PlaceLabelView {...placeLabelSchema.parse(props)} />;

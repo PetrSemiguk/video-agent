@@ -1,0 +1,91 @@
+import { z } from "zod";
+import type { GeoCollection, GeoFeature } from "../../geo/geojson";
+import { motion } from "../../design/tokens";
+import { shortText } from "../text/shared";
+import { semanticSchema } from "../info/shared";
+
+const point = z.tuple([
+  z.number().min(-180).max(180),
+  z.number().min(-85.051129).max(85.051129),
+]);
+const line = z.array(point).min(2);
+const ring = z
+  .array(point)
+  .min(4)
+  .refine(
+    (points) =>
+      points[0][0] === points[points.length - 1][0] &&
+      points[0][1] === points[points.length - 1][1],
+    "Polygon rings must be closed",
+  );
+const geometry = z.discriminatedUnion("type", [
+  z.object({ type: z.literal("Point"), coordinates: point }),
+  z.object({ type: z.literal("LineString"), coordinates: line }),
+  z.object({ type: z.literal("Polygon"), coordinates: z.array(ring).min(1) }),
+  z.object({
+    type: z.literal("MultiPolygon"),
+    coordinates: z.array(z.array(ring).min(1)).min(1),
+  }),
+]);
+const feature = z.object({
+  type: z.literal("Feature"),
+  properties: z.record(z.string(), z.unknown()),
+  geometry,
+});
+const collection = z.object({
+  type: z.literal("FeatureCollection"),
+  features: z.array(feature).min(1),
+});
+const regionGeo = z.custom<GeoCollection | GeoFeature>((value) => {
+  const p = z.union([collection, feature]).safeParse(value);
+  return (
+    p.success &&
+    (p.data.type === "FeatureCollection" ? p.data.features : [p.data]).every(
+      (f) =>
+        f.geometry.type === "Polygon" || f.geometry.type === "MultiPolygon",
+    )
+  );
+}, "Expected nonempty Polygon/MultiPolygon GeoJSON with closed lon/lat rings");
+const riverGeo = z.custom<GeoCollection>((value) => {
+  const p = collection.safeParse(value);
+  if (!p.success || p.data.features.length !== 1) return false;
+  const f = p.data.features[0],
+    fractions = f.properties.cumfrac;
+  return (
+    f.geometry.type === "LineString" &&
+    Array.isArray(fractions) &&
+    fractions.length === f.geometry.coordinates.length &&
+    fractions[0] === 0 &&
+    fractions[fractions.length - 1] === 1 &&
+    fractions.every(
+      (n, i) =>
+        typeof n === "number" &&
+        Number.isFinite(n) &&
+        n >= 0 &&
+        n <= 1 &&
+        (i === 0 || n >= fractions[i - 1]),
+    )
+  );
+}, "Expected one LineString with matching nondecreasing cumfrac from 0 to 1");
+const frames = z.number().int().min(1);
+export const regionHighlightSchema = z.strictObject({
+  geojson: regionGeo,
+  color: semanticSchema,
+  enterFrames: frames.default(motion.frames.slow),
+  outline: z.boolean().default(true),
+  dimOutside: z.boolean().default(false),
+  exitAt: z.number().int().min(0).optional(),
+  exitFrames: frames.default(motion.frames.slow),
+});
+export const riverLineSchema = z.strictObject({
+  geojson: riverGeo,
+  drawFrames: frames.default(motion.frames.draw),
+  glow: z.boolean().default(false),
+});
+export const placeLabelSchema = z.strictObject({
+  lonLat: point,
+  text: shortText(40),
+  kind: z.enum(["city", "region", "river"]),
+  anchor: z.enum(["right", "left", "top", "bottom", "center"]).optional(),
+  enterFrame: z.number().int().min(0).default(0),
+});

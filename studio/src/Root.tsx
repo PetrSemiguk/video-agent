@@ -1,6 +1,8 @@
+import { Showreel } from "./demo/Showreel";
+import { CardCheck } from "./qa/CardCheck";
 import { InfoDemo, InfoSheet } from "./demo/Info";
 import { TextLayersDemo, TextLayersSheet } from "./demo/TextLayers";
-import { infoLayer, motion, textLayer } from "./design/tokens";
+import { cards, infoLayer, motion, textLayer } from "./design/tokens";
 import { GradeCompare } from "./design/GradeCompare";
 import { StyleSheet } from "./design/StyleSheet";
 import { Composition, Still } from "remotion";
@@ -24,6 +26,23 @@ import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="Showreel"
+        component={Showreel}
+        durationInFrames={cards.showreel.duration}
+        fps={motion.fps}
+        width={cards.showreel.width}
+        height={cards.showreel.height}
+      />
+      <Composition
+        id="CardCheck"
+        component={CardCheck}
+        durationInFrames={cards.endDuration}
+        fps={motion.fps}
+        width={cards.showreel.width}
+        height={cards.showreel.height}
+        defaultProps={{ kind: "title" as const, stress: false }}
+      />
       <Composition
         id="InfoSheet"
         component={InfoSheet}

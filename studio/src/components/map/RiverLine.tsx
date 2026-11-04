@@ -1,3 +1,6 @@
+import { z } from "zod";
+import { riverLineSchema } from "./schemas";
+export { riverLineSchema } from "./schemas";
 // Draws a river (vap.geo.river output: one LineString source→mouth + per-vertex `cumfrac`)
 // from source to mouth at constant speed along its length. Width tapers from stroke.river.min
 // at the source to .max at the mouth (TAPER_STEPS pieces of increasing width); the drawing
@@ -13,7 +16,7 @@ const TAPER_STEPS = 24;
 /** Length fraction of the bright head. */
 const HEAD_FRACTION = 0.02;
 
-export const RiverLine: React.FC<{
+const RiverLineView: React.FC<{
   geojson: GeoCollection;
   drawFrames: number;
   glow?: boolean;
@@ -96,3 +99,7 @@ export const RiverLine: React.FC<{
     </GeoSvg>
   );
 };
+
+export const RiverLine: React.FC<z.input<typeof riverLineSchema>> = (props) => (
+  <RiverLineView {...riverLineSchema.parse(props)} />
+);

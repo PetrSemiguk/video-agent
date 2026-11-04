@@ -1,7 +1,10 @@
+import { z } from "zod";
+import { shortText } from "./text/shared";
+export const mapAttributionSchema = z.strictObject({ text: shortText(512) });
 // Mandatory on-screen attribution, secondary to the map labels.
 import { colors, fontStack, space, type } from "../design/tokens";
 
-export const MapAttribution: React.FC<{ text: string }> = ({ text }) => (
+const AttributionView: React.FC<{ text: string }> = ({ text }) => (
   <div
     style={{
       position: "absolute",
@@ -23,3 +26,7 @@ export const MapAttribution: React.FC<{ text: string }> = ({ text }) => (
     {text}
   </div>
 );
+
+export const MapAttribution: React.FC<z.input<typeof mapAttributionSchema>> = (
+  props,
+) => <AttributionView {...mapAttributionSchema.parse(props)} />;

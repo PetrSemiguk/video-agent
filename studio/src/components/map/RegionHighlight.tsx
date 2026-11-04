@@ -1,3 +1,6 @@
+import { z } from "zod";
+import { regionHighlightSchema } from "./schemas";
+export { regionHighlightSchema } from "./schemas";
 // Highlights a polygon region in the PlateStage geo layer.
 // Fill fades to opacity.regionFill; the outline is drawn around the perimeter
 // (stroke-dashoffset with pathLength = 1 per ring); dimOutside darkens everything outside
@@ -23,7 +26,7 @@ const ringsOf = (g: Geometry): [number, number][][] =>
       ? g.coordinates.flat()
       : [];
 
-export const RegionHighlight: React.FC<{
+const RegionHighlightView: React.FC<{
   geojson: GeoCollection | GeoFeature;
   color: RegionColor;
   enterFrames?: number;
@@ -116,3 +119,7 @@ export const RegionHighlight: React.FC<{
     </GeoSvg>
   );
 };
+
+export const RegionHighlight: React.FC<
+  z.input<typeof regionHighlightSchema>
+> = (props) => <RegionHighlightView {...regionHighlightSchema.parse(props)} />;

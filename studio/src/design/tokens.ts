@@ -354,3 +354,40 @@ export const infoLayer = {
   },
   demo: { width: 1920, height: 1080, slot: 120, duration: 600 },
 } as const;
+
+export const cards = {
+  titleWidth: 1320,
+  titleSize: 88,
+  subtitleSize: 34,
+  kickerSize: 26,
+  gap: 24,
+  titleLimit: 80,
+  subtitleLimit: 120,
+  kickerLimit: 32,
+  endWidth: 760,
+  endTitleSize: 64,
+  endTitleLimit: 48,
+  endSubtitleLimit: 96,
+  endDuration: 600,
+  // Project reservations, not official YouTube pixel restrictions.
+  endZones: {
+    video: { x: 1104, y: 162, width: 640, height: 360 },
+    subscribe: { x: 1320, y: 630, width: 240, height: 240 },
+  },
+  endShade: "rgba(11, 15, 20, 0.82)",
+  brollPush: 1.06,
+  brollCreditLimit: 80,
+  transitionFrames: 24,
+  showreel: {
+    width: 1920,
+    height: 1080,
+    duration: 1800,
+    content: 1200,
+    slot: 120,
+    mapSlot: 240,
+    brollSlot: 120,
+    scenes: [150, 240, 240, 360, 120, 210],
+    textSlot: 60,
+    infoSlot: 72,
+  },
+} as const;
