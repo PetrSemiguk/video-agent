@@ -1,0 +1,9 @@
+[
+  {
+    "feature": "Ming Dynasty, Later Jin Dynasty (frame 1642-1644)",
+    "problem": "The frame predates 1644: Ming still holds Beijing, and Manchuria is under the name Later Jin, which became Qing in 1636.",
+    "correct": "In July 1644 Qing held Beijing. Frame 1645 (china-1645-cliopatria) is closer.",
+    "source": "https://en.wikipedia.org/wiki/Qing_dynasty",
+    "severity": "blocker"
+  }
+]

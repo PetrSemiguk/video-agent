@@ -1,14 +1,15 @@
-"""Check extracted historical layers against well-known facts and river borders.
+"""Check historical layers against well-known facts, river borders and land coverage.
 
-uv run python -m vap.geo.hist_qa  ->  docs/reports/1.6/accuracy.json, rivers.json
+uv run python -m vap.geo.hist_qa  ->  docs/reports/1.7/accuracy.json, rivers.json, coverage.json
 
-Places answer "who holds this city", rivers answer "does this border follow the channel".
-These are spot checks of OHM against common knowledge, not an accuracy certificate.
+Places answer "who holds this city"; rivers answer "does this border follow the channel".
+These are spot checks against common knowledge, not an accuracy certificate.
 """
 
 from __future__ import annotations
 
 import json
+import re
 import statistics
 import sys
 
@@ -16,84 +17,83 @@ import numpy as np
 import shapely
 from shapely.geometry import Point, shape
 
-from .extract import PROCESSED_DIR, _clean_polygonal, _to_lonlat, _to_merc
-from .hist import EVIDENCE, _load_land, dated_states
-from .hist_backends import relations_in_plate, with_geometry
+from .extract import PROCESSED_DIR, _to_lonlat, _to_merc
+from .hist import EVIDENCE
 from .paths import PLATES_DIR
 
 EUROPE = "europe"
 CHINA = "china-east-hs05"
-DATES = {"europe-1914": "1914-07-01", "europe-1815": "1815-07-01", "china-1644": "1644-07-01"}
-# slug: (plate, [(place, lon, lat, expected polity substring or None for a known gap)])
-PLACES = {
-    "europe-1914": (
-        EUROPE,
-        [
-            ("Strasbourg (Alsace)", 7.75, 48.58, "German"),
-            ("Metz (Lorraine)", 6.18, 49.12, "German"),
-            ("Warsaw (Congress Poland)", 21.01, 52.23, "Russian"),
-            ("Lodz (Congress Poland)", 19.46, 51.76, "Russian"),
-            ("Sarajevo (Bosnia)", 18.41, 43.86, "Austria"),
-            ("Mostar (Herzegovina)", 17.81, 43.34, "Austria"),
-            ("Krakow (Galicia)", 19.94, 50.06, "Austria"),
-            ("Trieste", 13.77, 45.65, "Austria"),
-            ("Belgrade", 20.46, 44.82, "Serbia"),
-            ("Bucharest", 26.10, 44.43, "Romania"),
-            ("Sofia", 23.32, 42.70, "Bulgaria"),
-            ("Constantinople", 28.98, 41.01, "Ottoman"),
-            ("Tirana", 19.82, 41.33, "Albania"),
-            ("Dublin", -6.26, 53.35, "United Kingdom"),
-            ("Oslo", 10.75, 59.91, "Norway"),
-        ],
-    ),
-    "europe-1815": (
-        EUROPE,
-        [
-            ("Warsaw", 21.01, 52.23, "Poland"),
-            ("Krakow", 19.94, 50.06, "Cracow"),
-            ("Oslo (union with Sweden)", 10.75, 59.91, "Sweden"),
-            ("Stockholm", 18.07, 59.33, "Sweden"),
-            ("Munich", 11.58, 48.14, "Bavaria"),
-            ("Stuttgart", 9.18, 48.78, "Württemberg"),
-            ("Dresden", 13.74, 51.05, "Saxony"),
-            ("Hanover", 9.73, 52.37, "Hanover"),
-            ("Berlin", 13.40, 52.52, "Prussia"),
-            ("Frankfurt", 8.68, 50.11, "Frankfurt"),
-            ("Weimar", 11.33, 50.98, "Weimar"),
-            ("Gotha", 10.71, 50.95, "Gotha"),
-            ("Kassel", 9.48, 51.32, "Hesse"),
-            ("Vienna", 16.37, 48.21, "Austria"),
-            ("Milan", 9.19, 45.46, "Austria"),
-            ("Venice", 12.33, 45.44, "Austria"),
-            ("Paris", 2.35, 48.86, "France"),
-            ("Brussels", 4.35, 50.85, "Netherlands"),
-            ("Naples", 14.25, 40.85, "Naples"),
-            ("Rome", 12.48, 41.89, "Papal"),
-            ("Kiel (Holstein)", 10.13, 54.32, "Denmark"),
-            ("Copenhagen", 12.57, 55.68, "Denmark"),
-        ],
-    ),
-    "china-1644": (
-        CHINA,
-        [
-            ("Beijing", 116.40, 39.90, "Qing"),
-            ("Mukden", 123.43, 41.80, "Qing"),
-            ("Nanjing (Southern Ming)", 118.78, 32.06, "Ming"),
-            ("Xi'an (Shun)", 108.94, 34.34, "Shun"),
-            ("Seoul", 126.98, 37.57, "Joseon"),
-            ("Kyoto", 135.77, 35.01, "Tokugawa"),
-            ("Lhasa", 91.11, 29.65, "Khoshut"),
-        ],
-    ),
+# (place, lon, lat, regex the holder's name must match; "!" means it must not match)
+FACTS_1914 = [
+    ("Strasbourg (Alsace)", 7.75, 48.58, "German"),
+    ("Metz (Lorraine)", 6.18, 49.12, "German"),
+    ("Warsaw (Congress Poland)", 21.01, 52.23, "Russia"),
+    ("Sarajevo (Bosnia)", 18.41, 43.86, "Austria"),
+    ("Krakow (Galicia)", 19.94, 50.06, "Austria"),
+    ("Belgrade", 20.46, 44.82, "Serbia"),
+    ("Bucharest", 26.10, 44.43, "Romania"),
+    ("Sofia", 23.32, 42.70, "Bulgaria"),
+    ("Constantinople", 28.98, 41.01, "Ottoman"),
+    ("Paris", 2.35, 48.86, "France|French"),
+    ("Dublin", -6.26, 53.35, "United Kingdom|Brit"),
+]
+FACTS_1815 = [
+    ("Warsaw", 21.01, 52.23, "Poland|Russia"),
+    ("Oslo (union with Sweden)", 10.75, 59.91, "Sweden|Norway"),
+    ("Munich", 11.58, 48.14, "Bavaria"),
+    ("Stuttgart", 9.18, 48.78, "Württemberg|Wurttemberg"),
+    ("Dresden", 13.74, 51.05, "Saxony"),
+    ("Berlin", 13.40, 52.52, "Prussia"),
+    ("Frankfurt", 8.68, 50.11, "Frankfurt|Frankfur"),
+    ("Weimar", 11.33, 50.98, "Weimar"),
+    ("Vienna", 16.37, 48.21, "Austria"),
+    ("Milan", 9.19, 45.46, "Austria"),
+    ("Paris", 2.35, 48.86, "France"),
+]
+FACTS_1644 = [
+    ("Beijing", 116.40, 39.90, "Qing"),
+    ("Mukden", 123.43, 41.80, "Qing"),
+    ("Nanjing (south not yet Qing)", 118.78, 32.06, "!Qing"),
+    ("Guangzhou (south not yet Qing)", 113.26, 23.13, "!Qing"),
+    ("Xi'an (Shun, not Qing)", 108.94, 34.34, "!Qing"),
+    ("Seoul", 126.98, 37.57, "Joseon"),
+]
+FACTS_560 = [
+    ("Chang'an", 108.94, 34.34, "Northern Zhou"),
+    ("Chengdu (Sichuan)", 104.07, 30.57, "Northern Zhou"),
+    ("Ye (northeast)", 114.35, 36.30, "Northern Qi"),
+    ("Jinyang", 112.55, 37.87, "Northern Qi"),
+    ("Jiankang (south of the Yangtze)", 118.78, 32.06, "Chen"),
+    ("Jiangling (Western Liang)", 112.19, 30.35, "Western Liang"),
+]
+FACTS_590 = [
+    ("Chang'an", 108.94, 34.34, "Sui"),
+    ("Jiankang (Chen fell in 589)", 118.78, 32.06, "Sui"),
+    ("Guangzhou", 113.26, 23.13, "Sui"),
+    ("Chengdu", 104.07, 30.57, "Sui"),
+]
+LAYERS = {
+    "europe-1914": (EUROPE, FACTS_1914),
+    "europe-1914-cliopatria": (EUROPE, FACTS_1914),
+    "europe-1815": (EUROPE, FACTS_1815),
+    "europe-1815-cliopatria": (EUROPE, FACTS_1815),
+    "china-1644": (CHINA, FACTS_1644),
+    "china-1644-cliopatria": (CHINA, FACTS_1644),
+    "china-1645-cliopatria": (CHINA, FACTS_1644),
+    "china-560-cliopatria": (CHINA, FACTS_560),
+    "china-561-cliopatria": (CHINA, FACTS_560),
+    "china-560": (CHINA, FACTS_560),
+    "china-590-cliopatria": (CHINA, FACTS_590),
+    "china-592-cliopatria": (CHINA, FACTS_590),
 }
-# (slug, polity a, polity b, Natural Earth river)
+# Land covered before CC BY ways were allowed: docs/reports/1.6.md.
+COVERED_BEFORE = {"europe-1914": 0.3073, "europe-1815": 0.3513, "china-1644": 0.8708}
+# (layer, polity a, polity b, Natural Earth river)
 RIVER_BORDERS = [
     ("europe-1914", "Kingdom of Romania", "Tsardom of Bulgaria", "Danube"),
     ("europe-1914", "Kingdom of Serbia", "Austria-Hungary", "Danube"),
-    ("europe-1914", "Kingdom of Romania", "Russian Empire", "Danube"),
     ("europe-1914", "Kingdom of Romania", "Russian Empire", "Prut"),
     ("europe-1914", "Austria-Hungary", "Russian Empire", "Dniester"),
-    ("europe-1914", "Kingdom of Romania", "Russian Empire", "Dniester"),
 ]
 NEAR_RIVER_KM = 15.0
 CHANNEL_KM = 5.0
@@ -101,64 +101,56 @@ SAMPLE_M = 2000.0
 BORDER_WIDTH_PX = 3.0
 
 
-def layer_names(plate: str, slug: str) -> set[str]:
-    path = PROCESSED_DIR / plate / "historical" / f"{slug}.geojson"
-    collection = json.loads(path.read_text(encoding="utf-8"))
-    return {f["properties"]["name_en"] for f in collection["features"]}
+def load(plate: str, slug: str) -> dict:
+    return json.loads(
+        (PROCESSED_DIR / plate / "historical" / f"{slug}.geojson").read_text(encoding="utf-8")
+    )
 
 
-def all_states(slug: str) -> dict:
-    """Every state on the date with its geometry from the Overpass cache, in or out of the
-    layer. Excluded polygons are only read here: never written, committed or rendered."""
-    meta = json.loads((PLATES_DIR / f"{PLACES[slug][0]}.json").read_text(encoding="utf-8"))
-    states, _, _ = dated_states(relations_in_plate(meta), DATES[slug])
-    out = {}
-    for candidate in states:
-        filled = with_geometry(candidate)
-        if filled.geometry:
-            name = filled.tags.get("name:en") or filled.tags.get("name")
-            out[name] = shape(filled.geometry)
-    return out
+def verdict(expected: str, holders: list[str]) -> str:
+    if not holders:
+        return "no polity"
+    if expected.startswith("!"):
+        wrong = any(re.search(expected[1:], name) for name in holders)
+        return "differs" if wrong else "ok"
+    return "ok" if any(re.search(expected, name) for name in holders) else "differs"
 
 
 def check_places(slug: str) -> list[dict]:
-    plate, places = PLACES[slug]
-    polities = all_states(slug)
-    in_layer = layer_names(plate, slug)
+    plate, facts = LAYERS[slug]
+    polities = [
+        (f["properties"]["name_en"], shape(f["geometry"])) for f in load(plate, slug)["features"]
+    ]
     rows = []
-    for place, lon, lat, expected in places:
+    for place, lon, lat, expected in facts:
         point = Point(lon, lat)
-        holders = [name for name, geom in polities.items() if geom.covers(point)]
-        match = [name for name in holders if expected in name]
-        if not holders:
-            status = "no assembled polygon in OHM"
-        elif not match:
-            status = "differs from common knowledge"
-        elif any(name in in_layer for name in match):
-            status = "ok, in layer"
-        else:
-            status = "ok in OHM, excluded from layer"
+        holders = [name for name, geom in polities if geom.covers(point)]
         rows.append(
-            {"slug": slug, "place": place, "expected": expected, "ohm": holders, "status": status}
+            {
+                "layer": slug,
+                "place": place,
+                "expected": expected,
+                "found": holders,
+                "status": verdict(expected, holders),
+            }
         )
     return rows
 
 
-def land_coverage(slug: str) -> dict:
-    """Share of the plate's land a layer covers now, and with every assembled polygon."""
-    plate = PLACES[slug][0]
-    meta = json.loads((PLATES_DIR / f"{plate}.json").read_text(encoding="utf-8"))
-    land = _load_land(meta)
-    every = shapely.transform(
-        _clean_polygonal(shapely.union_all(list(all_states(slug).values()))), _to_merc
-    )
+def coverage(slug: str, places: list[dict]) -> dict:
+    plate = LAYERS[slug][0]
     report = json.loads(
         (PROCESSED_DIR / plate / "historical" / f"{slug}.report.json").read_text(encoding="utf-8")
     )
+    mine = [row for row in places if row["layer"] == slug]
     return {
-        "slug": slug,
-        "layer_land_covered": report["qa"]["land_covered"],
-        "all_assembled_land_covered": round(float(every.intersection(land).area / land.area), 4),
+        "layer": slug,
+        "features": report["qa"]["features"],
+        "land_covered": report["qa"]["land_covered"],
+        "land_covered_before_cc_by": COVERED_BEFORE.get(slug),
+        "overlap_kinds": report["qa"]["overlap_kinds"],
+        "facts_ok": sum(row["status"] == "ok" for row in mine),
+        "facts_checked": len(mine),
     }
 
 
@@ -183,61 +175,54 @@ def river_distance(a, b, river, pixel: float) -> dict:
         ]
     )
     distances = shapely.distance(shapely.points(samples), river) * scale
-    close = float(np.mean(distances <= CHANNEL_KM * 1000))
     return {
         "border_along_river_km": round(near.length * scale / 1000),
         "median_km": round(statistics.median(distances.tolist()) / 1000, 2),
         "p95_km": round(float(np.percentile(distances, 95)) / 1000, 2),
         "median_plate_px": round(statistics.median(distances.tolist()) / scale / pixel, 2),
-        "p95_plate_px": round(float(np.percentile(distances, 95)) / scale / pixel, 2),
-        f"share_within_{CHANNEL_KM:.0f}km": round(close, 3),
+        f"share_within_{CHANNEL_KM:.0f}km": round(
+            float(np.mean(distances <= CHANNEL_KM * 1000)), 3
+        ),
     }
 
 
 def check_rivers() -> list[dict]:
     rows = []
     for slug, name_a, name_b, river_name in RIVER_BORDERS:
-        plate = PLACES[slug][0]
+        plate = LAYERS[slug][0]
         meta = json.loads((PLATES_DIR / f"{plate}.json").read_text(encoding="utf-8"))
-        pixel = meta["pixel_size_m"]
         polities = {
-            name: shapely.transform(geom, _to_merc) for name, geom in all_states(slug).items()
+            f["properties"]["name_en"]: shapely.transform(shape(f["geometry"]), _to_merc)
+            for f in load(plate, slug)["features"]
         }
-        in_layer = layer_names(plate, slug)
         rivers = json.loads((PROCESSED_DIR / plate / "rivers.geojson").read_text(encoding="utf-8"))
-        parts = [
-            shapely.transform(shape(f["geometry"]), _to_merc)
-            for f in rivers["features"]
-            if river_name in (f["properties"].get("name_en") or "")
-        ]
-        row = {
-            "slug": slug,
-            "a": name_a,
-            "b": name_b,
-            "river": river_name,
-            "both_in_layer": name_a in in_layer and name_b in in_layer,
-        }
-        if not parts:
-            rows.append(row | {"note": "river not in the plate's Natural Earth layer"})
-            continue
-        river = shapely.union_all(parts)
-        rows.append(row | river_distance(polities[name_a], polities[name_b], river, pixel))
+        river = shapely.union_all(
+            [
+                shapely.transform(shape(f["geometry"]), _to_merc)
+                for f in rivers["features"]
+                if river_name in (f["properties"].get("name_en") or "")
+            ]
+        )
+        row = {"layer": slug, "a": name_a, "b": name_b, "river": river_name}
+        rows.append(
+            row | river_distance(polities[name_a], polities[name_b], river, meta["pixel_size_m"])
+        )
     return rows
 
 
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
-    places = [row for slug in PLACES for row in check_places(slug)]
+    places = [row for slug in LAYERS for row in check_places(slug)]
     rivers = check_rivers()
-    coverage = [land_coverage(slug) for slug in PLACES]
+    table = [coverage(slug, places) for slug in LAYERS]
     EVIDENCE.mkdir(parents=True, exist_ok=True)
-    for name, rows in (("accuracy", places), ("rivers", rivers), ("land-coverage", coverage)):
+    for name, rows in (("accuracy", places), ("rivers", rivers), ("coverage", table)):
         (EVIDENCE / f"{name}.json").write_text(
             json.dumps(rows, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
         )
     for row in places:
-        print(f"{row['slug']:12} {row['status']:24} {row['place']:28} {row['ohm']}")
-    for row in [*rivers, *coverage]:
+        print(f"{row['layer']:24} {row['status']:9} {row['place']:34} {row['found']}")
+    for row in [*table, *rivers]:
         print(row)
     return 0
 

@@ -1,0 +1,185 @@
+{
+  "plate": "china-east",
+  "resolved_plate": "china-east-hs05",
+  "date": "1644-07-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1644,
+  "states": [
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1642,
+      "valid_to": 1644,
+      "area_km2": 6825993
+    },
+    {
+      "name": "Spanish Empire",
+      "valid_from": 1640,
+      "valid_to": 1658,
+      "area_km2": 6152471
+    },
+    {
+      "name": "Ming Dynasty",
+      "valid_from": 1642,
+      "valid_to": 1644,
+      "area_km2": 3360471
+    },
+    {
+      "name": "Mughal Empire",
+      "valid_from": 1640,
+      "valid_to": 1647,
+      "area_km2": 2871595
+    },
+    {
+      "name": "Golden Horde",
+      "valid_from": 1636,
+      "valid_to": 1647,
+      "area_km2": 2739180
+    },
+    {
+      "name": "Later Jin Dynasty",
+      "valid_from": 1642,
+      "valid_to": 1644,
+      "area_km2": 2516284
+    },
+    {
+      "name": "Tibet",
+      "valid_from": 1636,
+      "valid_to": 1644,
+      "area_km2": 1550033
+    },
+    {
+      "name": "Eastern Moghulistan",
+      "valid_from": 1636,
+      "valid_to": 1682,
+      "area_km2": 936577
+    },
+    {
+      "name": "Oirat Confederation",
+      "valid_from": 1636,
+      "valid_to": 1658,
+      "area_km2": 839091
+    },
+    {
+      "name": "(Portuguese Empire)",
+      "valid_from": 1642,
+      "valid_to": 1644,
+      "area_km2": 834875
+    },
+    {
+      "name": "First Toungoo Empire",
+      "valid_from": 1619,
+      "valid_to": 1652,
+      "area_km2": 521477
+    },
+    {
+      "name": "Tümed",
+      "valid_from": 1609,
+      "valid_to": 1644,
+      "area_km2": 413939
+    },
+    {
+      "name": "Li Zicheng",
+      "valid_from": 1642,
+      "valid_to": 1644,
+      "area_km2": 407378
+    },
+    {
+      "name": "Ayutthaya Kingdom",
+      "valid_from": 1619,
+      "valid_to": 1661,
+      "area_km2": 382305
+    },
+    {
+      "name": "Lan Xang",
+      "valid_from": 1600,
+      "valid_to": 1647,
+      "area_km2": 375426
+    },
+    {
+      "name": "Tokugawa Shogunate",
+      "valid_from": 1609,
+      "valid_to": 1798,
+      "area_km2": 328728
+    },
+    {
+      "name": "Khoshut Khanate",
+      "valid_from": 1636,
+      "valid_to": 1644,
+      "area_km2": 291482
+    },
+    {
+      "name": "Joseon",
+      "valid_from": 1640,
+      "valid_to": 1859,
+      "area_km2": 231658
+    },
+    {
+      "name": "Golconda Sultanate",
+      "valid_from": 1640,
+      "valid_to": 1658,
+      "area_km2": 203522
+    },
+    {
+      "name": "Gorkha Kingdom",
+      "valid_from": 1588,
+      "valid_to": 1717,
+      "area_km2": 148032
+    },
+    {
+      "name": "Trịnh lords",
+      "valid_from": 1595,
+      "valid_to": 1644,
+      "area_km2": 103059
+    },
+    {
+      "name": "Portuguese Colonies",
+      "valid_from": 1640,
+      "valid_to": 1647,
+      "area_km2": 101956
+    },
+    {
+      "name": "(Dutch Republic)",
+      "valid_from": 1642,
+      "valid_to": 1644,
+      "area_km2": 101208
+    },
+    {
+      "name": "Dutch Republic",
+      "valid_from": 1642,
+      "valid_to": 1644,
+      "area_km2": 101208
+    },
+    {
+      "name": "Nguyễn lords",
+      "valid_from": 1572,
+      "valid_to": 1652,
+      "area_km2": 89944
+    },
+    {
+      "name": "Kingdom of Mrauk U",
+      "valid_from": 1588,
+      "valid_to": 1669,
+      "area_km2": 76861
+    },
+    {
+      "name": "Kingdom of Bhutan",
+      "valid_from": 1636,
+      "valid_to": 1682,
+      "area_km2": 41700
+    },
+    {
+      "name": "Đại Việt",
+      "valid_from": 1595,
+      "valid_to": 1652,
+      "area_km2": 10161
+    },
+    {
+      "name": "Kathmandu",
+      "valid_from": 1202,
+      "valid_to": 1743,
+      "area_km2": 661
+    }
+  ],
+  "relation_rows_left_out": 0
+}

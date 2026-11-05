@@ -1,0 +1,9 @@
+[
+  {
+    "feature": "Chen Dynasty (frame 587-591)",
+    "problem": "Chen still holds the south in this frame.",
+    "correct": "Sui conquered Chen in 589. Use frame 592 (china-592-cliopatria).",
+    "source": "https://en.wikipedia.org/wiki/Chen_dynasty",
+    "severity": "blocker"
+  }
+]

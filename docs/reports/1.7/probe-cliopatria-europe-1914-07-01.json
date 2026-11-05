@@ -1,0 +1,197 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1914-07-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1914,
+  "states": [
+    {
+      "name": "(British Empire)",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 26426517
+    },
+    {
+      "name": "Russian Empire",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 22490839
+    },
+    {
+      "name": "(French Third Republic)",
+      "valid_from": 1912,
+      "valid_to": 1914,
+      "area_km2": 11809963
+    },
+    {
+      "name": "French Africa",
+      "valid_from": 1912,
+      "valid_to": 1914,
+      "area_km2": 10390806
+    },
+    {
+      "name": "Portuguese Republic",
+      "valid_from": 1914,
+      "valid_to": 1915,
+      "area_km2": 2201772
+    },
+    {
+      "name": "(Netherlands)",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 2060919
+    },
+    {
+      "name": "Ottoman Empire",
+      "valid_from": 1913,
+      "valid_to": 1914,
+      "area_km2": 1929821
+    },
+    {
+      "name": "Qajar Dynasty",
+      "valid_from": 1898,
+      "valid_to": 1914,
+      "area_km2": 1624363
+    },
+    {
+      "name": "Kingdom of Spain",
+      "valid_from": 1912,
+      "valid_to": 1921,
+      "area_km2": 854141
+    },
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1912,
+      "valid_to": 1921,
+      "area_km2": 854141
+    },
+    {
+      "name": "German Empire",
+      "valid_from": 1905,
+      "valid_to": 1914,
+      "area_km2": 815629
+    },
+    {
+      "name": "Kingdom of Great Britain",
+      "valid_from": 1913,
+      "valid_to": 1914,
+      "area_km2": 745526
+    },
+    {
+      "name": "Austria-Hungary",
+      "valid_from": 1912,
+      "valid_to": 1914,
+      "area_km2": 673580
+    },
+    {
+      "name": "French Third Republic",
+      "valid_from": 1873,
+      "valid_to": 1914,
+      "area_km2": 628747
+    },
+    {
+      "name": "Kingdom of Sweden",
+      "valid_from": 1908,
+      "valid_to": 1935,
+      "area_km2": 458353
+    },
+    {
+      "name": "Kingdom of Norway",
+      "valid_from": 1905,
+      "valid_to": 1921,
+      "area_km2": 346290
+    },
+    {
+      "name": "Kingdom of Italy",
+      "valid_from": 1912,
+      "valid_to": 1915,
+      "area_km2": 277575
+    },
+    {
+      "name": "Denmark-Norway",
+      "valid_from": 1864,
+      "valid_to": 1921,
+      "area_km2": 160323
+    },
+    {
+      "name": "United Principalities of Moldavia and Wallachia",
+      "valid_from": 1913,
+      "valid_to": 1914,
+      "area_km2": 138273
+    },
+    {
+      "name": "First Hellenic Republic",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 113618
+    },
+    {
+      "name": "Principality of Bulgaria",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 111801
+    },
+    {
+      "name": "Serbs",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 88969
+    },
+    {
+      "name": "Swiss Confederation",
+      "valid_from": 1871,
+      "valid_to": 1914,
+      "area_km2": 41200
+    },
+    {
+      "name": "Netherlands",
+      "valid_from": 1871,
+      "valid_to": 1916,
+      "area_km2": 40723
+    },
+    {
+      "name": "Kingdom of Belgium",
+      "valid_from": 1900,
+      "valid_to": 1918,
+      "area_km2": 30915
+    },
+    {
+      "name": "Albania",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 27676
+    },
+    {
+      "name": "Montenegro",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 14165
+    },
+    {
+      "name": "Luxembourg",
+      "valid_from": 1890,
+      "valid_to": 1914,
+      "area_km2": 2405
+    },
+    {
+      "name": "Principality of Andorra",
+      "valid_from": 1815,
+      "valid_to": 1937,
+      "area_km2": 380
+    },
+    {
+      "name": "Tangier International Zone",
+      "valid_from": 1912,
+      "valid_to": 1955,
+      "area_km2": 275
+    },
+    {
+      "name": "Kingdom of Monaco",
+      "valid_from": 1848,
+      "valid_to": 1935,
+      "area_km2": 94
+    }
+  ],
+  "relation_rows_left_out": 0
+}

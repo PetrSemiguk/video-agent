@@ -94,6 +94,31 @@ Danube/Dniester 1914) follow the river on the image; gaps are listed honestly.
 
 ---
 
+## Step 1.7 — Historical maps v2
+
+**Goal**: usable historical maps for any episode, and a clear rule for where each comes from.
+
+1. OHM with CC BY 4.0 ways and relations (no NC, SA, ND). Attribution assembled from the objects a
+   layer really uses: a short on-screen line, and a full list in `<slug>.attribution.md` that
+   `vap.episode build` copies into `episodes/<slug>/attributions.md`. Rows in `docs/licenses.md`.
+2. Errata: `<layer>.errata.json` beside each layer. Storyboard validation and `vap.episode build`
+   fail on a shot using a layer with a blocker, unless the storyboard overrides it with a reason.
+3. Cliopatria (CC BY 4.0) in the common format, `source=cliopatria`, clipped to NE land, with the
+   same overlap report. Probe, extract and check facts for China 560, 590, 1644 and Europe 1914, 1815.
+4. `vap.geo.hist compose --plate <p> --spec <file.yaml>`: a layer from NE units, features of other
+   layers and custom polygons, with sources and confidence per state. Overlaps are compile errors.
+   Example `specs/china-560.yaml`. Guide in `docs/maps.md`, "Composing historical maps".
+
+Renders: `out/hist-china-560-cliopatria.png`, `out/hist-china-590-cliopatria.png`,
+`out/hist-china-1644-cliopatria.png`, `out/hist-europe-1914-compare.png`,
+`out/hist-china-560-composed.png`.
+
+Accept when: a table by date compares OHM, Cliopatria and composed maps on coverage and facts, with a
+recommendation; the rule is in `docs/historical-sources.md`; a test shows a storyboard with a blocked
+layer does not pass; renders and tests exist.
+
+---
+
 ## Stage 2 — Design system
 
 ### Step 2.1 — Design tokens v1 + plate grade v2

@@ -1,0 +1,23 @@
+[
+  {
+    "feature": "Qing (relation 2694501)",
+    "problem": "From 1644-06-05 the relation takes over the whole former Ming polygon, Nanjing, Xi'an and Guangzhou included.",
+    "correct": "In July 1644 Qing held Beijing and part of the north. The south stayed under the Southern Ming and Xi'an under Shun.",
+    "source": "https://en.wikipedia.org/wiki/Southern_Ming",
+    "severity": "blocker"
+  },
+  {
+    "feature": "Qing (relation 2694501), Taiwan",
+    "problem": "Taiwan lies inside the Qing polygon.",
+    "correct": "Qing took Taiwan in 1683.",
+    "source": "https://en.wikipedia.org/wiki/Qing_dynasty",
+    "severity": "blocker"
+  },
+  {
+    "feature": "Shun and Southern Ming",
+    "problem": "Neither exists in OHM.",
+    "correct": "Shun held the northwest and Southern Ming the south in July 1644.",
+    "source": "https://en.wikipedia.org/wiki/Shun_dynasty",
+    "severity": "blocker"
+  }
+]

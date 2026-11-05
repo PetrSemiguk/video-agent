@@ -1,0 +1,141 @@
+{
+  "plate": "china-east-hs05",
+  "slug": "china-560",
+  "source": "custom",
+  "spec": "china-560.yaml",
+  "layers_used": [
+    "china-561-cliopatria"
+  ],
+  "qa": {
+    "coast_outside_land_km2": 1278.9,
+    "coast_max_error_px": 0.63,
+    "land_covered": 0.2494,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 7844117,
+        "at": [
+          91.4,
+          32.14
+        ]
+      },
+      {
+        "area_km2": 116651,
+        "at": [
+          137.18,
+          35.51
+        ]
+      },
+      {
+        "area_km2": 37056,
+        "at": [
+          131.14,
+          32.5
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 18552,
+        "at": [
+          133.37,
+          33.56
+        ]
+      },
+      {
+        "area_km2": 9649,
+        "at": [
+          121.11,
+          18.32
+        ]
+      },
+      {
+        "area_km2": 1873,
+        "at": [
+          126.56,
+          33.38
+        ]
+      },
+      {
+        "area_km2": 1188,
+        "at": [
+          121.54,
+          31.64
+        ]
+      },
+      {
+        "area_km2": 1301,
+        "at": [
+          127.91,
+          26.49
+        ]
+      },
+      {
+        "area_km2": 1306,
+        "at": [
+          90.77,
+          22.39
+        ]
+      },
+      {
+        "area_km2": 897,
+        "at": [
+          138.34,
+          38.06
+        ]
+      },
+      {
+        "area_km2": 602,
+        "at": [
+          134.83,
+          34.4
+        ]
+      },
+      {
+        "area_km2": 683,
+        "at": [
+          129.39,
+          28.32
+        ]
+      },
+      {
+        "area_km2": 593,
+        "at": [
+          130.09,
+          32.37
+        ]
+      },
+      {
+        "area_km2": 562,
+        "at": [
+          121.66,
+          29.35
+        ]
+      }
+    ],
+    "features": 4,
+    "coverage_valid": true,
+    "simplify": "coverage_simplify",
+    "overlaps": [],
+    "overlap_kinds": {},
+    "palette_conflicts": 0,
+    "confidence": {
+      "medium": 3,
+      "low": 1
+    }
+  },
+  "attribution": {
+    "credit": "Historical borders: own composition from cited sources — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified.",
+      "Northern Zhou: https://en.wikipedia.org/wiki/Northern_Zhou",
+      "Northern Qi: https://en.wikipedia.org/wiki/Northern_Qi",
+      "Chen: https://en.wikipedia.org/wiki/Chen_dynasty",
+      "Western Liang: https://en.wikipedia.org/wiki/Western_Liang_(555%E2%80%93587)"
+    ]
+  }
+}

@@ -134,6 +134,7 @@ export const layerSchema = z.discriminatedUnion("type", [
   layer("StatCounter"),
   layer("RegionHighlight"),
   layer("RiverLine"),
+  layer("HistoricalLayer"),
   layer("PlaceLabel"),
   layer("MapAttribution"),
 ]);

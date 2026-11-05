@@ -1,0 +1,139 @@
+[
+  {
+    "layer": "europe-1914",
+    "features": 36,
+    "land_covered": 0.9985,
+    "land_covered_before_cc_by": 0.3073,
+    "overlap_kinds": {
+      "nesting": 1,
+      "sliver": 3
+    },
+    "facts_ok": 11,
+    "facts_checked": 11
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "features": 31,
+    "land_covered": 0.9857,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 6,
+      "conflict": 4,
+      "sliver": 1
+    },
+    "facts_ok": 8,
+    "facts_checked": 11
+  },
+  {
+    "layer": "europe-1815",
+    "features": 66,
+    "land_covered": 0.8799,
+    "land_covered_before_cc_by": 0.3513,
+    "overlap_kinds": {
+      "nesting": 4,
+      "conflict": 3,
+      "sliver": 9
+    },
+    "facts_ok": 5,
+    "facts_checked": 11
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "features": 58,
+    "land_covered": 0.9802,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 5,
+      "sliver": 27,
+      "conflict": 3
+    },
+    "facts_ok": 8,
+    "facts_checked": 11
+  },
+  {
+    "layer": "china-1644",
+    "features": 17,
+    "land_covered": 0.8708,
+    "land_covered_before_cc_by": 0.8708,
+    "overlap_kinds": {
+      "nesting": 3,
+      "conflict": 2,
+      "sliver": 2
+    },
+    "facts_ok": 3,
+    "facts_checked": 6
+  },
+  {
+    "layer": "china-1644-cliopatria",
+    "features": 29,
+    "land_covered": 0.9597,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 3,
+      "conflict": 2
+    },
+    "facts_ok": 4,
+    "facts_checked": 6
+  },
+  {
+    "layer": "china-1645-cliopatria",
+    "features": 28,
+    "land_covered": 0.9193,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 3,
+      "conflict": 2
+    },
+    "facts_ok": 5,
+    "facts_checked": 6
+  },
+  {
+    "layer": "china-560-cliopatria",
+    "features": 16,
+    "land_covered": 0.6645,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "sliver": 1
+    },
+    "facts_ok": 2,
+    "facts_checked": 6
+  },
+  {
+    "layer": "china-561-cliopatria",
+    "features": 17,
+    "land_covered": 0.6195,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "sliver": 1
+    },
+    "facts_ok": 6,
+    "facts_checked": 6
+  },
+  {
+    "layer": "china-560",
+    "features": 4,
+    "land_covered": 0.2494,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {},
+    "facts_ok": 6,
+    "facts_checked": 6
+  },
+  {
+    "layer": "china-590-cliopatria",
+    "features": 15,
+    "land_covered": 0.6253,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {},
+    "facts_ok": 2,
+    "facts_checked": 4
+  },
+  {
+    "layer": "china-592-cliopatria",
+    "features": 14,
+    "land_covered": 0.6478,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {},
+    "facts_ok": 4,
+    "facts_checked": 4
+  }
+]

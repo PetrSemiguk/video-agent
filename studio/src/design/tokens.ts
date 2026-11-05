@@ -286,8 +286,6 @@ export const polityPalette = styleReview.polity;
 
 /** Historical layers. Debug still sizing plus the mandatory source credit. */
 export const hist = {
-  attribution:
-    "Map data courtesy of OpenHistoricalMap · Made with Natural Earth",
   /** Just past "the plate exactly fills the frame", as PlateStage requires a margin. */
   coverZoom: 0.01,
   regionLabelMinKm2: 60000,

@@ -17,6 +17,8 @@ from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
 
+from vap.geo import errata, hist_attribution
+
 ROOT = Path(__file__).resolve().parents[3]
 STAGES = ("voice", "align", "preview", "render")
 
@@ -286,6 +288,10 @@ class Builder:
         story = read_json(self.episode / "storyboard.json")
         if story["episode"]["slug"] != self.slug:
             raise ValueError("Storyboard episode.slug must match its episode directory")
+        problems = errata.blocking_issues(story, self.root)
+        if problems:
+            raise ValueError("; ".join(problems))
+        hist_attribution.update_episode(self.episode / "attributions.md", self.root, story)
         # Runtime copy always binds this episode's canonical audio/words outputs,
         # without editing the authored storyboard.
         story["audio"] = {

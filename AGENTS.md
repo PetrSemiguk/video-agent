@@ -105,7 +105,8 @@ Run from `studio/`:
 - `npm run still:geodebug -- out/geodebug-<name>.png --props=props/geodebug-<name>.json` —
   plate + Natural Earth debug overlay (needs `vap.geo.extract` for that plate first)
 - `npm run still:hist -- out/hist-<slug>.png --props=props/hist-<slug>.json` — `HistDebug` still:
-  plate + historical polities, labels, big date, attribution (needs `vap.geo.hist extract` first)
+  plate + historical polities, labels, big date, attribution (needs `vap.geo.hist extract` first);
+  `npm run hist:compare -- <left.png> <right.png> <out.png>` puts two stills side by side
 - `npm run render:ab-a` / `npm run render:ab-b` — step 1.2 camera A/B test (MapLibre 3D /
   plate + CSS) to `out/ab-a-maplibre.mp4` / `out/ab-b-plate.mp4`; `npm run ab:side-by-side`
   stacks them into `out/ab-side-by-side.mp4`. Variant A needs `npm run prepare:maplibre`
@@ -141,10 +142,14 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
 - `uv run python -m vap.geo.find "<name>" [--layer rivers|regions|places|countries|admin1|lakes]`
   — look up Natural Earth ids by name
 - `uv run python -m vap.geo.hist probe --plate <p> --date <YYYY-MM-DD> [--search "<regex>"]` — what
-  OHM holds on a date; `--search` looks worldwide by name. Evidence in `docs/reports/1.6/`
+  OHM holds on a date; `--search` looks worldwide by name. Evidence in `docs/reports/1.7/`
 - `uv run python -m vap.geo.hist extract --plate <p> --date <YYYY-MM-DD> --slug <slug>` — state polygons
-  (CC0 relation and ways only, clipped to NE land) to `data/processed/<p>/historical/<slug>.geojson`
-- `uv run python -m vap.geo.hist_qa` — historical layers against known facts and river borders
+  (CC0 and CC BY 4.0 relations and ways, clipped to NE land) to `data/processed/<p>/historical/<slug>.geojson`
+- `uv run python -m vap.geo.hist extract --source cliopatria --plate <p> --date <YYYY-MM-DD> --slug <slug> [--frame-year <y>]`
+  — the same from Cliopatria; `probe --source cliopatria` lists a frame
+- `uv run python -m vap.geo.hist compose --plate <p> --spec <file.yaml>` — compile a composed map; see
+  "Composing historical maps" in docs/maps.md and the source rule in docs/historical-sources.md
+- `uv run python -m vap.geo.hist_qa` — historical layers against known facts, rivers and coverage
 - `uv run python -m vap.episode build <slug> [--stage voice|align|preview|render|all]` — sequential, cached
   episode build (each stage includes its predecessors); see "Make an episode" in README.md
 - `uv run python -m vap.qa.episode_sheets <slug>` — review sheet and 640/384 px mobile sheets to `studio/out/`

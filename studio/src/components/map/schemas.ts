@@ -36,6 +36,20 @@ const collection = z.object({
   type: z.literal("FeatureCollection"),
   features: z.array(feature).min(1),
 });
+export const historicalLayerSchema = z.strictObject({
+  /** data/processed/<plate>/historical/<slug>.geojson of the shot's plate. */
+  slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
+  /** The layer's short credit, exactly as `attribution` on its GeoJSON. */
+  credit: shortText(512),
+  /** Needed to use a layer whose errata has a blocker. */
+  errataOverride: z.strictObject({ reason: shortText(240) }).optional(),
+  enterFrames: z
+    .number()
+    .int()
+    .min(1)
+    .max(motion.frames.slow * 4)
+    .default(motion.frames.slow),
+});
 export const regionGeoContract = z.union([
   feature.extend({
     geometry: z.discriminatedUnion("type", [

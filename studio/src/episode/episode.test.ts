@@ -122,7 +122,11 @@ describe("Episode assembly", () => {
     expect(wordsSchema.safeParse(invalid).success).toBe(false);
   });
   it("routes geographic SVG layers separately from screen labels", () => {
-    expect([...geoLayerTypes]).toEqual(["RegionHighlight", "RiverLine"]);
+    expect([...geoLayerTypes]).toEqual([
+      "RegionHighlight",
+      "RiverLine",
+      "HistoricalLayer",
+    ]);
     expect(geoLayerTypes.has("PlaceLabel")).toBe(false);
   });
   it("checks all sample camera frames and overlapping old/new plates", () => {

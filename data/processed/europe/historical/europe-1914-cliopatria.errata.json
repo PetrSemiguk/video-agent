@@ -1,0 +1,16 @@
+[
+  {
+    "feature": "Serbs, United Principalities of Moldavia and Wallachia, Principality of Bulgaria, First Hellenic Republic, Kingdom of Great Britain",
+    "problem": "Stale or wrong names for 1914.",
+    "correct": "Kingdom of Serbia, Kingdom of Romania, Tsardom of Bulgaria, Kingdom of Greece, United Kingdom of Great Britain and Ireland.",
+    "source": "https://en.wikipedia.org/wiki/Kingdom_of_Romania",
+    "severity": "blocker"
+  },
+  {
+    "feature": "Rows in brackets, such as (French Third Republic)",
+    "problem": "Empire-wide rows sit on top of the same country and double its fill.",
+    "correct": "Leave them out on a map of Europe.",
+    "source": "https://en.wikipedia.org/wiki/French_Third_Republic",
+    "severity": "warning"
+  }
+]

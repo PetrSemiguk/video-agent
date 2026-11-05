@@ -1,0 +1,359 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1815-07-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1815,
+  "states": [
+    {
+      "name": "Russian Empire",
+      "valid_from": 1815,
+      "valid_to": 1823,
+      "area_km2": 17397989
+    },
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 8998534
+    },
+    {
+      "name": "(Portuguese Empire)",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 7912277
+    },
+    {
+      "name": "(British Empire)",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 3405852
+    },
+    {
+      "name": "Ottoman Empire",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 2177488
+    },
+    {
+      "name": "Qajar Dynasty",
+      "valid_from": 1811,
+      "valid_to": 1821,
+      "area_km2": 1673923
+    },
+    {
+      "name": "United Kingdoms of Sweden and Norway",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 804282
+    },
+    {
+      "name": "Austrian Empire",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 691307
+    },
+    {
+      "name": "Bourbon Kingdom of France",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 628140
+    },
+    {
+      "name": "(Bourbon Kingdom of France)",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 628140
+    },
+    {
+      "name": "Kingdom of Spain",
+      "valid_from": 1815,
+      "valid_to": 1833,
+      "area_km2": 495799
+    },
+    {
+      "name": "(Netherlands)",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 397209
+    },
+    {
+      "name": "Morocco",
+      "valid_from": 1769,
+      "valid_to": 1841,
+      "area_km2": 387614
+    },
+    {
+      "name": "Kingdom of Great Britain",
+      "valid_from": 1800,
+      "valid_to": 1819,
+      "area_km2": 343293
+    },
+    {
+      "name": "German Confederation",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 342855
+    },
+    {
+      "name": "Regency of Algiers",
+      "valid_from": 1792,
+      "valid_to": 1829,
+      "area_km2": 211975
+    },
+    {
+      "name": "Denmark-Norway",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 181517
+    },
+    {
+      "name": "Kingdom of Portugal",
+      "valid_from": 1812,
+      "valid_to": 1823,
+      "area_km2": 96467
+    },
+    {
+      "name": "Kingdom of the Two Sicilies",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 91430
+    },
+    {
+      "name": "Beylik of Tunis",
+      "valid_from": 1796,
+      "valid_to": 1829,
+      "area_km2": 87831
+    },
+    {
+      "name": "Kingdom of Sardinia",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 78009
+    },
+    {
+      "name": "Principality of Wallachia",
+      "valid_from": 1815,
+      "valid_to": 1827,
+      "area_km2": 74373
+    },
+    {
+      "name": "Kingdom of Bavaria",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 71407
+    },
+    {
+      "name": "Netherlands",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 71126
+    },
+    {
+      "name": "Principality of Moldavia",
+      "valid_from": 1814,
+      "valid_to": 1827,
+      "area_km2": 42009
+    },
+    {
+      "name": "Serbs",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 41371
+    },
+    {
+      "name": "Swiss Confederation",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 40201
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 39316
+    },
+    {
+      "name": "Kingdom of Württemberg",
+      "valid_from": 1811,
+      "valid_to": 1869,
+      "area_km2": 16916
+    },
+    {
+      "name": "Grand Duchy of Berg",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 15080
+    },
+    {
+      "name": "Grand Duchy of Baden",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 13996
+    },
+    {
+      "name": "Duchy of Mecklenburg",
+      "valid_from": 1814,
+      "valid_to": 1819,
+      "area_km2": 11298
+    },
+    {
+      "name": "Electorate of Hesse",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 10530
+    },
+    {
+      "name": "Principality of Abkhazia",
+      "valid_from": 1812,
+      "valid_to": 1827,
+      "area_km2": 9758
+    },
+    {
+      "name": "Grand Duchy of Hesse",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 8505
+    },
+    {
+      "name": "Duchy of Parma and Piacenza",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 7460
+    },
+    {
+      "name": "Duchy of Modena and Reggio",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 6816
+    },
+    {
+      "name": "Duchy of Nassau",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 5314
+    },
+    {
+      "name": "Duchy of Oldenburg",
+      "valid_from": 1814,
+      "valid_to": 1819,
+      "area_km2": 4394
+    },
+    {
+      "name": "Duchy of Brunswick",
+      "valid_from": 1814,
+      "valid_to": 1819,
+      "area_km2": 4248
+    },
+    {
+      "name": "Principality of Guria",
+      "valid_from": 1811,
+      "valid_to": 1827,
+      "area_km2": 3776
+    },
+    {
+      "name": "Principality of Reuss-Gera",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 3180
+    },
+    {
+      "name": "Septinsular Republic",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 3001
+    },
+    {
+      "name": "Free City of Lübeck",
+      "valid_from": 1814,
+      "valid_to": 1863,
+      "area_km2": 2669
+    },
+    {
+      "name": "Grand Duchy of Saxe-Weimar-Eisenach",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 2531
+    },
+    {
+      "name": "Principality of Svaneti",
+      "valid_from": 1811,
+      "valid_to": 1829,
+      "area_km2": 2389
+    },
+    {
+      "name": "Saxe-Altenburg",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 1762
+    },
+    {
+      "name": "Free City of Krakow",
+      "valid_from": 1815,
+      "valid_to": 1829,
+      "area_km2": 1645
+    },
+    {
+      "name": "Duchy of Anhalt",
+      "valid_from": 1814,
+      "valid_to": 1819,
+      "area_km2": 1552
+    },
+    {
+      "name": "Principality of Hohenzollern-Sigmaringen",
+      "valid_from": 1811,
+      "valid_to": 1848,
+      "area_km2": 1310
+    },
+    {
+      "name": "Principality of Waldeck and Pyrmont",
+      "valid_from": 1814,
+      "valid_to": 1819,
+      "area_km2": 965
+    },
+    {
+      "name": "Grand Duchy of Tuscany",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 938
+    },
+    {
+      "name": "Free City of Hamburg",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 858
+    },
+    {
+      "name": "Principality of Lippe",
+      "valid_from": 1815,
+      "valid_to": 1819,
+      "area_km2": 851
+    },
+    {
+      "name": "Kingdom of Prussia",
+      "valid_from": 1815,
+      "valid_to": 1833,
+      "area_km2": 594
+    },
+    {
+      "name": "Principality of Andorra",
+      "valid_from": 1815,
+      "valid_to": 1937,
+      "area_km2": 380
+    },
+    {
+      "name": "Free City of Bremen",
+      "valid_from": 1814,
+      "valid_to": 1819,
+      "area_km2": 345
+    },
+    {
+      "name": "Kingdom of Monaco",
+      "valid_from": 1815,
+      "valid_to": 1847,
+      "area_km2": 164
+    }
+  ],
+  "relation_rows_left_out": 1
+}

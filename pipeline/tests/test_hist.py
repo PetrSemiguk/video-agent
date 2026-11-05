@@ -125,16 +125,16 @@ def test_non_cc0_way_blocks_a_cc0_relation():
     c.license_exceptions = exceptions
     records, objects = normalized_selection([c], "1815-07-01")
     assert not records
-    assert objects[0]["exclusion"] == "non-CC0 or missing ways: 1"
+    assert objects[0]["exclusion"] == "ways with a license not allowed, or missing: 1"
 
 
 def test_missing_way_and_non_cc0_relation_are_reported():
     assert way_license_exceptions(relation((99, "outer")), {})[0]["reason"] == "missing way"
     records, objects = normalized_selection(
-        [candidate(box(0, 0, 1, 1), license="CC-BY-4.0")], "1815-07-01"
+        [candidate(box(0, 0, 1, 1), license="CC-BY-SA-4.0")], "1815-07-01"
     )
     assert not records
-    assert objects[0]["exclusion"] == "non-CC0 relation: CC-BY-4.0"
+    assert objects[0]["exclusion"] == "relation license not allowed: CC-BY-SA-4.0"
 
 
 def test_geometry_ignores_label_members_and_cuts_holes():
@@ -383,6 +383,6 @@ def test_committed_historical_layers_pass_the_validator(path):
     assert collection["features"]
     for feature in collection["features"]:
         props = feature["properties"]
-        assert props["source"] == "ohm"
+        assert props["source"] in hist.SOURCES
         assert 0 <= props["palette_index"] < hist.PALETTE_SIZE
         assert shape(feature["geometry"]).buffer(0.2).covers(shapely.Point(props["label"]))

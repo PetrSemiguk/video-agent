@@ -1,0 +1,405 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1914-07-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1914,
+  "states": [
+    {
+      "name": "(British Empire)",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 26426517
+    },
+    {
+      "name": "Russian Empire",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 22490839
+    },
+    {
+      "name": "(French Third Republic)",
+      "valid_from": 1912,
+      "valid_to": 1914,
+      "area_km2": 11809963
+    },
+    {
+      "name": "French Africa",
+      "valid_from": 1912,
+      "valid_to": 1914,
+      "area_km2": 10390806
+    },
+    {
+      "name": "Portuguese Republic",
+      "valid_from": 1914,
+      "valid_to": 1915,
+      "area_km2": 2201772
+    },
+    {
+      "name": "(Netherlands)",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 2060919
+    },
+    {
+      "name": "Ottoman Empire",
+      "valid_from": 1913,
+      "valid_to": 1914,
+      "area_km2": 1929821
+    },
+    {
+      "name": "Qajar Dynasty",
+      "valid_from": 1898,
+      "valid_to": 1914,
+      "area_km2": 1624363
+    },
+    {
+      "name": "Kingdom of Spain",
+      "valid_from": 1912,
+      "valid_to": 1921,
+      "area_km2": 854141
+    },
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1912,
+      "valid_to": 1921,
+      "area_km2": 854141
+    },
+    {
+      "name": "German Empire",
+      "valid_from": 1905,
+      "valid_to": 1914,
+      "area_km2": 815629
+    },
+    {
+      "name": "Kingdom of Great Britain",
+      "valid_from": 1913,
+      "valid_to": 1914,
+      "area_km2": 745526
+    },
+    {
+      "name": "Austria-Hungary",
+      "valid_from": 1912,
+      "valid_to": 1914,
+      "area_km2": 673580
+    },
+    {
+      "name": "French Third Republic",
+      "valid_from": 1873,
+      "valid_to": 1914,
+      "area_km2": 628747
+    },
+    {
+      "name": "Kingdom of Sweden",
+      "valid_from": 1908,
+      "valid_to": 1935,
+      "area_km2": 458353
+    },
+    {
+      "name": "Kingdom of Norway",
+      "valid_from": 1905,
+      "valid_to": 1921,
+      "area_km2": 346290
+    },
+    {
+      "name": "Kingdom of Italy",
+      "valid_from": 1912,
+      "valid_to": 1915,
+      "area_km2": 277575
+    },
+    {
+      "name": "Denmark-Norway",
+      "valid_from": 1864,
+      "valid_to": 1921,
+      "area_km2": 160323
+    },
+    {
+      "name": "United Principalities of Moldavia and Wallachia",
+      "valid_from": 1913,
+      "valid_to": 1914,
+      "area_km2": 138273
+    },
+    {
+      "name": "First Hellenic Republic",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 113618
+    },
+    {
+      "name": "Principality of Bulgaria",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 111801
+    },
+    {
+      "name": "Serbs",
+      "valid_from": 1914,
+      "valid_to": 1914,
+      "area_km2": 88969
+    },
+    {
+      "name": "Swiss Confederation",
+      "valid_from": 1871,
+      "valid_to": 1914,
+      "area_km2": 41200
+    },
+    {
+      "name": "Netherlands",
+      "valid_from": 1871,
+      "valid_to": 1916,
+      "area_km2": 40723
+    },
+    {
+      "name": "Kingdom of Belgium",
+      "valid_from": 1900,
+      "valid_to": 1918,
+      "area_km2": 30915
+    },
+    {
+      "name": "Albania",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 27676
+    },
+    {
+      "name": "Montenegro",
+      "valid_from": 1913,
+      "valid_to": 1915,
+      "area_km2": 14165
+    },
+    {
+      "name": "Luxembourg",
+      "valid_from": 1890,
+      "valid_to": 1914,
+      "area_km2": 2405
+    },
+    {
+      "name": "Principality of Andorra",
+      "valid_from": 1815,
+      "valid_to": 1937,
+      "area_km2": 380
+    },
+    {
+      "name": "Tangier International Zone",
+      "valid_from": 1912,
+      "valid_to": 1955,
+      "area_km2": 275
+    },
+    {
+      "name": "Kingdom of Monaco",
+      "valid_from": 1848,
+      "valid_to": 1935,
+      "area_km2": 94
+    }
+  ],
+  "relation_rows_left_out": 0,
+  "slug": "europe-1914-cliopatria",
+  "qa": {
+    "coast_outside_land_km2": 3521.0,
+    "coast_max_error_px": 0.64,
+    "land_covered": 0.9857,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 3692,
+        "at": [
+          34.77,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 2944,
+        "at": [
+          -0.3,
+          39.27
+        ]
+      },
+      {
+        "area_km2": 2218,
+        "at": [
+          35.18,
+          44.93
+        ]
+      },
+      {
+        "area_km2": 1545,
+        "at": [
+          3.04,
+          43.08
+        ]
+      },
+      {
+        "area_km2": 1623,
+        "at": [
+          2.29,
+          41.48
+        ]
+      },
+      {
+        "area_km2": 1712,
+        "at": [
+          32.11,
+          36.52
+        ]
+      },
+      {
+        "area_km2": 1340,
+        "at": [
+          8.17,
+          44.06
+        ]
+      },
+      {
+        "area_km2": 1190,
+        "at": [
+          35.56,
+          46.51
+        ]
+      },
+      {
+        "area_km2": 1259,
+        "at": [
+          41.11,
+          42.93
+        ]
+      },
+      {
+        "area_km2": 1098,
+        "at": [
+          12.29,
+          44.32
+        ]
+      },
+      {
+        "area_km2": 1137,
+        "at": [
+          5.52,
+          43.24
+        ]
+      },
+      {
+        "area_km2": 751,
+        "at": [
+          5.13,
+          52.88
+        ]
+      },
+      {
+        "area_km2": 908,
+        "at": [
+          37.39,
+          47.05
+        ]
+      },
+      {
+        "area_km2": 1073,
+        "at": [
+          26.05,
+          40.8
+        ]
+      },
+      {
+        "area_km2": 1036,
+        "at": [
+          33.7,
+          41.96
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 31,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "French Third Republic",
+        "b": "(French Third Republic)",
+        "area_km2": 524992.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Spain",
+        "b": "(Spanish Empire)",
+        "area_km2": 501873.4,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Great Britain",
+        "b": "(British Empire)",
+        "area_km2": 309965.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "French Africa",
+        "b": "(French Third Republic)",
+        "area_km2": 204028.4,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Netherlands",
+        "b": "(Netherlands)",
+        "area_km2": 34604.2,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Netherlands",
+        "b": "Luxembourg",
+        "area_km2": 2401.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Spain",
+        "b": "Tangier International Zone",
+        "area_km2": 37.6,
+        "share_of_smaller": 0.1364,
+        "kind": "conflict"
+      },
+      {
+        "a": "(Spanish Empire)",
+        "b": "Tangier International Zone",
+        "area_km2": 37.6,
+        "share_of_smaller": 0.1364,
+        "kind": "conflict"
+      },
+      {
+        "a": "Kingdom of Monaco",
+        "b": "(French Third Republic)",
+        "area_km2": 35.2,
+        "share_of_smaller": 0.6299,
+        "kind": "conflict"
+      },
+      {
+        "a": "Kingdom of Monaco",
+        "b": "French Third Republic",
+        "area_km2": 35.2,
+        "share_of_smaller": 0.6299,
+        "kind": "conflict"
+      },
+      {
+        "a": "Denmark-Norway",
+        "b": "Kingdom of Sweden",
+        "area_km2": 4.8,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 6,
+      "conflict": 4,
+      "sliver": 1
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

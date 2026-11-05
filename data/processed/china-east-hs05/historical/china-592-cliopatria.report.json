@@ -1,0 +1,221 @@
+{
+  "plate": "china-east",
+  "resolved_plate": "china-east-hs05",
+  "date": "0592-07-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 592,
+  "states": [
+    {
+      "name": "Sui Dynasty",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 3318043
+    },
+    {
+      "name": "Western Göktürks",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 3120785
+    },
+    {
+      "name": "Eastern Göktürks",
+      "valid_from": 587,
+      "valid_to": 611,
+      "area_km2": 2647479
+    },
+    {
+      "name": "Tuyuhun",
+      "valid_from": 587,
+      "valid_to": 601,
+      "area_km2": 554703
+    },
+    {
+      "name": "Protectorate of the Western Regions",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 533421
+    },
+    {
+      "name": "Maukhari Dynasty",
+      "valid_from": 555,
+      "valid_to": 601,
+      "area_km2": 533393
+    },
+    {
+      "name": "Goguryeo",
+      "valid_from": 555,
+      "valid_to": 611,
+      "area_km2": 360601
+    },
+    {
+      "name": "Asuka Japan",
+      "valid_from": 540,
+      "valid_to": 704,
+      "area_km2": 230061
+    },
+    {
+      "name": "Kamarupa Kingdom",
+      "valid_from": 555,
+      "valid_to": 655,
+      "area_km2": 134185
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 84,
+      "valid_to": 849,
+      "area_km2": 116187
+    },
+    {
+      "name": "Early Lý Dynasty",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 90334
+    },
+    {
+      "name": "Silla",
+      "valid_from": 567,
+      "valid_to": 660,
+      "area_km2": 86616
+    },
+    {
+      "name": "Baekje",
+      "valid_from": 567,
+      "valid_to": 655,
+      "area_km2": 34639
+    },
+    {
+      "name": "Tamna",
+      "valid_from": 263,
+      "valid_to": 681,
+      "area_km2": 1959
+    }
+  ],
+  "relation_rows_left_out": 0,
+  "slug": "china-592-cliopatria",
+  "qa": {
+    "coast_outside_land_km2": 0.0,
+    "coast_max_error_px": 0.0,
+    "land_covered": 0.6478,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 3413191,
+        "at": [
+          91.72,
+          28.28
+        ]
+      },
+      {
+        "area_km2": 313352,
+        "at": [
+          119.43,
+          42.72
+        ]
+      },
+      {
+        "area_km2": 249815,
+        "at": [
+          83.07,
+          21.76
+        ]
+      },
+      {
+        "area_km2": 75837,
+        "at": [
+          133.93,
+          43.86
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 18552,
+        "at": [
+          133.37,
+          33.56
+        ]
+      },
+      {
+        "area_km2": 9649,
+        "at": [
+          121.11,
+          18.32
+        ]
+      },
+      {
+        "area_km2": 1301,
+        "at": [
+          127.91,
+          26.49
+        ]
+      },
+      {
+        "area_km2": 1177,
+        "at": [
+          121.58,
+          31.64
+        ]
+      },
+      {
+        "area_km2": 1306,
+        "at": [
+          90.77,
+          22.39
+        ]
+      },
+      {
+        "area_km2": 897,
+        "at": [
+          138.34,
+          38.06
+        ]
+      },
+      {
+        "area_km2": 941,
+        "at": [
+          130.29,
+          32.74
+        ]
+      },
+      {
+        "area_km2": 683,
+        "at": [
+          129.39,
+          28.32
+        ]
+      },
+      {
+        "area_km2": 581,
+        "at": [
+          134.83,
+          34.4
+        ]
+      },
+      {
+        "area_km2": 593,
+        "at": [
+          130.09,
+          32.37
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 14,
+    "coverage_valid": true,
+    "simplify": "coverage_simplify",
+    "overlaps": [],
+    "overlap_kinds": {},
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

@@ -37,6 +37,7 @@ class Candidate:
     backend: str
     geometry_error: str | None = None
     license_exceptions: list[dict] = field(default_factory=list)
+    cc_by: list[dict] = field(default_factory=list)
 
 
 def _wait_for_turn() -> None:
@@ -126,9 +127,9 @@ def relations_named(pattern: str) -> list[dict]:
     ]
 
 
-def with_geometry(candidate: Candidate) -> Candidate:
+def with_geometry(candidate: Candidate, bbox: list[float] | None = None) -> Candidate:
     """Fill in the assembled polygon, or the reason it cannot be assembled."""
-    from .hist import relation_geometry, way_license_exceptions
+    from .hist import cc_by_ways, relation_geometry, way_license_exceptions
 
     query = (
         f"[out:json][timeout:{OVERPASS_TIMEOUT_SECONDS}];relation({candidate.element_id});"
@@ -138,6 +139,7 @@ def with_geometry(candidate: Candidate) -> Candidate:
     index = {(e["type"], e["id"]): e for e in data["elements"]}
     relation = index[("relation", candidate.element_id)]
     candidate.license_exceptions = way_license_exceptions(relation, index)
+    candidate.cc_by = cc_by_ways(relation, index, bbox)
     candidate.geometry, candidate.geometry_error = None, None
     try:
         candidate.geometry = mapping(relation_geometry(relation, index))

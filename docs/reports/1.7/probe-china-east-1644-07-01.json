@@ -1,0 +1,132 @@
+{
+  "plate": "china-east",
+  "resolved_plate": "china-east-hs05",
+  "date": "1644-07-01",
+  "source": "ohm",
+  "relations_in_plate": 596,
+  "states": [
+    {
+      "ohm_id": 2906077,
+      "name": "Bhutan",
+      "valid_from": "1616",
+      "valid_to": "1784",
+      "license": null
+    },
+    {
+      "ohm_id": 2748017,
+      "name": "Bầu lords",
+      "valid_from": "1527",
+      "valid_to": "1698",
+      "license": null
+    },
+    {
+      "ohm_id": 2747939,
+      "name": "Cochinchina (1558-1653)",
+      "valid_from": "1558",
+      "valid_to": "1652",
+      "license": null
+    },
+    {
+      "ohm_id": 2748460,
+      "name": "Dai Viet (Mạc dynasty)",
+      "valid_from": "1554",
+      "valid_to": "1676",
+      "license": null
+    },
+    {
+      "ohm_id": 2890040,
+      "name": "Dzungar Khanate",
+      "valid_from": "1634",
+      "valid_to": "1717",
+      "license": null
+    },
+    {
+      "ohm_id": 2847878,
+      "name": "Golconda Sultanate",
+      "valid_from": "1518",
+      "valid_to": "1687",
+      "license": null
+    },
+    {
+      "ohm_id": 2847880,
+      "name": "Gondwana Kingdom",
+      "valid_from": "0807",
+      "valid_to": "1751",
+      "license": null
+    },
+    {
+      "ohm_id": 2694486,
+      "name": "Joseon",
+      "valid_from": "1449",
+      "valid_to": "1897-10-12",
+      "license": null
+    },
+    {
+      "ohm_id": 2923683,
+      "name": "Kangleipak",
+      "valid_from": "1110",
+      "valid_to": "1724",
+      "license": null
+    },
+    {
+      "ohm_id": 2890041,
+      "name": "Khoshut Khanate",
+      "valid_from": "1642",
+      "valid_to": "1717",
+      "license": null
+    },
+    {
+      "ohm_id": 2922302,
+      "name": "Mughal Empire",
+      "valid_from": "1636",
+      "valid_to": "1666",
+      "license": null
+    },
+    {
+      "ohm_id": 2694501,
+      "name": "Qing",
+      "valid_from": "1644-06-05",
+      "valid_to": "1689",
+      "license": null
+    },
+    {
+      "ohm_id": 2890079,
+      "name": "Ryukyu Kingdom",
+      "valid_from": "1612",
+      "valid_to": "1872-09-13",
+      "license": null
+    },
+    {
+      "ohm_id": 2860737,
+      "name": "Spanish Philippines",
+      "valid_from": "1570",
+      "valid_to": "1705",
+      "license": null
+    },
+    {
+      "ohm_id": 2889893,
+      "name": "Tokugawa Shogunate",
+      "valid_from": "1600-10-21",
+      "valid_to": "1856-08-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2845882,
+      "name": "Viceroyalty of New Spain",
+      "valid_from": "1640",
+      "valid_to": "1655-05-10",
+      "license": null
+    },
+    {
+      "ohm_id": 2748461,
+      "name": "Đại Việt - Chúa Trịnh",
+      "valid_from": "1558",
+      "valid_to": "1676",
+      "license": null
+    }
+  ],
+  "explicit_non_cc0": [],
+  "not_states": [],
+  "unreadable_dates": [],
+  "coverage": "partial: absence here is not proof of historical nonexistence"
+}

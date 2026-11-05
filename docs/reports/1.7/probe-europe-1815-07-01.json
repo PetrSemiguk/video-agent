@@ -1,0 +1,512 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1815-07-01",
+  "source": "ohm",
+  "relations_in_plate": 1642,
+  "states": [
+    {
+      "ohm_id": 2963549,
+      "name": "Alawi Sultanate",
+      "valid_from": "1769-03-10",
+      "valid_to": "1907-08-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2739874,
+      "name": "Andorra",
+      "valid_from": "1278",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2961013,
+      "name": "Austrian Empire",
+      "valid_from": "1815-06-09",
+      "valid_to": "1816-05-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2744913,
+      "name": "Baden",
+      "valid_from": "1810",
+      "valid_to": "1819-09-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2691499,
+      "name": "Bremen",
+      "valid_from": "1813",
+      "valid_to": "1827",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2691497,
+      "name": "Brunswick",
+      "valid_from": "1814",
+      "valid_to": "1867-07-01",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2965979,
+      "name": "Circassia",
+      "valid_from": "1427",
+      "valid_to": "1864-05-21",
+      "license": null
+    },
+    {
+      "ohm_id": 2835764,
+      "name": "Couto Misto",
+      "valid_from": "1000",
+      "valid_to": "1868",
+      "license": null
+    },
+    {
+      "ohm_id": 2801185,
+      "name": "Crown Colony of Malta",
+      "valid_from": "1814-05-30",
+      "valid_to": "1964-09-21",
+      "license": null
+    },
+    {
+      "ohm_id": 2870400,
+      "name": "Denmark",
+      "valid_from": "1815-06-09",
+      "valid_to": "1851",
+      "license": null
+    },
+    {
+      "ohm_id": 2808603,
+      "name": "Duchy of Anhalt-Bernburg",
+      "valid_from": "1806-08-06",
+      "valid_to": "1863-08-19",
+      "license": null
+    },
+    {
+      "ohm_id": 2809697,
+      "name": "Duchy of Anhalt-Dessau",
+      "valid_from": "1807-07-07",
+      "valid_to": "1853-05-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2808604,
+      "name": "Duchy of Anhalt-Köthen",
+      "valid_from": "1806-08-06",
+      "valid_to": "1853-05-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2696937,
+      "name": "Duchy of Lucca",
+      "valid_from": "1815-06-09",
+      "valid_to": "1847-12-17",
+      "license": null
+    },
+    {
+      "ohm_id": 2832340,
+      "name": "Duchy of Massa and Carrara",
+      "valid_from": "1814-05-30",
+      "valid_to": "1829-11-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2747005,
+      "name": "Duchy of Modena and Reggio",
+      "valid_from": "1814-07-14",
+      "valid_to": "1829-11-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2696938,
+      "name": "Duchy of Parma and Piacenza",
+      "valid_from": "1814-04-11",
+      "valid_to": "1847-12-17",
+      "license": null
+    },
+    {
+      "ohm_id": 2745247,
+      "name": "Electorate of Hesse",
+      "valid_from": "1815-06-09",
+      "valid_to": "1831-12-23",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2692575,
+      "name": "Free City of Cracow",
+      "valid_from": "1815-06-09",
+      "valid_to": "1846-11-16",
+      "license": null
+    },
+    {
+      "ohm_id": 2856441,
+      "name": "Free and Hanseatic City of Hamburg",
+      "valid_from": "1815-06-09",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2748578,
+      "name": "Free and Hanseatic City of Lübeck",
+      "valid_from": "1815-06-09",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2692855,
+      "name": "Gibraltar",
+      "valid_from": "1713",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2661272,
+      "name": "Grand Duchy of Hesse",
+      "valid_from": "1815-06-09",
+      "valid_to": "1866-03-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2877391,
+      "name": "Grand Duchy of Luxembourg",
+      "valid_from": "1815-06-08",
+      "valid_to": "1815-08-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2830658,
+      "name": "Grand Duchy of Mecklenburg-Schwerin",
+      "valid_from": "1815-06-14",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2694810,
+      "name": "Grand Duchy of Mecklenburg-Strelitz",
+      "valid_from": "1815-06-28",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2696931,
+      "name": "Grand Duchy of Tuscany",
+      "valid_from": "1815-06-09",
+      "valid_to": "1847-12-17",
+      "license": "CC0-1.0"
+    },
+    {
+      "ohm_id": 2828270,
+      "name": "Guernsey",
+      "valid_from": "1290",
+      "valid_to": "1987-05-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2745246,
+      "name": "Hanover",
+      "valid_from": "1814-10-12",
+      "valid_to": "1817",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2848139,
+      "name": "Heligoland",
+      "valid_from": "1807-09-11",
+      "valid_to": "1890-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2690441,
+      "name": "Hesse-Homburg",
+      "valid_from": "1815-06-09",
+      "valid_to": "1866-03-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2698293,
+      "name": "Hohenzollern-Hechingen",
+      "valid_from": "1806-08-06",
+      "valid_to": "1850-03-12",
+      "license": null
+    },
+    {
+      "ohm_id": 2694607,
+      "name": "Hohenzollern-Sigmaringen",
+      "valid_from": "1806",
+      "valid_to": "1850-03-12",
+      "license": null
+    },
+    {
+      "ohm_id": 2693293,
+      "name": "Isle of Man",
+      "valid_from": "1333-08-09",
+      "valid_to": "1987-05-15",
+      "license": null
+    },
+    {
+      "ohm_id": 2828299,
+      "name": "Jersey",
+      "valid_from": "1290",
+      "valid_to": "1987-05-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2913644,
+      "name": "Kingdom of France",
+      "valid_from": "1815-06-09",
+      "valid_to": "1825-12-09",
+      "license": null
+    },
+    {
+      "ohm_id": 2750052,
+      "name": "Kingdom of Naples",
+      "valid_from": "1815-05-20",
+      "valid_to": "1816-12-08",
+      "license": null
+    },
+    {
+      "ohm_id": 2692576,
+      "name": "Kingdom of Poland",
+      "valid_from": "1815-06-09",
+      "valid_to": "1835",
+      "license": null
+    },
+    {
+      "ohm_id": 2860981,
+      "name": "Kingdom of Portugal",
+      "valid_from": "1801-06-06",
+      "valid_to": "1815-12-16",
+      "license": null
+    },
+    {
+      "ohm_id": 2694593,
+      "name": "Kingdom of Prussia",
+      "valid_from": "1815-06-09",
+      "valid_to": "1829-10-23",
+      "license": null
+    },
+    {
+      "ohm_id": 2852041,
+      "name": "Kingdom of Sardinia",
+      "valid_from": "1815-06-09",
+      "valid_to": "1816-03-16",
+      "license": null
+    },
+    {
+      "ohm_id": 2693578,
+      "name": "Kingdom of Saxony",
+      "valid_from": "1815-06-09",
+      "valid_to": "1845",
+      "license": null
+    },
+    {
+      "ohm_id": 2750114,
+      "name": "Kingdom of Sicily",
+      "valid_from": "1734",
+      "valid_to": "1816-12-08",
+      "license": null
+    },
+    {
+      "ohm_id": 2877455,
+      "name": "Kingdom of the Netherlands",
+      "valid_from": "1815-03-16",
+      "valid_to": "1815-08-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2746467,
+      "name": "Liechtenstein",
+      "valid_from": "1806-07-12",
+      "valid_to": "1960-03-17",
+      "license": null
+    },
+    {
+      "ohm_id": 2690443,
+      "name": "Nassau",
+      "valid_from": "1815-06-09",
+      "valid_to": "1866-09-20",
+      "license": null
+    },
+    {
+      "ohm_id": 2697612,
+      "name": "Oldenburg",
+      "valid_from": "1815-06-09",
+      "valid_to": "1817",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2746683,
+      "name": "Ottoman Empire",
+      "valid_from": "1812-07-05",
+      "valid_to": "1821-05",
+      "license": null
+    },
+    {
+      "ohm_id": 2696930,
+      "name": "Papal States",
+      "valid_from": "1815-06-09",
+      "valid_to": "1852",
+      "license": "CC0-1.0"
+    },
+    {
+      "ohm_id": 2694888,
+      "name": "Persia",
+      "valid_from": "1813-10-24",
+      "valid_to": "1828-02-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2857706,
+      "name": "Prince-Bishopric of Montenegro",
+      "valid_from": "1789",
+      "valid_to": "1852-03-13",
+      "license": null
+    },
+    {
+      "ohm_id": 2806794,
+      "name": "Principality of Lippe",
+      "valid_from": "1806-08-06",
+      "valid_to": "1867-07-01",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2831854,
+      "name": "Principality of Reuss-Gera",
+      "valid_from": "1806-08-06",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2831855,
+      "name": "Principality of Reuss-Greiz",
+      "valid_from": "1806-08-06",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2831863,
+      "name": "Principality of Schwarzburg-Rudolstadt",
+      "valid_from": "1809-10-14",
+      "valid_to": "1825",
+      "license": null
+    },
+    {
+      "ohm_id": 2830677,
+      "name": "Principality of Schwarzburg-Sondershausen",
+      "valid_from": "1809-10-14",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2690422,
+      "name": "Pyrmont",
+      "valid_from": "1807",
+      "valid_to": "1849",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2861415,
+      "name": "Regency of Algiers",
+      "valid_from": "1516",
+      "valid_to": "1830-07-05",
+      "license": null
+    },
+    {
+      "ohm_id": 2750737,
+      "name": "Republic of Cospaia",
+      "valid_from": "1440",
+      "valid_to": "1826-05-25",
+      "license": null
+    },
+    {
+      "ohm_id": 2746527,
+      "name": "Russian Empire",
+      "valid_from": "1815-06-09",
+      "valid_to": "1828-02-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2853735,
+      "name": "San Marino",
+      "valid_from": "1740-02-05",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2690420,
+      "name": "Schaumburg-Lippe",
+      "valid_from": "1807-04-18",
+      "valid_to": "1867-07-01",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2860664,
+      "name": "Spain",
+      "valid_from": "1802-03-27",
+      "valid_to": "1899-04-11",
+      "license": "CC0-1.0"
+    },
+    {
+      "ohm_id": 2969296,
+      "name": "Sweden–Norway",
+      "valid_from": "1814-01-14",
+      "valid_to": "1815-10-23",
+      "license": null
+    },
+    {
+      "ohm_id": 2852251,
+      "name": "Swiss Confederation",
+      "valid_from": "1803-02-19",
+      "valid_to": "1815-09-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2852042,
+      "name": "Switzerland",
+      "valid_from": "1815-05-15",
+      "valid_to": "1816-03-15",
+      "license": null
+    },
+    {
+      "ohm_id": 2828388,
+      "name": "United Kingdom of Great Britain and Ireland",
+      "valid_from": "1801-01-01",
+      "valid_to": "1922-12-04",
+      "license": null
+    },
+    {
+      "ohm_id": 2806795,
+      "name": "Waldeck",
+      "valid_from": "1806-08-06",
+      "valid_to": "1849",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2661271,
+      "name": "Württemberg",
+      "valid_from": "1810",
+      "valid_to": "1871-05-04",
+      "license": null
+    }
+  ],
+  "explicit_non_cc0": [],
+  "not_states": [
+    {
+      "ohm_id": 2862267,
+      "name": "Elgin Burghs",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871106,
+      "name": "Inverness Burghs",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871128,
+      "name": "Banffshire",
+      "reason": "not a state: admin_level=None"
+    }
+  ],
+  "unreadable_dates": [],
+  "coverage": "partial: absence here is not proof of historical nonexistence"
+}

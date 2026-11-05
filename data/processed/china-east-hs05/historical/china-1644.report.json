@@ -130,50 +130,8 @@
   "unreadable_dates": [],
   "coverage": "partial: absence here is not proof of historical nonexistence",
   "slug": "china-1644",
-  "skipped": [
-    {
-      "ohm_id": 2845882,
-      "name": "Viceroyalty of New Spain",
-      "valid_from": "1640",
-      "valid_to": "1655-05-10",
-      "license": null,
-      "effective_license": "CC0-1.0",
-      "license_basis": "OHM default",
-      "polygon_geometry": true,
-      "geometry_error": null,
-      "license_exceptions": [
-        {
-          "id": "way/201440142",
-          "license": "Creative Commons Attribution 4.0 International license",
-          "reason": "explicit non-CC0 license",
-          "source": "https://data.humdata.org/dataset/cod-ab-cri"
-        },
-        {
-          "id": "way/201439368",
-          "license": "Creative Commons Attribution 4.0 International license",
-          "reason": "explicit non-CC0 license",
-          "source": "https://data.humdata.org/dataset/cod-ab-cri"
-        },
-        {
-          "id": "way/201439358",
-          "license": "Creative Commons Attribution 4.0 International license",
-          "reason": "explicit non-CC0 license",
-          "source": "https://data.humdata.org/dataset/cod-ab-cri"
-        },
-        {
-          "id": "way/201439357",
-          "license": "Creative Commons Attribution 4.0 International license",
-          "reason": "explicit non-CC0 license",
-          "source": "https://data.humdata.org/dataset/cod-ab-cri"
-        }
-      ],
-      "eligible": false,
-      "exclusion": "non-CC0 or missing ways: 4"
-    }
-  ],
-  "exclusions": {
-    "non-CC0 or missing ways: 4": 1
-  },
+  "skipped": [],
+  "exclusions": {},
   "outside_plate": [],
   "qa": {
     "coast_outside_land_km2": 4611.9,
@@ -287,7 +245,7 @@
       }
     ],
     "land_clip": "Natural Earth 10m",
-    "features": 16,
+    "features": 17,
     "coverage_valid": false,
     "simplify": "per polygon",
     "overlaps": [
@@ -296,6 +254,13 @@
         "b": "Mughal Empire",
         "area_km2": 134244.2,
         "share_of_smaller": 0.9988,
+        "kind": "nesting"
+      },
+      {
+        "a": "Viceroyalty of New Spain",
+        "b": "Spanish Philippines",
+        "area_km2": 10462.7,
+        "share_of_smaller": 1.0,
         "kind": "nesting"
       },
       {
@@ -335,10 +300,18 @@
       }
     ],
     "overlap_kinds": {
-      "nesting": 2,
+      "nesting": 3,
       "conflict": 2,
       "sliver": 2
     },
-    "palette_conflicts": 0
+    "palette_conflicts": 0,
+    "cc_by_ways_by_source": {}
+  },
+  "attribution": {
+    "credit": "Historical borders: OpenHistoricalMap contributors and others — see description",
+    "lines": [
+      "Map data courtesy of OpenHistoricalMap contributors, https://www.openhistoricalmap.org/."
+    ],
+    "unmapped": []
   }
 }

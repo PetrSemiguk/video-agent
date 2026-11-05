@@ -1,11 +1,14 @@
-"""License-filtered historical state borders from OpenHistoricalMap.
+"""Historical state borders from OpenHistoricalMap and Cliopatria, and composed maps.
 
 uv run python -m vap.geo.hist probe --plate europe --date 1914-07-01 [--search "Bavaria"]
 uv run python -m vap.geo.hist extract --plate europe --date 1914-07-01 --slug europe-1914
+uv run python -m vap.geo.hist extract --plate europe --date 1914-07-01 --source cliopatria \\
+    --slug europe-1914-cliopatria [--frame-year 1915]
+uv run python -m vap.geo.hist compose --plate china-east --spec <file.yaml>
 
-Dates use an inclusive start and an exclusive end. A state is a relation tagged
+OHM dates use an inclusive start and an exclusive end. A state is a relation tagged
 admin_level=2, boundary=administrative, type=boundary (see `state_exclusion`). Licenses are
-checked on the relation and on every way of its geometry.
+checked on the relation and on every way of its geometry: CC0 and CC BY 4.0 pass.
 """
 
 from __future__ import annotations
@@ -17,6 +20,7 @@ import math
 import re
 import sys
 from collections import Counter
+from pathlib import Path
 
 import httpx
 import numpy as np
@@ -24,6 +28,7 @@ import shapely
 from shapely.geometry import LineString, Point, Polygon, box, mapping, shape
 from shapely.strtree import STRtree
 
+from . import hist_attribution
 from .extract import (
     MIN_AREA_PX2,
     PROCESSED_DIR,
@@ -33,6 +38,7 @@ from .extract import (
     _to_merc,
     mirror_to_public,
 )
+from .hist_attribution import SOURCE_TAGS, source_key
 from .paths import PLATES_DIR, REPO_ROOT
 from .vectors import features
 
@@ -43,6 +49,15 @@ CC0 = {
     "CC0 / public domain",
     "https://creativecommons.org/publicdomain/zero/1.0/",
 }
+CC_BY = {
+    "cc-by-4.0",
+    "cc by 4.0",
+    "cc-by 4.0",
+    "creative commons by 4.0 international",
+    "creative commons attribution 4.0 international license",
+    "https://creativecommons.org/licenses/by/4.0/",
+}
+SOURCES = {"ohm", "cliopatria", "custom"}
 REQUIRED = {
     "id",
     "name_en",
@@ -61,7 +76,7 @@ MIN_OVERLAP_KM2 = 1.0
 PALETTE_SIZE = 8
 COORDINATE_GRID = 1e-4  # ~11 m, the precision of the other committed layers
 KM_PER_DEGREE = 111.0  # order of magnitude only, for describing a gap in a ring
-EVIDENCE = REPO_ROOT / "docs" / "reports" / "1.6"
+EVIDENCE = REPO_ROOT / "docs" / "reports" / "1.7"
 
 
 def date_key(value: str) -> tuple[int, int, int]:
@@ -82,8 +97,16 @@ def iso(value: str) -> str:
     return f"{'-' if y < 0 else ''}{abs(y):04d}-{m:02d}-{d:02d}"
 
 
+def license_class(tags: dict) -> str | None:
+    """Spell a license tag out: "cc0", "cc-by", or None for anything else (NC, SA, ND, unknown)."""
+    value = tags.get("license", "").strip()
+    if value in CC0:
+        return "cc0"
+    return "cc-by" if value.casefold() in CC_BY else None
+
+
 def license_ok(tags: dict) -> bool:
-    return tags.get("license", "").strip() in CC0
+    return license_class(tags) is not None
 
 
 def active(tags: dict, date: str) -> bool:
@@ -114,15 +137,16 @@ def validate(collection: dict) -> None:
         if p["id"] in ids or not p["id"] or not p["name_en"]:
             raise ValueError("empty or duplicate identity")
         ids.add(p["id"])
-        if p["source"] not in {"ohm", "custom"}:
+        if p["source"] not in SOURCES:
             raise ValueError("FORBIDDEN or unknown source (CShapes is NC)")
         if p["license"] not in {"CC0-1.0", "CC-BY-4.0"}:
             raise ValueError("unapproved license")
-        if p["source"] == "ohm" and (
-            p["license"] != "CC0-1.0"
-            or not p["source_ref"].startswith("https://www.openhistoricalmap.org/relation/")
+        if p["source"] == "ohm" and not p["source_ref"].startswith(
+            "https://www.openhistoricalmap.org/relation/"
         ):
-            raise ValueError("OHM provenance/license mismatch")
+            raise ValueError("OHM provenance mismatch")
+        if p["source"] == "cliopatria" and p["license"] != "CC-BY-4.0":
+            raise ValueError("Cliopatria is CC BY 4.0")
         if any(x in p["source_ref"].lower() for x in ("cshapes", "historical-basemaps")):
             raise ValueError("FORBIDDEN / REFERENCE ONLY provenance")
         if not isinstance(p["source_ref"], str) or not p["source_ref"].strip():
@@ -147,7 +171,7 @@ def _geometry_members(rel: dict):
 
 
 def way_license_exceptions(rel: dict, index: dict) -> list[dict]:
-    """Every way the geometry uses must be CC0 too: a CC0 relation does not clear its parts."""
+    """Every way the geometry uses must be allowed too: a relation does not clear its parts."""
     exceptions = []
     for member, _ in _geometry_members(rel):
         if member["type"] != "way":
@@ -162,7 +186,7 @@ def way_license_exceptions(rel: dict, index: dict) -> list[dict]:
                 {
                     "id": f"way/{member['ref']}",
                     "license": way["tags"]["license"],
-                    "reason": "explicit non-CC0 license",
+                    "reason": "license is neither CC0 nor CC BY 4.0",
                     "source": way["tags"].get("source:name")
                     or way["tags"].get("attribution")
                     or way["tags"].get("source:geometry")
@@ -170,6 +194,29 @@ def way_license_exceptions(rel: dict, index: dict) -> list[dict]:
                 }
             )
     return exceptions
+
+
+def cc_by_ways(rel: dict, index: dict, bbox: list[float] | None = None) -> list[dict]:
+    """CC BY ways of the geometry that fall inside the plate: only these need a credit."""
+    frame = box(*bbox) if bbox else None
+    used = []
+    for member, _ in _geometry_members(rel):
+        way = index.get(("way", member["ref"])) if member["type"] == "way" else None
+        if way is None or license_class(way.get("tags", {})) != "cc-by":
+            continue
+        coords = way.get("geometry", member.get("geometry", []))
+        points = [(p["lon"], p["lat"]) for p in coords if p]
+        if frame is not None and (len(points) < 2 or not frame.intersects(LineString(points))):
+            continue
+        tags = way["tags"]
+        used.append(
+            {
+                "id": f"way/{member['ref']}",
+                "key": source_key(tags),
+                "source": " ".join(str(tags[k]) for k in SOURCE_TAGS if k in tags) or "no tag",
+            }
+        )
+    return used
 
 
 def open_ends(lines: list) -> str:
@@ -244,6 +291,14 @@ def dated_states(candidates, date: str, names=None):
     return states, not_states, bad_dates
 
 
+def spdx(candidate) -> str | None:
+    """The strongest license among the relation and its used ways."""
+    kind = license_class(candidate.tags)
+    if kind is None:
+        return candidate.tags.get("license")
+    return "CC-BY-4.0" if kind == "cc-by" or candidate.cc_by else "CC0-1.0"
+
+
 def normalized_selection(candidates, date: str, names=None):
     """Keep a polygon only if the relation and all its ways pass; report everything else."""
     records, objects = [], []
@@ -262,9 +317,9 @@ def normalized_selection(candidates, date: str, names=None):
         geom = shape(c.geometry) if c.geometry else None
         polygon = geom is not None and geom.geom_type in {"Polygon", "MultiPolygon"}
         if not reason and not license_ok(tags):
-            reason = f"non-CC0 relation: {tags['license']}"
+            reason = f"relation license not allowed: {tags['license']}"
         if not reason and c.license_exceptions:
-            reason = f"non-CC0 or missing ways: {len(c.license_exceptions)}"
+            reason = f"ways with a license not allowed, or missing: {len(c.license_exceptions)}"
         if not reason and (not polygon or geom.is_empty or not geom.is_valid):
             reason = c.geometry_error or "no valid polygon geometry"
         objects.append(
@@ -274,7 +329,7 @@ def normalized_selection(candidates, date: str, names=None):
                 "valid_from": tags.get("start_date"),
                 "valid_to": tags.get("end_date"),
                 "license": tags.get("license"),
-                "effective_license": "CC0-1.0" if license_ok(tags) else tags.get("license"),
+                "effective_license": spdx(c),
                 "license_basis": "OHM default" if not tags.get("license") else "explicit tag",
                 "polygon_geometry": bool(polygon),
                 "geometry_error": c.geometry_error,
@@ -292,7 +347,7 @@ def normalized_selection(candidates, date: str, names=None):
             "valid_to": iso(tags["end_date"]) if tags.get("end_date") else None,
             "source": "ohm",
             "source_ref": f"https://www.openhistoricalmap.org/relation/{c.element_id}",
-            "license": "CC0-1.0",
+            "license": spdx(c),
             "license_raw": tags.get("license"),
             "confidence": "low",
             "approximate": True,
@@ -381,6 +436,30 @@ def _drop_specks(geom, min_area: float):
     return shapely.union_all(kept) if kept else max(parts, key=lambda p: p.area)
 
 
+def build_features(props: list, geoms: list, meta: dict) -> tuple[list[dict], int]:
+    """GeoJSON features from Mercator geometries: label, area and palette color added."""
+    colors, conflicts = palette_indices(geoms) if geoms else ([], 0)
+    out = []
+    for p, g, color in zip(props, geoms, colors, strict=True):
+        largest = max(shapely.get_parts(g), key=lambda part: part.area)
+        anchor = shapely.maximum_inscribed_circle(largest, meta["pixel_size_m"] * 4)
+        label = shapely.transform(shapely.get_point(anchor, 0), _to_lonlat)
+        lonlat = shapely.set_precision(shapely.transform(g, _to_lonlat), COORDINATE_GRID)
+        out.append(
+            {
+                "type": "Feature",
+                "properties": {
+                    **p,
+                    "label": [round(label.x, 4), round(label.y, 4)],
+                    "area_km2": round(area_km2(g)),
+                    "palette_index": color,
+                },
+                "geometry": mapping(lonlat),
+            }
+        )
+    return out, conflicts
+
+
 def align(records: list, meta: dict) -> tuple[dict, dict]:
     """Clip to Natural Earth land. Coasts stay on NE; only inland borders come from OHM."""
     tolerance = meta["pixel_size_m"] * TOLERANCE_PX
@@ -409,25 +488,7 @@ def align(records: list, meta: dict) -> tuple[dict, dict]:
         ]
     kept = [(p, g) for p, g in zip(props, geoms, strict=True) if not g.is_empty]
     props, geoms = [p for p, _ in kept], [_drop_specks(g, min_area) for _, g in kept]
-    colors, conflicts = palette_indices(geoms) if geoms else ([], 0)
-    out = []
-    for p, g, color in zip(props, geoms, colors, strict=True):
-        largest = max(shapely.get_parts(g), key=lambda part: part.area)
-        anchor = shapely.maximum_inscribed_circle(largest, meta["pixel_size_m"] * 4)
-        label = shapely.transform(shapely.get_point(anchor, 0), _to_lonlat)
-        lonlat = shapely.set_precision(shapely.transform(g, _to_lonlat), COORDINATE_GRID)
-        out.append(
-            {
-                "type": "Feature",
-                "properties": {
-                    **p,
-                    "label": [round(label.x, 4), round(label.y, 4)],
-                    "area_km2": round(area_km2(g)),
-                    "palette_index": color,
-                },
-                "geometry": mapping(lonlat),
-            }
-        )
+    out, conflicts = build_features(props, geoms, meta)
     collection = {"type": "FeatureCollection", "features": out}
     validate(collection)
     return collection, coast_report(geoms, land, meta) | {
@@ -472,14 +533,36 @@ def coast_report(geoms: list, land, meta: dict) -> dict:
     }
 
 
+def drawn_ids(collection: dict) -> set[str]:
+    return {f["properties"]["id"] for f in collection["features"]}
+
+
+def save_layer(collection, report, plate, slug, credit, lines, unmapped=()) -> str:
+    """Write a layer, its report and its attribution; the errata file is hand-kept."""
+    collection["attribution"] = credit
+    validate(collection)
+    target = PROCESSED_DIR / plate / "historical" / f"{slug}.geojson"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    text = json.dumps(collection, ensure_ascii=False, separators=(",", ":"))
+    target.write_text(text, encoding="utf-8")
+    target.with_suffix(".report.json").write_text(
+        json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    hist_attribution.write(target, slug, credit, lines, unmapped)
+    mirror_to_public(plate)
+    return text
+
+
 def main(argv: list[str] | None = None) -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("command", choices=["probe", "extract", "validate"])
+    ap.add_argument("command", choices=["probe", "extract", "validate", "compose"])
     ap.add_argument("--plate")
     ap.add_argument("--date")
     ap.add_argument("--slug", help="extract: data/processed/<plate>/historical/<slug>.geojson")
-    ap.add_argument("--source", choices=["cshapes", "ohm"], default="ohm")
+    ap.add_argument("--source", choices=["cshapes", "ohm", "cliopatria"], default="ohm")
+    ap.add_argument("--frame-year", type=int, help="cliopatria: use this frame, not the date's")
+    ap.add_argument("--spec", help="compose: YAML description of the map")
     ap.add_argument("--names", nargs="+")
     ap.add_argument("--search", help="probe: also search OHM worldwide for this name pattern")
     ap.add_argument("--file", type=str)
@@ -499,6 +582,14 @@ def main(argv: list[str] | None = None) -> int:
                     raise ValueError("custom contour requires adjacent .sources.md")
             print("Historical GeoJSON OK")
             return 0
+        if args.command == "compose":
+            if not args.plate or not args.spec:
+                ap.error("compose requires --plate and --spec")
+            from .hist_compose import compose
+
+            plate = "china-east-hs05" if args.plate == "china-east" else args.plate
+            print(json.dumps(compose(plate, Path(args.spec)), indent=2, ensure_ascii=False))
+            return 0
         if not args.plate or not args.date:
             ap.error("probe/extract require --plate and --date")
         if args.command == "extract" and not args.slug:
@@ -511,6 +602,10 @@ def main(argv: list[str] | None = None) -> int:
         # china-east is the roadmap name; the existing default hillshade plate is hs05.
         plate = "china-east-hs05" if args.plate == "china-east" else args.plate
         meta = json.loads((PLATES_DIR / f"{plate}.json").read_text(encoding="utf-8"))
+        if args.source == "cliopatria":
+            from .hist_cliopatria import run
+
+            return run(args.command, args.plate, plate, meta, date, args.slug, args.frame_year)
         candidates = relations_in_plate(meta)
         states, not_states, bad_dates = dated_states(candidates, date, args.names)
         report = {
@@ -543,7 +638,7 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(report, indent=2, ensure_ascii=False))
             return 0
         records, objects = normalized_selection(
-            [with_geometry(c) for c in states], date, args.names
+            [with_geometry(c, meta["bbox_lonlat"]) for c in states], date, args.names
         )
         if not records:
             raise ValueError("no eligible real polygons; refusing empty extraction")
@@ -557,14 +652,15 @@ def main(argv: list[str] | None = None) -> int:
             "outside_plate": sorted({p["name_en"] for p, _ in records} - drawn),
             "qa": qa,
         }
-        target = PROCESSED_DIR / plate / "historical" / f"{args.slug}.geojson"
-        target.parent.mkdir(parents=True, exist_ok=True)
-        text = json.dumps(collection, ensure_ascii=False, separators=(",", ":"))
-        target.write_text(text, encoding="utf-8")
-        target.with_suffix(".report.json").write_text(
-            json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8"
-        )
-        mirror_to_public(plate)
+        used = [c for c in states if f"ohm-relation-{c.element_id}" in drawn_ids(collection)]
+        ways = [way for c in used for way in c.cc_by]
+        keys = {way["key"] for way in ways if way["key"]}
+        credit = hist_attribution.short_credit(hist_attribution.OHM_CREDIT, keys)
+        lines = [hist_attribution.OHM_TEXT, *hist_attribution.full_texts(keys)]
+        unmapped = [way for way in ways if not way["key"]]
+        report["attribution"] = {"credit": credit, "lines": lines, "unmapped": unmapped}
+        report["qa"]["cc_by_ways_by_source"] = dict(Counter(w["key"] or "unknown" for w in ways))
+        text = save_layer(collection, report, plate, args.slug, credit, lines, unmapped)
         summary = {k: v for k, v in report.items() if k not in {"states", "not_states"}}
         print(json.dumps(summary | {"bytes": len(text.encode("utf-8"))}, indent=2))
         return 0

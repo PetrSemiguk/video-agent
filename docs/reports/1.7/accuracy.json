@@ -1,0 +1,783 @@
+[
+  {
+    "layer": "europe-1914",
+    "place": "Strasbourg (Alsace)",
+    "expected": "German",
+    "found": [
+      "German Reich"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Metz (Lorraine)",
+    "expected": "German",
+    "found": [
+      "German Reich"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Warsaw (Congress Poland)",
+    "expected": "Russia",
+    "found": [
+      "Russian Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Sarajevo (Bosnia)",
+    "expected": "Austria",
+    "found": [
+      "Austria-Hungary"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Krakow (Galicia)",
+    "expected": "Austria",
+    "found": [
+      "Austria-Hungary"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Belgrade",
+    "expected": "Serbia",
+    "found": [
+      "Kingdom of Serbia"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Bucharest",
+    "expected": "Romania",
+    "found": [
+      "Kingdom of Romania"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Sofia",
+    "expected": "Bulgaria",
+    "found": [
+      "Tsardom of Bulgaria"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Constantinople",
+    "expected": "Ottoman",
+    "found": [
+      "Ottoman Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Paris",
+    "expected": "France|French",
+    "found": [
+      "French Republic"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914",
+    "place": "Dublin",
+    "expected": "United Kingdom|Brit",
+    "found": [
+      "United Kingdom of Great Britain and Ireland"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Strasbourg (Alsace)",
+    "expected": "German",
+    "found": [
+      "German Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Metz (Lorraine)",
+    "expected": "German",
+    "found": [
+      "German Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Warsaw (Congress Poland)",
+    "expected": "Russia",
+    "found": [
+      "Russian Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Sarajevo (Bosnia)",
+    "expected": "Austria",
+    "found": [
+      "Austria-Hungary"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Krakow (Galicia)",
+    "expected": "Austria",
+    "found": [
+      "Austria-Hungary"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Belgrade",
+    "expected": "Serbia",
+    "found": [
+      "Serbs"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Bucharest",
+    "expected": "Romania",
+    "found": [
+      "United Principalities of Moldavia and Wallachia"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Sofia",
+    "expected": "Bulgaria",
+    "found": [
+      "Principality of Bulgaria"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Constantinople",
+    "expected": "Ottoman",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Paris",
+    "expected": "France|French",
+    "found": [
+      "French Third Republic",
+      "(French Third Republic)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1914-cliopatria",
+    "place": "Dublin",
+    "expected": "United Kingdom|Brit",
+    "found": [
+      "Kingdom of Great Britain",
+      "(British Empire)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Warsaw",
+    "expected": "Poland|Russia",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Oslo (union with Sweden)",
+    "expected": "Sweden|Norway",
+    "found": [
+      "Sweden–Norway"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Munich",
+    "expected": "Bavaria",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Stuttgart",
+    "expected": "Württemberg|Wurttemberg",
+    "found": [
+      "Württemberg"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Dresden",
+    "expected": "Saxony",
+    "found": [
+      "Kingdom of Saxony"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Berlin",
+    "expected": "Prussia",
+    "found": [
+      "Kingdom of Prussia"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Frankfurt",
+    "expected": "Frankfurt|Frankfur",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Weimar",
+    "expected": "Weimar",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Vienna",
+    "expected": "Austria",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Milan",
+    "expected": "Austria",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "europe-1815",
+    "place": "Paris",
+    "expected": "France",
+    "found": [
+      "Kingdom of France"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Warsaw",
+    "expected": "Poland|Russia",
+    "found": [
+      "Russian Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Oslo (union with Sweden)",
+    "expected": "Sweden|Norway",
+    "found": [
+      "United Kingdoms of Sweden and Norway"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Munich",
+    "expected": "Bavaria",
+    "found": [
+      "Kingdom of Bavaria"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Stuttgart",
+    "expected": "Württemberg|Wurttemberg",
+    "found": [
+      "Kingdom of Württemberg"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Dresden",
+    "expected": "Saxony",
+    "found": [
+      "German Confederation"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Berlin",
+    "expected": "Prussia",
+    "found": [
+      "German Confederation"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Frankfurt",
+    "expected": "Frankfurt|Frankfur",
+    "found": [
+      "Grand Duchy of Berg"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Weimar",
+    "expected": "Weimar",
+    "found": [
+      "Grand Duchy of Saxe-Weimar-Eisenach"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Vienna",
+    "expected": "Austria",
+    "found": [
+      "Austrian Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Milan",
+    "expected": "Austria",
+    "found": [
+      "Austrian Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "europe-1815-cliopatria",
+    "place": "Paris",
+    "expected": "France",
+    "found": [
+      "Bourbon Kingdom of France",
+      "(Bourbon Kingdom of France)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1644",
+    "place": "Beijing",
+    "expected": "Qing",
+    "found": [
+      "Qing"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1644",
+    "place": "Mukden",
+    "expected": "Qing",
+    "found": [
+      "Qing"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1644",
+    "place": "Nanjing (south not yet Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Qing"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-1644",
+    "place": "Guangzhou (south not yet Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Qing"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-1644",
+    "place": "Xi'an (Shun, not Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Qing"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-1644",
+    "place": "Seoul",
+    "expected": "Joseon",
+    "found": [
+      "Joseon"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1644-cliopatria",
+    "place": "Beijing",
+    "expected": "Qing",
+    "found": [
+      "Ming Dynasty"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-1644-cliopatria",
+    "place": "Mukden",
+    "expected": "Qing",
+    "found": [
+      "Later Jin Dynasty"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-1644-cliopatria",
+    "place": "Nanjing (south not yet Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Ming Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1644-cliopatria",
+    "place": "Guangzhou (south not yet Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Ming Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1644-cliopatria",
+    "place": "Xi'an (Shun, not Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Li Zicheng"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1644-cliopatria",
+    "place": "Seoul",
+    "expected": "Joseon",
+    "found": [
+      "Joseon"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1645-cliopatria",
+    "place": "Beijing",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1645-cliopatria",
+    "place": "Mukden",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1645-cliopatria",
+    "place": "Nanjing (south not yet Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Southern Ming"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1645-cliopatria",
+    "place": "Guangzhou (south not yet Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Southern Ming"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-1645-cliopatria",
+    "place": "Xi'an (Shun, not Qing)",
+    "expected": "!Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-1645-cliopatria",
+    "place": "Seoul",
+    "expected": "Joseon",
+    "found": [
+      "Joseon"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560-cliopatria",
+    "place": "Chang'an",
+    "expected": "Northern Zhou",
+    "found": [
+      "Western Wei"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-560-cliopatria",
+    "place": "Chengdu (Sichuan)",
+    "expected": "Northern Zhou",
+    "found": [
+      "Western Wei"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-560-cliopatria",
+    "place": "Ye (northeast)",
+    "expected": "Northern Qi",
+    "found": [
+      "Northern Qi"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560-cliopatria",
+    "place": "Jinyang",
+    "expected": "Northern Qi",
+    "found": [
+      "Northern Qi"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560-cliopatria",
+    "place": "Jiankang (south of the Yangtze)",
+    "expected": "Chen",
+    "found": [
+      "Liang Dynasty"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-560-cliopatria",
+    "place": "Jiangling (Western Liang)",
+    "expected": "Western Liang",
+    "found": [
+      "Liang Dynasty"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-561-cliopatria",
+    "place": "Chang'an",
+    "expected": "Northern Zhou",
+    "found": [
+      "Northern Zhou"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-561-cliopatria",
+    "place": "Chengdu (Sichuan)",
+    "expected": "Northern Zhou",
+    "found": [
+      "Northern Zhou"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-561-cliopatria",
+    "place": "Ye (northeast)",
+    "expected": "Northern Qi",
+    "found": [
+      "Northern Qi"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-561-cliopatria",
+    "place": "Jinyang",
+    "expected": "Northern Qi",
+    "found": [
+      "Northern Qi"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-561-cliopatria",
+    "place": "Jiankang (south of the Yangtze)",
+    "expected": "Chen",
+    "found": [
+      "Chen Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-561-cliopatria",
+    "place": "Jiangling (Western Liang)",
+    "expected": "Western Liang",
+    "found": [
+      "Later Western Liang"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560",
+    "place": "Chang'an",
+    "expected": "Northern Zhou",
+    "found": [
+      "Northern Zhou"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560",
+    "place": "Chengdu (Sichuan)",
+    "expected": "Northern Zhou",
+    "found": [
+      "Northern Zhou"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560",
+    "place": "Ye (northeast)",
+    "expected": "Northern Qi",
+    "found": [
+      "Northern Qi"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560",
+    "place": "Jinyang",
+    "expected": "Northern Qi",
+    "found": [
+      "Northern Qi"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560",
+    "place": "Jiankang (south of the Yangtze)",
+    "expected": "Chen",
+    "found": [
+      "Chen"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-560",
+    "place": "Jiangling (Western Liang)",
+    "expected": "Western Liang",
+    "found": [
+      "Western Liang"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-590-cliopatria",
+    "place": "Chang'an",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-590-cliopatria",
+    "place": "Jiankang (Chen fell in 589)",
+    "expected": "Sui",
+    "found": [
+      "Chen Dynasty"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-590-cliopatria",
+    "place": "Guangzhou",
+    "expected": "Sui",
+    "found": [
+      "Chen Dynasty"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "china-590-cliopatria",
+    "place": "Chengdu",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-592-cliopatria",
+    "place": "Chang'an",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-592-cliopatria",
+    "place": "Jiankang (Chen fell in 589)",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-592-cliopatria",
+    "place": "Guangzhou",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "china-592-cliopatria",
+    "place": "Chengdu",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  }
+]

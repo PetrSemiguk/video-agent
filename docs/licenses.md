@@ -82,6 +82,10 @@ Step 3.3 alignment sources (checked 2026-11-04, before installation/download):
 
 ## Historical boundary sources
 
+Spec parser: [PyYAML](https://github.com/yaml/pyyaml/blob/main/LICENSE), MIT, commercial use allowed.
+
+Factual references for composed maps: Wikipedia article URLs, cited per state in `<slug>.sources.md`. Facts only: no text, maps or images are imported.
+
 Parser software: [pyosmium 4.3.2](https://github.com/osmcode/pyosmium/blob/master/LICENSE.TXT)
 is BSD-2-Clause, commercial use allowed. Keep the distributed license notice.
 Using this library does not change the licenses of the OHM elements it reads.
@@ -90,8 +94,22 @@ See [historical-sources.md](historical-sources.md) for coverage, download method
 
 | Source | License | Commercial use? | Attribution text |
 |---|---|---|---|
-| OpenHistoricalMap boundary relations and geometry ways | CC0 by default, per-element exceptions | Yes for CC0/untagged elements only; reject explicit other licenses on the relation or its geometry ways | On screen: "Map data courtesy of OpenHistoricalMap". Retain relation URLs. |
-| Cliopatria (candidate only; not imported) | CC BY 4.0 | Yes, subject to attribution and per-record provenance review before use | Seshat Global History Databank, Cliopatria; https://creativecommons.org/licenses/by/4.0/; indicate changes. |
+| OpenHistoricalMap boundary relations and geometry ways | CC0 by default, per-element exceptions | Yes for CC0, untagged and CC BY 4.0 elements; NC, SA, ND and anything unrecognised is skipped with a report | On screen: "Historical borders: OpenHistoricalMap contributors and others - see description". Description: the layer's `<slug>.attribution.md`. Retain relation URLs. |
+| [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) v0.2.1 (`cliopatria.geojson.zip`, checked 2026-11-05) | CC BY 4.0, per its [LICENSE.md](https://github.com/Seshat-Global-History-Databank/cliopatria/blob/main/LICENSE.md) | Yes, with attribution | On screen: "Historical borders: Cliopatria (Seshat), CC BY 4.0 - see description". Description: the exact block under [Historical CC BY attribution](#historical-cc-by-attribution). Hand-drawn from published maps at varying timesteps; check facts per layer. |
+
+## Historical CC BY attribution
+
+Used only through OHM ways that carry these sources, or through Cliopatria. Each layer's
+`<slug>.attribution.md` lists only those it uses. Checked 2026-11-05.
+
+| Source | Publisher's license | Commercial use? | Exact attribution text |
+|---|---|---|---|
+| IGN CNIG (Spain), municipal and national boundary lines ([license](https://www.ign.es/resources/licencia/Condiciones_licenciaUso_IGN.pdf)) | CC BY 4.0 | Yes. The license asks for the credit at the foot of the map, or in credits only if that is manifestly impossible. | `Obra derivada de BDLJE CC-BY 4.0 ign.es`: derived-work form of the license. BDLJE is the product id in the [scne.es table](https://www.scne.es/productos.php) that best fits the ways' `LILIM` source; shown on the frame as well. |
+| Kartverket, Norway ([terms](https://www.kartverket.no/api-og-data/vilkar-for-bruk)) | CC BY 4.0 | Yes | `© Kartverket` with a link to https://www.kartverket.no where possible |
+| Surveying and Mapping Authority of the Republic of Slovenia (GURS), Evidenca državne meje ([general terms, 2022-09-19](https://www.e-prostor.gov.si/fileadmin/struktura/EGP/preberi_me.pdf), read at the source 2026-11-05) | CC BY 4.0 | Yes: the terms allow non-commercial and commercial use, sharing and adaptation, with the source credited. Use ends at once if the terms are broken. | `Geodetska uprava Republike Slovenije, Evidenca državne meje, stanje najkasneje 2026-05`. The terms require the data type and date. OHM records no state date, so this is an upper bound: the latest OHM edit of these ways. |
+| HDX COD-AB Ukraine ([dataset](https://data.humdata.org/dataset/cod-ab-ukr)), source State Scientific Production Enterprise "Kartographia", via OCHA | **CC BY-IGO 3.0** at the source ([legal code](http://creativecommons.org/licenses/by/3.0/igo/legalcode)). Discrepancy: the OHM ways are tagged CC BY 4.0; the source's terms are followed. Kept by the owner's decision, 2026-11-05. | Yes: commercial use is not restricted, attribution required | `Ukraine - Subnational Administrative Boundaries, State Scientific Production Enterprise "Kartographia", via OCHA on HDX (https://data.humdata.org/dataset/cod-ab-ukr). License: CC BY-IGO 3.0, http://creativecommons.org/licenses/by/3.0/igo/legalcode. Changes: via OpenHistoricalMap, clipped, simplified. No endorsement implied.` |
+| HDX COD-AB Costa Rica ([dataset](https://data.humdata.org/dataset/cod-ab-cri)), source Costa Rica National Statistics Office, via OCHA | **CC BY-IGO 3.0** at the source, with the same discrepancy and decision as Ukraine | Yes: commercial use is not restricted, attribution required | `Costa Rica - Subnational Administrative Boundaries, Costa Rica National Statistics Office, via OCHA on HDX (https://data.humdata.org/dataset/cod-ab-cri). License: CC BY-IGO 3.0, http://creativecommons.org/licenses/by/3.0/igo/legalcode. Changes: via OpenHistoricalMap, clipped, simplified. No endorsement implied.` |
+| Cliopatria | CC BY 4.0 | Yes | `Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified.` |
 
 ## Step 2.1 headline candidates (local, unmodified Google Fonts files)
 

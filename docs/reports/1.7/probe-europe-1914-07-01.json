@@ -1,0 +1,301 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1914-07-01",
+  "source": "ohm",
+  "relations_in_plate": 1642,
+  "states": [
+    {
+      "ohm_id": 2739874,
+      "name": "Andorra",
+      "valid_from": "1278",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2692361,
+      "name": "Austria-Hungary",
+      "valid_from": "1908-10-06",
+      "valid_to": "1918-10-31",
+      "license": null
+    },
+    {
+      "ohm_id": 2797729,
+      "name": "Belgium",
+      "valid_from": "1839-06-08",
+      "valid_to": "1920-01-10",
+      "license": null
+    },
+    {
+      "ohm_id": 2848135,
+      "name": "British Occupation of Cyprus",
+      "valid_from": "1914",
+      "valid_to": "1925-05-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2801185,
+      "name": "Crown Colony of Malta",
+      "valid_from": "1814-05-30",
+      "valid_to": "1964-09-21",
+      "license": null
+    },
+    {
+      "ohm_id": 2869935,
+      "name": "Denmark",
+      "valid_from": "1874",
+      "valid_to": "1920",
+      "license": null
+    },
+    {
+      "ohm_id": 2866012,
+      "name": "French Republic",
+      "valid_from": "1890",
+      "valid_to": "1918-11-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2866016,
+      "name": "French protectorate in Morocco",
+      "valid_from": "1912-03-30",
+      "valid_to": "1921",
+      "license": null
+    },
+    {
+      "ohm_id": 2690947,
+      "name": "French protectorate of Tunisia",
+      "valid_from": "1881-05-12",
+      "valid_to": "1956-03-20",
+      "license": null
+    },
+    {
+      "ohm_id": 2692425,
+      "name": "German Reich",
+      "valid_from": "1890-07-01",
+      "valid_to": "1918-11-11",
+      "license": null
+    },
+    {
+      "ohm_id": 2692855,
+      "name": "Gibraltar",
+      "valid_from": "1713",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2828270,
+      "name": "Guernsey",
+      "valid_from": "1290",
+      "valid_to": "1987-05-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2693293,
+      "name": "Isle of Man",
+      "valid_from": "1333-08-09",
+      "valid_to": "1987-05-15",
+      "license": null
+    },
+    {
+      "ohm_id": 2830316,
+      "name": "Italian Islands of the Aegean",
+      "valid_from": "1912-04-27",
+      "valid_to": "1921",
+      "license": null
+    },
+    {
+      "ohm_id": 2696424,
+      "name": "Italy",
+      "valid_from": "1870-09-20",
+      "valid_to": "1920-07-16",
+      "license": null
+    },
+    {
+      "ohm_id": 2828299,
+      "name": "Jersey",
+      "valid_from": "1290",
+      "valid_to": "1987-05-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2692585,
+      "name": "Kingdom of Greece",
+      "valid_from": "1913-08-10",
+      "valid_to": "1919",
+      "license": null
+    },
+    {
+      "ohm_id": 2739656,
+      "name": "Kingdom of Montenegro",
+      "valid_from": "1913-05-30",
+      "valid_to": "1918-11-28",
+      "license": null
+    },
+    {
+      "ohm_id": 2693260,
+      "name": "Kingdom of Romania",
+      "valid_from": "1913-08-30",
+      "valid_to": "1918",
+      "license": null
+    },
+    {
+      "ohm_id": 2746681,
+      "name": "Kingdom of Serbia",
+      "valid_from": "1913-08-10",
+      "valid_to": "1918-11-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2883430,
+      "name": "Kingdom of the Netherlands",
+      "valid_from": "1848-10-14",
+      "valid_to": "1949-04-23",
+      "license": null
+    },
+    {
+      "ohm_id": 2746467,
+      "name": "Liechtenstein",
+      "valid_from": "1806-07-12",
+      "valid_to": "1960-03-17",
+      "license": null
+    },
+    {
+      "ohm_id": 2748545,
+      "name": "Luxembourg",
+      "valid_from": "1840-09-12",
+      "valid_to": "1940-07-29",
+      "license": null
+    },
+    {
+      "ohm_id": 2693418,
+      "name": "Monaco",
+      "valid_from": "1861-02-02",
+      "valid_to": "1942-11-11",
+      "license": null
+    },
+    {
+      "ohm_id": 2692537,
+      "name": "Norway",
+      "valid_from": "1905-10-26",
+      "valid_to": "1921",
+      "license": null
+    },
+    {
+      "ohm_id": 2849728,
+      "name": "Ottoman Empire",
+      "valid_from": "1913-05-30",
+      "valid_to": "1918-10-30",
+      "license": null
+    },
+    {
+      "ohm_id": 2694889,
+      "name": "Persia",
+      "valid_from": "1828-02-22",
+      "valid_to": "1935",
+      "license": null
+    },
+    {
+      "ohm_id": 2807009,
+      "name": "Portugal",
+      "valid_from": "1910",
+      "valid_to": "1951-06-11",
+      "license": null
+    },
+    {
+      "ohm_id": 2855613,
+      "name": "Principality of Albania",
+      "valid_from": "1914-02-21",
+      "valid_to": "1925-01-31",
+      "license": null
+    },
+    {
+      "ohm_id": 2851294,
+      "name": "Russian Empire",
+      "valid_from": "1914-04-17",
+      "valid_to": "1916-09-20",
+      "license": null
+    },
+    {
+      "ohm_id": 2853735,
+      "name": "San Marino",
+      "valid_from": "1740-02-05",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2860486,
+      "name": "Spain",
+      "valid_from": "1912-11-27",
+      "valid_to": "1921-06",
+      "license": "CC0-1.0"
+    },
+    {
+      "ohm_id": 2692524,
+      "name": "Sweden",
+      "valid_from": "1905",
+      "valid_to": "1932-01-30",
+      "license": null
+    },
+    {
+      "ohm_id": 2798802,
+      "name": "Switzerland",
+      "valid_from": "1874-09-23",
+      "valid_to": "1967-10-03",
+      "license": null
+    },
+    {
+      "ohm_id": 2746680,
+      "name": "Tsardom of Bulgaria",
+      "valid_from": "1913-08-10",
+      "valid_to": "1919-11-27",
+      "license": null
+    },
+    {
+      "ohm_id": 2828388,
+      "name": "United Kingdom of Great Britain and Ireland",
+      "valid_from": "1801-01-01",
+      "valid_to": "1922-12-04",
+      "license": null
+    }
+  ],
+  "explicit_non_cc0": [],
+  "not_states": [
+    {
+      "ohm_id": 2862268,
+      "name": "Elgin Burghs",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2867930,
+      "name": "Leith Burghs",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871105,
+      "name": "Clackmannanshire and Kinross-shire",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871106,
+      "name": "Inverness Burghs",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871107,
+      "name": "Elginshire and Nairnshire",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871128,
+      "name": "Banffshire",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871383,
+      "name": "Falkirk Burghs",
+      "reason": "not a state: admin_level=None"
+    }
+  ],
+  "unreadable_dates": [],
+  "coverage": "partial: absence here is not proof of historical nonexistence"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "feature": "Kingdom of Bavaria",
+    "problem": "No relation is active: they stop on 1814-06-03 and resume on 1816-05-01.",
+    "correct": "Bavaria existed throughout 1815.",
+    "source": "https://en.wikipedia.org/wiki/Kingdom_of_Bavaria",
+    "severity": "blocker"
+  },
+  {
+    "feature": "Austrian Empire (relation 2961013)",
+    "problem": "No polygon: a nested relation member is refused, so Vienna, Milan and Venice are empty.",
+    "correct": "The Austrian Empire covered them in 1815.",
+    "source": "https://en.wikipedia.org/wiki/Austrian_Empire",
+    "severity": "blocker"
+  },
+  {
+    "feature": "Kingdom of Poland (relation 2692576), Free City of Cracow (relation 2692575)",
+    "problem": "No polygon: their boundary rings are open in OHM, so Warsaw and Krakow are empty.",
+    "correct": "Congress Poland and the Free City of Cracow existed from 1815.",
+    "source": "https://en.wikipedia.org/wiki/Congress_Poland",
+    "severity": "blocker"
+  },
+  {
+    "feature": "Saxe-Weimar and Saxe-Gotha",
+    "problem": "Missing: their relations start in 1826.",
+    "correct": "These duchies were members of the German Confederation in 1815.",
+    "source": "https://en.wikipedia.org/wiki/Saxe-Weimar-Eisenach",
+    "severity": "warning"
+  },
+  {
+    "feature": "Frankfurt (relation 2690440)",
+    "problem": "Named \"Frankfur\", and starts on 1815-07-09, after this layer's date.",
+    "correct": "Free City of Frankfurt, restored in 1815.",
+    "source": "https://en.wikipedia.org/wiki/Free_City_of_Frankfurt",
+    "severity": "warning"
+  },
+  {
+    "feature": "Switzerland and Swiss Confederation",
+    "problem": "Two successive relations overlap in date, so the country is present twice.",
+    "correct": "One Swiss state.",
+    "source": "https://en.wikipedia.org/wiki/Switzerland",
+    "severity": "warning"
+  }
+]

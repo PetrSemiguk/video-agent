@@ -29,6 +29,10 @@ for (const plate of story.plates) {
 for (const shot of story.shots)
   for (const layer of shot.layers)
     if (layer.type === "BRollClip") asset(brollAssets[layer.props.assetId].src);
+    else if (layer.type === "HistoricalLayer")
+      asset(
+        `geo/${story.plates.find((p) => p.id === shot.plate).name}/historical/${layer.props.slug}.geojson`,
+      );
 const fonts = (dir) => {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const file = path.join(dir, entry.name);

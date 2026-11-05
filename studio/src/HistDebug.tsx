@@ -3,25 +3,19 @@
 // `rivers` draws named Natural Earth rivers on top, to compare borders with channels.
 import { useMemo } from "react";
 import { keyframedCamera } from "./camera/keyframes";
+import { HistoricalLayer, Polity } from "./components/map/HistoricalLayer";
 import { PlaceLabel } from "./components/map/PlaceLabel";
 import {
   colors,
   fontStack,
   headlineStack,
   hist,
-  opacity,
-  polityPalette,
   space,
   stroke,
   textLayer,
   type,
 } from "./design/tokens";
-import {
-  GeoSvg,
-  LonLatTuple,
-  PlateStage,
-  useMapProjection,
-} from "./map/PlateStage";
+import { GeoSvg, PlateStage, useMapProjection } from "./map/PlateStage";
 import { useGeoJson } from "./geo/useGeoJson";
 
 export type HistDebugProps = {
@@ -36,20 +30,6 @@ export type HistDebugProps = {
   rivers?: string[];
 };
 
-type Polity = {
-  properties: {
-    id: string;
-    name_en: string;
-    label: LonLatTuple;
-    area_km2: number;
-    palette_index: number;
-  };
-  geometry: {
-    type: "Polygon" | "MultiPolygon";
-    coordinates: number[][][] | number[][][][];
-  };
-};
-
 type River = {
   properties: { name_en: string | null };
   geometry: {
@@ -58,62 +38,10 @@ type River = {
   };
 };
 
-const polygonRings = (geometry: Polity["geometry"]) =>
-  (geometry.type === "Polygon"
-    ? [geometry.coordinates]
-    : geometry.coordinates) as number[][][][];
-
 const riverLines = (geometry: River["geometry"]) =>
   (geometry.type === "LineString"
     ? [geometry.coordinates]
     : geometry.coordinates) as number[][][];
-
-const Polities: React.FC<{ polities: Polity[] }> = ({ polities }) => {
-  const { view, toPlatePx } = useMapProjection();
-  const paths = useMemo(
-    () =>
-      polities.map((polity) =>
-        polygonRings(polity.geometry)
-          .flat()
-          .map(
-            (ring) =>
-              ring
-                .map(([lon, lat], i) => {
-                  const p = toPlatePx([lon, lat]);
-                  return `${i ? "L" : "M"}${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
-                })
-                .join("") + "Z",
-          )
-          .join(""),
-      ),
-    // toPlatePx depends only on the plate, not on the camera.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [polities],
-  );
-  return (
-    <GeoSvg>
-      {polities.map((polity, i) => (
-        <path
-          key={polity.properties.id}
-          d={paths[i]}
-          fill={polityPalette[polity.properties.palette_index]}
-          fillRule="evenodd"
-          opacity={opacity.polityFill}
-        />
-      ))}
-      {polities.map((polity, i) => (
-        <path
-          key={polity.properties.id}
-          d={paths[i]}
-          fill="none"
-          stroke={polityPalette[polity.properties.palette_index]}
-          strokeWidth={stroke.polityBorder / view.scale}
-          strokeLinejoin="round"
-        />
-      ))}
-    </GeoSvg>
-  );
-};
 
 const Rivers: React.FC<{ rivers: River[] }> = ({ rivers }) => {
   const { view, toPlatePx } = useMapProjection();
@@ -272,6 +200,7 @@ export const HistDebug: React.FC<HistDebugProps> = ({
     [focus, nativeZoom],
   );
   const polities = (data?.polities.features ?? []) as unknown as Polity[];
+  const { attribution } = (data?.polities ?? {}) as { attribution?: string };
   const lines = ((data?.rivers.features ?? []) as unknown as River[]).filter(
     (river) => rivers?.some((name) => river.properties.name_en?.includes(name)),
   );
@@ -279,10 +208,14 @@ export const HistDebug: React.FC<HistDebugProps> = ({
     <PlateStage
       plate={plate}
       camera={camera}
-      extraAttribution={hist.attribution}
+      extraAttribution={`${attribution ?? ""} · Made with Natural Earth`}
       geo={
         <>
-          <Polities polities={polities} />
+          <HistoricalLayer
+            slug={slug}
+            credit={attribution ?? slug}
+            enterFrames={1}
+          />
           <Rivers rivers={lines} />
         </>
       }

@@ -1,0 +1,344 @@
+{
+  "plate": "china-east",
+  "resolved_plate": "china-east-hs05",
+  "date": "1645-07-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1645,
+  "states": [
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 6830268
+    },
+    {
+      "name": "Spanish Empire",
+      "valid_from": 1640,
+      "valid_to": 1658,
+      "area_km2": 6152471
+    },
+    {
+      "name": "Qing Dynasty",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 3630358
+    },
+    {
+      "name": "Mughal Empire",
+      "valid_from": 1640,
+      "valid_to": 1647,
+      "area_km2": 2871595
+    },
+    {
+      "name": "Golden Horde",
+      "valid_from": 1636,
+      "valid_to": 1647,
+      "area_km2": 2739180
+    },
+    {
+      "name": "Southern Ming",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 2179980
+    },
+    {
+      "name": "Tibet",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 1549843
+    },
+    {
+      "name": "(Portuguese Empire)",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 1084896
+    },
+    {
+      "name": "Eastern Moghulistan",
+      "valid_from": 1636,
+      "valid_to": 1682,
+      "area_km2": 936577
+    },
+    {
+      "name": "Oirat Confederation",
+      "valid_from": 1636,
+      "valid_to": 1658,
+      "area_km2": 839091
+    },
+    {
+      "name": "First Toungoo Empire",
+      "valid_from": 1619,
+      "valid_to": 1652,
+      "area_km2": 521477
+    },
+    {
+      "name": "Tümed",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 414337
+    },
+    {
+      "name": "Ayutthaya Kingdom",
+      "valid_from": 1619,
+      "valid_to": 1661,
+      "area_km2": 382305
+    },
+    {
+      "name": "Lan Xang",
+      "valid_from": 1600,
+      "valid_to": 1647,
+      "area_km2": 375426
+    },
+    {
+      "name": "Tokugawa Shogunate",
+      "valid_from": 1609,
+      "valid_to": 1798,
+      "area_km2": 328728
+    },
+    {
+      "name": "Khoshut Khanate",
+      "valid_from": 1645,
+      "valid_to": 1652,
+      "area_km2": 291381
+    },
+    {
+      "name": "Joseon",
+      "valid_from": 1640,
+      "valid_to": 1859,
+      "area_km2": 231658
+    },
+    {
+      "name": "Golconda Sultanate",
+      "valid_from": 1640,
+      "valid_to": 1658,
+      "area_km2": 203522
+    },
+    {
+      "name": "Gorkha Kingdom",
+      "valid_from": 1588,
+      "valid_to": 1717,
+      "area_km2": 148032
+    },
+    {
+      "name": "(Dutch Republic)",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 109208
+    },
+    {
+      "name": "Dutch Republic",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 109208
+    },
+    {
+      "name": "Trịnh lords",
+      "valid_from": 1645,
+      "valid_to": 1647,
+      "area_km2": 103059
+    },
+    {
+      "name": "Portuguese Colonies",
+      "valid_from": 1640,
+      "valid_to": 1647,
+      "area_km2": 101956
+    },
+    {
+      "name": "Nguyễn lords",
+      "valid_from": 1572,
+      "valid_to": 1652,
+      "area_km2": 89944
+    },
+    {
+      "name": "Kingdom of Mrauk U",
+      "valid_from": 1588,
+      "valid_to": 1669,
+      "area_km2": 76861
+    },
+    {
+      "name": "Kingdom of Bhutan",
+      "valid_from": 1636,
+      "valid_to": 1682,
+      "area_km2": 41700
+    },
+    {
+      "name": "Đại Việt",
+      "valid_from": 1595,
+      "valid_to": 1652,
+      "area_km2": 10161
+    },
+    {
+      "name": "Kathmandu",
+      "valid_from": 1202,
+      "valid_to": 1743,
+      "area_km2": 661
+    }
+  ],
+  "relation_rows_left_out": 0,
+  "slug": "china-1645-cliopatria",
+  "qa": {
+    "coast_outside_land_km2": 3473.4,
+    "coast_max_error_px": 0.62,
+    "land_covered": 0.9193,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 475135,
+        "at": [
+          104.86,
+          30.5
+        ]
+      },
+      {
+        "area_km2": 281976,
+        "at": [
+          93.58,
+          25.62
+        ]
+      },
+      {
+        "area_km2": 219896,
+        "at": [
+          83.37,
+          21.5
+        ]
+      },
+      {
+        "area_km2": 562,
+        "at": [
+          121.66,
+          29.35
+        ]
+      },
+      {
+        "area_km2": 341,
+        "at": [
+          109.73,
+          21.07
+        ]
+      },
+      {
+        "area_km2": 332,
+        "at": [
+          91.13,
+          22.23
+        ]
+      },
+      {
+        "area_km2": 205,
+        "at": [
+          129.39,
+          34.61
+        ]
+      },
+      {
+        "area_km2": 163,
+        "at": [
+          130.67,
+          42.35
+        ]
+      },
+      {
+        "area_km2": 203,
+        "at": [
+          132.65,
+          34.25
+        ]
+      },
+      {
+        "area_km2": 230,
+        "at": [
+          128.95,
+          27.8
+        ]
+      },
+      {
+        "area_km2": 242,
+        "at": [
+          88.58,
+          21.75
+        ]
+      },
+      {
+        "area_km2": 189,
+        "at": [
+          129.07,
+          32.99
+        ]
+      },
+      {
+        "area_km2": 239,
+        "at": [
+          108.65,
+          19.06
+        ]
+      },
+      {
+        "area_km2": 184,
+        "at": [
+          129.47,
+          33.29
+        ]
+      },
+      {
+        "area_km2": 211,
+        "at": [
+          124.24,
+          24.46
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 28,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "(Dutch Republic)",
+        "b": "Dutch Republic",
+        "area_km2": 35965.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Spanish Empire",
+        "b": "(Spanish Empire)",
+        "area_km2": 9382.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Spanish Empire",
+        "b": "(Dutch Republic)",
+        "area_km2": 4563.6,
+        "share_of_smaller": 0.3272,
+        "kind": "conflict"
+      },
+      {
+        "a": "Spanish Empire",
+        "b": "Dutch Republic",
+        "area_km2": 4563.6,
+        "share_of_smaller": 0.3272,
+        "kind": "conflict"
+      },
+      {
+        "a": "Portuguese Colonies",
+        "b": "(Portuguese Empire)",
+        "area_km2": 300.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 3,
+      "conflict": 2
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

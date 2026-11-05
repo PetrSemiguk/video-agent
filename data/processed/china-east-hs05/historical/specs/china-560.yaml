@@ -1,0 +1,55 @@
+# China on 1 July 560: Northern Zhou, Northern Qi, Chen, Western Liang.
+# Compile: uv run python -m vap.geo.hist compose --plate china-east --spec <this file>
+#
+# Base: Cliopatria frame 561 (china-561-cliopatria), which already has the right three states.
+# Its frame for 560 (china-560-cliopatria) still shows Western Wei and Liang, gone since 557.
+slug: china-560
+states:
+  - name_en: Northern Zhou
+    valid_from: "0557"
+    valid_to: "0581"
+    confidence: medium
+    color: regionB
+    sources:
+      - https://en.wikipedia.org/wiki/Northern_Zhou
+    notes: Cliopatria frame 561 contour.
+    geometry:
+      union:
+        - layer: china-561-cliopatria
+          feature: cliopatria-northern-zhou-561
+  - name_en: Northern Qi
+    valid_from: "0550"
+    valid_to: "0577"
+    confidence: medium
+    color: conflict
+    sources:
+      - https://en.wikipedia.org/wiki/Northern_Qi
+    notes: Cliopatria frame 561 contour.
+    geometry:
+      union:
+        - layer: china-561-cliopatria
+          feature: cliopatria-northern-qi-561
+  - name_en: Chen
+    valid_from: "0557"
+    valid_to: "0589"
+    confidence: medium
+    color: regionA
+    sources:
+      - https://en.wikipedia.org/wiki/Chen_dynasty
+    notes: Cliopatria frame 561 contour.
+    geometry:
+      union:
+        - layer: china-561-cliopatria
+          feature: cliopatria-chen-dynasty-561
+  - name_en: Western Liang
+    valid_from: "0555"
+    valid_to: "0587"
+    confidence: low
+    color: neutral
+    sources:
+      - https://en.wikipedia.org/wiki/Western_Liang_(555%E2%80%93587)
+    notes: Cliopatria frame 561 contour, there named Later Western Liang.
+    geometry:
+      union:
+        - layer: china-561-cliopatria
+          feature: cliopatria-later-western-liang-561

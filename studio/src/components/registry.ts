@@ -25,6 +25,7 @@ import { EndCard, endCardSchema } from "./cards/EndCard";
 import { BRollClip, bRollClipSchema } from "./media/BRollClip";
 import { RegionHighlight, regionHighlightSchema } from "./map/RegionHighlight";
 import { RiverLine, riverLineSchema } from "./map/RiverLine";
+import { HistoricalLayer, historicalLayerSchema } from "./map/HistoricalLayer";
 import { PlaceLabel, placeLabelSchema } from "./map/PlaceLabel";
 import { MapAttribution, mapAttributionSchema } from "./MapAttribution";
 
@@ -135,6 +136,14 @@ export const componentRegistry = {
     when: "In PlateStage geo; use supported custom/admin/country polygons.",
     notes:
       "geojson is nonempty Feature or FeatureCollection of Polygon/MultiPolygon; closed rings, finite Web Mercator lon/lat. Never render schematic Natural Earth geography_regions polygons as shapes. GeoJSON custom validation is stronger than its unrepresentable JSON-schema field. exitAt is relative to the local Sequence.",
+  },
+  HistoricalLayer: {
+    component: HistoricalLayer,
+    schema: historicalLayerSchema,
+    purpose: "Fills all polities of a historical layer on the shot's plate.",
+    when: "In PlateStage geo, to show who held what on a date; name polities with PlaceLabel.",
+    notes:
+      "slug is data/processed/<plate>/historical/<slug>.geojson. credit must equal the layer's `attribution`; validation checks it. A layer whose <slug>.errata.json has a blocker fails validation and the episode build unless errataOverride gives a reason. See docs/maps.md for choosing a layer.",
   },
   RiverLine: {
     component: RiverLine,

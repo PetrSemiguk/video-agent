@@ -429,7 +429,7 @@ npm run still:hist -- out/hist-europe-1914.png --props=props/hist-europe-1914.js
 ```
 
 `china-east` is an alias of the `china-east-hs05` plate. `probe` writes
-`docs/reports/1.6/probe-<plate>-<date>.json`. `extract` writes
+`docs/reports/1.7/probe-<plate>-<date>.json`. `extract` writes
 `data/processed/<plate>/historical/<slug>.geojson` (committed), an adjacent `.report.json`
 and a copy under `studio/public/geo/`.
 
@@ -443,9 +443,22 @@ keep a 2 s pause and retry 429/504 with backoff. Every complete response is cach
 their first day). This drops, for example, Scottish parliamentary districts
 (`boundary=political`) and zones. The rule is `state_exclusion` in `hist.py`.
 
-**Licenses.** The relation and every way of its geometry must be CC0 or untagged, because
-OHM's default is CC0 but single ways may carry their own license. Anything else skips the
+**Licenses.** The relation and every way of its geometry must be CC0, untagged or CC BY 4.0,
+because OHM's default is CC0 but single ways may carry their own license. Anything else skips the
 polity with a report; a skipped polity is left unfilled, not approximated.
+
+**Attribution.** `extract` and `compose` record the short on-screen credit as `attribution` on the
+layer and write the full list to `<slug>.attribution.md`, from what the layer really uses inside the
+plate. `vap.episode build` copies it into a marked block of `episodes/<slug>/attributions.md`.
+
+**Errata.** `<slug>.errata.json` lists known factual errors, each with `feature`, `problem`, `correct`,
+`source` (URL) and `severity` (`blocker` or `warning`). It is written by hand and survives
+regeneration. A shot using a layer with a blocker fails validation and the build, unless the layer has
+`errataOverride: {"reason": "..."}`. In a storyboard, draw a layer with the `HistoricalLayer` component.
+
+**Cliopatria.** `--source cliopatria` works with `probe` and `extract`, from one pinned release. Its
+rows are whole-year frames that can lag events by years: compare neighbouring frames, and pick one
+with `--frame-year`. See [historical-sources.md](historical-sources.md).
 
 **Geometry.** Rings are assembled from the outer and inner ways. An open ring is an error and
 is never closed. Absence from OHM stays a gap: no contour is drawn for it.
@@ -464,7 +477,64 @@ pair is listed in the report as nesting (at least 90% of the smaller polity), sl
 surface of the largest part), `area_km2` and `palette_index` (0-7, neighbours differ, into
 `polityPalette` in tokens). Dates are signed ISO years, negative for BCE, with no year zero.
 
-**Not built.** Importing custom contours with `historical/custom/<slug>.geojson` and a
-`<slug>.sources.md` sidecar, and snapping them to rivers: `validate` only checks that the
-sidecar exists. Passing validation does not certify historical truth. Never use REFERENCE ONLY
-or FORBIDDEN geometry.
+Passing validation does not certify historical truth. Never use REFERENCE ONLY or FORBIDDEN
+geometry. Snapping custom borders to rivers is not built.
+
+## Composing historical maps
+
+**When to compose.** First try a ready layer: run `probe` for the date and check the facts with
+`vap.geo.hist_qa`. Use a ready layer if its states and names are right on your date and its errata has
+no blocker. Compose when a good contour exists under the wrong name or frame, when one row must be
+split or merged, or when only some states of a ready layer are wanted. Do not compose to fill a gap with
+a guess: if no source shows a state's extent, say so in the script or leave it out.
+
+**Spec.** `data/processed/<plate>/historical/specs/<slug>.yaml`:
+
+```yaml
+slug: china-560
+states:
+  - name_en: Northern Zhou
+    valid_from: "0557"        # signed ISO; whole years are fine
+    valid_to: "0581"          # exclusive
+    confidence: medium        # high | medium | low
+    color: regionB            # optional: regionA, regionB, conflict, neutral
+    approximate: true         # the default
+    sources:
+      - https://en.wikipedia.org/wiki/Northern_Zhou
+    notes: Cliopatria frame 561 contour.
+    geometry:
+      union:
+        - layer: china-561-cliopatria
+          feature: cliopatria-northern-zhou-561
+      minus:
+        - polygon: [[111, 30], [113, 30], [113, 31], [111, 30]]
+```
+
+A part of `union` or `minus` is one of:
+
+| Part | Meaning | Find the id |
+|---|---|---|
+| `{ne_admin0: CHN}` | A Natural Earth country | `vap.geo.find "<name>" --layer countries` |
+| `{ne_admin1: ne-123}` | A Natural Earth province | `vap.geo.find "<name>" --layer admin1` |
+| `{layer: <slug>, feature: <id>}` | A feature of a layer on this plate | `properties.id` in the layer |
+| `{polygon: [[lon, lat], ...]}` | Your own closed ring | Last resort, see below |
+
+Prefer a layer's feature over Natural Earth, and Natural Earth over a polygon. Modern provinces are
+only a fair stand-in where a historical border really followed them. Say so in `notes`.
+
+**Compile.** `uv run python -m vap.geo.hist compose --plate <p> --spec <file>` writes the layer, its
+report and attribution, and a `<slug>.sources.md` of the states' sources. States that overlap by 1 km²
+or more stop the build and name the pair: decide who held the area and subtract it from the other.
+Everything is clipped to land, and neighbours share exact borders.
+
+**Sources and confidence.** Each state needs at least one URL that really supports its existence and
+rough extent. Open each URL before citing it. Dates come from the source, in whole years unless it
+gives more. Use:
+
+- `high`: the border follows a documented line, such as a treaty or a river.
+- `medium`: a published map or dataset shows this extent, and it agrees with the written sources.
+- `low`: the location is known, the extent is not. A hand-made polygon is always `low`, and its `notes`
+  must say it was not traced.
+
+**After compiling.** Add the facts for your date to `LAYERS` in `vap/geo/hist_qa.py` and run it. Render
+with `npm run still:hist`. Look at the picture. Record anything wrong in `<slug>.errata.json`.

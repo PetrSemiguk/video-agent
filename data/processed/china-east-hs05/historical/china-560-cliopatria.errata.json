@@ -1,0 +1,9 @@
+[
+  {
+    "feature": "Western Wei, Liang Dynasty (frame 555-560)",
+    "problem": "The frame still shows both states on 560.",
+    "correct": "Northern Zhou replaced Western Wei and Chen replaced Liang in 557. Use the composed china-560 or frame 561.",
+    "source": "https://en.wikipedia.org/wiki/Northern_Zhou",
+    "severity": "blocker"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "feature": "Grand Duchy of Berg, Frankfurt",
+    "problem": "Frankfurt falls in the Grand Duchy of Berg, dissolved in 1813.",
+    "correct": "Free City of Frankfurt, restored in 1815.",
+    "source": "https://en.wikipedia.org/wiki/Free_City_of_Frankfurt",
+    "severity": "blocker"
+  },
+  {
+    "feature": "German Confederation",
+    "problem": "One row covers Prussia and Saxony instead of the member states, so Berlin and Dresden show the Confederation.",
+    "correct": "The Confederation was a set of states.",
+    "source": "https://en.wikipedia.org/wiki/German_Confederation",
+    "severity": "blocker"
+  }
+]

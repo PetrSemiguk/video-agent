@@ -21,6 +21,46 @@ for (const extension of [".ts", ".tsx"]) {
 const root = path.resolve(__dirname, "../..");
 const { storyboardSchema } = require("../src/storyboard/schema.ts");
 const { exportStoryboardSchema } = require("../src/storyboard/jsonSchema.ts");
+// A layer must exist with this credit, and a layer with an errata blocker needs an override.
+// vap.geo.errata applies the blocker rule to `vap.episode build` as well.
+const historicalLayerIssues = (data) => {
+  const issues = [];
+  data.shots.forEach((shot, s) =>
+    shot.layers.forEach((layer, l) => {
+      if (layer.type !== "HistoricalLayer") return;
+      const at = `$.shots[${s}].layers[${l}].props`;
+      const plate = data.plates.find((p) => p.id === shot.plate)?.name;
+      const base = path.join(root, "data/processed", `${plate}`, "historical");
+      const file = path.join(base, `${layer.props.slug}.geojson`);
+      if (!fs.existsSync(file)) {
+        issues.push({
+          path: `${at}.slug`,
+          message: `No layer ${layer.props.slug} on plate ${plate}`,
+        });
+        return;
+      }
+      const { attribution } = JSON.parse(fs.readFileSync(file, "utf8"));
+      if (attribution !== layer.props.credit)
+        issues.push({
+          path: `${at}.credit`,
+          message: `Credit must be the layer's own: ${attribution}`,
+        });
+      const errataFile = path.join(base, `${layer.props.slug}.errata.json`);
+      const errata = fs.existsSync(errataFile)
+        ? JSON.parse(fs.readFileSync(errataFile, "utf8"))
+        : [];
+      const blockers = errata.filter((entry) => entry.severity === "blocker");
+      if (blockers.length && !layer.props.errataOverride?.reason.trim())
+        issues.push({
+          path: `${at}.errataOverride`,
+          message: `Layer ${layer.props.slug} has errata blockers (${blockers
+            .map((entry) => entry.feature)
+            .join("; ")}); fix the layer or give a reason`,
+        });
+    }),
+  );
+  return issues;
+};
 const args = process.argv.slice(2);
 if (args[0] === "export" && args.length === 1) {
   const target = path.join(root, "docs/storyboard.schema.json");
@@ -56,6 +96,7 @@ if (args[0] === "export" && args.length === 1) {
         });
       }
     } else data = parsed.data;
+    if (data) issues.push(...historicalLayerIssues(data));
     if (data && args.includes("--check-files")) {
       for (const [at, file] of [
         ["$.audio.src", data.audio.src],

@@ -15,7 +15,7 @@ LEAD_LETTERS = chr(0xC2) + chr(0xC3)
 EURO_SEQUENCE = chr(0xE2) + chr(0x20AC)
 NON_ASCII = f"[{chr(0x80)}-{chr(0x10FFFF)}]"
 MOJIBAKE = re.compile(f"[{LEAD_LETTERS}]{NON_ASCII}|{EURO_SEQUENCE}")
-NOT_TEXT_FILES = {"Image", "wave", "rasterio", "os"}
+NOT_TEXT_FILES = {"Image", "wave", "rasterio", "os", "archive"}
 
 
 def tracked_text_files():

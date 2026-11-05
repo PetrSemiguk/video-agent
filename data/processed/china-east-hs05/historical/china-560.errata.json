@@ -1,0 +1,9 @@
+[
+  {
+    "feature": "All states",
+    "problem": "The contours come from Cliopatria frame 561, not from a map of 560 itself.",
+    "correct": "No border change between 560 and 561 is known that would show at this scale.",
+    "source": "https://en.wikipedia.org/wiki/Northern_Zhou",
+    "severity": "warning"
+  }
+]

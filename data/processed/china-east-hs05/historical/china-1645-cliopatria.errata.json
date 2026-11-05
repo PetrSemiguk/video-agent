@@ -1,0 +1,9 @@
+[
+  {
+    "feature": "Qing Dynasty, Xi'an",
+    "problem": "The frame shows 1645: Qing already holds Xi'an, which Shun still held in July 1644.",
+    "correct": "Fine for 1645; for July 1644 Qing control is slightly overstated in the northwest.",
+    "source": "https://en.wikipedia.org/wiki/Shun_dynasty",
+    "severity": "warning"
+  }
+]

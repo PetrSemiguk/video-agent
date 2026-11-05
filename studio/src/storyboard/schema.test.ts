@@ -183,6 +183,48 @@ describe("storyboard authoring contract", () => {
         rmSync(folder, { recursive: true });
       }
     };
+    const withLayer = (slug: string, errataOverride?: { reason: string }) => {
+      const { attribution } = JSON.parse(
+        readFileSync(
+          `../data/processed/china-east-hs05/historical/${slug}.geojson`,
+          "utf8",
+        ),
+      );
+      const value = copy() as unknown as {
+        shots: { layers: unknown[] }[];
+      };
+      value.shots[0].layers.push({
+        id: "history",
+        type: "HistoricalLayer",
+        props: { slug, credit: attribution, errataOverride },
+      });
+      return value;
+    };
+    const path0 = "$.shots[0].layers[1].props";
+    it("refuses a layer with an errata blocker", () => {
+      const { status, report } = validate(withLayer("china-1644"));
+      expect(status).toBe(1);
+      expect(report.issues[0].path).toBe(`${path0}.errataOverride`);
+      expect(report.issues[0].message).toContain("errata blockers");
+    });
+    it("accepts a blocked layer with an override that gives a reason", () => {
+      const { status } = validate(
+        withLayer("china-1644", { reason: "Shown as the OHM error itself" }),
+      );
+      expect(status).toBe(0);
+    });
+    it("accepts a layer without blockers", () => {
+      expect(validate(withLayer("china-592-cliopatria")).status).toBe(0);
+    });
+    it("refuses a wrong credit and an unknown layer", () => {
+      const wrong = withLayer("china-592-cliopatria") as unknown as {
+        shots: { layers: { props: { credit?: string; slug?: string } }[] }[];
+      };
+      wrong.shots[0].layers[1].props.credit = "Something else";
+      expect(validate(wrong).report.issues[0].path).toBe(`${path0}.credit`);
+      wrong.shots[0].layers[1].props.slug = "no-such-layer";
+      expect(validate(wrong).report.issues[0].path).toBe(`${path0}.slug`);
+    });
     it("accepts the sandbox", () => {
       const { status, report } = validate(sample);
       expect(status).toBe(0);
