@@ -1,0 +1,27 @@
+{
+  "slug": "china-unity-pilot",
+  "target": "all",
+  "stages": [
+    {
+      "stage": "voice",
+      "status": "built",
+      "seconds": 4.145
+    },
+    {
+      "stage": "align",
+      "status": "built",
+      "seconds": 15.679
+    },
+    {
+      "stage": "preview",
+      "status": "built",
+      "seconds": 61.467
+    },
+    {
+      "stage": "render",
+      "status": "built",
+      "seconds": 173.795
+    }
+  ],
+  "completed": true
+}

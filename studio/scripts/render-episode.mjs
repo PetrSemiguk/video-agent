@@ -19,9 +19,17 @@ const leadArgument = process.argv.find((arg) =>
 const storyboardArgument = process.argv.find((arg) =>
   arg.startsWith("--storyboard="),
 );
+const metadataArgument = process.argv.find((arg) =>
+  arg.startsWith("--metadata="),
+);
+const videoOnly = process.argv.includes("--video-only");
 const { inputProps, audioSha256 } = prepareEpisode({
   ...(storyboardArgument
-    ? { storyboardFile: path.resolve(storyboardArgument.slice("--storyboard=".length)) }
+    ? {
+        storyboardFile: path.resolve(
+          storyboardArgument.slice("--storyboard=".length),
+        ),
+      }
     : {}),
   sync: leadArgument
     ? { labelLeadFrames: Number(leadArgument.split("=")[1]) }
@@ -75,7 +83,11 @@ const metadata = {
   sync: composition.props.prepared.syncReport,
 };
 fs.writeFileSync(
-  smoke ? "out/episode-map-smoke-metadata.json" : "out/episode-metadata.json",
+  metadataArgument
+    ? path.resolve(metadataArgument.slice("--metadata=".length))
+    : smoke
+      ? "out/episode-map-smoke-metadata.json"
+      : "out/episode-metadata.json",
   JSON.stringify(metadata, null, 2) + "\n",
 );
 console.log(JSON.stringify(metadata));
@@ -84,7 +96,11 @@ const slug = prepared.storyboard.episode.slug;
 const previewShots = [];
 const firstFrames = prepared.assembly.shots.map((s) => s.from);
 const smokeStart = prepared.assembly.shots[1].from;
-for (const frame of smoke ? [smokeStart + 12, smokeStart + 49] : firstFrames) {
+for (const frame of videoOnly
+  ? []
+  : smoke
+    ? [smokeStart + 12, smokeStart + 49]
+    : firstFrames) {
   const index = firstFrames.indexOf(frame);
   const id = index < 0 ? `review-${frame}` : prepared.assembly.shots[index].id;
   const image = smoke
@@ -112,7 +128,7 @@ for (const frame of smoke ? [smokeStart + 12, smokeStart + 49] : firstFrames) {
     previewShots.push({ id, from: frame, text, image: path.resolve(image) });
   }
 }
-if (!smoke) {
+if (!smoke && !videoOnly) {
   const payload = {
     slug,
     width: composition.width,
@@ -176,7 +192,7 @@ if (!process.argv.includes("--stills-only") && !smoke) {
     serveUrl,
     composition,
     inputProps,
-    outputLocation: `out/episode-${slug}-synced.mp4`,
+    outputLocation: `out/episode-${slug}-synced.partial.mp4`,
     chromiumOptions,
     concurrency: 1,
     codec: "h264",
@@ -193,5 +209,9 @@ if (!process.argv.includes("--stills-only") && !smoke) {
       }
     },
   });
+  fs.renameSync(
+    `out/episode-${slug}-synced.partial.mp4`,
+    `out/episode-${slug}-synced.mp4`,
+  );
   console.log(`Rendered out/episode-${slug}-synced.mp4`);
 }

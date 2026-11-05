@@ -1,0 +1,404 @@
+{
+  "first_build": {
+    "slug": "china-unity-pilot",
+    "target": "all",
+    "stages": [
+      {
+        "stage": "voice",
+        "status": "built",
+        "seconds": 4.145
+      },
+      {
+        "stage": "align",
+        "status": "built",
+        "seconds": 15.679
+      },
+      {
+        "stage": "preview",
+        "status": "built",
+        "seconds": 61.467
+      },
+      {
+        "stage": "render",
+        "status": "built",
+        "seconds": 173.795
+      }
+    ],
+    "completed": true
+  },
+  "cached_runs": [
+    {
+      "target": "all",
+      "exit_code": 0,
+      "wall_seconds": 2.046999799999867,
+      "summary": {
+        "slug": "china-unity-pilot",
+        "target": "all",
+        "stages": [
+          {
+            "stage": "voice",
+            "status": "cached",
+            "seconds": 0.054
+          },
+          {
+            "stage": "align",
+            "status": "cached",
+            "seconds": 0.043
+          },
+          {
+            "stage": "preview",
+            "status": "cached",
+            "seconds": 0.85
+          },
+          {
+            "stage": "render",
+            "status": "cached",
+            "seconds": 0.884
+          }
+        ],
+        "completed": true
+      }
+    },
+    {
+      "target": "voice",
+      "exit_code": 0,
+      "wall_seconds": 0.2661620999999741,
+      "summary": {
+        "slug": "china-unity-pilot",
+        "target": "voice",
+        "stages": [
+          {
+            "stage": "voice",
+            "status": "cached",
+            "seconds": 0.054
+          }
+        ],
+        "completed": true
+      }
+    },
+    {
+      "target": "align",
+      "exit_code": 0,
+      "wall_seconds": 0.30857639999999265,
+      "summary": {
+        "slug": "china-unity-pilot",
+        "target": "align",
+        "stages": [
+          {
+            "stage": "voice",
+            "status": "cached",
+            "seconds": 0.053
+          },
+          {
+            "stage": "align",
+            "status": "cached",
+            "seconds": 0.043
+          }
+        ],
+        "completed": true
+      }
+    },
+    {
+      "target": "preview",
+      "exit_code": 0,
+      "wall_seconds": 1.1530049999998937,
+      "summary": {
+        "slug": "china-unity-pilot",
+        "target": "preview",
+        "stages": [
+          {
+            "stage": "voice",
+            "status": "cached",
+            "seconds": 0.056
+          },
+          {
+            "stage": "align",
+            "status": "cached",
+            "seconds": 0.045
+          },
+          {
+            "stage": "preview",
+            "status": "cached",
+            "seconds": 0.837
+          }
+        ],
+        "completed": true
+      }
+    },
+    {
+      "target": "render",
+      "exit_code": 0,
+      "wall_seconds": 2.0295997999999145,
+      "summary": {
+        "slug": "china-unity-pilot",
+        "target": "render",
+        "stages": [
+          {
+            "stage": "voice",
+            "status": "cached",
+            "seconds": 0.055
+          },
+          {
+            "stage": "align",
+            "status": "cached",
+            "seconds": 0.044
+          },
+          {
+            "stage": "preview",
+            "status": "cached",
+            "seconds": 0.84
+          },
+          {
+            "stage": "render",
+            "status": "cached",
+            "seconds": 0.871
+          }
+        ],
+        "completed": true
+      }
+    }
+  ],
+  "verified_output_files": 22,
+  "output_hashes_and_mtimes_unchanged": true,
+  "outputs": {
+    "episodes\\china-unity-pilot\\audio\\recognition-0.json": {
+      "sha256": "c51cf5c92b5aec8c472d6cb0239c73e6dc51442a5429897c478dc850fb596bbf",
+      "mtime_ns": 1793838599155404100
+    },
+    "episodes\\china-unity-pilot\\audio\\voice.manifest.json": {
+      "sha256": "adcd5f3554d6c2e75af4182cf6560fe10fc1d10c81923a8f475807c3e8244ac1",
+      "mtime_ns": 1793838584105660600
+    },
+    "episodes\\china-unity-pilot\\audio\\voice.pre-loudnorm.wav": {
+      "sha256": "e3b839fdeabe300da8e402f893fd35bbc7490c317e070985d70fb985815385a3",
+      "mtime_ns": 1793838581493277200
+    },
+    "episodes\\china-unity-pilot\\audio\\voice.wav": {
+      "sha256": "a65ae99c5b41025b1046ef3b77349aba0b533f274a5b7eccfe29b535f4786c1d",
+      "mtime_ns": 1793838583180838200
+    },
+    "episodes\\china-unity-pilot\\audio\\words.json": {
+      "sha256": "ac6b423e6e5bd1cd20f7d1d412cbed9bf3871064715d60c630645628e2284258",
+      "mtime_ns": 1793838599802404300
+    },
+    "studio\\out\\china-unity-pilot-assembly.json": {
+      "sha256": "1a843a5df14273b0be515e424d126a810e49b623a66147ae501123bb5ac796fd",
+      "mtime_ns": 1793838659783211400
+    },
+    "studio\\out\\china-unity-pilot-first-closing.png": {
+      "sha256": "79d6d9a7e9c7c4dc5866c04c68b1cb30d9da116bd55a43cc0f1ad4a884f49ee8",
+      "mtime_ns": 1793838656014821100
+    },
+    "studio\\out\\china-unity-pilot-first-division-and-reunion.png": {
+      "sha256": "a9cd2e251604ae3246ed0bd8ad60aacb4f56b96b843327e37ca25dd8ef8d7c33",
+      "mtime_ns": 1793838646628639100
+    },
+    "studio\\out\\china-unity-pilot-first-eastern-lowlands.png": {
+      "sha256": "41ebc89489f217d11d81ab6188a21370efa5c9e195f97875257ab6aa3bcb5108",
+      "mtime_ns": 1793838622786549800
+    },
+    "studio\\out\\china-unity-pilot-first-five-basins.png": {
+      "sha256": "ce9162be8165040898a36c313c29d99261d6aca59e3d1feac5e23b242ab735de",
+      "mtime_ns": 1793838641978415800
+    },
+    "studio\\out\\china-unity-pilot-first-grand-canal.png": {
+      "sha256": "ee759690561446046223753410a6aca73cf00c66e0824a9a7e2adf179261aa99",
+      "mtime_ns": 1793838637207960400
+    },
+    "studio\\out\\china-unity-pilot-first-incentives.png": {
+      "sha256": "a9cd2e251604ae3246ed0bd8ad60aacb4f56b96b843327e37ca25dd8ef8d7c33",
+      "mtime_ns": 1793838651328669400
+    },
+    "studio\\out\\china-unity-pilot-first-opening.png": {
+      "sha256": "872f756478761125209132d4255f4077372fb85381b0b5cc6c70abb895444766",
+      "mtime_ns": 1793838613251231900
+    },
+    "studio\\out\\china-unity-pilot-first-plateau.png": {
+      "sha256": "41bdb34c4281d7e13e5e2b8f99d968e00c53307b8a372f1a5b30ae81a3cdb468",
+      "mtime_ns": 1793838617973217000
+    },
+    "studio\\out\\china-unity-pilot-first-yangtze.png": {
+      "sha256": "92d3b5825a059f02a4c74ff21c36ad37645e04d5a9a2fce0782ddff021e19588",
+      "mtime_ns": 1793838632415029400
+    },
+    "studio\\out\\china-unity-pilot-first-yellow-river.png": {
+      "sha256": "91712758eb5e7910ef21d1b4c7885cfe5782591e96319b96478608e84ffdfb1e",
+      "mtime_ns": 1793838627508384800
+    },
+    "studio\\out\\china-unity-pilot-preview-input.json": {
+      "sha256": "9611a897ab1f130025c1826c0d5c04ceb108b82ff15d5689f7073de03c3347c5",
+      "mtime_ns": 1793838659782204200
+    },
+    "studio\\out\\china-unity-pilot-preview.png": {
+      "sha256": "f11b485e07121c23569d24ae78aa7b254b3c982763986b43fd64ea4e64cc4229",
+      "mtime_ns": 1793838661125657100
+    },
+    "studio\\out\\china-unity-pilot-sync.json": {
+      "sha256": "1343b3b18e7e5f9fef952d8b1a7d8694b4d5fabd6fe94e5ef5950c53ff0b525d",
+      "mtime_ns": 1793838659784209300
+    },
+    "studio\\out\\episode-china-unity-pilot-synced.mp4": {
+      "sha256": "c1c6085a31ceb1c63d3c71b11bf2d624ce58c4bd40fe38f07f0bbe85809d4bf0",
+      "mtime_ns": 1793838834935791200
+    },
+    "studio\\out\\episodes\\china-unity-pilot\\preview-metadata.json": {
+      "sha256": "f22775b42994450f3c9aef71ede7ed201eaae54f1a3022bfccc51776caec9c15",
+      "mtime_ns": 1793838612171513100
+    },
+    "studio\\out\\episodes\\china-unity-pilot\\render-metadata.json": {
+      "sha256": "f22775b42994450f3c9aef71ede7ed201eaae54f1a3022bfccc51776caec9c15",
+      "mtime_ns": 1793838669568529500
+    }
+  },
+  "real_concurrent_cli_rejected": true,
+  "raw_voice_cache_hits": 17,
+  "words": 182,
+  "preview_size": [
+    1920,
+    4053
+  ],
+  "audio_lag_samples": 0,
+  "audio_correlation": 0.9999649524688721,
+  "source_audio_sha256": "a65ae99c5b41025b1046ef3b77349aba0b533f274a5b7eccfe29b535f4786c1d",
+  "mp4_sha256": "c1c6085a31ceb1c63d3c71b11bf2d624ce58c4bd40fe38f07f0bbe85809d4bf0",
+  "container": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "chroma_location": "center",
+        "field_order": "progressive",
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/90000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 6084000,
+        "duration": "67.600000",
+        "bit_rate": "12934470",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "2028",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "mime_codec_string": "mp4a.40.2",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 2048,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 3245040,
+        "duration": "67.605000",
+        "bit_rate": "317376",
+        "nb_frames": "3171",
+        "extradata_size": 2,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "C:\\Users\\semig\\video-agent\\studio\\out\\episode-china-unity-pilot-synced.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "67.605000",
+      "size": "112055220",
+      "bit_rate": "13259992",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf61.7.100",
+        "comment": "Made with Remotion 4.0.539"
+      }
+    }
+  }
+}
