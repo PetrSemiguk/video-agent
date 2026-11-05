@@ -193,6 +193,7 @@ Claude Code skills also use. Check `git diff skills-lock.json` afterwards and le
 - [docs/licenses.md](docs/licenses.md) — source licenses and attribution texts
 - [docs/python-env.md](docs/python-env.md) — Python/torch/CUDA stack and model cache
 - [docs/maps.md](docs/maps.md) — map plates: sources, lon/lat → px contract, adding a region
+- [docs/episode-format.md](docs/episode-format.md) — episode structure, length, map-first writing, script markup
 - [docs/visual-grammar.md](docs/visual-grammar.md) — how a storyboard uses the map: rules, pattern table, anti-patterns
 - [docs/roadmap.md](docs/roadmap.md) — work plan and the step report protocol
 - [docs/automation.md](docs/automation.md) — autonomous runs, notifications, merging `auto/*`
