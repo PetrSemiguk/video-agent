@@ -254,7 +254,8 @@ describe("pilot v2 by docs/visual-grammar.md", () => {
       });
     });
     expect(checked).toBeGreaterThan(1000);
-  });
+    // Projects every drawn point on sampled frames: over vitest's 5 s default on a busy machine.
+  }, 60_000);
   test("every map shot uses only layers without errata blockers", () => {
     const historical = storyboard.shots.flatMap((s) =>
       s.layers.filter((l) => l.type === "HistoricalLayer"),
