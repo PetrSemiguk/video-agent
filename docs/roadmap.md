@@ -1,7 +1,6 @@
-# video-agent — Roadmap (steps 1.6 → 4.5)
+# video-agent — Roadmap (steps 1.6 → 6.4)
 
-This file is the work plan for any coding agent (Claude Code or Codex) while the
-project owner works without the reviewing assistant. Each step is a self-contained
+This file is the work plan for any coding agent. Each step is a self-contained
 task with scope, decisions already made, deliverables and acceptance criteria.
 
 Read `AGENTS.md` first. It overrides nothing here; this file never overrides `AGENTS.md`.
@@ -12,7 +11,7 @@ Read `AGENTS.md` first. It overrides nothing here; this file never overrides `AG
 
 **Before the step**
 1. Read `AGENTS.md`, this step, and the previous step's report in `docs/reports/`.
-2. Run `git status`. If the tree is not clean, stop and tell the user (they commit).
+2. Run `git status`. If the tree is not clean, stop and tell the user.
 3. Do the research parts first (read-only), then build.
 
 **During the step**
@@ -34,7 +33,8 @@ Read `AGENTS.md` first. It overrides nothing here; this file never overrides `AG
 1. Run all tests: `uv run pytest` (pipeline/), `npm test` and `npm run lint` (studio/).
 2. Write `docs/reports/<step>.md` (English): what was built, decisions and deviations
    (with reasons), verification results with numbers, artifact paths, open questions.
-3. Show `git status` and propose a Conventional Commit message. Never commit.
+3. Show `git status` and propose a Conventional Commit message. Only Claude Code on an
+   `auto/*` branch commits, during `/run-roadmap`: see `docs/automation.md`.
 
 **Artifacts**: renders go to `studio/out/` (ignored). The report lists every artifact
 the user must look at or listen to, with exact paths.
@@ -52,7 +52,7 @@ the user must look at or listen to, with exact paths.
 - Disputed borders: NE default (de facto) unless an episode decides otherwise.
 - Font for now: Inter (local woff2, OFL). Headline font chosen in 2.1.
 - Language of videos: English. Voice: Chatterbox TTS. Alignment: faster-whisper.
-- Git: the user makes all commits and pushes.
+- Git: the user merges and pushes; commits only as `AGENTS.md` allows.
 
 ---
 
@@ -314,10 +314,168 @@ Report: versions, RTF and peak VRAM per variant, cache re-run time, normalized t
   idempotent, cached, logs per stage, fails loudly with the stage name.
 - Preview sheet + `README` section "Make an episode".
 
+### Step 4.6 — Visual grammar and pilot polish
+
+**Diagnosis (pilot v1 review sheet + motion measurement):** the map barely takes part in
+the story. In 8 of 10 shots the frame is the same wide view of East China with no map
+action; meaning is carried by lower-left cards. The narration says "plateau", "plains",
+"canal", "five river systems", "division" — nothing happens on the map. A card covers the
+Yangtze; cards are wide and empty; the StatCounter "5 / 13th century / Major river basins
+linked" reads as nonsense; TitleCard is small. Camera speed by 5 s windows: 0–15 s
+0.5–1.1 px/frame, 30–45 s 0.1–0.15, **45–55 s 0.007–0.014 (a 10-second freeze)**.
+
+#### 1. `docs/visual-grammar.md` (main deliverable — rules for the future storyboard agent)
+- The map is the protagonist: every shot has ≥1 map action (highlight, draw, on-map label,
+  camera move to the subject) synced to the key word of the narration.
+- Camera moves in every shot; framing follows the subject (`focusOn`); two adjacent shots
+  never share the same framing. `hold` only explicitly, with a reason in the storyboard.
+- Text: on-map `PlaceLabel` beats a card; `LowerThird` only for concepts that cannot be
+  pointed at; max one text card at a time; text never covers the shot's subject or the
+  bottom 12%.
+- Pattern table "narration says → map does": relief/plateau/mountains → elevation-mask
+  reveal; plains/lowlands → lowland mask; river flows/crosses → `RiverLine` + `followLine`;
+  route/canal/campaign/trade path → `RouteLine` with era label; "linked/united X" → items
+  light up in order + the connection draws; division → unification → historical layers
+  (source rule in `docs/historical-sources.md`); number/date → `BigDate`/`StatCounter`
+  over a map that shows what the number is about; recap → callbacks to elements already shown.
+- Anti-patterns with examples from pilot v1 (shots 2, 3, 6, 7, 9, 10) and the 45–55 s freeze.
+
+#### 2. Data and components
+- Terrain masks: `vap.geo.terrainregion --plate <p> --name <slug> (--min-elev M | --max-elev M)
+  [--seed lon,lat] [--smooth km]` → connected region from terrarium tiles, smoothed, clipped
+  to NE land; properties: method, threshold, `approximate: true`. Pilot: `tibetan-plateau`
+  (threshold ~3500–4000 m, tuned so the contour matches the visible plateau edge) and
+  `eastern-lowlands` (≤ ~200 m).
+- `RouteLine` (studio/src/components/map/): progressive draw, dashed/solid from tokens,
+  optional direction arrows and node labels — the generic component for canals,
+  campaigns, trade routes.
+- Grand Canal: two custom routes with `<slug>.sources.md` and `approximate: true` — the Sui
+  system (7th c., Y-shaped, hub near Luoyang: Hangzhou → Yangzhou → Luoyang, plus the
+  northern branch towards the Beijing area) and the straightened Yuan route (13th c.,
+  Hangzhou → Beijing via Shandong). Nodes from well-known sources (list them); snap to NE
+  rivers where the route follows a river. Unconfirmed segments → simplify to nodes and say so.
+- The five river systems the canal linked (Hai, Yellow, Huai, Yangtze, Qiantang): check the
+  HydroSHEDS/HydroBASINS license for commercial video first; clean → basin polygons; not
+  clean → light up the rivers themselves (`RiverLine`) in order. Record in licenses.md.
+- `LowerThird`: width from content (min/max tokens); auto-placement — receives the shot
+  subject's screen bbox (via `toScreen`) and picks a corner that does not cover it,
+  respecting the bottom 12%. Overlap test.
+- `StatCounter` layout: number + unit + one line of meaning ("5 river systems linked");
+  the date on its own line or in a `SectionTag`.
+- `TitleCard` v2: larger, cinematic (title on the map, slow push-in), tokens only.
+- Motion as a build rule: `vap.episode build` (preview stage) runs `vap.qa.motion` and
+  fails with a clear message on any window > 2 s below the speed threshold (`drift` passes,
+  `hold` does not unless explicit with a reason). Add the rule to visual-grammar.md.
+
+#### 3. Re-storyboard the pilot
+Voice and timings unchanged. Rewrite the storyboard by visual-grammar.md: each shot gets a
+subject on the map, framing and an action. Shot 8 (division → 589): use the composed
+`china-560` layer (Cliopatria frame 561 based) for Northern Zhou / Northern Qi / Chen /
+Western Liang, then Cliopatria frame 592 for Sui; respect errata (no blocker layers).
+Render `out/episode-china-unity-pilot-v2.mp4`, a new review sheet (same format) and the
+640-px mobile check. Report: table "shot → map action → framing", v1/v2 comparison,
+`vap.qa.motion` plots for v1 and v2.
+
+**Accept when:** visual-grammar.md has the pattern table and anti-patterns; every one of the
+10 shots in v2 has a map action (list them); LowerThird overlaps no shot subject (test);
+motion QA passes on v2 (no window > 2 s without motion except explicit holds); new sources
+in licenses.md; canal routes have sources.md; all tests green.
+
+---
+
+## Stage 5 — Agent layer for episode production (Claude Code)
+
+Goal: one topic in → an approved script and a previewed episode out, with the user touching
+only two checkpoints: script approval and preview approval.
+
+### Step 5.1 — Episode knowledge pack
+- `.claude/skills/geo-episode/SKILL.md`: how an episode is made here — file layout,
+  pipeline commands, the order of stages, where the rules live (visual-grammar.md,
+  components.md, storyboard.md, historical-sources.md, maps.md, licenses.md, voice.md),
+  what is forbidden. Short; links instead of copies.
+- `docs/episode-format.md`: the channel's episode structure — cold open hook (≤30 s) with
+  the central question; geography setup; 3–5 acts, each with one map-driven idea; a twist or
+  counter-argument; recap; outro. Target 12–14 min ≈ 1900–2200 words at ~160 wpm. Spoken
+  English, short sentences, every paragraph has a mappable subject ("map-first writing").
+  Markup: `[pause s]`, `## Section` headers that become SectionTags and YouTube chapters.
+- Accept when: a fresh subagent given only the skill answers 10 questions about making an
+  episode correctly (write the questions and expected answers into the report).
+
+### Step 5.2 — Researcher, scriptwriter, fact-checker
+- `.claude/agents/researcher.md`: topic → `episodes/<slug>/research.md` — claims with URLs,
+  source tier (peer-reviewed / reference work / reputable press / other), contested points
+  with both sides. Key claims need ≥2 independent sources; Wikipedia alone is not enough.
+- `.claude/agents/scriptwriter.md`: research.md + episode-format.md → `script.md` +
+  `facts.md` (each factual sentence → claim id → source). Writes for the map.
+- `.claude/agents/fact-checker.md`: independent; checks every factual sentence of script.md
+  against sources (opens them), numbers and dates exactly; verdict per claim:
+  supported / needs-softening / unsupported / contested; overall PASS/FAIL. Fix loop ≤2
+  rounds, then stop.
+- **USER DECISION**: topic for the test run (default: "Why does almost all of Egypt live
+  along the Nile?", a 3–4 min mini-episode) and approval of the script.
+- Accept when: test mini-episode script + facts.md + fact-check verdict PASS; every factual
+  sentence has a claim id.
+
+### Step 5.3 — Storyboarder
+- `.claude/agents/storyboarder.md`: script.md + words.json → storyboard.json using
+  visual-grammar.md and components.md; chooses/creates plates (within oversampling limits),
+  prepares data (rivers, terrain masks, compose, historical layers with errata), sets
+  cameras; loop: validator → `vap.qa.motion` → preview sheet → self-check against the
+  pattern table; ≤2 revision rounds.
+- Accept when: (a) the agent re-storyboards the pilot from scratch and step-reviewer rates it
+  at least as good as the manual v2 on the visual-grammar checklist; (b) the test
+  mini-episode from 5.2 gets a valid storyboard and preview sheet.
+
+### Step 5.4 — Scene-builder and episode QA
+- `.claude/agents/scene-builder.md`: when the catalog lacks a needed visual, builds it:
+  component + zod schema + registry + components.md entry + tests + sheet render. Never edits
+  existing components' behavior without saying so.
+- `.claude/agents/episode-qa.md`: shot-by-shot check of a rendered episode — map action per
+  shot, label-to-word sync, mobile legibility (640 px), attributions on every map shot,
+  errata, motion QA, loudness, licenses (no FORBIDDEN/UNVERIFIED in a publish build).
+  Verdict + fix list.
+- Accept when: scene-builder delivers one missing component on request (test:
+  `ArrowAdvance` — animated military/migration advance arrows) end to end; episode-qa runs on
+  pilot v2 and on the mini-episode.
+
+### Step 5.5 — Slash commands
+- `/new-episode "<topic>"` → research → script → fact-check → stop for approval (_inbox).
+- `/voice <slug>` → TTS → post → align (with `--fix`).
+- `/storyboard <slug>` → storyboarder → preview → episode-qa → stop for preview approval.
+- `/render <slug>` → full render → episode-qa (final).
+- Accept when: the mini-episode goes topic → rendered MP4 with exactly two user touchpoints
+  (script approval, preview approval); timings of each stage in the report.
+
+---
+
+## Stage 6 — Packaging
+
+### Step 6.1 — Music and final mix
+- **USER DECISION**: music source (license must allow monetized YouTube; record in
+  licenses.md; per-track attribution if required).
+- Music cues by section from the storyboard; sidechain ducking under the voice; final mix
+  −14 LUFS integrated, true peak ≤ −1 dBTP; music never masks words (check: whisper on the
+  final mix still matches the script ≥ 98%).
+
+### Step 6.2 — Subtitles
+- SRT and VTT from words.json: ≤42 characters per line, ≤2 lines, ≤17 characters/second,
+  cuts at sentence/phrase boundaries; uses the original script spelling (not whisper's).
+
+### Step 6.3 — Thumbnails
+- Remotion still templates: map + highlight + ≤4 bold words; 3 variants per episode
+  (for YouTube test & compare); 1280×720, < 2 MB; legibility check at 168×94.
+- `/thumbnail <slug>`.
+
+### Step 6.4 — Description, chapters and publish gate
+- Chapters from `## Section` headers with timestamps (first at 00:00, ≥3 chapters, each
+  ≥10 s); sources from facts.md; full attributions from attributions.md; tags.
+- Publish gate: fails if any used source is FORBIDDEN, REFERENCE ONLY or UNVERIFIED, or any
+  blocker errata lacks an override.
+- `/package <slug>` → `episodes/<slug>/upload/` (video, subtitles, thumbnails, description.txt,
+  checklist.md). Upload stays manual.
+
 ---
 
 ## Where to stop
-
-Stop after **4.5**. Stage 5 (agent layer: subagents, slash commands) is built for
-Claude Code. When the owner switches back, Claude Code starts by reading `AGENTS.md`,
-`git log` and all reports in `docs/reports/` written since the switch.
+Stop after 6.4. Stage 7 (first full 12–14 min episode) runs through the slash commands with
+the user at the two checkpoints; it is not a roadmap step.

@@ -18,7 +18,7 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 - `assets/fonts/` — fonts for non-Remotion use; fonts used in renders live in
   `studio/public/fonts/` (committed: Remotion serves only `public/`); `assets/music/`, `assets/broll/` — git-ignored
 - `episodes/<slug>/` — script.md, facts.md, storyboard.json, attributions.md, audio/, renders/
-- `.claude/` — project settings (permissions), agents, skills
+- `.claude/` — project settings (permissions, hooks), agents, skills
 - `.claude/skills/` — official Remotion Agent Skills (from remotion-dev/skills)
 
 - `.agents/skills/` — project skills for Codex (install separately; from remotion-dev/skills)
@@ -38,17 +38,23 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 
 ## Git policy
 
-**The user makes all commits and pushes. The agent only reads git state.**
+**The user merges and pushes. Claude Code may commit only on `auto/*` branches. Other agents, such as
+Codex, never commit.**
 
-- Allowed: `git status`, `git diff`, `git log`, `git show`, `git check-ignore`, `git ls-files`.
-- Never stage, commit, push, reset, rebase, merge, checkout, switch, restore, stash,
-  clean, tag, manage worktrees, or change remotes. Never use `gh`.
-- Run git from the repo root without `-C` / `-c` (those forms are denied too).
-- In Claude Code, these rules are enforced by deny rules in `.claude/settings.json`; do not try to work around them.
-- At the end of each task: show `git status` and propose a Conventional Commit message
+- Everyone may read: `git status`, `git diff`, `git log`, `git show`, `git check-ignore`, `git ls-files`.
+- Claude Code may also, and only on `auto/*` branches: `git add` and `git commit`.
+- Claude Code may also `git switch -c auto/<name> [main]`, `git switch auto/<name>` and `git switch main`.
+- Never: push, merge, rebase, reset, restore, stash, clean, cherry-pick, revert, `commit --amend`,
+  `branch -d/-D`, tag, worktree, remote changes, or any commit on `main`. Never use `gh`.
+- Run git from the repo root without `-C` / `-c`. Run `git switch` and `git add`/`git commit` as separate
+  commands.
+- In Claude Code, this is enforced by `.claude/hooks/git-guard.mjs` (add, commit, switch, checkout, branch)
+  and deny rules in `.claude/settings.json` (the rest). Do not try to work around them. Outside Claude Code
+  there is no technical enforcement, and this rule is mandatory.
+- On `main`, at the end of each task: show `git status` and propose a Conventional Commit message
   (e.g. `feat(studio): add lower-third component`). Do not run it.
 
-- Outside Claude Code there is no technical enforcement — this rule is mandatory.
+Autonomous runs: `/run-roadmap`, see [docs/automation.md](docs/automation.md).
 
 ## Rules
 
@@ -182,4 +188,5 @@ Claude Code skills also use. Check `git diff skills-lock.json` afterwards and le
 - [docs/licenses.md](docs/licenses.md) — source licenses and attribution texts
 - [docs/python-env.md](docs/python-env.md) — Python/torch/CUDA stack and model cache
 - [docs/maps.md](docs/maps.md) — map plates: sources, lon/lat → px contract, adding a region
-- [docs/roadmap.md](docs/roadmap.md) — work plan for steps 1.6–4.5 and the step report protocol
+- [docs/roadmap.md](docs/roadmap.md) — work plan and the step report protocol
+- [docs/automation.md](docs/automation.md) — autonomous runs, notifications, merging `auto/*`
