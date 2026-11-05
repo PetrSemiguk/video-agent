@@ -113,6 +113,11 @@ const layerBase = {
   id,
   start: anchorSchema.optional(),
   end: anchorSchema.optional(),
+  /** Ids in the episode's facts.md behind this layer's text; see storyboard/claims.ts. */
+  claims: z
+    .array(z.string().regex(/^[A-Z]\d{2,}$/))
+    .min(1)
+    .optional(),
 };
 // Enumerating tuples keeps the inferred type a real discriminated union. Tests
 // enforce exact registry coverage; each props schema is the production instance.

@@ -1,0 +1,157 @@
+{
+  "seconds": 67.6,
+  "shots": 11,
+  "shots_per_minute": 8.88,
+  "hard_cuts": [],
+  "hard_cuts_per_minute": 0.0,
+  "hard_cuts_by_minute": [
+    0,
+    0
+  ],
+  "seconds_by_kind": {
+    "map": 67.6,
+    "graphic": 0.0,
+    "broll": 0.0
+  },
+  "graphic_share": 0.0,
+  "shots_by_scale": {
+    "wide": 5,
+    "regional": 6,
+    "detail": 0
+  },
+  "sections": [],
+  "table": [
+    {
+      "id": "open",
+      "from": 0,
+      "frames": 132,
+      "seconds": 4.4,
+      "frame_width_km": 4592,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china"
+    },
+    {
+      "id": "plateau",
+      "from": 132,
+      "frames": 124,
+      "seconds": 4.13,
+      "frame_width_km": 3028,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "lowlands",
+      "from": 256,
+      "frames": 179,
+      "seconds": 5.97,
+      "frame_width_km": 4670,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "yellow",
+      "from": 435,
+      "frames": 145,
+      "seconds": 4.83,
+      "frame_width_km": 2829,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "yangtze",
+      "from": 580,
+      "frames": 208,
+      "seconds": 6.93,
+      "frame_width_km": 3170,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "connect",
+      "from": 788,
+      "frames": 119,
+      "seconds": 3.97,
+      "frame_width_km": 4538,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "sui",
+      "from": 907,
+      "frames": 217,
+      "seconds": 7.23,
+      "frame_width_km": 2966,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "yuan",
+      "from": 1124,
+      "frames": 286,
+      "seconds": 9.53,
+      "frame_width_km": 3355,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "division",
+      "from": 1410,
+      "frames": 249,
+      "seconds": 8.3,
+      "frame_width_km": 4701,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "reasons",
+      "from": 1659,
+      "frames": 156,
+      "seconds": 5.2,
+      "frame_width_km": 4132,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "close",
+      "from": 1815,
+      "frames": 213,
+      "seconds": 7.1,
+      "frame_width_km": 4608,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    }
+  ],
+  "warnings": []
+}

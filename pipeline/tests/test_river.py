@@ -8,6 +8,7 @@ import pytest
 import shapely
 from shapely.geometry import Point, shape
 
+from vap.geo import mouth
 from vap.geo.extract import PROCESSED_DIR
 
 PLATE = "china-east-hs05"
@@ -18,6 +19,12 @@ def _river(slug: str) -> dict:
     coll = json.loads(path.read_text(encoding="utf-8"))
     assert len(coll["features"]) == 1
     return coll["features"][0]
+
+
+def test_no_water_in_reach_stays_valid_json():
+    assert mouth.rounded_km(math.inf) is None
+    assert mouth.rounded_km(1.234) == 1.23
+    assert json.dumps({"km": mouth.rounded_km(math.inf)}, allow_nan=False) == '{"km": null}'
 
 
 @pytest.mark.parametrize("slug", ["yellow", "yangtze"])

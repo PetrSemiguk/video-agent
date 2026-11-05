@@ -1,4 +1,4 @@
-<!-- Draft, not approved by the user. No TTS. -->
+<!-- Approved by the owner on 2026-11-05, with the final edits, after the fact-check. -->
 
 # Why almost all of Egypt lives along the Nile
 
@@ -10,7 +10,7 @@ This is Egypt, about one million square kilometers. Most of what you see is dese
 
 <!-- map: camera pushes in along the river; a Cairo label appears on "Cairo", between the Delta and the valley; share graphic over empty desert with only "about 4% of the land" and "about 97% of the people", plus a small "sources differ" line -->
 
-Most Egyptians live in the Delta, or in the narrow valley south of Cairo. Together, the valley and Delta are about four percent of Egypt's land. They hold about ninety-seven percent of its people. Sources differ on the exact shares, but a small part of the map holds almost everyone.
+Most Egyptians live in the Delta, or in the narrow valley south of Cairo. Together, the valley and Delta are about four percent of Egypt's land. Recent estimates, including NASA's, put about ninety-seven percent of its people there. Sources differ on the exact shares, but a small part of the map holds almost everyone.
 
 <!-- map: camera moves from the river out onto the desert; density graphic dated 1990s: about 1,500 per km2 anchored across the valley and the Delta with a "valley and Delta" caption; the desert anchor carries "a tiny fraction of that" and no number -->
 
@@ -52,7 +52,7 @@ By our reasoning, if fertile mud were the whole answer, this strip should have l
 
 <!-- map: callbacks in the order of the sentences, no new card: valley and Delta labels, the Desert label, the Blue Nile and Ethiopian highlands, then the shares graphic -->
 
-So why does almost all of Egypt live along the Nile? Our answer is that the valley and Delta are the one large part of this country with reliable water. The rest is mostly desert, with very little rain. The river brings its water from far to the south, mostly from Ethiopia. About four percent of the land holds about ninety-seven percent of the people.
+So why does almost all of Egypt live along the Nile? Our answer is that the valley and Delta are the one large part of this country with reliable water. The rest is mostly desert, with very little rain. The river brings its water from far to the south, mostly from Ethiopia. By recent estimates, about four percent of the land holds about ninety-seven percent of the people.
 
 <!-- map: camera pulls back to the opening framing; the Egypt outline and the Nile line remain over the satellite plate -->
 

@@ -44,6 +44,9 @@ Components are in [components.md](components.md), the storyboard format in [stor
 12. A highlight shows only what its label or the narration names. Do not reuse a larger mask for a part of it:
     cut it with `--bbox` and say the edge is editorial.
 13. Labels of one map leave with that map. No old name stays over a new fill: use `exitAt`.
+14. **Text stating a fact on screen has a claim.** Dates, numbers and named events carry `claims`, ids from the episode's `facts.md`, and their wording stays within that claim. Validation fails without them.
+    Place names and navigation are exempt unless they carry a number.
+15. Lines leave softly. `RiverLine` and `RouteLine` fade out at the end of their layer. Where the next shot shows the same line, set `exitFrames: 0` on it, so it does not dip.
 
 ## Narration says, map does
 
@@ -80,6 +83,22 @@ between far subjects short, by starting a `followLine` on the reach the narratio
 in any shot. That is the "7 seconds to cross the frame" rule of thumb for pans. In pilot v2 a label appearing at
 14 px/frame could not be read. `followLine` keeps to the limit by itself, by chasing its aim point. For `focusOn`
 and `flyTo`, bring the framings closer or lengthen the shot when the error names them.
+
+## Rhythm
+
+Plan the sequence of shots before the shots themselves. `vap.episode build` reports these in the preview stage, as `studio/out/episodes/<slug>/rhythm.json`, and warns when out of
+range. The warnings do not fail a build. Run it by hand with `uv run python -m vap.qa.rhythm <slug>`.
+
+| Rule | Range | Checked |
+|---|---|---|
+| **Hard cuts** | 1-3 per minute on average. A hard cut is what the viewer sees as a cut: a change of plate, a transition, or a break in the camera's motion. Over 3 is a violation. A smooth change of shot on the same plate, with the camera moving on, is not a cut | `hard_cuts_per_minute`, with the reason for each. Reported apart from `shots_per_minute`, which has no limit |
+| **Shot changes** | Only at a sentence or paragraph pause | The word before each change |
+| **Alternate scales** | Wide (continent) → regional → detail → graphic. Never 3 shots in a row at one scale or of one kind, such as three graphics | The frame's ground width at the end of each shot: wide from 4,500 km, regional from 1,500 km, detail below |
+| **Graphic-only shots** | Without a map, B-roll included: at most about 10-20% of runtime | Share of runtime. A shot is graphic-only with `BRollClip`, or with an infographic and no map layer |
+| **Dramatic beat** | A voice-less pause of 0.6-1.5 s with a slow camera move (`[pause s]` in the script), at most about 1 per section | Pauses per section |
+| **Sections** | Each opens with a `SectionTag` and a change of scale | The shot at each `##` |
+
+Keep each warning you accept, with its reason, in the report. A plate's sharp zoom range is narrow, so a true "wide" or "detail" shot may need its own plate.
 
 ## Anti-patterns from pilot v1
 

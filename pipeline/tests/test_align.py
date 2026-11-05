@@ -68,6 +68,37 @@ def test_missing_and_extra_are_explicit_with_chunk_ids():
     assert any(i["type"] == "extra" for i in extra)
 
 
+def test_listed_name_spellings_match_and_others_stay_visible():
+    chunk = {
+        "id": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "paragraph": 0,
+        "section": 0,
+        "original": "Lake Nasser",
+        "normalized": "Lake Nasser",
+    }
+    heard = lambda name: {  # noqa: E731
+        "words": [
+            {"text": "Lake", "start": 0.0, "end": 0.5},
+            {"text": name, "start": 0.5, "end": 1.0},
+        ]
+    }
+    words, issues = align_chunk(chunk, heard("Nassar"), 0)
+    assert issues == []
+    assert words[1]["text"] == "Nasser" and words[1]["status"] == "matched"
+    words, issues = align_chunk(chunk, heard("Nasir"), 0)
+    assert issues[0]["type"] == "substitute"
+    assert words[1]["status"] == "unresolved"
+
+
+def test_round_hundreds_of_a_thousand_read_as_hundreds_for_timing_only():
+    assert timing_text("around 1,500 people") == "around fifteen hundred people"
+    assert timing_text("about 1,000 people") == "about one thousand people"
+    assert timing_text("about 1,550 people") == normalize("about 1,550 people")
+    assert normalize("around 1,500 people") == "around one thousand five hundred people"
+
+
 def test_sequence_alignment_handles_repeated_words_monotonically():
     path = edit_path(["the", "river", "the", "river"], ["the", "river", "river"])
     assert sum(op == "missing" for op, _, _ in path) == 1

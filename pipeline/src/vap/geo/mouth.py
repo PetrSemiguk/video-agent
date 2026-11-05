@@ -59,6 +59,11 @@ def _layer_near(stem: str, win) -> list:
     return out
 
 
+def rounded_km(km: float) -> float | None:
+    """For the JSON output: no water in reach is null, as Infinity is not valid JSON."""
+    return round(km, 2) if math.isfinite(km) else None
+
+
 def water_distance_km(lon: float, lat: float) -> float:
     """km from a point to the nearest coastline or lake shore (10m data)."""
     d = 3.0
@@ -170,7 +175,7 @@ def extend_to_water(coords: np.ndarray, manual: Path | None) -> tuple[np.ndarray
     """coords: lon/lat, source -> mouth. Returns (coords, info for properties)."""
     lon, lat = coords[-1]
     before = water_distance_km(lon, lat)
-    info = {"extended": False, "mouth_to_water_km_before": round(before, 2)}
+    info = {"extended": False, "mouth_to_water_km_before": rounded_km(before)}
     if manual is not None and manual.exists():
         pts = np.asarray(json.loads(manual.read_text(encoding="utf-8"))["points"], dtype=float)
         tail = _catmull(np.vstack([coords[-2:], pts]))[1:]
@@ -192,5 +197,5 @@ def extend_to_water(coords: np.ndarray, manual: Path | None) -> tuple[np.ndarray
                     coords = np.vstack([coords, inv(np.array([[near.x, near.y]]))])
                     info.update(extended=True, extend_method="auto: straight to nearest shore")
     lon, lat = coords[-1]
-    info["mouth_to_water_km"] = round(water_distance_km(lon, lat), 2)
+    info["mouth_to_water_km"] = rounded_km(water_distance_km(lon, lat))
     return coords, info

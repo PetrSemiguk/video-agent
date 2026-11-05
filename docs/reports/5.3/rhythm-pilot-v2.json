@@ -1,0 +1,175 @@
+{
+  "seconds": 67.6,
+  "shots": 10,
+  "shots_per_minute": 7.99,
+  "hard_cuts": [
+    {
+      "shot": "plateau",
+      "at_s": 4.4,
+      "why": [
+        "crossfade"
+      ]
+    },
+    {
+      "shot": "five-basins",
+      "at_s": 40.13,
+      "why": [
+        "crossfade"
+      ]
+    },
+    {
+      "shot": "closing",
+      "at_s": 60.5,
+      "why": [
+        "crossfade"
+      ]
+    }
+  ],
+  "hard_cuts_per_minute": 2.66,
+  "hard_cuts_by_minute": [
+    2,
+    1
+  ],
+  "seconds_by_kind": {
+    "map": 67.6,
+    "graphic": 0.0,
+    "broll": 0.0
+  },
+  "graphic_share": 0.0,
+  "shots_by_scale": {
+    "wide": 2,
+    "regional": 8,
+    "detail": 0
+  },
+  "sections": [],
+  "table": [
+    {
+      "id": "opening",
+      "from": 0,
+      "frames": 132,
+      "seconds": 4.4,
+      "frame_width_km": 4115,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "crossfade",
+      "plate": "china"
+    },
+    {
+      "id": "plateau",
+      "from": 132,
+      "frames": 124,
+      "seconds": 4.13,
+      "frame_width_km": 2913,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": [
+        "crossfade"
+      ]
+    },
+    {
+      "id": "eastern-lowlands",
+      "from": 256,
+      "frames": 179,
+      "seconds": 5.97,
+      "frame_width_km": 3470,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "yellow-river",
+      "from": 435,
+      "frames": 145,
+      "seconds": 4.83,
+      "frame_width_km": 2836,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "yangtze",
+      "from": 580,
+      "frames": 327,
+      "seconds": 10.9,
+      "frame_width_km": 2926,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "grand-canal",
+      "from": 907,
+      "frames": 297,
+      "seconds": 9.9,
+      "frame_width_km": 2726,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "crossfade",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "five-basins",
+      "from": 1204,
+      "frames": 206,
+      "seconds": 6.87,
+      "frame_width_km": 3895,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": [
+        "crossfade"
+      ]
+    },
+    {
+      "id": "division-and-reunion",
+      "from": 1410,
+      "frames": 249,
+      "seconds": 8.3,
+      "frame_width_km": 4788,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "incentives",
+      "from": 1659,
+      "frames": 156,
+      "seconds": 5.2,
+      "frame_width_km": 3741,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "crossfade",
+      "plate": "china",
+      "hard_cut": []
+    },
+    {
+      "id": "closing",
+      "from": 1815,
+      "frames": 213,
+      "seconds": 7.1,
+      "frame_width_km": 4675,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "china",
+      "hard_cut": [
+        "crossfade"
+      ]
+    }
+  ],
+  "warnings": [
+    "3 or more shots in a row at one scale or kind: opening, plateau, eastern-lowlands, yellow-river, yangtze, grand-canal, five-basins"
+  ]
+}

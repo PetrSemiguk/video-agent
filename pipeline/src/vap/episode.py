@@ -349,6 +349,15 @@ class Builder:
             report = self.motion_gate(stage)
             return [self.out / f"episode-{self.slug}-synced.mp4", metadata, report]
         report = self.motion_gate(stage)
+        print(
+            self.command(
+                [sys.executable, "-m", "vap.qa.rhythm", self.slug],
+                self.root / "pipeline",
+                capture=True,
+            ).decode("utf-8", "replace"),
+            end="",
+            flush=True,
+        )
         payload = read_json(self.out / f"{self.slug}-preview-input.json")
         frames = [Path(s["image"]).resolve() for s in payload["shots"]]
         if not frames or any(not p.is_relative_to(self.out) for p in frames):

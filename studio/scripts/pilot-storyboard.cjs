@@ -663,6 +663,20 @@ const story = {
   ],
 };
 
+// Text stating a fact on screen, and the ids of facts.md behind it.
+const CLAIMS = {
+  "plateau-height": ["F01", "M01"],
+  "sui-route": ["F04", "M02"],
+  "canal-name": ["F04"],
+  "yuan-route": ["F05", "M02"],
+  basins: ["F05", "M03"],
+  "divided-date": ["M04"],
+  reunification: ["F06", "M04"],
+  incentive: ["I01"],
+};
+for (const { layers } of story.shots)
+  for (const item of layers) if (CLAIMS[item.id]) item.claims = CLAIMS[item.id];
+
 // Readable shots, but one line per geometry: the same rivers repeat across shots.
 const inline = [];
 const text = JSON.stringify(

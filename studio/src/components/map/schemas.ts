@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { GeoCollection, GeoFeature } from "../../geo/geojson";
-import { motion } from "../../design/tokens";
+import { motion, textLayer } from "../../design/tokens";
 import { shortText } from "../text/shared";
 import { semanticSchema } from "../info/shared";
 
@@ -177,12 +177,19 @@ export const regionHighlightSchema = z.strictObject({
   exitAt: z.number().int().min(0).optional(),
   exitFrames: frames.default(motion.frames.slow),
 });
+/** Lines fade out at the end of their layer; the episode passes the layer's real duration. */
+const lineExit = {
+  durationInFrames: frames.default(textLayer.maxDuration),
+  /** 0 keeps the line to the last frame, such as at the end of a video. */
+  exitFrames: z.number().int().min(0).default(motion.frames.base),
+};
 export const riverLineSchema = z.strictObject({
   geojson: riverGeo,
   drawFrames: frames.default(motion.frames.draw),
   glow: z.boolean().default(false),
   /** Length fraction already present at the start; only the rest is drawn. */
   fromFraction: z.number().min(0).max(0.95).default(0),
+  ...lineExit,
 });
 export const routeLineSchema = z.strictObject({
   geojson: routeGeo,
@@ -195,6 +202,7 @@ export const routeLineSchema = z.strictObject({
   /** Era label on the map, e.g. "SUI · 7TH CENTURY". */
   label: z.strictObject({ text: shortText(40), lonLat: point }).optional(),
   nodeAnchors: z.record(z.string(), z.enum(["right", "left"])).default({}),
+  ...lineExit,
 });
 export const placeLabelSchema = z.strictObject({
   lonLat: point,

@@ -196,6 +196,9 @@ keep null times/status unresolved; no fabricated timestamps. CLI exits **2** for
 unresolved output, **0** for complete output. ASR mismatches are review candidates,
 not proof of a TTS mistake; homophones and recognition errors can still confuse it.
 
+Whisper spells unfamiliar names its own way. `vap/align/spellings.json` lists these, heard to script form. Add a name only after listening, or when the spelling plainly
+sounds the same: it is an explicit list, and not fuzzy matching, so that a real word error stays visible. For timing, a round `1,500` from Whisper reads as "fifteen hundred".
+
 Add `--fix` to regenerate affected chunks with new seeds and re-align. Default
 `--max-tries 3` is a hard maximum of three repair rounds, plus initial recognition.
 Only affected chunk seeds change (+100003 modulo 2^32); others reuse their exact

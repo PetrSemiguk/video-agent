@@ -102,6 +102,12 @@ must pass the resolved layer duration to components that have that prop, rather
 than using a default to override audio anchors. Example text durations are omitted:
 the assembler receives computed layer windows from the voice-sync pass.
 
+## Claims on screen
+
+A layer may carry `claims`, ids from the `facts.md` beside its narration. Validation fails if a layer stating a fact has none, or names an id that is not in that file:
+`LowerThird`, `KeyFact`, `BigDate`, `StatCounter`, `BarCompare`, `TimelineBar`, `NumberedList`, `RecapCards`, a `RouteLine` with a label, and any other layer whose text has a number. The check is that the id exists: that the wording stays within the claim
+is for the author and the fact-checker. Sandbox tests with no `facts.md` are skipped.
+
 ## Camera descriptors
 
 Camera has `preset` plus strict `params`. Duration comes from the resolved shot,

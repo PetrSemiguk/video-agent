@@ -7,10 +7,11 @@ export { riverLineSchema } from "./schemas";
 // head is brighter while the line is growing. Timing: frames from the enclosing <Sequence>.
 import { useMemo } from "react";
 import { interpolate, useCurrentFrame } from "remotion";
-import { colors, motion, stroke } from "../../design/tokens";
+import { colors, motion, stroke, textLayer } from "../../design/tokens";
 import type { GeoCollection } from "../../geo/geojson";
 import { MeasuredLine, polylineD, sliceByFraction } from "../../geo/line";
 import { GeoSvg, useMapProjection } from "../../map/PlateStage";
+import { lineExitOpacity } from "./lineExit";
 
 const TAPER_STEPS = 24;
 /** Length fraction of the bright head. */
@@ -21,7 +22,16 @@ const RiverLineView: React.FC<{
   drawFrames: number;
   glow?: boolean;
   fromFraction?: number;
-}> = ({ geojson, drawFrames, glow = false, fromFraction = 0 }) => {
+  durationInFrames?: number;
+  exitFrames?: number;
+}> = ({
+  geojson,
+  drawFrames,
+  glow = false,
+  fromFraction = 0,
+  durationInFrames = textLayer.maxDuration,
+  exitFrames = motion.frames.base,
+}) => {
   const frame = useCurrentFrame();
   const { meta, view, toPlatePx } = useMapProjection();
 
@@ -87,7 +97,7 @@ const RiverLineView: React.FC<{
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
-        opacity={fade}
+        opacity={fade * lineExitOpacity(frame, durationInFrames, exitFrames)}
       >
         {glow
           ? pieces.map((s, i) => (

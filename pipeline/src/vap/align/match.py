@@ -1,9 +1,15 @@
 """Monotone token alignment with explicit missing/extra-word evidence."""
 
+import json
 import math
 import re
+from pathlib import Path
 
 from vap.voice.normalize import normalize
+
+# How Whisper spells proper names it does not know, as heard -> script form. An explicit list and
+# not fuzzy matching: "Nassar" is a spelling of what was said, while most near-misses are errors.
+SPELLINGS = json.loads(Path(__file__).with_name("spellings.json").read_text(encoding="utf-8"))
 
 
 def tokens(text: str) -> list[str]:
@@ -94,6 +100,7 @@ def align_chunk(chunk: dict, recognized: dict, word_offset: int) -> tuple[list[d
     if expected != tokens(chunk["normalized"]):
         raise ValueError("Current normalizer differs from manifest: regenerate narration first")
     heard, observations = heard_forms(recognized["words"])
+    heard = [SPELLINGS.get(form, form) for form in heard]
     matches = [[] for _ in originals]
     issues, statuses = [], ["matched"] * len(originals)
     for operation, i, j in edit_path(expected, heard):

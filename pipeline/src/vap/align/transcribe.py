@@ -15,7 +15,7 @@ from vap.voice.tts import configure_caches, sha256_file
 
 MODEL_REPO = "Systran/faster-whisper-small.en"
 MODEL_REVISION = "d1d751a5f8271d482d14ca55d9e2deeebbae577f"
-RECOGNITION_POLICY = "asr-normalized-dtw-v3"
+RECOGNITION_POLICY = "asr-normalized-dtw-v4"
 TRANSCRIBE_OPTIONS = {
     "language": "en",
     "beam_size": 5,
@@ -29,6 +29,13 @@ TRANSCRIBE_OPTIONS = {
 def timing_text(text: str) -> str:
     """Expand ASR numbers, including short spoken years after 'in'. No script input."""
     text = re.sub(r"(?<=\d)\s+(?=,\d{3}\b)", "", text)
+    # Whisper writes "fifteen hundred" as 1,500. If "one thousand five hundred" was really said, the
+    # words no longer match the script, and the chunk stays unresolved for review.
+    text = re.sub(
+        r"\b1,([1-9])00\b",
+        lambda m: cardinal(10 + int(m[1])) + " hundred",
+        text,
+    )
     text = re.sub(
         r"\b(in\s+)([1-9]\d{2})\b(?!\s+(?:years?|people|troops|meters?|miles?)\b)",
         lambda m: (

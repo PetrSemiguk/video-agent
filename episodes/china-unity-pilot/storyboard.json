@@ -142,7 +142,11 @@
           },
           "start": {
             "phrase": "above four thousand"
-          }
+          },
+          "claims": [
+            "F01",
+            "M01"
+          ]
         }
       ],
       "transition": {
@@ -447,7 +451,11 @@
           },
           "start": {
             "phrase": "the seventh century"
-          }
+          },
+          "claims": [
+            "F04",
+            "M02"
+          ]
         },
         {
           "id": "canal-name",
@@ -465,7 +473,10 @@
           },
           "start": {
             "phrase": "an imperial transport system"
-          }
+          },
+          "claims": [
+            "F04"
+          ]
         }
       ],
       "transition": {
@@ -658,7 +669,11 @@
               "Beijing": "left",
               "Jining": "left"
             }
-          }
+          },
+          "claims": [
+            "F05",
+            "M02"
+          ]
         },
         {
           "id": "basins",
@@ -672,7 +687,11 @@
           },
           "start": {
             "phrase": "five major river basins"
-          }
+          },
+          "claims": [
+            "F05",
+            "M03"
+          ]
         }
       ],
       "transition": {
@@ -737,7 +756,10 @@
           },
           "end": {
             "phrase": "followed"
-          }
+          },
+          "claims": [
+            "M04"
+          ]
         },
         {
           "id": "northern-zhou",
@@ -857,7 +879,11 @@
           },
           "start": {
             "phrase": "reunified the empire"
-          }
+          },
+          "claims": [
+            "F06",
+            "M04"
+          ]
         }
       ],
       "transition": {
@@ -966,7 +992,10 @@
           },
           "start": {
             "phrase": "reasons to bring"
-          }
+          },
+          "claims": [
+            "I01"
+          ]
         }
       ],
       "transition": {

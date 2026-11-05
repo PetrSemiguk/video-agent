@@ -64,6 +64,8 @@ def project(tmp_path, monkeypatch):
     def command(self, arguments, cwd, *, capture=False):
         if "scripts/episode-inputs.cjs" in arguments:
             return json.dumps(["studio/public/plates/test.png"]).encode()
+        if "vap.qa.rhythm" in arguments:
+            return b"Rhythm: fixture\n"
         if "vap.qa.motion" in arguments:
             # The real rule on the plan; a fixture "video" cannot be decoded, so skip it.
             real = [a for a in arguments[3:] if not a.endswith(".mp4")]

@@ -21,6 +21,18 @@ for (const extension of [".ts", ".tsx"]) {
 const root = path.resolve(__dirname, "../..");
 const { storyboardSchema } = require("../src/storyboard/schema.ts");
 const { exportStoryboardSchema } = require("../src/storyboard/jsonSchema.ts");
+const { claimIssues } = require("../src/storyboard/claims.ts");
+// facts.md sits beside the narration the storyboard uses. Sandbox tests have none.
+const screenClaimIssues = (data) => {
+  const file = path.join(
+    root,
+    path.dirname(path.dirname(data.audio.words)),
+    "facts.md",
+  );
+  return fs.existsSync(file)
+    ? claimIssues(data, fs.readFileSync(file, "utf8"))
+    : [];
+};
 // A layer must exist with this credit, and a layer with an errata blocker needs an override.
 // vap.geo.errata applies the blocker rule to `vap.episode build` as well.
 const historicalLayerIssues = (data) => {
@@ -96,7 +108,8 @@ if (args[0] === "export" && args.length === 1) {
         });
       }
     } else data = parsed.data;
-    if (data) issues.push(...historicalLayerIssues(data));
+    if (data)
+      issues.push(...historicalLayerIssues(data), ...screenClaimIssues(data));
     if (data && args.includes("--check-files")) {
       for (const [at, file] of [
         ["$.audio.src", data.audio.src],

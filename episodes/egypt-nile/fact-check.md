@@ -94,3 +94,20 @@ S06 and A28 were read to character 100,000, not to their ends. Every passage use
   - A19-A24 have rows in `docs/licenses.md`. A25, A26 and A27 do not, and were opened here only as checks. If the ledger cites them, they need rows first.
 
 **Overall: PASS.** Round 5. Factual sentences 35: supported 35, needs-softening 0, unsupported 0, contested 0.
+
+## Confirmation after the owner's approval edits
+
+Checked only the two changed sentences. Sources opened: NASA Earth Observatory page (image of 13 Oct 2012) and the FAO AQUASTAT Survey 2005 Egypt country profile (PDF, read as page images, page 1).
+
+**Sentence A:** "Recent estimates, including NASA's, put about ninety-seven percent of its people there."
+**Sentence B:** "By recent estimates, about four percent of the land holds about ninety-seven percent of the people."
+
+Passages read:
+- NASA: "The Nile River Valley and Delta comprise less than 5 percent of Egypt's land area, but provide a home to roughly 97 percent of the country's population." The image is of 13 October 2012 (VIIRS, Suomi NPP); the page is the Image of the Day for 28 December 2012. The page names no source for the percentages (its one reference is UNEP 2008, not tied to them in the text). The figure is not stated to be satellite-measured.
+- FAO AQUASTAT 2005, p. 1: "interrupted by the Nile Valley and Delta which occupy about 4 percent of the total country area." Also: "Population is estimated at 73.4 million (2004) ... with about 97 percent of all people living in the Nile Valley and Delta, population density reaches more than 1 165 inhabitants/km2 in these areas".
+
+Verdicts:
+- A: supported. NASA does give about 97 percent for the valley and Delta, FAO gives the same for 2004, so "including NASA's" is accurate and does not claim a satellite measurement. Note: "recent" is relative, as the data are from 2004 and 2012 and no newer figure was found; the 2012 date is stated later in the script (line 49) and sentence 10 says sources differ. Optional tighter wording: "Published estimates, including NASA's, ..."
+- B: supported. "About four percent" is FAO (2004); NASA says "less than 5 percent", which is consistent. "About ninety-seven percent" is FAO and NASA. Same note on "recent" as in A; optional wording: "By published estimates, ...".
+
+Overall for these two sentences: PASS (no correction required; the optional rewording of "recent" is a judgment call for the owner).

@@ -14,6 +14,7 @@ import {
 import type { GeoFeature } from "../../geo/geojson";
 import { polylineD, sliceByFraction, type MeasuredLine } from "../../geo/line";
 import { GeoSvg, useMapProjection } from "../../map/PlateStage";
+import { lineExitOpacity } from "./lineExit";
 import { routeLineSchema } from "./schemas";
 export { routeLineSchema } from "./schemas";
 
@@ -70,6 +71,8 @@ const RouteLineView: React.FC<z.output<typeof routeLineSchema>> = ({
   arrows,
   label,
   nodeAnchors,
+  durationInFrames,
+  exitFrames,
 }) => {
   const frame = useCurrentFrame();
   const { meta, view, toPlatePx } = useMapProjection();
@@ -116,7 +119,9 @@ const RouteLineView: React.FC<z.output<typeof routeLineSchema>> = ({
     easing: motion.easing.out,
   });
   return (
-    <GeoSvg>
+    <GeoSvg
+      style={{ opacity: lineExitOpacity(frame, durationInFrames, exitFrames) }}
+    >
       {branches.map((branch, i) => {
         const d = polylineD(sliceByFraction(branch.line, 0, progress[i]));
         if (!d) return null;

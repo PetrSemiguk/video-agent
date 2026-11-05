@@ -153,7 +153,7 @@ export const componentRegistry = {
     purpose: "Source-to-mouth tapered river draw with optional glow.",
     when: "In PlateStage geo, with vap.geo.river output.",
     notes:
-      "Exactly one LineString feature. properties.cumfrac length equals coordinates, starts 0, ends 1, is finite/nondecreasing within 0–1. This runtime GeoJSON rule supplements the generated contract. fromFraction fades in the upstream part and draws only the rest, for following one reach of a long river.",
+      "Exactly one LineString feature. properties.cumfrac length equals coordinates, starts 0, ends 1, is finite/nondecreasing within 0–1. This runtime GeoJSON rule supplements the generated contract. fromFraction fades in the upstream part and draws only the rest, for following one reach of a long river. The line fades out over exitFrames at the end of its layer; 0 keeps it to the last frame. Set 0 when the next shot shows the same line.",
   },
   RouteLine: {
     component: RouteLine,
@@ -162,7 +162,7 @@ export const componentRegistry = {
       "Progressive draw of a route: canal, campaign or trade path, with node labels and an era label.",
     when: "In PlateStage geo, with vap.geo.route output, whenever narration names a route.",
     notes:
-      "Every LineString needs properties.cumfrac; properties.nodes with label true get a dot and a name when the head passes. Branches draw one after another at the same speed along their length. style solid or dashed; dash for an approximate or planned course. arrows mark travel direction. credit is mandatory and shown in the map attribution. Node labels default to the right of the dot; nodeAnchors moves them.",
+      "Every LineString needs properties.cumfrac; properties.nodes with label true get a dot and a name when the head passes. Branches draw one after another at the same speed along their length. style solid or dashed; dash for an approximate or planned course. arrows mark travel direction. credit is mandatory and shown in the map attribution. Node labels default to the right of the dot; nodeAnchors moves them. The route fades out over exitFrames at the end of its layer; 0 keeps it to the last frame. A label on the route needs claims in the storyboard.",
   },
   PlaceLabel: {
     component: PlaceLabel,

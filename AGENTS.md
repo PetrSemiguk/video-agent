@@ -166,6 +166,8 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
   (needs `review:episode` and the preview stage first)
 - `uv run python -m vap.qa.episode_audit <slug> [--check-cache]` — words, cuts, label leads, MP4 and decoded
   audio checks to `studio/out/episodes/<slug>/audit.json`; `--check-cache` also proves all stages stay cached
+- `uv run python -m vap.qa.rhythm <slug>` — cuts per minute, scales, shot kinds, graphic share to `studio/out/episodes/<slug>/rhythm.json`,
+  with warnings; the preview stage runs it too (needs its camera plan)
 - `uv run python -m vap.qa.flicker <mp4> --from 9.2 --to 12` — luma flicker on a static section
 - `uv run python -m vap.qa.contact <mp4>... --times 0,2,4 --out <png>` — contact sheet
 - `uv run python -m vap.qa.motion <mp4> [--marks 4,9.5]` — camera smoothness: shift speed per frame

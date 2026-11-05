@@ -43,7 +43,7 @@ Renders and logs go to `studio/out/` (ignored). Map data: `data/processed/<plate
 9. **Render**: `--stage render` gives `studio/out/episode-<slug>-synced.mp4`. Check with
    `uv run python -m vap.qa.episode_audit <slug>`.
 
-Stages include their predecessors and reuse valid caches. Music, subtitles, thumbnails and packaging are later
+Stages include their predecessors and reuse valid caches. The `storyboarder` agent does stages 5-7, `researcher`, `scriptwriter` and `fact-checker` stages 1-2. Music, subtitles, thumbnails and packaging are later
 roadmap steps and do not exist yet ([roadmap.md](../../../docs/roadmap.md), stage 6).
 
 ## Rules the build enforces
