@@ -15,7 +15,7 @@ test("the Git policy hook passes its own tests", () => {
 const steps = (...args: string[]) =>
   run(".claude/skills/run-roadmap/steps.mjs", ...args);
 const ids = (out: string) =>
-  [...out.matchAll(/^- (\d+\.\d+):/gm)].map((match) => match[1]);
+  [...out.matchAll(/^- (\d+\.\d+[a-z]?):/gm)].map((match) => match[1]);
 
 test("/run-roadmap sees the steps of the roadmap, three at most by default", () => {
   expect(ids(steps("4.5").stdout)).toEqual(["4.5", "4.6", "5.1"]);
@@ -23,9 +23,12 @@ test("/run-roadmap sees the steps of the roadmap, three at most by default", () 
     "5.1",
     "5.2",
     "5.3",
+    "5.3b",
     "5.4",
+    "5.4b",
     "5.5",
     "6.1",
+    "6.1b",
     "6.2",
     "6.3",
     "6.4",

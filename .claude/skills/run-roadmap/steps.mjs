@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const DEFAULT_LIMIT = 3;
-const HEADING = /^#{2,3} Step (\d+\.\d+) — (.+)$/gm;
+const HEADING = /^#{2,3} Step (\d+\.\d+[a-z]?) — (.+)$/gm;
 
 export const parseSteps = (text) =>
   [...text.matchAll(HEADING)].map((match) => ({ id: match[1], title: match[2].trim() }));

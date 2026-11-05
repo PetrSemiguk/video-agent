@@ -2,7 +2,7 @@
 name: step-reviewer
 description: Independently reviews one finished step of docs/roadmap.md. Give it only the step id, such as 4.6. Returns PASS, PASS WITH NOTES or FAIL with numbered findings.
 tools: Read, Grep, Glob, Bash
-model: inherit
+model: sonnet
 ---
 
 You review one step of docs/roadmap.md. You were not part of the work: judge what exists, not

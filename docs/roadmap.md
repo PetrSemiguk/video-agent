@@ -426,6 +426,33 @@ only two checkpoints: script approval and preview approval.
   at least as good as the manual v2 on the visual-grammar checklist; (b) the test
   mini-episode from 5.2 gets a valid storyboard and preview sheet.
 
+**Editing rhythm.** Before building the storyboarder, add a "Rhythm" section to `docs/visual-grammar.md` and make
+the storyboarder follow it:
+- cuts: 1–3 per minute on average (style guide); a cut only at a sentence or paragraph pause;
+- alternate scales: wide (continent) → regional → detail → graphic; never 3 shots in a row at
+  the same scale or of the same kind (e.g. three graphics);
+- a graphic-only shot (no map) at most ~10–20% of runtime (B-roll included);
+- a dramatic beat may use a voice-less pause of 0.6–1.5 s with a slow camera move (`[pause s]`
+  in the script) — at most ~1 per section;
+- every section opens with a `SectionTag` and a scale change;
+- the build reports per-minute statistics (cuts, shot kinds, graphic share) and warns when out
+  of range.
+Accept addition: rhythm stats for pilot v2 and for the 5.2 mini-episode in the report.
+
+### Step 5.3b — Full-length test episode
+Goal: a stress test of the whole chain on a real 12–14 min episode, without music or packaging.
+- **USER DECISION**: topic (default: "Why did China stay united while Europe never did?" —
+  existing plates and data for both China and Europe).
+- Run research → script → fact-check → **USER DECISION: script approval** → voice → align →
+  storyboarder → preview → episode-qa → full render.
+- Measure and report: render time (total, ms/frame), peak RAM/VRAM, disk used, number of shots,
+  rhythm stats, episode-qa verdict, components that were missing (list for scene-builder),
+  data gaps (plates, historical layers, errata hits), and usage consumed per stage
+  (approximate: number of agent turns/subagent calls per stage).
+- **USER DECISION: preview approval** before the full render.
+- Accept when: a 12–14 min MP4 exists, episode-qa has no blocker, the report has all
+  measurements and a prioritized list of what to improve.
+
 ### Step 5.4 — Scene-builder and episode QA
 - `.claude/agents/scene-builder.md`: when the catalog lacks a needed visual, builds it:
   component + zod schema + registry + components.md entry + tests + sheet render. Never edits
@@ -437,6 +464,23 @@ only two checkpoints: script approval and preview approval.
 - Accept when: scene-builder delivers one missing component on request (test:
   `ArrowAdvance` — animated military/migration advance arrows) end to end; episode-qa runs on
   pilot v2 and on the mini-episode.
+
+### Step 5.4b — B-roll and archival image agent
+- `.claude/agents/broll-scout.md`: reads script.md + storyboard.json, finds shots marked as
+  B-roll or graphic-only, proposes 2–3 candidates per slot from sources allowed in
+  licenses.md (Pexels, Pixabay; Wikimedia Commons — per-file license check, only licenses
+  allowing commercial use; public-domain archives such as NASA, Library of Congress where
+  the item is marked no known restrictions). Never people's faces as the subject of a
+  shot without a clear license; no logos/brands as subject.
+- Per candidate: URL, license, author, required attribution text, resolution/duration,
+  why it fits the narration. Downloads go to `assets/broll/<slug>/` (git-ignored);
+  `episodes/<slug>/broll.json` (committed) records choice + license + attribution and feeds
+  attributions.md.
+- **USER DECISION** per episode: approve candidates (the `_inbox.md` shows thumbnails/contact
+  sheet). Option `--auto-pick` for drafts.
+- `BRollClip` gains still-image support (Ken Burns on archival images) if not present.
+- Accept when: for the 5.3b episode every B-roll/graphic slot has an approved or auto-picked
+  asset with a complete license record; the publish gate (6.4) reads broll.json.
 
 ### Step 5.5 — Slash commands
 - `/new-episode "<topic>"` → research → script → fact-check → stop for approval (_inbox).
@@ -456,6 +500,21 @@ only two checkpoints: script approval and preview approval.
 - Music cues by section from the storyboard; sidechain ducking under the voice; final mix
   −14 LUFS integrated, true peak ≤ −1 dBTP; music never masks words (check: whisper on the
   final mix still matches the script ≥ 98%).
+
+### Step 6.1b — Sound design
+- **USER DECISION**: SFX source with a license that allows monetized YouTube (record in
+  licenses.md).
+- Small curated library in `assets/sfx/` (git-ignored) + `assets/sfx/catalog.json` (committed):
+  whoosh (camera fly/zoom-through), soft tick/pop (labels, list items), low swell/drone
+  (dramatic beats, big dates), paper/map rustle (historical layers), subtle impact (section
+  starts).
+- Automatic placement from storyboard events (camera presets, component enter frames,
+  `[pause]` beats) with density limits (no more than N per 10 s; none over key words of the
+  narration).
+- Mixed under the voice: SFX never louder than the voice; whisper on the final mix still
+  matches the script ≥ 98% (same check as 6.1).
+- Accept when: pilot v2 and the 5.3b episode have a sound-design pass; report lists events
+  placed per minute and the loudness check.
 
 ### Step 6.2 — Subtitles
 - SRT and VTT from words.json: ≤42 characters per line, ≤2 lines, ≤17 characters/second,
