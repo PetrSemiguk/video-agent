@@ -1,0 +1,2495 @@
+{
+  "audio_sha256": "a65ae99c5b41025b1046ef3b77349aba0b533f274a5b7eccfe29b535f4786c1d",
+  "options": {
+    "language": "en",
+    "beam_size": 5,
+    "temperature": 0,
+    "condition_on_previous_text": false,
+    "word_timestamps": true,
+    "vad_filter": false
+  },
+  "recognition_policy": "asr-normalized-dtw-v3",
+  "chunk_spans": [
+    [
+      0,
+      0,
+      67200
+    ],
+    [
+      1,
+      73200,
+      102960
+    ],
+    [
+      2,
+      108960,
+      201600
+    ],
+    [
+      3,
+      207600,
+      341040
+    ],
+    [
+      4,
+      355440,
+      405600
+    ],
+    [
+      5,
+      410400,
+      461520
+    ],
+    [
+      6,
+      467520,
+      542640
+    ],
+    [
+      7,
+      548640,
+      627600
+    ],
+    [
+      8,
+      633600,
+      718320
+    ],
+    [
+      9,
+      732720,
+      762960
+    ],
+    [
+      10,
+      768960,
+      896400
+    ],
+    [
+      11,
+      902400,
+      960720
+    ],
+    [
+      12,
+      966720,
+      1121040
+    ],
+    [
+      13,
+      1135440,
+      1181280
+    ],
+    [
+      14,
+      1187280,
+      1324320
+    ],
+    [
+      15,
+      1330320,
+      1449120
+    ],
+    [
+      16,
+      1455120,
+      1622400
+    ]
+  ],
+  "model": {
+    "repo": "Systran/faster-whisper-small.en",
+    "revision": "d1d751a5f8271d482d14ca55d9e2deeebbae577f",
+    "compute_type": "float16"
+  },
+  "runtime": {
+    "torch": "2.6.0+cu126",
+    "torchaudio": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "faster_whisper": "1.2.1",
+    "ctranslate2": "4.8.5",
+    "device": "NVIDIA GeForce RTX 4060",
+    "supported_compute_types": [
+      "bfloat16",
+      "float16",
+      "float32",
+      "int8",
+      "int8_bfloat16",
+      "int8_float16",
+      "int8_float32"
+    ],
+    "dll_strategy": "torch first; explicit torch/lib add_dll_directory on Windows",
+    "gpu_memory": {
+      "method": "CUDA driver snapshots before/after load and after each chunk; system-wide",
+      "total_mib": 8187.5,
+      "baseline_used_mib": 1081.5,
+      "observed_peak_used_mib": 1675.5,
+      "observed_increase_mib": 594.0
+    },
+    "load_seconds_including_download": 1.0297500000015134,
+    "transcription_seconds": 3.990717599997879
+  },
+  "chunks": [
+    {
+      "chunk_id": 0,
+      "words": [
+        {
+          "text": "Why",
+          "start": 0.0,
+          "end": 0.18,
+          "probability": 0.9130859375
+        },
+        {
+          "text": "did",
+          "start": 0.18,
+          "end": 0.34,
+          "probability": 0.99267578125
+        },
+        {
+          "text": "rulers",
+          "start": 0.34,
+          "end": 0.76,
+          "probability": 0.9921875
+        },
+        {
+          "text": "keep",
+          "start": 0.76,
+          "end": 1.06,
+          "probability": 0.98681640625
+        },
+        {
+          "text": "trying",
+          "start": 1.06,
+          "end": 1.36,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "to",
+          "start": 1.36,
+          "end": 1.54,
+          "probability": 0.99609375
+        },
+        {
+          "text": "unite",
+          "start": 1.54,
+          "end": 1.84,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "China's",
+          "start": 1.84,
+          "end": 2.24,
+          "probability": 0.997314453125
+        },
+        {
+          "text": "heartland?",
+          "start": 2.24,
+          "end": 2.58,
+          "probability": 0.9794921875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "Why",
+          "start": 0.0,
+          "end": 0.18,
+          "probability": 0.9130859375
+        },
+        {
+          "text": "did",
+          "start": 0.18,
+          "end": 0.34,
+          "probability": 0.99267578125
+        },
+        {
+          "text": "rulers",
+          "start": 0.34,
+          "end": 0.76,
+          "probability": 0.9921875
+        },
+        {
+          "text": "keep",
+          "start": 0.76,
+          "end": 1.06,
+          "probability": 0.98681640625
+        },
+        {
+          "text": "trying",
+          "start": 1.06,
+          "end": 1.36,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "to",
+          "start": 1.36,
+          "end": 1.54,
+          "probability": 0.99609375
+        },
+        {
+          "text": "unite",
+          "start": 1.54,
+          "end": 1.84,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "China's",
+          "start": 1.84,
+          "end": 2.24,
+          "probability": 0.997314453125
+        },
+        {
+          "text": "heartland?",
+          "start": 2.24,
+          "end": 2.58,
+          "probability": 0.9794921875
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 1,
+      "words": [
+        {
+          "text": "Start",
+          "start": 3.05,
+          "end": 3.29,
+          "probability": 0.873046875
+        },
+        {
+          "text": "with",
+          "start": 3.29,
+          "end": 3.4699999999999998,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "the",
+          "start": 3.4699999999999998,
+          "end": 3.61,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "landscape.",
+          "start": 3.61,
+          "end": 4.05,
+          "probability": 0.97998046875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "Start",
+          "start": 3.05,
+          "end": 3.29,
+          "probability": 0.873046875
+        },
+        {
+          "text": "with",
+          "start": 3.29,
+          "end": 3.4699999999999998,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "the",
+          "start": 3.4699999999999998,
+          "end": 3.61,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "landscape.",
+          "start": 3.61,
+          "end": 4.05,
+          "probability": 0.97998046875
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 2,
+      "words": [
+        {
+          "text": "In",
+          "start": 4.54,
+          "end": 4.68,
+          "probability": 0.9677734375
+        },
+        {
+          "text": "the",
+          "start": 4.68,
+          "end": 4.78,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "west,",
+          "start": 4.78,
+          "end": 5.12,
+          "probability": 0.7138671875
+        },
+        {
+          "text": "the",
+          "start": 5.779999999999999,
+          "end": 5.8,
+          "probability": 0.9892578125
+        },
+        {
+          "text": "Tibetan",
+          "start": 5.8,
+          "end": 6.08,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "Plateau",
+          "start": 6.08,
+          "end": 6.6,
+          "probability": 0.873046875
+        },
+        {
+          "text": "rises",
+          "start": 6.6,
+          "end": 6.859999999999999,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "above",
+          "start": 6.859999999999999,
+          "end": 7.199999999999999,
+          "probability": 0.98974609375
+        },
+        {
+          "text": "four",
+          "start": 7.199999999999999,
+          "end": 7.4399999999999995,
+          "probability": 0.01216888427734375
+        },
+        {
+          "text": "thousand",
+          "start": 7.4399999999999995,
+          "end": 7.72,
+          "probability": 0.97412109375
+        },
+        {
+          "text": "meters.",
+          "start": 7.72,
+          "end": 8.1,
+          "probability": 0.92822265625
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "In",
+          "start": 4.54,
+          "end": 4.68,
+          "probability": 0.93017578125
+        },
+        {
+          "text": "the",
+          "start": 4.68,
+          "end": 4.8,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "west,",
+          "start": 4.8,
+          "end": 5.12,
+          "probability": 0.67431640625
+        },
+        {
+          "text": "the",
+          "start": 5.78,
+          "end": 5.8,
+          "probability": 0.9912109375
+        },
+        {
+          "text": "Tibetan",
+          "start": 5.8,
+          "end": 6.08,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "Plateau",
+          "start": 6.08,
+          "end": 6.6,
+          "probability": 0.887451171875
+        },
+        {
+          "text": "rises",
+          "start": 6.6,
+          "end": 6.859999999999999,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "above",
+          "start": 6.859999999999999,
+          "end": 7.2,
+          "probability": 0.98583984375
+        },
+        {
+          "text": "4",
+          "start": 7.2,
+          "end": 7.48,
+          "probability": 0.6103515625
+        },
+        {
+          "text": ",000",
+          "start": 7.48,
+          "end": 7.88,
+          "probability": 0.995361328125
+        },
+        {
+          "text": "meters.",
+          "start": 7.88,
+          "end": 8.06,
+          "probability": 0.8525390625
+        }
+      ],
+      "timing": {
+        "method": "ASR-only expanded-text acoustic DTW",
+        "median_filter_width": 7,
+        "text": "In the west, the Tibetan Plateau rises above four thousand meters."
+      }
+    },
+    {
+      "chunk_id": 3,
+      "words": [
+        {
+          "text": "Farther",
+          "start": 8.65,
+          "end": 9.290000000000001,
+          "probability": 0.8995768229166666
+        },
+        {
+          "text": "east,",
+          "start": 9.290000000000001,
+          "end": 9.530000000000001,
+          "probability": 0.95751953125
+        },
+        {
+          "text": "the",
+          "start": 9.93,
+          "end": 9.99,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "land",
+          "start": 9.99,
+          "end": 10.17,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "opens",
+          "start": 10.17,
+          "end": 10.51,
+          "probability": 0.99609375
+        },
+        {
+          "text": "into",
+          "start": 10.51,
+          "end": 10.75,
+          "probability": 0.98193359375
+        },
+        {
+          "text": "plains",
+          "start": 10.75,
+          "end": 11.030000000000001,
+          "probability": 0.99267578125
+        },
+        {
+          "text": "and",
+          "start": 11.030000000000001,
+          "end": 11.25,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "river",
+          "start": 11.25,
+          "end": 11.45,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "valleys,",
+          "start": 11.45,
+          "end": 11.81,
+          "probability": 0.97509765625
+        },
+        {
+          "text": "supporting",
+          "start": 12.05,
+          "end": 12.370000000000001,
+          "probability": 0.99609375
+        },
+        {
+          "text": "intensive",
+          "start": 12.370000000000001,
+          "end": 12.77,
+          "probability": 0.9775390625
+        },
+        {
+          "text": "farming",
+          "start": 12.77,
+          "end": 13.15,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "and",
+          "start": 13.15,
+          "end": 13.41,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "dense",
+          "start": 13.41,
+          "end": 13.63,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "settlement.",
+          "start": 13.63,
+          "end": 13.97,
+          "probability": 0.9892578125
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "Farther",
+          "start": 8.65,
+          "end": 9.290000000000001,
+          "probability": 0.8995768229166666
+        },
+        {
+          "text": "east,",
+          "start": 9.290000000000001,
+          "end": 9.530000000000001,
+          "probability": 0.95751953125
+        },
+        {
+          "text": "the",
+          "start": 9.93,
+          "end": 9.99,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "land",
+          "start": 9.99,
+          "end": 10.17,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "opens",
+          "start": 10.17,
+          "end": 10.51,
+          "probability": 0.99609375
+        },
+        {
+          "text": "into",
+          "start": 10.51,
+          "end": 10.75,
+          "probability": 0.98193359375
+        },
+        {
+          "text": "plains",
+          "start": 10.75,
+          "end": 11.030000000000001,
+          "probability": 0.99267578125
+        },
+        {
+          "text": "and",
+          "start": 11.030000000000001,
+          "end": 11.25,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "river",
+          "start": 11.25,
+          "end": 11.45,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "valleys,",
+          "start": 11.45,
+          "end": 11.81,
+          "probability": 0.97509765625
+        },
+        {
+          "text": "supporting",
+          "start": 12.05,
+          "end": 12.370000000000001,
+          "probability": 0.99609375
+        },
+        {
+          "text": "intensive",
+          "start": 12.370000000000001,
+          "end": 12.77,
+          "probability": 0.9775390625
+        },
+        {
+          "text": "farming",
+          "start": 12.77,
+          "end": 13.15,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "and",
+          "start": 13.15,
+          "end": 13.41,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "dense",
+          "start": 13.41,
+          "end": 13.63,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "settlement.",
+          "start": 13.63,
+          "end": 13.97,
+          "probability": 0.9892578125
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 4,
+      "words": [
+        {
+          "text": "The",
+          "start": 14.81,
+          "end": 14.93,
+          "probability": 0.82470703125
+        },
+        {
+          "text": "Yellow",
+          "start": 14.93,
+          "end": 15.110000000000001,
+          "probability": 0.88916015625
+        },
+        {
+          "text": "River",
+          "start": 15.110000000000001,
+          "end": 15.39,
+          "probability": 0.97705078125
+        },
+        {
+          "text": "crosses",
+          "start": 15.39,
+          "end": 15.73,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "the",
+          "start": 15.73,
+          "end": 15.97,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "North",
+          "start": 15.97,
+          "end": 16.11,
+          "probability": 0.83984375
+        },
+        {
+          "text": "China",
+          "start": 16.11,
+          "end": 16.39,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "Plain.",
+          "start": 16.39,
+          "end": 16.69,
+          "probability": 0.734375
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "The",
+          "start": 14.81,
+          "end": 14.93,
+          "probability": 0.82470703125
+        },
+        {
+          "text": "Yellow",
+          "start": 14.93,
+          "end": 15.110000000000001,
+          "probability": 0.88916015625
+        },
+        {
+          "text": "River",
+          "start": 15.110000000000001,
+          "end": 15.39,
+          "probability": 0.97705078125
+        },
+        {
+          "text": "crosses",
+          "start": 15.39,
+          "end": 15.73,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "the",
+          "start": 15.73,
+          "end": 15.97,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "North",
+          "start": 15.97,
+          "end": 16.11,
+          "probability": 0.83984375
+        },
+        {
+          "text": "China",
+          "start": 16.11,
+          "end": 16.39,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "Plain.",
+          "start": 16.39,
+          "end": 16.69,
+          "probability": 0.734375
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 5,
+      "words": [
+        {
+          "text": "an",
+          "start": 17.1,
+          "end": 17.240000000000002,
+          "probability": 0.5712890625
+        },
+        {
+          "text": "ancient",
+          "start": 17.240000000000002,
+          "end": 17.66,
+          "probability": 0.931640625
+        },
+        {
+          "text": "agricultural",
+          "start": 17.66,
+          "end": 18.32,
+          "probability": 0.97216796875
+        },
+        {
+          "text": "heartland.",
+          "start": 18.32,
+          "end": 19.0,
+          "probability": 0.993896484375
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "an",
+          "start": 17.1,
+          "end": 17.240000000000002,
+          "probability": 0.5712890625
+        },
+        {
+          "text": "ancient",
+          "start": 17.240000000000002,
+          "end": 17.66,
+          "probability": 0.931640625
+        },
+        {
+          "text": "agricultural",
+          "start": 17.66,
+          "end": 18.32,
+          "probability": 0.97216796875
+        },
+        {
+          "text": "heartland.",
+          "start": 18.32,
+          "end": 19.0,
+          "probability": 0.993896484375
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 6,
+      "words": [
+        {
+          "text": "To",
+          "start": 19.48,
+          "end": 19.6,
+          "probability": 0.346923828125
+        },
+        {
+          "text": "the",
+          "start": 19.6,
+          "end": 19.740000000000002,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "south,",
+          "start": 19.740000000000002,
+          "end": 20.02,
+          "probability": 0.9541015625
+        },
+        {
+          "text": "the",
+          "start": 20.34,
+          "end": 20.400000000000002,
+          "probability": 0.9873046875
+        },
+        {
+          "text": "Yangtze",
+          "start": 20.400000000000002,
+          "end": 20.740000000000002,
+          "probability": 0.8077799479166666
+        },
+        {
+          "text": "links",
+          "start": 20.740000000000002,
+          "end": 20.96,
+          "probability": 0.71044921875
+        },
+        {
+          "text": "inland",
+          "start": 20.96,
+          "end": 21.26,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "regions",
+          "start": 21.26,
+          "end": 21.72,
+          "probability": 0.99609375
+        },
+        {
+          "text": "with",
+          "start": 21.72,
+          "end": 22.02,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "the",
+          "start": 22.02,
+          "end": 22.16,
+          "probability": 0.998046875
+        },
+        {
+          "text": "coast.",
+          "start": 22.16,
+          "end": 22.34,
+          "probability": 0.99755859375
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "To",
+          "start": 19.48,
+          "end": 19.6,
+          "probability": 0.346923828125
+        },
+        {
+          "text": "the",
+          "start": 19.6,
+          "end": 19.740000000000002,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "south,",
+          "start": 19.740000000000002,
+          "end": 20.02,
+          "probability": 0.9541015625
+        },
+        {
+          "text": "the",
+          "start": 20.34,
+          "end": 20.400000000000002,
+          "probability": 0.9873046875
+        },
+        {
+          "text": "Yangtze",
+          "start": 20.400000000000002,
+          "end": 20.740000000000002,
+          "probability": 0.8077799479166666
+        },
+        {
+          "text": "links",
+          "start": 20.740000000000002,
+          "end": 20.96,
+          "probability": 0.71044921875
+        },
+        {
+          "text": "inland",
+          "start": 20.96,
+          "end": 21.26,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "regions",
+          "start": 21.26,
+          "end": 21.72,
+          "probability": 0.99609375
+        },
+        {
+          "text": "with",
+          "start": 21.72,
+          "end": 22.02,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "the",
+          "start": 22.02,
+          "end": 22.16,
+          "probability": 0.998046875
+        },
+        {
+          "text": "coast.",
+          "start": 22.16,
+          "end": 22.34,
+          "probability": 0.99755859375
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 7,
+      "words": [
+        {
+          "text": "Its",
+          "start": 22.86,
+          "end": 23.08,
+          "probability": 0.7666015625
+        },
+        {
+          "text": "middle",
+          "start": 23.08,
+          "end": 23.34,
+          "probability": 0.9912109375
+        },
+        {
+          "text": "and",
+          "start": 23.34,
+          "end": 23.58,
+          "probability": 0.97607421875
+        },
+        {
+          "text": "lower",
+          "start": 23.58,
+          "end": 23.8,
+          "probability": 0.998046875
+        },
+        {
+          "text": "reaches",
+          "start": 23.8,
+          "end": 24.24,
+          "probability": 0.990234375
+        },
+        {
+          "text": "support",
+          "start": 24.24,
+          "end": 24.64,
+          "probability": 0.99609375
+        },
+        {
+          "text": "another",
+          "start": 24.64,
+          "end": 24.96,
+          "probability": 0.998046875
+        },
+        {
+          "text": "major",
+          "start": 24.96,
+          "end": 25.32,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "farming",
+          "start": 25.32,
+          "end": 25.6,
+          "probability": 0.998046875
+        },
+        {
+          "text": "region.",
+          "start": 25.6,
+          "end": 25.939999999999998,
+          "probability": 0.99951171875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "Its",
+          "start": 22.86,
+          "end": 23.08,
+          "probability": 0.7666015625
+        },
+        {
+          "text": "middle",
+          "start": 23.08,
+          "end": 23.34,
+          "probability": 0.9912109375
+        },
+        {
+          "text": "and",
+          "start": 23.34,
+          "end": 23.58,
+          "probability": 0.97607421875
+        },
+        {
+          "text": "lower",
+          "start": 23.58,
+          "end": 23.8,
+          "probability": 0.998046875
+        },
+        {
+          "text": "reaches",
+          "start": 23.8,
+          "end": 24.24,
+          "probability": 0.990234375
+        },
+        {
+          "text": "support",
+          "start": 24.24,
+          "end": 24.64,
+          "probability": 0.99609375
+        },
+        {
+          "text": "another",
+          "start": 24.64,
+          "end": 24.96,
+          "probability": 0.998046875
+        },
+        {
+          "text": "major",
+          "start": 24.96,
+          "end": 25.32,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "farming",
+          "start": 25.32,
+          "end": 25.6,
+          "probability": 0.998046875
+        },
+        {
+          "text": "region.",
+          "start": 25.6,
+          "end": 25.939999999999998,
+          "probability": 0.99951171875
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 8,
+      "words": [
+        {
+          "text": "These",
+          "start": 26.4,
+          "end": 26.619999999999997,
+          "probability": 0.97216796875
+        },
+        {
+          "text": "are",
+          "start": 26.619999999999997,
+          "end": 26.779999999999998,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "different",
+          "start": 26.779999999999998,
+          "end": 27.02,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "landscapes,",
+          "start": 27.02,
+          "end": 27.52,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "but",
+          "start": 27.84,
+          "end": 28.0,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "waterways",
+          "start": 28.0,
+          "end": 28.32,
+          "probability": 0.859375
+        },
+        {
+          "text": "offered",
+          "start": 28.32,
+          "end": 28.74,
+          "probability": 0.99072265625
+        },
+        {
+          "text": "ways",
+          "start": 28.74,
+          "end": 28.979999999999997,
+          "probability": 0.994140625
+        },
+        {
+          "text": "to",
+          "start": 28.979999999999997,
+          "end": 29.2,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "connect",
+          "start": 29.2,
+          "end": 29.459999999999997,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "them.",
+          "start": 29.459999999999997,
+          "end": 29.74,
+          "probability": 0.9833984375
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "These",
+          "start": 26.4,
+          "end": 26.619999999999997,
+          "probability": 0.97216796875
+        },
+        {
+          "text": "are",
+          "start": 26.619999999999997,
+          "end": 26.779999999999998,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "different",
+          "start": 26.779999999999998,
+          "end": 27.02,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "landscapes,",
+          "start": 27.02,
+          "end": 27.52,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "but",
+          "start": 27.84,
+          "end": 28.0,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "waterways",
+          "start": 28.0,
+          "end": 28.32,
+          "probability": 0.859375
+        },
+        {
+          "text": "offered",
+          "start": 28.32,
+          "end": 28.74,
+          "probability": 0.99072265625
+        },
+        {
+          "text": "ways",
+          "start": 28.74,
+          "end": 28.979999999999997,
+          "probability": 0.994140625
+        },
+        {
+          "text": "to",
+          "start": 28.979999999999997,
+          "end": 29.2,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "connect",
+          "start": 29.2,
+          "end": 29.459999999999997,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "them.",
+          "start": 29.459999999999997,
+          "end": 29.74,
+          "probability": 0.9833984375
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 9,
+      "words": [
+        {
+          "text": "that",
+          "start": 30.53,
+          "end": 30.71,
+          "probability": 0.4716796875
+        },
+        {
+          "text": "connection",
+          "start": 30.71,
+          "end": 31.09,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "took",
+          "start": 31.09,
+          "end": 31.310000000000002,
+          "probability": 0.86328125
+        },
+        {
+          "text": "work.",
+          "start": 31.310000000000002,
+          "end": 31.57,
+          "probability": 0.98388671875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "that",
+          "start": 30.53,
+          "end": 30.71,
+          "probability": 0.4716796875
+        },
+        {
+          "text": "connection",
+          "start": 30.71,
+          "end": 31.09,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "took",
+          "start": 31.09,
+          "end": 31.310000000000002,
+          "probability": 0.86328125
+        },
+        {
+          "text": "work.",
+          "start": 31.310000000000002,
+          "end": 31.57,
+          "probability": 0.98388671875
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 10,
+      "words": [
+        {
+          "text": "From",
+          "start": 32.04,
+          "end": 32.26,
+          "probability": 0.978515625
+        },
+        {
+          "text": "the",
+          "start": 32.26,
+          "end": 32.44,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "seventh",
+          "start": 32.44,
+          "end": 32.68,
+          "probability": 0.2802734375
+        },
+        {
+          "text": "century,",
+          "start": 32.68,
+          "end": 33.2,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "the",
+          "start": 33.54,
+          "end": 33.58,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "Sui",
+          "start": 33.58,
+          "end": 33.82,
+          "probability": 0.79833984375
+        },
+        {
+          "text": "Dynasty",
+          "start": 33.82,
+          "end": 34.14,
+          "probability": 0.52197265625
+        },
+        {
+          "text": "organized",
+          "start": 34.14,
+          "end": 34.74,
+          "probability": 0.8837890625
+        },
+        {
+          "text": "the",
+          "start": 34.74,
+          "end": 34.96,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "Grand",
+          "start": 34.96,
+          "end": 35.14,
+          "probability": 0.9033203125
+        },
+        {
+          "text": "Canal",
+          "start": 35.14,
+          "end": 35.44,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "as",
+          "start": 35.44,
+          "end": 35.76,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "an",
+          "start": 35.76,
+          "end": 35.86,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "imperial",
+          "start": 35.86,
+          "end": 36.22,
+          "probability": 0.97802734375
+        },
+        {
+          "text": "transport",
+          "start": 36.22,
+          "end": 36.7,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "system.",
+          "start": 36.7,
+          "end": 37.2,
+          "probability": 0.99951171875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "From",
+          "start": 32.04,
+          "end": 32.26,
+          "probability": 0.982421875
+        },
+        {
+          "text": "the",
+          "start": 32.26,
+          "end": 32.44,
+          "probability": 0.9931640625
+        },
+        {
+          "text": "7th",
+          "start": 32.44,
+          "end": 32.82,
+          "probability": 0.858154296875
+        },
+        {
+          "text": "century,",
+          "start": 32.82,
+          "end": 33.18,
+          "probability": 0.9375
+        },
+        {
+          "text": "the",
+          "start": 33.54,
+          "end": 33.58,
+          "probability": 0.998046875
+        },
+        {
+          "text": "Sui",
+          "start": 33.58,
+          "end": 33.82,
+          "probability": 0.76904296875
+        },
+        {
+          "text": "Dynasty",
+          "start": 33.82,
+          "end": 34.14,
+          "probability": 0.65673828125
+        },
+        {
+          "text": "organized",
+          "start": 34.14,
+          "end": 34.76,
+          "probability": 0.83447265625
+        },
+        {
+          "text": "the",
+          "start": 34.76,
+          "end": 34.96,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "Grand",
+          "start": 34.96,
+          "end": 35.14,
+          "probability": 0.94921875
+        },
+        {
+          "text": "Canal",
+          "start": 35.14,
+          "end": 35.46,
+          "probability": 0.9931640625
+        },
+        {
+          "text": "as",
+          "start": 35.46,
+          "end": 35.76,
+          "probability": 0.998046875
+        },
+        {
+          "text": "an",
+          "start": 35.76,
+          "end": 35.86,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "imperial",
+          "start": 35.86,
+          "end": 36.22,
+          "probability": 0.96826171875
+        },
+        {
+          "text": "transport",
+          "start": 36.22,
+          "end": 36.7,
+          "probability": 0.998046875
+        },
+        {
+          "text": "system.",
+          "start": 36.7,
+          "end": 37.18,
+          "probability": 0.99951171875
+        }
+      ],
+      "timing": {
+        "method": "ASR-only expanded-text acoustic DTW",
+        "median_filter_width": 7,
+        "text": "From the seventh century, the Sui Dynasty organized the Grand Canal as an imperial transport system."
+      }
+    },
+    {
+      "chunk_id": 11,
+      "words": [
+        {
+          "text": "successive",
+          "start": 37.6,
+          "end": 38.04,
+          "probability": 0.68798828125
+        },
+        {
+          "text": "dynasties",
+          "start": 38.04,
+          "end": 38.660000000000004,
+          "probability": 0.9918619791666666
+        },
+        {
+          "text": "maintained",
+          "start": 38.660000000000004,
+          "end": 39.04,
+          "probability": 0.9921875
+        },
+        {
+          "text": "and",
+          "start": 39.04,
+          "end": 39.32,
+          "probability": 0.9892578125
+        },
+        {
+          "text": "expanded",
+          "start": 39.32,
+          "end": 39.72,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "it.",
+          "start": 39.72,
+          "end": 39.94,
+          "probability": 0.99560546875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "successive",
+          "start": 37.6,
+          "end": 38.04,
+          "probability": 0.68798828125
+        },
+        {
+          "text": "dynasties",
+          "start": 38.04,
+          "end": 38.660000000000004,
+          "probability": 0.9918619791666666
+        },
+        {
+          "text": "maintained",
+          "start": 38.660000000000004,
+          "end": 39.04,
+          "probability": 0.9921875
+        },
+        {
+          "text": "and",
+          "start": 39.04,
+          "end": 39.32,
+          "probability": 0.9892578125
+        },
+        {
+          "text": "expanded",
+          "start": 39.32,
+          "end": 39.72,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "it.",
+          "start": 39.72,
+          "end": 39.94,
+          "probability": 0.99560546875
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 12,
+      "words": [
+        {
+          "text": "By",
+          "start": 40.28,
+          "end": 40.46,
+          "probability": 0.97119140625
+        },
+        {
+          "text": "the",
+          "start": 40.46,
+          "end": 40.6,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "thirteenth",
+          "start": 40.6,
+          "end": 40.96,
+          "probability": 0.6960856119791666
+        },
+        {
+          "text": "century,",
+          "start": 40.96,
+          "end": 41.44,
+          "probability": 0.9873046875
+        },
+        {
+          "text": "its",
+          "start": 41.66,
+          "end": 41.76,
+          "probability": 0.95751953125
+        },
+        {
+          "text": "network",
+          "start": 41.76,
+          "end": 42.04,
+          "probability": 0.9794921875
+        },
+        {
+          "text": "linked",
+          "start": 42.04,
+          "end": 42.32,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "five",
+          "start": 42.32,
+          "end": 42.66,
+          "probability": 0.97119140625
+        },
+        {
+          "text": "major",
+          "start": 42.66,
+          "end": 43.0,
+          "probability": 0.99072265625
+        },
+        {
+          "text": "river",
+          "start": 43.0,
+          "end": 43.199999999999996,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "basins",
+          "start": 43.199999999999996,
+          "end": 43.66,
+          "probability": 0.981689453125
+        },
+        {
+          "text": "carrying",
+          "start": 43.66,
+          "end": 44.059999999999995,
+          "probability": 0.53125
+        },
+        {
+          "text": "grain",
+          "start": 44.059999999999995,
+          "end": 44.46,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "and",
+          "start": 44.46,
+          "end": 44.699999999999996,
+          "probability": 0.9833984375
+        },
+        {
+          "text": "helping",
+          "start": 44.699999999999996,
+          "end": 44.9,
+          "probability": 0.98779296875
+        },
+        {
+          "text": "supply",
+          "start": 44.9,
+          "end": 45.26,
+          "probability": 0.98876953125
+        },
+        {
+          "text": "the",
+          "start": 45.26,
+          "end": 45.4,
+          "probability": 0.99609375
+        },
+        {
+          "text": "population",
+          "start": 45.4,
+          "end": 45.82,
+          "probability": 0.998046875
+        },
+        {
+          "text": "and",
+          "start": 45.82,
+          "end": 46.16,
+          "probability": 0.98828125
+        },
+        {
+          "text": "troops.",
+          "start": 46.16,
+          "end": 46.44,
+          "probability": 0.98828125
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "By",
+          "start": 40.28,
+          "end": 40.46,
+          "probability": 0.97607421875
+        },
+        {
+          "text": "the",
+          "start": 40.46,
+          "end": 40.6,
+          "probability": 0.9951171875
+        },
+        {
+          "text": "13th",
+          "start": 40.6,
+          "end": 41.42,
+          "probability": 0.957275390625
+        },
+        {
+          "text": "century,",
+          "start": 41.42,
+          "end": 41.42,
+          "probability": 0.9560546875
+        },
+        {
+          "text": "its",
+          "start": 41.68,
+          "end": 41.76,
+          "probability": 0.96044921875
+        },
+        {
+          "text": "network",
+          "start": 41.76,
+          "end": 42.06,
+          "probability": 0.98193359375
+        },
+        {
+          "text": "linked",
+          "start": 42.06,
+          "end": 42.32,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "five",
+          "start": 42.32,
+          "end": 42.660000000000004,
+          "probability": 0.9384765625
+        },
+        {
+          "text": "major",
+          "start": 42.660000000000004,
+          "end": 43.0,
+          "probability": 0.9931640625
+        },
+        {
+          "text": "river",
+          "start": 43.0,
+          "end": 43.2,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "basins",
+          "start": 43.2,
+          "end": 43.660000000000004,
+          "probability": 0.98193359375
+        },
+        {
+          "text": "carrying",
+          "start": 43.660000000000004,
+          "end": 44.06,
+          "probability": 0.58984375
+        },
+        {
+          "text": "grain",
+          "start": 44.06,
+          "end": 44.46,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "and",
+          "start": 44.46,
+          "end": 44.7,
+          "probability": 0.98291015625
+        },
+        {
+          "text": "helping",
+          "start": 44.7,
+          "end": 44.92,
+          "probability": 0.9912109375
+        },
+        {
+          "text": "supply",
+          "start": 44.92,
+          "end": 45.260000000000005,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "the",
+          "start": 45.260000000000005,
+          "end": 45.4,
+          "probability": 0.998046875
+        },
+        {
+          "text": "population",
+          "start": 45.4,
+          "end": 45.82,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "and",
+          "start": 45.82,
+          "end": 46.160000000000004,
+          "probability": 0.99169921875
+        },
+        {
+          "text": "troops.",
+          "start": 46.160000000000004,
+          "end": 46.42,
+          "probability": 0.9931640625
+        }
+      ],
+      "timing": {
+        "method": "ASR-only expanded-text acoustic DTW",
+        "median_filter_width": 7,
+        "text": "By the thirteenth century, its network linked five major river basins carrying grain and helping supply the population and troops."
+      }
+    },
+    {
+      "chunk_id": 13,
+      "words": [
+        {
+          "text": "Geography",
+          "start": 47.31,
+          "end": 47.77,
+          "probability": 0.902099609375
+        },
+        {
+          "text": "did",
+          "start": 47.77,
+          "end": 47.97,
+          "probability": 0.9833984375
+        },
+        {
+          "text": "not",
+          "start": 47.97,
+          "end": 48.17,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "guarantee",
+          "start": 48.17,
+          "end": 48.53,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "unity.",
+          "start": 48.53,
+          "end": 48.910000000000004,
+          "probability": 0.91796875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "Geography",
+          "start": 47.31,
+          "end": 47.77,
+          "probability": 0.902099609375
+        },
+        {
+          "text": "did",
+          "start": 47.77,
+          "end": 47.97,
+          "probability": 0.9833984375
+        },
+        {
+          "text": "not",
+          "start": 47.97,
+          "end": 48.17,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "guarantee",
+          "start": 48.17,
+          "end": 48.53,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "unity.",
+          "start": 48.53,
+          "end": 48.910000000000004,
+          "probability": 0.91796875
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 14,
+      "words": [
+        {
+          "text": "After",
+          "start": 49.47,
+          "end": 49.73,
+          "probability": 0.98486328125
+        },
+        {
+          "text": "the",
+          "start": 49.73,
+          "end": 49.849999999999994,
+          "probability": 0.99609375
+        },
+        {
+          "text": "Han",
+          "start": 49.849999999999994,
+          "end": 50.029999999999994,
+          "probability": 0.83544921875
+        },
+        {
+          "text": "collapsed,",
+          "start": 50.029999999999994,
+          "end": 50.489999999999995,
+          "probability": 0.97119140625
+        },
+        {
+          "text": "centuries",
+          "start": 50.73,
+          "end": 50.91,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "of",
+          "start": 50.91,
+          "end": 51.269999999999996,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "political",
+          "start": 51.269999999999996,
+          "end": 51.56999999999999,
+          "probability": 0.994140625
+        },
+        {
+          "text": "division",
+          "start": 51.56999999999999,
+          "end": 51.91,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "followed,",
+          "start": 51.91,
+          "end": 52.269999999999996,
+          "probability": 0.9970703125
+        },
+        {
+          "text": "before",
+          "start": 52.51,
+          "end": 52.709999999999994,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "the",
+          "start": 52.709999999999994,
+          "end": 52.87,
+          "probability": 0.38818359375
+        },
+        {
+          "text": "Sui",
+          "start": 52.87,
+          "end": 53.05,
+          "probability": 0.6844482421875
+        },
+        {
+          "text": "reunified",
+          "start": 53.05,
+          "end": 53.589999999999996,
+          "probability": 0.992431640625
+        },
+        {
+          "text": "the",
+          "start": 53.589999999999996,
+          "end": 53.73,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "Empire",
+          "start": 53.73,
+          "end": 54.05,
+          "probability": 0.456787109375
+        },
+        {
+          "text": "in",
+          "start": 54.05,
+          "end": 54.28999999999999,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "five",
+          "start": 54.28999999999999,
+          "end": 54.51,
+          "probability": 0.000621795654296875
+        },
+        {
+          "text": "eighty",
+          "start": 54.51,
+          "end": 54.69,
+          "probability": 0.86279296875
+        },
+        {
+          "text": "-nine.",
+          "start": 54.69,
+          "end": 55.01,
+          "probability": 0.909423828125
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "After",
+          "start": 49.47,
+          "end": 49.73,
+          "probability": 0.97998046875
+        },
+        {
+          "text": "the",
+          "start": 49.73,
+          "end": 49.85,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "Han",
+          "start": 49.85,
+          "end": 50.03,
+          "probability": 0.8212890625
+        },
+        {
+          "text": "collapsed,",
+          "start": 50.03,
+          "end": 50.51,
+          "probability": 0.9775390625
+        },
+        {
+          "text": "centuries",
+          "start": 50.97,
+          "end": 50.97,
+          "probability": 0.998046875
+        },
+        {
+          "text": "of",
+          "start": 50.97,
+          "end": 51.25,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "political",
+          "start": 51.25,
+          "end": 51.55,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "division",
+          "start": 51.55,
+          "end": 51.91,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "followed,",
+          "start": 51.91,
+          "end": 52.29,
+          "probability": 0.9931640625
+        },
+        {
+          "text": "before",
+          "start": 52.47,
+          "end": 52.71,
+          "probability": 0.990234375
+        },
+        {
+          "text": "the",
+          "start": 52.71,
+          "end": 52.87,
+          "probability": 0.94384765625
+        },
+        {
+          "text": "Sui",
+          "start": 52.87,
+          "end": 53.05,
+          "probability": 0.6966552734375
+        },
+        {
+          "text": "reunified",
+          "start": 53.05,
+          "end": 53.589999999999996,
+          "probability": 0.9912109375
+        },
+        {
+          "text": "the",
+          "start": 53.589999999999996,
+          "end": 53.73,
+          "probability": 0.99609375
+        },
+        {
+          "text": "Empire",
+          "start": 53.73,
+          "end": 54.07,
+          "probability": 0.5576171875
+        },
+        {
+          "text": "in",
+          "start": 54.07,
+          "end": 54.29,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "589.",
+          "start": 54.29,
+          "end": 54.81,
+          "probability": 0.99755859375
+        }
+      ],
+      "timing": {
+        "method": "ASR-only expanded-text acoustic DTW",
+        "median_filter_width": 3,
+        "text": "After the Han collapsed, centuries of political division followed, before the Sui reunified the Empire in five eighty-nine."
+      }
+    },
+    {
+      "chunk_id": 15,
+      "words": [
+        {
+          "text": "But",
+          "start": 55.43,
+          "end": 55.589999999999996,
+          "probability": 0.4814453125
+        },
+        {
+          "text": "productive",
+          "start": 55.589999999999996,
+          "end": 55.99,
+          "probability": 0.94677734375
+        },
+        {
+          "text": "plains",
+          "start": 55.99,
+          "end": 56.47,
+          "probability": 0.8740234375
+        },
+        {
+          "text": "and",
+          "start": 56.47,
+          "end": 56.73,
+          "probability": 0.986328125
+        },
+        {
+          "text": "connected",
+          "start": 56.73,
+          "end": 57.07,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "waterways",
+          "start": 57.07,
+          "end": 57.59,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "gave",
+          "start": 57.59,
+          "end": 58.269999999999996,
+          "probability": 0.9873046875
+        },
+        {
+          "text": "rulers",
+          "start": 58.269999999999996,
+          "end": 58.57,
+          "probability": 0.99267578125
+        },
+        {
+          "text": "reasons",
+          "start": 58.57,
+          "end": 58.93,
+          "probability": 0.9775390625
+        },
+        {
+          "text": "to",
+          "start": 58.93,
+          "end": 59.19,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "bring",
+          "start": 59.19,
+          "end": 59.35,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "regions",
+          "start": 59.35,
+          "end": 59.67,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "together.",
+          "start": 59.67,
+          "end": 60.07,
+          "probability": 0.99951171875
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "But",
+          "start": 55.43,
+          "end": 55.589999999999996,
+          "probability": 0.4814453125
+        },
+        {
+          "text": "productive",
+          "start": 55.589999999999996,
+          "end": 55.99,
+          "probability": 0.94677734375
+        },
+        {
+          "text": "plains",
+          "start": 55.99,
+          "end": 56.47,
+          "probability": 0.8740234375
+        },
+        {
+          "text": "and",
+          "start": 56.47,
+          "end": 56.73,
+          "probability": 0.986328125
+        },
+        {
+          "text": "connected",
+          "start": 56.73,
+          "end": 57.07,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "waterways",
+          "start": 57.07,
+          "end": 57.59,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "gave",
+          "start": 57.59,
+          "end": 58.269999999999996,
+          "probability": 0.9873046875
+        },
+        {
+          "text": "rulers",
+          "start": 58.269999999999996,
+          "end": 58.57,
+          "probability": 0.99267578125
+        },
+        {
+          "text": "reasons",
+          "start": 58.57,
+          "end": 58.93,
+          "probability": 0.9775390625
+        },
+        {
+          "text": "to",
+          "start": 58.93,
+          "end": 59.19,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "bring",
+          "start": 59.19,
+          "end": 59.35,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "regions",
+          "start": 59.35,
+          "end": 59.67,
+          "probability": 0.99365234375
+        },
+        {
+          "text": "together.",
+          "start": 59.67,
+          "end": 60.07,
+          "probability": 0.99951171875
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    },
+    {
+      "chunk_id": 16,
+      "words": [
+        {
+          "text": "The",
+          "start": 60.63,
+          "end": 60.77,
+          "probability": 0.84326171875
+        },
+        {
+          "text": "landscape",
+          "start": 60.77,
+          "end": 61.03,
+          "probability": 0.97265625
+        },
+        {
+          "text": "offered",
+          "start": 61.03,
+          "end": 61.410000000000004,
+          "probability": 0.59521484375
+        },
+        {
+          "text": "opportunities,",
+          "start": 61.410000000000004,
+          "end": 62.050000000000004,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "canals,",
+          "start": 62.510000000000005,
+          "end": 62.870000000000005,
+          "probability": 0.997314453125
+        },
+        {
+          "text": "administration,",
+          "start": 63.21,
+          "end": 63.61,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "and",
+          "start": 64.01,
+          "end": 64.07000000000001,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "political",
+          "start": 64.07000000000001,
+          "end": 64.41,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "power",
+          "start": 64.41,
+          "end": 64.89,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "helped",
+          "start": 64.89,
+          "end": 65.41,
+          "probability": 0.90771484375
+        },
+        {
+          "text": "turn",
+          "start": 65.41,
+          "end": 65.69,
+          "probability": 0.98974609375
+        },
+        {
+          "text": "those",
+          "start": 65.69,
+          "end": 65.87,
+          "probability": 0.9560546875
+        },
+        {
+          "text": "opportunities",
+          "start": 65.87,
+          "end": 66.27,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "into",
+          "start": 66.27,
+          "end": 66.79,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "an",
+          "start": 66.79,
+          "end": 66.95,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "empire.",
+          "start": 66.95,
+          "end": 67.25,
+          "probability": 0.9853515625
+        }
+      ],
+      "raw_words": [
+        {
+          "text": "The",
+          "start": 60.63,
+          "end": 60.77,
+          "probability": 0.84326171875
+        },
+        {
+          "text": "landscape",
+          "start": 60.77,
+          "end": 61.03,
+          "probability": 0.97265625
+        },
+        {
+          "text": "offered",
+          "start": 61.03,
+          "end": 61.410000000000004,
+          "probability": 0.59521484375
+        },
+        {
+          "text": "opportunities,",
+          "start": 61.410000000000004,
+          "end": 62.050000000000004,
+          "probability": 0.99658203125
+        },
+        {
+          "text": "canals,",
+          "start": 62.510000000000005,
+          "end": 62.870000000000005,
+          "probability": 0.997314453125
+        },
+        {
+          "text": "administration,",
+          "start": 63.21,
+          "end": 63.61,
+          "probability": 0.99755859375
+        },
+        {
+          "text": "and",
+          "start": 64.01,
+          "end": 64.07000000000001,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "political",
+          "start": 64.07000000000001,
+          "end": 64.41,
+          "probability": 0.99951171875
+        },
+        {
+          "text": "power",
+          "start": 64.41,
+          "end": 64.89,
+          "probability": 0.9990234375
+        },
+        {
+          "text": "helped",
+          "start": 64.89,
+          "end": 65.41,
+          "probability": 0.90771484375
+        },
+        {
+          "text": "turn",
+          "start": 65.41,
+          "end": 65.69,
+          "probability": 0.98974609375
+        },
+        {
+          "text": "those",
+          "start": 65.69,
+          "end": 65.87,
+          "probability": 0.9560546875
+        },
+        {
+          "text": "opportunities",
+          "start": 65.87,
+          "end": 66.27,
+          "probability": 0.99853515625
+        },
+        {
+          "text": "into",
+          "start": 66.27,
+          "end": 66.79,
+          "probability": 0.99560546875
+        },
+        {
+          "text": "an",
+          "start": 66.79,
+          "end": 66.95,
+          "probability": 0.99462890625
+        },
+        {
+          "text": "empire.",
+          "start": 66.95,
+          "end": 67.25,
+          "probability": 0.9853515625
+        }
+      ],
+      "timing": {
+        "method": "original ASR word timestamps"
+      }
+    }
+  ]
+}

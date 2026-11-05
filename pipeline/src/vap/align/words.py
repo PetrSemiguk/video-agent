@@ -13,7 +13,7 @@ from vap.voice.chunk import chunks
 from vap.voice.tts import sha256_file
 
 from .match import align_chunk
-from .transcribe import MODEL_REVISION, TRANSCRIBE_OPTIONS
+from .transcribe import MODEL_REVISION, RECOGNITION_POLICY, TRANSCRIBE_OPTIONS
 
 
 def read_json(path: Path) -> dict:
@@ -120,6 +120,7 @@ def build_alignment(manifest: dict, recognition: dict) -> dict:
         "model": recognition["model"],
         "runtime": recognition["runtime"],
         "options": recognition.get("options", {}),
+        "recognition_policy": recognition.get("recognition_policy", "legacy"),
     }
 
 
@@ -162,6 +163,7 @@ def run(args: argparse.Namespace) -> dict:
             or recognition.get("audio_sha256") != sha256_file(audio)
             or recognition["model"]["revision"] != MODEL_REVISION
             or recognition.get("options") != TRANSCRIBE_OPTIONS
+            or recognition.get("recognition_policy") != RECOGNITION_POLICY
             or recognition.get("chunk_spans")
             != [[c["id"], c["start_sample"], c["end_sample"]] for c in manifest["chunks"]]
         ):

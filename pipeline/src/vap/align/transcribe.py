@@ -3,14 +3,19 @@
 import argparse
 import json
 import os
+import re
 import time
 from importlib.metadata import version
 from pathlib import Path
 
+import numpy as np
+
+from vap.voice.normalize import cardinal, normalize
 from vap.voice.tts import configure_caches, sha256_file
 
 MODEL_REPO = "Systran/faster-whisper-small.en"
 MODEL_REVISION = "d1d751a5f8271d482d14ca55d9e2deeebbae577f"
+RECOGNITION_POLICY = "asr-normalized-dtw-v3"
 TRANSCRIBE_OPTIONS = {
     "language": "en",
     "beam_size": 5,
@@ -19,6 +24,73 @@ TRANSCRIBE_OPTIONS = {
     "word_timestamps": True,
     "vad_filter": False,
 }
+
+
+def timing_text(text: str) -> str:
+    """Expand ASR numbers, including short spoken years after 'in'. No script input."""
+    text = re.sub(r"(?<=\d)\s+(?=,\d{3}\b)", "", text)
+    text = re.sub(
+        r"\b(in\s+)([1-9]\d{2})\b(?!\s+(?:years?|people|troops|meters?|miles?)\b)",
+        lambda m: (
+            m[1]
+            + (
+                cardinal(int(m[2]))
+                if int(m[2]) % 100 == 0
+                else cardinal(int(m[2][0]))
+                + " "
+                + ("oh " if int(m[2][1:]) < 10 else "")
+                + cardinal(int(m[2][1:]))
+            )
+        ),
+        text,
+        flags=re.IGNORECASE,
+    )
+    return normalize(text)
+
+
+def refine_timing(model, tokenizer, padded, offset: float, chunk: dict, words: list[dict]):
+    """Recompute acoustic DTW on expanded ASR text; never interpolate boundaries."""
+    from faster_whisper.audio import pad_or_trim
+    from faster_whisper.transcribe import merge_punctuations
+
+    from .match import tokens
+
+    text = timing_text(" ".join(w["text"] for w in words))
+    features = model.feature_extractor(padded)
+    num_frames = min(features.shape[-1] - 1, model.feature_extractor.nb_max_frames)
+    if features.shape[-1] - 1 > model.feature_extractor.nb_max_frames:
+        return words, {"method": "unchanged", "reason": "chunk exceeds alignment window"}
+    encoded = model.encode(pad_or_trim(features))
+    for width in (7, 3, 11, 1):
+        aligned = model.find_alignment(
+            tokenizer,
+            [tokenizer.encode(" " + text)],
+            encoded,
+            num_frames,
+            median_filter_width=width,
+        )[0]
+        merge_punctuations(aligned, "\"'“¿([{-", "\"'.。,，!！?？:：”)]}、")
+        result = [
+            {
+                "text": w["word"].strip(),
+                "start": max(chunk["start"], offset + float(w["start"])),
+                "end": min(chunk["end"], offset + float(w["end"])),
+                "probability": float(w["probability"]),
+            }
+            for w in aligned
+            if tokens(w["word"])
+        ]
+        if (
+            tokens(" ".join(w["text"] for w in result)) == tokens(text)
+            and all(w["end"] > w["start"] for w in result)
+            and all(a["end"] <= b["start"] for a, b in zip(result, result[1:], strict=False))
+        ):
+            return result, {
+                "method": "ASR-only expanded-text acoustic DTW",
+                "median_filter_width": width,
+                "text": text,
+            }
+    return words, {"method": "unchanged", "reason": "no positive monotone DTW path"}
 
 
 def run(audio: Path, manifest: dict, out: Path) -> dict:
@@ -32,6 +104,7 @@ def run(audio: Path, manifest: dict, out: Path) -> dict:
     import ctranslate2
     from faster_whisper import WhisperModel
     from faster_whisper.audio import decode_audio
+    from faster_whisper.tokenizer import Tokenizer
     from huggingface_hub import snapshot_download
 
     if not torch.cuda.is_available():
@@ -48,6 +121,9 @@ def run(audio: Path, manifest: dict, out: Path) -> dict:
         allow_patterns=["config.json", "model.bin", "tokenizer.json", "vocabulary.txt"],
     )
     model = WhisperModel(directory, device="cuda", device_index=0, compute_type="float16")
+    tokenizer = Tokenizer(
+        model.hf_tokenizer, model.model.is_multilingual, task="transcribe", language="en"
+    )
     free_samples.append(torch.cuda.mem_get_info()[0])
     load_seconds = time.perf_counter() - begin
     decoded = decode_audio(str(audio), sampling_rate=16000)
@@ -57,6 +133,9 @@ def run(audio: Path, manifest: dict, out: Path) -> dict:
         # Manifest spans exclude generated gap samples. No source prompt: do not
         # bias recognition into "hearing" script words that were skipped by TTS.
         start, end = round(chunk["start"] * 16000), round(chunk["end"] * 16000)
+        pad = 3200  # 200 ms of synthetic silence at each edge; not part of the WAV.
+        padded = np.pad(decoded[start:end], (pad, pad))
+        offset = chunk["start"] - pad / 16000
         segments, _ = model.transcribe(decoded[start:end], **TRANSCRIBE_OPTIONS)
         words = []
         for segment in segments:
@@ -69,12 +148,20 @@ def run(audio: Path, manifest: dict, out: Path) -> dict:
                         "probability": word.probability,
                     }
                 )
-        results.append({"chunk_id": chunk["id"], "words": words})
+        raw_words = words
+        if any(any(c.isdecimal() for c in w["text"]) or w["end"] <= w["start"] for w in words):
+            words, timing = refine_timing(model, tokenizer, padded, offset, chunk, words)
+        else:
+            timing = {"method": "original ASR word timestamps"}
+        results.append(
+            {"chunk_id": chunk["id"], "words": words, "raw_words": raw_words, "timing": timing}
+        )
         free_samples.append(torch.cuda.mem_get_info()[0])
         print(f"Whisper chunk {chunk['id']}: {' '.join(w['text'] for w in words)}", flush=True)
     result = {
         "audio_sha256": sha256_file(audio),
         "options": TRANSCRIBE_OPTIONS,
+        "recognition_policy": RECOGNITION_POLICY,
         "chunk_spans": [[c["id"], c["start_sample"], c["end_sample"]] for c in manifest["chunks"]],
         "model": {"repo": MODEL_REPO, "revision": MODEL_REVISION, "compute_type": "float16"},
         "runtime": {

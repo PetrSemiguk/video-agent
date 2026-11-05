@@ -1,0 +1,917 @@
+{
+  "schema_version": 2,
+  "python": "3.11.15",
+  "script_sha256": "25cf56e3f5b42dacd4b866d30626981cf1de6bc1aac7934986d9274fa6acb602",
+  "model": {
+    "repo": "ResembleAI/chatterbox",
+    "revision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+    "package": "0.1.7"
+  },
+  "versions": {
+    "torch": "2.6.0+cu126",
+    "torchaudio": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "Pillow": "12.3.0",
+    "rasterio": "1.4.4",
+    "shapely": "2.2.0",
+    "transformers": "5.2.0",
+    "diffusers": "0.29.0",
+    "resemble-perth": "1.0.1",
+    "setuptools": "80.10.2"
+  },
+  "settings": {
+    "exaggeration": 0.3,
+    "cfg_weight": 0.5,
+    "temperature": 0.8,
+    "repetition_penalty": 1.2,
+    "min_p": 0.05,
+    "top_p": 1.0
+  },
+  "seed": 42,
+  "max_chars": 240,
+  "voice": {
+    "kind": "publisher-built-in",
+    "sha256": "publisher-built-in-conds"
+  },
+  "watermark": "PerthImplicitWatermarker; enabled in upstream generate",
+  "sample_rate": 24000,
+  "samples": 1631280,
+  "duration": 67.97,
+  "sentence_pause": 0.25,
+  "paragraph_pause": 0.6,
+  "section_pause": 1.0,
+  "postprocess": {
+    "version": 1,
+    "trim_threshold_dbfs": -50.0,
+    "trim_frame_seconds": 0.01,
+    "trim_pad_seconds": 0.02,
+    "before_join_check": {
+      "maximum_step": 0.0,
+      "limit": 0.001,
+      "boundaries": [
+        {
+          "sample": 0,
+          "step": 0.0
+        },
+        {
+          "sample": 67200,
+          "step": 0.0
+        },
+        {
+          "sample": 73200,
+          "step": 0.0
+        },
+        {
+          "sample": 102960,
+          "step": 0.0
+        },
+        {
+          "sample": 108960,
+          "step": 0.0
+        },
+        {
+          "sample": 201600,
+          "step": 0.0
+        },
+        {
+          "sample": 207600,
+          "step": 0.0
+        },
+        {
+          "sample": 341040,
+          "step": 0.0
+        },
+        {
+          "sample": 355440,
+          "step": 0.0
+        },
+        {
+          "sample": 453600,
+          "step": 0.0
+        },
+        {
+          "sample": 459600,
+          "step": 0.0
+        },
+        {
+          "sample": 540480,
+          "step": 0.0
+        },
+        {
+          "sample": 546480,
+          "step": 0.0
+        },
+        {
+          "sample": 625440,
+          "step": 0.0
+        },
+        {
+          "sample": 631440,
+          "step": 0.0
+        },
+        {
+          "sample": 716160,
+          "step": 0.0
+        },
+        {
+          "sample": 730560,
+          "step": 0.0
+        },
+        {
+          "sample": 760800,
+          "step": 0.0
+        },
+        {
+          "sample": 766800,
+          "step": 0.0
+        },
+        {
+          "sample": 894240,
+          "step": 0.0
+        },
+        {
+          "sample": 900240,
+          "step": 0.0
+        },
+        {
+          "sample": 958560,
+          "step": 0.0
+        },
+        {
+          "sample": 964560,
+          "step": 0.0
+        },
+        {
+          "sample": 1122960,
+          "step": 0.0
+        },
+        {
+          "sample": 1137360,
+          "step": 0.0
+        },
+        {
+          "sample": 1183200,
+          "step": 0.0
+        },
+        {
+          "sample": 1189200,
+          "step": 0.0
+        },
+        {
+          "sample": 1333200,
+          "step": 0.0
+        },
+        {
+          "sample": 1339200,
+          "step": 0.0
+        },
+        {
+          "sample": 1458000,
+          "step": 0.0
+        },
+        {
+          "sample": 1464000,
+          "step": 0.0
+        },
+        {
+          "sample": 1631280,
+          "step": 0.0
+        }
+      ],
+      "passed": true
+    },
+    "loudness": {
+      "ffmpeg": "ffmpeg version 9.0.2-full_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers",
+      "target_i": -16.0,
+      "target_tp": -1.5,
+      "filter_tp": -1.6,
+      "before": {
+        "input_i": "-18.87",
+        "input_tp": "-0.03",
+        "input_lra": "2.10",
+        "input_thresh": "-29.15",
+        "output_i": "-16.32",
+        "output_tp": "-1.60",
+        "output_lra": "2.00",
+        "output_thresh": "-26.62",
+        "normalization_type": "dynamic",
+        "target_offset": "0.32"
+      },
+      "applied": {
+        "input_i": "-18.87",
+        "input_tp": "-0.03",
+        "input_lra": "2.10",
+        "input_thresh": "-29.15",
+        "output_i": "-16.06",
+        "output_tp": "-1.60",
+        "output_lra": "2.10",
+        "output_thresh": "-26.36",
+        "normalization_type": "dynamic",
+        "target_offset": "0.06"
+      },
+      "after": {
+        "input_i": "-16.04",
+        "input_tp": "-1.55",
+        "input_lra": "2.00",
+        "input_thresh": "-26.34",
+        "output_i": "-16.06",
+        "output_tp": "-1.60",
+        "output_lra": "2.10",
+        "output_thresh": "-26.35",
+        "normalization_type": "dynamic",
+        "target_offset": "0.06"
+      },
+      "join_check": {
+        "maximum_step": 0.0,
+        "limit": 0.001,
+        "boundaries": [
+          {
+            "sample": 0,
+            "step": 0.0
+          },
+          {
+            "sample": 67200,
+            "step": 0.0
+          },
+          {
+            "sample": 73200,
+            "step": 0.0
+          },
+          {
+            "sample": 102960,
+            "step": 0.0
+          },
+          {
+            "sample": 108960,
+            "step": 0.0
+          },
+          {
+            "sample": 201600,
+            "step": 0.0
+          },
+          {
+            "sample": 207600,
+            "step": 0.0
+          },
+          {
+            "sample": 341040,
+            "step": 0.0
+          },
+          {
+            "sample": 355440,
+            "step": 0.0
+          },
+          {
+            "sample": 453600,
+            "step": 0.0
+          },
+          {
+            "sample": 459600,
+            "step": 0.0
+          },
+          {
+            "sample": 540480,
+            "step": 0.0
+          },
+          {
+            "sample": 546480,
+            "step": 0.0
+          },
+          {
+            "sample": 625440,
+            "step": 0.0
+          },
+          {
+            "sample": 631440,
+            "step": 0.0
+          },
+          {
+            "sample": 716160,
+            "step": 0.0
+          },
+          {
+            "sample": 730560,
+            "step": 0.0
+          },
+          {
+            "sample": 760800,
+            "step": 0.0
+          },
+          {
+            "sample": 766800,
+            "step": 0.0
+          },
+          {
+            "sample": 894240,
+            "step": 0.0
+          },
+          {
+            "sample": 900240,
+            "step": 0.0
+          },
+          {
+            "sample": 958560,
+            "step": 0.0
+          },
+          {
+            "sample": 964560,
+            "step": 0.0
+          },
+          {
+            "sample": 1122960,
+            "step": 0.0
+          },
+          {
+            "sample": 1137360,
+            "step": 0.0
+          },
+          {
+            "sample": 1183200,
+            "step": 0.0
+          },
+          {
+            "sample": 1189200,
+            "step": 0.0
+          },
+          {
+            "sample": 1333200,
+            "step": 0.0
+          },
+          {
+            "sample": 1339200,
+            "step": 0.0
+          },
+          {
+            "sample": 1458000,
+            "step": 0.0
+          },
+          {
+            "sample": 1464000,
+            "step": 0.0
+          },
+          {
+            "sample": 1631280,
+            "step": 0.0
+          }
+        ],
+        "passed": true
+      }
+    }
+  },
+  "edge_fade_seconds": 0.005,
+  "output_gain": 0.9549704982452749,
+  "pre_gain_peak": 1.0262097120285034,
+  "chunks": [
+    {
+      "id": 0,
+      "original": "Why did rulers keep trying to unite China's heartland?",
+      "normalized": "Why did rulers keep trying to unite China's heartland?",
+      "paragraph": 0,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 42,
+      "cache_key": "a2e35def3b64b2cd2f36ae8b9ccf799d06eda10b7c707b81092228ce6aef33ef",
+      "cache_hit": false,
+      "generation_seconds": 6.291337999999087,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 0,
+      "end_sample": 67200,
+      "start": 0.0,
+      "end": 2.8,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 73920,
+        "trim_start_samples": 3600,
+        "trim_end_samples": 3120,
+        "retained_samples": 67200
+      }
+    },
+    {
+      "id": 1,
+      "original": "Start with the landscape.",
+      "normalized": "Start with the landscape.",
+      "paragraph": 0,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 43,
+      "cache_key": "a10075267bad0cd57deed4cbf04be49b8e59a5dd27cf39216a1f677a8444bac3",
+      "cache_hit": false,
+      "generation_seconds": 2.0357100000001083,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 73200,
+      "end_sample": 102960,
+      "start": 3.05,
+      "end": 4.29,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 33600,
+        "trim_start_samples": 1440,
+        "trim_end_samples": 2400,
+        "retained_samples": 29760
+      }
+    },
+    {
+      "id": 2,
+      "original": "In the west, the Tibetan Plateau rises above four thousand meters.",
+      "normalized": "In the west, the Tibetan Plateau rises above four thousand meters.",
+      "paragraph": 0,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 44,
+      "cache_key": "cfb2033acff2b0d6bd0f545839b8541f64cacd260f091302d5eaa2a19922e889",
+      "cache_hit": false,
+      "generation_seconds": 4.426531699999032,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 108960,
+      "end_sample": 201600,
+      "start": 4.54,
+      "end": 8.4,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 97920,
+        "trim_start_samples": 2160,
+        "trim_end_samples": 3120,
+        "retained_samples": 92640
+      }
+    },
+    {
+      "id": 3,
+      "original": "Farther east, the land opens into plains and river valleys, supporting intensive farming and dense settlement.",
+      "normalized": "Farther east, the land opens into plains and river valleys, supporting intensive farming and dense settlement.",
+      "paragraph": 0,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 45,
+      "cache_key": "53f87d0bc6655c8a383e9ebd8489684a2703cf7b9d1492dac93ef1488914e202",
+      "cache_hit": false,
+      "generation_seconds": 6.064419500002259,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 207600,
+      "end_sample": 341040,
+      "start": 8.65,
+      "end": 14.21,
+      "pause_after_samples": 14400,
+      "trim": {
+        "source_samples": 138240,
+        "trim_start_samples": 720,
+        "trim_end_samples": 4080,
+        "retained_samples": 133440
+      }
+    },
+    {
+      "id": 4,
+      "original": "The Yellow River crosses the North China Plain, an ancient agricultural heartland.",
+      "normalized": "The Yellow River crosses the North China Plain, an ancient agricultural heartland.",
+      "paragraph": 1,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 46,
+      "cache_key": "23658155fc8501ef3d82d37ff05e11ba87caf71b24d02422f40542406f3844a2",
+      "cache_hit": false,
+      "generation_seconds": 4.638013600000704,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 355440,
+      "end_sample": 453600,
+      "start": 14.81,
+      "end": 18.9,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 105600,
+        "trim_start_samples": 3600,
+        "trim_end_samples": 3840,
+        "retained_samples": 98160
+      }
+    },
+    {
+      "id": 5,
+      "original": "To the south, the Yangtze links inland regions with the coast.",
+      "normalized": "To the south, the Yangtze links inland regions with the coast.",
+      "paragraph": 1,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 47,
+      "cache_key": "e3f7d0f86362c0da7dc946b439e008f40e175b6726570cec306cd2f0b7144bdf",
+      "cache_hit": false,
+      "generation_seconds": 3.933090300000913,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 459600,
+      "end_sample": 540480,
+      "start": 19.15,
+      "end": 22.52,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 87360,
+        "trim_start_samples": 2160,
+        "trim_end_samples": 4320,
+        "retained_samples": 80880
+      }
+    },
+    {
+      "id": 6,
+      "original": "Its middle and lower reaches support another major farming region.",
+      "normalized": "Its middle and lower reaches support another major farming region.",
+      "paragraph": 1,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 48,
+      "cache_key": "12168f3d400d854fdd08eda47737bc0b22f66903f0bf4d5f1e60835a37272b4f",
+      "cache_hit": false,
+      "generation_seconds": 3.927489499998046,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 546480,
+      "end_sample": 625440,
+      "start": 22.77,
+      "end": 26.06,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 84480,
+        "trim_start_samples": 1920,
+        "trim_end_samples": 3600,
+        "retained_samples": 78960
+      }
+    },
+    {
+      "id": 7,
+      "original": "These are different landscapes, but waterways offered ways to connect them.",
+      "normalized": "These are different landscapes, but waterways offered ways to connect them.",
+      "paragraph": 1,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 49,
+      "cache_key": "08a0548fb911e2eb39027be5b9f16c8d0e6c2c078797b2518904d34f8b8829f4",
+      "cache_hit": false,
+      "generation_seconds": 4.115184199999931,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 631440,
+      "end_sample": 716160,
+      "start": 26.31,
+      "end": 29.84,
+      "pause_after_samples": 14400,
+      "trim": {
+        "source_samples": 91200,
+        "trim_start_samples": 1920,
+        "trim_end_samples": 4560,
+        "retained_samples": 84720
+      }
+    },
+    {
+      "id": 8,
+      "original": "That connection took work.",
+      "normalized": "That connection took work.",
+      "paragraph": 2,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 50,
+      "cache_key": "414b4ff1cf3ce9c8a394bdc1496c3a08461c08b73cf4c574c1bdc05b57630487",
+      "cache_hit": false,
+      "generation_seconds": 2.0767753000000084,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 730560,
+      "end_sample": 760800,
+      "start": 30.44,
+      "end": 31.7,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 35520,
+        "trim_start_samples": 3120,
+        "trim_end_samples": 2160,
+        "retained_samples": 30240
+      }
+    },
+    {
+      "id": 9,
+      "original": "From the seventh century, the Sui dynasty organized the Grand Canal as an imperial transport system.",
+      "normalized": "From the seventh century, the Sui dynasty organized the Grand Canal as an imperial transport system.",
+      "paragraph": 2,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 51,
+      "cache_key": "232f37c6cf52fa216a6c99e494ba2d240ab9d2c73072882d492f6a1428c2e12e",
+      "cache_hit": false,
+      "generation_seconds": 5.884913800000504,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 766800,
+      "end_sample": 894240,
+      "start": 31.95,
+      "end": 37.26,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 135360,
+        "trim_start_samples": 4080,
+        "trim_end_samples": 3840,
+        "retained_samples": 127440
+      }
+    },
+    {
+      "id": 10,
+      "original": "Successive dynasties maintained and expanded it.",
+      "normalized": "Successive dynasties maintained and expanded it.",
+      "paragraph": 2,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 52,
+      "cache_key": "6f32b8b3aeaa41d69ed62db7c187460240412e681d37ab606054f02209d86be0",
+      "cache_hit": false,
+      "generation_seconds": 3.262878499997896,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 900240,
+      "end_sample": 958560,
+      "start": 37.51,
+      "end": 39.94,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 62400,
+        "trim_start_samples": 1680,
+        "trim_end_samples": 2400,
+        "retained_samples": 58320
+      }
+    },
+    {
+      "id": 11,
+      "original": "By the thirteenth century, its network linked five major river basins, carrying grain and helping supply the population and troops.",
+      "normalized": "By the thirteenth century, its network linked five major river basins, carrying grain and helping supply the population and troops.",
+      "paragraph": 2,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 53,
+      "cache_key": "3883070964f3c464ac89d0ab44cf394a8aaef0483fab40655149f588a9796b55",
+      "cache_hit": false,
+      "generation_seconds": 7.061322600002313,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 964560,
+      "end_sample": 1122960,
+      "start": 40.19,
+      "end": 46.79,
+      "pause_after_samples": 14400,
+      "trim": {
+        "source_samples": 163200,
+        "trim_start_samples": 1920,
+        "trim_end_samples": 2880,
+        "retained_samples": 158400
+      }
+    },
+    {
+      "id": 12,
+      "original": "Geography did not guarantee unity.",
+      "normalized": "Geography did not guarantee unity.",
+      "paragraph": 3,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 54,
+      "cache_key": "a29337da171b88700606838331d7bc82fe39d633afdafded454aa710a4aabba8",
+      "cache_hit": false,
+      "generation_seconds": 2.7730827999985195,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 1137360,
+      "end_sample": 1183200,
+      "start": 47.39,
+      "end": 49.3,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 51840,
+        "trim_start_samples": 4320,
+        "trim_end_samples": 1680,
+        "retained_samples": 45840
+      }
+    },
+    {
+      "id": 13,
+      "original": "After the Han collapsed, centuries of political division followed, before the Sui reunified the empire in five eighty-nine.",
+      "normalized": "After the Han collapsed, centuries of political division followed, before the Sui reunified the empire in five eighty-nine.",
+      "paragraph": 3,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 55,
+      "cache_key": "165fdff53b2aa57a97c292d4938c8c28a245aadb23a4452bf394ee37b9f14d0e",
+      "cache_hit": false,
+      "generation_seconds": 6.2100959999988845,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 1189200,
+      "end_sample": 1333200,
+      "start": 49.55,
+      "end": 55.55,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 146880,
+        "trim_start_samples": 720,
+        "trim_end_samples": 2160,
+        "retained_samples": 144000
+      }
+    },
+    {
+      "id": 14,
+      "original": "But productive plains and connected waterways gave rulers reasons to bring regions together.",
+      "normalized": "But productive plains and connected waterways gave rulers reasons to bring regions together.",
+      "paragraph": 3,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 56,
+      "cache_key": "ae9fc829ca0955ff89dda9a4a36a2b4eef449dca4440c88ca26783f3977360d9",
+      "cache_hit": false,
+      "generation_seconds": 5.465053500000067,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 1339200,
+      "end_sample": 1458000,
+      "start": 55.8,
+      "end": 60.75,
+      "pause_after_samples": 6000,
+      "trim": {
+        "source_samples": 124800,
+        "trim_start_samples": 1440,
+        "trim_end_samples": 4560,
+        "retained_samples": 118800
+      }
+    },
+    {
+      "id": 15,
+      "original": "The landscape offered opportunities; canals, administration, and political power helped turn those opportunities into an empire.",
+      "normalized": "The landscape offered opportunities; canals, administration, and political power helped turn those opportunities into an empire.",
+      "paragraph": 3,
+      "section": 1,
+      "boundary": "sentence",
+      "pause_after": null,
+      "pause_before": 0.0,
+      "seed": 57,
+      "cache_key": "622876235a0cf5bf861bc0574d54ce2bde1aa7db0023921f6792c76cb7a573dc",
+      "cache_hit": false,
+      "generation_seconds": 7.390302600000723,
+      "params": {
+        "exaggeration": 0.3,
+        "cfg_weight": 0.5,
+        "temperature": 0.8,
+        "repetition_penalty": 1.2,
+        "min_p": 0.05,
+        "top_p": 1.0
+      },
+      "start_sample": 1464000,
+      "end_sample": 1631280,
+      "start": 61.0,
+      "end": 67.97,
+      "pause_after_samples": 0,
+      "trim": {
+        "source_samples": 175680,
+        "trim_start_samples": 5280,
+        "trim_end_samples": 3120,
+        "retained_samples": 167280
+      }
+    }
+  ],
+  "metrics": {
+    "cache_hits": 0,
+    "chunk_count": 16,
+    "model_load_seconds": 15.41036080000049,
+    "synthesis_seconds": 75.556201899999,
+    "speech_seconds": 67.0,
+    "synthesis_rtf": 1.1277045059701343,
+    "peak_allocated_mib": 3254.40869140625,
+    "peak_reserved_mib": 3552.0,
+    "wall_seconds": 108.7658506000007
+  },
+  "audio_sha256": "7755c17fdfd76c1c2f92efd328e00104ad44578f22b02afcda856d517ac62b1b",
+  "first_generation_metrics": {
+    "cache_hits": 0,
+    "chunk_count": 16,
+    "model_load_seconds": 15.41036080000049,
+    "synthesis_seconds": 75.556201899999,
+    "speech_seconds": 67.0,
+    "synthesis_rtf": 1.1277045059701343,
+    "peak_allocated_mib": 3254.40869140625,
+    "peak_reserved_mib": 3552.0,
+    "wall_seconds": 108.7658506000007
+  }
+}

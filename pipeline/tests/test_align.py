@@ -9,7 +9,7 @@ import soundfile as sf
 from vap.align import words
 from vap.align.match import align_chunk, edit_path, owned_forms
 from vap.align.qa import audit, onsets
-from vap.align.transcribe import MODEL_REVISION
+from vap.align.transcribe import MODEL_REVISION, timing_text
 from vap.voice.normalize import normalize
 from vap.voice.tts import sha256_file
 
@@ -80,6 +80,87 @@ def test_zero_duration_is_unresolved():
     output, issues = align_chunk(chunk("River."), heard, 0)
     assert issues[0]["type"] == "zero_duration"
     assert output[0]["start"] is None
+
+
+def test_shared_numeric_span_is_not_claimed_as_separate_word_times():
+    output, issues = align_chunk(
+        chunk("four thousand meters."), recognized("4", ",000", "meters."), 0
+    )
+    assert any(issue["type"] == "overlapping_timing" for issue in issues)
+    assert output[1]["status"] == "unresolved"
+    assert output[1]["start"] is None
+
+
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("above 4 ,000 meters.", "above four thousand meters."),
+        ("empire in 589.", "empire in five eighty-nine."),
+        ("in 589 years.", "in five hundred eighty-nine years."),
+        ("in 101.", "in one oh one."),
+        ("in 500.", "in five hundred."),
+        ("the 13th century.", "the thirteenth century."),
+    ],
+)
+def test_timing_text_expands_asr_without_changing_tts_normalization(text, expected):
+    assert timing_text(text) == expected
+    assert normalize("589") == "five hundred eighty-nine"
+
+
+def test_dtw_refinement_requires_acoustic_positive_path_and_preserves_recognized_text():
+    from types import SimpleNamespace
+
+    from vap.align.transcribe import refine_timing
+
+    class Extractor:
+        nb_max_frames = 3000
+
+        def __call__(self, audio):
+            return np.zeros((80, 401), dtype=np.float32)
+
+    widths = []
+
+    def find_alignment(tokenizer, texts, encoded, num_frames, median_filter_width):
+        widths.append(median_filter_width)
+        assert texts == [" river flows"]  # No expected-script prompt.
+        return [
+            [
+                {
+                    "word": " river",
+                    "start": 0.2,
+                    "end": 0.2 if median_filter_width == 7 else 0.4,
+                    "probability": 0.9,
+                    "tokens": [1],
+                },
+                {"word": " flows", "start": 0.4, "end": 0.7, "probability": 0.8, "tokens": [2]},
+            ]
+        ]
+
+    model = SimpleNamespace(
+        feature_extractor=Extractor(),
+        encode=lambda features: features,
+        find_alignment=find_alignment,
+    )
+    tokenizer = SimpleNamespace(encode=lambda text: text)
+    raw = [{"text": "river", "start": 0, "end": 0}, {"text": "flows", "start": 0, "end": 0.5}]
+    refined, info = refine_timing(
+        model, tokenizer, np.zeros(16000), -0.2, {"start": 0, "end": 1}, raw
+    )
+    assert widths == [7, 3] and info["median_filter_width"] == 3
+    assert refined[0]["start"] == 0 and refined[0]["end"] == 0.2
+    assert [word["text"] for word in refined] == ["river", "flows"]
+    assert raw[0]["end"] == 0
+    # Invalid acoustic paths stay unresolved; no epsilon or equal splitting.
+    model.find_alignment = lambda *args, **kwargs: [
+        [
+            {"word": " river", "start": 0.2, "end": 0.2, "probability": 0.9, "tokens": [1]},
+            {"word": " flows", "start": 0.4, "end": 0.7, "probability": 0.8, "tokens": [2]},
+        ]
+    ]
+    unchanged, failed = refine_timing(
+        model, tokenizer, np.zeros(16000), -0.2, {"start": 0, "end": 1}, raw
+    )
+    assert unchanged is raw and failed["method"] == "unchanged"
 
 
 def test_sentence_and_paragraph_spans():

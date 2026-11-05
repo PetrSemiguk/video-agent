@@ -1,0 +1,425 @@
+{
+  "config": {
+    "labelLeadFrames": 3,
+    "minShotFrames": 60,
+    "minPauseFrames": 3,
+    "snapWindowFrames": 18,
+    "silenceWindowMs": 10,
+    "silenceThresholdDbfs": -45
+  },
+  "pauses": [
+    {
+      "from": 84,
+      "to": 93
+    },
+    {
+      "from": 128,
+      "to": 137
+    },
+    {
+      "from": 156,
+      "to": 172
+    },
+    {
+      "from": 252,
+      "to": 262
+    },
+    {
+      "from": 264,
+      "to": 270
+    },
+    {
+      "from": 293,
+      "to": 297
+    },
+    {
+      "from": 426,
+      "to": 445
+    },
+    {
+      "from": 507,
+      "to": 514
+    },
+    {
+      "from": 576,
+      "to": 585
+    },
+    {
+      "from": 606,
+      "to": 609
+    },
+    {
+      "from": 678,
+      "to": 687
+    },
+    {
+      "from": 784,
+      "to": 793
+    },
+    {
+      "from": 834,
+      "to": 837
+    },
+    {
+      "from": 898,
+      "to": 917
+    },
+    {
+      "from": 947,
+      "to": 950
+    },
+    {
+      "from": 954,
+      "to": 963
+    },
+    {
+      "from": 1120,
+      "to": 1129
+    },
+    {
+      "from": 1201,
+      "to": 1209
+    },
+    {
+      "from": 1401,
+      "to": 1420
+    },
+    {
+      "from": 1476,
+      "to": 1485
+    },
+    {
+      "from": 1573,
+      "to": 1576
+    },
+    {
+      "from": 1655,
+      "to": 1664
+    },
+    {
+      "from": 1735,
+      "to": 1745
+    },
+    {
+      "from": 1811,
+      "to": 1820
+    },
+    {
+      "from": 1951,
+      "to": 1957
+    }
+  ],
+  "cuts": [
+    {
+      "id": "opening",
+      "rawStart": 0,
+      "rawEnd": 4.05,
+      "from": 0,
+      "to": 132
+    },
+    {
+      "id": "plateau",
+      "rawStart": 4.54,
+      "rawEnd": 8.1,
+      "from": 132,
+      "to": 256
+    },
+    {
+      "id": "eastern-lowlands",
+      "rawStart": 8.65,
+      "rawEnd": 13.97,
+      "from": 256,
+      "to": 435
+    },
+    {
+      "id": "yellow-river",
+      "rawStart": 14.81,
+      "rawEnd": 19,
+      "from": 435,
+      "to": 580
+    },
+    {
+      "id": "yangtze",
+      "rawStart": 19.48,
+      "rawEnd": 29.74,
+      "from": 580,
+      "to": 907
+    },
+    {
+      "id": "grand-canal",
+      "rawStart": 30.53,
+      "rawEnd": 39.94,
+      "from": 907,
+      "to": 1204
+    },
+    {
+      "id": "five-basins",
+      "rawStart": 40.28,
+      "rawEnd": 46.44,
+      "from": 1204,
+      "to": 1410
+    },
+    {
+      "id": "division-and-reunion",
+      "rawStart": 47.31,
+      "rawEnd": 55.01,
+      "from": 1410,
+      "to": 1659
+    },
+    {
+      "id": "incentives",
+      "rawStart": 55.43,
+      "rawEnd": 60.07,
+      "from": 1659,
+      "to": 1815
+    },
+    {
+      "id": "closing",
+      "rawStart": 60.63,
+      "rawEnd": 67.6,
+      "from": 1815,
+      "to": 2028
+    }
+  ],
+  "leads": [
+    {
+      "shot": "plateau",
+      "layer": "plateau-name",
+      "anchorFrame": 174,
+      "from": 171,
+      "leadFrames": 3
+    },
+    {
+      "shot": "eastern-lowlands",
+      "layer": "eastern-name",
+      "anchorFrame": 323,
+      "from": 320,
+      "leadFrames": 3
+    },
+    {
+      "shot": "yellow-river",
+      "layer": "yellow-name",
+      "anchorFrame": 444,
+      "from": 441,
+      "leadFrames": 3
+    },
+    {
+      "shot": "yangtze",
+      "layer": "yangtze-name",
+      "anchorFrame": 610,
+      "from": 607,
+      "leadFrames": 3
+    },
+    {
+      "shot": "grand-canal",
+      "layer": "canal-name",
+      "anchorFrame": 1049,
+      "from": 1046,
+      "leadFrames": 3
+    },
+    {
+      "shot": "grand-canal",
+      "layer": "sui-era",
+      "anchorFrame": 968,
+      "from": 965,
+      "leadFrames": 3
+    },
+    {
+      "shot": "five-basins",
+      "layer": "basins",
+      "anchorFrame": 1270,
+      "from": 1267,
+      "leadFrames": 3
+    },
+    {
+      "shot": "division-and-reunion",
+      "layer": "division",
+      "anchorFrame": 1419,
+      "from": 1416,
+      "leadFrames": 3
+    },
+    {
+      "shot": "division-and-reunion",
+      "layer": "reunification",
+      "anchorFrame": 1622,
+      "from": 1619,
+      "leadFrames": 3
+    },
+    {
+      "shot": "incentives",
+      "layer": "incentive-fact",
+      "anchorFrame": 1668,
+      "from": 1665,
+      "leadFrames": 3
+    },
+    {
+      "shot": "closing",
+      "layer": "recap",
+      "anchorFrame": 1819,
+      "from": 1816,
+      "leadFrames": 3
+    }
+  ],
+  "shots": [
+    {
+      "id": "opening",
+      "from": 0,
+      "durationInFrames": 132,
+      "layers": [
+        {
+          "id": "title",
+          "from": 0,
+          "durationInFrames": 132
+        }
+      ],
+      "generated": false,
+      "text": "Why did rulers keep trying to unite China's heartland? Start with the landscape."
+    },
+    {
+      "id": "plateau",
+      "from": 132,
+      "durationInFrames": 124,
+      "layers": [
+        {
+          "id": "plateau-name",
+          "from": 39,
+          "durationInFrames": 85
+        }
+      ],
+      "generated": false,
+      "text": "In the west, the Tibetan Plateau rises above four thousand meters."
+    },
+    {
+      "id": "eastern-lowlands",
+      "from": 256,
+      "durationInFrames": 179,
+      "layers": [
+        {
+          "id": "eastern-name",
+          "from": 64,
+          "durationInFrames": 115
+        }
+      ],
+      "generated": false,
+      "text": "Farther east, the land opens into plains and river valleys, supporting intensive farming and dense settlement."
+    },
+    {
+      "id": "yellow-river",
+      "from": 435,
+      "durationInFrames": 145,
+      "layers": [
+        {
+          "id": "yellow-line",
+          "from": 0,
+          "durationInFrames": 145
+        },
+        {
+          "id": "yellow-name",
+          "from": 6,
+          "durationInFrames": 139
+        }
+      ],
+      "generated": false,
+      "text": "The Yellow River crosses the North China Plain, an ancient agricultural heartland."
+    },
+    {
+      "id": "yangtze",
+      "from": 580,
+      "durationInFrames": 327,
+      "layers": [
+        {
+          "id": "yangtze-line",
+          "from": 0,
+          "durationInFrames": 327
+        },
+        {
+          "id": "yangtze-name",
+          "from": 27,
+          "durationInFrames": 300
+        }
+      ],
+      "generated": false,
+      "text": "To the south, the Yangtze links inland regions with the coast. Its middle and lower reaches support another major farming region. These are different landscapes, but waterways offered ways to connect them."
+    },
+    {
+      "id": "grand-canal",
+      "from": 907,
+      "durationInFrames": 297,
+      "layers": [
+        {
+          "id": "canal-name",
+          "from": 139,
+          "durationInFrames": 158
+        },
+        {
+          "id": "sui-era",
+          "from": 58,
+          "durationInFrames": 239
+        }
+      ],
+      "generated": false,
+      "text": "That connection took work. From the seventh century, the Sui dynasty organized the Grand Canal as an imperial transport system. Successive dynasties maintained and expanded it."
+    },
+    {
+      "id": "five-basins",
+      "from": 1204,
+      "durationInFrames": 206,
+      "layers": [
+        {
+          "id": "basins",
+          "from": 63,
+          "durationInFrames": 143
+        }
+      ],
+      "generated": false,
+      "text": "By the thirteenth century, its network linked five major river basins, carrying grain and helping supply the population and troops."
+    },
+    {
+      "id": "division-and-reunion",
+      "from": 1410,
+      "durationInFrames": 249,
+      "layers": [
+        {
+          "id": "division",
+          "from": 6,
+          "durationInFrames": 243
+        },
+        {
+          "id": "reunification",
+          "from": 209,
+          "durationInFrames": 40
+        }
+      ],
+      "generated": false,
+      "text": "Geography did not guarantee unity. After the Han collapsed, centuries of political division followed, before the Sui reunified the empire in five eighty-nine."
+    },
+    {
+      "id": "incentives",
+      "from": 1659,
+      "durationInFrames": 156,
+      "layers": [
+        {
+          "id": "incentive-fact",
+          "from": 6,
+          "durationInFrames": 150
+        }
+      ],
+      "generated": false,
+      "text": "But productive plains and connected waterways gave rulers reasons to bring regions together."
+    },
+    {
+      "id": "closing",
+      "from": 1815,
+      "durationInFrames": 213,
+      "layers": [
+        {
+          "id": "recap",
+          "from": 1,
+          "durationInFrames": 212
+        }
+      ],
+      "generated": false,
+      "text": "The landscape offered opportunities; canals, administration, and political power helped turn those opportunities into an empire."
+    }
+  ]
+}

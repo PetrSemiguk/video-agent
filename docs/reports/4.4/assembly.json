@@ -1,0 +1,144 @@
+{
+  "shots": [
+    {
+      "id": "opening",
+      "from": 0,
+      "durationInFrames": 132,
+      "layers": [
+        {
+          "id": "title",
+          "from": 0,
+          "durationInFrames": 132
+        }
+      ]
+    },
+    {
+      "id": "plateau",
+      "from": 132,
+      "durationInFrames": 124,
+      "layers": [
+        {
+          "id": "plateau-name",
+          "from": 39,
+          "durationInFrames": 85
+        }
+      ]
+    },
+    {
+      "id": "eastern-lowlands",
+      "from": 256,
+      "durationInFrames": 179,
+      "layers": [
+        {
+          "id": "eastern-name",
+          "from": 64,
+          "durationInFrames": 115
+        }
+      ]
+    },
+    {
+      "id": "yellow-river",
+      "from": 435,
+      "durationInFrames": 145,
+      "layers": [
+        {
+          "id": "yellow-line",
+          "from": 0,
+          "durationInFrames": 145
+        },
+        {
+          "id": "yellow-name",
+          "from": 6,
+          "durationInFrames": 139
+        }
+      ]
+    },
+    {
+      "id": "yangtze",
+      "from": 580,
+      "durationInFrames": 327,
+      "layers": [
+        {
+          "id": "yangtze-line",
+          "from": 0,
+          "durationInFrames": 327
+        },
+        {
+          "id": "yangtze-name",
+          "from": 27,
+          "durationInFrames": 300
+        }
+      ]
+    },
+    {
+      "id": "grand-canal",
+      "from": 907,
+      "durationInFrames": 297,
+      "layers": [
+        {
+          "id": "canal-name",
+          "from": 139,
+          "durationInFrames": 158
+        },
+        {
+          "id": "sui-era",
+          "from": 58,
+          "durationInFrames": 239
+        }
+      ]
+    },
+    {
+      "id": "five-basins",
+      "from": 1204,
+      "durationInFrames": 206,
+      "layers": [
+        {
+          "id": "basins",
+          "from": 63,
+          "durationInFrames": 143
+        }
+      ]
+    },
+    {
+      "id": "division-and-reunion",
+      "from": 1410,
+      "durationInFrames": 249,
+      "layers": [
+        {
+          "id": "division",
+          "from": 6,
+          "durationInFrames": 243
+        },
+        {
+          "id": "reunification",
+          "from": 209,
+          "durationInFrames": 40
+        }
+      ]
+    },
+    {
+      "id": "incentives",
+      "from": 1659,
+      "durationInFrames": 156,
+      "layers": [
+        {
+          "id": "incentive-fact",
+          "from": 6,
+          "durationInFrames": 150
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "from": 1815,
+      "durationInFrames": 213,
+      "layers": [
+        {
+          "id": "recap",
+          "from": 1,
+          "durationInFrames": 212
+        }
+      ]
+    }
+  ]
+}

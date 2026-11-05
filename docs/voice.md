@@ -178,7 +178,19 @@ than substituting recognized words. Expanded speech maps back to the original
 word's union of observed spans. Sentence/paragraph spans use half-open word-index
 ranges; all times are seconds in the referenced audio.
 
-`complete=true` means all normalized words match and have positive-duration spans.
+For digit tokens or zero-duration ASR words, the worker also computes acoustic
+DTW using the **recognized text**, expanded into spoken number words. It does not
+feed the script to recognition/alignment. Grouped digits are joined first;
+three-digit dates after `in` use short spoken years (quantity suffixes are
+excluded). This ASR-only convention does not change TTS normalization. The original
+ASR words and refinement text/filter width remain in recognition JSON. Synthetic
+200 ms edge padding is used only for this timing pass and removed from offsets.
+Median-filter widths 7, 3, 11 and 1 are tried in order; only a positive monotone
+acoustic path with identical recognized lexical content is accepted. If none is
+valid, original observations remain unresolved. No equal splitting or epsilon
+durations are used. Recognition policy version invalidates stale ASR caches.
+
+`complete=true` means all normalized words match and have positive, non-overlapping spans.
 Missing/substituted words and extra recognized words appear in `issues` with chunk
 ids, expected/recognized forms and available timing. Unresolved original words
 keep null times/status unresolved; no fabricated timestamps. CLI exits **2** for

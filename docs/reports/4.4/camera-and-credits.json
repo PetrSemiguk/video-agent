@@ -1,0 +1,193 @@
+{
+  "total_frames": 2028,
+  "credited_frames": 2028,
+  "natural_earth_credit_frames": 472,
+  "max_camera_center_step_px": 4.986186417432867,
+  "max_camera_center_step_change_px": 0.1055861811082696,
+  "boundaries": [
+    {
+      "name": "establish",
+      "start": 0
+    },
+    {
+      "name": "focusOn",
+      "start": 132
+    },
+    {
+      "name": "flyTo",
+      "start": 256
+    },
+    {
+      "name": "flyTo",
+      "start": 435
+    },
+    {
+      "name": "flyTo",
+      "start": 580
+    },
+    {
+      "name": "flyTo",
+      "start": 907
+    },
+    {
+      "name": "drift",
+      "start": 1204
+    },
+    {
+      "name": "hold",
+      "start": 1410
+    },
+    {
+      "name": "drift",
+      "start": 1659
+    },
+    {
+      "name": "flyTo",
+      "start": 1815
+    }
+  ],
+  "keys": [
+    {
+      "f": 0,
+      "x": 12245143.987260092,
+      "y": 3895303.9633938945,
+      "zoom": 4.9,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 132,
+      "x": 12305544.308283329,
+      "y": 3915437.4037349736,
+      "zoom": 5.011031312388744,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 256,
+      "x": 11187608.824723992,
+      "y": 3723596.809834656,
+      "zoom": 5.2,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 435,
+      "x": 12356463.478053365,
+      "y": 3895303.9633938945,
+      "zoom": 5.1,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 580,
+      "x": 12356463.478053365,
+      "y": 4163881.1440642932,
+      "zoom": 5.2,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 907,
+      "x": 12356463.478053365,
+      "y": 3567983.4559358195,
+      "zoom": 5.15,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 1204,
+      "x": 12690421.950433187,
+      "y": 3895303.9633938945,
+      "zoom": 5.05,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 1410,
+      "x": 12758466.722013231,
+      "y": 3895303.9633938945,
+      "zoom": 5.0649999999999995,
+      "pitch": 0,
+      "bearing": 0,
+      "still": true
+    },
+    {
+      "f": 1659,
+      "x": 12758466.722013231,
+      "y": 3895303.9633938945,
+      "zoom": 5.0649999999999995,
+      "pitch": 0,
+      "bearing": 0,
+      "still": true
+    },
+    {
+      "f": 1815,
+      "x": 12825807.683141675,
+      "y": 3895303.9633938945,
+      "zoom": 5.079999999999999,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 2028,
+      "x": 12245143.987260092,
+      "y": 3895303.9633938945,
+      "zoom": 4.9,
+      "pitch": 0,
+      "bearing": 0
+    }
+  ],
+  "credits_by_shot": [
+    {
+      "id": "opening",
+      "from": 0,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    },
+    {
+      "id": "plateau",
+      "from": 132,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    },
+    {
+      "id": "eastern-lowlands",
+      "from": 256,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    },
+    {
+      "id": "yellow-river",
+      "from": 435,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth"
+    },
+    {
+      "id": "yangtze",
+      "from": 580,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth"
+    },
+    {
+      "id": "grand-canal",
+      "from": 907,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    },
+    {
+      "id": "five-basins",
+      "from": 1204,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    },
+    {
+      "id": "division-and-reunion",
+      "from": 1410,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    },
+    {
+      "id": "incentives",
+      "from": 1659,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    },
+    {
+      "id": "closing",
+      "from": 1815,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles"
+    }
+  ]
+}

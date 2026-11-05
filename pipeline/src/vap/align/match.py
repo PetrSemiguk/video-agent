@@ -114,6 +114,7 @@ def align_chunk(chunk: dict, recognized: dict, word_offset: int) -> tuple[list[d
                 }
             )
     output = []
+    previous_end = chunk["start"]
     for index, (text, observed) in enumerate(zip(originals, matches, strict=True)):
         status = statuses[index] if observed else "unresolved"
         start = min(w["start"] for w in observed) if status == "matched" else None
@@ -127,6 +128,17 @@ def align_chunk(chunk: dict, recognized: dict, word_offset: int) -> tuple[list[d
                     "word_index": word_offset + index,
                 }
             )
+        if start is not None and start < previous_end - 1e-8:
+            issues.append(
+                {
+                    "type": "overlapping_timing",
+                    "chunk_id": chunk["id"],
+                    "word_index": word_offset + index,
+                }
+            )
+            status, start, end = "unresolved", None, None
+        if end is not None:
+            previous_end = end
         output.append(
             {
                 "index": word_offset + index,

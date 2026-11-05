@@ -54,6 +54,16 @@ Paste it verbatim into the description of every episode that uses terrain:
 The same texts are embedded in every plate's `studio/public/plates/<name>.json`
 (`attribution.on_screen`, `attribution.full`), generated from `pipeline/src/vap/geo/sources.py`.
 
+## Pilot factual research sources (step 4.4)
+
+These entries authorize factual research and original narration, not importing
+website imagery, maps, logos, screenshots or prose into the video.
+
+| Source | License / permitted use | Commercial use? | Attribution / handling |
+|---|---|---|---|
+| Worden, Savada and Dolan (eds.), *China: A Country Study* (GPO for Library of Congress, 1987), [text mirror](https://countrystudies.us/china/) and [LOC scan](https://tile.loc.gov/storage-services/master/frd/frdcstdy/ch/chinacountrystud00word/chinacountrystud00word.pdf) | US federal publication; use factual information in original wording only here. No third-party illustrations or quoted passages imported. | Yes, factual research and original narration | Cite edition and exact chapter URLs in the pilot facts ledger. Use only historical facts and physical geography, not its dated current-affairs statistics or border descriptions. |
+| UNESCO World Heritage Centre, [The Grand Canal](https://whc.unesco.org/en/list/1443/) | Page description marked CC BY-SA IGO 3.0. This pilot uses independently worded factual statements, not a reproduction/adaptation of the description or its media. | Yes, factual research and original narration | Cite UNESCO and URL in the pilot ledger/description. No photos, maps, logos, quoted prose or page assets imported. Any later media reuse requires separate review. |
+
 ## Voice models and watermarking
 
 Step 3.3 alignment sources (checked 2026-11-04, before installation/download):

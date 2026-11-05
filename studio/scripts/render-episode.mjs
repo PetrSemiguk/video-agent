@@ -16,7 +16,13 @@ const { styleReview, type, colors } = require("../src/design/tokens.ts");
 const leadArgument = process.argv.find((arg) =>
   arg.startsWith("--lead-frames="),
 );
+const storyboardArgument = process.argv.find((arg) =>
+  arg.startsWith("--storyboard="),
+);
 const { inputProps, audioSha256 } = prepareEpisode({
+  ...(storyboardArgument
+    ? { storyboardFile: path.resolve(storyboardArgument.slice("--storyboard=".length)) }
+    : {}),
   sync: leadArgument
     ? { labelLeadFrames: Number(leadArgument.split("=")[1]) }
     : {},

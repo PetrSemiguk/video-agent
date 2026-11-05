@@ -1,0 +1,28 @@
+{
+    "script":  "../episodes/china-unity-pilot/script.md",
+    "out":  "../episodes/china-unity-pilot/audio",
+    "voice":  null,
+    "exaggeration":  0.3,
+    "cfg":  0.5,
+    "seed":  42,
+    "max_chars":  240,
+    "seed_overrides":  {
+                           "0":  42,
+                           "1":  43,
+                           "2":  44,
+                           "3":  45,
+                           "4":  46,
+                           "5":  47,
+                           "6":  100050,
+                           "7":  48,
+                           "8":  49,
+                           "9":  50,
+                           "10":  51,
+                           "11":  52,
+                           "12":  100056,
+                           "13":  54,
+                           "14":  100058,
+                           "15":  56,
+                           "16":  57
+                       }
+}

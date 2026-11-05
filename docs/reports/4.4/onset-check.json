@@ -1,0 +1,82 @@
+{
+  "seed": 33,
+  "count": 10,
+  "method": "5 ms RMS / 2 ms hop; positive 8 ms rise; independent global peaks; nearest acoustic landmark",
+  "limitation": "Energy rises can be syllables within connected speech. These distances are an onset proxy, not independently labelled word-boundary accuracy.",
+  "median_error_ms": 27.99999999999514,
+  "max_error_ms": 69.4999999999979,
+  "landmark_count": 692,
+  "words": [
+    {
+      "word_index": 146,
+      "text": "Sui",
+      "whisper_start": 52.87,
+      "waveform_onset": 52.8865,
+      "absolute_error_ms": 16.500000000000625
+    },
+    {
+      "word_index": 42,
+      "text": "River",
+      "whisper_start": 15.110000000000001,
+      "waveform_onset": 15.0805,
+      "absolute_error_ms": 29.500000000000526
+    },
+    {
+      "word_index": 161,
+      "text": "reasons",
+      "whisper_start": 58.57,
+      "waveform_onset": 58.5005,
+      "absolute_error_ms": 69.4999999999979
+    },
+    {
+      "word_index": 59,
+      "text": "regions",
+      "whisper_start": 21.26,
+      "waveform_onset": 21.2445,
+      "absolute_error_ms": 15.500000000002956
+    },
+    {
+      "word_index": 70,
+      "text": "major",
+      "whisper_start": 24.96,
+      "waveform_onset": 24.9645,
+      "absolute_error_ms": 4.5000000000001705
+    },
+    {
+      "word_index": 122,
+      "text": "grain",
+      "whisper_start": 44.059999999999995,
+      "waveform_onset": 44.0305,
+      "absolute_error_ms": 29.499999999991644
+    },
+    {
+      "word_index": 166,
+      "text": "The",
+      "whisper_start": 60.63,
+      "waveform_onset": 60.6785,
+      "absolute_error_ms": 48.4999999999971
+    },
+    {
+      "word_index": 136,
+      "text": "the",
+      "whisper_start": 49.73,
+      "waveform_onset": 49.7105,
+      "absolute_error_ms": 19.499999999993634
+    },
+    {
+      "word_index": 135,
+      "text": "After",
+      "whisper_start": 49.47,
+      "waveform_onset": 49.5145,
+      "absolute_error_ms": 44.49999999999932
+    },
+    {
+      "word_index": 47,
+      "text": "Plain,",
+      "whisper_start": 16.39,
+      "waveform_onset": 16.4165,
+      "absolute_error_ms": 26.499999999998636
+    }
+  ],
+  "audio_sha256": "a65ae99c5b41025b1046ef3b77349aba0b533f274a5b7eccfe29b535f4786c1d"
+}
