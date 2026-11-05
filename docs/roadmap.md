@@ -439,6 +439,18 @@ the storyboarder follow it:
   of range.
 Accept addition: rhythm stats for pilot v2 and for the 5.2 mini-episode in the report.
 
+### Step 5.4 — Scene-builder and episode QA
+- `.claude/agents/scene-builder.md`: when the catalog lacks a needed visual, builds it:
+  component + zod schema + registry + components.md entry + tests + sheet render. Never edits
+  existing components' behavior without saying so.
+- `.claude/agents/episode-qa.md`: shot-by-shot check of a rendered episode — map action per
+  shot, label-to-word sync, mobile legibility (640 px), attributions on every map shot,
+  errata, motion QA, loudness, licenses (no FORBIDDEN/UNVERIFIED in a publish build).
+  Verdict + fix list.
+- Accept when: scene-builder delivers one missing component on request (test:
+  `ArrowAdvance` — animated military/migration advance arrows) end to end; episode-qa runs on
+  pilot v2 and on the mini-episode.
+
 ### Step 5.3b — Full-length test episode
 Goal: a stress test of the whole chain on a real 12–14 min episode, without music or packaging.
 - **USER DECISION**: topic (default: "Why did China stay united while Europe never did?" —
@@ -452,18 +464,6 @@ Goal: a stress test of the whole chain on a real 12–14 min episode, without mu
 - **USER DECISION: preview approval** before the full render.
 - Accept when: a 12–14 min MP4 exists, episode-qa has no blocker, the report has all
   measurements and a prioritized list of what to improve.
-
-### Step 5.4 — Scene-builder and episode QA
-- `.claude/agents/scene-builder.md`: when the catalog lacks a needed visual, builds it:
-  component + zod schema + registry + components.md entry + tests + sheet render. Never edits
-  existing components' behavior without saying so.
-- `.claude/agents/episode-qa.md`: shot-by-shot check of a rendered episode — map action per
-  shot, label-to-word sync, mobile legibility (640 px), attributions on every map shot,
-  errata, motion QA, loudness, licenses (no FORBIDDEN/UNVERIFIED in a publish build).
-  Verdict + fix list.
-- Accept when: scene-builder delivers one missing component on request (test:
-  `ArrowAdvance` — animated military/migration advance arrows) end to end; episode-qa runs on
-  pilot v2 and on the mini-episode.
 
 ### Step 5.4b — B-roll and archival image agent
 - `.claude/agents/broll-scout.md`: reads script.md + storyboard.json, finds shots marked as
