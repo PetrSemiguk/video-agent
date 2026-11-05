@@ -408,69 +408,63 @@ Limits: the bbox must stay within ±85.05° latitude and must not cross the anti
 Blue Marble caps detail at 500 m per pixel, so plates tighter than about zoom 7.5 (tile512)
 start to look soft.
 
-## Historical layers (step 1.6 draft — not accepted)
+## Historical layers
 
-Latest access decision: automatic planet downloads are stopped. A native raw
-SPARQL POST smoke test also failed to connect from Codex, before any HTTP status.
-Run only the one manual POST command in [reports/1.6.md](reports/1.6.md) outside
-Codex and preserve its raw response at `data/raw/historical/ohm-qlever-smoke.json`.
-No further automatic probes or extraction should be inferred from an access failure.
-
-The user has authorized downloading the assessed 2026-11-02 OHM planet (1.31 GB).
-`uv run python -m vap.geo.hist_planet download` streams only that exact snapshot;
-`access` records HEAD metadata; `inventory` reads local political/admin2 relations
-using pyosmium. The official URL currently allows HEAD but rejects GET with 403.
-This is an access blocker, not missing user permission or proof of missing borders.
-
-Continuation: `vap.geo.hist` now defaults to `--backend auto` (Overpass → QLever
-OHM Planet). Override with `--backend overpass` or `--backend qlever`. Both produce
-the same internal Candidate format before date/license validation. QLever WKT is
-converted only for valid CRS84 polygon geometry. Explicit non-CC0 licenses and
-unavailable member audits are excluded and listed per object. Unknown coverage
-after a network failure is not an empty historical map.
-
-Probe evidence is saved in `docs/reports/1.6/probe-<plate>-<date>.json`. Each object
-includes OHM id, name, raw validity dates, raw/effective license, geometry availability,
-backend, exclusions and an unreviewed production status. On access failure objects
-and counts are null. An extraction with no eligible real polygons is refused.
-`china-east` is an alias for the existing `china-east-hs05` plate.
-
-`uv run python -m vap.geo.hist_access` checks the documented QLever POST, small
-REST bbox, relation/full and bounded S3 metadata without downloading a planet.
-`--planet-only --prefix planet/planet-2611` limits this tool to listing snapshots.
-See the report for current failures, exact snapshot size and pending download approval.
-
-Status and blocking evidence: [reports/1.6.md](reports/1.6.md).
-Source/license comparison: [historical-sources.md](historical-sources.md).
+Source and license comparison: [historical-sources.md](historical-sources.md). Evidence
+and results of the current layers: [reports/1.6.md](reports/1.6.md).
 
 Run from `pipeline/`:
 
 ```
-uv run python -m vap.geo.hist probe --plate europe --date 1914-07-01
-uv run python -m vap.geo.hist extract --plate europe --date 1914-07-01 --source ohm
-uv run python -m vap.geo.hist validate --file europe/historical/1914-07-01.geojson
+uv run python -m vap.geo.hist probe --plate europe --date 1914-07-01 [--search "Bavaria|Bayern"]
+uv run python -m vap.geo.hist extract --plate europe --date 1914-07-01 --slug europe-1914
+uv run python -m vap.geo.hist validate --file europe/historical/europe-1914.geojson
+uv run python -m vap.geo.hist_qa
 ```
 
-Extraction targets `data/processed/<plate>/historical/<ISO-date>.geojson` and an
-adjacent `.report.json`; GeoJSON is mirrored under `studio/public/geo/`.
-Features require `id`, `name_en`, `valid_from`, `valid_to` (null for no known end),
-`source` (`ohm` or `custom`; `cshapes` is forbidden because its data is NC),
-`source_ref`, `license`, `confidence` (high/medium/low), `approximate` (boolean),
-and `notes`. Dates are signed ISO years (negative BCE, no year zero); year/month
-precision expands to its first day. Starts are inclusive, ends exclusive.
-OHM import records this precision limitation and marks accuracy low/approximate.
-`label` is an optional lon/lat point-on-surface produced by extraction.
+Run from `studio/`:
 
-CC0/untagged relations are only eligible if their boundary ways and nodes pass
-license checks too. Missing members, nested relations, nonclosed boundaries and
-ambiguous dates are reported as exclusions; they are never closed or guessed.
-Network errors are failures, never empty-coverage successes. The draft clips to
-NE land 10m and simplifies internal coverage edges at 0.75 plate px, preserving
-outside coastline geometry; overlapping coverages fail for review. This path
-still needs real-data QA. River snapping and the HistDebug renderer are pending.
+```
+npm run still:hist -- out/hist-europe-1914.png --props=props/hist-europe-1914.json
+```
 
-Custom contours belong in `historical/custom/<slug>.geojson` with adjacent
-`<slug>.sources.md`. The validate command checks sidecar existence, but source
-review and import/snapping of custom contours are not yet implemented. Passing
-schema validation does not certify the historical truth or license provenance
-of a hand-authored contour. Never use REFERENCE ONLY/FORBIDDEN source geometry.
+`china-east` is an alias of the `china-east-hs05` plate. `probe` writes
+`docs/reports/1.6/probe-<plate>-<date>.json`. `extract` writes
+`data/processed/<plate>/historical/<slug>.geojson` (committed), an adjacent `.report.json`
+and a copy under `studio/public/geo/`.
+
+**Network.** All of `vap.geo` goes through the client in `vap/geo/http.py`, with an honest
+User-Agent: Cloudflare in front of OHM rejects the default python-httpx one. Overpass requests
+keep a 2 s pause and retry 429/504 with backoff. Every complete response is cached in
+`data/raw/historical/`, so a repeated run does not touch the network.
+
+**What counts as a state.** A relation with `admin_level=2`, `boundary=administrative` and
+`type=boundary`, active on the date (inclusive start, exclusive end; partial dates expand to
+their first day). This drops, for example, Scottish parliamentary districts
+(`boundary=political`) and zones. The rule is `state_exclusion` in `hist.py`.
+
+**Licenses.** The relation and every way of its geometry must be CC0 or untagged, because
+OHM's default is CC0 but single ways may carry their own license. Anything else skips the
+polity with a report; a skipped polity is left unfilled, not approximated.
+
+**Geometry.** Rings are assembled from the outer and inner ways. An open ring is an error and
+is never closed. Absence from OHM stays a gap: no contour is drawn for it.
+
+**Alignment.** Polygons are clipped to Natural Earth 10m land, which is what the plate's sea
+mask comes from, so coasts match the plate. OHM polities are normally not a topological
+coverage: then each inland border is simplified on its own at 0.75 plate px and the result is
+cut with the land simplified at the same tolerance. If they do form a valid coverage,
+`coverage_simplify` keeps shared borders identical. Overlaps never stop an extraction; each
+pair is listed in the report as nesting (at least 90% of the smaller polity), sliver (at most
+2%) or conflict.
+
+**Feature fields.** `id`, `name_en`, `valid_from`, `valid_to` (null for no known end),
+`source` (`ohm` or `custom`; CShapes is forbidden because its data is NC), `source_ref`,
+`license`, `confidence` (high/medium/low), `approximate`, `notes`, plus `label` (lon/lat on the
+surface of the largest part), `area_km2` and `palette_index` (0-7, neighbours differ, into
+`polityPalette` in tokens). Dates are signed ISO years, negative for BCE, with no year zero.
+
+**Not built.** Importing custom contours with `historical/custom/<slug>.geojson` and a
+`<slug>.sources.md` sidecar, and snapping them to rivers: `validate` only checks that the
+sidecar exists. Passing validation does not certify historical truth. Never use REFERENCE ONLY
+or FORBIDDEN geometry.

@@ -6,7 +6,7 @@ import { MapAttribution } from "../components/MapAttribution";
 import { CombinedAttributionScope } from "../map/AttributionContext";
 import story from "../../../episodes/_sandbox/tts-test/storyboard.json";
 import timing from "../../../episodes/_sandbox/tts-test/assembly.json";
-import words from "../../../docs/reports/3.3/words.json";
+import words from "../storyboard/__fixtures__/tts-test-words.json";
 import plate from "../../public/plates/china-east-hs05.json";
 import type { PlateMeta } from "../geo/plate";
 import {

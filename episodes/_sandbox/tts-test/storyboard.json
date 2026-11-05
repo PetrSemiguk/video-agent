@@ -8,8 +8,8 @@
   },
   "plates": [{ "id": "china", "name": "china-east-hs05" }],
   "audio": {
-    "src": "studio/out/voice-3.2/voice.wav",
-    "words": "docs/reports/3.3/words.json"
+    "src": "episodes/_sandbox/tts-test/audio/voice.wav",
+    "words": "episodes/_sandbox/tts-test/audio/words.json"
   },
   "shots": [
     {

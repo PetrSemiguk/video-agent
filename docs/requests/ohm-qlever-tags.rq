@@ -1,8 +1,0 @@
-PREFIX osm: <https://www.openstreetmap.org/>
-PREFIX osmkey: <https://www.openstreetmap.org/wiki/Key:>
-SELECT ?element ?kind ?name ?start_date ?end_date ?license WHERE {
-  VALUES ?kind { osm:relation osm:way }
-  ?element a ?kind ; osmkey:name ?name ; osmkey:start_date ?start_date .
-  OPTIONAL { ?element osmkey:end_date ?end_date . }
-  OPTIONAL { ?element osmkey:license ?license . }
-} LIMIT 10

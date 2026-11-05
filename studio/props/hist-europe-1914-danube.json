@@ -1,0 +1,9 @@
+{
+  "plate": "europe",
+  "slug": "europe-1914",
+  "year": 1914,
+  "caption": "Danube crop, NE river in blue",
+  "focus": { "lon": 25.5, "lat": 44.5 },
+  "nativeZoom": 0,
+  "rivers": ["Danube", "Prut", "Dniester"]
+}

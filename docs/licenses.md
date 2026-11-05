@@ -90,7 +90,7 @@ See [historical-sources.md](historical-sources.md) for coverage, download method
 
 | Source | License | Commercial use? | Attribution text |
 |---|---|---|---|
-| OpenHistoricalMap boundary relations and geometry members | CC0 by default, per-element exceptions | Yes for CC0/untagged elements only; reject explicit other licenses on relation or members | OpenHistoricalMap contributors (CC0); retain relation URLs. |
+| OpenHistoricalMap boundary relations and geometry ways | CC0 by default, per-element exceptions | Yes for CC0/untagged elements only; reject explicit other licenses on the relation or its geometry ways | On screen: "Map data courtesy of OpenHistoricalMap". Retain relation URLs. |
 | Cliopatria (candidate only; not imported) | CC BY 4.0 | Yes, subject to attribution and per-record provenance review before use | Seshat Global History Databank, Cliopatria; https://creativecommons.org/licenses/by/4.0/; indicate changes. |
 
 ## Step 2.1 headline candidates (local, unmodified Google Fonts files)

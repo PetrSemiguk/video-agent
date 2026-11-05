@@ -18,8 +18,7 @@ def configure(monkeypatch, tmp_path, status, payload, size=None):
             status, content=payload, headers={"content-length": str(size or len(payload))}
         )
     )
-    client = httpx.Client(transport=transport)
-    monkeypatch.setattr(p.httpx, "stream", client.stream)
+    monkeypatch.setattr(p, "http_client", lambda *args: httpx.Client(transport=transport))
 
 
 def test_forbidden_download_writes_evidence_not_pbf(monkeypatch, tmp_path):

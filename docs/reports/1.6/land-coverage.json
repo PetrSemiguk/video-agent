@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "europe-1914",
+    "layer_land_covered": 0.3073,
+    "all_assembled_land_covered": 1.0
+  },
+  {
+    "slug": "europe-1815",
+    "layer_land_covered": 0.3513,
+    "all_assembled_land_covered": 0.8814
+  },
+  {
+    "slug": "china-1644",
+    "layer_land_covered": 0.8708,
+    "all_assembled_land_covered": 0.8715
+  }
+]

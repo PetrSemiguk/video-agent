@@ -1,0 +1,344 @@
+{
+  "plate": "china-east",
+  "resolved_plate": "china-east-hs05",
+  "date": "1644-07-01",
+  "source": "ohm",
+  "relations_in_plate": 596,
+  "states": [
+    {
+      "ohm_id": 2906077,
+      "name": "Bhutan",
+      "valid_from": "1616",
+      "valid_to": "1784",
+      "license": null
+    },
+    {
+      "ohm_id": 2748017,
+      "name": "Bầu lords",
+      "valid_from": "1527",
+      "valid_to": "1698",
+      "license": null
+    },
+    {
+      "ohm_id": 2747939,
+      "name": "Cochinchina (1558-1653)",
+      "valid_from": "1558",
+      "valid_to": "1652",
+      "license": null
+    },
+    {
+      "ohm_id": 2748460,
+      "name": "Dai Viet (Mạc dynasty)",
+      "valid_from": "1554",
+      "valid_to": "1676",
+      "license": null
+    },
+    {
+      "ohm_id": 2890040,
+      "name": "Dzungar Khanate",
+      "valid_from": "1634",
+      "valid_to": "1717",
+      "license": null
+    },
+    {
+      "ohm_id": 2847878,
+      "name": "Golconda Sultanate",
+      "valid_from": "1518",
+      "valid_to": "1687",
+      "license": null
+    },
+    {
+      "ohm_id": 2847880,
+      "name": "Gondwana Kingdom",
+      "valid_from": "0807",
+      "valid_to": "1751",
+      "license": null
+    },
+    {
+      "ohm_id": 2694486,
+      "name": "Joseon",
+      "valid_from": "1449",
+      "valid_to": "1897-10-12",
+      "license": null
+    },
+    {
+      "ohm_id": 2923683,
+      "name": "Kangleipak",
+      "valid_from": "1110",
+      "valid_to": "1724",
+      "license": null
+    },
+    {
+      "ohm_id": 2890041,
+      "name": "Khoshut Khanate",
+      "valid_from": "1642",
+      "valid_to": "1717",
+      "license": null
+    },
+    {
+      "ohm_id": 2922302,
+      "name": "Mughal Empire",
+      "valid_from": "1636",
+      "valid_to": "1666",
+      "license": null
+    },
+    {
+      "ohm_id": 2694501,
+      "name": "Qing",
+      "valid_from": "1644-06-05",
+      "valid_to": "1689",
+      "license": null
+    },
+    {
+      "ohm_id": 2890079,
+      "name": "Ryukyu Kingdom",
+      "valid_from": "1612",
+      "valid_to": "1872-09-13",
+      "license": null
+    },
+    {
+      "ohm_id": 2860737,
+      "name": "Spanish Philippines",
+      "valid_from": "1570",
+      "valid_to": "1705",
+      "license": null
+    },
+    {
+      "ohm_id": 2889893,
+      "name": "Tokugawa Shogunate",
+      "valid_from": "1600-10-21",
+      "valid_to": "1856-08-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2845882,
+      "name": "Viceroyalty of New Spain",
+      "valid_from": "1640",
+      "valid_to": "1655-05-10",
+      "license": null
+    },
+    {
+      "ohm_id": 2748461,
+      "name": "Đại Việt - Chúa Trịnh",
+      "valid_from": "1558",
+      "valid_to": "1676",
+      "license": null
+    }
+  ],
+  "explicit_non_cc0": [],
+  "not_states": [],
+  "unreadable_dates": [],
+  "coverage": "partial: absence here is not proof of historical nonexistence",
+  "slug": "china-1644",
+  "skipped": [
+    {
+      "ohm_id": 2845882,
+      "name": "Viceroyalty of New Spain",
+      "valid_from": "1640",
+      "valid_to": "1655-05-10",
+      "license": null,
+      "effective_license": "CC0-1.0",
+      "license_basis": "OHM default",
+      "polygon_geometry": true,
+      "geometry_error": null,
+      "license_exceptions": [
+        {
+          "id": "way/201440142",
+          "license": "Creative Commons Attribution 4.0 International license",
+          "reason": "explicit non-CC0 license",
+          "source": "https://data.humdata.org/dataset/cod-ab-cri"
+        },
+        {
+          "id": "way/201439368",
+          "license": "Creative Commons Attribution 4.0 International license",
+          "reason": "explicit non-CC0 license",
+          "source": "https://data.humdata.org/dataset/cod-ab-cri"
+        },
+        {
+          "id": "way/201439358",
+          "license": "Creative Commons Attribution 4.0 International license",
+          "reason": "explicit non-CC0 license",
+          "source": "https://data.humdata.org/dataset/cod-ab-cri"
+        },
+        {
+          "id": "way/201439357",
+          "license": "Creative Commons Attribution 4.0 International license",
+          "reason": "explicit non-CC0 license",
+          "source": "https://data.humdata.org/dataset/cod-ab-cri"
+        }
+      ],
+      "eligible": false,
+      "exclusion": "non-CC0 or missing ways: 4"
+    }
+  ],
+  "exclusions": {
+    "non-CC0 or missing ways: 4": 1
+  },
+  "outside_plate": [],
+  "qa": {
+    "coast_outside_land_km2": 4611.9,
+    "coast_max_error_px": 0.5,
+    "land_covered": 0.8708,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 1108984,
+        "at": [
+          95.96,
+          24.38
+        ]
+      },
+      {
+        "area_km2": 373200,
+        "at": [
+          103.43,
+          43.3
+        ]
+      },
+      {
+        "area_km2": 2268,
+        "at": [
+          113.3,
+          44.86
+        ]
+      },
+      {
+        "area_km2": 2348,
+        "at": [
+          105.22,
+          23.14
+        ]
+      },
+      {
+        "area_km2": 577,
+        "at": [
+          93.85,
+          19.42
+        ]
+      },
+      {
+        "area_km2": 451,
+        "at": [
+          107.65,
+          21.71
+        ]
+      },
+      {
+        "area_km2": 461,
+        "at": [
+          93.64,
+          18.79
+        ]
+      },
+      {
+        "area_km2": 299,
+        "at": [
+          104.57,
+          23.0
+        ]
+      },
+      {
+        "area_km2": 157,
+        "at": [
+          128.1,
+          41.87
+        ]
+      },
+      {
+        "area_km2": 193,
+        "at": [
+          108.16,
+          21.61
+        ]
+      },
+      {
+        "area_km2": 126,
+        "at": [
+          118.54,
+          38.99
+        ]
+      },
+      {
+        "area_km2": 136,
+        "at": [
+          93.47,
+          19.85
+        ]
+      },
+      {
+        "area_km2": 70,
+        "at": [
+          92.97,
+          19.97
+        ]
+      },
+      {
+        "area_km2": 42,
+        "at": [
+          85.36,
+          19.65
+        ]
+      },
+      {
+        "area_km2": 15,
+        "at": [
+          128.59,
+          38.22
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 16,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Gondwana Kingdom",
+        "b": "Mughal Empire",
+        "area_km2": 134244.2,
+        "share_of_smaller": 0.9988,
+        "kind": "nesting"
+      },
+      {
+        "a": "Tokugawa Shogunate",
+        "b": "Ryukyu Kingdom",
+        "area_km2": 2188.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Khoshut Khanate",
+        "b": "Bhutan",
+        "area_km2": 1278.0,
+        "share_of_smaller": 0.0325,
+        "kind": "conflict"
+      },
+      {
+        "a": "Qing",
+        "b": "Dai Viet (Mạc dynasty)",
+        "area_km2": 1204.6,
+        "share_of_smaller": 0.0148,
+        "kind": "sliver"
+      },
+      {
+        "a": "Qing",
+        "b": "Bầu lords",
+        "area_km2": 420.9,
+        "share_of_smaller": 0.0239,
+        "kind": "conflict"
+      },
+      {
+        "a": "Golconda Sultanate",
+        "b": "Gondwana Kingdom",
+        "area_km2": 158.8,
+        "share_of_smaller": 0.0069,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 2,
+      "conflict": 2,
+      "sliver": 2
+    },
+    "palette_conflicts": 0
+  }
+}

@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 
 import httpx
 
+from .http import client as http_client
 from .paths import REPO_ROOT
 
 
@@ -19,12 +20,6 @@ def main():
     args = parser.parse_args()
     results = []
     checks = [
-        (
-            "qlever_post",
-            "POST",
-            "https://qlever.dev/api/ohm-planet",
-            {"query": "SELECT * WHERE { ?s ?p ?o } LIMIT 1"},
-        ),
         ("rest_capabilities", "GET", "https://www.openhistoricalmap.org/api/0.6/capabilities", {}),
         (
             "rest_small_bbox",
@@ -49,7 +44,7 @@ def main():
     ]
     if args.planet_only:
         checks = checks[-1:]
-    with httpx.Client(timeout=httpx.Timeout(25, connect=10), follow_redirects=True) as client:
+    with http_client(httpx.Timeout(25, connect=10)) as client:
         for name, method, url, params in checks:
             item = {"check": name, "url": url, "method": method, "params": params}
             try:

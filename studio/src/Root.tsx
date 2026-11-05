@@ -2,7 +2,7 @@ import { Showreel } from "./demo/Showreel";
 import { Episode } from "./episode/Episode";
 import { calculateEpisodeMetadata } from "./episode/metadata";
 import sandboxStoryboard from "../../episodes/_sandbox/tts-test/storyboard.json";
-import sandboxWords from "../../docs/reports/3.3/words.json";
+import sandboxWords from "./storyboard/__fixtures__/tts-test-words.json";
 import { CardCheck } from "./qa/CardCheck";
 import { InfoDemo, InfoSheet } from "./demo/Info";
 import { TextLayersDemo, TextLayersSheet } from "./demo/TextLayers";
@@ -30,6 +30,7 @@ import { AbPlate } from "./ab/AbPlate";
 import { FLYOVER_FPS, FLYOVER_FRAMES } from "./camera/flyover";
 import { GeoDebug, geoDebugDefaults } from "./GeoDebug";
 import { GlCheck } from "./GlCheck";
+import { HIST_DEBUG_FRAMES, HistDebug, histDebugDefaults } from "./HistDebug";
 import { Hello } from "./Hello";
 import { PlateCheck, plateCheckDefaults } from "./PlateCheck";
 
@@ -145,6 +146,15 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
         defaultProps={geoDebugDefaults}
+      />
+      <Composition
+        id="HistDebug"
+        component={HistDebug}
+        durationInFrames={HIST_DEBUG_FRAMES}
+        fps={motion.fps}
+        width={cards.showreel.width}
+        height={cards.showreel.height}
+        defaultProps={histDebugDefaults}
       />
       <Composition
         id="AbMapLibre"

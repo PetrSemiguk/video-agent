@@ -1,0 +1,76 @@
+[
+  {
+    "slug": "europe-1914",
+    "a": "Kingdom of Romania",
+    "b": "Tsardom of Bulgaria",
+    "river": "Danube",
+    "both_in_layer": true,
+    "border_along_river_km": 396,
+    "median_km": 2.95,
+    "p95_km": 7.32,
+    "median_plate_px": 2.18,
+    "p95_plate_px": 5.41,
+    "share_within_5km": 0.806
+  },
+  {
+    "slug": "europe-1914",
+    "a": "Kingdom of Serbia",
+    "b": "Austria-Hungary",
+    "river": "Danube",
+    "both_in_layer": false,
+    "border_along_river_km": 238,
+    "median_km": 1.43,
+    "p95_km": 5.41,
+    "median_plate_px": 1.05,
+    "p95_plate_px": 4.0,
+    "share_within_5km": 0.931
+  },
+  {
+    "slug": "europe-1914",
+    "a": "Kingdom of Romania",
+    "b": "Russian Empire",
+    "river": "Danube",
+    "both_in_layer": false,
+    "border_along_river_km": 108,
+    "median_km": 1.97,
+    "p95_km": 14.33,
+    "median_plate_px": 1.46,
+    "p95_plate_px": 10.59,
+    "share_within_5km": 0.613
+  },
+  {
+    "slug": "europe-1914",
+    "a": "Kingdom of Romania",
+    "b": "Russian Empire",
+    "river": "Prut",
+    "both_in_layer": false,
+    "border_along_river_km": 777,
+    "median_km": 0.54,
+    "p95_km": 2.68,
+    "median_plate_px": 0.41,
+    "p95_plate_px": 2.02,
+    "share_within_5km": 0.984
+  },
+  {
+    "slug": "europe-1914",
+    "a": "Austria-Hungary",
+    "b": "Russian Empire",
+    "river": "Dniester",
+    "both_in_layer": false,
+    "border_along_river_km": 142,
+    "median_km": 3.27,
+    "p95_km": 14.03,
+    "median_plate_px": 2.51,
+    "p95_plate_px": 10.73,
+    "share_within_5km": 0.556
+  },
+  {
+    "slug": "europe-1914",
+    "a": "Kingdom of Romania",
+    "b": "Russian Empire",
+    "river": "Dniester",
+    "both_in_layer": false,
+    "border_along_river_km": 0.0,
+    "note": "the polities do not meet along this river"
+  }
+]

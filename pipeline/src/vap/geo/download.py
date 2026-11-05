@@ -7,7 +7,7 @@ from pathlib import Path
 
 import httpx
 
-USER_AGENT = "video-agent/0.1 (geo plate generator)"
+from .http import client as http_client
 
 
 def download(client: httpx.Client, url: str, dest: Path) -> bool:
@@ -37,7 +37,6 @@ def download_many(jobs: list[tuple[str, Path]], workers: int = 8) -> int:
     if not todo:
         return 0
     timeout = httpx.Timeout(60.0, read=600.0)
-    headers = {"User-Agent": USER_AGENT}
-    with httpx.Client(timeout=timeout, follow_redirects=True, headers=headers) as client:
+    with http_client(timeout) as client:
         with ThreadPoolExecutor(workers) as pool:
             return sum(pool.map(lambda job: download(client, *job), todo))

@@ -1,0 +1,126 @@
+{
+  "plate": "china-east",
+  "resolved_plate": "china-east-hs05",
+  "date": "0560-07-01",
+  "source": "ohm",
+  "relations_in_plate": 596,
+  "states": [
+    {
+      "ohm_id": 2735215,
+      "name": "Baekje",
+      "valid_from": "0555",
+      "valid_to": "0660",
+      "license": null
+    },
+    {
+      "ohm_id": 2694615,
+      "name": "Gaya confederacy",
+      "valid_from": "0042",
+      "valid_to": "0562",
+      "license": null
+    },
+    {
+      "ohm_id": 2747436,
+      "name": "Lâm Ấp",
+      "valid_from": "0192",
+      "valid_to": "0605",
+      "license": null
+    },
+    {
+      "ohm_id": 2859641,
+      "name": "Tamna",
+      "valid_from": "0400",
+      "valid_to": "0937",
+      "license": null
+    }
+  ],
+  "explicit_non_cc0": [],
+  "not_states": [],
+  "unreadable_dates": [],
+  "coverage": "partial: absence here is not proof of historical nonexistence",
+  "search": {
+    "pattern": "Northern Zhou|Northern Qi|Chen dynasty|^Chen$|^Sui|^Southern Ming|Hongguang|Shun|北周|北齊|北齐|隋|陳朝|陈朝|南明|大順|大顺|Later Jin",
+    "matches": [
+      {
+        "ohm_id": 2840008,
+        "name": "South-West Africa",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1922",
+        "valid_to": "1990-03-21"
+      },
+      {
+        "ohm_id": 2840009,
+        "name": "South-West Africa",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1919-07-09",
+        "valid_to": "1922"
+      },
+      {
+        "ohm_id": 2907649,
+        "name": "Shunte",
+        "admin_level": "8",
+        "boundary": "administrative",
+        "valid_from": "1984-12-06",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2908317,
+        "name": "Suitucancha",
+        "admin_level": "8",
+        "boundary": "administrative",
+        "valid_from": "1962-01-13",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2908530,
+        "name": "Shunqui",
+        "admin_level": "8",
+        "boundary": "administrative",
+        "valid_from": "1960-09-18",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2918532,
+        "name": "Later Jin",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1618",
+        "valid_to": "1636"
+      },
+      {
+        "ohm_id": 2930053,
+        "name": "Mass Rapid Transit (Yishun → Lakeside)",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1988-12-20",
+        "valid_to": "1989-10-28"
+      },
+      {
+        "ohm_id": 2930054,
+        "name": "Mass Rapid Transit (Lakeside → Yishun)",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1988-12-20",
+        "valid_to": "1989-10-28"
+      },
+      {
+        "ohm_id": 2930073,
+        "name": "North-South Line (Yishun → Marina Bay)",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1989-11-04",
+        "valid_to": "1996-02-10"
+      },
+      {
+        "ohm_id": 2930074,
+        "name": "North-South Line (Marina Bay → Yishun)",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1989-11-04",
+        "valid_to": "1996-02-10"
+      }
+    ]
+  }
+}

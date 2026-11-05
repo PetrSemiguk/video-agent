@@ -9,6 +9,7 @@ import time
 
 import httpx
 
+from .http import client as http_client
 from .paths import RAW_DIR, REPO_ROOT
 
 KEY = "planet/planet-261102_0000.osm.pbf"
@@ -30,9 +31,7 @@ def download():
     PBF.parent.mkdir(parents=True, exist_ok=True)
     partial = PBF.with_suffix(".pbf.partial")
     digest, total, mark = hashlib.sha256(), 0, time.monotonic()
-    with httpx.stream(
-        "GET", URL, timeout=httpx.Timeout(120, connect=20), follow_redirects=True
-    ) as r:
+    with http_client(httpx.Timeout(120, connect=20)) as session, session.stream("GET", URL) as r:
         if r.status_code != 200:
             evidence = REPO_ROOT / "docs/reports/1.6/planet-download.json"
             evidence.parent.mkdir(parents=True, exist_ok=True)
@@ -134,7 +133,8 @@ def access():
     results = []
     for url in (URL, f"https://s3.amazonaws.com/planet.openhistoricalmap.org/{KEY}"):
         try:
-            r = httpx.head(url, timeout=30, follow_redirects=True)
+            with http_client(30) as session:
+                r = session.head(url)
             results.append(
                 {
                     "url": str(r.url),

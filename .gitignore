@@ -25,6 +25,7 @@ assets/broll/*
 
 # --- Per-episode generated output ---
 episodes/*/audio/
+episodes/_sandbox/*/audio/
 episodes/*/renders/
 studio/out/
 

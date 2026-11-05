@@ -1,0 +1,380 @@
+[
+  {
+    "slug": "europe-1914",
+    "place": "Strasbourg (Alsace)",
+    "expected": "German",
+    "ohm": [
+      "German Reich"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Metz (Lorraine)",
+    "expected": "German",
+    "ohm": [
+      "German Reich"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Warsaw (Congress Poland)",
+    "expected": "Russian",
+    "ohm": [
+      "Russian Empire"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Lodz (Congress Poland)",
+    "expected": "Russian",
+    "ohm": [
+      "Russian Empire"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Sarajevo (Bosnia)",
+    "expected": "Austria",
+    "ohm": [
+      "Austria-Hungary"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Mostar (Herzegovina)",
+    "expected": "Austria",
+    "ohm": [
+      "Austria-Hungary"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Krakow (Galicia)",
+    "expected": "Austria",
+    "ohm": [
+      "Austria-Hungary"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Trieste",
+    "expected": "Austria",
+    "ohm": [
+      "Austria-Hungary"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Belgrade",
+    "expected": "Serbia",
+    "ohm": [
+      "Kingdom of Serbia"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Bucharest",
+    "expected": "Romania",
+    "ohm": [
+      "Kingdom of Romania"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Sofia",
+    "expected": "Bulgaria",
+    "ohm": [
+      "Tsardom of Bulgaria"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Constantinople",
+    "expected": "Ottoman",
+    "ohm": [
+      "Ottoman Empire"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Tirana",
+    "expected": "Albania",
+    "ohm": [
+      "Principality of Albania"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Dublin",
+    "expected": "United Kingdom",
+    "ohm": [
+      "United Kingdom of Great Britain and Ireland"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1914",
+    "place": "Oslo",
+    "expected": "Norway",
+    "ohm": [
+      "Norway"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Warsaw",
+    "expected": "Poland",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Krakow",
+    "expected": "Cracow",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Oslo (union with Sweden)",
+    "expected": "Sweden",
+    "ohm": [
+      "Sweden–Norway"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Stockholm",
+    "expected": "Sweden",
+    "ohm": [
+      "Sweden–Norway"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Munich",
+    "expected": "Bavaria",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Stuttgart",
+    "expected": "Württemberg",
+    "ohm": [
+      "Württemberg"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Dresden",
+    "expected": "Saxony",
+    "ohm": [
+      "Kingdom of Saxony"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Hanover",
+    "expected": "Hanover",
+    "ohm": [
+      "Hanover"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Berlin",
+    "expected": "Prussia",
+    "ohm": [
+      "Kingdom of Prussia"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Frankfurt",
+    "expected": "Frankfurt",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Weimar",
+    "expected": "Weimar",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Gotha",
+    "expected": "Gotha",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Kassel",
+    "expected": "Hesse",
+    "ohm": [
+      "Electorate of Hesse"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Vienna",
+    "expected": "Austria",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Milan",
+    "expected": "Austria",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Venice",
+    "expected": "Austria",
+    "ohm": [],
+    "status": "no assembled polygon in OHM"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Paris",
+    "expected": "France",
+    "ohm": [
+      "Kingdom of France"
+    ],
+    "status": "ok in OHM, excluded from layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Brussels",
+    "expected": "Netherlands",
+    "ohm": [
+      "Kingdom of the Netherlands"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Naples",
+    "expected": "Naples",
+    "ohm": [
+      "Kingdom of Naples"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Rome",
+    "expected": "Papal",
+    "ohm": [
+      "Papal States"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Kiel (Holstein)",
+    "expected": "Denmark",
+    "ohm": [
+      "Denmark"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "europe-1815",
+    "place": "Copenhagen",
+    "expected": "Denmark",
+    "ohm": [
+      "Denmark"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "china-1644",
+    "place": "Beijing",
+    "expected": "Qing",
+    "ohm": [
+      "Qing"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "china-1644",
+    "place": "Mukden",
+    "expected": "Qing",
+    "ohm": [
+      "Qing"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "china-1644",
+    "place": "Nanjing (Southern Ming)",
+    "expected": "Ming",
+    "ohm": [
+      "Qing"
+    ],
+    "status": "differs from common knowledge"
+  },
+  {
+    "slug": "china-1644",
+    "place": "Xi'an (Shun)",
+    "expected": "Shun",
+    "ohm": [
+      "Qing"
+    ],
+    "status": "differs from common knowledge"
+  },
+  {
+    "slug": "china-1644",
+    "place": "Seoul",
+    "expected": "Joseon",
+    "ohm": [
+      "Joseon"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "china-1644",
+    "place": "Kyoto",
+    "expected": "Tokugawa",
+    "ohm": [
+      "Tokugawa Shogunate"
+    ],
+    "status": "ok, in layer"
+  },
+  {
+    "slug": "china-1644",
+    "place": "Lhasa",
+    "expected": "Khoshut",
+    "ohm": [
+      "Khoshut Khanate"
+    ],
+    "status": "ok, in layer"
+  }
+]

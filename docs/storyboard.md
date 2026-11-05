@@ -49,7 +49,7 @@ round-trip the structural contract through `z.fromJSONSchema`.
   "schemaVersion": 1,
   "episode": { "slug": "tts-test", "title": "China: Landscape and Unity", "language": "en", "fps": 30 },
   "plates": [{ "id": "china", "name": "china-east-hs05" }],
-  "audio": { "src": "studio/out/voice-3.2/voice.wav", "words": "docs/reports/3.3/words.json" },
+  "audio": { "src": "episodes/_sandbox/tts-test/audio/voice.wav", "words": "episodes/_sandbox/tts-test/audio/words.json" },
   "shots": [{
     "id": "opening", "plate": "china",
     "start": { "time": 0 }, "end": { "word": 10 },
@@ -67,9 +67,11 @@ round-trip the structural contract through `z.fromJSONSchema`.
   are unique within each shot. At least one plate and one shot are required.
 - `audio.src` and `audio.words` are **repository-relative POSIX paths**, not
   paths relative to the storyboard. No `..`, `.` segments, URLs, Windows drives,
-  backslashes or absolute paths. The sandbox references the measured step 3.2
-  stem, paired with checked step 3.3 words. WAV is ignored: regenerate it with
-  the documented voice CLI on another machine before using `--check-files`.
+  backslashes or absolute paths. Like every episode, the sandbox keeps its stem
+  and words in its own `audio/` folder. Both are ignored: regenerate them with the
+  documented voice and alignment CLIs on another machine before using `--check-files`.
+  Tests and the composition defaults use the committed copy of those words,
+  `studio/src/storyboard/__fixtures__/tts-test-words.json`. Reports are documentation only.
 - Every shot has a plate, start/end anchors, camera and layers array (may be
   empty). Unknown object fields are rejected. Layer order is authoring order;
   eventual assembly separates geographic overlays from screen layers according

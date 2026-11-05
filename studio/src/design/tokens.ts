@@ -40,6 +40,7 @@ export const regionColor: Record<RegionColor, string> = {
 export const stroke = {
   border: 1.5,
   regionOutline: 2.5,
+  polityBorder: 2,
   /** Rivers taper from `min` at the source to `max` at the mouth. */
   river: { min: 1.2, max: 4.5 },
   /** Extra width of the glow under a river. */
@@ -76,6 +77,8 @@ export const monoStack = "Consolas, monospace";
 
 export const opacity = {
   regionFill: 0.2,
+  /** Polity fill on historical maps: terrain must read through. */
+  polityFill: 0.42,
   dimOutside: 0.24,
 } as const;
 
@@ -280,6 +283,20 @@ export const plateLookJson = String.raw`{
 }`;
 
 export const polityPalette = styleReview.polity;
+
+/** Historical layers. Debug still sizing plus the mandatory source credit. */
+export const hist = {
+  attribution:
+    "Map data courtesy of OpenHistoricalMap · Made with Natural Earth",
+  /** Just past "the plate exactly fills the frame", as PlateStage requires a margin. */
+  coverZoom: 0.01,
+  regionLabelMinKm2: 60000,
+  labelMaxChars: 40,
+  /** Space the date block takes; labels stay out of it. */
+  dateBox: { width: 560, height: 200 },
+  glyphWidth: 0.5,
+  labelGap: 12,
+} as const;
 export const radii = { card: 12, chip: space.attributionRadius };
 export const shadow = { halo: stroke.labelHalo, color: colors.labelHalo };
 

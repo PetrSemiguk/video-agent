@@ -1,5 +1,8 @@
 import { describe, expect, expectTypeOf, it } from "vitest";
-import { readFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import { z } from "zod";
 import sample from "../../../episodes/_sandbox/tts-test/storyboard.json";
 import { componentRegistry } from "../components/registry";
@@ -163,5 +166,59 @@ describe("storyboard authoring contract", () => {
     const typo = copy();
     typo.shots[0].layers[0].type = "Unknown";
     expect(portable.safeParse(typo).success).toBe(false);
+  });
+  describe("validation CLI", () => {
+    const validate = (value: unknown) => {
+      const folder = mkdtempSync(path.join(tmpdir(), "storyboard-"));
+      const file = path.join(folder, "storyboard.json");
+      writeFileSync(file, JSON.stringify(value), "utf8");
+      try {
+        const result = spawnSync(
+          process.execPath,
+          ["scripts/storyboard.cjs", "validate", file],
+          { encoding: "utf8" },
+        );
+        return { status: result.status, report: JSON.parse(result.stdout) };
+      } finally {
+        rmSync(folder, { recursive: true });
+      }
+    };
+    it("accepts the sandbox", () => {
+      const { status, report } = validate(sample);
+      expect(status).toBe(0);
+      expect(report.valid).toBe(true);
+    });
+    it.each([
+      [
+        "an unknown layer type",
+        (s: ReturnType<typeof copy>) => {
+          s.shots[0].layers[0].type = "Typo";
+        },
+        "$.shots[0].layers[0].type",
+      ],
+      [
+        "invalid KeyFact emphasis",
+        (s: ReturnType<typeof copy>) => {
+          (s.shots[4].layers[0].props as { emphasis: string }).emphasis =
+            "not present";
+        },
+        "$.shots[4].layers[0].props.emphasis",
+      ],
+      [
+        "an unknown plate",
+        (s: ReturnType<typeof copy>) => {
+          s.shots[0].plate = "absent";
+        },
+        "$.shots[0].plate",
+      ],
+    ])("exits 1 with the exact path for %s", (_name, mutate, expected) => {
+      const value = copy();
+      mutate(value);
+      const { status, report } = validate(value);
+      expect(status).toBe(1);
+      expect(report.issues.map((i: { path: string }) => i.path)).toContain(
+        expected,
+      );
+    });
   });
 });

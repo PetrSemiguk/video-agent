@@ -104,6 +104,8 @@ Run from `studio/`:
   still: plate + attribution + lon/lat markers (props files live in `studio/props/`)
 - `npm run still:geodebug -- out/geodebug-<name>.png --props=props/geodebug-<name>.json` —
   plate + Natural Earth debug overlay (needs `vap.geo.extract` for that plate first)
+- `npm run still:hist -- out/hist-<slug>.png --props=props/hist-<slug>.json` — `HistDebug` still:
+  plate + historical polities, labels, big date, attribution (needs `vap.geo.hist extract` first)
 - `npm run render:ab-a` / `npm run render:ab-b` — step 1.2 camera A/B test (MapLibre 3D /
   plate + CSS) to `out/ab-a-maplibre.mp4` / `out/ab-b-plate.mp4`; `npm run ab:side-by-side`
   stacks them into `out/ab-side-by-side.mp4`. Variant A needs `npm run prepare:maplibre`
@@ -138,6 +140,11 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
   — main stem source→mouth (extended to the sea) with `cumfrac` into `data/processed/<p>/rivers/<slug>.geojson`
 - `uv run python -m vap.geo.find "<name>" [--layer rivers|regions|places|countries|admin1|lakes]`
   — look up Natural Earth ids by name
+- `uv run python -m vap.geo.hist probe --plate <p> --date <YYYY-MM-DD> [--search "<regex>"]` — what
+  OHM holds on a date; `--search` looks worldwide by name. Evidence in `docs/reports/1.6/`
+- `uv run python -m vap.geo.hist extract --plate <p> --date <YYYY-MM-DD> --slug <slug>` — state polygons
+  (CC0 relation and ways only, clipped to NE land) to `data/processed/<p>/historical/<slug>.geojson`
+- `uv run python -m vap.geo.hist_qa` — historical layers against known facts and river borders
 - `uv run python -m vap.episode build <slug> [--stage voice|align|preview|render|all]` — sequential, cached
   episode build (each stage includes its predecessors); see "Make an episode" in README.md
 - `uv run python -m vap.qa.episode_sheets <slug>` — review sheet and 640/384 px mobile sheets to `studio/out/`

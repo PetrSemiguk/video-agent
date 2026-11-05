@@ -1,0 +1,1325 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1815-07-01",
+  "source": "ohm",
+  "relations_in_plate": 1642,
+  "states": [
+    {
+      "ohm_id": 2963549,
+      "name": "Alawi Sultanate",
+      "valid_from": "1769-03-10",
+      "valid_to": "1907-08-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2739874,
+      "name": "Andorra",
+      "valid_from": "1278",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2961013,
+      "name": "Austrian Empire",
+      "valid_from": "1815-06-09",
+      "valid_to": "1816-05-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2744913,
+      "name": "Baden",
+      "valid_from": "1810",
+      "valid_to": "1819-09-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2691499,
+      "name": "Bremen",
+      "valid_from": "1813",
+      "valid_to": "1827",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2691497,
+      "name": "Brunswick",
+      "valid_from": "1814",
+      "valid_to": "1867-07-01",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2965979,
+      "name": "Circassia",
+      "valid_from": "1427",
+      "valid_to": "1864-05-21",
+      "license": null
+    },
+    {
+      "ohm_id": 2835764,
+      "name": "Couto Misto",
+      "valid_from": "1000",
+      "valid_to": "1868",
+      "license": null
+    },
+    {
+      "ohm_id": 2801185,
+      "name": "Crown Colony of Malta",
+      "valid_from": "1814-05-30",
+      "valid_to": "1964-09-21",
+      "license": null
+    },
+    {
+      "ohm_id": 2870400,
+      "name": "Denmark",
+      "valid_from": "1815-06-09",
+      "valid_to": "1851",
+      "license": null
+    },
+    {
+      "ohm_id": 2808603,
+      "name": "Duchy of Anhalt-Bernburg",
+      "valid_from": "1806-08-06",
+      "valid_to": "1863-08-19",
+      "license": null
+    },
+    {
+      "ohm_id": 2809697,
+      "name": "Duchy of Anhalt-Dessau",
+      "valid_from": "1807-07-07",
+      "valid_to": "1853-05-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2808604,
+      "name": "Duchy of Anhalt-Köthen",
+      "valid_from": "1806-08-06",
+      "valid_to": "1853-05-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2696937,
+      "name": "Duchy of Lucca",
+      "valid_from": "1815-06-09",
+      "valid_to": "1847-12-17",
+      "license": null
+    },
+    {
+      "ohm_id": 2832340,
+      "name": "Duchy of Massa and Carrara",
+      "valid_from": "1814-05-30",
+      "valid_to": "1829-11-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2747005,
+      "name": "Duchy of Modena and Reggio",
+      "valid_from": "1814-07-14",
+      "valid_to": "1829-11-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2696938,
+      "name": "Duchy of Parma and Piacenza",
+      "valid_from": "1814-04-11",
+      "valid_to": "1847-12-17",
+      "license": null
+    },
+    {
+      "ohm_id": 2745247,
+      "name": "Electorate of Hesse",
+      "valid_from": "1815-06-09",
+      "valid_to": "1831-12-23",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2692575,
+      "name": "Free City of Cracow",
+      "valid_from": "1815-06-09",
+      "valid_to": "1846-11-16",
+      "license": null
+    },
+    {
+      "ohm_id": 2856441,
+      "name": "Free and Hanseatic City of Hamburg",
+      "valid_from": "1815-06-09",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2748578,
+      "name": "Free and Hanseatic City of Lübeck",
+      "valid_from": "1815-06-09",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2692855,
+      "name": "Gibraltar",
+      "valid_from": "1713",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2661272,
+      "name": "Grand Duchy of Hesse",
+      "valid_from": "1815-06-09",
+      "valid_to": "1866-03-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2877391,
+      "name": "Grand Duchy of Luxembourg",
+      "valid_from": "1815-06-08",
+      "valid_to": "1815-08-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2830658,
+      "name": "Grand Duchy of Mecklenburg-Schwerin",
+      "valid_from": "1815-06-14",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2694810,
+      "name": "Grand Duchy of Mecklenburg-Strelitz",
+      "valid_from": "1815-06-28",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2696931,
+      "name": "Grand Duchy of Tuscany",
+      "valid_from": "1815-06-09",
+      "valid_to": "1847-12-17",
+      "license": "CC0-1.0"
+    },
+    {
+      "ohm_id": 2828270,
+      "name": "Guernsey",
+      "valid_from": "1290",
+      "valid_to": "1987-05-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2745246,
+      "name": "Hanover",
+      "valid_from": "1814-10-12",
+      "valid_to": "1817",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2848139,
+      "name": "Heligoland",
+      "valid_from": "1807-09-11",
+      "valid_to": "1890-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2690441,
+      "name": "Hesse-Homburg",
+      "valid_from": "1815-06-09",
+      "valid_to": "1866-03-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2698293,
+      "name": "Hohenzollern-Hechingen",
+      "valid_from": "1806-08-06",
+      "valid_to": "1850-03-12",
+      "license": null
+    },
+    {
+      "ohm_id": 2694607,
+      "name": "Hohenzollern-Sigmaringen",
+      "valid_from": "1806",
+      "valid_to": "1850-03-12",
+      "license": null
+    },
+    {
+      "ohm_id": 2693293,
+      "name": "Isle of Man",
+      "valid_from": "1333-08-09",
+      "valid_to": "1987-05-15",
+      "license": null
+    },
+    {
+      "ohm_id": 2828299,
+      "name": "Jersey",
+      "valid_from": "1290",
+      "valid_to": "1987-05-14",
+      "license": null
+    },
+    {
+      "ohm_id": 2913644,
+      "name": "Kingdom of France",
+      "valid_from": "1815-06-09",
+      "valid_to": "1825-12-09",
+      "license": null
+    },
+    {
+      "ohm_id": 2750052,
+      "name": "Kingdom of Naples",
+      "valid_from": "1815-05-20",
+      "valid_to": "1816-12-08",
+      "license": null
+    },
+    {
+      "ohm_id": 2692576,
+      "name": "Kingdom of Poland",
+      "valid_from": "1815-06-09",
+      "valid_to": "1835",
+      "license": null
+    },
+    {
+      "ohm_id": 2860981,
+      "name": "Kingdom of Portugal",
+      "valid_from": "1801-06-06",
+      "valid_to": "1815-12-16",
+      "license": null
+    },
+    {
+      "ohm_id": 2694593,
+      "name": "Kingdom of Prussia",
+      "valid_from": "1815-06-09",
+      "valid_to": "1829-10-23",
+      "license": null
+    },
+    {
+      "ohm_id": 2852041,
+      "name": "Kingdom of Sardinia",
+      "valid_from": "1815-06-09",
+      "valid_to": "1816-03-16",
+      "license": null
+    },
+    {
+      "ohm_id": 2693578,
+      "name": "Kingdom of Saxony",
+      "valid_from": "1815-06-09",
+      "valid_to": "1845",
+      "license": null
+    },
+    {
+      "ohm_id": 2750114,
+      "name": "Kingdom of Sicily",
+      "valid_from": "1734",
+      "valid_to": "1816-12-08",
+      "license": null
+    },
+    {
+      "ohm_id": 2877455,
+      "name": "Kingdom of the Netherlands",
+      "valid_from": "1815-03-16",
+      "valid_to": "1815-08-24",
+      "license": null
+    },
+    {
+      "ohm_id": 2746467,
+      "name": "Liechtenstein",
+      "valid_from": "1806-07-12",
+      "valid_to": "1960-03-17",
+      "license": null
+    },
+    {
+      "ohm_id": 2690443,
+      "name": "Nassau",
+      "valid_from": "1815-06-09",
+      "valid_to": "1866-09-20",
+      "license": null
+    },
+    {
+      "ohm_id": 2697612,
+      "name": "Oldenburg",
+      "valid_from": "1815-06-09",
+      "valid_to": "1817",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2746683,
+      "name": "Ottoman Empire",
+      "valid_from": "1812-07-05",
+      "valid_to": "1821-05",
+      "license": null
+    },
+    {
+      "ohm_id": 2696930,
+      "name": "Papal States",
+      "valid_from": "1815-06-09",
+      "valid_to": "1852",
+      "license": "CC0-1.0"
+    },
+    {
+      "ohm_id": 2694888,
+      "name": "Persia",
+      "valid_from": "1813-10-24",
+      "valid_to": "1828-02-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2857706,
+      "name": "Prince-Bishopric of Montenegro",
+      "valid_from": "1789",
+      "valid_to": "1852-03-13",
+      "license": null
+    },
+    {
+      "ohm_id": 2806794,
+      "name": "Principality of Lippe",
+      "valid_from": "1806-08-06",
+      "valid_to": "1867-07-01",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2831854,
+      "name": "Principality of Reuss-Gera",
+      "valid_from": "1806-08-06",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2831855,
+      "name": "Principality of Reuss-Greiz",
+      "valid_from": "1806-08-06",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2831863,
+      "name": "Principality of Schwarzburg-Rudolstadt",
+      "valid_from": "1809-10-14",
+      "valid_to": "1825",
+      "license": null
+    },
+    {
+      "ohm_id": 2830677,
+      "name": "Principality of Schwarzburg-Sondershausen",
+      "valid_from": "1809-10-14",
+      "valid_to": "1867-07-01",
+      "license": null
+    },
+    {
+      "ohm_id": 2690422,
+      "name": "Pyrmont",
+      "valid_from": "1807",
+      "valid_to": "1849",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2861415,
+      "name": "Regency of Algiers",
+      "valid_from": "1516",
+      "valid_to": "1830-07-05",
+      "license": null
+    },
+    {
+      "ohm_id": 2750737,
+      "name": "Republic of Cospaia",
+      "valid_from": "1440",
+      "valid_to": "1826-05-25",
+      "license": null
+    },
+    {
+      "ohm_id": 2746527,
+      "name": "Russian Empire",
+      "valid_from": "1815-06-09",
+      "valid_to": "1828-02-22",
+      "license": null
+    },
+    {
+      "ohm_id": 2853735,
+      "name": "San Marino",
+      "valid_from": "1740-02-05",
+      "valid_to": null,
+      "license": null
+    },
+    {
+      "ohm_id": 2690420,
+      "name": "Schaumburg-Lippe",
+      "valid_from": "1807-04-18",
+      "valid_to": "1867-07-01",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2860664,
+      "name": "Spain",
+      "valid_from": "1802-03-27",
+      "valid_to": "1899-04-11",
+      "license": "CC0-1.0"
+    },
+    {
+      "ohm_id": 2969296,
+      "name": "Sweden–Norway",
+      "valid_from": "1814-01-14",
+      "valid_to": "1815-10-23",
+      "license": null
+    },
+    {
+      "ohm_id": 2852251,
+      "name": "Swiss Confederation",
+      "valid_from": "1803-02-19",
+      "valid_to": "1815-09-07",
+      "license": null
+    },
+    {
+      "ohm_id": 2852042,
+      "name": "Switzerland",
+      "valid_from": "1815-05-15",
+      "valid_to": "1816-03-15",
+      "license": null
+    },
+    {
+      "ohm_id": 2828388,
+      "name": "United Kingdom of Great Britain and Ireland",
+      "valid_from": "1801-01-01",
+      "valid_to": "1922-12-04",
+      "license": null
+    },
+    {
+      "ohm_id": 2806795,
+      "name": "Waldeck",
+      "valid_from": "1806-08-06",
+      "valid_to": "1849",
+      "license": "CC0"
+    },
+    {
+      "ohm_id": 2661271,
+      "name": "Württemberg",
+      "valid_from": "1810",
+      "valid_to": "1871-05-04",
+      "license": null
+    }
+  ],
+  "explicit_non_cc0": [],
+  "not_states": [
+    {
+      "ohm_id": 2862267,
+      "name": "Elgin Burghs",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871106,
+      "name": "Inverness Burghs",
+      "reason": "not a state: admin_level=None"
+    },
+    {
+      "ohm_id": 2871128,
+      "name": "Banffshire",
+      "reason": "not a state: admin_level=None"
+    }
+  ],
+  "unreadable_dates": [],
+  "coverage": "partial: absence here is not proof of historical nonexistence",
+  "search": {
+    "pattern": "Bavaria|Bayern|Frankfurt|Saxe-Weimar|Saxe-Gotha|Sachsen-Weimar|Sachsen-Gotha|Saxe-Coburg|Holstein|German Confederation|Deutscher Bund",
+    "matches": [
+      {
+        "ohm_id": 2661374,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1920-07-01",
+        "valid_to": "1938-03-31"
+      },
+      {
+        "ohm_id": 2687406,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1918-11-12",
+        "valid_to": "1920-01-09"
+      },
+      {
+        "ohm_id": 2687408,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1946",
+        "valid_to": "1956"
+      },
+      {
+        "ohm_id": 2690437,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1852-05-13",
+        "valid_to": "1866-10-01"
+      },
+      {
+        "ohm_id": 2690438,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1871-05-04",
+        "valid_to": "1918-11-12"
+      },
+      {
+        "ohm_id": 2690439,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1866-10-01",
+        "valid_to": "1871-05-04"
+      },
+      {
+        "ohm_id": 2690440,
+        "name": "Frankfur",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1815-07-09",
+        "valid_to": "1866-10-03"
+      },
+      {
+        "ohm_id": 2692027,
+        "name": "Province of Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1890",
+        "valid_to": "1907"
+      },
+      {
+        "ohm_id": 2692485,
+        "name": "Saxe-Coburg and Gotha",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1826-11-12",
+        "valid_to": "1834-05-31"
+      },
+      {
+        "ohm_id": 2692487,
+        "name": "Saxe-Weimar-Eisenach",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1900",
+        "valid_to": "1912-12-31"
+      },
+      {
+        "ohm_id": 2692656,
+        "name": "Regierungsbezirk Frankfurt",
+        "admin_level": "5",
+        "boundary": "administrative",
+        "valid_from": "1836",
+        "valid_to": "1882-04-01"
+      },
+      {
+        "ohm_id": 2692830,
+        "name": "Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1946-08-23",
+        "valid_to": "1994-11-11"
+      },
+      {
+        "ohm_id": 2693420,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1938-04-01",
+        "valid_to": "1939-04-15"
+      },
+      {
+        "ohm_id": 2693574,
+        "name": "North German Confederation",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1867-07-01",
+        "valid_to": "1871-05-04"
+      },
+      {
+        "ohm_id": 2693614,
+        "name": "Province of Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1868-10-01",
+        "valid_to": "1876"
+      },
+      {
+        "ohm_id": 2694289,
+        "name": "Stadtkreis Frankfurt a. O.",
+        "admin_level": "8",
+        "boundary": "administrative",
+        "valid_from": "1877",
+        "valid_to": "1945"
+      },
+      {
+        "ohm_id": 2694418,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1920-01-10",
+        "valid_to": "1920-06-30"
+      },
+      {
+        "ohm_id": 2694591,
+        "name": "Saxe-Coburg and Gotha",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1834-05-31",
+        "valid_to": "1867-07-01"
+      },
+      {
+        "ohm_id": 2694821,
+        "name": "Stadtkreis Frankfurt a. O.",
+        "admin_level": "8",
+        "boundary": "administrative",
+        "valid_from": "1945",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2695373,
+        "name": "Bezirk Frankfurt (Oder)",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1952-07-25",
+        "valid_to": "1990-10-02"
+      },
+      {
+        "ohm_id": 2695484,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1956",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2695808,
+        "name": "Polizeipräsidium Frankfurt am Main",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "2002",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2696188,
+        "name": "Free State of Saxe-Weimar-Eisenach",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1918-11-09",
+        "valid_to": "1920-04-30"
+      },
+      {
+        "ohm_id": 2698053,
+        "name": "243 Neustadt in Holstein",
+        "admin_level": null,
+        "boundary": "postal_code",
+        "valid_from": "1962",
+        "valid_to": "1993"
+      },
+      {
+        "ohm_id": 2738986,
+        "name": "23858 Reinfeld (Holstein)",
+        "admin_level": null,
+        "boundary": "postal_code",
+        "valid_from": "1993",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2744564,
+        "name": "Duchy of Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1843-01-01",
+        "valid_to": "1867"
+      },
+      {
+        "ohm_id": 2744896,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1816-07-07",
+        "valid_to": "1819-09-07"
+      },
+      {
+        "ohm_id": 2745050,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1816-05-01",
+        "valid_to": "1816-07-07"
+      },
+      {
+        "ohm_id": 2747274,
+        "name": "Saxe-Weimar-Eisenach",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1826-11-12",
+        "valid_to": "1867-07-01"
+      },
+      {
+        "ohm_id": 2747275,
+        "name": "Saxe-Coburg and Gotha",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1867-07-01",
+        "valid_to": "1918-11-18"
+      },
+      {
+        "ohm_id": 2748587,
+        "name": "Duchy of Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1815-06-09",
+        "valid_to": "1843-01-01"
+      },
+      {
+        "ohm_id": 2805255,
+        "name": "Duchy of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "0962",
+        "valid_to": "1100"
+      },
+      {
+        "ohm_id": 2805257,
+        "name": "Bavaria",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2806713,
+        "name": "Regierungsbezirk Frankfurt",
+        "admin_level": "5",
+        "boundary": "administrative",
+        "valid_from": "1920",
+        "valid_to": "1924"
+      },
+      {
+        "ohm_id": 2806725,
+        "name": "Regierungsbezirk Frankfurt",
+        "admin_level": "5",
+        "boundary": "administrative",
+        "valid_from": "1924",
+        "valid_to": "1938"
+      },
+      {
+        "ohm_id": 2806786,
+        "name": "Stadtkreis Frankfurt am Main",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "valid_from": "1910-04-01",
+        "valid_to": "1928-04-01"
+      },
+      {
+        "ohm_id": 2806787,
+        "name": "Stadtkreis Frankfurt am Main",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "valid_from": "1895-04-01",
+        "valid_to": "1900-07-01"
+      },
+      {
+        "ohm_id": 2806788,
+        "name": "Landkreis Frankfurt",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "valid_from": "1895-04-01",
+        "valid_to": "1900-07-01"
+      },
+      {
+        "ohm_id": 2806789,
+        "name": "Landkreis Frankfurt",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "valid_from": "1886-03-31",
+        "valid_to": "1895-04-01"
+      },
+      {
+        "ohm_id": 2806790,
+        "name": "Stadtkreis Frankfurt am Main",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "valid_from": "1886-03-31",
+        "valid_to": "1895-04-01"
+      },
+      {
+        "ohm_id": 2806791,
+        "name": "Landkreis Frankfurt",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "valid_from": "1900-07-01",
+        "valid_to": "1910-04-01"
+      },
+      {
+        "ohm_id": 2806792,
+        "name": "Stadtkreis Frankfurt am Main",
+        "admin_level": "6",
+        "boundary": "administrative",
+        "valid_from": "1900-07-01",
+        "valid_to": "1910-04-01"
+      },
+      {
+        "ohm_id": 2809506,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1734",
+        "valid_to": "1740"
+      },
+      {
+        "ohm_id": 2810174,
+        "name": "Bavarian Circle",
+        "admin_level": "3",
+        "boundary": "administrative",
+        "valid_from": "1565",
+        "valid_to": "1779-05-13"
+      },
+      {
+        "ohm_id": 2810175,
+        "name": "Bavarian Circle",
+        "admin_level": "3",
+        "boundary": "administrative",
+        "valid_from": "1779-05-13",
+        "valid_to": "1806-08-06"
+      },
+      {
+        "ohm_id": 2830370,
+        "name": "Bavarian Circle",
+        "admin_level": "3",
+        "boundary": "administrative",
+        "valid_from": "1500",
+        "valid_to": "1505-07-30"
+      },
+      {
+        "ohm_id": 2830584,
+        "name": "Duchy of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1505-12-01",
+        "valid_to": "1517"
+      },
+      {
+        "ohm_id": 2830585,
+        "name": "Duchy of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1517",
+        "valid_to": "1567"
+      },
+      {
+        "ohm_id": 2830586,
+        "name": "Duchy of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1609",
+        "valid_to": "1617"
+      },
+      {
+        "ohm_id": 2830587,
+        "name": "Duchy of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1567",
+        "valid_to": "1609"
+      },
+      {
+        "ohm_id": 2830588,
+        "name": "Duchy of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1617",
+        "valid_to": "1623"
+      },
+      {
+        "ohm_id": 2830589,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1757",
+        "valid_to": "1759"
+      },
+      {
+        "ohm_id": 2830590,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1663",
+        "valid_to": "1705-03-20"
+      },
+      {
+        "ohm_id": 2830591,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1705-03-20",
+        "valid_to": "1734"
+      },
+      {
+        "ohm_id": 2830592,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1759",
+        "valid_to": "1764"
+      },
+      {
+        "ohm_id": 2830593,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1764",
+        "valid_to": "1779-05-13"
+      },
+      {
+        "ohm_id": 2830594,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1623",
+        "valid_to": "1650"
+      },
+      {
+        "ohm_id": 2830595,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1740",
+        "valid_to": "1757"
+      },
+      {
+        "ohm_id": 2830596,
+        "name": "Electorate of Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1650",
+        "valid_to": "1663"
+      },
+      {
+        "ohm_id": 2831780,
+        "name": "Saxe-Weimar-Eisenach",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1913-01-01",
+        "valid_to": "1918-11-08"
+      },
+      {
+        "ohm_id": 2831783,
+        "name": "Saxe-Weimar-Eisenach",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1867-07-01",
+        "valid_to": "1899"
+      },
+      {
+        "ohm_id": 2835381,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1810-06-30",
+        "valid_to": "1814-06-03"
+      },
+      {
+        "ohm_id": 2839727,
+        "name": "Duchy of Schleswig-Holstein-Gottorp",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1658-03-08",
+        "valid_to": "1773-06-01"
+      },
+      {
+        "ohm_id": 2839728,
+        "name": "Duchy of Schleswig-Holstein-Gottorp",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1544",
+        "valid_to": "1658-03-08"
+      },
+      {
+        "ohm_id": 2840496,
+        "name": "County of Holstein-Pinneberg",
+        "admin_level": "5",
+        "boundary": "administrative",
+        "valid_from": "1290-12-21",
+        "valid_to": "1640-11-14"
+      },
+      {
+        "ohm_id": 2840497,
+        "name": "County of Schaumburg and Holstein-Pinneberg",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1290",
+        "valid_to": "1640-11-14"
+      },
+      {
+        "ohm_id": 2852315,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1819-09-08",
+        "valid_to": "1825-10-20"
+      },
+      {
+        "ohm_id": 2852597,
+        "name": "Bavarian Circle",
+        "admin_level": "3",
+        "boundary": "administrative",
+        "valid_from": "1505-07-30",
+        "valid_to": "1565"
+      },
+      {
+        "ohm_id": 2856416,
+        "name": "Province of Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1876-07-01",
+        "valid_to": "1890"
+      },
+      {
+        "ohm_id": 2856511,
+        "name": "Province of Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1907",
+        "valid_to": "1920-06-15"
+      },
+      {
+        "ohm_id": 2856513,
+        "name": "Province of Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1937-04-01",
+        "valid_to": "1945-11-13"
+      },
+      {
+        "ohm_id": 2856514,
+        "name": "Province of Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1920-06-15",
+        "valid_to": "1937-04-01"
+      },
+      {
+        "ohm_id": 2856515,
+        "name": "Schleswig-Holstein",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": null,
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2856525,
+        "name": "Province of Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1945-11-13",
+        "valid_to": "1946-08-23"
+      },
+      {
+        "ohm_id": 2856995,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1939-04-15",
+        "valid_to": "1939-05-01"
+      },
+      {
+        "ohm_id": 2856996,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1939-05-01",
+        "valid_to": "1945-06-05"
+      },
+      {
+        "ohm_id": 2856997,
+        "name": "Bavaria",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1945-06-05",
+        "valid_to": "1946-08-30"
+      },
+      {
+        "ohm_id": 2870560,
+        "name": "Schleswig-Holstein",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "valid_from": "1994-11-11",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2874320,
+        "name": "Oderbrücke Frankfurt",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1957",
+        "valid_to": "1997"
+      },
+      {
+        "ohm_id": 2874324,
+        "name": "Oderbrücke Frankfurt",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1997",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2877298,
+        "name": "Stadt Frankfurt",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1875",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2878338,
+        "name": "2440 Oldenburg in Holstein",
+        "admin_level": null,
+        "boundary": "postal_code",
+        "valid_from": "1971",
+        "valid_to": "1993"
+      },
+      {
+        "ohm_id": 2891718,
+        "name": "Duchy of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "0555",
+        "valid_to": "0788"
+      },
+      {
+        "ohm_id": 2891719,
+        "name": "Duchy of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "0745",
+        "valid_to": "0788"
+      },
+      {
+        "ohm_id": 2912841,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1825-12-09",
+        "valid_to": "1852-05-13"
+      },
+      {
+        "ohm_id": 2913645,
+        "name": "Kingdom of Bavaria",
+        "admin_level": "2",
+        "boundary": "administrative",
+        "valid_from": "1825-10-20",
+        "valid_to": "1825-12-09"
+      },
+      {
+        "ohm_id": 2915162,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1825-12-09",
+        "valid_to": "1829-10-23"
+      },
+      {
+        "ohm_id": 2915163,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1815-06-08",
+        "valid_to": "1815-07-26"
+      },
+      {
+        "ohm_id": 2915164,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1815-08-01",
+        "valid_to": "1817-07-07"
+      },
+      {
+        "ohm_id": 2915165,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1817-07-07",
+        "valid_to": "1818"
+      },
+      {
+        "ohm_id": 2915166,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1818",
+        "valid_to": "1825-12-09"
+      },
+      {
+        "ohm_id": 2915167,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1815-07-26",
+        "valid_to": "1815-08-01"
+      },
+      {
+        "ohm_id": 2915168,
+        "name": "German Confederation",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1815-06-08",
+        "valid_to": "1866-08-23"
+      },
+      {
+        "ohm_id": 2916005,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1829-10-23",
+        "valid_to": "1835"
+      },
+      {
+        "ohm_id": 2916006,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1835",
+        "valid_to": "1839-06-08"
+      },
+      {
+        "ohm_id": 2916008,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1850-11-29",
+        "valid_to": "1866-08-23"
+      },
+      {
+        "ohm_id": 2916009,
+        "name": "German Confederation",
+        "admin_level": "1",
+        "boundary": "administrative",
+        "valid_from": "1839-06-08",
+        "valid_to": "1848-05-18"
+      },
+      {
+        "ohm_id": 2926676,
+        "name": "Landesstraßen in Schleswig-Holstein",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "1934-03-26",
+        "valid_to": null
+      },
+      {
+        "ohm_id": 2931228,
+        "name": "60 Frankfurt",
+        "admin_level": null,
+        "boundary": "postal_code",
+        "valid_from": "1962",
+        "valid_to": "1993"
+      },
+      {
+        "ohm_id": 2931497,
+        "name": "Regierungsbezirk Frankfurt",
+        "admin_level": "5",
+        "boundary": "administrative",
+        "valid_from": "1882",
+        "valid_to": "1920"
+      },
+      {
+        "ohm_id": 2937640,
+        "name": "B 4 ohne Bayern",
+        "admin_level": null,
+        "boundary": null,
+        "valid_from": "2020",
+        "valid_to": null
+      }
+    ]
+  }
+}
