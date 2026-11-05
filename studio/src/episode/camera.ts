@@ -8,7 +8,13 @@ import {
   plateZoomLimits,
 } from "../camera/presets";
 import { plateCenter } from "../camera/keyframes";
-import { cameraTimeline, toMerc, type Segment } from "../camera/timeline";
+import {
+  cameraTimeline,
+  metersPerPx,
+  toMerc,
+  type CamPose,
+  type Segment,
+} from "../camera/timeline";
 import { motion, space } from "../design/tokens";
 import { MIN_EDGE_MARGIN_PX, verifyPlates } from "../map/PlateStage";
 import type { PlateMeta } from "../geo/plate";
@@ -55,7 +61,7 @@ export const buildCamera = (
             line,
             (f) => Math.max(0, Math.min(1, (f - start) / drawFrames)),
             frames,
-            options,
+            { ...options, maxSpeed: motion.camera.maxSpeedPx },
           );
         }
       }
@@ -90,6 +96,22 @@ export const buildCamera = (
   return cameraTimeline(segments, { fps: motion.fps, width, height });
 };
 
+/** Fastest pan of a frame range in screen px per frame, and the frame where it happens. */
+export const peakPan = (
+  poseAt: (frame: number) => CamPose,
+  from: number,
+  frames: number,
+) => {
+  let [speed, at] = [0, from];
+  for (let f = from + 1; f < from + frames; f++) {
+    const [a, b] = [poseAt(f - 1), poseAt(f)];
+    const pan =
+      Math.hypot(b.x - a.x, b.y - a.y) / metersPerPx((a.zoom + b.zoom) / 2);
+    if (pan > speed) [speed, at] = [pan, f];
+  }
+  return { speed, at };
+};
+
 /** Render-time safety, including the outgoing scene's transition extension. */
 export const verifyEpisodeCamera = (
   storyboard: ParsedStoryboard,
@@ -118,6 +140,12 @@ export const verifyEpisodeCamera = (
     );
     if (reports.some((r) => r.minMargin < MIN_EDGE_MARGIN_PX))
       throw new Error(`Unsafe camera in shot ${shot.id}`);
-    return { id: shot.id, reports };
+    const peak = peakPan(timeline.poseAt, window.from, window.durationInFrames);
+    const limit = motion.camera.maxSpeedPx + motion.camera.speedTolerancePx;
+    if (peak.speed > limit)
+      throw new Error(
+        `Camera too fast in shot ${shot.id}: ${peak.speed.toFixed(1)} px/frame at frame ${peak.at}, limit ${motion.camera.maxSpeedPx}. Bring the framings closer or lengthen the shot (docs/visual-grammar.md)`,
+      );
+    return { id: shot.id, peakPanPx: peak.speed, reports };
   });
 };

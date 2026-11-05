@@ -74,7 +74,8 @@ const PlaceLabelView: React.FC<{
   kind: LabelKind;
   anchor?: LabelAnchor;
   enterFrame?: number;
-}> = ({ lonLat, text, kind, anchor, enterFrame = 0 }) => {
+  exitAt?: number;
+}> = ({ lonLat, text, kind, anchor, enterFrame = 0, exitAt }) => {
   const frame = useCurrentFrame();
   const { toScreen, width: W, height: H } = useMapProjection();
   const st = STYLE[kind];
@@ -93,11 +94,19 @@ const PlaceLabelView: React.FC<{
   const textH = st.size * type.lineHeight;
 
   const t = frame - enterFrame;
-  const appear = interpolate(t, [0, motion.frames.base], [0, 1], {
+  const enter = interpolate(t, [0, motion.frames.base], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: motion.easing.out,
   });
+  const appear =
+    exitAt === undefined
+      ? enter
+      : enter *
+        interpolate(frame, [exitAt, exitAt + motion.frames.fast], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        });
   if (appear <= 0) {
     return null;
   }

@@ -72,13 +72,15 @@ Cards reveal with a stagger and fade out with the enclosing frame.
 ## StatCounter / statCounterSchema
 
 - `value`: finite target in ±1 trillion; `from`: same bounds, default 0.
-- `label`: required, maximum 80 characters; `unit`: optional, maximum 12.
+- `label`: required, maximum 80 characters: one line of what the number means.
+- `unit`: optional, maximum 20: what is counted, read with the number ("5 river systems").
+- `date`: optional, maximum 32: when it held, on its own line. Never put a date in `unit`.
 - `decimals`: integer 0–2, default 0; optional semantic `color`.
 
 Forward, negative and reverse counts are supported. Number formatting is explicitly
 `Intl.NumberFormat("en-US")` with grouping and fixed decimal precision; negative
-zero after rounding is normalized to zero. The number occupies its own nonwrapping
-line, and unit/label wrap below it.
+zero after rounding is normalized to zero. The number itself never wraps; the unit sits
+beside it and moves below when too long. The card is sized to its content.
 
 ## Reproduction and evidence
 

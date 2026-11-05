@@ -333,7 +333,14 @@
                   },
                   "params": {
                     "type": "object",
-                    "properties": {},
+                    "properties": {
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 240,
+                        "pattern": "^[^\\r\\n\\t]+$"
+                      }
+                    },
                     "additionalProperties": false
                   }
                 },
@@ -1208,13 +1215,51 @@
                         },
                         "placement": {
                           "default": "lower-left",
-                          "type": "string",
-                          "enum": [
-                            "lower-left",
-                            "upper-left",
-                            "center",
-                            "flow"
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "lower-left",
+                                "upper-left",
+                                "lower-right",
+                                "upper-right",
+                                "center",
+                                "flow"
+                              ]
+                            },
+                            {
+                              "type": "string",
+                              "const": "auto"
+                            }
                           ]
+                        },
+                        "subject": {
+                          "type": "array",
+                          "prefixItems": [
+                            {
+                              "type": "number",
+                              "minimum": -180,
+                              "maximum": 180
+                            },
+                            {
+                              "type": "number",
+                              "minimum": -85.051129,
+                              "maximum": 85.051129
+                            },
+                            {
+                              "type": "number",
+                              "minimum": -180,
+                              "maximum": 180
+                            },
+                            {
+                              "type": "number",
+                              "minimum": -85.051129,
+                              "maximum": 85.051129
+                            }
+                          ],
+                          "items": false,
+                          "minItems": 4,
+                          "maxItems": 4
                         },
                         "title": {
                           "type": "string",
@@ -1371,6 +1416,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -1524,6 +1571,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -1695,6 +1744,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -1845,6 +1896,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -2037,6 +2090,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -2229,6 +2284,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -2394,6 +2451,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -2575,6 +2634,8 @@
                           "enum": [
                             "lower-left",
                             "upper-left",
+                            "lower-right",
+                            "upper-right",
                             "center",
                             "flow"
                           ]
@@ -2605,7 +2666,13 @@
                         "unit": {
                           "type": "string",
                           "minLength": 1,
-                          "maxLength": 12,
+                          "maxLength": 20,
+                          "pattern": "^[^\\r\\n\\t]+$"
+                        },
+                        "date": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 32,
                           "pattern": "^[^\\r\\n\\t]+$"
                         },
                         "color": {
@@ -3230,10 +3297,305 @@
                         "glow": {
                           "default": false,
                           "type": "boolean"
+                        },
+                        "fromFraction": {
+                          "default": 0,
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 0.95
                         }
                       },
                       "required": [
                         "geojson"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "type",
+                    "props"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "maxLength": 80,
+                      "pattern": "^[a-z][a-z0-9-]*$"
+                    },
+                    "start": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "word": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "required": [
+                            "word"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "phrase": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 240,
+                              "pattern": "^[^\\r\\n\\t]+$"
+                            }
+                          },
+                          "required": [
+                            "phrase"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "time": {
+                              "type": "number",
+                              "minimum": 0
+                            }
+                          },
+                          "required": [
+                            "time"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "end": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "word": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "required": [
+                            "word"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "phrase": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 240,
+                              "pattern": "^[^\\r\\n\\t]+$"
+                            }
+                          },
+                          "required": [
+                            "phrase"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "time": {
+                              "type": "number",
+                              "minimum": 0
+                            }
+                          },
+                          "required": [
+                            "time"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "RouteLine"
+                    },
+                    "props": {
+                      "type": "object",
+                      "properties": {
+                        "geojson": {
+                          "$schema": "https://json-schema.org/draft/2020-12/schema",
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "const": "FeatureCollection"
+                            },
+                            "features": {
+                              "minItems": 1,
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "const": "Feature"
+                                  },
+                                  "properties": {
+                                    "type": "object",
+                                    "properties": {
+                                      "cumfrac": {
+                                        "minItems": 2,
+                                        "type": "array",
+                                        "items": {
+                                          "type": "number",
+                                          "minimum": 0,
+                                          "maximum": 1
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "cumfrac"
+                                    ],
+                                    "additionalProperties": {}
+                                  },
+                                  "geometry": {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "const": "LineString"
+                                      },
+                                      "coordinates": {
+                                        "minItems": 2,
+                                        "type": "array",
+                                        "items": {
+                                          "type": "array",
+                                          "prefixItems": [
+                                            {
+                                              "type": "number",
+                                              "minimum": -180,
+                                              "maximum": 180
+                                            },
+                                            {
+                                              "type": "number",
+                                              "minimum": -85.051129,
+                                              "maximum": 85.051129
+                                            }
+                                          ],
+                                          "items": false,
+                                          "minItems": 2,
+                                          "maxItems": 2
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "coordinates"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "properties",
+                                  "geometry"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "features"
+                          ]
+                        },
+                        "credit": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "pattern": "^[^\\r\\n\\t]+$"
+                        },
+                        "drawFrames": {
+                          "default": 120,
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 9007199254740991
+                        },
+                        "style": {
+                          "default": "solid",
+                          "type": "string",
+                          "enum": [
+                            "solid",
+                            "dashed"
+                          ]
+                        },
+                        "color": {
+                          "default": "regionA",
+                          "type": "string",
+                          "enum": [
+                            "regionA",
+                            "regionB",
+                            "conflict",
+                            "neutral"
+                          ]
+                        },
+                        "arrows": {
+                          "default": false,
+                          "type": "boolean"
+                        },
+                        "label": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 40,
+                              "pattern": "^[^\\r\\n\\t]+$"
+                            },
+                            "lonLat": {
+                              "type": "array",
+                              "prefixItems": [
+                                {
+                                  "type": "number",
+                                  "minimum": -180,
+                                  "maximum": 180
+                                },
+                                {
+                                  "type": "number",
+                                  "minimum": -85.051129,
+                                  "maximum": 85.051129
+                                }
+                              ],
+                              "items": false,
+                              "minItems": 2,
+                              "maxItems": 2
+                            }
+                          },
+                          "required": [
+                            "text",
+                            "lonLat"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "nodeAnchors": {
+                          "default": {},
+                          "type": "object",
+                          "propertyNames": {
+                            "type": "string"
+                          },
+                          "additionalProperties": {
+                            "type": "string",
+                            "enum": [
+                              "right",
+                              "left"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "geojson",
+                        "credit"
                       ],
                       "additionalProperties": false
                     }
@@ -3382,6 +3744,34 @@
                           "type": "integer",
                           "minimum": 1,
                           "maximum": 120
+                        },
+                        "only": {
+                          "minItems": 1,
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "color": {
+                          "type": "string",
+                          "enum": [
+                            "regionA",
+                            "regionB",
+                            "conflict",
+                            "neutral"
+                          ]
+                        },
+                        "exitAt": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 9007199254740991
+                        },
+                        "exitFrames": {
+                          "default": 30,
+                          "type": "integer",
+                          "minimum": 1,
+                          "maximum": 9007199254740991
                         }
                       },
                       "required": [
@@ -3549,6 +3939,11 @@
                         },
                         "enterFrame": {
                           "default": 0,
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 9007199254740991
+                        },
+                        "exitAt": {
                           "type": "integer",
                           "minimum": 0,
                           "maximum": 9007199254740991
@@ -3767,7 +4162,7 @@
     "Unique plate/shot ids and layer ids per shot; declared plate references; no outgoing transition on final shot.",
     "Ordered same-kind time/word ranges, geographic bounds, matching monotone followLine fractions.",
     "Component refinements: KeyFact emphasis, TimelineBar chronology/event bounds/no year zero, BRollClip trim budget.",
-    "Polygon ring closure; RiverLine coordinate/cumfrac lengths, endpoints and monotonicity.",
+    "Polygon ring closure; RiverLine and RouteLine coordinate/cumfrac lengths, endpoints and monotonicity.",
     "Text is trimmed by Zod before checking length; JSON Schema validates the raw input string."
   ]
 }

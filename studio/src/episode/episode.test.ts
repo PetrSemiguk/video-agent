@@ -125,6 +125,7 @@ describe("Episode assembly", () => {
     expect([...geoLayerTypes]).toEqual([
       "RegionHighlight",
       "RiverLine",
+      "RouteLine",
       "HistoricalLayer",
     ]);
     expect(geoLayerTypes.has("PlaceLabel")).toBe(false);

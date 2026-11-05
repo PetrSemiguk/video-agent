@@ -1,0 +1,815 @@
+{
+  "total_frames": 2028,
+  "credited_frames": 2028,
+  "natural_earth_credit_frames": 2028,
+  "max_camera_center_step_px": 9.080548939251642,
+  "max_camera_center_step_change_px": 1.0502980345416455,
+  "boundaries": [
+    {
+      "name": "establish",
+      "start": 0
+    },
+    {
+      "name": "focusOn",
+      "start": 132
+    },
+    {
+      "name": "focusOn",
+      "start": 256
+    },
+    {
+      "name": "followLine",
+      "start": 435
+    },
+    {
+      "name": "followLine",
+      "start": 580
+    },
+    {
+      "name": "focusOn",
+      "start": 907
+    },
+    {
+      "name": "flyTo",
+      "start": 1204
+    },
+    {
+      "name": "flyTo",
+      "start": 1410
+    },
+    {
+      "name": "flyTo",
+      "start": 1659
+    },
+    {
+      "name": "flyTo",
+      "start": 1815
+    }
+  ],
+  "keys": [
+    {
+      "f": 0,
+      "x": 12245143.987260092,
+      "y": 3895303.9633938945,
+      "zoom": 4.8,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 132,
+      "x": 12309879.448461471,
+      "y": 3916882.4504610207,
+      "zoom": 4.9375035237499345,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 256,
+      "x": 10964969.843137449,
+      "y": 3787185.5119421016,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 435,
+      "x": 12996550.55011469,
+      "y": 4011646.8232700047,
+      "zoom": 5.168353585297359,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 441,
+      "x": 12986551.55529584,
+      "y": 4017171.1289015794,
+      "zoom": 5.169846588027282,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 447,
+      "x": 12959896.703876812,
+      "y": 4032915.4289795533,
+      "zoom": 5.175106685921012,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 453,
+      "x": 12926762.380635433,
+      "y": 4056196.0263862927,
+      "zoom": 5.185935103454005,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 459,
+      "x": 12901731.028528795,
+      "y": 4077829.120081374,
+      "zoom": 5.205684858147268,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 465,
+      "x": 12884198.271099273,
+      "y": 4098222.362336168,
+      "zoom": 5.240544255711401,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 471,
+      "x": 12873356.204588214,
+      "y": 4117968.324059837,
+      "zoom": 5.293597353713884,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 477,
+      "x": 12868074.146710336,
+      "y": 4137584.5051264884,
+      "zoom": 5.341598235406807,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 483,
+      "x": 12867191.782878973,
+      "y": 4157493.298883681,
+      "zoom": 5.370555756208599,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 489,
+      "x": 12870122.482812874,
+      "y": 4177583.9108718005,
+      "zoom": 5.38680819623233,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 495,
+      "x": 12876264.68118058,
+      "y": 4197787.56418478,
+      "zoom": 5.395508494305776,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 501,
+      "x": 12885021.903203834,
+      "y": 4218138.373842022,
+      "zoom": 5.399360544454505,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 507,
+      "x": 12896118.708223898,
+      "y": 4238474.103614563,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 513,
+      "x": 12909076.747018639,
+      "y": 4258944.721492251,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 519,
+      "x": 12923630.28334904,
+      "y": 4279541.085613638,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 525,
+      "x": 12939661.790440353,
+      "y": 4300192.1296677785,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 531,
+      "x": 12957177.97780358,
+      "y": 4320640.566750725,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 537,
+      "x": 12975904.752966253,
+      "y": 4340892.293632798,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 543,
+      "x": 12995698.533222789,
+      "y": 4360914.9127806835,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 549,
+      "x": 13016555.678624803,
+      "y": 4380610.253323864,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 555,
+      "x": 13038311.350239942,
+      "y": 4399871.583508631,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 561,
+      "x": 13060614.41049716,
+      "y": 4418114.660837205,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 567,
+      "x": 13082857.829877514,
+      "y": 4435095.127979045,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 573,
+      "x": 13104493.125950793,
+      "y": 4450677.959369214,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 579,
+      "x": 13124983.83197414,
+      "y": 4464885.377426045,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 580,
+      "x": 13128256.76125634,
+      "y": 4467115.043934538,
+      "zoom": 5.4,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 586,
+      "x": 13124726.138869898,
+      "y": 4458046.288701952,
+      "zoom": 5.400104729917186,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 592,
+      "x": 13115234.966729015,
+      "y": 4433397.418262327,
+      "zoom": 5.400447125160511,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 598,
+      "x": 13099983.49839809,
+      "y": 4393098.370709177,
+      "zoom": 5.401080203312806,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 604,
+      "x": 13079322.268551555,
+      "y": 4337033.867794961,
+      "zoom": 5.402076774175518,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 610,
+      "x": 13053925.577572688,
+      "y": 4265005.308712409,
+      "zoom": 5.403539835196064,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 616,
+      "x": 13025561.163275484,
+      "y": 4176662.1506660413,
+      "zoom": 5.405619317357909,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 622,
+      "x": 12998654.22866636,
+      "y": 4080769.672528044,
+      "zoom": 5.408536814444217,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 628,
+      "x": 12975179.07248098,
+      "y": 3986131.73269529,
+      "zoom": 5.412605799374915,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 634,
+      "x": 12957878.079090837,
+      "y": 3903929.40000558,
+      "zoom": 5.4181500113878585,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 640,
+      "x": 12946385.729821034,
+      "y": 3834465.6422472666,
+      "zoom": 5.425000000000001,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 646,
+      "x": 12939770.796221673,
+      "y": 3776121.1510880142,
+      "zoom": 5.431849988612142,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 652,
+      "x": 12937304.035175169,
+      "y": 3727678.3968498777,
+      "zoom": 5.437394200625086,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 658,
+      "x": 12938325.962330015,
+      "y": 3688057.2009201376,
+      "zoom": 5.441463185555784,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 664,
+      "x": 12941994.88655969,
+      "y": 3656286.2013765187,
+      "zoom": 5.444380682642092,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 670,
+      "x": 12947640.114395188,
+      "y": 3631605.448602155,
+      "zoom": 5.446460164803937,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 676,
+      "x": 12954907.335227055,
+      "y": 3613015.584707133,
+      "zoom": 5.447923225824483,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 682,
+      "x": 12963324.190300928,
+      "y": 3599694.301946022,
+      "zoom": 5.4489197966871945,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 688,
+      "x": 12972586.019484935,
+      "y": 3590813.764970582,
+      "zoom": 5.4495528748394895,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 694,
+      "x": 12982619.470707288,
+      "y": 3585557.8239149586,
+      "zoom": 5.4498952700828145,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 700,
+      "x": 12993318.580734398,
+      "y": 3583286.8877155115,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 706,
+      "x": 13004364.373656087,
+      "y": 3583665.235813416,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 712,
+      "x": 13015697.774804793,
+      "y": 3586158.3640943244,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 718,
+      "x": 13027468.337386686,
+      "y": 3590113.1128019704,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 724,
+      "x": 13039487.66677914,
+      "y": 3595381.2523317724,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 730,
+      "x": 13051834.66806869,
+      "y": 3601663.8494028,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 736,
+      "x": 13064380.60867579,
+      "y": 3608864.987299909,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 742,
+      "x": 13076802.894568868,
+      "y": 3617116.551848447,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 748,
+      "x": 13088893.372933455,
+      "y": 3626454.2976218294,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 754,
+      "x": 13100760.239654606,
+      "y": 3636699.039229673,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 760,
+      "x": 13112565.912241906,
+      "y": 3647715.9614391886,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 766,
+      "x": 13124293.420204751,
+      "y": 3659641.9569867435,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 772,
+      "x": 13136113.61345145,
+      "y": 3672171.84908008,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 778,
+      "x": 13148060.929619353,
+      "y": 3685087.5806121673,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 784,
+      "x": 13160347.539055958,
+      "y": 3698051.323937452,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 790,
+      "x": 13173226.12941432,
+      "y": 3710629.0567862117,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 796,
+      "x": 13186818.36095657,
+      "y": 3722546.2606989215,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 802,
+      "x": 13201125.35238696,
+      "y": 3733490.159031166,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 808,
+      "x": 13215944.465759574,
+      "y": 3742858.568606081,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 814,
+      "x": 13231194.909035485,
+      "y": 3750221.0307265725,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 820,
+      "x": 13246848.716558162,
+      "y": 3755681.3318058834,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 826,
+      "x": 13262813.82135906,
+      "y": 3759651.416344182,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 832,
+      "x": 13279009.086903391,
+      "y": 3762441.7817770764,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 838,
+      "x": 13295371.385485733,
+      "y": 3764112.058429475,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 844,
+      "x": 13311783.320967996,
+      "y": 3764466.8029537825,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 850,
+      "x": 13328270.544862766,
+      "y": 3763441.1016943734,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 856,
+      "x": 13344995.12600578,
+      "y": 3761399.691691739,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 862,
+      "x": 13362014.037662495,
+      "y": 3758571.594076615,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 868,
+      "x": 13379264.110085387,
+      "y": 3755026.9003473953,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 874,
+      "x": 13396718.701501356,
+      "y": 3750618.4853073615,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 880,
+      "x": 13414276.615720557,
+      "y": 3745286.637671193,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 886,
+      "x": 13431555.47090093,
+      "y": 3739277.8380697705,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 892,
+      "x": 13448303.799107432,
+      "y": 3733018.7410885417,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 898,
+      "x": 13464268.024727944,
+      "y": 3726806.1027830727,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 904,
+      "x": 13479186.267039865,
+      "y": 3720842.1915161517,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 907,
+      "x": 13486202.052058753,
+      "y": 3718039.5767754805,
+      "zoom": 5.45,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 1204,
+      "x": 13035512.371892333,
+      "y": 4132536.252488918,
+      "zoom": 5.5,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 1410,
+      "x": 12579102.459639912,
+      "y": 4001978.423556837,
+      "zoom": 5,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 1659,
+      "x": 12356463.478053365,
+      "y": 3895303.9633938945,
+      "zoom": 4.72,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 1815,
+      "x": 12935324.830178387,
+      "y": 4096139.0404472323,
+      "zoom": 5.05,
+      "pitch": 0,
+      "bearing": 0
+    },
+    {
+      "f": 2028,
+      "x": 11966845.260276908,
+      "y": 3895303.9633938945,
+      "zoom": 4.75,
+      "pitch": 0,
+      "bearing": 0
+    }
+  ],
+  "credits_by_shot": [
+    {
+      "id": "opening",
+      "from": 0,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth"
+    },
+    {
+      "id": "plateau",
+      "from": 132,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth"
+    },
+    {
+      "id": "eastern-lowlands",
+      "from": 256,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth"
+    },
+    {
+      "id": "yellow-river",
+      "from": 435,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth"
+    },
+    {
+      "id": "yangtze",
+      "from": 580,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth"
+    },
+    {
+      "id": "grand-canal",
+      "from": 907,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth · Canal route: approximate, own compilation - see description"
+    },
+    {
+      "id": "five-basins",
+      "from": 1204,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth · Canal route: approximate, own compilation - see description"
+    },
+    {
+      "id": "division-and-reunion",
+      "from": 1410,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth · Historical borders: own composition from cited sources — see description · Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description"
+    },
+    {
+      "id": "incentives",
+      "from": 1659,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth · Canal route: approximate, own compilation - see description"
+    },
+    {
+      "id": "closing",
+      "from": 1815,
+      "credits": "Imagery: NASA Earth Observatory · Terrain: USGS, NOAA, EU-DEM (Copernicus) et al. via AWS Terrain Tiles · Made with Natural Earth · Canal route: approximate, own compilation - see description · Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description"
+    }
+  ]
+}

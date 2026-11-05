@@ -77,8 +77,9 @@ export const InfoFrame: React.FC<{
   duration: number;
   placement: TextPlacement;
   children: ReactNode;
-}> = ({ name, title, unit, duration, placement, children }) => (
-  <TextFrame name={name} duration={duration} placement={placement}>
+  fit?: boolean;
+}> = ({ name, title, unit, duration, placement, children, fit }) => (
+  <TextFrame name={name} duration={duration} placement={placement} fit={fit}>
     {title ? (
       <div
         data-info-box

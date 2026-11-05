@@ -64,6 +64,24 @@ website imagery, maps, logos, screenshots or prose into the video.
 | Worden, Savada and Dolan (eds.), *China: A Country Study* (GPO for Library of Congress, 1987), [text mirror](https://countrystudies.us/china/) and [LOC scan](https://tile.loc.gov/storage-services/master/frd/frdcstdy/ch/chinacountrystud00word/chinacountrystud00word.pdf) | US federal publication; use factual information in original wording only here. No third-party illustrations or quoted passages imported. | Yes, factual research and original narration | Cite edition and exact chapter URLs in the pilot facts ledger. Use only historical facts and physical geography, not its dated current-affairs statistics or border descriptions. |
 | UNESCO World Heritage Centre, [The Grand Canal](https://whc.unesco.org/en/list/1443/) | Page description marked CC BY-SA IGO 3.0. This pilot uses independently worded factual statements, not a reproduction/adaptation of the description or its media. | Yes, factual research and original narration | Cite UNESCO and URL in the pilot ledger/description. No photos, maps, logos, quoted prose or page assets imported. Any later media reuse requires separate review. |
 
+## Map data derived for episodes (step 4.6)
+
+Terrain masks (`vap.geo.terrainregion`) use only the AWS Terrain Tiles and Natural Earth rows above, and
+need no new credit beyond theirs. Canal routes use these factual references:
+
+| Source | License / permitted use | Commercial use? | Attribution / handling |
+|---|---|---|---|
+| Wikipedia, [Grand Canal (China)](https://en.wikipedia.org/wiki/Grand_Canal_(China)) and [Sui dynasty](https://en.wikipedia.org/wiki/Sui_dynasty), read 2026-11-05 | Text is CC BY-SA. Used only for facts (which places a canal section connects). No text, map or image imported. | Yes, as factual research | Cited per node in `routes/<slug>.sources.md`. Coordinates are our own, of the modern cities. |
+| China Highlights, [Grand Canal in China](https://www.chinahighlights.com/travelguide/culture/grand-canal.htm), read 2026-11-05 | Publisher's website; no open license looked for, as nothing is reused. Facts only (endpoints and years of sections). No text, map or image imported. | Yes, as factual research | Cited per node. A travel guide, so never the only source of a claim that matters. |
+
+**[HydroSHEDS / HydroBASINS](https://www.hydrosheds.org/products/hydrobasins) v1: NOT USED.** Read 2026-11-05 in
+[Technical Documentation v1.4](https://data.hydrosheds.org/file/technical-documentation/HydroSHEDS_TechDoc_v1_4.pdf),
+Appendix A. Commercial use is allowed, but the license is not clean for this channel: end users must be
+bound by a written license at least as protective, records of use must be kept for 2 years and open to WWF's
+inspection, the licensee indemnifies WWF, and WWF may terminate at its sole discretion. Nothing was
+downloaded. As the roadmap directs, the pilot lights the rivers themselves, from Natural Earth. **Do not**
+take HydroSHEDS v2 (announced as CC BY 4.0) for these terms: it is a separate product and was not reviewed.
+
 ## Voice models and watermarking
 
 Step 3.3 alignment sources (checked 2026-11-04, before installation/download):

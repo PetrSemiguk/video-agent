@@ -46,13 +46,23 @@ const ringsOf = (geometry: Polity["geometry"]) =>
 const HistoricalLayerView: React.FC<{
   slug: string;
   enterFrames: number;
-}> = ({ slug, enterFrames }) => {
+  only?: string[];
+  color?: RegionColor;
+  exitAt?: number;
+  exitFrames: number;
+}> = ({ slug, enterFrames, only, color, exitAt, exitFrames }) => {
   const frame = useCurrentFrame();
   const { meta, view, toPlatePx } = useMapProjection();
   const data = useGeoJson({
     layer: `geo/${meta.name}/historical/${slug}.geojson`,
   });
-  const polities = (data?.layer.features ?? []) as unknown as Polity[];
+  const polities = useMemo(
+    () =>
+      ((data?.layer.features ?? []) as unknown as Polity[]).filter(
+        (polity) => !only || only.includes(polity.properties.id),
+      ),
+    [data, only],
+  );
   const paths = useMemo(
     () =>
       polities.map((polity) =>
@@ -78,13 +88,23 @@ const HistoricalLayerView: React.FC<{
     extrapolateRight: "clamp",
     easing: motion.easing.out,
   });
+  const exit =
+    exitAt === undefined
+      ? 1
+      : interpolate(frame, [exitAt, exitAt + exitFrames], [1, 0], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+          easing: motion.easing.inOut,
+        });
+  const fillOf = (polity: Polity) =>
+    color ? regionColor[color] : polityColor(polity);
   return (
-    <GeoSvg style={{ opacity: appear }}>
+    <GeoSvg style={{ opacity: appear * exit }}>
       {polities.map((polity, i) => (
         <path
           key={polity.properties.id}
           d={paths[i]}
-          fill={polityColor(polity)}
+          fill={fillOf(polity)}
           fillRule="evenodd"
           opacity={opacity.polityFill}
         />
@@ -94,7 +114,7 @@ const HistoricalLayerView: React.FC<{
           key={polity.properties.id}
           d={paths[i]}
           fill="none"
-          stroke={polityColor(polity)}
+          stroke={fillOf(polity)}
           strokeWidth={stroke.polityBorder / view.scale}
           strokeLinejoin="round"
         />
@@ -106,6 +126,16 @@ const HistoricalLayerView: React.FC<{
 export const HistoricalLayer: React.FC<
   z.input<typeof historicalLayerSchema>
 > = (props) => {
-  const { slug, enterFrames } = historicalLayerSchema.parse(props);
-  return <HistoricalLayerView slug={slug} enterFrames={enterFrames} />;
+  const { slug, enterFrames, only, color, exitAt, exitFrames } =
+    historicalLayerSchema.parse(props);
+  return (
+    <HistoricalLayerView
+      slug={slug}
+      enterFrames={enterFrames}
+      only={only}
+      color={color}
+      exitAt={exitAt}
+      exitFrames={exitFrames}
+    />
+  );
 };

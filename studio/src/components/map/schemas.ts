@@ -49,6 +49,13 @@ export const historicalLayerSchema = z.strictObject({
     .min(1)
     .max(motion.frames.slow * 4)
     .default(motion.frames.slow),
+  /** Feature ids to draw; default all. */
+  only: z.array(z.string().min(1)).min(1).optional(),
+  /** Fill for the drawn features instead of their palette color. */
+  color: semanticSchema.optional(),
+  /** Frame, from the Sequence start, where the layer starts fading out. */
+  exitAt: z.number().int().min(0).optional(),
+  exitFrames: z.number().int().min(1).default(motion.frames.slow),
 });
 export const regionGeoContract = z.union([
   feature.extend({
@@ -92,6 +99,21 @@ export const riverGeoContract = collection.extend({
     }),
   ]),
 });
+export const routeGeoContract = collection.extend({
+  features: z
+    .array(
+      feature.extend({
+        geometry: z.object({
+          type: z.literal("LineString"),
+          coordinates: line,
+        }),
+        properties: z.looseObject({
+          cumfrac: z.array(z.number().min(0).max(1)).min(2),
+        }),
+      }),
+    )
+    .min(1),
+});
 export const regionGeo = z.custom<GeoCollection | GeoFeature>((value) => {
   const p = z.union([collection, feature]).safeParse(value);
   return (
@@ -102,6 +124,28 @@ export const regionGeo = z.custom<GeoCollection | GeoFeature>((value) => {
     )
   );
 }, "Expected nonempty Polygon/MultiPolygon GeoJSON with closed lon/lat rings");
+export const routeGeo = z.custom<GeoCollection>((value) => {
+  const p = collection.safeParse(value);
+  return (
+    p.success &&
+    p.data.features.every((f) => {
+      const fractions = f.properties.cumfrac;
+      return (
+        f.geometry.type === "LineString" &&
+        Array.isArray(fractions) &&
+        fractions.length === f.geometry.coordinates.length &&
+        fractions[0] === 0 &&
+        fractions[fractions.length - 1] === 1 &&
+        fractions.every(
+          (n, i) =>
+            typeof n === "number" &&
+            Number.isFinite(n) &&
+            (i === 0 || n >= fractions[i - 1]),
+        )
+      );
+    })
+  );
+}, "Expected LineStrings with matching nondecreasing cumfrac from 0 to 1");
 export const riverGeo = z.custom<GeoCollection>((value) => {
   const p = collection.safeParse(value);
   if (!p.success || p.data.features.length !== 1) return false;
@@ -137,6 +181,20 @@ export const riverLineSchema = z.strictObject({
   geojson: riverGeo,
   drawFrames: frames.default(motion.frames.draw),
   glow: z.boolean().default(false),
+  /** Length fraction already present at the start; only the rest is drawn. */
+  fromFraction: z.number().min(0).max(0.95).default(0),
+});
+export const routeLineSchema = z.strictObject({
+  geojson: routeGeo,
+  /** Mandatory on-screen credit, shown with the map attribution. */
+  credit: shortText(120),
+  drawFrames: frames.default(motion.frames.draw),
+  style: z.enum(["solid", "dashed"]).default("solid"),
+  color: semanticSchema.default("regionA"),
+  arrows: z.boolean().default(false),
+  /** Era label on the map, e.g. "SUI · 7TH CENTURY". */
+  label: z.strictObject({ text: shortText(40), lonLat: point }).optional(),
+  nodeAnchors: z.record(z.string(), z.enum(["right", "left"])).default({}),
 });
 export const placeLabelSchema = z.strictObject({
   lonLat: point,
@@ -144,4 +202,6 @@ export const placeLabelSchema = z.strictObject({
   kind: z.enum(["city", "region", "river"]),
   anchor: z.enum(["right", "left", "top", "bottom", "center"]).optional(),
   enterFrame: z.number().int().min(0).default(0),
+  /** Frame, from the Sequence start, where the label starts fading out. */
+  exitAt: z.number().int().min(0).optional(),
 });

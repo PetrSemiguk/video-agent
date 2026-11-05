@@ -27,6 +27,7 @@ export const KeyFact: React.FC<KeyFactProps> = (input) => {
       name="KeyFact"
       duration={props.durationInFrames}
       placement={props.placement}
+      fit
     >
       <div
         data-text-content

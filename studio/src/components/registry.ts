@@ -25,6 +25,7 @@ import { EndCard, endCardSchema } from "./cards/EndCard";
 import { BRollClip, bRollClipSchema } from "./media/BRollClip";
 import { RegionHighlight, regionHighlightSchema } from "./map/RegionHighlight";
 import { RiverLine, riverLineSchema } from "./map/RiverLine";
+import { RouteLine, routeLineSchema } from "./map/RouteLine";
 import { HistoricalLayer, historicalLayerSchema } from "./map/HistoricalLayer";
 import { PlaceLabel, placeLabelSchema } from "./map/PlaceLabel";
 import { MapAttribution, mapAttributionSchema } from "./MapAttribution";
@@ -37,7 +38,7 @@ export const componentRegistry = {
     purpose: "Episode title over an attributed PlateStage map.",
     when: "Opening or major chapter; place in the map screen layer.",
     notes:
-      "Optional kicker/subtitle. Semantic color styles kicker/rule. Fixed 1080p typography; title wraps. Match Sequence duration to durationInFrames.",
+      "Optional kicker/subtitle. Semantic color styles kicker/rule. Titles up to cards.hero.maxChars are set large on the map with a slow push-in; longer ones use the smaller size. Text wraps. Match Sequence duration to durationInFrames.",
   },
   EndCard: {
     component: EndCard,
@@ -62,7 +63,7 @@ export const componentRegistry = {
     purpose: "Title and optional subtitle with a semantic left bar.",
     when: "Introduce a place, theme or section without covering the whole map.",
     notes:
-      "Duration uses local frames. Placement defaults lower-left; flow is for parent-managed layouts. See docs/text-layers.md.",
+      "Width follows the content between textLayer.fit widths. placement auto needs subject (lon/lat bounds of the shot's subject): the first corner clear of its screen box over the whole layer's life, checked along the camera path, in the order lower-left, lower-right, upper-left, upper-right; bottom 12% stays free. Use it only for concepts that cannot be pointed at (docs/visual-grammar.md). flow is for parent-managed layouts. See docs/text-layers.md.",
   },
   SectionTag: {
     component: SectionTag,
@@ -123,10 +124,11 @@ export const componentRegistry = {
   StatCounter: {
     component: StatCounter,
     schema: statCounterSchema,
-    purpose: "One large signed number counting from a specified origin.",
-    when: "A single quantity deserves emphasis.",
+    purpose:
+      "One large signed number with its unit, one line of meaning and an optional date line.",
+    when: "A single quantity deserves emphasis, over a map showing what it is about.",
     notes:
-      "Explicit en-US grouping, fixed decimal precision, normalized rounded negative zero. Value and from are bounded at ±1 trillion. Unit is on a separate line.",
+      'Reads as one claim: "5 river systems" / "linked by the Grand Canal". Never put a date in unit: use date. Explicit en-US grouping, fixed decimal precision, normalized rounded negative zero. Value and from are bounded at ±1 trillion. Unit sits beside the number and wraps under it when too long. The card is content-sized.',
   },
   RegionHighlight: {
     component: RegionHighlight,
@@ -143,7 +145,7 @@ export const componentRegistry = {
     purpose: "Fills all polities of a historical layer on the shot's plate.",
     when: "In PlateStage geo, to show who held what on a date; name polities with PlaceLabel.",
     notes:
-      "slug is data/processed/<plate>/historical/<slug>.geojson. credit must equal the layer's `attribution`; validation checks it. A layer whose <slug>.errata.json has a blocker fails validation and the episode build unless errataOverride gives a reason. See docs/maps.md for choosing a layer.",
+      "slug is data/processed/<plate>/historical/<slug>.geojson. credit must equal the layer's `attribution`; validation checks it. A layer whose <slug>.errata.json has a blocker fails validation and the episode build unless errataOverride gives a reason. only lists feature ids to draw; color overrides their fill; exitAt fades the layer out for a change of map. See docs/maps.md for choosing a layer.",
   },
   RiverLine: {
     component: RiverLine,
@@ -151,7 +153,16 @@ export const componentRegistry = {
     purpose: "Source-to-mouth tapered river draw with optional glow.",
     when: "In PlateStage geo, with vap.geo.river output.",
     notes:
-      "Exactly one LineString feature. properties.cumfrac length equals coordinates, starts 0, ends 1, is finite/nondecreasing within 0–1. This runtime GeoJSON rule supplements the generated contract.",
+      "Exactly one LineString feature. properties.cumfrac length equals coordinates, starts 0, ends 1, is finite/nondecreasing within 0–1. This runtime GeoJSON rule supplements the generated contract. fromFraction fades in the upstream part and draws only the rest, for following one reach of a long river.",
+  },
+  RouteLine: {
+    component: RouteLine,
+    schema: routeLineSchema,
+    purpose:
+      "Progressive draw of a route: canal, campaign or trade path, with node labels and an era label.",
+    when: "In PlateStage geo, with vap.geo.route output, whenever narration names a route.",
+    notes:
+      "Every LineString needs properties.cumfrac; properties.nodes with label true get a dot and a name when the head passes. Branches draw one after another at the same speed along their length. style solid or dashed; dash for an approximate or planned course. arrows mark travel direction. credit is mandatory and shown in the map attribution. Node labels default to the right of the dot; nodeAnchors moves them.",
   },
   PlaceLabel: {
     component: PlaceLabel,
@@ -159,7 +170,7 @@ export const componentRegistry = {
     purpose: "Projected city, region or river label with constant screen size.",
     when: "In PlateStage screen; lonLat is geographic, never plate pixels.",
     notes:
-      "City labels include dots. Anchors can be overridden; label boxes clamp into the safe area above the bottom reserve. Region labels display uppercase. Supply concise place names even though the validation budget is 40 characters.",
+      "City labels include dots. Anchors can be overridden; label boxes clamp into the safe area above the bottom reserve. Region labels display uppercase. Supply concise place names even though the validation budget is 40 characters. exitAt fades the label out with its map.",
   },
   MapAttribution: {
     component: MapAttribution,

@@ -35,6 +35,7 @@ export const BigDate: React.FC<BigDateProps> = (input) => {
       name="BigDate"
       duration={props.durationInFrames}
       placement={props.placement}
+      fit
     >
       <div
         data-text-content

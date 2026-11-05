@@ -13,6 +13,7 @@ import { prepareEpisode } from "./prepare-episode.mjs";
 const require = createRequire(import.meta.url);
 require("./load-ts.cjs");
 const { styleReview, type, colors } = require("../src/design/tokens.ts");
+const { buildCamera } = require("../src/episode/camera.ts");
 const leadArgument = process.argv.find((arg) =>
   arg.startsWith("--lead-frames="),
 );
@@ -96,6 +97,42 @@ const prepared = composition.props.prepared;
 const slug = prepared.storyboard.episode.slug;
 const previewShots = [];
 const firstFrames = prepared.assembly.shots.map((s) => s.from);
+if (!smoke) {
+  // Every frame's camera, for vap.qa.motion: the gate runs before anything is rendered.
+  const timeline = buildCamera(
+    prepared.storyboard,
+    prepared.assembly,
+    prepared.metas,
+    composition.width,
+    composition.height,
+  );
+  const plan = {
+    slug,
+    fps: composition.fps,
+    width: composition.width,
+    height: composition.height,
+    frames: Array.from({ length: composition.durationInFrames }, (_, f) => {
+      const pose = timeline.poseAt(f);
+      return [pose.x, pose.y, pose.zoom];
+    }),
+    shots: prepared.assembly.shots.map((shot, i) => {
+      const { camera } = prepared.storyboard.shots[i];
+      return {
+        id: shot.id,
+        from: shot.from,
+        frames: shot.durationInFrames,
+        preset: camera.preset,
+        reason:
+          camera.preset === "hold" ? (camera.params.reason ?? null) : null,
+      };
+    }),
+  };
+  fs.writeFileSync(
+    `out/${slug}-camera-plan.json`,
+    JSON.stringify(plan) + "\n",
+    "utf8",
+  );
+}
 const smokeStart = prepared.assembly.shots[1].from;
 for (const frame of videoOnly
   ? []

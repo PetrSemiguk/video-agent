@@ -280,6 +280,11 @@ export const followLine = (
     pitch?: number;
     /** Frames over which the camera eases from its start pose onto the line. */
     blend?: number;
+    /**
+     * Screen px per frame. When given, the camera chases the aim point at no more than this
+     * speed, instead of blending onto it over a fixed time.
+     */
+    maxSpeed?: number;
   } = {},
 ): Segment => ({
   name: "followLine",
@@ -318,6 +323,34 @@ export const followLine = (
       };
     };
     const out: CamKey[] = [];
+    if (opts.maxSpeed !== undefined) {
+      const { maxAccelPx, chaseGain } = motion.camera;
+      let [x, y, vx, vy] = [s.x, s.y, 0, 0];
+      for (let f = 1; f <= frames; f++) {
+        const w = motion.easing.inOut(Math.min(1, f / blend));
+        const z = s.zoom + (zoom - s.zoom) * w;
+        const mpp = metersPerPx(z);
+        const c = aim(ctx.startFrame + f);
+        let [wantX, wantY] = [(c.x - x) * chaseGain, (c.y - y) * chaseGain];
+        const fast = Math.hypot(wantX, wantY) / (opts.maxSpeed * mpp);
+        if (fast > 1) [wantX, wantY] = [wantX / fast, wantY / fast];
+        let [dx, dy] = [wantX - vx, wantY - vy];
+        const hard = Math.hypot(dx, dy) / (maxAccelPx * mpp);
+        if (hard > 1) [dx, dy] = [dx / hard, dy / hard];
+        [vx, vy] = [vx + dx, vy + dy];
+        [x, y] = [x + vx, y + vy];
+        if (f % every === 0 || f === frames)
+          out.push({
+            f,
+            x,
+            y,
+            zoom: z,
+            pitch: s.pitch + (pitch - s.pitch) * w,
+            bearing: s.bearing,
+          });
+      }
+      return out;
+    }
     for (let f = every; f < frames; f += every) out.push(key(f));
     out.push(key(frames));
     return out;

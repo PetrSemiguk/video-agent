@@ -16,6 +16,8 @@ export const colors = {
   riverGlow: "rgba(143, 208, 255, 0.35)",
   /** Brighter colour at the drawing head of a river. */
   riverHead: "#e6f6ff",
+  /** Dark casing under routes, so they read on bright terrain. */
+  routeCasing: "rgba(5, 8, 11, 0.7)",
   border: "rgba(255, 255, 255, 0.7)",
   labelText: "#f4f1ea",
   labelTextMuted: "#b3bdc8",
@@ -41,6 +43,9 @@ export const stroke = {
   border: 1.5,
   regionOutline: 2.5,
   polityBorder: 2,
+  /** Route line and the casing under it, on-screen px. */
+  route: 4.5,
+  routeHalo: 3,
   /** Rivers taper from `min` at the source to `max` at the mouth. */
   river: { min: 1.2, max: 4.5 },
   /** Extra width of the glow under a river. */
@@ -130,6 +135,19 @@ export const motion = {
     heartlandEnter: 36,
     cities: 480,
     cityStagger: 8,
+  },
+  /**
+   * Camera limits for episodes, in screen px per frame. 9 is the "7 seconds to cross the frame"
+   * rule of thumb for pans (1920 / (7 * 30) = 9.1). Labels on the map stay readable at it; at 14
+   * in pilot v2 a label appearing during the move could not be read.
+   */
+  camera: {
+    maxSpeedPx: 9,
+    /** Allowed overshoot of the spline between keys before the check fails. */
+    speedTolerancePx: 0.5,
+    maxAccelPx: 0.25,
+    /** Share of the remaining distance a limited camera tries to cover per frame. */
+    chaseGain: 0.03,
   },
   /** Starting scale of elements that grow in on entrance. */
   enterScale: 0.94,
@@ -284,6 +302,21 @@ export const plateLookJson = String.raw`{
 
 export const polityPalette = styleReview.polity;
 
+/** RouteLine: canals, campaigns, trade routes. Sizes are on-screen px unless noted. */
+export const routeLine = {
+  /** Dash and gap in plate px, so the pattern stays attached to the map under zoom. */
+  dash: [22, 14],
+  arrowEveryKm: 280,
+  arrowLength: 18,
+  arrowWidth: 14,
+  nodeDot: 11,
+  labelGap: 14,
+  /** Share of the drawing over which the line fades in. */
+  enterFraction: 0.04,
+  /** Half length, as a fraction of the branch, of the piece giving an arrow's direction. */
+  tangentFraction: 0.002,
+} as const;
+
 /** Historical layers. Debug still sizing plus the mandatory source credit. */
 export const hist = {
   /** Just past "the plate exactly fills the frame", as PlateStage requires a margin. */
@@ -301,6 +334,18 @@ export const shadow = { halo: stroke.labelHalo, color: colors.labelHalo };
 /** Text layers use native 1080p pixels and never shrink text to fit. */
 export const textLayer = {
   maxWidth: 1120,
+  /** Content-sized cards (LowerThird, StatCounter). */
+  fit: {
+    minWidth: 320,
+    maxWidth: 1120,
+    /** Upper bound of average glyph width in em, for placement before layout. */
+    headlineGlyph: 0.56,
+    bodyGlyph: 0.58,
+    /** Free space kept between a card and the shot's subject, px. */
+    clearance: 16,
+    /** Frames between camera samples when checking the subject's screen box. */
+    sampleEvery: 6,
+  },
   padding: 24,
   gap: 16,
   bar: 8,
@@ -342,6 +387,7 @@ export const infoLayer = {
   bodySize: 28,
   smallSize: 26,
   statSize: 88,
+  statUnitSize: 44,
   gap: 16,
   smallGap: 8,
   sectionGap: 24,
@@ -362,6 +408,8 @@ export const infoLayer = {
     title: 48,
     label: 48,
     unit: 12,
+    statUnit: 20,
+    statDate: 32,
     item: 80,
     cardTitle: 32,
     cardBody: 80,
@@ -385,6 +433,16 @@ export const cards = {
   titleSize: 88,
   subtitleSize: 34,
   kickerSize: 26,
+  /** Short titles are set large, directly on the map. */
+  hero: {
+    maxChars: 24,
+    titleSize: 184,
+    subtitleSize: 44,
+    tracking: 0.06,
+    /** Scale reached by the end of the card: a slow push-in matching the camera. */
+    push: 1.05,
+    halo: "0 0 48px rgba(5, 8, 11, 0.75), 0 4px 16px rgba(5, 8, 11, 0.85)",
+  },
   gap: 24,
   titleLimit: 80,
   subtitleLimit: 120,

@@ -18,6 +18,7 @@ from importlib.metadata import version
 from pathlib import Path
 
 from vap.geo import errata, hist_attribution
+from vap.qa import motion
 
 ROOT = Path(__file__).resolve().parents[3]
 STAGES = ("voice", "align", "preview", "render")
@@ -312,6 +313,28 @@ class Builder:
         files += [runtime, self.audio / "voice.wav", self.audio / "words.json", *media]
         return {"files": self.hashes(files), "runtime": self.runtime(visual=True)}
 
+    def motion_gate(self, stage: str) -> Path:
+        """Fail the stage on a still camera. Preview checks the plan, render the actual video."""
+        report = self.work / f"{stage}-motion.json"
+        args = [
+            sys.executable,
+            "-m",
+            "vap.qa.motion",
+            "--plan",
+            str(self.out / f"{self.slug}-camera-plan.json"),
+            "--check",
+            f"--report={report}",
+        ]
+        if stage == "render":
+            args += [str(self.out / f"episode-{self.slug}-synced.mp4")]
+        try:
+            self.command(args, self.root / "pipeline")
+        except RuntimeError as error:
+            if report.is_file():
+                raise ValueError(motion.failure_message(read_json(report)["gate"])) from error
+            raise
+        return report
+
     def visual(self, stage: str):
         metadata = self.work / f"{stage}-metadata.json"
         args = [
@@ -323,7 +346,9 @@ class Builder:
         ]
         self.command(args, self.root / "studio")
         if stage == "render":
-            return [self.out / f"episode-{self.slug}-synced.mp4", metadata]
+            report = self.motion_gate(stage)
+            return [self.out / f"episode-{self.slug}-synced.mp4", metadata, report]
+        report = self.motion_gate(stage)
         payload = read_json(self.out / f"{self.slug}-preview-input.json")
         frames = [Path(s["image"]).resolve() for s in payload["shots"]]
         if not frames or any(not p.is_relative_to(self.out) for p in frames):
@@ -331,10 +356,16 @@ class Builder:
         return (
             [
                 self.out / f"{self.slug}-{suffix}"
-                for suffix in ("preview.png", "preview-input.json", "assembly.json", "sync.json")
+                for suffix in (
+                    "preview.png",
+                    "preview-input.json",
+                    "assembly.json",
+                    "sync.json",
+                    "camera-plan.json",
+                )
             ]
             + frames
-            + [metadata]
+            + [metadata, report]
         )
 
     def run_stage(self, stage: str):

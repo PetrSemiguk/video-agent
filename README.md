@@ -43,6 +43,9 @@ Build the approved pilot, or substitute your episode slug:
 uv run python -m vap.episode build china-unity-pilot --stage all
 ```
 
+The preview and render stages fail on a still camera; see "Motion is a build rule" in
+[visual-grammar.md](docs/visual-grammar.md). Write storyboards by that document.
+
 To stop earlier, or resume through a selected stage:
 
 ```powershell

@@ -1,6 +1,6 @@
 # Storyboard authoring contract (v1)
 
-The source of truth is `studio/src/storyboard/schema.ts`. It reuses all sixteen
+The source of truth is `studio/src/storyboard/schema.ts`. It reuses all
 production props schemas from `components/registry.ts`; see `docs/components.md`
 for content/layout limits. Input is strict JSON, no functions, React nodes,
 arbitrary component names or inline styles. This step defines/validates data;
@@ -112,7 +112,7 @@ the existing presets; it does not create a CameraPath function in JSON.
 | --- | --- |
 | `establish` | Required `target`; optional push (0–1), drift [dx,dy]. |
 | `drift` | Optional dir [x,y], amount (0–1), zoom delta (-4–4). Inherit current pose. |
-| `hold` | Empty object; inherit current pose. |
+| `hold` | Optional `reason`; inherit current pose. Over 2 s without a reason fails motion QA, see [visual-grammar.md](visual-grammar.md). |
 | `focusOn` | Required bounds [west,south,east,north], positive area; optional padding, tilt, bearing, maxZoom. |
 | `flyTo` | Required `to` target; optional `from`, rho>0, farFrames>=0, samples>=2. |
 | `followLine` | Required line `{points:[[lon,lat],...],cumfrac:[0,...,1]}` and drawFrames; optional lead, lag, smooth, zoom, every, pitch, blend. |

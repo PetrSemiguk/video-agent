@@ -147,6 +147,10 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
   — main stem source→mouth (extended to the sea) with `cumfrac` into `data/processed/<p>/rivers/<slug>.geojson`
 - `uv run python -m vap.geo.find "<name>" [--layer rivers|regions|places|countries|admin1|lakes]`
   — look up Natural Earth ids by name
+- `uv run python -m vap.geo.terrainregion --plate <p> --name <slug> (--min-elev M | --max-elev M) [--seed lon,lat] [--smooth km] [--bbox w,s,e,n]`
+  — connected terrain mask, clipped to NE land, to `data/processed/<p>/terrain/<slug>.geojson`
+- `uv run python -m vap.geo.route --plate <p> --spec <file.yaml>` — custom route from sourced nodes to
+  `data/processed/<p>/routes/<slug>.geojson` + `<slug>.sources.md`; see "Custom routes" in docs/maps.md
 - `uv run python -m vap.geo.hist probe --plate <p> --date <YYYY-MM-DD> [--search "<regex>"]` — what
   OHM holds on a date; `--search` looks worldwide by name. Evidence in `docs/reports/1.7/`
 - `uv run python -m vap.geo.hist extract --plate <p> --date <YYYY-MM-DD> --slug <slug>` — state polygons
@@ -165,7 +169,8 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
 - `uv run python -m vap.qa.flicker <mp4> --from 9.2 --to 12` — luma flicker on a static section
 - `uv run python -m vap.qa.contact <mp4>... --times 0,2,4 --out <png>` — contact sheet
 - `uv run python -m vap.qa.motion <mp4> [--marks 4,9.5]` — camera smoothness: shift speed per frame
-  (phase correlation), max jump, chart `<video>-motion.png`
+  (phase correlation), max jump, chart `<video>-motion.png`; `--plan <slug>-camera-plan.json --check` applies
+  the build rule on still stretches (docs/visual-grammar.md)
 - `uv run ruff check .` / `uv run ruff format .` — lint / format
 - `uv run pytest` — tests
 
@@ -188,5 +193,6 @@ Claude Code skills also use. Check `git diff skills-lock.json` afterwards and le
 - [docs/licenses.md](docs/licenses.md) — source licenses and attribution texts
 - [docs/python-env.md](docs/python-env.md) — Python/torch/CUDA stack and model cache
 - [docs/maps.md](docs/maps.md) — map plates: sources, lon/lat → px contract, adding a region
+- [docs/visual-grammar.md](docs/visual-grammar.md) — how a storyboard uses the map: rules, pattern table, anti-patterns
 - [docs/roadmap.md](docs/roadmap.md) — work plan and the step report protocol
 - [docs/automation.md](docs/automation.md) — autonomous runs, notifications, merging `auto/*`

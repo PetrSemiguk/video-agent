@@ -69,6 +69,7 @@ export type EpisodeShot = ParsedStoryboard["shots"][number];
 export const geoLayerTypes = new Set([
   "RegionHighlight",
   "RiverLine",
+  "RouteLine",
   "HistoricalLayer",
 ]);
 
@@ -96,7 +97,8 @@ export const creditsAt = (
     for (const layer of shot.layers) {
       if (geoLayerTypes.has(layer.type)) sources.add("Made with Natural Earth");
       if (layer.type === "MapAttribution") sources.add(layer.props.text);
-      if (layer.type === "HistoricalLayer") sources.add(layer.props.credit);
+      if (layer.type === "HistoricalLayer" || layer.type === "RouteLine")
+        sources.add(layer.props.credit);
       if (layer.type === "BRollClip")
         sources.add(brollAssets[layer.props.assetId].credit);
     }

@@ -1,0 +1,42 @@
+slug: grand-canal-yuan
+name_en: Yuan Grand Canal
+era: Yuan dynasty, navigable Hangzhou to Dadu by 1293
+sources:
+  wiki-canal:
+    url: https://en.wikipedia.org/wiki/Grand_Canal_(China)
+    supports: >-
+      Sections of the Hangzhou-Beijing route: Jiangnan through Jiaxing, Suzhou, Wuxi and Changzhou to
+      Zhenjiang; Yangzhou to Huai'an; past Xuzhou to the lakes; Jining, Dongping, Liaocheng and
+      Linqing on the Lu or Shandong section; Dezhou and Cangzhou to Tianjin; Tianjin to Tongzhou;
+      Tongzhou to central Beijing, built under the Yuan. Connects the Hai, Yellow, Huai, Yangtze and Qiantang.
+  china-highlights:
+    url: https://www.chinahighlights.com/travelguide/culture/grand-canal.htm
+    supports: Yuan works on the Jizhou (1281), Huitong (1289) and Tonghui (1292) sections, with Hangzhou to Dadu navigable in 1293.
+simplifications:
+  - Node order and places come from descriptions of the canal's sections, some of them written about its later or modern course. The route is the Hangzhou-Beijing alignment in outline, not a reconstruction of the 13th-century channel.
+  - Huai'an to Jining is simplified through Xuzhou, the one place named on that reach. In the Yuan period this reach used natural rivers whose courses have since changed, so nothing is snapped to a modern river there.
+  - Only Tianjin northward follows Natural Earth, along the short mapped reach named Hai. The modern Yellow River in Natural Earth is not the 13th-century channel and is not followed.
+  - Wuqing is not named by the sources. It is a routing point at the end of the mapped Hai reach, on the Tianjin to Tongzhou section they describe.
+  - Coordinates are those of the modern cities.
+branches:
+  - id: main
+    nodes:
+      - {name: Hangzhou, lonlat: [120.16, 30.27], sources: [wiki-canal, china-highlights], label: true}
+      - {name: Jiaxing, lonlat: [120.75, 30.75], sources: [wiki-canal]}
+      - {name: Suzhou, lonlat: [120.62, 31.30], sources: [wiki-canal]}
+      - {name: Wuxi, lonlat: [120.30, 31.57], sources: [wiki-canal]}
+      - {name: Changzhou, lonlat: [119.97, 31.78], sources: [wiki-canal]}
+      - {name: Zhenjiang, lonlat: [119.45, 32.20], sources: [wiki-canal]}
+      - {name: Yangzhou, lonlat: [119.42, 32.39], sources: [wiki-canal], label: true}
+      - {name: Huai'an, lonlat: [119.02, 33.55], sources: [wiki-canal]}
+      - {name: Xuzhou, lonlat: [117.28, 34.26], sources: [wiki-canal]}
+      - {name: Jining, lonlat: [116.59, 35.41], sources: [wiki-canal], label: true}
+      - {name: Dongping, lonlat: [116.47, 35.91], sources: [wiki-canal]}
+      - {name: Liaocheng, lonlat: [115.98, 36.45], sources: [wiki-canal]}
+      - {name: Linqing, lonlat: [115.70, 36.84], sources: [wiki-canal, china-highlights]}
+      - {name: Dezhou, lonlat: [116.30, 37.45], sources: [wiki-canal]}
+      - {name: Cangzhou, lonlat: [116.84, 38.30], sources: [wiki-canal]}
+      - {name: Tianjin, lonlat: [117.20, 39.13], sources: [wiki-canal]}
+      - {name: Wuqing, lonlat: [117.04, 39.38], sources: [wiki-canal], follow: hai}
+      - {name: Tongzhou, lonlat: [116.66, 39.91], sources: [wiki-canal]}
+      - {name: Beijing, lonlat: [116.39, 39.93], sources: [wiki-canal, china-highlights], label: true}

@@ -52,6 +52,10 @@ export type MapProjection = {
   toScreen: (lonLat: LonLatTuple) => Px;
   /** Plate px → frame px. */
   plateToScreen: (p: Px) => Px;
+  /** Stage frame this projection belongs to. */
+  frame: number;
+  /** The projection at another frame of the same stage, for checks across a layer's life. */
+  at: (frame: number) => MapProjection;
 };
 
 const ProjectionContext = createContext<MapProjection | null>(null);
@@ -64,6 +68,9 @@ export const useMapProjection = (): MapProjection => {
     );
   return ctx;
 };
+
+/** For components that also render outside a map, such as review sheets. */
+export const useOptionalMapProjection = () => useContext(ProjectionContext);
 
 export const MIN_EDGE_MARGIN_PX = 2;
 /**
@@ -81,6 +88,8 @@ export const makeProjection = (
   view: PlateView,
   width: number,
   height: number,
+  frame = 0,
+  viewAt: (frame: number) => PlateView = () => view,
 ): MapProjection => {
   const toPlatePx = ([lon, lat]: LonLatTuple) =>
     lonLatToPlatePx(meta, { lon, lat });
@@ -94,6 +103,8 @@ export const makeProjection = (
     toPlatePx,
     plateToScreen,
     toScreen: (ll) => plateToScreen(toPlatePx(ll)),
+    frame,
+    at: (f) => makeProjection(meta, viewAt(f), width, height, f, viewAt),
   };
 };
 
@@ -231,6 +242,8 @@ export const PlateSequence: React.FC<{
     views[active],
     width,
     height,
+    frame,
+    (f) => plateView(metas[active], camera(metas[0], f / fps, width, height)),
   );
   const attribution = [metas[active].attribution.on_screen, extraAttribution]
     .filter(Boolean)

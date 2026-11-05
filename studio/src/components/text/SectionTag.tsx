@@ -20,6 +20,7 @@ export const SectionTag: React.FC<SectionTagProps> = (input) => {
       name="SectionTag"
       duration={props.durationInFrames}
       placement={props.placement}
+      fit
     >
       <div
         data-text-content

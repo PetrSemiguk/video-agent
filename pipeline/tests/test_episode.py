@@ -9,6 +9,29 @@ import pytest
 
 from vap import episode
 from vap.episode import Builder, StageError, build_lock, digest, read_json, write_json
+from vap.qa import motion
+
+
+def camera_plan(kind: str, frames: int = 300) -> dict:
+    """A camera plan: "moving" pans all the time, the others stand still after one second."""
+    still = kind != "moving"
+    return {
+        "fps": 30,
+        "width": 1920,
+        "height": 1080,
+        "frames": [
+            [(min(f, 30) if still else f) * 2000.0, 0.0, 5.0] for f in range(frames)
+        ],  # fmt: skip
+        "shots": [
+            {
+                "id": "only",
+                "from": 0,
+                "frames": frames,
+                "preset": "hold" if kind.startswith("hold") else "focusOn",
+                "reason": "The map is being read" if kind == "hold-reason" else None,
+            }
+        ],
+    }
 
 
 @pytest.fixture
@@ -41,6 +64,12 @@ def project(tmp_path, monkeypatch):
     def command(self, arguments, cwd, *, capture=False):
         if "scripts/episode-inputs.cjs" in arguments:
             return json.dumps(["studio/public/plates/test.png"]).encode()
+        if "vap.qa.motion" in arguments:
+            # The real rule on the plan; a fixture "video" cannot be decoded, so skip it.
+            real = [a for a in arguments[3:] if not a.endswith(".mp4")]
+            if motion.main(real):
+                raise RuntimeError("Command exited 1")
+            return b""
         calls.append(self.current)
         self.audio.mkdir(parents=True, exist_ok=True)
         if "vap.align.repair" in arguments:
@@ -92,9 +121,11 @@ def project(tmp_path, monkeypatch):
                 )
                 for suffix in ("assembly.json", "sync.json"):
                     write_json(self.out / f"pilot-{suffix}", {})
+                write_json(self.out / "pilot-camera-plan.json", camera_plan(self.motion_fixture))
                 (self.out / "pilot-preview.png").write_bytes(b"preview sheet")
         return b""
 
+    monkeypatch.setattr(Builder, "motion_fixture", "moving", raising=False)
     monkeypatch.setattr(Builder, "command", command)
     monkeypatch.setattr(Builder, "runtime", lambda self, visual=False: {"test": "pinned"})
     return root, calls
@@ -283,3 +314,20 @@ def test_real_worker_exit_is_reported_by_cli_with_stage_and_log(project, monkeyp
     work = project[0] / "studio/out/episodes/pilot"
     assert "controlled failure" in (work / "voice.log").read_text(encoding="utf-8")
     assert len(read_json(work / "build-summary.json")["stages"]) == 1
+
+
+def test_still_camera_fails_preview_with_shot_time_and_rule(project, monkeypatch):
+    monkeypatch.setattr(Builder, "motion_fixture", "frozen", raising=False)
+    with pytest.raises(StageError, match=r"\[preview\].*Motion QA.*in only.*hold with a reason"):
+        build(project, "preview")
+    summary = read_json(project[0] / "studio/out/episodes/pilot/build-summary.json")
+    assert summary["completed"] is False
+    assert not (project[0] / "studio/out/episode-pilot-synced.mp4").exists()
+
+
+def test_hold_without_reason_fails_and_with_reason_passes(project, monkeypatch):
+    monkeypatch.setattr(Builder, "motion_fixture", "hold-bare", raising=False)
+    with pytest.raises(StageError, match="Motion QA"):
+        build(project, "preview")
+    monkeypatch.setattr(Builder, "motion_fixture", "hold-reason", raising=False)
+    build(project, "preview")

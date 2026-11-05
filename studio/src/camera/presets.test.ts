@@ -6,7 +6,8 @@ import type { GeoCollection } from "../geo/geojson";
 import { lonLatToPlatePx } from "../geo/plate";
 import { plateView, projectToScreen } from "./plateProjection";
 import { drift, establish, flyTo, focusOn, followLine, hold } from "./presets";
-import { cameraTimeline, metersPerPx, Timeline } from "./timeline";
+import { motion } from "../design/tokens";
+import { cameraTimeline, fromMerc, metersPerPx, Timeline } from "./timeline";
 
 const W = 1920;
 const H = 1080;
@@ -175,5 +176,51 @@ describe("showreel camera respects plate limits", () => {
       H,
     );
     console.log("plate limits:", JSON.stringify(report));
+  });
+});
+
+describe("speed limit of followLine", () => {
+  const line = {
+    points: [
+      [100, 30],
+      [125, 30],
+    ] as [number, number][],
+    cumfrac: [0, 1],
+  };
+  const timelineWith = (maxSpeed?: number) =>
+    cameraTimeline(
+      [
+        establish({ center: { lon: 118, lat: 38 }, zoom: 5.4 }, 30),
+        followLine(line, (f) => Math.max(0, (f - 30) / 300), 300, {
+          zoom: 5.4,
+          blend: 60,
+          ...(maxSpeed ? { maxSpeed } : {}),
+        }),
+      ],
+      { fps: 30, width: 1920, height: 1080 },
+    );
+  const peak = (maxSpeed?: number) => {
+    const t = timelineWith(maxSpeed);
+    let top = 0;
+    for (let f = 31; f < 330; f++) {
+      const [a, b] = [t.poseAt(f - 1), t.poseAt(f)];
+      top = Math.max(
+        top,
+        Math.hypot(b.x - a.x, b.y - a.y) / metersPerPx(b.zoom),
+      );
+    }
+    return top;
+  };
+  test("a far target at a fixed blend goes over the limit, the limited chase does not", () => {
+    expect(peak()).toBeGreaterThan(motion.camera.maxSpeedPx);
+    expect(peak(motion.camera.maxSpeedPx)).toBeLessThanOrEqual(
+      motion.camera.maxSpeedPx + motion.camera.speedTolerancePx,
+    );
+  });
+  test("the limited camera still catches the line", () => {
+    const t = timelineWith(motion.camera.maxSpeedPx);
+    const end = fromMerc(t.poseAt(329).x, t.poseAt(329).y);
+    expect(Math.abs(end.lat - 30)).toBeLessThan(0.5);
+    expect(end.lon).toBeGreaterThan(115);
   });
 });

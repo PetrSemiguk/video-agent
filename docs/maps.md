@@ -245,6 +245,36 @@ The properties record `extended`, `extend_method` and the mouth-to-water distanc
 and after. `--from lon,lat --to lon,lat --slug <name>` cuts a reach instead (e.g. the Danube
 from Vienna to Belgrade); cut reaches are not extended.
 
+### Terrain masks (`vap.geo.terrainregion`)
+
+```
+uv run python -m vap.geo.terrainregion --plate china-east-hs05 --name tibetan-plateau --min-elev 4000 --seed 90,32 --smooth 40
+uv run python -m vap.geo.terrainregion --plate china-east-hs05 --name eastern-lowlands --max-elev 200 --seed 115,34.5 --smooth 25
+```
+
+Elevation on the plate grid, from the tiles the plate itself uses, cut at the threshold and limited to
+Natural Earth 10m land. `--smooth` blurs the mask by that many km, which removes specks and thin links;
+then the connected part holding `--seed` is kept, or the largest part without a seed. Output:
+`data/processed/<plate>/terrain/<name>.geojson`, with `method`, `threshold_m`, `smooth_km`, `seed`, `area_km2`,
+`label` and `approximate: true`. It is a contour of the terrain model, not a surveyed boundary of a landform.
+`--bbox w,s,e,n` keeps one part of a larger region; that edge is editorial, so say so where it is used.
+Tune the threshold until the contour sits on the edge visible on the plate: for the Tibetan Plateau 4,000 m
+follows the edge, while 3,500 m wraps around the Qaidam Basin and reaches into Sichuan.
+
+### Custom routes (`vap.geo.route`)
+
+```
+uv run python -m vap.geo.route --plate china-east-hs05 --spec ../data/processed/china-east-hs05/routes/specs/grand-canal-sui.yaml
+```
+
+A spec lists `branches` of `nodes` (`{name, lonlat, sources: [id], label: bool}`), the `sources` and the
+`simplifications`. Every node needs a source; a node with `follow: <river slug>` makes the leg to it follow
+`rivers/<slug>.geojson`, and it must lie within 0.25° of that river. Only follow a river where a source says
+the route used it and the mapped course is the same one. Output: `routes/<slug>.geojson`, one LineString per
+branch with `cumfrac`, `nodes` and `approximate: true`, and a generated `routes/<slug>.sources.md`. Draw it
+with `RouteLine`. Between nodes a line is a schematic link: if a stretch is unconfirmed, keep it straight and
+say so under `simplifications`.
+
 ### Plate resolution (oversampling)
 
 `vap.geo.plate` reports `resolution.center` and `resolution.edge`: plate px per Blue Marble
@@ -272,6 +302,8 @@ Rules:
 - **Zoom limits:** `plateZoomLimits(meta)` gives `cover` (whole plate), `native` (1:1) and
   `max` (`native` + log2 of the oversampling cap). Pass `maxZoom` to `focusOn` near the limit.
   Pseudo-pitch magnifies the near edge (~5 % at 6°, ~15 % at 25°), so keep a margin.
+- **Speed limit in episodes:** `motion.camera.maxSpeedPx` (9 px/frame). `followLine` chases its aim point at
+  no more than this with `maxSpeed`, which episodes always pass; the storyboard check fails on any preset above it.
 - **Every frame is verified** (plate edges never visible, magnification within limits) before
   rendering; `npm test` runs the same check on the showreel timeline.
 
@@ -326,6 +358,9 @@ writes `<video>-motion.png` (speed in blue, jump = change of the shift vector in
 marked) and prints max speed, max/p99 jump and the max jump near each mark. Pure zooms read as
 ~0 speed, and fading overlays add measurement noise of ~1 px/frame².
 
+With `--plan <slug>-camera-plan.json --check`, the same tool applies the build rule on still stretches; see
+"Motion is a build rule" in [visual-grammar.md](visual-grammar.md).
+
 ## PlateStage (map engine)
 
 `studio/src/map/PlateStage.tsx` packages the variant-B engine:
@@ -364,7 +399,8 @@ styles only from `studio/src/design/tokens.ts`):
 | Component | Layer | What it does |
 |---|---|---|
 | `RegionHighlight` | geo | Fill fades to `opacity.regionFill`. The outline draws around the perimeter (`pathLength=1` + dash offset per ring). `dimOutside` adds an even-odd mask built from the same rings, so there are no seams. |
-| `RiverLine` | geo | Draws source → mouth at constant speed along the length (`cumfrac`). Width tapers min→max over 24 pieces, optional glow, bright head while growing. |
+| `RiverLine` | geo | Draws source → mouth at constant speed along the length (`cumfrac`). Width tapers min→max over 24 pieces, optional glow, bright head while growing. `fromFraction` fades in the upstream part and draws the rest. |
+| `RouteLine` | geo | Draws `vap.geo.route` output at constant speed, branch after branch; solid or dashed from tokens, optional direction arrows, node labels when the head passes, an era label, and a mandatory credit. |
 | `PlaceLabel` | screen | City dot + text with halo; fade + slide entrance; constant size; label box kept inside the 5 % safe area. |
 
 ## Camera moves: plate + CSS vs MapLibre 3D (step 1.2)

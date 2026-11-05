@@ -24,6 +24,13 @@ export const TitleCard: React.FC<TitleCardProps> = (input) => {
     f = useCurrentFrame(),
     { width, height } = useVideoConfig();
   const a = textAnimationAt(f, p.durationInFrames);
+  const hero = p.title.length <= cards.hero.maxChars;
+  const push = hero
+    ? interpolate(f, [0, p.durationInFrames], [1, cards.hero.push], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    : 1;
   return (
     <div
       data-card="TitleCard"
@@ -39,9 +46,11 @@ export const TitleCard: React.FC<TitleCardProps> = (input) => {
         gap: cards.gap,
         color: colors.labelText,
         opacity: a.opacity,
-        transform: `translateY(${a.shift}px)`,
+        transform: `translateY(${a.shift}px) scale(${push})`,
+        transformOrigin: "0% 50%",
         overflowWrap: "anywhere",
         lineHeight: type.lineHeight,
+        textShadow: hero ? cards.hero.halo : undefined,
       }}
     >
       {p.kicker ? (
@@ -62,7 +71,8 @@ export const TitleCard: React.FC<TitleCardProps> = (input) => {
         style={{
           fontFamily: headlineStack,
           fontWeight: type.weight.bold,
-          fontSize: cards.titleSize,
+          fontSize: hero ? cards.hero.titleSize : cards.titleSize,
+          letterSpacing: hero ? `${cards.hero.tracking}em` : undefined,
         }}
       >
         {p.title}
@@ -70,7 +80,10 @@ export const TitleCard: React.FC<TitleCardProps> = (input) => {
       {p.subtitle ? (
         <div
           data-card-text
-          style={{ fontFamily: fontStack, fontSize: cards.subtitleSize }}
+          style={{
+            fontFamily: fontStack,
+            fontSize: hero ? cards.hero.subtitleSize : cards.subtitleSize,
+          }}
         >
           {p.subtitle}
         </div>

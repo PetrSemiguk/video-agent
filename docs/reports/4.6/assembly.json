@@ -1,0 +1,359 @@
+{
+  "shots": [
+    {
+      "id": "opening",
+      "from": 0,
+      "durationInFrames": 132,
+      "layers": [
+        {
+          "id": "heartland",
+          "from": 55,
+          "durationInFrames": 77
+        },
+        {
+          "id": "heartland-name",
+          "from": 52,
+          "durationInFrames": 80
+        },
+        {
+          "id": "title",
+          "from": 0,
+          "durationInFrames": 132
+        }
+      ]
+    },
+    {
+      "id": "plateau",
+      "from": 132,
+      "durationInFrames": 124,
+      "layers": [
+        {
+          "id": "plateau-mask",
+          "from": 41,
+          "durationInFrames": 83
+        },
+        {
+          "id": "plateau-name",
+          "from": 38,
+          "durationInFrames": 86
+        },
+        {
+          "id": "plateau-height",
+          "from": 71,
+          "durationInFrames": 53
+        }
+      ]
+    },
+    {
+      "id": "eastern-lowlands",
+      "from": 256,
+      "durationInFrames": 179,
+      "layers": [
+        {
+          "id": "lowlands-mask",
+          "from": 59,
+          "durationInFrames": 120
+        },
+        {
+          "id": "lowlands-name",
+          "from": 56,
+          "durationInFrames": 123
+        },
+        {
+          "id": "lowlands-use",
+          "from": 112,
+          "durationInFrames": 67
+        }
+      ]
+    },
+    {
+      "id": "yellow-river",
+      "from": 435,
+      "durationInFrames": 145,
+      "layers": [
+        {
+          "id": "yellow-line",
+          "from": 0,
+          "durationInFrames": 145
+        },
+        {
+          "id": "yellow-name",
+          "from": 6,
+          "durationInFrames": 139
+        },
+        {
+          "id": "plain-name",
+          "from": 34,
+          "durationInFrames": 111
+        },
+        {
+          "id": "heartland-callback",
+          "from": 78,
+          "durationInFrames": 67
+        }
+      ]
+    },
+    {
+      "id": "yangtze",
+      "from": 580,
+      "durationInFrames": 327,
+      "layers": [
+        {
+          "id": "yangtze-line",
+          "from": 0,
+          "durationInFrames": 327
+        },
+        {
+          "id": "yangtze-name",
+          "from": 27,
+          "durationInFrames": 300
+        },
+        {
+          "id": "yangtze-farmland",
+          "from": 112,
+          "durationInFrames": 215
+        },
+        {
+          "id": "yangtze-region",
+          "from": 109,
+          "durationInFrames": 218
+        },
+        {
+          "id": "yellow-callback",
+          "from": 223,
+          "durationInFrames": 104
+        }
+      ]
+    },
+    {
+      "id": "grand-canal",
+      "from": 907,
+      "durationInFrames": 297,
+      "layers": [
+        {
+          "id": "yellow-context",
+          "from": 0,
+          "durationInFrames": 297
+        },
+        {
+          "id": "yangtze-context",
+          "from": 0,
+          "durationInFrames": 297
+        },
+        {
+          "id": "sui-route",
+          "from": 61,
+          "durationInFrames": 236
+        },
+        {
+          "id": "canal-name",
+          "from": 163,
+          "durationInFrames": 134
+        }
+      ]
+    },
+    {
+      "id": "five-basins",
+      "from": 1204,
+      "durationInFrames": 206,
+      "layers": [
+        {
+          "id": "qiantang-lit",
+          "from": 4,
+          "durationInFrames": 202
+        },
+        {
+          "id": "qiantang-name",
+          "from": 1,
+          "durationInFrames": 205
+        },
+        {
+          "id": "yangtze-lit",
+          "from": 26,
+          "durationInFrames": 180
+        },
+        {
+          "id": "yangtze-name",
+          "from": 23,
+          "durationInFrames": 183
+        },
+        {
+          "id": "huai-lit",
+          "from": 38,
+          "durationInFrames": 168
+        },
+        {
+          "id": "huai-name",
+          "from": 35,
+          "durationInFrames": 171
+        },
+        {
+          "id": "yellow-lit",
+          "from": 68,
+          "durationInFrames": 138
+        },
+        {
+          "id": "yellow-name",
+          "from": 65,
+          "durationInFrames": 141
+        },
+        {
+          "id": "hai-lit",
+          "from": 96,
+          "durationInFrames": 110
+        },
+        {
+          "id": "hai-name",
+          "from": 93,
+          "durationInFrames": 113
+        },
+        {
+          "id": "yuan-route",
+          "from": 0,
+          "durationInFrames": 206
+        },
+        {
+          "id": "basins",
+          "from": 63,
+          "durationInFrames": 143
+        }
+      ]
+    },
+    {
+      "id": "division-and-reunion",
+      "from": 1410,
+      "durationInFrames": 249,
+      "layers": [
+        {
+          "id": "unity-fading",
+          "from": 0,
+          "durationInFrames": 249
+        },
+        {
+          "id": "divided-map",
+          "from": 74,
+          "durationInFrames": 124
+        },
+        {
+          "id": "divided-date",
+          "from": 71,
+          "durationInFrames": 87
+        },
+        {
+          "id": "northern-zhou",
+          "from": 109,
+          "durationInFrames": 89
+        },
+        {
+          "id": "northern-qi",
+          "from": 109,
+          "durationInFrames": 89
+        },
+        {
+          "id": "chen",
+          "from": 125,
+          "durationInFrames": 73
+        },
+        {
+          "id": "western-liang",
+          "from": 125,
+          "durationInFrames": 73
+        },
+        {
+          "id": "sui-map",
+          "from": 171,
+          "durationInFrames": 78
+        },
+        {
+          "id": "sui-name",
+          "from": 179,
+          "durationInFrames": 70
+        },
+        {
+          "id": "reunification",
+          "from": 179,
+          "durationInFrames": 70
+        }
+      ]
+    },
+    {
+      "id": "incentives",
+      "from": 1659,
+      "durationInFrames": 156,
+      "layers": [
+        {
+          "id": "plains",
+          "from": 9,
+          "durationInFrames": 147
+        },
+        {
+          "id": "plains-name",
+          "from": 6,
+          "durationInFrames": 150
+        },
+        {
+          "id": "yellow-waterway",
+          "from": 43,
+          "durationInFrames": 113
+        },
+        {
+          "id": "yangtze-waterway",
+          "from": 43,
+          "durationInFrames": 113
+        },
+        {
+          "id": "canal-waterway",
+          "from": 43,
+          "durationInFrames": 113
+        },
+        {
+          "id": "incentive",
+          "from": 95,
+          "durationInFrames": 61
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "from": 1815,
+      "durationInFrames": 213,
+      "layers": [
+        {
+          "id": "recap-plateau",
+          "from": 4,
+          "durationInFrames": 209
+        },
+        {
+          "id": "recap-lowlands",
+          "from": 4,
+          "durationInFrames": 209
+        },
+        {
+          "id": "recap-yellow",
+          "from": 4,
+          "durationInFrames": 209
+        },
+        {
+          "id": "recap-yangtze",
+          "from": 4,
+          "durationInFrames": 209
+        },
+        {
+          "id": "recap-canal",
+          "from": 60,
+          "durationInFrames": 153
+        },
+        {
+          "id": "recap-empire",
+          "from": 173,
+          "durationInFrames": 40
+        },
+        {
+          "id": "empire-name",
+          "from": 170,
+          "durationInFrames": 43
+        }
+      ]
+    }
+  ]
+}

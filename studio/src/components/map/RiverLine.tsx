@@ -20,7 +20,8 @@ const RiverLineView: React.FC<{
   geojson: GeoCollection;
   drawFrames: number;
   glow?: boolean;
-}> = ({ geojson, drawFrames, glow = false }) => {
+  fromFraction?: number;
+}> = ({ geojson, drawFrames, glow = false, fromFraction = 0 }) => {
   const frame = useCurrentFrame();
   const { meta, view, toPlatePx } = useMapProjection();
 
@@ -40,13 +41,22 @@ const RiverLineView: React.FC<{
   }, [geojson, meta]);
 
   // Uniform speed along the length: progress is linear in time.
-  const p = interpolate(frame, [0, drawFrames], [0, 1], {
+  const p = interpolate(frame, [0, drawFrames], [fromFraction, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
   if (p <= 0) {
     return null;
   }
+  // A part that is already there fades in rather than popping.
+  const fade =
+    fromFraction > 0
+      ? interpolate(frame, [0, motion.frames.base], [0, 1], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+          easing: motion.easing.out,
+        })
+      : 1;
   const k = 1 / view.scale;
   const width = (f: number) =>
     (stroke.river.min + (stroke.river.max - stroke.river.min) * f) * k;
@@ -73,7 +83,12 @@ const RiverLineView: React.FC<{
 
   return (
     <GeoSvg>
-      <g fill="none" strokeLinecap="round" strokeLinejoin="round">
+      <g
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity={fade}
+      >
         {glow
           ? pieces.map((s, i) => (
               <path

@@ -20,6 +20,8 @@ export const shortText = (max: number) =>
 export const placementSchema = z.enum([
   "lower-left",
   "upper-left",
+  "lower-right",
+  "upper-right",
   "center",
   "flow",
 ]);
@@ -65,28 +67,36 @@ export const TextFrame: React.FC<{
   placement: TextPlacement;
   children: ReactNode;
   accent?: string;
-}> = ({ name, duration, placement, children, accent }) => {
+  /** Size the card to its content between the textLayer.fit widths. */
+  fit?: boolean;
+}> = ({ name, duration, placement, children, accent, fit = false }) => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
   const animation = textAnimationAt(frame, duration);
   const safeWidth = width * (1 - 2 * space.safeArea);
+  const right = placement === "lower-right" || placement === "upper-right";
+  const lower = placement === "lower-left" || placement === "lower-right";
+  const upper = placement === "upper-left" || placement === "upper-right";
   const position: CSSProperties =
     placement === "flow"
       ? { position: "relative" }
       : {
           position: "absolute",
-          left:
-            placement === "center"
-              ? (width - Math.min(textLayer.maxWidth, safeWidth)) / 2
-              : width * space.safeArea,
-          ...(placement === "lower-left"
+          ...(right
+            ? { right: width * space.safeArea }
+            : {
+                left:
+                  placement === "center"
+                    ? (width - Math.min(textLayer.maxWidth, safeWidth)) / 2
+                    : width * space.safeArea,
+              }),
+          ...(lower
             ? { bottom: height * space.bottomReserve + space.enterShift }
             : {
-                top:
-                  placement === "upper-left"
-                    ? height * space.safeArea
-                    : height * space.safeArea +
-                      (height * (1 - space.safeArea - space.bottomReserve)) / 2,
+                top: upper
+                  ? height * space.safeArea
+                  : height * space.safeArea +
+                    (height * (1 - space.safeArea - space.bottomReserve)) / 2,
                 ...(placement === "center" ? { translate: "0 -50%" } : {}),
               }),
         };
@@ -95,8 +105,16 @@ export const TextFrame: React.FC<{
       data-text-layer={name}
       style={{
         ...position,
-        width: Math.min(textLayer.maxWidth, safeWidth),
-        maxWidth: "100%",
+        ...(fit
+          ? {
+              width: "fit-content",
+              minWidth: textLayer.fit.minWidth,
+              maxWidth: Math.min(textLayer.fit.maxWidth, safeWidth),
+            }
+          : {
+              width: Math.min(textLayer.maxWidth, safeWidth),
+              maxWidth: "100%",
+            }),
         boxSizing: "border-box",
         padding: textLayer.padding,
         borderRadius: textLayer.radius,

@@ -8,7 +8,7 @@ Content wraps without truncation, clipping or font shrinking.
 
 | Component / schema | Content | Maximum lengths | Default placement |
 |---|---|---|---|
-| LowerThird / lowerThirdSchema | `title`, optional `subtitle` | 64 / 96 | lower-left |
+| LowerThird / lowerThirdSchema | `title`, optional `subtitle`, `subject` for `placement: "auto"` | 64 / 96 | lower-left; `auto` picks a corner clear of the subject |
 | SectionTag / sectionTagSchema | `text`, displayed as caps | 32 | upper-left |
 | BigDate / bigDateSchema | integer `year`, optional `era`, `caption`, `fromYear` | year 1–9999; caption 80 | center |
 | KeyFact / keyFactSchema | `statement`, `emphasis` | 120 / 24 | lower-left |
@@ -27,15 +27,17 @@ All schemas also accept:
   of this duration, so each component's local frame starts at zero and its exit
   completes on the Sequence's final frame.
 - `color`: `regionA` (default), `regionB`, `conflict`, `neutral`.
-- `placement`: `lower-left`, `upper-left`, `center`, `flow`. Screen placements use
+- `placement`: `lower-left`, `upper-left`, `lower-right`, `upper-right`, `center`, `flow`
+  (`LowerThird` also `auto`). Screen placements use
   5% safe margins and the 12% bottom reservation. `flow` removes absolute placement
   for a parent-managed layout, including the review sheet.
 
 Native rendering contract: 1920x1080, 30 fps; fixed type sizes from tokens, minimum
-26 px. The 1120 px maximum-width boxes wrap longer text. Different frame sizes are
+26 px. Cards size to their text between `textLayer.fit.minWidth` and `maxWidth`, and wrap beyond it.
+Different frame sizes are
 not a promise of responsive typography: rescale the composition for distribution.
 The review sheet is 1920x2160 so all four blocks can be inspected at native pixel
-size, with each block retaining the same 1120 px width as in a 1080p video.
+size, with each block keeping the same width as in a 1080p video.
 
 Entry/exit use the standard motion.frames.base duration and out/in curves.
 BigDate's roll uses motion.frames.slow. Background, padding, bars, sizes, colors,

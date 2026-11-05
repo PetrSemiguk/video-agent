@@ -56,7 +56,11 @@ export const cameraSchema = z.discriminatedUnion("preset", [
       zoom: z.number().min(-4).max(4).optional(),
     }),
   }),
-  z.strictObject({ preset: z.literal("hold"), params: z.strictObject({}) }),
+  z.strictObject({
+    preset: z.literal("hold"),
+    // A hold over 2 s without a reason fails motion QA (docs/visual-grammar.md).
+    params: z.strictObject({ reason: shortText(240).optional() }),
+  }),
   z.strictObject({
     preset: z.literal("focusOn"),
     params: z.strictObject({
@@ -134,6 +138,7 @@ export const layerSchema = z.discriminatedUnion("type", [
   layer("StatCounter"),
   layer("RegionHighlight"),
   layer("RiverLine"),
+  layer("RouteLine"),
   layer("HistoricalLayer"),
   layer("PlaceLabel"),
   layer("MapAttribution"),
