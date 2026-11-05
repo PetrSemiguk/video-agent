@@ -14,7 +14,7 @@
   ],
   "audio": {
     "src": "episodes/china-unity-pilot/audio/voice.wav",
-    "words": "docs/reports/4.4/words.json"
+    "words": "episodes/china-unity-pilot/audio/words.json"
   },
   "shots": [
     {

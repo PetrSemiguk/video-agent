@@ -12,6 +12,9 @@ __pycache__/
 # --- Claude Code personal overrides ---
 .claude/settings.local.json
 
+# --- Codex skills: installed locally, see AGENTS.md ---
+.agents/
+
 # --- Large / licensed media and downloads (folders kept via .gitkeep) ---
 data/raw/*
 !data/raw/.gitkeep

@@ -41,6 +41,7 @@ export const prepareEpisode = ({
   fs.writeFileSync(
     path.join(studio, "out/episode-props.json"),
     JSON.stringify(inputProps, null, 2) + "\n",
+    "utf8",
   );
   return { inputProps, audioSha256 };
 };

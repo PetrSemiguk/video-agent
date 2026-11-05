@@ -31,7 +31,11 @@ def main():
             seed=42,
             max_chars=240,
         )
-        manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
+        manifest = (
+            json.loads(manifest_path.read_text(encoding="utf-8"))
+            if manifest_path.exists()
+            else None
+        )
         valid = (
             manifest
             and manifest.get("schema_version") == 2
@@ -54,7 +58,7 @@ def main():
         manifest["python"] = platform.python_version()
         for record in manifest["chunks"]:
             record["params"] = manifest["settings"]
-        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
         shutil.copyfile(directory / "voice.wav", audio_dir / f"voice-ex{tag}.wav")
         shutil.copyfile(manifest_path, audio_dir / f"voice-ex{tag}.manifest.json")
         args.out = audio_dir / "cache-check" / f"ex{tag}"
@@ -65,7 +69,7 @@ def main():
         # A resumed generation may first have been measured in cache-check/.
         if "first_generation_metrics" not in manifest and "first_generation_metrics" in repeated:
             manifest["first_generation_metrics"] = repeated["first_generation_metrics"]
-            manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+            manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
             shutil.copyfile(manifest_path, audio_dir / f"voice-ex{tag}.manifest.json")
         audio, sr = sf.read(directory / "voice.wav", dtype="float32")
         assert sr == 24000 and np.isfinite(audio).all()
@@ -103,7 +107,9 @@ def main():
         "normalised_sentences": normalized,
         "variants": rows,
     }
-    (report_dir / "benchmark.json").write_text(json.dumps(report, indent=2) + "\n")
+    (report_dir / "benchmark.json").write_text(
+        json.dumps(report, indent=2) + "\n", encoding="utf-8"
+    )
     print(json.dumps(rows, indent=2))
 
 

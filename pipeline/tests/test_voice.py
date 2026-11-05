@@ -113,7 +113,7 @@ def test_cache_only_run_joins_without_loading_gpu(tmp_path, monkeypatch):
 
     monkeypatch.setattr(tts, "normalize_loudness", fake_loudness)
     script = tmp_path / "script.md"
-    script.write_text("A river.\n\nA valley.")
+    script.write_text("A river.\n\nA valley.", encoding="utf-8")
     settings = {
         "exaggeration": 0.5,
         "cfg_weight": 0.5,
@@ -124,7 +124,7 @@ def test_cache_only_run_joins_without_loading_gpu(tmp_path, monkeypatch):
     }
     cache = tmp_path / ".cache" / "voice"
     cache.mkdir(parents=True)
-    for index, chunk in enumerate(chunks(script.read_text())):
+    for index, chunk in enumerate(chunks(script.read_text(encoding="utf-8"))):
         key = tts.cache_key(chunk.normalized, settings, "publisher-built-in-conds", 42 + index)
         sf.write(cache / f"{key}.wav", np.ones(2400) * 0.1, tts.SAMPLE_RATE, subtype="FLOAT")
     manifest = tts.run(
@@ -142,7 +142,9 @@ def test_cache_only_run_joins_without_loading_gpu(tmp_path, monkeypatch):
     assert manifest["metrics"]["model_load_seconds"] == 0
     assert manifest["metrics"]["peak_allocated_mib"] == 0
     assert (
-        json.loads((tmp_path / "audio" / "voice.manifest.json").read_text())["chunks"][1]["start"]
+        json.loads((tmp_path / "audio" / "voice.manifest.json").read_text(encoding="utf-8"))[
+            "chunks"
+        ][1]["start"]
         == 0.7
     )
 

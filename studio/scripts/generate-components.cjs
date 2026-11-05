@@ -17,5 +17,5 @@ for (const extension of [".ts", ".tsx"]) {
   };
 }
 const { renderComponentCatalog } = require("../src/components/catalog.ts");
-fs.writeFileSync("../docs/components.md", renderComponentCatalog());
+fs.writeFileSync("../docs/components.md", renderComponentCatalog(), "utf8");
 console.log("Generated docs/components.md");

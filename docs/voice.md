@@ -8,7 +8,6 @@ Code/model/Perth sources are recorded in licenses.md before use.
 ## CLI and outputs
 
 ```powershell
-$env:UV_CACHE_DIR='C:/Users/semig/video-agent/studio/out/uv-cache'
 uv run python -m vap.voice.tts --script ../episodes/_sandbox/tts-test/script.md --out ../studio/out/voice-3.2
 ```
 

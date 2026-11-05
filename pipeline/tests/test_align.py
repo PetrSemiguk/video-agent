@@ -200,7 +200,7 @@ def test_repair_changes_only_affected_seeds_and_requires_same_reference(tmp_path
 
 def test_fix_loop_is_bounded_and_never_has_simultaneous_workers(tmp_path, monkeypatch):
     script, audio = tmp_path / "script.md", tmp_path / "voice.wav"
-    script.write_text("River.")
+    script.write_text("River.", encoding="utf-8")
     sf.write(audio, np.ones(24000) * 0.1, 24000)
     manifest = {
         "script_sha256": sha256_file(script),
@@ -233,7 +233,7 @@ def test_fix_loop_is_bounded_and_never_has_simultaneous_workers(tmp_path, monkey
                 },
             )
         else:
-            job = json.loads(words.Path(args[1]).read_text())
+            job = json.loads(words.Path(args[1]).read_text(encoding="utf-8"))
             directory = words.Path(job["out"])
             directory.mkdir()
             (directory / "voice.wav").write_bytes(audio.read_bytes())
@@ -260,7 +260,7 @@ def test_fix_loop_is_bounded_and_never_has_simultaneous_workers(tmp_path, monkey
 
 def test_mismatched_source_hash_is_rejected(tmp_path):
     script = tmp_path / "script.md"
-    script.write_text("A river.")
+    script.write_text("A river.", encoding="utf-8")
     with pytest.raises(ValueError, match="Script hash"):
         words.check_inputs(script, tmp_path / "none.wav", {"script_sha256": "wrong"})
 

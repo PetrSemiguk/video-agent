@@ -27,6 +27,7 @@
       "Bash(git am *)",
       "Bash(git rm *)",
       "Bash(git mv *)",
+      "Bash(git worktree *)",
       "Bash(git -C *)",
       "Bash(git -c *)",
       "Bash(gh *)",
@@ -49,6 +50,7 @@
       "PowerShell(git am *)",
       "PowerShell(git rm *)",
       "PowerShell(git mv *)",
+      "PowerShell(git worktree *)",
       "PowerShell(git -C *)",
       "PowerShell(git -c *)",
       "PowerShell(gh *)"

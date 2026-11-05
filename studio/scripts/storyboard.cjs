@@ -27,6 +27,7 @@ if (args[0] === "export" && args.length === 1) {
   fs.writeFileSync(
     target,
     JSON.stringify(exportStoryboardSchema(), null, 2) + "\n",
+    "utf8",
   );
   console.log("Exported docs/storyboard.schema.json");
 } else if (

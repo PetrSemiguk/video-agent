@@ -93,7 +93,6 @@ class Builder:
         self.current = "setup"
         self.log = self.work / "setup.log"
         self.environment = dict(os.environ)
-        self.environment.setdefault("UV_CACHE_DIR", str(self.out / "uv-cache"))
         self.environment["PYTHONIOENCODING"] = "utf-8"
         self.environment["PYTHONUNBUFFERED"] = "1"
 
@@ -287,8 +286,8 @@ class Builder:
         story = read_json(self.episode / "storyboard.json")
         if story["episode"]["slug"] != self.slug:
             raise ValueError("Storyboard episode.slug must match its episode directory")
-        # Runtime copy binds current outputs without editing the authored storyboard
-        # or historical report files referenced by an earlier manual build.
+        # Runtime copy always binds this episode's canonical audio/words outputs,
+        # without editing the authored storyboard.
         story["audio"] = {
             "src": f"episodes/{self.slug}/audio/voice.wav",
             "words": f"episodes/{self.slug}/audio/words.json",

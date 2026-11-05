@@ -89,6 +89,7 @@ fs.writeFileSync(
       ? "out/episode-map-smoke-metadata.json"
       : "out/episode-metadata.json",
   JSON.stringify(metadata, null, 2) + "\n",
+  "utf8",
 );
 console.log(JSON.stringify(metadata));
 const prepared = composition.props.prepared;
@@ -153,14 +154,17 @@ if (!smoke && !videoOnly) {
   fs.writeFileSync(
     `out/${slug}-preview-input.json`,
     JSON.stringify(payload, null, 2) + "\n",
+    "utf8",
   );
   fs.writeFileSync(
     `out/${slug}-assembly.json`,
     JSON.stringify(prepared.assembly, null, 2) + "\n",
+    "utf8",
   );
   fs.writeFileSync(
     `out/${slug}-sync.json`,
     JSON.stringify(prepared.syncReport, null, 2) + "\n",
+    "utf8",
   );
   const stdout = execFileSync(
     "uv",
@@ -178,10 +182,6 @@ if (!smoke && !videoOnly) {
     {
       cwd: path.resolve("../pipeline"),
       encoding: "utf8",
-      env: {
-        ...process.env,
-        UV_CACHE_DIR: process.env.UV_CACHE_DIR ?? path.resolve("out/uv-cache"),
-      },
     },
   );
   console.log(stdout.trim());

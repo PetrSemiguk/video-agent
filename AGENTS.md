@@ -111,6 +111,14 @@ Run from `studio/`:
 - `npm run render:demo-china-rivers` — PlateStage demo (rivers, region, labels) to
   `out/demo-china-rivers.mp4`
 - `npm run render:camera-showreel` — camera presets + plate transition demo to `out/camera-showreel.mp4`
+- `npm run render:episode -- --storyboard=../episodes/<slug>/storyboard.json` — render an episode
+  directly (first-frame preview + MP4, ANGLE, concurrency 1) to `out/episode-<slug>-synced.mp4`;
+  without `--storyboard` it renders the sandbox. Prefer `vap.episode build` (below), which also runs voice/alignment
+- `npm run review:episode -- <slug>` — content-visible still of every shot to
+  `out/<slug>-review-<shot-id>.png`, plus `out/<slug>-review.json` and `out/<slug>-prepared.json`
+- `npm run audit:episode-camera -- <slug>` — camera smoothness and on-screen credits on every frame to
+  `out/episodes/<slug>/camera-and-credits.json` (needs `review:episode` first)
+- `npm run pilot:storyboard` — regenerate `episodes/china-unity-pilot/storyboard.json` from its generator
 - `npm test` — vitest (toScreen vs CSS matrices, preset joints, plate alignment, showreel plate limits)
 - `npm run lint` — eslint + tsc
 
@@ -130,12 +138,30 @@ Python: run from `pipeline/` with `uv run` only. Never activate the venv manuall
   — main stem source→mouth (extended to the sea) with `cumfrac` into `data/processed/<p>/rivers/<slug>.geojson`
 - `uv run python -m vap.geo.find "<name>" [--layer rivers|regions|places|countries|admin1|lakes]`
   — look up Natural Earth ids by name
+- `uv run python -m vap.episode build <slug> [--stage voice|align|preview|render|all]` — sequential, cached
+  episode build (each stage includes its predecessors); see "Make an episode" in README.md
+- `uv run python -m vap.qa.episode_sheets <slug>` — review sheet and 640/384 px mobile sheets to `studio/out/`
+  (needs `review:episode` and the preview stage first)
+- `uv run python -m vap.qa.episode_audit <slug> [--check-cache]` — words, cuts, label leads, MP4 and decoded
+  audio checks to `studio/out/episodes/<slug>/audit.json`; `--check-cache` also proves all stages stay cached
 - `uv run python -m vap.qa.flicker <mp4> --from 9.2 --to 12` — luma flicker on a static section
 - `uv run python -m vap.qa.contact <mp4>... --times 0,2,4 --out <png>` — contact sheet
 - `uv run python -m vap.qa.motion <mp4> [--marks 4,9.5]` — camera smoothness: shift speed per frame
   (phase correlation), max jump, chart `<video>-motion.png`
 - `uv run ruff check .` / `uv run ruff format .` — lint / format
 - `uv run pytest` — tests
+
+## Codex
+
+`.agents/` is git-ignored and installed locally. To reinstall the skills, run from the repo root
+(ask the user first, as with any skills update):
+
+```
+npx skills add remotion-dev/skills --agent codex --skill "*" --yes
+```
+
+This fetches the latest upstream skills and can rewrite the tracked `skills-lock.json`, which the
+Claude Code skills also use. Check `git diff skills-lock.json` afterwards and let the user decide.
 
 ## Reference docs (read instead of duplicating here)
 

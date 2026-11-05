@@ -27,7 +27,9 @@ def test_forbidden_download_writes_evidence_not_pbf(monkeypatch, tmp_path):
     with pytest.raises(httpx.HTTPStatusError):
         p.download()
     assert not p.PBF.exists()
-    evidence = json.loads((tmp_path / "docs/reports/1.6/planet-download.json").read_text())
+    evidence = json.loads(
+        (tmp_path / "docs/reports/1.6/planet-download.json").read_text(encoding="utf-8")
+    )
     assert evidence["status"] == 403
 
 
@@ -41,7 +43,7 @@ def test_size_change_rejected_before_write(monkeypatch, tmp_path):
 def test_complete_download_hash_and_atomic_final_file(monkeypatch, tmp_path):
     configure(monkeypatch, tmp_path, 200, b"test")
     p.download()
-    manifest = json.loads(p.PBF.with_suffix(".manifest.json").read_text())
+    manifest = json.loads(p.PBF.with_suffix(".manifest.json").read_text(encoding="utf-8"))
     assert p.PBF.read_bytes() == b"test"
     assert manifest["sha256"] == hashlib.sha256(b"test").hexdigest()
     assert not p.PBF.with_suffix(".pbf.partial").exists()

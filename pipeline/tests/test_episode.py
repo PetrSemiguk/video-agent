@@ -28,7 +28,7 @@ def project(tmp_path, monkeypatch):
     ):
         path = root / file
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text("// fixture\n" if path.suffix == ".ts" else "fixture")
+        path.write_text("// fixture\n" if path.suffix == ".ts" else "fixture", encoding="utf-8")
     write_json(
         root / "episodes/pilot/storyboard.json",
         {
@@ -156,7 +156,7 @@ def test_plate_and_token_changes_invalidate_only_visual_stages(project):
     build(project)
     for filename in ("studio/public/plates/test.png", "studio/src/design/tokens.ts"):
         (project[0] / filename).write_text(
-            "// changed\n" if filename.endswith(".ts") else "changed"
+            "// changed\n" if filename.endswith(".ts") else "changed", encoding="utf-8"
         )
         assert [r["status"] for r in build(project).results] == [
             "cached",
@@ -237,7 +237,9 @@ def test_failed_subprocess_writes_stdout_stderr_and_exit_code(project, monkeypat
             ],
             project[0],
         )
-    assert "out" in builder.log.read_text() and "err" in builder.log.read_text()
+    assert "out" in builder.log.read_text(encoding="utf-8") and "err" in builder.log.read_text(
+        encoding="utf-8"
+    )
 
 
 def test_cli_reports_failure_without_traceback(project, monkeypatch, capsys):
@@ -248,13 +250,13 @@ def test_cli_reports_failure_without_traceback(project, monkeypatch, capsys):
 
 def test_changed_script_invalidates_all_stage_keys(project):
     build(project)
-    (project[0] / "episodes/pilot/script.md").write_text("Revised narration.")
+    (project[0] / "episodes/pilot/script.md").write_text("Revised narration.", encoding="utf-8")
     assert all(r["status"] == "built" for r in build(project).results)
 
 
 def test_invalid_cache_json_is_a_miss_not_an_excuse_to_skip_work(project):
     builder = build(project)
-    builder.state_path.write_text("{interrupted write")
+    builder.state_path.write_text("{interrupted write", encoding="utf-8")
     assert all(r["status"] == "built" for r in build(project).results)
 
 
@@ -279,5 +281,5 @@ def test_real_worker_exit_is_reported_by_cli_with_stage_and_log(project, monkeyp
     assert "[voice] FAILED" in error and "voice.log" in error and "exited 7" in error
     assert "Traceback" not in error
     work = project[0] / "studio/out/episodes/pilot"
-    assert "controlled failure" in (work / "voice.log").read_text()
+    assert "controlled failure" in (work / "voice.log").read_text(encoding="utf-8")
     assert len(read_json(work / "build-summary.json")["stages"]) == 1

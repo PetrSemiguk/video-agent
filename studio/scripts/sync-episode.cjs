@@ -47,6 +47,7 @@ for (const [suffix, value] of [
   fs.writeFileSync(
     path.join(out, `${storyboard.episode.slug}-${suffix}.json`),
     JSON.stringify(value, null, 2) + "\n",
+    "utf8",
   );
 console.log(
   JSON.stringify(
