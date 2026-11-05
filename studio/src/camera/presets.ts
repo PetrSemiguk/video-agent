@@ -281,8 +281,8 @@ export const followLine = (
     /** Frames over which the camera eases from its start pose onto the line. */
     blend?: number;
     /**
-     * Screen px per frame. When given, the camera chases the aim point at no more than this
-     * speed, instead of blending onto it over a fixed time.
+     * Screen px per frame at the frame's corners, pan and zoom together. When given, the camera
+     * chases the aim point and zoom within this speed, instead of blending over a fixed time.
      */
     maxSpeed?: number;
   } = {},
@@ -324,15 +324,28 @@ export const followLine = (
     };
     const out: CamKey[] = [];
     if (opts.maxSpeed !== undefined) {
-      const { maxAccelPx, chaseGain } = motion.camera;
+      const { maxAccelPx, chaseGain, zoomShare } = motion.camera;
       let [x, y, vx, vy] = [s.x, s.y, 0, 0];
+      let [z, dz] = [s.zoom, 0];
+      // A zoom of dz moves the frame's corners by radius * ln 2 * dz.
+      const toPx = Math.hypot(ctx.width, ctx.height) * 0.5 * Math.LN2;
+      const maxDz = (zoomShare * opts.maxSpeed) / toPx;
       for (let f = 1; f <= frames; f++) {
         const w = motion.easing.inOut(Math.min(1, f / blend));
-        const z = s.zoom + (zoom - s.zoom) * w;
+        const wantDz = Math.max(
+          -maxDz,
+          Math.min(maxDz, (zoom - z) * chaseGain),
+        );
+        dz += Math.max(
+          -maxDz * chaseGain,
+          Math.min(maxDz * chaseGain, wantDz - dz),
+        );
+        z += dz;
         const mpp = metersPerPx(z);
+        const panLimit = opts.maxSpeed - Math.abs(dz) * toPx;
         const c = aim(ctx.startFrame + f);
         let [wantX, wantY] = [(c.x - x) * chaseGain, (c.y - y) * chaseGain];
-        const fast = Math.hypot(wantX, wantY) / (opts.maxSpeed * mpp);
+        const fast = Math.hypot(wantX, wantY) / (panLimit * mpp);
         if (fast > 1) [wantX, wantY] = [wantX / fast, wantY / fast];
         let [dx, dy] = [wantX - vx, wantY - vy];
         const hard = Math.hypot(dx, dy) / (maxAccelPx * mpp);

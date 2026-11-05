@@ -14,7 +14,9 @@ and prints max speed, max jump and where it happens.
 Plan: the camera pose of every frame, written by `render:episode` before any video exists.
 Speed = pan in screen px per frame combined with zoom, as the RMS shift of screen points.
 
---check applies the build rule: no stretch over MAX_STILL_S below MIN_SPEED_PX. A `drift` passes.
+--check applies the build rules. The camera may not stand still: no stretch over MAX_STILL_S below
+MIN_SPEED_PX. It may not move too fast either: with a plan, how far the picture moves on screen, pan
+and zoom together at the frame's corners, stays within the plan's speedLimitPx. A `drift` passes.
 A `hold` passes only when its storyboard shot gives a reason. With a video and a plan, a stretch
 where the plan shows a zoom is not counted, since phase correlation cannot see a zoom.
 """
@@ -96,6 +98,41 @@ def plan_speeds(plan: dict) -> tuple[np.ndarray, np.ndarray]:
     return pan, zoom
 
 
+def screen_motion(plan: dict) -> np.ndarray:
+    """How far the picture moves per frame, pan and zoom, at the corner where it moves most."""
+    poses = np.asarray(plan["frames"], dtype=np.float64)
+    if len(poses) < 2:
+        return np.zeros(0)
+    world = 2 * math.pi * 6378137.0
+    metres_per_px = world / (512 * 2 ** ((poses[1:, 2] + poses[:-1, 2]) / 2))
+    deltas = np.diff(poses, axis=0)
+    dx, dy = deltas[:, 0] / metres_per_px, deltas[:, 1] / metres_per_px
+    k = 2 ** deltas[:, 2] - 1
+    half_w, half_h = plan["width"] / 2, plan["height"] / 2
+    corners = [np.hypot(dx - k * u * half_w, dy - k * v * half_h) for u in (-1, 1) for v in (-1, 1)]
+    return np.max(corners, axis=0)
+
+
+def too_fast(plan: dict, fps: float) -> list[dict]:
+    """Shots where the picture moves faster than the plan's limit."""
+    limit = plan.get("speedLimitPx")
+    if not limit:
+        return []
+    motion = screen_motion(plan)
+    found = []
+    for shot in plan["shots"]:
+        span = motion[max(0, shot["from"] - 1) : shot["from"] - 1 + shot["frames"]]
+        if len(span) and float(span.max()) > limit:
+            found.append(
+                {
+                    "shot": shot["id"],
+                    "peak_px": round(float(span.max()), 2),
+                    "at_s": round((shot["from"] + int(span.argmax())) / fps, 2),
+                }
+            )
+    return found
+
+
 def smoothed(speed: np.ndarray, window: int = SMOOTH_FRAMES) -> np.ndarray:
     """Rolling median, so one noisy frame pair neither breaks nor fakes a still stretch."""
     if not len(speed):
@@ -163,15 +200,24 @@ def gate(
 
 
 def failure_message(report: dict) -> str:
-    parts = [
-        f"{f['from_s']:.1f}-{f['to_s']:.1f} s in {'/'.join(f['shots']) or 'the video'}"
-        for f in report["failures"]
-    ]
-    return (
-        f"Motion QA: camera below {report['min_speed_px']} px/frame for over "
-        f"{report['max_still_s']:.0f} s at {', '.join(parts)}. Move the camera, use drift, or "
-        "give the shot a hold with a reason (docs/visual-grammar.md)."
-    )
+    messages = []
+    if report["failures"]:
+        parts = [
+            f"{f['from_s']:.1f}-{f['to_s']:.1f} s in {'/'.join(f['shots']) or 'the video'}"
+            for f in report["failures"]
+        ]
+        messages.append(
+            f"Motion QA: camera below {report['min_speed_px']} px/frame for over "
+            f"{report['max_still_s']:.0f} s at {', '.join(parts)}. Move the camera, use drift, or "
+            "give the shot a hold with a reason (docs/visual-grammar.md)."
+        )
+    if report.get("too_fast"):
+        parts = [f"{f['shot']} ({f['peak_px']} px/frame)" for f in report["too_fast"]]
+        messages.append(
+            f"Motion QA: picture moves too fast in {', '.join(parts)}. Bring the framings or zooms "
+            "closer or lengthen the shot (docs/visual-grammar.md)."
+        )
+    return " ".join(messages)
 
 
 def windows(speed: np.ndarray, fps: float, seconds: float = 5.0) -> list:
@@ -255,6 +301,8 @@ def main(argv: list[str] | None = None) -> int:
                 near[m] = round(float(r["jump"][max(0, f - 3) : f + 3].max()), 2)
             summary["max_jump_near_marks"] = near
         result = gate(r["speed"], plan, fps, zoom=zoom if plan else None)
+        if plan:
+            result["too_fast"] = too_fast(plan, fps)
     else:
         summary = {
             "pairs": len(plan_speed),
@@ -263,11 +311,17 @@ def main(argv: list[str] | None = None) -> int:
             "windows": windows(plan_speed, fps),
         }
         result = gate(plan_speed, plan, fps)
+        result["too_fast"] = too_fast(plan, fps)
+        motion = screen_motion(plan)
+        summary["max_screen_motion_px"] = round(float(motion.max()), 2) if len(motion) else 0.0
     summary["gate"] = result
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2))
+    result["passed"] = result["passed"] and not result.get("too_fast")
+    if args.report:
+        args.report.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     if args.check and not result["passed"]:
         print(failure_message(result), file=sys.stderr)
         return 1

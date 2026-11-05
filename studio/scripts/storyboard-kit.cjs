@@ -29,6 +29,17 @@ const narration = (wordsFile) => {
     alignment,
     duration: alignment.duration,
     timeOf: (text) => wordAt(text).start,
+    endOf: (text) =>
+      alignment.words[wordAt(text).index + text.trim().split(/\s+/).length - 1]
+        .end,
+    /** The middle of the pause between two phrases: a cut stays there when the voice changes. */
+    between: (before, after) => {
+      const last =
+        alignment.words[
+          wordAt(before).index + before.trim().split(/\s+/).length - 1
+        ];
+      return (last.end + wordAt(after).start) / 2;
+    },
     frameOf: (text, fps = 30) => Math.round(wordAt(text).start * fps),
   };
 };

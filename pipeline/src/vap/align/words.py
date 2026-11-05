@@ -141,6 +141,7 @@ def repair_job(
         "voice": str(voice.resolve()) if voice else None,
         "exaggeration": manifest["settings"]["exaggeration"],
         "cfg": manifest["settings"]["cfg_weight"],
+        "tempo": manifest.get("tempo", 1.0),
         "seed": manifest["seed"],
         "max_chars": manifest["max_chars"],
         "seed_overrides": seeds,

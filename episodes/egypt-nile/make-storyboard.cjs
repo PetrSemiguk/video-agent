@@ -1,11 +1,7 @@
 // Generates episodes/egypt-nile/storyboard.json: node episodes/egypt-nile/make-storyboard.cjs
-// See shot-plan.md. Everything is on two plates: `egypt` (5440 px, sharp to zoom 6.76) and
+// See shot-plan.md. Everything is on two plates: `egypt` (6950 px, sharp to zoom about 6.78) and
 // `basin` (nile-basin). A crossfade between them needs a frame both cover: zoom near 5.5, lat near 24.
-const fs = require("node:fs");
-const path = require("node:path");
 const kit = require("../../studio/scripts/storyboard-kit.cjs");
-
-const ROOT = path.resolve(__dirname, "../..");
 
 const { camera, fly, label, layer, shot } = kit;
 const SLUG = "egypt-nile";
@@ -14,13 +10,7 @@ const voice = kit.narration(`${AUDIO}/words.json`);
 const EGYPT = "egypt";
 const BASIN = "basin";
 const onEgypt = (name) => kit.readJson(`data/processed/egypt/${name}.geojson`);
-// vap.geo.river writes a bare Infinity for a tributary that ends far from the sea, which is not JSON.
-const onBasin = (name) =>
-  JSON.parse(
-    fs
-      .readFileSync(path.join(ROOT, `data/processed/nile-basin/${name}.geojson`), "utf8")
-      .replace(/:s*Infinity/g, ":null"),
-  );
+const onBasin = (name) => kit.readJson(`data/processed/nile-basin/${name}.geojson`);
 
 const OUTLINE_E = onEgypt("custom/egypt");
 const OUTLINE_B = onBasin("custom/egypt");
@@ -252,7 +242,7 @@ const shots = [
     EGYPT,
     "That river once",
     "fields beside it",
-    follow(28.0, 6.5, FLOOD_FRAMES),
+    follow(28.0, 6.0, FLOOD_FRAMES),
     [
       keptRiver("damietta", DAMIETTA_E),
       river("nile-redraw", NILE_E, "Its great flood", 118, { glow: true }),
@@ -264,7 +254,7 @@ const shots = [
     EGYPT,
     "But follow the river",
     "beyond Egypt's border",
-    fly(32.2, 22.9, 5.5),
+    fly(32.6, 21.6, 5.5),
     [
       ...nileE(),
       river("nile-upstream", NILE_FULL_E, "far beyond", 40),
@@ -279,7 +269,7 @@ const shots = [
     BASIN,
     "Here are the highlands",
     "of Ethiopia",
-    fly(35, 17.6, 5.12),
+    fly(34.6, 16.8, 5.25),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral"),
@@ -327,14 +317,14 @@ const shots = [
     "another",
     BASIN,
     "So most of Egypt's",
-    84.4, // The word end is 23 frames before the middle of this pause, over the snap window.
+    voice.between("river starts in another country", "Now come back"),
     fly(32.3, 23.8, 5.5),
     [
       keptRiver("blue-kept", BLUE),
       keptRiver("white-kept", WHITE),
       keptRiver("atbara-kept", ATBARA),
       keptMask("highlands-kept", HIGHLANDS, "regionB"),
-      mask("egypt-arrival", OUTLINE_B, "neutral", 83.1, { enterFrames: 24 }),
+      mask("egypt-arrival", OUTLINE_B, "neutral", "river starts in another", { enterFrames: 24 }),
       keptRiver("nile", NILE_B),
       river("nile-into-egypt", NILE_B, "Egypt's river starts", 72, { glow: true }),
       keptRiver("damietta", DAMIETTA_B),
@@ -353,7 +343,7 @@ const shots = [
       ...nileE(),
       label("aswan-name", "Aswan", "city", ASWAN, "back to Aswan", undefined, "left"),
       label("dam-name", "High Dam", "city", DAM, "the High Dam began", undefined, "right"),
-      layer("date-1960", "BigDate", { year: 1960, fromYear: 1940, era: "CE", caption: "Work on the High Dam began", placement: "lower-left" }, "nineteen sixty", 89.3),
+      layer("date-1960", "BigDate", { year: 1960, fromYear: 1940, era: "CE", caption: "Work on the High Dam began", placement: "lower-left" }, "nineteen sixty", voice.timeOf("It was completed")),
       layer("date-1970", "BigDate", { year: 1970, fromYear: 1960, era: "CE", caption: "High Dam completed", placement: "lower-left" }, "completed in nineteen"),
     ],
   ),
@@ -364,7 +354,7 @@ const shots = [
     label("lake-name", "Lake Nasser", "region", [31.75, 22.55], "Lake Nasser", undefined, "left"),
     label("floods-ended", "Floods ended (one account)", "region", [33.5, 24.6], "devastating floods", undefined, "right"),
   ]),
-  shot("sediment", EGYPT, "An older study", 104.5, fly(32.6, 25.3, 6.38), [
+  shot("sediment", EGYPT, "An older study", voice.between("to more fertilizer", "By our reasoning"), fly(32.6, 25.3, 6.38), [
     ...nileE(),
     keptMask("lake-kept", NASSER, "regionA"),
     label("dam-3", "High Dam", "city", DAM, undefined, undefined, "right"),
@@ -391,17 +381,20 @@ const shots = [
       "roughly ninety-seven",
     ),
   ]),
-  shot("reading", EGYPT, "Our reading", 119.95, fly(31.1, 29, 6.62), [
+  shot("reading", EGYPT, "Our reading", voice.between("than mud does", "So why does"), fly(31.1, 29, 6.62), [
     ...nileE(),
     ...nileGlow("water explains", 40),
+    label("water-word", "Water (our reading)", "region", [32.9, 28.1], "water explains", undefined, "right"),
   ]),
   // The Answer
-  shot("question", EGYPT, 119.95, "along the Nile", fly(30.6, 26.4, 5.95), [
+  shot("question", EGYPT, voice.between("than mud does", "So why does"), "along the Nile", fly(30.6, 26.4, 5.95), [
     tag("The Answer", "along the Nile"),
     ...nileE(),
+    mask("egypt-question", OUTLINE_E, "neutral", "all of Egypt", { enterFrames: 20 }),
     ...nileGlow("along the Nile", 30),
+    label("nile-question", "Nile", "river", [32.1, 26.0], "along the Nile"),
   ]),
-  shot("answer", EGYPT, "Our answer is", "reliable water", fly(31.2, 28, 6.6), [
+  shot("answer", EGYPT, "Our answer is", "reliable water", fly(31.2, 27.2, 6.05), [
     ...nileE(),
     label("valley-3", "Valley", "region", [32.4, 27.6], "valley and Delta are the", undefined, "right"),
     label("delta-4", "Delta", "region", [29.5, 30.35], "valley and Delta are the"),
@@ -412,11 +405,11 @@ const shots = [
     EGYPT,
     "The rest is mostly",
     "very little rain",
-    fly(31, 24.6, 5.56),
+    fly(32, 23.6, 5.52),
     [...nileE(), label("desert-rest", "Desert", "region", [26.5, 26], "mostly desert")],
     "crossfade",
   ),
-  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(36, 16, 4.98), [
+  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(36, 17.4, 5.1), [
     ...nileB(),
     river("blue-back", BLUE, "far to the south", 40, { glow: true }),
     label("blue-back-name", "Blue Nile", "river", [35.2, 12.2], "far to the south", undefined, "left"),
@@ -451,6 +444,8 @@ const shots = [
       mask("egypt-close", OUTLINE_E, "neutral", "Egypt's map of people", {
         enterFrames: 30,
       }),
+      river("nile-upstream-close", NILE_FULL_E, "mostly starts in another", 40),
+      label("from-south", "From far to the south", "river", [33.2, 21.6], "mostly starts in another", undefined, "right"),
     ],
     null,
   ),
@@ -479,6 +474,7 @@ const CLAIMS = {
   "less-silt": ["C13"],
   "nasa-97": ["C02"],
   "recap-shares": ["C01", "C02"],
+  "from-south": ["C09"],
 };
 for (const { layers } of shots)
   for (const item of layers)

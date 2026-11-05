@@ -302,8 +302,8 @@ Rules:
 - **Zoom limits:** `plateZoomLimits(meta)` gives `cover` (whole plate), `native` (1:1) and
   `max` (`native` + log2 of the oversampling cap). Pass `maxZoom` to `focusOn` near the limit.
   Pseudo-pitch magnifies the near edge (~5 % at 6°, ~15 % at 25°), so keep a margin.
-- **Speed limit in episodes:** `motion.camera.maxSpeedPx` (9 px/frame). `followLine` chases its aim point at
-  no more than this with `maxSpeed`, which episodes always pass; the storyboard check fails on any preset above it.
+- **Speed limit in episodes:** `motion.camera.maxSpeedPx` (9 px/frame), for the movement on screen, pan and zoom together at the frame's corners. `followLine` chases its aim point and zoom within this with `maxSpeed`,
+  which episodes always pass; the storyboard check and `vap.qa.motion --check` fail on any preset above it.
 - **Every frame is verified** (plate edges never visible, magnification within limits) before
   rendering; `npm test` runs the same check on the showreel timeline.
 

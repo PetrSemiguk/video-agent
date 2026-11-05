@@ -107,7 +107,7 @@ const shots = [
       ),
     ],
   ),
-  shot("plateau", PLATE, "In the west", "four thousand meters", fly(98.6, 33, 5.38), [
+  shot("plateau", PLATE, "In the west", "four thousand meters", fly(100, 33, 5.32), [
     mask("plateau-mask", plateau, "neutral", "Tibetan Plateau", undefined, {
       dimOutside: true,
       enterFrames: 24,

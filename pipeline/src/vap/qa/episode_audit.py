@@ -30,6 +30,15 @@ def check(condition, message: str) -> None:
         raise AuditError(message)
 
 
+def lead_is_valid(lead: dict, starts: dict, config: dict) -> bool:
+    """The full lead, or less when the shot's first frame leaves no room for it."""
+    if lead["leadFrames"] == config["labelLeadFrames"]:
+        return True
+    return (
+        0 <= lead["leadFrames"] < config["labelLeadFrames"] and lead["from"] == starts[lead["shot"]]
+    )
+
+
 def audit_words(episode: Path) -> dict:
     words = read_json(episode / "audio/words.json")
     manifest = read_json(episode / "audio/voice.manifest.json")
@@ -71,10 +80,8 @@ def audit_plan(slug: str, out: Path, samples, rate: int, fps: int, spoken: str) 
             cuts.append({"frame": cursor, "rms": rms})
         cursor += shot["durationInFrames"]
     check(cursor == math.ceil(len(samples) * fps / rate), "Plan does not cover the audio")
-    check(
-        all(lead["leadFrames"] == config["labelLeadFrames"] for lead in sync["leads"]),
-        "Label lead mismatch",
-    )
+    starts = {shot["id"]: shot["from"] for shot in assembly["shots"]}
+    check(all(lead_is_valid(lead, starts, config) for lead in sync["leads"]), "Label lead mismatch")
     for name, shots in (("sync", sync["shots"]), ("preview", preview["shots"])):
         check(" ".join(s["text"] for s in shots) == spoken, f"{name} captions lose words")
     check(len(preview["shots"]) == len(assembly["shots"]), "Preview shot count mismatch")

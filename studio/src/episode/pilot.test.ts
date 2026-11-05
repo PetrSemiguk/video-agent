@@ -19,7 +19,7 @@ import { motion, space } from "../design/tokens";
 import type { PlateMeta } from "../geo/plate";
 import { makeProjection } from "../map/PlateStage";
 import { storyboardSchema } from "../storyboard/schema";
-import { buildCamera, peakPan, verifyEpisodeCamera } from "./camera";
+import { buildCamera, peakMotion, verifyEpisodeCamera } from "./camera";
 import { compilePlan, geoLayerTypes } from "./plan";
 
 const W = 1920;
@@ -84,7 +84,8 @@ describe("pilot v2 by docs/visual-grammar.md", () => {
     const limit = motion.camera.maxSpeedPx + motion.camera.speedTolerancePx;
     assembly.shots.forEach((window) =>
       expect(
-        peakPan(camera.poseAt, window.from, window.durationInFrames).speed,
+        peakMotion(camera.poseAt, window.from, window.durationInFrames, W, H)
+          .speed,
         window.id,
       ).toBeLessThanOrEqual(limit),
     );

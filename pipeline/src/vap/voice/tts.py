@@ -25,6 +25,7 @@ from .postprocess import (
     TRIM_PAD_SECONDS,
     join_check,
     normalize_loudness,
+    stretch,
     trim_edges,
 )
 
@@ -261,7 +262,11 @@ def run(args: argparse.Namespace) -> dict:
             del model
             gc.collect()
             torch.cuda.empty_cache()
-    trimmed = [trim_edges(part, SAMPLE_RATE) for part in outputs]
+    tempo = getattr(args, "tempo", 1.0)
+    trimmed = [
+        (stretch(part, SAMPLE_RATE, tempo), trim)
+        for part, trim in (trim_edges(raw, SAMPLE_RATE) for raw in outputs)
+    ]
     audio, spans = assemble(
         [part for part, _ in trimmed], [c.paragraph for c in prepared], prepared
     )
@@ -299,6 +304,7 @@ def run(args: argparse.Namespace) -> dict:
             ]
         },
         "settings": settings,
+        **({"tempo": tempo} if tempo != 1 else {}),
         "seed": args.seed,
         "max_chars": args.max_chars,
         "voice": {

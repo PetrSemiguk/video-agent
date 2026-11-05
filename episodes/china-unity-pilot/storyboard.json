@@ -31,10 +31,10 @@
         "params": {
           "target": {
             "center": {
-              "lon": 110,
+              "lon": 107.5,
               "lat": 33
             },
-            "zoom": 4.8
+            "zoom": 4.82
           },
           "push": 0.1
         }
@@ -163,15 +163,15 @@
         "phrase": "dense settlement"
       },
       "camera": {
-        "preset": "focusOn",
+        "preset": "flyTo",
         "params": {
-          "bounds": [
-            111.5,
-            28,
-            122,
-            40.5
-          ],
-          "maxZoom": 5.5
+          "to": {
+            "center": {
+              "lon": 113.6,
+              "lat": 33.6
+            },
+            "zoom": 5.14
+          }
         }
       },
       "layers": [

@@ -19,6 +19,7 @@ from pathlib import Path
 
 from vap.geo import errata, hist_attribution
 from vap.qa import motion
+from vap.voice import pace
 
 ROOT = Path(__file__).resolve().parents[3]
 STAGES = ("voice", "align", "preview", "render")
@@ -171,6 +172,7 @@ class Builder:
             "seed",
             "max_chars",
             "seed_overrides",
+            "tempo",
         }
         if not isinstance(settings, dict) or settings.keys() - allowed:
             raise ValueError("voice.job.json must be an object with supported voice settings")
@@ -180,11 +182,14 @@ class Builder:
             "seed": 42,
             "max_chars": 240,
             "seed_overrides": {},
+            "tempo": 1.0,
             **settings,
         }
         for name in ("exaggeration", "cfg"):
             if type(job[name]) not in (int, float) or not 0 <= job[name] <= 1:
                 raise ValueError(f"Invalid {name}: expected a number in 0..1")
+        if type(job["tempo"]) not in (int, float) or not 0.5 <= job["tempo"] <= 2:
+            raise ValueError("Invalid tempo: expected a number in 0.5..2")
         for name, low, high in (("seed", 0, 2**32 - 100000), ("max_chars", 40, 10000)):
             if type(job[name]) is not int or not low <= job[name] <= high:
                 raise ValueError(f"Invalid {name}")
@@ -234,6 +239,9 @@ class Builder:
                 24000,
             ) or audio.getnframes() != manifest["samples"]:
                 raise ValueError("Invalid mastered WAV sample contract")
+        report = pace.pace(manifest)
+        write_json(self.work / "pace.json", report)
+        print(pace.summary(report), flush=True)
         return [
             self.audio / name
             for name in ("voice.wav", "voice.manifest.json", "voice.pre-loudnorm.wav")

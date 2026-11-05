@@ -79,10 +79,10 @@ uv run python -m vap.qa.motion ../studio/out/episode-<slug>-synced.mp4 --plan ..
 The rule catches a frozen camera, not a badly chosen one. Fast moves need your own eye: keep the jump
 between far subjects short, by starting a `followLine` on the reach the narration is about.
 
-**Speed limit.** The build also fails when the camera pans faster than `motion.camera.maxSpeedPx`, 9 px/frame,
-in any shot. That is the "7 seconds to cross the frame" rule of thumb for pans. In pilot v2 a label appearing at
-14 px/frame could not be read. `followLine` keeps to the limit by itself, by chasing its aim point. For `focusOn`
-and `flyTo`, bring the framings closer or lengthen the shot when the error names them.
+**Speed limit.** The build also fails when the picture moves faster than `motion.camera.maxSpeedPx`, 9 px/frame,
+in any shot. It counts the movement on screen, pan and zoom together, at the frame's corners, where it is greatest. That is the "7 seconds to cross the frame" rule of thumb. In pilot v2 a label appearing at
+14 px/frame could not be read. `followLine` keeps to the limit by itself, by chasing its aim point and zoom. For `focusOn`
+and `flyTo`, bring the framings or zooms closer or lengthen the shot when the error names them.
 
 ## Rhythm
 

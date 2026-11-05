@@ -137,7 +137,8 @@ export const motion = {
     cityStagger: 8,
   },
   /**
-   * Camera limits for episodes, in screen px per frame. 9 is the "7 seconds to cross the frame"
+   * Camera limits for episodes: how far the picture moves on screen per frame, pan and zoom
+   * together, at the frame's corners, where it moves most. 9 is the "7 seconds to cross the frame"
    * rule of thumb for pans (1920 / (7 * 30) = 9.1). Labels on the map stay readable at it; at 14
    * in pilot v2 a label appearing during the move could not be read.
    */
@@ -148,6 +149,8 @@ export const motion = {
     maxAccelPx: 0.25,
     /** Share of the remaining distance a limited camera tries to cover per frame. */
     chaseGain: 0.03,
+    /** Share of the limit a limited camera may spend on zooming; panning gets the rest. */
+    zoomShare: 0.4,
   },
   /** Starting scale of elements that grow in on entrance. */
   enterScale: 0.94,

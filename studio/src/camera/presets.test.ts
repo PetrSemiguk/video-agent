@@ -7,6 +7,7 @@ import { lonLatToPlatePx } from "../geo/plate";
 import { plateView, projectToScreen } from "./plateProjection";
 import { drift, establish, flyTo, focusOn, followLine, hold } from "./presets";
 import { motion } from "../design/tokens";
+import { peakMotion, screenMotion } from "../episode/camera";
 import { cameraTimeline, fromMerc, metersPerPx, Timeline } from "./timeline";
 
 const W = 1920;
@@ -215,6 +216,35 @@ describe("speed limit of followLine", () => {
     expect(peak()).toBeGreaterThan(motion.camera.maxSpeedPx);
     expect(peak(motion.camera.maxSpeedPx)).toBeLessThanOrEqual(
       motion.camera.maxSpeedPx + motion.camera.speedTolerancePx,
+    );
+  });
+  test("a limited zoom keeps pan and zoom together within the limit at the corners", () => {
+    const t = cameraTimeline(
+      [
+        establish({ center: { lon: 118, lat: 38 }, zoom: 4.9 }, 30),
+        followLine(line, (f) => Math.max(0, (f - 30) / 300), 300, {
+          zoom: 5.5,
+          blend: 40,
+          maxSpeed: motion.camera.maxSpeedPx,
+        }),
+      ],
+      { fps: 30, width: 1920, height: 1080 },
+    );
+    expect(peakMotion(t.poseAt, 31, 298, 1920, 1080).speed).toBeLessThanOrEqual(
+      motion.camera.maxSpeedPx + motion.camera.speedTolerancePx,
+    );
+    expect(t.poseAt(329).zoom).toBeCloseTo(5.5, 1);
+  });
+  test("a pure zoom moves the corners, and a pure pan moves everything alike", () => {
+    const pose = { x: 0, y: 0, zoom: 5, pitch: 0, bearing: 0 };
+    expect(screenMotion(pose, { ...pose, zoom: 5.01 }, 1920, 1080)).toBeCloseTo(
+      Math.hypot(960, 540) * (2 ** 0.01 - 1),
+      6,
+    );
+    const shift = 7 * metersPerPx(5);
+    expect(screenMotion(pose, { ...pose, x: shift }, 1920, 1080)).toBeCloseTo(
+      7,
+      6,
     );
   });
   test("the limited camera still catches the line", () => {

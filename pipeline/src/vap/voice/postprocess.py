@@ -58,6 +58,38 @@ def join_check(audio: np.ndarray, spans: list[dict], limit: float = JOIN_LIMIT) 
     return {"maximum_step": maximum, "limit": limit, "boundaries": steps, "passed": True}
 
 
+def stretch(audio: np.ndarray, sr: int, tempo: float) -> np.ndarray:
+    """Change speed without changing pitch. Tempo below 1 is slower."""
+    if not 0.5 <= tempo <= 2:
+        raise ValueError("Tempo must be in 0.5..2")
+    if tempo == 1:
+        return audio
+    done = subprocess.run(
+        [
+            "ffmpeg",
+            "-hide_banner",
+            "-nostats",
+            "-f",
+            "f32le",
+            "-ar",
+            str(sr),
+            "-ac",
+            "1",
+            "-i",
+            "pipe:0",
+            "-af",
+            f"atempo={tempo}",
+            "-f",
+            "f32le",
+            "pipe:1",
+        ],
+        input=audio.astype(np.float32).tobytes(),
+        capture_output=True,
+        check=True,
+    )
+    return np.frombuffer(done.stdout, dtype=np.float32).copy()
+
+
 def _ffmpeg(args: list[str]) -> str:
     result = subprocess.run(
         ["ffmpeg", "-hide_banner", "-nostdin", "-nostats", *args],

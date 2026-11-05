@@ -37,6 +37,9 @@ Rules you must keep:
 
 - **Hard cuts:** at most 3 per minute. A hard cut is a change of plate, a transition, or a break in the camera's motion. A smooth change of shot on one plate is not a cut, and has no such limit. Over 3 per minute is a violation: remove transitions or plate changes.
 - **Text on screen:** every date, number or named event has `claims` from `facts.md`, and its wording stays within that claim. Never put a date or figure on screen that `facts.md` does not hold, even from a route's sources file: use the ledger's wording, or leave it out.
+- **Change of historical period:** a date or era label on the map when the period changes, such as on a route or a historical layer, with its claim.
+- **Reasons listed in the script:** a summary card at the end of the section, with its claim, when the script gives a list of reasons there.
+- **Every shot's key word:** still a frame at it, and check the subject is in frame and something on the map changes there. A shot with no change on its key word needs one.
 - **Lines leave softly:** `RiverLine` and `RouteLine` fade out at the end of their layer. Where the next shot shows the same line, set `exitFrames: 0` on it, so it does not dip.
 
 ## 4. Check, at most 2 revision rounds

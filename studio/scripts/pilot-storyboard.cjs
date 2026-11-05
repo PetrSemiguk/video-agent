@@ -208,7 +208,7 @@ const story = {
       0,
       "Start with the landscape",
       camera("establish", {
-        target: { center: { lon: 110, lat: 33 }, zoom: 4.8 },
+        target: { center: { lon: 107.5, lat: 33 }, zoom: 4.82 },
         push: 0.1,
       }),
       [
@@ -271,7 +271,7 @@ const story = {
       "eastern-lowlands",
       "Farther east",
       "dense settlement",
-      focus(LOWLAND_BOUNDS, 5.5),
+      fly(113.6, 33.6, 5.14),
       [
         layer(
           "lowlands-mask",

@@ -12,7 +12,12 @@ import { prepareEpisode } from "./prepare-episode.mjs";
 
 const require = createRequire(import.meta.url);
 require("./load-ts.cjs");
-const { styleReview, type, colors } = require("../src/design/tokens.ts");
+const {
+  styleReview,
+  type,
+  colors,
+  motion,
+} = require("../src/design/tokens.ts");
 const { buildCamera } = require("../src/episode/camera.ts");
 const leadArgument = process.argv.find((arg) =>
   arg.startsWith("--lead-frames="),
@@ -111,6 +116,7 @@ if (!smoke) {
     fps: composition.fps,
     width: composition.width,
     height: composition.height,
+    speedLimitPx: motion.camera.maxSpeedPx + motion.camera.speedTolerancePx,
     frames: Array.from({ length: composition.durationInFrames }, (_, f) => {
       const pose = timeline.poseAt(f);
       return [pose.x, pose.y, pose.zoom];

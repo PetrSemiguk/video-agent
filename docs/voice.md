@@ -196,6 +196,11 @@ keep null times/status unresolved; no fabricated timestamps. CLI exits **2** for
 unresolved output, **0** for complete output. ASR mismatches are review candidates,
 not proof of a TTS mistake; homophones and recognition errors can still confuse it.
 
+**Pace.** `uv run python -m vap.voice.pace <voice.manifest.json>` reports words per minute, whole file and per chunk; the voice stage also prints it and writes `pace.json`.
+The target is 155-165 over the whole file, pauses included, and it warns outside 145-175. It does not fail a build.
+
+**Words per minute depend on the script, not only the voice.** At the same settings, the pilot and `egypt-nile` ran at about 5.3 syllables per second in speech. `egypt-nile` still ran at 217 words per minute of speech against 174, as its words average 1.46 syllables against 1.82. `cfg` is a weak lever here: 0.5, 0.3 and 0.1 gave 194, 185 and 183 words per minute over the file. To change the pace use `tempo` in `voice.job.json`, which stretches each chunk without changing its pitch (ffmpeg `atempo`), below 1 for slower. Listen to the result: stretching can add artifacts, and it runs after the Perth watermark is applied in generation, so it has not been checked that the watermark survives it.
+
 Whisper spells unfamiliar names its own way. `vap/align/spellings.json` lists these, heard to script form. Add a name only after listening, or when the spelling plainly
 sounds the same: it is an explicit list, and not fuzzy matching, so that a real word error stays visible. For timing, a round `1,500` from Whisper reads as "fifteen hundred".
 

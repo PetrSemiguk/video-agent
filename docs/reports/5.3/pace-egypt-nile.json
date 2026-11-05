@@ -1,0 +1,325 @@
+{
+  "words": 470,
+  "seconds": 175.67645833333333,
+  "wpm": 160.5,
+  "speech_wpm": 176.4,
+  "syllables_per_word": 1.48,
+  "speech_syllables_per_second": 4.35,
+  "target_wpm": [
+    155.0,
+    165.0
+  ],
+  "chunks": [
+    {
+      "id": 0,
+      "words": 8,
+      "seconds": 3.7,
+      "wpm": 129.7,
+      "text": "This is Egypt, about one million square kilometers."
+    },
+    {
+      "id": 1,
+      "words": 7,
+      "seconds": 1.8,
+      "wpm": 234.0,
+      "text": "Most of what you see is desert."
+    },
+    {
+      "id": 2,
+      "words": 8,
+      "seconds": 2.82,
+      "wpm": 170.4,
+      "text": "Now look at this one thin green line."
+    },
+    {
+      "id": 3,
+      "words": 4,
+      "seconds": 1.59,
+      "wpm": 150.8,
+      "text": "That is the Nile."
+    },
+    {
+      "id": 4,
+      "words": 15,
+      "seconds": 4.28,
+      "wpm": 210.2,
+      "text": "Nearly all of Egypt's people live along it, or in the Delta at its end."
+    },
+    {
+      "id": 5,
+      "words": 6,
+      "seconds": 2.52,
+      "wpm": 143.1,
+      "text": "Why here, and almost nowhere else?"
+    },
+    {
+      "id": 6,
+      "words": 14,
+      "seconds": 4.27,
+      "wpm": 196.7,
+      "text": "Most Egyptians live in the Delta, or in the narrow valley south of Cairo."
+    },
+    {
+      "id": 7,
+      "words": 12,
+      "seconds": 5.29,
+      "wpm": 136.2,
+      "text": "Together, the valley and Delta are about four percent of Egypt's land."
+    },
+    {
+      "id": 8,
+      "words": 12,
+      "seconds": 5.3,
+      "wpm": 135.8,
+      "text": "Recent estimates, including NASA's, put about ninety-seven percent of its people there."
+    },
+    {
+      "id": 9,
+      "words": 16,
+      "seconds": 5.73,
+      "wpm": 167.5,
+      "text": "Sources differ on the exact shares, but a small part of the map holds almost everyone."
+    },
+    {
+      "id": 10,
+      "words": 18,
+      "seconds": 6.75,
+      "wpm": 160.0,
+      "text": "In the nineteen nineties, density in the valley and Delta was around fifteen hundred people per square kilometer."
+    },
+    {
+      "id": 11,
+      "words": 13,
+      "seconds": 3.36,
+      "wpm": 231.8,
+      "text": "In the rest of the country, it was a tiny fraction of that."
+    },
+    {
+      "id": 12,
+      "words": 11,
+      "seconds": 2.91,
+      "wpm": 227.0,
+      "text": "Move out over the desert, and the reason starts to show."
+    },
+    {
+      "id": 13,
+      "words": 9,
+      "seconds": 3.45,
+      "wpm": 156.3,
+      "text": "By the FAO's estimate, almost no rain falls here."
+    },
+    {
+      "id": 14,
+      "words": 6,
+      "seconds": 1.98,
+      "wpm": 181.6,
+      "text": "The north coast gets the most."
+    },
+    {
+      "id": 15,
+      "words": 6,
+      "seconds": 2.78,
+      "wpm": 129.4,
+      "text": "So Egypt leans on one river."
+    },
+    {
+      "id": 16,
+      "words": 12,
+      "seconds": 3.97,
+      "wpm": 181.5,
+      "text": "The FAO calls the Nile the main source of water for Egypt."
+    },
+    {
+      "id": 17,
+      "words": 7,
+      "seconds": 2.54,
+      "wpm": 165.5,
+      "text": "That river once brought more than water."
+    },
+    {
+      "id": 18,
+      "words": 16,
+      "seconds": 4.93,
+      "wpm": 194.9,
+      "text": "Its great flood usually came through Egypt and spread fertile mud over the fields beside it."
+    },
+    {
+      "id": 19,
+      "words": 9,
+      "seconds": 3.48,
+      "wpm": 155.3,
+      "text": "But follow the river south, far beyond Egypt's border."
+    },
+    {
+      "id": 20,
+      "words": 6,
+      "seconds": 2.23,
+      "wpm": 161.2,
+      "text": "Here are the highlands of Ethiopia."
+    },
+    {
+      "id": 21,
+      "words": 14,
+      "seconds": 5.05,
+      "wpm": 166.3,
+      "text": "By a common estimate, around eighty-six percent of the Nile's flow starts in Ethiopia."
+    },
+    {
+      "id": 22,
+      "words": 9,
+      "seconds": 2.89,
+      "wpm": 186.7,
+      "text": "The exact share depends on which rivers are counted."
+    },
+    {
+      "id": 23,
+      "words": 14,
+      "seconds": 4.31,
+      "wpm": 195.1,
+      "text": "The Blue Nile alone carries more than half of the water that reaches Egypt."
+    },
+    {
+      "id": 24,
+      "words": 9,
+      "seconds": 2.45,
+      "wpm": 220.7,
+      "text": "The White Nile and the Atbara bring the rest."
+    },
+    {
+      "id": 25,
+      "words": 9,
+      "seconds": 3.38,
+      "wpm": 159.7,
+      "text": "So most of Egypt's river starts in another country."
+    },
+    {
+      "id": 26,
+      "words": 5,
+      "seconds": 2.03,
+      "wpm": 147.7,
+      "text": "Now come back to Aswan."
+    },
+    {
+      "id": 27,
+      "words": 9,
+      "seconds": 2.6,
+      "wpm": 207.9,
+      "text": "Work on the High Dam began in nineteen sixty."
+    },
+    {
+      "id": 28,
+      "words": 6,
+      "seconds": 2.54,
+      "wpm": 141.9,
+      "text": "It was completed in nineteen seventy."
+    },
+    {
+      "id": 29,
+      "words": 5,
+      "seconds": 2.0,
+      "wpm": 149.9,
+      "text": "Behind it lies Lake Nasser."
+    },
+    {
+      "id": 30,
+      "words": 13,
+      "seconds": 4.13,
+      "wpm": 189.0,
+      "text": "One account says the dam brought the Nile's devastating floods to an end."
+    },
+    {
+      "id": 31,
+      "words": 14,
+      "seconds": 4.05,
+      "wpm": 207.2,
+      "text": "An older study says most of the river's sediment now stays in the lake."
+    },
+    {
+      "id": 32,
+      "words": 13,
+      "seconds": 4.66,
+      "wpm": 167.3,
+      "text": "The FAO links the dam to less silt downstream and to more fertilizer."
+    },
+    {
+      "id": 33,
+      "words": 17,
+      "seconds": 5.73,
+      "wpm": 178.0,
+      "text": "By our reasoning, if fertile mud were the whole answer, this strip should have lost its people."
+    },
+    {
+      "id": 34,
+      "words": 3,
+      "seconds": 0.92,
+      "wpm": 195.0,
+      "text": "It did not."
+    },
+    {
+      "id": 35,
+      "words": 15,
+      "seconds": 6.52,
+      "wpm": 138.0,
+      "text": "NASA's figure of roughly ninety-seven percent was published in twenty twelve, decades after the dam."
+    },
+    {
+      "id": 36,
+      "words": 13,
+      "seconds": 3.84,
+      "wpm": 203.3,
+      "text": "Our reading is that water explains more of this map than mud does."
+    },
+    {
+      "id": 37,
+      "words": 11,
+      "seconds": 2.94,
+      "wpm": 224.7,
+      "text": "So why does almost all of Egypt live along the Nile?"
+    },
+    {
+      "id": 38,
+      "words": 19,
+      "seconds": 5.72,
+      "wpm": 199.4,
+      "text": "Our answer is that the valley and Delta are the one large part of this country with reliable water."
+    },
+    {
+      "id": 39,
+      "words": 9,
+      "seconds": 2.87,
+      "wpm": 188.5,
+      "text": "The rest is mostly desert, with very little rain."
+    },
+    {
+      "id": 40,
+      "words": 13,
+      "seconds": 4.14,
+      "wpm": 188.5,
+      "text": "The river brings its water from far to the south, mostly from Ethiopia."
+    },
+    {
+      "id": 41,
+      "words": 16,
+      "seconds": 5.46,
+      "wpm": 175.7,
+      "text": "By recent estimates, about four percent of the land holds about ninety-seven percent of the people."
+    },
+    {
+      "id": 42,
+      "words": 7,
+      "seconds": 1.8,
+      "wpm": 233.3,
+      "text": "Look at that green line once more."
+    },
+    {
+      "id": 43,
+      "words": 12,
+      "seconds": 4.18,
+      "wpm": 172.2,
+      "text": "Egypt's map of people follows water that mostly starts in another country."
+    }
+  ],
+  "warnings": [
+    "30 of 44 chunks outside 145-175 wpm: 0 (130), 1 (234), 4 (210), 5 (143), 6 (197), 7 (136), 8 (136), 11 (232), 12 (227), 14 (182), 15 (129), 16 (182), 18 (195), 22 (187), 23 (195), 24 (221), 27 (208), 28 (142), 30 (189), 31 (207), 33 (178), 34 (195), 35 (138), 36 (203), 37 (225), 38 (199), 39 (188), 40 (188), 41 (176), 42 (233)"
+  ]
+}

@@ -1,31 +1,31 @@
 {
   "name": "egypt",
   "image": "plates/egypt.png",
-  "width": 6000,
-  "height": 3375,
+  "width": 6950,
+  "height": 3909,
   "crs": "EPSG:3857",
   "requested_bbox_lonlat": [
-    12.0,
-    13.0,
-    50.0,
+    9.0,
+    10.0,
+    53.0,
     33.0
   ],
   "bbox_lonlat": [
-    11.55189977,
-    13.0,
-    50.44810023,
+    8.82813879,
+    10.0,
+    53.17186121,
     33.0
   ],
   "bbox_3857": [
-    1285951.6,
-    1459732.272,
-    5615856.829,
+    982743.915,
+    1118889.975,
+    5919064.514,
     3895303.963
   ],
-  "pixel_size_m": 721.650872,
+  "pixel_size_m": 710.261957,
   "zoom": {
-    "tile512": 6.761,
-    "tile256": 7.761
+    "tile512": 6.784,
+    "tile256": 7.784
   },
   "projection": {
     "radius_m": 6378137.0,
@@ -44,10 +44,10 @@
   "resolution": {
     "source": "NASA Blue Marble NG, 15 arc-seconds",
     "definition": "plate px per Blue Marble px (max of x/y); > 1 = upscaled",
-    "center": 0.7,
-    "edge": 0.766,
+    "center": 0.704,
+    "edge": 0.779,
     "limit": 1.25,
-    "min_width_deg_at_limit": 23.85
+    "min_width_deg_at_limit": 27.62
   },
   "attribution": {
     "sources": [

@@ -1,6 +1,7 @@
 """The motion rule: no stretch over 2 s without camera motion, except explained holds."""
 
 import json
+import math
 
 import numpy as np
 import pytest
@@ -82,6 +83,46 @@ def test_video_stretch_explained_by_zoom_is_allowed():
     report = motion.gate(speed, plan([shot()]), FPS, zoom=zoom)
     assert report["passed"]
     assert "zoom" in report["stills"][0]["why"]
+
+
+def test_screen_motion_counts_zoom_at_the_corners():
+    moving = plan([shot()], 3, lambda f: (0.0, 0.0, 5.0 + f * 0.01))
+    expected = math.hypot(960, 540) * (2**0.01 - 1)
+    assert motion.screen_motion(moving)[0] == pytest.approx(expected)
+    metres = 2 * math.pi * 6378137 / (512 * 2**5)
+    panning = plan([shot()], 3, lambda f: (f * 7 * metres, 0.0, 5.0))
+    assert motion.screen_motion(panning)[0] == pytest.approx(7)
+
+
+def test_too_fast_names_the_shot_with_pan_and_zoom_together():
+    # About 6 px/frame of pan and 6 of zoom: each is within 9, and together they are not.
+    metres = 2 * math.pi * 6378137 / (512 * 2**5)
+    camera = plan(
+        [shot(name="slow", frames=30), shot(name="fast", start=30, frames=30)],
+        60,
+        lambda f: (
+            max(0, f - 30) * 6 * metres,
+            0.0,
+            5.0 + max(0, f - 30) * 0.0079,
+        ),
+    )
+    camera["speedLimitPx"] = 9.5
+    found = motion.too_fast(camera, FPS)
+    assert [item["shot"] for item in found] == ["fast"]
+    assert found[0]["peak_px"] > 9.5
+    assert motion.too_fast({**camera, "speedLimitPx": 50}, FPS) == []
+    del camera["speedLimitPx"]
+    assert motion.too_fast(camera, FPS) == []
+
+
+def test_cli_fails_a_fast_camera_and_says_so(tmp_path, capsys):
+    metres = 2 * math.pi * 6378137 / (512 * 2**5)
+    camera = plan([shot()], pose=lambda f: (f * 20 * metres, 0.0, 5.0))
+    camera["speedLimitPx"] = 9.5
+    path = tmp_path / "plan.json"
+    path.write_text(json.dumps(camera), encoding="utf-8")
+    assert motion.main(["--plan", str(path), "--check"]) == 1
+    assert "too fast in a" in capsys.readouterr().err
 
 
 def test_cli_check_exits_nonzero_and_names_the_shot(tmp_path, capsys):

@@ -197,5 +197,6 @@ Claude Code skills also use. Check `git diff skills-lock.json` afterwards and le
 - [docs/maps.md](docs/maps.md) — map plates: sources, lon/lat → px contract, adding a region
 - [docs/episode-format.md](docs/episode-format.md) — episode structure, length, map-first writing, script markup
 - [docs/visual-grammar.md](docs/visual-grammar.md) — how a storyboard uses the map: rules, pattern table, anti-patterns
+- [docs/backlog.md](docs/backlog.md) — decided, not yet scheduled
 - [docs/roadmap.md](docs/roadmap.md) — work plan and the step report protocol
 - [docs/automation.md](docs/automation.md) — autonomous runs, notifications, merging `auto/*`
