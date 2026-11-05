@@ -37,7 +37,16 @@ paragraph, say what the map does during it, by the table in [visual-grammar.md](
 | Many historians believe that geography mattered. | Look where the mountains stop. That is where the empire stops. |
 
 **Say what you can show, and name it once clearly.** Spell out numbers as they should be heard when it matters ("five eighty-nine");
-see [voice.md](voice.md) for how numbers, years and names are read. Keep exact figures to those the map or a graphic can carry.
+see [voice.md](voice.md) for how numbers, years and names are read.
+
+**Numbers in the voice.**
+
+- **At most 2 numbers per paragraph.** Percentages, quantities and years all count.
+- **Rounded.** "About four percent", "around fifteen hundred", not "1,492". Keep the precision the point needs and no more.
+- **A dispute between sources is one phrase:** "sources differ on the exact shares". Who says what, the other figures and their dates go in `facts.md`. Naming a source aloud is for when
+  its authority is the point, not as a habit.
+
+A claim must still be honest at that level of detail: if the rounded figure or the short phrase would mislead, rewrite the sentence, or leave the claim out.
 
 **Honest claims.** Every factual sentence has a line in `facts.md` with a source. Interpretation is worded as interpretation:
 "gave rulers reasons to", not "made inevitable". Contested points say that they are contested.
@@ -75,5 +84,6 @@ trailing punctuation.
 - [ ] The central question is in the first 30 s, and the recap answers it.
 - [ ] Every paragraph has a subject you can point at on a map.
 - [ ] Every factual sentence is in `facts.md`.
+- [ ] No paragraph has over 2 numbers, numbers are rounded, and each dispute is one phrase.
 - [ ] Each act's map can be built from an allowed source. Name any gap now, not at the storyboard.
 - [ ] Read aloud once: no sentence runs out of breath.

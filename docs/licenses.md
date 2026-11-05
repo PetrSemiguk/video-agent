@@ -82,6 +82,42 @@ inspection, the licensee indemnifies WWF, and WWF may terminate at its sole disc
 downloaded. As the roadmap directs, the pilot lights the rivers themselves, from Natural Earth. **Do not**
 take HydroSHEDS v2 (announced as CC BY 4.0) for these terms: it is a separate product and was not reviewed.
 
+## Egypt-Nile factual research sources (mini-episode, checked 2026-11-05)
+
+Authorize factual research and original narration only. No text, maps, images or logos are imported.
+
+| Source | License / permitted use | Commercial use? | Attribution / handling |
+|---|---|---|---|
+| NASA Earth Observatory, [City Lights Illuminate the Nile](https://science.nasa.gov/earth/earth-observatory/city-lights-illuminate-the-nile-79807/) | NASA content, not copyrighted | Yes, facts only | Cite in the facts ledger. No imagery imported. |
+| UNICEF Egypt, [Country background](https://www.unicef.org/egypt/country-background) | Publisher website; facts only | Yes, facts only | Cite in the facts ledger. |
+| FAO, "Irrigation in the near east region in figures", Egypt chapter ([page](https://www.fao.org/4/V8260B/V8260B0p.htm), [W4356E](https://www.fao.org/4/W4356E/w4356e0c.HTM)) | FAO website; facts only | Yes, facts only | Cite in the facts ledger. Data are 1993-95. |
+| Library of Congress Country Studies, Egypt ([Nile Valley and Delta](https://countrystudies.us/egypt/49.htm), [Population](https://countrystudies.us/egypt/55.htm)) | US federal publication | Yes, facts only | Original wording; data 1990. |
+| Nile Basin Initiative, [Keeping the Nile Flowing](https://nilebasin.org/content/keeping-nile-flowing-and-boosting-livelihoods) | Publisher website; facts only | Yes, facts only | Cite in the facts ledger. |
+| Kedida and Arsano, Heliyon 10(4):e25882 (2024), [PMC10877281](https://pmc.ncbi.nlm.nih.gov/articles/PMC10877281/) | Open-access article; facts only | Yes, facts only | Cite in the facts ledger. |
+| HISTORY, [Aswan High Dam completed](https://www.history.com/this-day-in-history/july-21/aswan-high-dam-completed) | Publisher website; facts only | Yes, facts only | Never the only source of a key claim. |
+| FAO, [Irrigation in Africa in figures, AQUASTAT Survey 2005, Egypt](https://www.fao.org/fileadmin/user_upload/aquastat/pdf_files/EGY_egypt_cp.pdf) | FAO publication; facts only | Yes, facts only | Cite in the facts ledger. |
+| Library of Congress Country Studies, Egypt, [Natural Regions](https://countrystudies.us/egypt/48.htm) | US federal publication | Yes, facts only | Original wording; data about 1990. |
+| NASA JSC, [Aswan High Dam](https://eol.jsc.nasa.gov/Collections/EarthObservatory/articles/AswanHighDam.htm) | NASA content, not copyrighted | Yes, facts only | Cite in the facts ledger. No imagery imported. |
+| Environmental Encyclopedia (Gale), [Aswan High Dam](https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/aswan-high-dam) | Publisher website; facts only | Yes, facts only | Cite in the facts ledger. |
+| Freshwater Ecoregions of the World, [Lower Nile](https://www.feow.org/ecoregions/details/523) | Publisher website; facts only | Yes, facts only | Cite in the facts ledger. |
+| Aswat Masriya, [article of 30 Aug 2012](https://www.aswatmasriya.com/en/news/details/12218) | Publisher website; facts only | Yes, facts only | Press report. Never the only source of a key claim. |
+| BASIN INFO, [Nile hydrology](https://basin-info.net/river-basins/nile-basin-research-n-africa/hydrology) | Publisher website; facts only | Yes, facts only | Never the only source of a key claim. |
+| OpenFactBook, [Egypt](https://openfactbook.org/countries/egypt/) | Website credited to the CIA World Factbook; facts only | Yes, facts only | Never the only source of a key claim. |
+| Kiser, ["The Demographic Position of Egypt"](https://www.milbank.org/wp-content/uploads/mq/volume-22/issue-04/22-4-The-Demographic-Position-of-Egypt.pdf), The Milbank Memorial Fund Quarterly 22(4) | Publisher's archive; facts only | Yes, facts only | Cite in the facts ledger. Data from the 1937 census. |
+| Encyclopedia of the Modern Middle East and North Africa, ["Nasser, Lake"](https://www.encyclopedia.com/places/africa/african-physical-geography/lake-nasser) | Publisher website; facts only | Yes, facts only | Cite in the facts ledger. |
+| ENN, ["Fueled by the Nile"](https://enn.com/articles/64386-fueled-by-the-nile), crediting NASA Earth Observatory | Publisher website; facts only | Yes, facts only | Never the only source of a key claim. |
+| Statista, [inhabited area of Egypt 2022](https://www.statista.com/statistics/1230811/inhabited-area-by-governorate-in-egypt/) | Publisher website; facts only | Yes, facts only | Never the only source of a key claim. |
+| Cairo Scene, [inhabited land report](https://scenenow.com/buzz/inhabited-land-in-egypt-has-doubled-since-2014), 8 Oct 2023 | Publisher website; facts only | Yes, facts only | Press report. Never the only source of a key claim. |
+| Marsad Omran, [article of 9 Nov 2016](https://marsadomran.info/en/2016/11/494/) | Publisher website; facts only | Yes, facts only | Never the only source of a key claim. |
+| Library of Congress Country Studies, Egypt, [Climate](https://countrystudies.us/egypt/53.htm) | US federal publication | Yes, facts only | Original wording. |
+| The National, [Water shortfall means Egypt must import food](https://www.thenationalnews.com/mena/2023/01/17/water-shortfall-means-egypt-must-import-food-minister-says), 17 Jan 2023 | Publisher website; facts only | Yes, facts only | Press report. Never the only source of a key claim. |
+| Congressional Digest, [March 2011 issue](https://congressionaldigest.com/?p=12070) | Publisher website; facts only | Yes, facts only | Never the only source of a key claim. |
+| Tarabih, [conference abstract AvH10-45](https://meetingorganizer.copernicus.org/AvH10/AvH10-45.pdf), 2015 | Conference abstract; facts only | Yes, facts only | Never the only source of a key claim. |
+| Deseret News, [archives on the Aswan High Dam](https://www.deseret.com/utah/2025/01/09/deseret-news-archives-construction-of-massive-aswan-high-dam-began-in-1960), 9 Jan 2025 | Publisher website; facts only | Yes, facts only | Press report. Never the only source of a key claim. |
+| Swain, "Ethiopia, the Sudan, and Egypt: The Nile River Dispute", The Journal of Modern African Studies 35(4), 1997 (abstract on the issue page, opened by the fact-checker) | Publisher website; facts only | Yes, facts only | Not cited in the facts ledger. |
+| Power Technology, [Aswan High Dam project profile](https://www.power-technology.com/projects/aswan-high-dam-nile-sudan-egypt-2/) | Publisher website; facts only | Yes, facts only | Opened in the fact-check, not cited. It gives 1968 for completion, against 1970 elsewhere. |
+| Maps of the World, [January 9, 1960](https://www.mapsofworld.com/amp/on-this-day/january-9-1960-construction-of-the-aswan-dam-in-egypt-begins/) | Publisher website; facts only | Yes, facts only | Opened in the fact-check, not cited. |
+
 ## Voice models and watermarking
 
 Step 3.3 alignment sources (checked 2026-11-04, before installation/download):
