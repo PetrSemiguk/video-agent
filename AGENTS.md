@@ -34,6 +34,10 @@ storyboard, a Remotion render, a final ffmpeg mix and a thumbnail.
 - ffmpeg 9 is in PATH.
 - GPU: RTX 4060, 8 GB VRAM — run TTS and whisper sequentially, never concurrently.
 - RAM: 16 GB — Remotion render concurrency ≤ 3 (config uses 2).
+- **Check free RAM before a heavy render** and lower the concurrency when it is short: out of memory
+  a render is killed, not slowed. `vap.episode build` does this itself (`vap.system`): it refuses
+  below 6 GB available and passes `--concurrency` to `render-episode.mjs`, which defaults to 1.
+  Running a render by hand, pass `--concurrency=1` when anything large is open.
 - Remotion 4.0.539 (`studio/`). Render with gl=angle (set in `studio/remotion.config.ts`) — required for GPU WebGL on Windows.
 
 ## Git policy

@@ -36,6 +36,10 @@ def test_scale_from_frame_width():
     assert rhythm.scale_of(5000) == "wide"
     assert rhythm.scale_of(3000) == "regional"
     assert rhythm.scale_of(800) == "detail"
+    # With a plate to compare against, wide is relative to it, not to the absolute 4,500 km.
+    assert rhythm.scale_of(3000, 2700) == "wide"
+    assert rhythm.scale_of(5000, 6000) == "regional"
+    assert rhythm.scale_of(900, 6000) == "detail"
     y = Y_33
     assert rhythm.frame_width_km([0, y, 4.7], 1920) > rhythm.WIDE_KM
     assert rhythm.frame_width_km([0, y, 5.5], 1920) < rhythm.WIDE_KM
@@ -173,6 +177,30 @@ def test_section_needs_a_tag_and_a_change_of_scale():
     assert names["Three"]["section_tag"] and not names["Three"]["scale_change"]
     assert 'section "Two" opens with no SectionTag' in report["warnings"]
     assert 'section "Three" opens with no change of scale' in report["warnings"]
+
+
+def test_wide_is_measured_against_the_plate_the_shot_is_on():
+    plan, story, words = build(("a", 30, "regional"), ("b", 30, "detail"))
+    for shot in plan["shots"]:
+        shot["plate"] = "small"
+    # A plate whose widest safe frame is zoom 5.4: the regional shot at 5.5 is wide on it.
+    plan["plates"] = {"small": {"widestSafeZoom": 5.4}}
+    scales = [row["scale"] for row in rhythm.analyze(plan, story, words)["table"]]
+    assert scales == ["wide", "detail"]
+    plan["plates"] = {"small": {"widestSafeZoom": 4.0}}
+    assert [row["scale"] for row in rhythm.analyze(plan, story, words)["table"]] == [
+        "regional",
+        "detail",
+    ]
+
+
+def test_one_scale_throughout_warns():
+    same = rhythm.analyze(*build(("a", 30, "regional"), ("b", 30, "regional")))
+    assert same["scale_spread"] == 1.0
+    assert any("scale spread" in w for w in same["warnings"])
+    varied = rhythm.analyze(*build(("a", 30, "wide"), ("b", 30, "detail")))
+    assert varied["scale_spread"] >= rhythm.MIN_SCALE_SPREAD
+    assert not [w for w in varied["warnings"] if "scale spread" in w]
 
 
 def test_every_section_needs_a_wide_shot():

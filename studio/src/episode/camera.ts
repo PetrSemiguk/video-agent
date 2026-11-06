@@ -21,6 +21,21 @@ import type { PlateMeta } from "../geo/plate";
 import type { ParsedStoryboard } from "../storyboard/schema";
 import { type Assembly, labelRanges, textLayerTypes, transitionFrames } from "./plan";
 
+/**
+ * The widest the camera may go on a plate: its cover zoom, held one safe-area step inside so the
+ * plate's edges stay out of frame, and never past the plate's sharp limit. This is the reference
+ * for "wide" in the rhythm report: a scale is wide relative to what the episode's plates can show,
+ * not to an absolute ground width (docs/visual-grammar.md).
+ */
+export const widestSafeZoom = (
+  meta: PlateMeta,
+  width: number,
+  height: number,
+) => {
+  const limits = plateZoomLimits(meta, width, height);
+  return Math.min(limits.max, limits.cover - Math.log2(1 - space.safeArea));
+};
+
 export const buildCamera = (
   storyboard: ParsedStoryboard,
   assembly: Assembly,
@@ -84,11 +99,9 @@ export const buildCamera = (
   });
   const first = metas[storyboard.shots[0].plate];
   const center = toMerc(plateCenter(first));
-  const limits = plateZoomLimits(first, width, height);
-  // Derive a coverage handle from the existing safe area, not a new camera look.
   const initial = {
     ...center,
-    zoom: Math.min(limits.max, limits.cover - Math.log2(1 - space.safeArea)),
+    zoom: widestSafeZoom(first, width, height),
     pitch: 0,
     bearing: 0,
   };

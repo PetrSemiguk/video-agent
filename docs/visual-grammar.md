@@ -107,11 +107,12 @@ range. The warnings do not fail a build. Run it by hand with `uv run python -m v
 |---|---|---|
 | **Hard cuts** | 1-3 per minute on average. A hard cut is what the viewer sees as a cut: a change of plate, a transition, or a break in the camera's motion. Over 3 is a violation. A smooth change of shot on the same plate, with the camera moving on, is not a cut | `hard_cuts_per_minute`, with the reason for each. Reported apart from `shots_per_minute`, which has no limit |
 | **Shot changes** | Only at a sentence or paragraph pause | The word before each change |
-| **Alternate scales** | Wide (continent) → regional → detail → graphic. Never 3 shots in a row at one scale or of one kind, such as three graphics | The frame's ground width at the end of each shot: wide from 4,500 km, regional from 1,500 km, detail below |
+| **Alternate scales** | Wide → regional → detail → graphic. Never 3 shots in a row at one scale or of one kind, such as three graphics | The frame's ground width at the end of each shot. **Wide is relative to the plates:** within 90% of the widest safe frame the shot's own plate can show at that latitude (`wide_from_km` per shot). Otherwise regional from 1,500 km, detail below. The ground width stays in the report as the absolute figure |
+| **Scale spread** | The widest map shot at least 2× the narrowest | `scale_spread`. Below it the episode was shot at one scale |
 | **Graphic-only shots** | Without a map, B-roll included: at most about 10-20% of runtime | Share of runtime. A shot is graphic-only with `BRollClip`, or with an infographic and no map layer |
 | **Dramatic beat** | A voice-less pause of 0.6-1.5 s with a slow camera move (`[pause s]` in the script), at most about 1 per section | Pauses per section |
 | **Sections** | Each opens with a `SectionTag` and a change of scale | The shot at each `##` |
-| **A wide shot per section** | At least one, so every section puts its subject in its place once | Shots from one `##` to the next; `wide_shots` per section |
+| **A wide shot per section** | At least one, so every section puts its subject in its place once. "Wide" means the camera pulls back to near what the section's plate allows, so a one-country plate can have one | Shots from one `##` to the next; `wide_shots` per section |
 
 Keep each warning you accept, with its reason, in the report. A plate's sharp zoom range is narrow, so a true "wide" or "detail" shot may need its own plate.
 

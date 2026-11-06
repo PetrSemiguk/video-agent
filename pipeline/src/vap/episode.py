@@ -17,6 +17,7 @@ from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
 
+from vap import system
 from vap.geo import errata, hist_attribution
 from vap.qa import motion
 from vap.voice import pace
@@ -352,6 +353,11 @@ class Builder:
             f"--metadata={metadata}",
             "--stills-only" if stage == "preview" else "--video-only",
         ]
+        if stage == "render":
+            # Ask the machine before starting: out of memory the render is killed, not slowed.
+            workers, note = system.check_render_memory()
+            self.note(f"[{stage}] {note}")
+            args.append(f"--concurrency={workers}")
         self.command(args, self.root / "studio")
         if stage == "render":
             report = self.motion_gate(stage)

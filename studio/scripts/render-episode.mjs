@@ -18,7 +18,7 @@ const {
   colors,
   motion,
 } = require("../src/design/tokens.ts");
-const { buildCamera } = require("../src/episode/camera.ts");
+const { buildCamera, widestSafeZoom } = require("../src/episode/camera.ts");
 const { labelRanges } = require("../src/episode/plan.ts");
 const leadArgument = process.argv.find((arg) =>
   arg.startsWith("--lead-frames="),
@@ -30,6 +30,14 @@ const metadataArgument = process.argv.find((arg) =>
   arg.startsWith("--metadata="),
 );
 const videoOnly = process.argv.includes("--video-only");
+// Render workers. The caller sets it from the free memory (vap.system); 1 is the safe default
+// on this 16 GB machine, where a render is killed rather than slowed when memory runs out.
+const concurrencyArgument = process.argv.find((arg) =>
+  arg.startsWith("--concurrency="),
+);
+const concurrency = concurrencyArgument
+  ? Math.max(1, Number(concurrencyArgument.split("=")[1]))
+  : 1;
 const { inputProps, audioSha256 } = prepareEpisode({
   ...(storyboardArgument
     ? {
@@ -125,6 +133,19 @@ if (!smoke) {
       tolerancePx: motion.camera.speedTolerancePx,
     },
     labelFrames: labelRanges(prepared.storyboard, prepared.assembly),
+    // "Wide" is relative to what these plates can show, not an absolute ground width.
+    plates: Object.fromEntries(
+      Object.entries(prepared.metas).map(([id, meta]) => [
+        id,
+        {
+          widestSafeZoom: widestSafeZoom(
+            meta,
+            composition.width,
+            composition.height,
+          ),
+        },
+      ]),
+    ),
     frames: Array.from({ length: composition.durationInFrames }, (_, f) => {
       const pose = timeline.poseAt(f);
       return [pose.x, pose.y, pose.zoom];
@@ -135,6 +156,7 @@ if (!smoke) {
         id: shot.id,
         from: shot.from,
         frames: shot.durationInFrames,
+        plate: prepared.storyboard.shots[i].plate,
         preset: camera.preset,
         reason:
           camera.preset === "hold" ? (camera.params.reason ?? null) : null,
@@ -245,7 +267,7 @@ if (!process.argv.includes("--stills-only") && !smoke) {
     inputProps,
     outputLocation: `out/episode-${slug}-synced.partial.mp4`,
     chromiumOptions,
-    concurrency: 1,
+    concurrency,
     codec: "h264",
     audioCodec: "aac",
     imageFormat: "jpeg",

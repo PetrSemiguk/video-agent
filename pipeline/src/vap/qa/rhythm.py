@@ -23,9 +23,15 @@ HARD_CUTS_PER_MINUTE = (1.0, 3.0)
 CAMERA_BREAK_PX = 3.0
 MAX_GRAPHIC_SHARE = 0.2
 PAUSE_RANGE = (0.6, 1.5)
-# Ground width of the frame at the end of a shot, km.
+# "Wide" is relative to the episode's plates: within this share of the widest safe frame the
+# shot's own plate can show at that latitude. An absolute ground width would call a one-country
+# plate narrow however far the camera pulls back.
+WIDE_SHARE = 0.9
+# Ground width of the frame at the end of a shot, km. Reference only, for plans without plates.
 WIDE_KM = 4500.0
 REGIONAL_KM = 1500.0
+# Widest frame over narrowest, across the episode. Below this it was shot at one scale.
+MIN_SCALE_SPREAD = 2.0
 GRAPHIC_LAYERS = {"BarCompare", "TimelineBar", "NumberedList", "RecapCards", "KeyFact"}
 MAP_LAYERS = {"RegionHighlight", "RiverLine", "RouteLine", "HistoricalLayer", "PlaceLabel"}
 SENTENCE_END = re.compile(r"[.?!;:][\"')\]]*$")
@@ -39,8 +45,21 @@ def frame_width_km(pose: list[float], width: int) -> float:
     return width * EARTH_M / (512 * 2**zoom) * math.cos(lat) / 1000
 
 
-def scale_of(km: float) -> str:
-    return "wide" if km >= WIDE_KM else "regional" if km >= REGIONAL_KM else "detail"
+def scale_of(km: float, wide_from_km: float | None = None) -> str:
+    """Wide relative to the plate when the plan says what it can show, else by ground width."""
+    if km >= (WIDE_KM if wide_from_km is None else wide_from_km):
+        return "wide"
+    return "regional" if km >= REGIONAL_KM else "detail"
+
+
+def wide_from(plan: dict, pose: list[float], plate: str | None) -> float | None:
+    """Frame width, in km, from which a shot on this plate counts as wide at this latitude."""
+    plates = plan.get("plates") or {}
+    widest = (plates.get(plate) or {}).get("widestSafeZoom")
+    if widest is None:
+        return None
+    x, y, _ = pose
+    return WIDE_SHARE * frame_width_km([x, y, widest], plan["width"])
 
 
 def kind_of(shot: dict | None) -> str:
@@ -103,7 +122,9 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
         end = plan["frames"][min(shot["from"] + shot["frames"] - 1, total - 1)]
         km = frame_width_km(end, plan["width"])
         transition = ((authored or {}).get("transition") or {}).get("kind", "cut")
-        plate = (authored or {}).get("plate")
+        # The plan knows the plate of generated gap shots too; the storyboard only of authored ones.
+        plate = shot.get("plate") or (authored or {}).get("plate")
+        bar = wide_from(plan, end, plate)
         rows.append(
             {
                 "id": shot["id"],
@@ -111,7 +132,8 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
                 "frames": shot["frames"],
                 "seconds": round(shot["frames"] / fps, 2),
                 "frame_width_km": round(km),
-                "scale": scale_of(km),
+                "wide_from_km": round(bar) if bar else None,
+                "scale": scale_of(km, bar),
                 "kind": kind_of(authored),
                 "transition": transition,
                 "plate": plate,
@@ -161,6 +183,13 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
         )
     if non_map_share > MAX_GRAPHIC_SHARE:
         warnings.append(f"graphic-only share {non_map_share:.0%}, at most {MAX_GRAPHIC_SHARE:.0%}")
+    widths = [r["frame_width_km"] for r in rows if r["kind"] == "map" and r["frame_width_km"]]
+    spread = max(widths) / min(widths) if widths else 0.0
+    if widths and spread < MIN_SCALE_SPREAD:
+        warnings.append(
+            f"scale spread {spread:.1f}x, at least {MIN_SCALE_SPREAD:.0f}x expected: the episode "
+            f"stays between {min(widths)} and {max(widths)} km wide"
+        )
     warnings += [f"3 or more shots in a row at one scale or kind: {', '.join(r)}" for r in runs]
 
     sections = []
@@ -221,6 +250,8 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
         "seconds_by_kind": {k: round(v / fps, 1) for k, v in frames_of.items()},
         "graphic_share": round(non_map_share, 3),
         "shots_by_scale": {s: scales.count(s) for s in ("wide", "regional", "detail")},
+        "scale_spread": round(spread, 2),
+        "frame_width_km": {"min": min(widths), "max": max(widths)} if widths else {},
         "sections": sections,
         "table": rows,
         "warnings": warnings,
