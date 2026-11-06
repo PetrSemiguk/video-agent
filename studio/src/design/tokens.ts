@@ -51,6 +51,8 @@ export const stroke = {
   /** Extra width of the glow under a river. */
   riverGlow: 6,
   labelHalo: 4,
+  /** Leader from a label to the point it names, px on screen. */
+  leader: 1.6,
   /** Width multiplier of the bright head of a river being drawn. */
   riverHeadBoost: 1.15,
 } as const;
@@ -85,6 +87,8 @@ export const opacity = {
   /** Polity fill on historical maps: terrain must read through. */
   polityFill: 0.42,
   dimOutside: 0.24,
+  /** A label's leader is a pointer, not a drawn feature: it stays quieter than the text. */
+  leader: 0.7,
 } as const;
 
 export const space = {
@@ -95,6 +99,8 @@ export const space = {
   /** Gap between a city dot and its label, px. */
   labelGap: 10,
   cityDot: 9,
+  /** Dot at the end of a label's leader, px. */
+  leaderDot: 7,
   /** Attribution box inset from the frame corner and its padding, px. */
   attributionInset: 16,
   attributionPadX: 8,
@@ -244,6 +250,39 @@ export const plateLookJson = String.raw`{
   "hillshade": 0.65,
   "grades": {
     "dark": {
+      "saturation": 0.62,
+      "exposure": 0.78,
+      "gamma": 1.18,
+      "ocean": {
+        "multiply": 0.55,
+        "tint": [
+          0.03,
+          0.06,
+          0.09
+        ],
+        "tint_mix": 0.35,
+        "feather_px": 3
+      },
+      "vignette": {
+        "strength": 0.38,
+        "inner": 0.55,
+        "outer": 1.05
+      },
+      "land": {
+        "midtone_lift": 0.125,
+        "mid_start": 0.05,
+        "mid_end": 0.3,
+        "highlight_start": 0.4,
+        "highlight_scale": 0.45
+      },
+      "vegetation": {
+        "pivot": 0.05,
+        "strength": 0.85,
+        "darken": 0.26,
+        "saturate": 1.45
+      }
+    },
+    "dark_v2": {
       "saturation": 0.62,
       "exposure": 0.78,
       "gamma": 1.18,

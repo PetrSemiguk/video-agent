@@ -210,6 +210,30 @@ export const peakMotion = (
   return { speed, at };
 };
 
+/** Fraction of the frame, each side, the subject's centre must stay inside: the middle third. */
+export const SUBJECT_BAND = 1 / 3;
+
+/**
+ * Where a shot's subject sits on screen at a given pose, as fractions of the frame. 0.5, 0.5 is
+ * the centre. A subject pushed past the middle third leaves the frame weighted on empty ground.
+ */
+export const subjectOnScreen = (
+  bounds: [number, number, number, number],
+  pose: CamPose,
+  width: number,
+  height: number,
+) => {
+  const [a, b] = [
+    toMerc({ lon: bounds[0], lat: bounds[1] }),
+    toMerc({ lon: bounds[2], lat: bounds[3] }),
+  ];
+  const mpp = metersPerPx(pose.zoom);
+  return {
+    x: ((a.x + b.x) / 2 - pose.x) / mpp / width + 0.5,
+    y: -((a.y + b.y) / 2 - pose.y) / mpp / height + 0.5,
+  };
+};
+
 /** Render-time safety, including the outgoing scene's transition extension. */
 export const verifyEpisodeCamera = (
   storyboard: ParsedStoryboard,
@@ -255,6 +279,22 @@ export const verifyEpisodeCamera = (
       height,
       hasLabel,
     );
+    // The subject must be framed, not merely on screen: at the settled end of the shot its
+    // centre belongs in the middle third, or the frame is weighted on ground it is not about.
+    if (shot.subject) {
+      const end = window.from + window.durationInFrames - 1;
+      const at = subjectOnScreen(shot.subject, timeline.poseAt(end), width, height);
+      const low = (1 - SUBJECT_BAND) / 2;
+      if (
+        at.x < low ||
+        at.x > 1 - low ||
+        at.y < low ||
+        at.y > 1 - low
+      )
+        throw new Error(
+          `Subject off centre in shot ${shot.id}: it settles at ${(at.x * 100).toFixed(0)}% across and ${(at.y * 100).toFixed(0)}% down, outside the middle third. Point the camera at the subject or widen the framing (docs/visual-grammar.md)`,
+        );
+    }
     const { what, value, limit, at } = split.worst;
     if (split.worst.over > motion.camera.speedTolerancePx)
       throw new Error(

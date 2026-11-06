@@ -98,6 +98,25 @@ faster, end the labels before the fast part and bring them back when the camera 
 anywhere keeps the strict zoom limit throughout it. For `focusOn` and `flyTo`, bring the framings or
 zooms closer, lengthen the shot, or clear the labels off the fast part when the error names them.
 
+## What the validator enforces
+
+These are not style notes. `npm run validate:storyboard` and `vap.episode build` fail on them
+(`studio/src/storyboard/grammar.ts`).
+
+| Rule | Why | How it is checked |
+|---|---|---|
+| **A share or an area must be shown, not only said** | A percentage over an unmarked map leaves the viewer to guess which ground it means | A shot whose on-screen text states a share or an area needs a highlight with `dimOutside` in that shot. Show the denominator dimmed and the numerator lit: the country dimmed out, the band lit inside it |
+| **At least a quarter of shots mark an area** | A map of lines and labels alone never shows ground | `RegionHighlight` or `HistoricalLayer` in ≥ 25% of shots |
+| **A label stands on what it names** | A name floating on empty desert names the desert | Each `PlaceLabel` within 40 km of something the shot draws, or carrying `leader` to the point it names, or `openGround: true` when it names unmarked ground |
+| **No working notes on screen** | An editorial aside is for the ledger, not the frame | Text matching "our reading", "TODO", "placeholder" and the like is rejected. Honest disclosure is not a note: "approximate", "estimate", "one account", "(FAO)" stay required |
+| **Every shot says what it is about** | The framing can only be checked against a declared subject | Every shot carries `subject`, the lon/lat bounds of its subject |
+| **The subject is framed** | At 2:48 of the Egypt cut the Nile valley sat at the left edge with half the frame on Arabia | At the settled end of each shot the subject's centre lands in the **middle third** of the frame, both ways (`verifyEpisodeCamera`) |
+
+**The subject rule and the wide-shot rule can collide, and the plate is usually the cause.** A
+plate whose extent stops just beyond its subject forces a wide frame to sit low, which pushes the
+subject out of the middle third. Give the episode a plate with room around its subject rather than
+weakening either rule.
+
 ## Rhythm
 
 Plan the sequence of shots before the shots themselves. `vap.episode build` reports these in the preview stage, as `studio/out/episodes/<slug>/rhythm.json`, and warns when out of

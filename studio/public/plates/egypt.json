@@ -37,7 +37,7 @@
     "azimuth": 315.0,
     "altitude": 45.0,
     "grade": "dark",
-    "grade_version": 2,
+    "grade_version": 3,
     "bluemarble_month": "2004-08",
     "terrain_zoom": 8
   },

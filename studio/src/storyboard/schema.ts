@@ -155,6 +155,11 @@ export const shotSchema = z.strictObject({
   plate: id,
   start: anchorSchema,
   end: anchorSchema,
+  /**
+   * What the shot is about, as lon/lat bounds [west, south, east, north]. The build checks that
+   * it lands in the middle third of the frame, so the subject is not pushed to an edge.
+   */
+  subject: bounds.optional(),
   camera: cameraSchema,
   layers: z.array(layerSchema),
   // Declarative scene metadata, not a CSS transition or an animation side effect.

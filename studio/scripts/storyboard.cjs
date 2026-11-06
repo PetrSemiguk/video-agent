@@ -22,17 +22,34 @@ const root = path.resolve(__dirname, "../..");
 const { storyboardSchema } = require("../src/storyboard/schema.ts");
 const { exportStoryboardSchema } = require("../src/storyboard/jsonSchema.ts");
 const { claimIssues } = require("../src/storyboard/claims.ts");
-// facts.md sits beside the narration the storyboard uses. Sandbox tests have none.
-const screenClaimIssues = (data) => {
+const { grammarIssues } = require("../src/storyboard/grammar.ts");
+// facts.md sits beside the narration the storyboard uses, so its presence is what marks a real
+// episode. Schema fixtures under _sandbox have none, and the episode rules do not apply to them.
+const factsFile = (data) =>
+  path.join(root, path.dirname(path.dirname(data.audio.words)), "facts.md");
+const isEpisode = (data) => fs.existsSync(factsFile(data));
+const screenClaimIssues = (data) =>
+  isEpisode(data)
+    ? claimIssues(data, fs.readFileSync(factsFile(data), "utf8"))
+    : [];
+// A HistoricalLayer keeps its polygons under the plate, so the reach rule is given a reader.
+const historicalGeometry = (data) => (layer) => {
+  if (layer.type !== "HistoricalLayer") return undefined;
+  const shot = data.shots.find((s) => s.layers.includes(layer));
+  const plate = data.plates.find((p) => p.id === shot?.plate)?.name;
   const file = path.join(
     root,
-    path.dirname(path.dirname(data.audio.words)),
-    "facts.md",
+    "data/processed",
+    `${plate}`,
+    "historical",
+    `${layer.props.slug}.geojson`,
   );
   return fs.existsSync(file)
-    ? claimIssues(data, fs.readFileSync(file, "utf8"))
-    : [];
+    ? JSON.parse(fs.readFileSync(file, "utf8"))
+    : undefined;
 };
+const episodeGrammarIssues = (data) =>
+  isEpisode(data) ? grammarIssues(data, historicalGeometry(data)) : [];
 // A layer must exist with this credit, and a layer with an errata blocker needs an override.
 // vap.geo.errata applies the blocker rule to `vap.episode build` as well.
 const historicalLayerIssues = (data) => {
@@ -109,7 +126,11 @@ if (args[0] === "export" && args.length === 1) {
       }
     } else data = parsed.data;
     if (data)
-      issues.push(...historicalLayerIssues(data), ...screenClaimIssues(data));
+      issues.push(
+        ...historicalLayerIssues(data),
+        ...screenClaimIssues(data),
+        ...episodeGrammarIssues(data),
+      );
     if (data && args.includes("--check-files")) {
       for (const [at, file] of [
         ["$.audio.src", data.audio.src],

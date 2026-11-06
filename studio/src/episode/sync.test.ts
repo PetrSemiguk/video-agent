@@ -187,6 +187,15 @@ describe("automatic voice synchronization", () => {
     expect(
       timeline.boundaries.some((segment) => segment.name === "drift"),
     ).toBe(true);
+    // The tail belongs to the shot, so its layers must reach the cut: a layer left behind
+    // plays the bare plate for a moment before the next shot.
+    for (const shot of result.assembly.shots) {
+      if (!shot.layers.length) continue;
+      const last = Math.max(
+        ...shot.layers.map((l) => l.from + l.durationInFrames),
+      );
+      expect(last, `${shot.id} leaves a bare tail`).toBe(shot.durationInFrames);
+    }
   });
   it("applies configurable label lead without moving its end or the audio clock", () => {
     const source = story();

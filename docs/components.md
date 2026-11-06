@@ -1407,6 +1407,27 @@ Props contract (generated from the actual input Zod schema; defaults are optiona
         "river"
       ]
     },
+    "leader": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        {
+          "type": "number",
+          "minimum": -85.051129,
+          "maximum": 85.051129
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "openGround": {
+      "type": "boolean"
+    },
     "anchor": {
       "type": "string",
       "enum": [

@@ -204,12 +204,19 @@ export const resolveStoryboard = (
         layers: [],
       });
     } else if (assembly.shots.length) {
+      // Too short for a shot of its own, so the previous shot keeps the tail. Its layers have to
+      // grow with it: a layer that ran to the old end had no authored end and means "until the
+      // cut", and leaving it behind plays the bare plate for a moment before the cut.
       const previous = assembly.shots[assembly.shots.length - 1];
       previous.cameraWindow ??= {
         from: 0,
         durationInFrames: previous.durationInFrames,
       };
+      const wasEnd = previous.durationInFrames;
       previous.durationInFrames += length;
+      for (const layer of previous.layers)
+        if (layer.from + layer.durationInFrames === wasEnd)
+          layer.durationInFrames += length;
     }
     cursor = end;
   };

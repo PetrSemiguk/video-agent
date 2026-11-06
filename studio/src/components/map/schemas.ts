@@ -234,6 +234,10 @@ export const placeLabelSchema = z.strictObject({
   lonLat: point,
   text: shortText(40),
   kind: z.enum(["city", "region", "river"]),
+  /** Point the label names when it cannot sit on it; a thin leader is drawn to it. */
+  leader: point.optional(),
+  /** This label names unmarked ground, such as open desert, so no object is expected. */
+  openGround: z.boolean().optional(),
   anchor: z.enum(["right", "left", "top", "bottom", "center"]).optional(),
   enterFrame: z.number().int().min(0).default(0),
   /** Frame, from the Sequence start, where the label starts fading out. */

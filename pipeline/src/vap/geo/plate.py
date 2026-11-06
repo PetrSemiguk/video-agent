@@ -152,7 +152,7 @@ def main(argv: list[str] | None = None) -> int:
         "azimuth": 315.0,
         "altitude": 45.0,
         "grade": args.grade,
-        "grade_version": 2 if args.grade == "dark" else 1 if args.grade == "dark_v1" else 0,
+        "grade_version": {"dark": 3, "dark_v2": 2, "dark_v1": 1}.get(args.grade, 0),
         "bluemarble_month": f"2004-{bluemarble.MONTH:02d}",
     }
     meta = metadata(args.name, ext, args.bbox, params, tz)

@@ -191,6 +191,34 @@
               }
             ]
           },
+          "subject": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              },
+              {
+                "type": "number",
+                "minimum": -85.051129,
+                "maximum": 85.051129
+              },
+              {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              },
+              {
+                "type": "number",
+                "minimum": -85.051129,
+                "maximum": 85.051129
+              }
+            ],
+            "items": false,
+            "minItems": 4,
+            "maxItems": 4
+          },
           "camera": {
             "oneOf": [
               {
@@ -4472,6 +4500,27 @@
                             "region",
                             "river"
                           ]
+                        },
+                        "leader": {
+                          "type": "array",
+                          "prefixItems": [
+                            {
+                              "type": "number",
+                              "minimum": -180,
+                              "maximum": 180
+                            },
+                            {
+                              "type": "number",
+                              "minimum": -85.051129,
+                              "maximum": 85.051129
+                            }
+                          ],
+                          "items": false,
+                          "minItems": 2,
+                          "maxItems": 2
+                        },
+                        "openGround": {
+                          "type": "boolean"
                         },
                         "anchor": {
                           "type": "string",

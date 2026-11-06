@@ -114,6 +114,17 @@ def apply_grade(rgb: np.ndarray, grade: dict, elev: np.ndarray | None) -> np.nda
         lifted *= (target / np.maximum(ll, 1e-8))[..., None]
         out += (1 - water_mask)[..., None] * (lifted - out)
 
+    # Vegetation last among the land terms: the cultivated ground of a dry country is the only
+    # green in frame, and it has to read as a dark ribbon against the sand rather than blend in.
+    veg = grade.get("vegetation")
+    if veg:
+        green = out[..., 1] - np.maximum(out[..., 0], out[..., 2])
+        on_land = 1.0 - ocean_mask(rgb, elev, int(grade["ocean"]["feather_px"]))
+        mask = np.clip(green / veg["pivot"], 0.0, 1.0) * veg["strength"] * on_land
+        lum = (out @ LUMA)[..., None]
+        toned = (lum + veg["saturate"] * (out - lum)) * (1.0 - veg["darken"])
+        out = out + mask[..., None] * (np.clip(toned, 0.0, 1.0) - out)
+
     ocean = grade["ocean"]
     if ocean["multiply"] != 1.0 or ocean["tint_mix"] > 0:
         m = ocean_mask(rgb, elev, int(ocean["feather_px"]))[..., None]

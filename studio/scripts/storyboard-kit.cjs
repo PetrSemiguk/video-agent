@@ -58,28 +58,32 @@ const layer = (id, type, props, start, end) => ({
   ...(start === undefined ? {} : { start: anchor(start) }),
   ...(end === undefined ? {} : { end: anchor(end) }),
 });
-const shot = (
-  id,
-  plate,
-  start,
-  end,
-  cameraMove,
-  layers,
-  transition = "cut",
-) => ({
-  id,
-  plate,
-  start: anchor(start),
-  end: anchor(end),
-  camera: cameraMove,
-  layers,
-  ...(transition ? { transition: { kind: transition } } : {}),
-});
-const label = (id, text, kind, lonLat, start, end, side) =>
+/**
+ * The last argument is the transition kind, or `{ transition, subject }`. `subject` is the
+ * lon/lat bounds of what the shot is about; the build checks it lands in the middle third.
+ */
+const shot = (id, plate, start, end, cameraMove, layers, options = "cut") => {
+  // A string is the transition kind; null means no transition at all, as on the last shot.
+  const { transition = "cut", subject } =
+    options === null || typeof options === "string"
+      ? { transition: options }
+      : options;
+  return {
+    id,
+    plate,
+    start: anchor(start),
+    end: anchor(end),
+    ...(subject ? { subject } : {}),
+    camera: cameraMove,
+    layers,
+    ...(transition ? { transition: { kind: transition } } : {}),
+  };
+};
+const label = (id, text, kind, lonLat, start, end, side, extra = {}) =>
   layer(
     id,
     "PlaceLabel",
-    { text, kind, lonLat, ...(side ? { anchor: side } : {}) },
+    { text, kind, lonLat, ...(side ? { anchor: side } : {}), ...extra },
     start,
     end,
   );

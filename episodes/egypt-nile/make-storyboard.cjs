@@ -23,6 +23,9 @@ const BLUE = onBasin("rivers/blue-nile");
 const WHITE = onBasin("rivers/white-nile");
 const ATBARA = onBasin("rivers/atbara");
 const HIGHLANDS = onBasin("terrain/ethiopian-highlands");
+// The settled band: a 9.5 km buffer around the Nile, widened over the Delta, sized so its area
+// matches the ~4% of Egypt facts.md records (C01). Approximate, and said so on screen.
+const VALLEY_BAND = onEgypt("terrain/valley-delta");
 const lakes = onEgypt("lakes");
 const NASSER = {
   type: "FeatureCollection",
@@ -62,6 +65,24 @@ const follow = (north, zoom, drawFrames) =>
 
 const mask = (id, geojson, color, start, options = {}) =>
   layer(id, "RegionHighlight", { geojson, color, ...options }, start);
+/**
+ * The settled band, lit with everything else dimmed. Any shot that states a share or an area
+ * has to show the ground it means, not only say the number (docs/visual-grammar.md).
+ */
+const band = (id, start, options = {}) =>
+  mask(id, VALLEY_BAND, "regionA", start, { ...options });
+/**
+ * A share of Egypt, shown as a share: the country dimmed out as the denominator, the settled
+ * band lit inside it as the numerator. A figure stated over an unmarked map leaves the viewer
+ * to guess which ground it means (docs/visual-grammar.md).
+ */
+const shareOfEgypt = (suffix, start, outline = OUTLINE_E) => [
+  mask(`egypt-dim-${suffix}`, outline, "neutral", start, {
+    dimOutside: true,
+    enterFrames: 24,
+  }),
+  band(`band-${suffix}`, start, { enterFrames: 30 }),
+];
 const keptMask = (id, geojson, color, options = {}) =>
   mask(id, geojson, color, undefined, { enterFrames: 1, ...options });
 // Every line continues in the next shot's picture, so none of them dips at a shot change.
@@ -120,7 +141,7 @@ const shots = [
     // Egypt itself would show it. Egypt therefore sits in the upper half, inside the desert belt
     // the narration is about.
     camera("establish", {
-      target: { center: { lon: 31.0, lat: 22.0 }, zoom: 5.05 },
+      target: { center: { lon: 30.8, lat: 24.3 }, zoom: 5.36 },
       push: 0.05,
       drift: [0.006, 0],
     }),
@@ -130,7 +151,7 @@ const shots = [
         enterFrames: 60,
       }),
       label("egypt-name", "Egypt", "region", [28.4, 29.2], "This is Egypt"),
-      label("desert-open", "Desert", "region", [27.5, 25.2], "you see is desert"),
+      label("desert-open", "Desert", "region", [27.5, 25.2], "you see is desert", undefined, undefined, { openGround: true }),
     ],
   ),
   shot(
@@ -147,7 +168,7 @@ const shots = [
       river("nile-draw", NILE_E, "That is the Nile", 72, { glow: true }),
       river("damietta-draw", DAMIETTA_E, "Delta at its end", 20),
       label("nile-name", "Nile", "river", [32.1, 26.0], "That is the Nile"),
-      label("delta-name", "Delta", "region", [29.5, 30.35], "Delta at its end"),
+      label("delta-name", "Delta", "region", [30.9, 30.9], "Delta at its end"),
     ],
   ),
   shot("why", EGYPT, "Why here", "almost nowhere else", fly(30.6, 26.8, 6.1), [
@@ -157,10 +178,10 @@ const shots = [
       enterFrames: 24,
     }),
   ]),
-  shot("cairo", EGYPT, "Most Egyptians", "south of Cairo", fly(31.4, 28.4, 6.5), [
+  shot("cairo", EGYPT, "Most Egyptians", "south of Cairo", fly(31.05, 29.9, 6.5), [
     ...nileE(),
-    label("delta-2", "Delta", "region", [29.5, 30.35], "live in the Delta"),
-    label("valley", "Narrow valley", "region", [30.6, 26.9], "narrow valley", undefined, "left"),
+    label("delta-2", "Delta", "region", [30.9, 30.9], "live in the Delta"),
+    label("valley", "Narrow valley", "region", [31.7, 27.0], "narrow valley", undefined, "right"),
     label("cairo-name", "Cairo", "city", CAIRO, "south of Cairo", undefined, "left"),
   ]),
   shot(
@@ -168,12 +189,13 @@ const shots = [
     EGYPT,
     "Together the valley",
     "of its people there",
-    fly(30.4, 27.4, 6.5),
+    fly(30.9, 28.4, 6.5),
     [
       ...nileE(),
+      ...shareOfEgypt("shares", "Together the valley"),
       ...nileGlow("Together the valley", 60),
-      label("valley-2", "Valley", "region", [32.4, 27.6], "Together the valley", undefined, "right"),
-      label("delta-3", "Delta", "region", [29.5, 30.35], "Together the valley"),
+      label("valley-2", "Valley", "region", [31.9, 27.0], "Together the valley", undefined, "right"),
+      label("delta-3", "Delta", "region", [30.9, 30.9], "Together the valley"),
       fact("share-land", "About 4% of the land", "About 4%", "lower-left", "about four percent of Egypt's", "percent of Egypt's land"),
       fact("share-people", "About 4% of the land. About 97% of the people", "About 97%", "lower-left", "about ninety-seven percent of its"),
     ],
@@ -186,8 +208,12 @@ const shots = [
     fly(29.2, 27.2, 6.3),
     [
       ...nileE(),
-      label("valley-2b", "Valley", "region", [32.4, 27.6], undefined, undefined, "right"),
-      label("delta-3b", "Delta", "region", [29.5, 30.35]),
+      keptMask("egypt-dim-shares", OUTLINE_E, "neutral", { dimOutside: true, enterFrames: 1 }),
+      // The key word is "differ": two readings of the same band, so the band itself comes back
+      // up on the word rather than the frame merely drifting under a card.
+      band("band-differ", "Sources differ", { enterFrames: 20 }),
+      label("valley-2b", "Valley", "region", [31.9, 27.0], undefined, undefined, "right"),
+      label("delta-3b", "Delta", "region", [30.9, 30.9]),
       fact("share-differ", "About 4% of the land. About 97% of the people. Sources differ on the exact shares", "Sources differ", "lower-left", "Sources differ"),
     ],
   ),
@@ -199,6 +225,7 @@ const shots = [
     fly(28.5, 26.6, 6.05),
     [
       ...nileE(),
+      ...shareOfEgypt("density", "around fifteen hundred"),
       layer(
         "density-valley",
         "StatCounter",
@@ -211,7 +238,7 @@ const shots = [
         },
         "around fifteen hundred",
       ),
-      label("density-desert", "A tiny fraction of that", "region", [26.2, 29.0], "tiny fraction of that"),
+      label("density-desert", "A tiny fraction of that", "region", [26.2, 29.0], "tiny fraction of that", undefined, undefined, { openGround: true }),
     ],
   ),
   // The Water
@@ -224,8 +251,8 @@ const shots = [
     [
       tag("The Water", "reason starts to show"),
       ...nileE(),
-      label("desert-name", "Desert", "region", [27.2, 27.4], "over the desert"),
-      label("no-rain", "Almost no rain (FAO estimate)", "region", [27.2, 26.1], "almost no rain falls"),
+      label("desert-name", "Desert", "region", [27.2, 27.4], "over the desert", undefined, undefined, { openGround: true }),
+      label("no-rain", "Almost no rain (FAO estimate)", "region", [27.2, 26.1], "almost no rain falls", undefined, undefined, { openGround: true }),
     ],
   ),
   shot(
@@ -233,16 +260,16 @@ const shots = [
     EGYPT,
     "The north coast",
     "leans on one river",
-    fly(29.4, 29.2, 6.62),
+    fly(29.7, 30.3, 6.62),
     [
       ...nileE(),
-      label("north-coast", "North coast: the most rain", "region", [27.2, 30.5], "The north coast"),
+      label("north-coast", "North coast: the most rain", "region", [30.15, 31.4], "The north coast"),
       ...nileGlow("on one river", 36),
     ],
   ),
-  shot("source", EGYPT, "The FAO calls", "water for Egypt", fly(31.9, 27.2, 6.25), [
+  shot("source", EGYPT, "The FAO calls", "water for Egypt", fly(31.5, 28.4, 6.25), [
     ...nileE(),
-    label("main-source", "Nile: main source of water (FAO)", "region", [32.7, 27.3], "main source of water", undefined, "right"),
+    label("main-source", "Nile: main source of water (FAO)", "region", [32.7, 26.4], "main source of water", undefined, "right"),
   ]),
   shot(
     "flood",
@@ -261,7 +288,7 @@ const shots = [
     EGYPT,
     "But follow the river",
     "beyond Egypt's border",
-    fly(32.6, 21.6, 5.5),
+    fly(32.4, 24.8, 5.5),
     [
       ...nileE(),
       river("nile-upstream", NILE_FULL_E, "far beyond", 40),
@@ -276,7 +303,7 @@ const shots = [
     BASIN,
     "Here are the highlands",
     "of Ethiopia",
-    fly(34.6, 16.8, 5.25),
+    fly(35.0, 16.0, 5.25),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral"),
@@ -293,11 +320,17 @@ const shots = [
     "which rivers are counted",
     // Wide for The Water: pulled back to near the basin plate's own limit. The centre moves west
     // of the highlands so the frame stays on the plate at this zoom.
-    fly(34.5, 17.8, 4.76),
+    fly(35.4, 15.4, 4.8),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral", { exitAt: 0, exitFrames: 30 }),
       keptMask("highlands-kept", HIGHLANDS, "regionB"),
+      // The figure is about where the water starts, so the highlands light and the rest of the
+      // basin dims on the key word.
+      mask("highlands-only", HIGHLANDS, "regionB", "around eighty-six percent", {
+        dimOutside: true,
+        enterFrames: 24,
+      }),
       label("highlands-name-2", "Ethiopian highlands (approximate)", "region", [38.4, 10.0]),
       fact("share-86-card", "Around 86% of the flow starts here", "Around 86%", "upper-right", "around eighty-six percent"),
     ],
@@ -307,7 +340,7 @@ const shots = [
     BASIN,
     "The Blue Nile alone",
     "bring the rest",
-    fly(34.5, 16, 5.42),
+    fly(34.6, 16.6, 5.42),
     [
       keptMask("highlands-kept", HIGHLANDS, "regionB"),
       keptRiver("nile", NILE_B),
@@ -315,9 +348,9 @@ const shots = [
       label("khartoum", "Khartoum", "city", KHARTOUM, "The Blue Nile alone", undefined, "left"),
       river("blue", BLUE, "The Blue Nile alone", 66, { glow: true }),
       label("blue-name", "Blue Nile", "river", [34.7, 12.4], "The Blue Nile alone", undefined, "right"),
-      label("blue-half", "Blue Nile: more than half of the water", "river", [31.9, 13.7], "carries more than half", undefined, "left"),
+      label("blue-half", "Blue Nile: more than half of the water", "river", [32.15, 13.8], "carries more than half", undefined, "left"),
       river("white", WHITE, "The White Nile", 36, { glow: true }),
-      label("white-name", "White Nile", "river", [32.1, 11.4], "The White Nile", undefined, "left"),
+      label("white-name", "White Nile", "river", [32.45, 11.4], "The White Nile", undefined, "left"),
       river("atbara", ATBARA, "the Atbara bring", 24, { glow: true }),
       label("atbara-name", "Atbara", "river", [35.2, 16.6], "the Atbara bring", undefined, "right"),
     ],
@@ -327,7 +360,7 @@ const shots = [
     BASIN,
     "So most of Egypt's",
     voice.between("river starts in another country", "Now come back"),
-    fly(32.3, 23.8, 5.5),
+    fly(34.2, 18.4, 5.5),
     [
       keptRiver("blue-kept", BLUE),
       keptRiver("white-kept", WHITE),
@@ -350,8 +383,8 @@ const shots = [
     [
       tag("The Dam", "Work on the"),
       ...nileE(),
-      label("aswan-name", "Aswan", "city", ASWAN, "back to Aswan", undefined, "left"),
-      label("dam-name", "High Dam", "city", DAM, "the High Dam began", undefined, "right"),
+      label("aswan-name", "Aswan", "city", ASWAN, "back to Aswan", undefined, "top"),
+      label("dam-name", "High Dam", "city", DAM, "the High Dam began", undefined, "bottom"),
       layer("date-1960", "BigDate", { year: 1960, fromYear: 1940, era: "CE", caption: "Work on the High Dam began", placement: "lower-left" }, "nineteen sixty", voice.timeOf("It was completed")),
       layer("date-1970", "BigDate", { year: 1970, fromYear: 1960, era: "CE", caption: "High Dam completed", placement: "lower-left" }, "completed in nineteen"),
     ],
@@ -361,14 +394,14 @@ const shots = [
     label("dam-2", "High Dam", "city", DAM, undefined, undefined, "right"),
     mask("lake-mask", NASSER, "regionA", "Lake Nasser", { enterFrames: 20 }),
     label("lake-name", "Lake Nasser", "region", [31.75, 22.55], "Lake Nasser", undefined, "left"),
-    label("floods-ended", "Floods ended (one account)", "region", [33.5, 24.6], "devastating floods", undefined, "right"),
+    label("floods-ended", "Floods ended (one account)", "region", [33.15, 24.6], "devastating floods", undefined, "right"),
   ]),
-  shot("sediment", EGYPT, "An older study", voice.between("to more fertilizer", "By our reasoning"), fly(32.6, 25.3, 6.38), [
+  shot("sediment", EGYPT, "An older study", voice.between("to more fertilizer", "By our reasoning"), fly(32.75, 24.3, 6.38), [
     ...nileE(),
     keptMask("lake-kept", NASSER, "regionA"),
     label("dam-3", "High Dam", "city", DAM, undefined, undefined, "right"),
-    label("sediment-kept", "Sediment retained (older study)", "region", [31.0, 22.8], "river's sediment", undefined, "left"),
-    label("less-silt", "Less silt, more fertilizer (FAO)", "region", [33.0, 26.7], "less silt downstream", undefined, "right"),
+    label("sediment-kept", "Sediment retained (older study)", "region", [31.45, 22.75], "river's sediment", undefined, "left"),
+    label("less-silt", "Less silt, more fertilizer (FAO)", "region", [32.8, 26.35], "less silt downstream", undefined, "right"),
   ]),
   shot("strip", EGYPT, "By our reasoning", "It did not", follow(29.2, 6.5, STRIP_FRAMES), [
     keptRiver("damietta", DAMIETTA_E),
@@ -377,6 +410,7 @@ const shots = [
   ]),
   shot("nasa", EGYPT, "NASA's figure", "decades after the dam", fly(30.2, 27.6, 6.3), [
     ...nileE(),
+    ...shareOfEgypt("nasa", "roughly ninety-seven"),
     layer(
       "nasa-97",
       "StatCounter",
@@ -397,10 +431,11 @@ const shots = [
   // label sits against the valley it is about, not out in the Eastern Desert.
   // Wide for The Dam, and its last shot: the sentence is about this whole map, so the whole
   // country is in frame while the glow runs the length of the river.
-  shot("reading", EGYPT, "Our reading", READING_END, fly(31.0, 22.2, 5.1), [
+  shot("reading", EGYPT, "Our reading", READING_END, fly(30.8, 25.4, 5.45), [
     ...nileE(),
+    ...shareOfEgypt("reading", "water explains"),
     ...nileGlow("water explains", READING_GLOW),
-    label("water-word", "Water (our reading)", "region", [30.76, 28.1], "water explains", undefined, "left"),
+    label("water-word", "Valley and Delta", "region", [31.9, 27.6], "water explains", undefined, "right"),
   ]),
   // The Answer
   shot("question", EGYPT, READING_END, "along the Nile", fly(30.6, 26.4, 5.95), [
@@ -412,8 +447,9 @@ const shots = [
   ]),
   shot("answer", EGYPT, "Our answer is", "reliable water", fly(31.2, 27.2, 6.05), [
     ...nileE(),
-    label("valley-3", "Valley", "region", [32.4, 27.6], "valley and Delta are the", undefined, "right"),
-    label("delta-4", "Delta", "region", [29.5, 30.35], "valley and Delta are the"),
+    band("band-answer", "valley and Delta are the", { enterFrames: 24 }),
+    label("valley-3", "Valley", "region", [31.9, 27.0], "valley and Delta are the", undefined, "right"),
+    label("delta-4", "Delta", "region", [30.9, 30.9], "valley and Delta are the"),
     ...nileGlow("reliable water", 36),
   ]),
   shot(
@@ -421,15 +457,18 @@ const shots = [
     EGYPT,
     "The rest is mostly",
     "very little rain",
-    fly(32, 23.6, 5.52),
-    [...nileE(), label("desert-rest", "Desert", "region", [26.5, 26], "mostly desert")],
+    fly(30.6, 25.8, 5.52),
+    [
+      ...nileE(),
+      label("desert-rest", "Desert", "region", [26.5, 26], "mostly desert", undefined, undefined, { openGround: true }),
+    ],
     "crossfade",
   ),
   // Wide for The Answer: Egypt's water placed in the whole basin, at the basin plate's limit.
-  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(35, 17.4, 4.76), [
+  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(35.6, 15.4, 4.8), [
     ...nileB(),
     river("blue-back", BLUE, "far to the south", 40, { glow: true }),
-    label("blue-back-name", "Blue Nile", "river", [35.2, 12.2], "far to the south", undefined, "left"),
+    label("blue-back-name", "Blue Nile", "river", [34.55, 12.2], "far to the south", undefined, "left"),
     mask("highlands-back", HIGHLANDS, "regionB", "mostly from Ethiopia", {
       enterFrames: 20,
     }),
@@ -440,11 +479,12 @@ const shots = [
     BASIN,
     "By recent estimates",
     "ninety-seven percent of the people",
-    fly(34.6, 24, 5.5),
+    fly(34.2, 18.4, 5.5),
     [
       ...nileB(),
       keptRiver("blue-kept", BLUE),
       keptMask("highlands-kept", HIGHLANDS, "regionB"),
+      ...shareOfEgypt("recap", "about four percent of the land", OUTLINE_B),
       fact("recap-shares", "About 4% of land, about 97% of people", "about 97%", "upper-right", "about four percent of the land"),
     ],
     "crossfade",
@@ -462,7 +502,7 @@ const shots = [
         enterFrames: 30,
       }),
       river("nile-upstream-close", NILE_FULL_E, "mostly starts in another", 40),
-      label("from-south", "From far to the south", "river", [33.2, 21.6], "mostly starts in another", undefined, "right"),
+      label("from-south", "From far to the south", "river", [33.2, 22.0], "mostly starts in another", undefined, "right"),
     ],
     null,
   ),
@@ -496,6 +536,53 @@ const CLAIMS = {
 for (const { layers } of shots)
   for (const item of layers)
     if (CLAIMS[item.id]) item.claims = CLAIMS[item.id];
+
+// What each shot is about, as lon/lat bounds. The build checks the subject settles in the
+// middle third of the frame, so no shot ends with its subject pushed against an edge.
+const VALLEY = [29.8, 22.0, 33.2, 31.6]; // the Nile inside Egypt, valley and Delta
+const DELTA = [29.9, 30.0, 32.2, 31.6];
+const UPPER = [31.5, 22.0, 33.6, 27.5]; // the valley from Aswan to Asyut
+const EGYPT_ALL = [24.7, 21.8, 36.9, 31.7];
+const WESTERN_DESERT = [25.0, 23.0, 30.0, 30.5];
+const NORTH_COAST = [25.0, 30.0, 33.5, 31.8];
+const ASWAN_AREA = [32.0, 22.8, 33.6, 24.7];
+const CONFLUENCE = [31.5, 12.5, 36.5, 18.5]; // Khartoum and the two Niles
+const HIGHLANDS_AREA = [34.5, 6.0, 40.5, 14.5];
+const BASIN_ALL = [29.0, 4.0, 40.0, 31.6];
+const SUBJECTS = {
+  open: EGYPT_ALL,
+  line: VALLEY,
+  why: VALLEY,
+  cairo: DELTA,
+  shares: VALLEY,
+  differ: VALLEY,
+  density: VALLEY,
+  desert: WESTERN_DESERT,
+  coast: NORTH_COAST,
+  source: VALLEY,
+  flood: VALLEY,
+  south: UPPER,
+  highlands: HIGHLANDS_AREA,
+  "share-86": HIGHLANDS_AREA,
+  rivers: CONFLUENCE,
+  another: BASIN_ALL,
+  aswan: ASWAN_AREA,
+  lake: ASWAN_AREA,
+  sediment: ASWAN_AREA,
+  strip: VALLEY,
+  nasa: VALLEY,
+  reading: EGYPT_ALL,
+  question: EGYPT_ALL,
+  answer: VALLEY,
+  rest: WESTERN_DESERT,
+  ethiopia: HIGHLANDS_AREA,
+  recap: BASIN_ALL,
+  green: VALLEY,
+};
+for (const item of shots) {
+  if (!SUBJECTS[item.id]) throw new Error(`No subject for shot ${item.id}`);
+  item.subject = SUBJECTS[item.id];
+}
 
 kit.writeStoryboard(`episodes/${SLUG}/storyboard.json`, {
   schemaVersion: 1,

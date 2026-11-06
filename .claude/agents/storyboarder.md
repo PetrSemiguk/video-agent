@@ -43,6 +43,10 @@ Rules you must keep:
 - **Lines leave softly:** `RiverLine` and `RouteLine` fade out at the end of their layer. Where the next shot shows the same line, set `exitFrames: 0` on it, so it does not dip.
 - **Labels off the fast part:** pan and zoom have their own limits, and a zoom keeps the strict one while any text layer is on screen. A fast flyover therefore carries no labels: end them before it and bring them back when the camera settles.
 - **A wide shot in every section:** at least one, so each section places its subject before going close. Wide is relative to the plate: pull back to within 90% of the widest frame it can safely show. Across the episode the widest map shot should be at least 2× the narrowest.
+- **Every shot declares `subject`,** the lon/lat bounds of what it is about, and the camera points at it: the subject's centre must settle in the middle third of the frame. Check the plate first — a plate that stops just beyond its subject cannot hold a wide frame with the subject centred, and the answer is a better plate, not a worse framing.
+- **Show the area, do not only state it:** a shot that says a share or an area needs a highlight with `dimOutside` — the denominator dimmed, the numerator lit. At least a quarter of an episode's shots must mark an area.
+- **Labels stand on what they name:** within 40 km of something the shot draws, or with `leader` to the point, or `openGround: true` for unmarked ground such as open desert.
+- **Nothing editorial on screen:** "our reading", "TODO" and the like are rejected. Honest disclosure — "approximate", "estimate", "one account" — stays required.
 
 ## 4. Check, at most 2 revision rounds
 

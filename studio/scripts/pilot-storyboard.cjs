@@ -166,7 +166,7 @@ const yuanSeconds = timeOf("carrying grain") - yuanStart;
 const whenCanalReaches = (fraction) => yuanStart + fraction * yuanSeconds;
 const crossings = [
   // The modern Yellow River in the data runs between these Shandong nodes.
-  ["qiantang", 0, 0, "Qiantang", [120.7, 29.75], "right"],
+  ["qiantang", 0, 0, "Qiantang", [120.75, 30.05], "right"],
   [
     "yangtze",
     nodeFraction("Zhenjiang"),
@@ -208,7 +208,7 @@ const story = {
       0,
       "Start with the landscape",
       camera("establish", {
-        target: { center: { lon: 107.5, lat: 33 }, zoom: 4.82 },
+        target: { center: { lon: 111, lat: 34 }, zoom: 4.82 },
         push: 0.1,
       }),
       [
@@ -662,6 +662,25 @@ const story = {
     ),
   ],
 };
+
+// What each shot is about, as lon/lat bounds. The build checks the subject settles in the
+// middle third of the frame (docs/visual-grammar.md).
+const SUBJECTS = {
+  opening: [105.5, 31.4, 122.7, 42.6], // the heartland mask's own bounds
+  plateau: [86, 27, 111, 38],
+  "eastern-lowlands": [112, 30, 122, 41],
+  "yellow-river": [110, 33, 119, 38],
+  yangtze: [110, 28, 122, 33],
+  "grand-canal": [113, 30.2, 121.2, 40],
+  "five-basins": [112, 28, 122, 40],
+  "division-and-reunion": [105, 22, 122, 42],
+  incentives: [112, 30, 122, 40],
+  closing: [100, 22, 122, 42],
+};
+for (const item of story.shots) {
+  if (!SUBJECTS[item.id]) throw new Error(`No subject for shot ${item.id}`);
+  item.subject = SUBJECTS[item.id];
+}
 
 // Text stating a fact on screen, and the ids of facts.md behind it.
 const CLAIMS = {

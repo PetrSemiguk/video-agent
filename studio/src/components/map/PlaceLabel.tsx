@@ -12,6 +12,7 @@ import {
   fontStack,
   headlineStack,
   motion,
+  opacity,
   space,
   stroke,
   type,
@@ -73,9 +74,10 @@ const PlaceLabelView: React.FC<{
   text: string;
   kind: LabelKind;
   anchor?: LabelAnchor;
+  leader?: LonLatTuple;
   enterFrame?: number;
   exitAt?: number;
-}> = ({ lonLat, text, kind, anchor, enterFrame = 0, exitAt }) => {
+}> = ({ lonLat, text, kind, anchor, leader, enterFrame = 0, exitAt }) => {
   const frame = useCurrentFrame();
   const { toScreen, width: W, height: H } = useMapProjection();
   const st = STYLE[kind];
@@ -131,8 +133,36 @@ const PlaceLabelView: React.FC<{
   );
   const shift = space.enterShift * (1 - appear);
 
+  // A leader reaches from the label box to the point it names, for a label that cannot stand on
+  // its subject. It is drawn from the box's nearest edge centre, so it never crosses the text.
+  const lead = leader ? toScreen(leader) : null;
   return (
     <>
+      {lead ? (
+        <svg
+          style={{ position: "absolute", left: 0, top: 0, overflow: "visible" }}
+          width={W}
+          height={H}
+        >
+          <line
+            x1={Math.min(Math.max(lead.x, x), x + textW)}
+            y1={y + shift + textH / 2}
+            x2={lead.x}
+            y2={lead.y}
+            stroke={colors.labelText}
+            strokeWidth={stroke.leader}
+            strokeLinecap="round"
+            opacity={appear * opacity.leader}
+          />
+          <circle
+            cx={lead.x}
+            cy={lead.y}
+            r={space.leaderDot / 2}
+            fill={colors.labelText}
+            opacity={appear}
+          />
+        </svg>
+      ) : null}
       {kind === "city" ? (
         <div
           style={{
