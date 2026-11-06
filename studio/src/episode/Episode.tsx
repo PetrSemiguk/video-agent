@@ -21,6 +21,7 @@ import {
   geoLayerTypes,
   layerFrames,
   layerProps,
+  naturalEarthLayers,
   transitionFrames,
 } from "./plan";
 import type { EpisodeProps, PreparedEpisode } from "./metadata";
@@ -64,7 +65,9 @@ const Shot: React.FC<{
         </Sequence>
       );
     });
-  const extraAttribution = shot.layers.some((l) => geoLayerTypes.has(l.type))
+  const extraAttribution = shot.layers.some((l) =>
+    naturalEarthLayers.has(l.type),
+  )
     ? "Made with Natural Earth"
     : undefined;
   if (next && next.plate !== shot.plate && overlap > 0)

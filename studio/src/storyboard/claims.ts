@@ -1,6 +1,8 @@
 // Text on screen that states a fact needs a claim id from the episode's facts.md.
 // Place names and navigation are not claims, unless they carry a number.
 const ALWAYS_FACTUAL = new Set([
+  // An advance arrow asserts that someone moved this way, with or without a label.
+  "ArrowAdvance",
   "LowerThird",
   "KeyFact",
   "BigDate",
@@ -14,6 +16,7 @@ const NEVER_FACTUAL = new Set(["MapAttribution", "BRollClip", "EndCard"]);
 const NOT_TEXT = new Set([
   "geojson",
   "line",
+  "path",
   "credit",
   "slug",
   "lonLat",

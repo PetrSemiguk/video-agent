@@ -62,6 +62,24 @@ export const sliceByFraction = (
   return out;
 };
 
+/**
+ * Cumulative length fractions of a plain polyline, so it can be sliced like a sourced river or
+ * route. Degenerate input (all points equal) falls back to equal spacing.
+ */
+export const measurePolyline = <P extends Pt>(points: P[]): MeasuredLine<P> => {
+  const steps = points.map((p, i) =>
+    i === 0 ? 0 : Math.hypot(p.x - points[i - 1].x, p.y - points[i - 1].y),
+  );
+  const total = steps.reduce((a, b) => a + b, 0);
+  let run = 0;
+  const cumfrac = steps.map((step, i) => {
+    run += step;
+    return total > 0 ? run / total : i / Math.max(1, points.length - 1);
+  });
+  cumfrac[cumfrac.length - 1] = 1;
+  return { points, cumfrac };
+};
+
 export const polylineD = (pts: Pt[]) =>
   pts
     .map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(2)} ${p.y.toFixed(2)}`)

@@ -27,6 +27,7 @@ import { RegionHighlight, regionHighlightSchema } from "./map/RegionHighlight";
 import { RiverLine, riverLineSchema } from "./map/RiverLine";
 import { RouteLine, routeLineSchema } from "./map/RouteLine";
 import { HistoricalLayer, historicalLayerSchema } from "./map/HistoricalLayer";
+import { ArrowAdvance, arrowAdvanceSchema } from "./map/ArrowAdvance";
 import { PlaceLabel, placeLabelSchema } from "./map/PlaceLabel";
 import { MapAttribution, mapAttributionSchema } from "./MapAttribution";
 
@@ -163,6 +164,15 @@ export const componentRegistry = {
     when: "In PlateStage geo, with vap.geo.route output, whenever narration names a route.",
     notes:
       "Every LineString needs properties.cumfrac; properties.nodes with label true get a dot and a name when the head passes. Branches draw one after another at the same speed along their length. style solid or dashed; dash for an approximate or planned course. arrows mark travel direction. credit is mandatory and shown in the map attribution. Node labels default to the right of the dot; nodeAnchors moves them. The route fades out over exitFrames at the end of its layer; 0 keeps it to the last frame. A label on the route needs claims in the storyboard.",
+  },
+  ArrowAdvance: {
+    component: ArrowAdvance,
+    schema: arrowAdvanceSchema,
+    purpose:
+      "One advancing arrow: a shaft that grows from its origin and tapers into a single head.",
+    when: "In PlateStage geo, when narration describes a movement of force — a campaign, an invasion, a migration. For a sourced course that is travelled rather than advanced along, such as a canal or a trade road, use RouteLine.",
+    notes:
+      "path is the course in lon/lat, origin first, at least two points; its nodes come from sources named in the episode's facts.md, never from memory. style dashed says on screen that the course is approximate, which is the honest default for an advance drawn from a narrative rather than a mapped route. The head keeps its size on the map, so it takes a smaller share of a longer path; the optional label appears at the head as the arrow arrives. An advance always asserts that someone moved this way, so the storyboard layer needs claims. The arrow fades out over exitFrames at the end of its layer; 0 keeps it to the last frame.",
   },
   PlaceLabel: {
     component: PlaceLabel,

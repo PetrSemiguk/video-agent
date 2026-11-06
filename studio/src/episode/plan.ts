@@ -66,7 +66,19 @@ export const wordsSchema = z
 export type Assembly = z.infer<typeof assemblySchema>;
 export type AlignmentWords = z.infer<typeof wordsSchema>;
 export type EpisodeShot = ParsedStoryboard["shots"][number];
+/** Layers drawn inside the plate's transformed container (GeoSvg), so they move with the map. */
 export const geoLayerTypes = new Set([
+  "RegionHighlight",
+  "RiverLine",
+  "RouteLine",
+  "HistoricalLayer",
+  "ArrowAdvance",
+]);
+/**
+ * Geo layers whose geometry comes from Natural Earth, so the frame must credit it. An advance
+ * arrow is a course of our own, from the episode's own sources, and credits nothing by itself.
+ */
+export const naturalEarthLayers = new Set([
   "RegionHighlight",
   "RiverLine",
   "RouteLine",
@@ -142,7 +154,8 @@ export const creditsAt = (
   );
   for (const shot of shots)
     for (const layer of shot.layers) {
-      if (geoLayerTypes.has(layer.type)) sources.add("Made with Natural Earth");
+      if (naturalEarthLayers.has(layer.type))
+        sources.add("Made with Natural Earth");
       if (layer.type === "MapAttribution") sources.add(layer.props.text);
       if (layer.type === "HistoricalLayer" || layer.type === "RouteLine")
         sources.add(layer.props.credit);

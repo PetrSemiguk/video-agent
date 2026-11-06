@@ -17,6 +17,7 @@ import {
   labelRanges,
   layerFrames,
   layerProps,
+  naturalEarthLayers,
   textLayerTypes,
   transitionFrames,
   wordsSchema,
@@ -167,8 +168,14 @@ describe("Episode assembly", () => {
       "RiverLine",
       "RouteLine",
       "HistoricalLayer",
+      "ArrowAdvance",
     ]);
     expect(geoLayerTypes.has("PlaceLabel")).toBe(false);
+    // An advance arrow is a course of our own, so it adds no Natural Earth credit.
+    expect(naturalEarthLayers.has("ArrowAdvance")).toBe(false);
+    expect([...naturalEarthLayers].every((t) => geoLayerTypes.has(t))).toBe(
+      true,
+    );
   });
   it("checks all sample camera frames and overlapping old/new plates", () => {
     const plan = compilePlan(story, timing, 743);

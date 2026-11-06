@@ -204,6 +204,17 @@ export const routeLineSchema = z.strictObject({
   nodeAnchors: z.record(z.string(), z.enum(["right", "left"])).default({}),
   ...lineExit,
 });
+export const arrowAdvanceSchema = z.strictObject({
+  /** The course of the advance, origin first. Nodes come from sources, never from memory. */
+  path: line,
+  color: semanticSchema.default("conflict"),
+  drawFrames: frames.default(motion.frames.draw),
+  /** dashed says on screen that the course is approximate. */
+  style: z.enum(["solid", "dashed"]).default("solid"),
+  /** Label at the head, appearing as the arrow arrives. */
+  label: shortText(40).optional(),
+  ...lineExit,
+});
 export const placeLabelSchema = z.strictObject({
   lonLat: point,
   text: shortText(40),

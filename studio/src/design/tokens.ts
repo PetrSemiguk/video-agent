@@ -316,6 +316,26 @@ export const plateLookJson = String.raw`{
 export const polityPalette = styleReview.polity;
 
 /** RouteLine: canals, campaigns, trade routes. Sizes are on-screen px unless noted. */
+/**
+ * Advance arrows: one broad shaft that tapers from its origin to a single moving head, for a
+ * campaign or a migration. Sizes are plate px, so they hold their place on the map under zoom.
+ */
+export const advanceArrow = {
+  /** Shaft width at the head; it starts at `taperStart` of this at the origin. */
+  width: 15,
+  taperStart: 0.3,
+  taperSteps: 14,
+  headLength: 44,
+  headWidth: 36,
+  /** Dash and gap for an advance whose course is approximate. */
+  dash: [26, 16],
+  /** Share of the drawing over which the arrow fades in. */
+  enterFraction: 0.05,
+  /** Half length, as a fraction of the path, of the piece giving the head its direction. */
+  tangentFraction: 0.01,
+  labelGap: 20,
+} as const;
+
 export const routeLine = {
   /** Dash and gap in plate px, so the pattern stays attached to the map under zoom. */
   dash: [22, 14],
