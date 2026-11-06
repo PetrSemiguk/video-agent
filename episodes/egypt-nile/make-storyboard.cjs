@@ -115,9 +115,13 @@ const shots = [
     EGYPT,
     0,
     "you see is desert",
+    // The episode opens on the widest the plate can safely show and pushes in. The centre sits
+    // low because the plate's north edge is close in Mercator: at this zoom a frame centred on
+    // Egypt itself would show it. Egypt therefore sits in the upper half, inside the desert belt
+    // the narration is about.
     camera("establish", {
-      target: { center: { lon: 30.0, lat: 26.2 }, zoom: 5.85 },
-      push: 0.06,
+      target: { center: { lon: 31.0, lat: 22.0 }, zoom: 5.05 },
+      push: 0.05,
       drift: [0.006, 0],
     }),
     [
@@ -287,7 +291,9 @@ const shots = [
     BASIN,
     "By a common estimate",
     "which rivers are counted",
-    fly(38.7, 17.3, 4.99),
+    // Wide for The Water: pulled back to near the basin plate's own limit. The centre moves west
+    // of the highlands so the frame stays on the plate at this zoom.
+    fly(34.5, 17.8, 4.76),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral", { exitAt: 0, exitFrames: 30 }),
@@ -364,7 +370,7 @@ const shots = [
     label("sediment-kept", "Sediment retained (older study)", "region", [31.0, 22.8], "river's sediment", undefined, "left"),
     label("less-silt", "Less silt, more fertilizer (FAO)", "region", [33.0, 26.7], "less silt downstream", undefined, "right"),
   ]),
-  shot("strip", EGYPT, "By our reasoning", "It did not", follow(29.2, 6.7, STRIP_FRAMES), [
+  shot("strip", EGYPT, "By our reasoning", "It did not", follow(29.2, 6.5, STRIP_FRAMES), [
     keptRiver("damietta", DAMIETTA_E),
     river("nile-strip", NILE_E, "By our reasoning", 130, { glow: true }),
     label("the-strip", "This strip", "region", [30.6, 27.6], "this strip should", undefined, "left"),
@@ -382,11 +388,16 @@ const shots = [
         placement: "lower-left",
       },
       "roughly ninety-seven",
+      // Off before the cut: the next shot opens on a fast zoom out, and a frame carrying a
+      // label keeps the strict zoom limit (docs/visual-grammar.md).
+      "decades after",
     ),
   ]),
   // On "water" the glow runs the whole length of the river for the rest of the shot, and the
   // label sits against the valley it is about, not out in the Eastern Desert.
-  shot("reading", EGYPT, "Our reading", READING_END, fly(31.1, 29, 6.62), [
+  // Wide for The Dam, and its last shot: the sentence is about this whole map, so the whole
+  // country is in frame while the glow runs the length of the river.
+  shot("reading", EGYPT, "Our reading", READING_END, fly(31.0, 22.2, 5.1), [
     ...nileE(),
     ...nileGlow("water explains", READING_GLOW),
     label("water-word", "Water (our reading)", "region", [30.76, 28.1], "water explains", undefined, "left"),
@@ -414,9 +425,8 @@ const shots = [
     [...nileE(), label("desert-rest", "Desert", "region", [26.5, 26], "mostly desert")],
     "crossfade",
   ),
-  // Wide: this is where The Answer places Egypt's water in the whole basin, one scale above
-  // the rest of the section (the rule of a wide shot per section, docs/visual-grammar.md).
-  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(36, 17.4, 4.95), [
+  // Wide for The Answer: Egypt's water placed in the whole basin, at the basin plate's limit.
+  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(35, 17.4, 4.76), [
     ...nileB(),
     river("blue-back", BLUE, "far to the south", 40, { glow: true }),
     label("blue-back-name", "Blue Nile", "river", [35.2, 12.2], "far to the south", undefined, "left"),
