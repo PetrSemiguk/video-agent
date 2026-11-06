@@ -189,7 +189,7 @@ const shots = [
     EGYPT,
     "Together the valley",
     "of its people there",
-    fly(30.9, 28.4, 6.5),
+    fly(30.9, 27.5, 6.5),
     [
       ...nileE(),
       ...shareOfEgypt("shares", "Together the valley"),
@@ -267,7 +267,7 @@ const shots = [
       ...nileGlow("on one river", 36),
     ],
   ),
-  shot("source", EGYPT, "The FAO calls", "water for Egypt", fly(31.5, 28.4, 6.25), [
+  shot("source", EGYPT, "The FAO calls", "water for Egypt", fly(31.5, 27.5, 6.25), [
     ...nileE(),
     label("main-source", "Nile: main source of water (FAO)", "region", [32.7, 26.4], "main source of water", undefined, "right"),
   ]),
@@ -303,7 +303,7 @@ const shots = [
     BASIN,
     "Here are the highlands",
     "of Ethiopia",
-    fly(35.0, 16.0, 5.25),
+    fly(35.0, 13.0, 5.25),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral"),
@@ -320,7 +320,7 @@ const shots = [
     "which rivers are counted",
     // Wide for The Water: pulled back to near the basin plate's own limit. The centre moves west
     // of the highlands so the frame stays on the plate at this zoom.
-    fly(35.4, 15.4, 4.8),
+    fly(35.4, 13.7, 4.9),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral", { exitAt: 0, exitFrames: 30 }),
@@ -340,7 +340,7 @@ const shots = [
     BASIN,
     "The Blue Nile alone",
     "bring the rest",
-    fly(34.6, 16.6, 5.42),
+    fly(34.6, 16.8, 5.52),
     [
       keptMask("highlands-kept", HIGHLANDS, "regionB"),
       keptRiver("nile", NILE_B),
@@ -360,7 +360,7 @@ const shots = [
     BASIN,
     "So most of Egypt's",
     voice.between("river starts in another country", "Now come back"),
-    fly(34.2, 18.4, 5.5),
+    fly(32.6, 22.4, 5.5),
     [
       keptRiver("blue-kept", BLUE),
       keptRiver("white-kept", WHITE),
@@ -457,7 +457,7 @@ const shots = [
     EGYPT,
     "The rest is mostly",
     "very little rain",
-    fly(30.6, 25.8, 5.52),
+    fly(30.8, 25.2, 5.58),
     [
       ...nileE(),
       label("desert-rest", "Desert", "region", [26.5, 26], "mostly desert", undefined, undefined, { openGround: true }),
@@ -465,7 +465,7 @@ const shots = [
     "crossfade",
   ),
   // Wide for The Answer: Egypt's water placed in the whole basin, at the basin plate's limit.
-  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(35.6, 15.4, 4.8), [
+  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(35.4, 13.4, 4.89), [
     ...nileB(),
     river("blue-back", BLUE, "far to the south", 40, { glow: true }),
     label("blue-back-name", "Blue Nile", "river", [34.55, 12.2], "far to the south", undefined, "left"),
@@ -479,7 +479,7 @@ const shots = [
     BASIN,
     "By recent estimates",
     "ninety-seven percent of the people",
-    fly(34.2, 18.4, 5.5),
+    fly(33.2, 20.6, 5.62),
     [
       ...nileB(),
       keptRiver("blue-kept", BLUE),
@@ -565,7 +565,7 @@ const SUBJECTS = {
   highlands: HIGHLANDS_AREA,
   "share-86": HIGHLANDS_AREA,
   rivers: CONFLUENCE,
-  another: BASIN_ALL,
+  another: [30.0, 17.5, 34.5, 26.0], // the reach entering Egypt
   aswan: ASWAN_AREA,
   lake: ASWAN_AREA,
   sediment: ASWAN_AREA,
@@ -576,7 +576,7 @@ const SUBJECTS = {
   answer: VALLEY,
   rest: WESTERN_DESERT,
   ethiopia: HIGHLANDS_AREA,
-  recap: BASIN_ALL,
+  recap: [29.0, 8.0, 40.0, 32.0], // Egypt and where its water comes from
   green: VALLEY,
 };
 for (const item of shots) {

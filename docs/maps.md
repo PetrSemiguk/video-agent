@@ -299,6 +299,18 @@ Rules:
   pitch, bearing), so velocity and acceleration are continuous across preset joints. Keys of
   `hold()` are clamped to zero velocity, so the camera eases into a hold and stays exactly
   still. Splines can overshoot between keys; the plate check catches that at render time.
+- **Room around the subject:** a plate is designed around what the episode is about, **with room,
+  not drawn to its borders**. The widest frame a plate can safely show is the plate itself, so at
+  that zoom the frame's middle third is the plate's middle third — and the build requires a shot's
+  subject to settle in the middle third of the frame. Both at once is possible only when the
+  subject's centre already lies in the **middle third of the plate**, that is at least **a third
+  of the plate's span from every edge**. Otherwise the subject can be shown wide, or centred,
+  never both. Pass `--subject w,s,e,n` to `vap.geo.plate` and it checks this, printing the bbox
+  that would give room; `--strict` makes it an error. The first case: the `egypt` plate was drawn
+  to Egypt's own borders (lat 10–33 for a country reaching 31.7), which put the subject's centre
+  0.216 of the span off centre against a 0.167 limit; it was rebuilt on 7,14,55,38.
+  Leave room at the tight end too: a wider bbox lowers the plate's native zoom, so raise `--width`
+  if the episode needs close shots.
 - **Zoom limits:** `plateZoomLimits(meta)` gives `cover` (whole plate), `native` (1:1) and
   `max` (`native` + log2 of the oversampling cap). Pass `maxZoom` to `focusOn` near the limit.
   Pseudo-pitch magnifies the near edge (~5 % at 6°, ~15 % at 25°), so keep a margin.

@@ -22,7 +22,7 @@ Plan the rhythm first, by "Rhythm" in `visual-grammar.md`: the cuts per minute, 
 
 Reuse what exists under `data/processed/`. Otherwise, in this order:
 
-- **Plate:** `vap.geo.plate`. Stay within its oversampling limit (`--strict`), and check that the frame range you need fits: a plate's sharp zoom range is only about one step wide. Its JSON is committed; its PNG is not.
+- **Plate:** `vap.geo.plate`. **Design the plate around the episode's subject, with room — never to the subject's own borders.** Pass `--subject w,s,e,n --strict`: the subject's centre must sit in the middle third of the plate, or the episode can show it wide or centred but never both, and the camera will run off the edge at the joints. Stay within the oversampling limit, and check that the frame range you need fits: a plate's sharp zoom range is only about one step wide, and a wider bbox lowers it, so raise `--width` if you need close shots. Its JSON is committed; its PNG is not.
 - **Vectors:** `vap.geo.extract`, `vap.geo.river`, `vap.geo.terrainregion`, `vap.geo.route` with sourced nodes, `vap.geo.compose`.
 - **Historical layers:** by the source rule in `docs/historical-sources.md`. Read each layer's `<slug>.errata.json`: use no layer with a blocker, and never override one on your own.
 - **A new source** gets its row in `docs/licenses.md` first. If the license is unclear, or no allowed source shows something, **stop and report**: never draw it from memory, and never invent a contour or route. A custom mask or route is `approximate` and says so on screen.

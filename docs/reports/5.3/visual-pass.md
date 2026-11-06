@@ -70,6 +70,64 @@ Compare: `studio/out/grade-compare-egypt.png` (whole frame and a Delta crop at p
 from the new `vap.geo.grade_compare`. Both Egypt plates were rebuilt at their original sizes;
 `china-east-hs05` and `europe` still carry v2 and should be rebuilt when convenient.
 
+## The plate rule, and where the Egypt framings stand
+
+### Room around the subject is now a rule with a check
+
+Derived from the two conditions rather than guessed. The widest frame a plate can safely show is
+the plate itself, so at that zoom the frame's middle third **is** the plate's middle third. The
+build requires a shot's subject to settle in the frame's middle third. Both hold at once only if
+the subject's centre already lies in the middle third of the plate — that is, **at least a third
+of the plate's span from every edge**.
+
+`vap.geo.plate --subject w,s,e,n` reports the offsets and the bbox that would give room, warns,
+and fails under `--strict`; the result is kept in the plate's metadata as `subject_room`. The rule
+is in `docs/maps.md` ("Room around the subject") and in `storyboarder.md`, which now says to
+design the plate around the subject rather than to its borders. Four tests cover it, including
+that the bbox the tool suggests itself satisfies the rule.
+
+Measured on the old plate: offsets **0.004 across, 0.216 down** against a limit of 0.167 — the
+`egypt` plate had been drawn to Egypt's own borders (lat 10–33 for a country reaching 31.7).
+
+### The plate was rebuilt and its data checked
+
+`egypt` is now `7,14,55,38` at **7400×4162** (offsets 0.004 / 0.010, oversampling 0.72 centre,
+0.82 edge). The width went up because a wider bbox lowers the plate's native zoom, and the
+episode's closest shots at zoom 6.7 would otherwise be upscaled past 1:1.
+
+Vectors were re-extracted and compared against the committed geometry. One real drift was caught
+and fixed: rebuilt without `--also "Rosetta Branch"`, the Nile stopped at Cairo (2,730 km instead
+of 2,963 km) and never reached the sea. With the Rosetta reach restored the lines match the old
+ones to within 0.1% — 2,962.0 vs 2,963.3 km for the Nile, 1,151.9 vs 1,152.5 for the Aswan-to-sea
+reach, 227.4 vs 227.5 for the Damietta branch — and all endpoints are identical. The band was
+rebuilt on the new plate: 40,411 km², unchanged at 4.0% of Egypt.
+
+### The framings are not finished
+
+The new plate fixed every shot on it that had been running off the north edge. What remains is
+four shots on the **basin** plate and at the plate-change joints:
+
+| Shot | Failure |
+|---|---|
+| `share-86` | plate edge within −2.4 px at frame 1 (needs ≥ 2) |
+| `rivers` | −127 px at frame 0, the joint out of `share-86` |
+| `recap` | −154 px at frame 0, the joint out of `ethiopia` |
+| `green` | −124 px at frame 0, the joint out of `recap` |
+
+These are camera-spline overshoots at joints, not plate-room failures: the basin plate passes the
+room check for what the episode frames on it. The cause is the shot order — the episode walks from
+the Ethiopian highlands (lat ~10) to Egypt (lat ~27) and back more than once, and with each shot
+now pointed at its own subject the camera has to travel far between neighbours. Five tuning passes
+moved the numbers around without converging; each change propagates through the spline to its
+neighbours, and the last pass made `green` five times worse, so I reverted it.
+
+**This needs an editorial pass, not more nudging:** intermediate framings, or a shot order that
+does not cross the basin twice, or a `hold` with a reason at the joints. That is the
+storyboarder's work, and it is the honest next step.
+
+**So the Egypt episode still does not build, and the render, `episode-qa` and the step review have
+not run.** Everything else in this report is in and tested.
+
 ## 2. The framing rule — built, and it found more than I could fix
 
 `verifyEpisodeCamera` now fails a shot whose subject does not settle in the **middle third** of

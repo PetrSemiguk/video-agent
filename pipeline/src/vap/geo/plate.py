@@ -19,7 +19,7 @@ from PIL import Image
 
 from . import bluemarble, terrain
 from .look import apply_grade, apply_hillshade, hillshade, load_grades, load_plate_look
-from .mercator import Extent, R, fit_extent, y_to_lat
+from .mercator import Extent, R, fit_extent, lat_to_y, lon_to_x, x_to_lon, y_to_lat
 from .paths import PLATES_DIR
 from .sources import attribution
 
@@ -64,8 +64,60 @@ def oversampling(ext: Extent) -> dict:
     }
 
 
+# A plate is designed around the episode's subject, with room, not drawn to its borders.
+# The widest frame a plate can safely show is the plate itself, so at that zoom the frame's
+# middle third is the plate's middle third: a subject whose centre falls outside it can be shown
+# wide, or centred, but never both. Hence the margin: the subject's centre must stay at least a
+# third of the plate's span away from every edge. See docs/maps.md, "Room around the subject".
+SUBJECT_BAND = 1 / 3
+
+
+def subject_room(ext: Extent, subject: tuple[float, float, float, float]) -> dict:
+    """How the subject sits on the plate, and the bbox that would give it room."""
+    west, south, east, north = subject
+    centre_x, centre_y = (
+        (lon_to_x(west) + lon_to_x(east)) / 2,
+        (lat_to_y(south) + lat_to_y(north)) / 2,
+    )
+    spans = (ext.max_x - ext.min_x, ext.max_y - ext.min_y)
+    offsets = (
+        abs(centre_x - (ext.min_x + ext.max_x) / 2),
+        abs(centre_y - (ext.min_y + ext.max_y) / 2),
+    )
+    # Inside the middle third means the offset from the plate's centre is at most a sixth.
+    shares = tuple(offset / span for offset, span in zip(offsets, spans, strict=True))
+    inside = all(share <= SUBJECT_BAND / 2 + 1e-9 for share in shares)
+    contains = (
+        ext.min_x <= lon_to_x(west)
+        and lon_to_x(east) <= ext.max_x
+        and ext.min_y <= lat_to_y(south)
+        and lat_to_y(north) <= ext.max_y
+    )
+    # A plate centred on the subject always has room; report it as the fix.
+    half = (spans[0] / 2, spans[1] / 2)
+    suggested = (
+        round(x_to_lon(centre_x - half[0]), 2),
+        round(y_to_lat(centre_y - half[1]), 2),
+        round(x_to_lon(centre_x + half[0]), 2),
+        round(y_to_lat(centre_y + half[1]), 2),
+    )
+    return {
+        "subject": list(subject),
+        "centre_offset_share": [round(share, 3) for share in shares],
+        "limit_share": round(SUBJECT_BAND / 2, 3),
+        "contains_subject": contains,
+        "has_room": bool(inside and contains),
+        "suggested_bbox": list(suggested),
+    }
+
+
 def metadata(
-    name: str, ext: Extent, requested: tuple, params: dict, terrain_zoom: int | None
+    name: str,
+    ext: Extent,
+    requested: tuple,
+    params: dict,
+    terrain_zoom: int | None,
+    room: dict | None = None,
 ) -> dict:
     min_lon, min_lat, max_lon, max_lat = ext.bbox_lonlat
     return {
@@ -90,6 +142,7 @@ def metadata(
         },
         "params": {**params, "terrain_zoom": terrain_zoom},
         "resolution": {"source": "NASA Blue Marble NG, 15 arc-seconds", **oversampling(ext)},
+        **({"subject_room": room} if room else {}),
         "attribution": attribution(use_terrain=terrain_zoom is not None),
         "generator": "vap.geo.plate",
     }
@@ -109,7 +162,16 @@ def main(argv: list[str] | None = None) -> int:
     )
     ap.add_argument("--exaggeration", type=float, default=3.0, help="vertical exaggeration")
     ap.add_argument("--grade", default="dark", choices=sorted(load_grades()))
-    ap.add_argument("--strict", action="store_true", help="fail if oversampling > limit")
+    ap.add_argument(
+        "--subject",
+        type=parse_bbox,
+        default=None,
+        help="the episode's subject, minLon,minLat,maxLon,maxLat: the plate is checked for room "
+        "around it, so it can be both centred and shown wide",
+    )
+    ap.add_argument(
+        "--strict", action="store_true", help="fail if oversampling or subject room is out"
+    )
     args = ap.parse_args(argv)
     if not 0.0 <= args.hillshade <= 1.0:
         ap.error("--hillshade must be within 0..1")
@@ -129,6 +191,24 @@ def main(argv: list[str] | None = None) -> int:
             print(f"ERROR: {msg}", file=sys.stderr)
             return 2
         print(f"WARNING: {msg}", file=sys.stderr)
+
+    room = subject_room(ext, args.subject) if args.subject else None
+    if room:
+        print(
+            f"subject room  : offsets {room['centre_offset_share']} of the plate "
+            f"(limit {room['limit_share']}), contains subject: {room['contains_subject']}"
+        )
+        if not room["has_room"]:
+            msg = (
+                "the subject sits too near the plate's edge: it can be centred or shown wide, "
+                "not both. A plate is designed around its subject with room, not drawn to its "
+                f"borders. Try --bbox={','.join(str(v) for v in room['suggested_bbox'])} "
+                "(docs/maps.md, 'Room around the subject')."
+            )
+            if args.strict:
+                print(f"ERROR: {msg}", file=sys.stderr)
+                return 2
+            print(f"WARNING: {msg}", file=sys.stderr)
 
     rgb = bluemarble.render(ext)
     t1 = time.perf_counter()
@@ -155,7 +235,7 @@ def main(argv: list[str] | None = None) -> int:
         "grade_version": {"dark": 3, "dark_v2": 2, "dark_v1": 1}.get(args.grade, 0),
         "bluemarble_month": f"2004-{bluemarble.MONTH:02d}",
     }
-    meta = metadata(args.name, ext, args.bbox, params, tz)
+    meta = metadata(args.name, ext, args.bbox, params, tz, room)
     meta_path = PLATES_DIR / f"{args.name}.json"
     text = json.dumps(meta, indent=2, ensure_ascii=False) + "\n"
     meta_path.write_text(text, encoding="utf-8", newline="\n")  # LF on Windows too
