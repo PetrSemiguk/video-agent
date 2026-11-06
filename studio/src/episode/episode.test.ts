@@ -13,6 +13,7 @@ import {
   compilePlan,
   creditsAt,
   geoLayerTypes,
+  layerFrames,
   layerProps,
   transitionFrames,
   wordsSchema,
@@ -87,6 +88,17 @@ describe("Episode assembly", () => {
     const props = layerProps(plan.storyboard.shots[0].layers[0], 101);
     expect(props).toHaveProperty("durationInFrames", 101);
     expect(wordsSchema.parse(words).words).toHaveLength(78);
+  });
+  it("holds map layers through the outgoing transition, and nothing else", () => {
+    const layer = (type: string) =>
+      ({ type }) as Parameters<typeof layerFrames>[0];
+    const toEnd = { from: 20, durationInFrames: 80 };
+    const earlier = { from: 20, durationInFrames: 50 };
+    for (const type of geoLayerTypes)
+      expect(layerFrames(layer(type), toEnd, 100, 14)).toBe(94);
+    expect(layerFrames(layer("RiverLine"), earlier, 100, 14)).toBe(50);
+    expect(layerFrames(layer("PlaceLabel"), toEnd, 100, 14)).toBe(80);
+    expect(layerFrames(layer("RiverLine"), toEnd, 100, 0)).toBe(80);
   });
   it("preserves absolute starts despite outgoing transition overlaps", () => {
     const plan = compilePlan(story, timing, 743);

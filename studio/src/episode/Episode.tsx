@@ -16,7 +16,13 @@ import { colors } from "../design/tokens";
 import { sceneTransition } from "../transitions";
 import type { CameraPath } from "../camera/types";
 import { buildCamera } from "./camera";
-import { creditsAt, geoLayerTypes, layerProps, transitionFrames } from "./plan";
+import {
+  creditsAt,
+  geoLayerTypes,
+  layerFrames,
+  layerProps,
+  transitionFrames,
+} from "./plan";
 import type { EpisodeProps, PreparedEpisode } from "./metadata";
 
 const Shot: React.FC<{
@@ -37,7 +43,13 @@ const Shot: React.FC<{
     shot.layers.map((layer, i) => {
       if (geoLayerTypes.has(layer.type) !== geo) return null;
       const slot = window.layers[i];
-      const props = layerProps(layer, slot.durationInFrames);
+      const frames = layerFrames(
+        layer,
+        slot,
+        window.durationInFrames,
+        overlap,
+      );
+      const props = layerProps(layer, frames);
       const component = componentRegistry[layer.type]
         .component as ComponentType<Record<string, unknown>>;
       return (
@@ -45,7 +57,7 @@ const Shot: React.FC<{
           key={layer.id}
           name={layer.id}
           from={slot.from}
-          durationInFrames={slot.durationInFrames}
+          durationInFrames={frames}
           layout="none"
         >
           {createElement(component, props)}

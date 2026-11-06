@@ -110,6 +110,23 @@ export const transitionFrames = (shot: EpisodeShot) =>
     ? 0
     : transitionSchema.parse(shot.transition).durationInFrames;
 
+/**
+ * Frames a layer stays mounted. The outgoing scene outlives its shot by the transition, and stays
+ * opaque under the incoming one, so a map layer reaching the shot's end holds through the overlap.
+ * Otherwise it would vanish at the start of a crossfade while its successor is still transparent.
+ * Screen layers run their own exits, and a layer ending earlier ended on purpose.
+ */
+export const layerFrames = (
+  layer: EpisodeShot["layers"][number],
+  slot: { from: number; durationInFrames: number },
+  shotFrames: number,
+  overlap: number,
+) =>
+  geoLayerTypes.has(layer.type) &&
+  slot.from + slot.durationInFrames === shotFrames
+    ? slot.durationInFrames + overlap
+    : slot.durationInFrames;
+
 export const layerProps = (
   layer: EpisodeShot["layers"][number],
   frames: number,
