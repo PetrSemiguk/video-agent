@@ -50,7 +50,7 @@ roadmap steps and do not exist yet ([roadmap.md](../../../docs/roadmap.md), stag
 
 - **Errata:** a layer with a blocker fails unless the storyboard gives an `errataOverride` reason.
 - **Still camera:** over 2 s below 0.03 px/frame fails. `hold` passes only with a reason.
-- **Fast camera:** the picture moving over 9 px/frame on screen, pan and zoom together, fails, in any shot.
+- **Fast camera:** a pan over 9 px/frame on screen fails, in any shot; so does a zoom over 16 px/frame at the frame's corners, or over 9 while a text layer is on screen.
 - **Camera coverage:** a plate edge in frame, or magnification over the plate's limit, fails.
 - **Anchors:** a phrase must occur exactly once in the script, and shots of under 2 s fail.
 

@@ -15,10 +15,14 @@ Plan: the camera pose of every frame, written by `render:episode` before any vid
 Speed = pan in screen px per frame combined with zoom, as the RMS shift of screen points.
 
 --check applies the build rules. The camera may not stand still: no stretch over MAX_STILL_S below
-MIN_SPEED_PX. It may not move too fast either: with a plan, how far the picture moves on screen, pan
-and zoom together at the frame's corners, stays within the plan's speedLimitPx. A `drift` passes.
-A `hold` passes only when its storyboard shot gives a reason. With a video and a plan, a stretch
-where the plan shows a zoom is not counted, since phase correlation cannot see a zoom.
+MIN_SPEED_PX. A `drift` passes. A `hold` passes only when its storyboard shot gives a reason. With a
+video and a plan, a stretch where the plan shows a zoom is not counted, since phase correlation
+cannot see a zoom.
+
+It may not move too fast either. Pan and zoom are limited apart, from the plan's `limits`: a pan
+moves every pixel alike, while a zoom leaves the centre still and moves the corners, so zoom is
+measured at the corners and gets a softer limit. While a text layer is on screen (the plan's
+`labelFrames`) a zoom keeps the strict limit, because reading needs a steady frame.
 """
 
 from __future__ import annotations
@@ -113,23 +117,57 @@ def screen_motion(plan: dict) -> np.ndarray:
     return np.max(corners, axis=0)
 
 
+def screen_pan_zoom(plan: dict) -> tuple[np.ndarray, np.ndarray]:
+    """Pan and zoom per frame pair, in screen px, apart. Zoom is measured at the corners."""
+    poses = np.asarray(plan["frames"], dtype=np.float64)
+    if len(poses) < 2:
+        return np.zeros(0), np.zeros(0)
+    world = 2 * math.pi * 6378137.0
+    metres_per_px = world / (512 * 2 ** ((poses[1:, 2] + poses[:-1, 2]) / 2))
+    deltas = np.diff(poses, axis=0)
+    pan = np.hypot(deltas[:, 0], deltas[:, 1]) / metres_per_px
+    zoom = np.abs(2 ** deltas[:, 2] - 1) * math.hypot(plan["width"], plan["height"]) / 2
+    return pan, zoom
+
+
+def label_mask(plan: dict, pairs: int) -> np.ndarray:
+    """Frame pairs with a text layer on screen at either end."""
+    mask = np.zeros(pairs, dtype=bool)
+    for start, end in plan.get("labelFrames", []):
+        mask[max(0, int(start) - 1) : max(0, int(end))] = True
+    return mask
+
+
 def too_fast(plan: dict, fps: float) -> list[dict]:
-    """Shots where the picture moves faster than the plan's limit."""
-    limit = plan.get("speedLimitPx")
-    if not limit:
+    """Shots where the picture pans or zooms faster than the limit that applies there."""
+    limits = plan.get("limits")
+    if not limits:
         return []
-    motion = screen_motion(plan)
+    pan, zoom = screen_pan_zoom(plan)
+    if not len(pan):
+        return []
+    labelled = label_mask(plan, len(pan))
+    zoom_limit = np.where(labelled, limits["zoomWithLabelPx"], limits["zoomPx"])
+    tolerance = limits.get("tolerancePx", 0.0)
+    over = np.maximum(pan - limits["panPx"], zoom - zoom_limit)
     found = []
     for shot in plan["shots"]:
-        span = motion[max(0, shot["from"] - 1) : shot["from"] - 1 + shot["frames"]]
-        if len(span) and float(span.max()) > limit:
-            found.append(
-                {
-                    "shot": shot["id"],
-                    "peak_px": round(float(span.max()), 2),
-                    "at_s": round((shot["from"] + int(span.argmax())) / fps, 2),
-                }
-            )
+        first = max(0, shot["from"] - 1)
+        span = over[first : first + shot["frames"]]
+        if not len(span) or float(span.max()) <= tolerance:
+            continue
+        i = first + int(span.argmax())
+        is_pan = pan[i] - limits["panPx"] >= zoom[i] - zoom_limit[i]
+        found.append(
+            {
+                "shot": shot["id"],
+                "what": "pan" if is_pan else "zoom",
+                "peak_px": round(float(pan[i] if is_pan else zoom[i]), 2),
+                "limit_px": float(limits["panPx"] if is_pan else zoom_limit[i]),
+                "labelled": bool(labelled[i]),
+                "at_s": round((i + 1) / fps, 2),
+            }
+        )
     return found
 
 
@@ -212,10 +250,16 @@ def failure_message(report: dict) -> str:
             "give the shot a hold with a reason (docs/visual-grammar.md)."
         )
     if report.get("too_fast"):
-        parts = [f"{f['shot']} ({f['peak_px']} px/frame)" for f in report["too_fast"]]
+        parts = [
+            f"{f['shot']} ({f['what']} {f['peak_px']} px/frame, limit {f['limit_px']:g}"
+            + (" while a label is on screen" if f["labelled"] and f["what"] == "zoom" else "")
+            + ")"
+            for f in report["too_fast"]
+        ]
         messages.append(
             f"Motion QA: picture moves too fast in {', '.join(parts)}. Bring the framings or zooms "
-            "closer or lengthen the shot (docs/visual-grammar.md)."
+            "closer, lengthen the shot, or clear the labels off the fast part "
+            "(docs/visual-grammar.md)."
         )
     return " ".join(messages)
 
@@ -314,6 +358,11 @@ def main(argv: list[str] | None = None) -> int:
         result["too_fast"] = too_fast(plan, fps)
         motion = screen_motion(plan)
         summary["max_screen_motion_px"] = round(float(motion.max()), 2) if len(motion) else 0.0
+    if plan:
+        pan_px, zoom_px = screen_pan_zoom(plan)
+        if len(pan_px):
+            summary["max_pan_px"] = round(float(pan_px.max()), 2)
+            summary["max_zoom_px"] = round(float(zoom_px.max()), 2)
     summary["gate"] = result
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)

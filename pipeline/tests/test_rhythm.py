@@ -175,6 +175,34 @@ def test_section_needs_a_tag_and_a_change_of_scale():
     assert 'section "Three" opens with no change of scale' in report["warnings"]
 
 
+def test_every_section_needs_a_wide_shot():
+    script = "# T\n\n## One\n\nFirst.\n\n## Two\n\nSecond.\n\n## Three\n\nThird.\n"
+    report = rhythm.analyze(*sectioned(), script)
+    names = {s["name"]: s for s in report["sections"]}
+    assert names["One"]["wide_shots"] == ["a"]
+    assert names["Two"]["wide_shots"] == [] and names["Three"]["wide_shots"] == []
+    assert 'section "One" has no wide shot' not in report["warnings"]
+    assert 'section "Two" has no wide shot' in report["warnings"]
+    assert 'section "Three" has no wide shot' in report["warnings"]
+
+
+def test_a_wide_shot_later_in_the_section_counts():
+    script = "# T\n\n## One\n\nFirst.\n\n## Two\n\nSecond. Third.\n"
+    report = rhythm.analyze(
+        *build(
+            ("a", 30, "wide", [{"type": "SectionTag"}]),
+            ("b", 30, "regional", [{"type": "SectionTag"}]),
+            ("c", 30, "wide", [{"type": "PlaceLabel"}]),
+        ),
+        script,
+    )
+    assert {s["name"]: s["wide_shots"] for s in report["sections"]} == {
+        "One": ["a"],
+        "Two": ["c"],
+    }
+    assert not [w for w in report["warnings"] if "no wide shot" in w]
+
+
 def test_pauses_are_counted_per_section_and_comments_are_not_spoken():
     sections = rhythm.script_sections(
         "<!-- ## Not a section\nsome words -->\n## A\n"

@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { createElement, Fragment, type ReactNode } from "react";
 import { createRequire } from "node:module";
+import { componentRegistry } from "../components/registry";
 import { MapAttribution } from "../components/MapAttribution";
 import { CombinedAttributionScope } from "../map/AttributionContext";
 import story from "../../../episodes/_sandbox/tts-test/storyboard.json";
@@ -13,8 +14,10 @@ import {
   compilePlan,
   creditsAt,
   geoLayerTypes,
+  labelRanges,
   layerFrames,
   layerProps,
+  textLayerTypes,
   transitionFrames,
   wordsSchema,
 } from "./plan";
@@ -99,6 +102,31 @@ describe("Episode assembly", () => {
     expect(layerFrames(layer("RiverLine"), earlier, 100, 14)).toBe(50);
     expect(layerFrames(layer("PlaceLabel"), toEnd, 100, 14)).toBe(80);
     expect(layerFrames(layer("RiverLine"), toEnd, 100, 0)).toBe(80);
+  });
+  it("classifies every registered component as map, text or deliberately neither", () => {
+    // MapAttribution is on every map frame and secondary; BRollClip carries no text of ours.
+    const neither = new Set(["BRollClip", "MapAttribution"]);
+    for (const type of Object.keys(componentRegistry))
+      expect(
+        [geoLayerTypes, textLayerTypes, neither].filter((set) => set.has(type))
+          .length,
+        `${type} is map, text or listed as neither`,
+      ).toBe(1);
+  });
+  it("lists the frames where a text layer is on screen, merged", () => {
+    const plan = compilePlan(story, timing, 743);
+    const ranges = labelRanges(plan.storyboard, plan.assembly);
+    expect(ranges.length).toBeGreaterThan(0);
+    ranges.forEach(([a, b], i) => {
+      expect(b).toBeGreaterThan(a);
+      if (i) expect(a).toBeGreaterThan(ranges[i - 1][1]);
+    });
+    const bare = structuredClone(plan.storyboard);
+    bare.shots.forEach(
+      (shot) =>
+        (shot.layers = shot.layers.filter((l) => !textLayerTypes.has(l.type))),
+    );
+    expect(labelRanges(bare, plan.assembly)).toEqual([]);
   });
   it("preserves absolute starts despite outgoing transition overlaps", () => {
     const plan = compilePlan(story, timing, 743);

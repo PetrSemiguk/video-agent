@@ -19,6 +19,7 @@ const {
   motion,
 } = require("../src/design/tokens.ts");
 const { buildCamera } = require("../src/episode/camera.ts");
+const { labelRanges } = require("../src/episode/plan.ts");
 const leadArgument = process.argv.find((arg) =>
   arg.startsWith("--lead-frames="),
 );
@@ -116,7 +117,14 @@ if (!smoke) {
     fps: composition.fps,
     width: composition.width,
     height: composition.height,
-    speedLimitPx: motion.camera.maxSpeedPx + motion.camera.speedTolerancePx,
+    // Pan and zoom are limited apart; a zoom keeps the strict limit while a label is up.
+    limits: {
+      panPx: motion.camera.maxPanPx,
+      zoomPx: motion.camera.maxZoomPx,
+      zoomWithLabelPx: motion.camera.maxZoomWithLabelPx,
+      tolerancePx: motion.camera.speedTolerancePx,
+    },
+    labelFrames: labelRanges(prepared.storyboard, prepared.assembly),
     frames: Array.from({ length: composition.durationInFrames }, (_, f) => {
       const pose = timeline.poseAt(f);
       return [pose.x, pose.y, pose.zoom];

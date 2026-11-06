@@ -19,8 +19,8 @@ import { motion, space } from "../design/tokens";
 import type { PlateMeta } from "../geo/plate";
 import { makeProjection } from "../map/PlateStage";
 import { storyboardSchema } from "../storyboard/schema";
-import { buildCamera, peakMotion, verifyEpisodeCamera } from "./camera";
-import { compilePlan, geoLayerTypes } from "./plan";
+import { buildCamera, peakPanZoom, verifyEpisodeCamera } from "./camera";
+import { compilePlan, geoLayerTypes, labelRanges } from "./plan";
 
 const W = 1920;
 const H = 1080;
@@ -80,27 +80,42 @@ describe("pilot v2 by docs/visual-grammar.md", () => {
       ).toBe(true);
     }
   });
-  test("the camera keeps to the speed limit in every shot", () => {
-    const limit = motion.camera.maxSpeedPx + motion.camera.speedTolerancePx;
-    assembly.shots.forEach((window) =>
-      expect(
-        peakMotion(camera.poseAt, window.from, window.durationInFrames, W, H)
-          .speed,
-        window.id,
-      ).toBeLessThanOrEqual(limit),
-    );
-    expect(() =>
-      verifyEpisodeCamera(storyboard, assembly, metas, W, H),
-    ).not.toThrow();
+  test("the camera keeps to the pan and zoom limits in every shot", () => {
+    const ranges = labelRanges(storyboard, assembly);
+    const hasLabel = (f: number) => ranges.some(([a, b]) => f >= a && f < b);
+    const tolerance = motion.camera.speedTolerancePx;
+    assembly.shots.forEach((window) => {
+      const peaks = peakPanZoom(
+        camera.poseAt,
+        window.from,
+        window.durationInFrames,
+        W,
+        H,
+        hasLabel,
+      );
+      expect(peaks.pan.value, `${window.id} pan`).toBeLessThanOrEqual(
+        motion.camera.maxPanPx + tolerance,
+      );
+      expect(peaks.worst.over, `${window.id} ${peaks.worst.what}`).toBeLessThan(
+        tolerance,
+      );
+    });
+    expect(
+      verifyEpisodeCamera(storyboard, assembly, metas, W, H).every(
+        (r) => r.peakZoomPx <= motion.camera.maxZoomPx,
+      ),
+    ).toBe(true);
   });
   test("a shot over the speed limit fails the check and names itself", () => {
     const fast = structuredClone(storyboard);
+    // A fast pan at the shot's own zoom, still on the plate: a higher zoom trips the plate's
+    // sharpness limit first and a farther centre its edge, and this test is about speed.
     fast.shots[2].camera = {
       preset: "flyTo",
-      params: { to: { center: { lon: 122, lat: 34 }, zoom: 5.5 } },
+      params: { to: { center: { lon: 119, lat: 34 }, zoom: 5.14 } },
     };
     expect(() => verifyEpisodeCamera(fast, assembly, metas, W, H)).toThrow(
-      /too fast in shot eastern-lowlands/,
+      /too fast in shot eastern-lowlands: pan/,
     );
   });
   test("at most one text card shows at a time", () => {

@@ -7,7 +7,7 @@ import { lonLatToPlatePx } from "../geo/plate";
 import { plateView, projectToScreen } from "./plateProjection";
 import { drift, establish, flyTo, focusOn, followLine, hold } from "./presets";
 import { motion } from "../design/tokens";
-import { peakMotion, screenMotion } from "../episode/camera";
+import { panZoomMotion, peakPanZoom, screenMotion } from "../episode/camera";
 import { cameraTimeline, fromMerc, metersPerPx, Timeline } from "./timeline";
 
 const W = 1920;
@@ -188,20 +188,20 @@ describe("speed limit of followLine", () => {
     ] as [number, number][],
     cumfrac: [0, 1],
   };
-  const timelineWith = (maxSpeed?: number) =>
+  const timelineWith = (maxPanPx?: number) =>
     cameraTimeline(
       [
         establish({ center: { lon: 118, lat: 38 }, zoom: 5.4 }, 30),
         followLine(line, (f) => Math.max(0, (f - 30) / 300), 300, {
           zoom: 5.4,
           blend: 60,
-          ...(maxSpeed ? { maxSpeed } : {}),
+          ...(maxPanPx ? { maxPanPx } : {}),
         }),
       ],
       { fps: 30, width: 1920, height: 1080 },
     );
-  const peak = (maxSpeed?: number) => {
-    const t = timelineWith(maxSpeed);
+  const peak = (maxPanPx?: number) => {
+    const t = timelineWith(maxPanPx);
     let top = 0;
     for (let f = 31; f < 330; f++) {
       const [a, b] = [t.poseAt(f - 1), t.poseAt(f)];
@@ -213,27 +213,60 @@ describe("speed limit of followLine", () => {
     return top;
   };
   test("a far target at a fixed blend goes over the limit, the limited chase does not", () => {
-    expect(peak()).toBeGreaterThan(motion.camera.maxSpeedPx);
-    expect(peak(motion.camera.maxSpeedPx)).toBeLessThanOrEqual(
-      motion.camera.maxSpeedPx + motion.camera.speedTolerancePx,
+    expect(peak()).toBeGreaterThan(motion.camera.maxPanPx);
+    expect(peak(motion.camera.maxPanPx)).toBeLessThanOrEqual(
+      motion.camera.maxPanPx + motion.camera.speedTolerancePx,
     );
   });
-  test("a limited zoom keeps pan and zoom together within the limit at the corners", () => {
-    const t = cameraTimeline(
+  const climbing = (maxZoomPx: number) =>
+    cameraTimeline(
       [
         establish({ center: { lon: 118, lat: 38 }, zoom: 4.9 }, 30),
         followLine(line, (f) => Math.max(0, (f - 30) / 300), 300, {
           zoom: 5.5,
           blend: 40,
-          maxSpeed: motion.camera.maxSpeedPx,
+          maxPanPx: motion.camera.maxPanPx,
+          maxZoomPx,
         }),
       ],
       { fps: 30, width: 1920, height: 1080 },
     );
-    expect(peakMotion(t.poseAt, 31, 298, 1920, 1080).speed).toBeLessThanOrEqual(
-      motion.camera.maxSpeedPx + motion.camera.speedTolerancePx,
+  test("pan and zoom each keep to their own limit, and the zoom still arrives", () => {
+    for (const maxZoomPx of [
+      motion.camera.maxZoomWithLabelPx,
+      motion.camera.maxZoomPx,
+    ]) {
+      const t = climbing(maxZoomPx);
+      const peaks = peakPanZoom(t.poseAt, 31, 298, 1920, 1080);
+      expect(peaks.pan.value).toBeLessThanOrEqual(
+        motion.camera.maxPanPx + motion.camera.speedTolerancePx,
+      );
+      expect(peaks.zoom.value).toBeLessThanOrEqual(
+        maxZoomPx + motion.camera.speedTolerancePx,
+      );
+      expect(t.poseAt(329).zoom).toBeCloseTo(5.5, 1);
+    }
+  });
+  test("the soft zoom limit lets the camera climb faster than the strict one", () => {
+    const climb = (maxZoomPx: number) =>
+      peakPanZoom(climbing(maxZoomPx).poseAt, 31, 298, 1920, 1080).zoom.value;
+    expect(climb(motion.camera.maxZoomPx)).toBeGreaterThan(
+      climb(motion.camera.maxZoomWithLabelPx),
     );
-    expect(t.poseAt(329).zoom).toBeCloseTo(5.5, 1);
+  });
+  test("panZoomMotion separates a pure pan from a pure zoom", () => {
+    const pose = { x: 0, y: 0, zoom: 5, pitch: 0, bearing: 0 };
+    const zoomed = panZoomMotion(pose, { ...pose, zoom: 5.01 }, 1920, 1080);
+    expect(zoomed.pan).toBe(0);
+    expect(zoomed.zoom).toBeCloseTo(Math.hypot(960, 540) * (2 ** 0.01 - 1), 6);
+    const panned = panZoomMotion(
+      pose,
+      { ...pose, x: 7 * metersPerPx(5) },
+      1920,
+      1080,
+    );
+    expect(panned.pan).toBeCloseTo(7, 6);
+    expect(panned.zoom).toBe(0);
   });
   test("a pure zoom moves the corners, and a pure pan moves everything alike", () => {
     const pose = { x: 0, y: 0, zoom: 5, pitch: 0, bearing: 0 };
@@ -248,7 +281,7 @@ describe("speed limit of followLine", () => {
     );
   });
   test("the limited camera still catches the line", () => {
-    const t = timelineWith(motion.camera.maxSpeedPx);
+    const t = timelineWith(motion.camera.maxPanPx);
     const end = fromMerc(t.poseAt(329).x, t.poseAt(329).y);
     expect(Math.abs(end.lat - 30)).toBeLessThan(0.5);
     expect(end.lon).toBeGreaterThan(115);

@@ -19,7 +19,7 @@ import { motion, space } from "../design/tokens";
 import { MIN_EDGE_MARGIN_PX, verifyPlates } from "../map/PlateStage";
 import type { PlateMeta } from "../geo/plate";
 import type { ParsedStoryboard } from "../storyboard/schema";
-import { type Assembly, transitionFrames } from "./plan";
+import { type Assembly, labelRanges, textLayerTypes, transitionFrames } from "./plan";
 
 export const buildCamera = (
   storyboard: ParsedStoryboard,
@@ -57,11 +57,20 @@ export const buildCamera = (
         case "followLine": {
           const { line, drawFrames, ...options } = spec.params;
           const start = window.from + active.from;
+          // A shot that shows text anywhere keeps the strict zoom limit throughout: the
+          // preset limits a whole shot, while the build checks each frame on its own.
+          const labelled = shot.layers.some((l) => textLayerTypes.has(l.type));
           return followLine(
             line,
             (f) => Math.max(0, Math.min(1, (f - start) / drawFrames)),
             frames,
-            { ...options, maxSpeed: motion.camera.maxSpeedPx },
+            {
+              ...options,
+              maxPanPx: motion.camera.maxPanPx,
+              maxZoomPx: labelled
+                ? motion.camera.maxZoomWithLabelPx
+                : motion.camera.maxZoomPx,
+            },
           );
         }
       }
@@ -115,6 +124,63 @@ export const screenMotion = (
   );
 };
 
+/**
+ * Pan and zoom of the picture between two poses, in screen px, apart. Pan moves every pixel
+ * by the same amount; zoom is measured at the corners, where it moves most.
+ */
+export const panZoomMotion = (
+  a: CamPose,
+  b: CamPose,
+  width: number,
+  height: number,
+) => {
+  const mpp = metersPerPx((a.zoom + b.zoom) / 2);
+  return {
+    pan: Math.hypot(b.x - a.x, b.y - a.y) / mpp,
+    zoom:
+      Math.abs(2 ** (b.zoom - a.zoom) - 1) * Math.hypot(width, height) * 0.5,
+  };
+};
+
+/**
+ * Peak pan and peak zoom in a frame range, each against the limit that applies there: while a
+ * text layer is on screen a zoom keeps the strict limit. `worst` is the one furthest over.
+ */
+export const peakPanZoom = (
+  poseAt: (frame: number) => CamPose,
+  from: number,
+  frames: number,
+  width: number,
+  height: number,
+  hasLabel: (frame: number) => boolean = () => true,
+) => {
+  const { maxPanPx, maxZoomPx, maxZoomWithLabelPx } = motion.camera;
+  type Peak = { value: number; limit: number; at: number };
+  const peaks: Record<"pan" | "zoom", Peak> = {
+    pan: { value: 0, limit: maxPanPx, at: from },
+    zoom: { value: 0, limit: maxZoomWithLabelPx, at: from },
+  };
+  let worst: Peak & { what: "pan" | "zoom"; over: number } = {
+    what: "pan",
+    over: -Infinity,
+    ...peaks.pan,
+  };
+  for (let f = from + 1; f < from + frames; f++) {
+    const step = panZoomMotion(poseAt(f - 1), poseAt(f), width, height);
+    const limits = {
+      pan: maxPanPx,
+      zoom: hasLabel(f) || hasLabel(f - 1) ? maxZoomWithLabelPx : maxZoomPx,
+    };
+    for (const what of ["pan", "zoom"] as const) {
+      const [value, limit] = [step[what], limits[what]];
+      if (value > peaks[what].value) peaks[what] = { value, limit, at: f };
+      if (value - limit > worst.over)
+        worst = { what, over: value - limit, value, limit, at: f };
+    }
+  }
+  return { ...peaks, worst };
+};
+
 /** Fastest movement of the picture in a frame range, px per frame, and where it happens. */
 export const peakMotion = (
   poseAt: (frame: number) => CamPose,
@@ -140,6 +206,8 @@ export const verifyEpisodeCamera = (
   height: number,
 ) => {
   const timeline = buildCamera(storyboard, assembly, metas, width, height);
+  const ranges = labelRanges(storyboard, assembly);
+  const hasLabel = (f: number) => ranges.some(([a, b]) => f >= a && f < b);
   return storyboard.shots.map((shot, i) => {
     const window = assembly.shots[i],
       next = storyboard.shots[i + 1];
@@ -166,11 +234,29 @@ export const verifyEpisodeCamera = (
       width,
       height,
     );
-    const limit = motion.camera.maxSpeedPx + motion.camera.speedTolerancePx;
-    if (peak.speed > limit)
+    const split = peakPanZoom(
+      timeline.poseAt,
+      window.from,
+      window.durationInFrames,
+      width,
+      height,
+      hasLabel,
+    );
+    const { what, value, limit, at } = split.worst;
+    if (split.worst.over > motion.camera.speedTolerancePx)
       throw new Error(
-        `Camera too fast in shot ${shot.id}: ${peak.speed.toFixed(1)} px/frame at frame ${peak.at}, limit ${motion.camera.maxSpeedPx}. Bring the framings or zooms closer or lengthen the shot (docs/visual-grammar.md)`,
+        `Camera too fast in shot ${shot.id}: ${what} ${value.toFixed(1)} px/frame at frame ${at}, limit ${limit}${
+          what === "zoom" && limit === motion.camera.maxZoomWithLabelPx
+            ? " while a label is on screen"
+            : ""
+        }. Bring the framings or zooms closer, lengthen the shot, or clear the labels off the fast part (docs/visual-grammar.md)`,
       );
-    return { id: shot.id, peakMotionPx: peak.speed, reports };
+    return {
+      id: shot.id,
+      peakMotionPx: peak.speed,
+      peakPanPx: split.pan.value,
+      peakZoomPx: split.zoom.value,
+      reports,
+    };
   });
 };

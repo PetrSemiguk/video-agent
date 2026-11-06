@@ -79,10 +79,24 @@ uv run python -m vap.qa.motion ../studio/out/episode-<slug>-synced.mp4 --plan ..
 The rule catches a frozen camera, not a badly chosen one. Fast moves need your own eye: keep the jump
 between far subjects short, by starting a `followLine` on the reach the narration is about.
 
-**Speed limit.** The build also fails when the picture moves faster than `motion.camera.maxSpeedPx`, 9 px/frame,
-in any shot. It counts the movement on screen, pan and zoom together, at the frame's corners, where it is greatest. That is the "7 seconds to cross the frame" rule of thumb. In pilot v2 a label appearing at
-14 px/frame could not be read. `followLine` keeps to the limit by itself, by chasing its aim point and zoom. For `focusOn`
-and `flyTo`, bring the framings or zooms closer or lengthen the shot when the error names them.
+**Speed limits.** The build also fails when the picture moves too fast in a shot. Pan and zoom are
+limited apart, because the eye follows them differently: a pan moves every pixel by the same amount,
+while a zoom leaves the centre still and moves the corners most.
+
+| What | Limit, screen px per frame | Why |
+|---|---|---|
+| Pan | `motion.camera.maxPanPx`, **9** | The "7 seconds to cross the frame" rule of thumb, 1920 / (7 × 30) |
+| Zoom, measured at the corners | `maxZoomPx`, **16** | Averaged over the frame (RMS radius = diagonal / √12 = 0.577 of the corner radius) 16 at the corners is 9.2 — the pan limit |
+| Zoom while a text layer is on screen | `maxZoomWithLabelPx`, **9** | Reading needs a steady frame: in pilot v2 a label appearing at 14 px/frame could not be read |
+
+**So a fast flyover carries no labels.** The check knows, frame by frame, when a text layer is up
+(`PlaceLabel`, `LowerThird`, `SectionTag`, `BigDate`, `KeyFact`, the infographics, `TitleCard`,
+`EndCard`); the map attribution does not count, as it is on every map frame and is secondary. To fly
+faster, end the labels before the fast part and bring them back when the camera settles.
+
+`followLine` keeps to both limits by itself, by chasing its aim point and zoom; a shot that shows text
+anywhere keeps the strict zoom limit throughout it. For `focusOn` and `flyTo`, bring the framings or
+zooms closer, lengthen the shot, or clear the labels off the fast part when the error names them.
 
 ## Rhythm
 
@@ -97,6 +111,7 @@ range. The warnings do not fail a build. Run it by hand with `uv run python -m v
 | **Graphic-only shots** | Without a map, B-roll included: at most about 10-20% of runtime | Share of runtime. A shot is graphic-only with `BRollClip`, or with an infographic and no map layer |
 | **Dramatic beat** | A voice-less pause of 0.6-1.5 s with a slow camera move (`[pause s]` in the script), at most about 1 per section | Pauses per section |
 | **Sections** | Each opens with a `SectionTag` and a change of scale | The shot at each `##` |
+| **A wide shot per section** | At least one, so every section puts its subject in its place once | Shots from one `##` to the next; `wide_shots` per section |
 
 Keep each warning you accept, with its reason, in the report. A plate's sharp zoom range is narrow, so a true "wide" or "detail" shot may need its own plate.
 

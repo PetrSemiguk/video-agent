@@ -137,20 +137,30 @@ export const motion = {
     cityStagger: 8,
   },
   /**
-   * Camera limits for episodes: how far the picture moves on screen per frame, pan and zoom
-   * together, at the frame's corners, where it moves most. 9 is the "7 seconds to cross the frame"
-   * rule of thumb for pans (1920 / (7 * 30) = 9.1). Labels on the map stay readable at it; at 14
-   * in pilot v2 a label appearing during the move could not be read.
+   * Camera limits for episodes, in screen px per frame. Pan and zoom are limited apart,
+   * because the eye follows them differently: a pan moves every pixel by the same amount,
+   * while a zoom leaves the centre still and moves the corners most.
    */
   camera: {
-    maxSpeedPx: 9,
+    /** Pan: the "7 seconds to cross the frame" rule of thumb, 1920 / (7 * 30) = 9.1. */
+    maxPanPx: 9,
+    /**
+     * Zoom alone, measured at the frame's corners. Averaged over the frame (RMS radius =
+     * diagonal / sqrt 12 = 0.577 of the corner radius) 16 px/frame at the corners is
+     * 9.2 px/frame, the pan limit. So a zoom may look twice as fast at the corners.
+     */
+    maxZoomPx: 16,
+    /**
+     * Zoom while a text layer is on screen. Reading needs a steady frame: in pilot v2 a label
+     * appearing at 14 px/frame could not be read, so a labelled frame keeps the pan limit.
+     * Hide the labels to fly faster.
+     */
+    maxZoomWithLabelPx: 9,
     /** Allowed overshoot of the spline between keys before the check fails. */
     speedTolerancePx: 0.5,
     maxAccelPx: 0.25,
     /** Share of the remaining distance a limited camera tries to cover per frame. */
     chaseGain: 0.03,
-    /** Share of the limit a limited camera may spend on zooming; panning gets the rest. */
-    zoomShare: 0.4,
   },
   /** Starting scale of elements that grow in on entrance. */
   enterScale: 0.94,

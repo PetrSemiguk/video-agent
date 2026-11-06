@@ -164,7 +164,9 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
     warnings += [f"3 or more shots in a row at one scale or kind: {', '.join(r)}" for r in runs]
 
     sections = []
-    for section in script_sections(script) if script else []:
+    found = script_sections(script) if script else []
+    starts = []
+    for section in found:
         first = section["first_word"]
         index = None
         if first < len(spans):
@@ -172,6 +174,9 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
             for i, row in enumerate(rows):
                 if row["from"] / fps <= at + 0.5:
                     index = i
+        starts.append(index)
+    for position, section in enumerate(found):
+        index = starts[position]
         row = rows[index] if index is not None else None
         authored = by_id.get(row["id"]) if row else None
         tag = bool(authored) and any(
@@ -179,12 +184,17 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
         )
         changed = index is not None and (index == 0 or rows[index - 1]["scale"] != row["scale"])
         out_of_range = [p for p in section["pauses"] if not PAUSE_RANGE[0] <= p <= PAUSE_RANGE[1]]
+        # Every section needs one view that puts its subject in its place: a wide shot.
+        following = next((s for s in starts[position + 1 :] if s is not None), len(rows))
+        span = rows[index:following] if index is not None else []
+        wide = [r["id"] for r in span if r["kind"] == "map" and r["scale"] == "wide"]
         sections.append(
             {
                 "name": section["name"],
                 "shot": row["id"] if row else None,
                 "section_tag": tag,
                 "scale_change": changed,
+                "wide_shots": wide,
                 "pauses": section["pauses"],
             }
         )
@@ -192,6 +202,8 @@ def analyze(plan: dict, story: dict, words: dict, script: str | None = None) -> 
             warnings.append(f'section "{section["name"]}" opens with no SectionTag')
         if not changed:
             warnings.append(f'section "{section["name"]}" opens with no change of scale')
+        if span and not wide:
+            warnings.append(f'section "{section["name"]}" has no wide shot')
         if len(section["pauses"]) > 1:
             warnings.append(f'section "{section["name"]}" has {len(section["pauses"])} pauses')
         if out_of_range:

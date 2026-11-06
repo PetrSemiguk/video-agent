@@ -73,6 +73,53 @@ export const geoLayerTypes = new Set([
   "HistoricalLayer",
 ]);
 
+/**
+ * Layers that put readable text on screen. While one is up the camera keeps the strict zoom
+ * limit, because reading needs a steady frame (docs/visual-grammar.md). `MapAttribution` is
+ * left out on purpose: it is on every map frame and is secondary information, so counting it
+ * would mean the strict limit always applies. `BRollClip` carries no text of ours.
+ */
+export const textLayerTypes = new Set([
+  "TitleCard",
+  "EndCard",
+  "LowerThird",
+  "SectionTag",
+  "BigDate",
+  "KeyFact",
+  "BarCompare",
+  "TimelineBar",
+  "NumberedList",
+  "RecapCards",
+  "StatCounter",
+  "PlaceLabel",
+]);
+
+/** Absolute [from, to) frame ranges, merged, where any text layer is on screen. */
+export const labelRanges = (
+  storyboard: ParsedStoryboard,
+  assembly: Assembly,
+): [number, number][] => {
+  const spans: [number, number][] = [];
+  storyboard.shots.forEach((shot, i) => {
+    const window = assembly.shots[i];
+    shot.layers.forEach((layer, j) => {
+      if (!textLayerTypes.has(layer.type)) return;
+      const slot = window.layers[j];
+      spans.push([
+        window.from + slot.from,
+        window.from + slot.from + slot.durationInFrames,
+      ]);
+    });
+  });
+  spans.sort((a, b) => a[0] - b[0]);
+  return spans.reduce<[number, number][]>((merged, span) => {
+    const last = merged[merged.length - 1];
+    if (last && span[0] <= last[1]) last[1] = Math.max(last[1], span[1]);
+    else merged.push([...span]);
+    return merged;
+  }, []);
+};
+
 export const creditsAt = (
   storyboard: ParsedStoryboard,
   assembly: Assembly,

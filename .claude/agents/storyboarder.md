@@ -41,6 +41,8 @@ Rules you must keep:
 - **Reasons listed in the script:** a summary card at the end of the section, with its claim, when the script gives a list of reasons there.
 - **Every shot's key word:** still a frame at it, and check the subject is in frame and something on the map changes there. A shot with no change on its key word needs one.
 - **Lines leave softly:** `RiverLine` and `RouteLine` fade out at the end of their layer. Where the next shot shows the same line, set `exitFrames: 0` on it, so it does not dip.
+- **Labels off the fast part:** pan and zoom have their own limits, and a zoom keeps the strict one while any text layer is on screen. A fast flyover therefore carries no labels: end them before it and bring them back when the camera settles.
+- **A wide shot in every section:** at least one, so each section places its subject before going close.
 
 ## 4. Check, at most 2 revision rounds
 

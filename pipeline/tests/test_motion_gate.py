@@ -94,35 +94,81 @@ def test_screen_motion_counts_zoom_at_the_corners():
     assert motion.screen_motion(panning)[0] == pytest.approx(7)
 
 
-def test_too_fast_names_the_shot_with_pan_and_zoom_together():
-    # About 6 px/frame of pan and 6 of zoom: each is within 9, and together they are not.
-    metres = 2 * math.pi * 6378137 / (512 * 2**5)
+LIMITS = {"panPx": 9, "zoomPx": 16, "zoomWithLabelPx": 9, "tolerancePx": 0.5}
+METRES = 2 * math.pi * 6378137 / (512 * 2**5)
+
+
+def zooming_plan(per_frame: float, shots=None, frames=60):
+    """A camera that only zooms, by per_frame zoom levels after frame 30."""
+    return plan(
+        shots or [shot(name="slow", frames=30), shot(name="fast", start=30, frames=30)],
+        frames,
+        lambda f: (0.0, 0.0, 5.0 + max(0, f - 30) * per_frame),
+    )
+
+
+def test_too_fast_names_the_shot_and_which_of_pan_or_zoom():
     camera = plan(
         [shot(name="slow", frames=30), shot(name="fast", start=30, frames=30)],
         60,
-        lambda f: (
-            max(0, f - 30) * 6 * metres,
-            0.0,
-            5.0 + max(0, f - 30) * 0.0079,
-        ),
+        lambda f: (max(0, f - 30) * 12 * METRES, 0.0, 5.0),
     )
-    camera["speedLimitPx"] = 9.5
+    camera["limits"] = LIMITS
     found = motion.too_fast(camera, FPS)
-    assert [item["shot"] for item in found] == ["fast"]
-    assert found[0]["peak_px"] > 9.5
-    assert motion.too_fast({**camera, "speedLimitPx": 50}, FPS) == []
-    del camera["speedLimitPx"]
+    assert [(item["shot"], item["what"]) for item in found] == [("fast", "pan")]
+    assert found[0]["peak_px"] == pytest.approx(12, abs=0.1)
+    assert motion.too_fast({**camera, "limits": {**LIMITS, "panPx": 50}}, FPS) == []
+    del camera["limits"]
     assert motion.too_fast(camera, FPS) == []
 
 
+def test_pan_and_zoom_have_their_own_budgets():
+    # 7 px/frame of pan and 12 of zoom: together 19, yet each is inside its own limit.
+    camera = plan(
+        [shot(name="both", frames=3)],
+        3,  # short: a rising zoom would otherwise make each later pan step more pixels
+        lambda f: (f * 7 * METRES, 0.0, 5.0 + f * 0.01568),
+    )
+    camera["limits"] = LIMITS
+    pan, zoom = motion.screen_pan_zoom(camera)
+    assert pan[0] == pytest.approx(7, abs=0.1)
+    assert zoom[0] == pytest.approx(12, abs=0.5)
+    assert motion.screen_motion(camera)[0] > 18  # the old combined measure would fail it
+    assert motion.too_fast(camera, FPS) == []
+
+
+def test_a_zoom_over_the_soft_limit_fails():
+    camera = zooming_plan(0.0157)  # about 12 px/frame at the corners
+    camera["limits"] = {**LIMITS, "zoomPx": 10}
+    found = motion.too_fast(camera, FPS)
+    assert [(item["shot"], item["what"]) for item in found] == [("fast", "zoom")]
+    assert found[0]["labelled"] is False
+
+
+def test_a_label_on_screen_holds_the_zoom_to_the_strict_limit():
+    camera = zooming_plan(0.0157)  # about 12 px/frame: inside 16, over 9
+    camera["limits"] = LIMITS
+    assert motion.too_fast(camera, FPS) == []
+    camera["labelFrames"] = [[40, 50]]
+    found = motion.too_fast(camera, FPS)
+    assert [(item["shot"], item["what"], item["labelled"]) for item in found] == [
+        ("fast", "zoom", True)
+    ]
+    assert found[0]["limit_px"] == 9
+
+
+def test_label_mask_covers_both_frames_of_a_pair():
+    mask = motion.label_mask({"labelFrames": [[10, 12]]}, 20)
+    assert list(np.flatnonzero(mask)) == [9, 10, 11]
+
+
 def test_cli_fails_a_fast_camera_and_says_so(tmp_path, capsys):
-    metres = 2 * math.pi * 6378137 / (512 * 2**5)
-    camera = plan([shot()], pose=lambda f: (f * 20 * metres, 0.0, 5.0))
-    camera["speedLimitPx"] = 9.5
+    camera = plan([shot()], pose=lambda f: (f * 20 * METRES, 0.0, 5.0))
+    camera["limits"] = LIMITS
     path = tmp_path / "plan.json"
     path.write_text(json.dumps(camera), encoding="utf-8")
     assert motion.main(["--plan", str(path), "--check"]) == 1
-    assert "too fast in a" in capsys.readouterr().err
+    assert "too fast in a (pan" in capsys.readouterr().err
 
 
 def test_cli_check_exits_nonzero_and_names_the_shot(tmp_path, capsys):

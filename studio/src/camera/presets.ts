@@ -281,10 +281,12 @@ export const followLine = (
     /** Frames over which the camera eases from its start pose onto the line. */
     blend?: number;
     /**
-     * Screen px per frame at the frame's corners, pan and zoom together. When given, the camera
-     * chases the aim point and zoom within this speed, instead of blending over a fixed time.
+     * Pan in screen px per frame. When given, the camera chases the aim point and zoom within
+     * this and `maxZoomPx`, instead of blending over a fixed time.
      */
-    maxSpeed?: number;
+    maxPanPx?: number;
+    /** Zoom in screen px per frame at the frame's corners; defaults to the strict limit. */
+    maxZoomPx?: number;
   } = {},
 ): Segment => ({
   name: "followLine",
@@ -323,13 +325,15 @@ export const followLine = (
       };
     };
     const out: CamKey[] = [];
-    if (opts.maxSpeed !== undefined) {
-      const { maxAccelPx, chaseGain, zoomShare } = motion.camera;
+    if (opts.maxPanPx !== undefined) {
+      const { maxAccelPx, chaseGain } = motion.camera;
       let [x, y, vx, vy] = [s.x, s.y, 0, 0];
       let [z, dz] = [s.zoom, 0];
       // A zoom of dz moves the frame's corners by radius * ln 2 * dz.
       const toPx = Math.hypot(ctx.width, ctx.height) * 0.5 * Math.LN2;
-      const maxDz = (zoomShare * opts.maxSpeed) / toPx;
+      // Pan and zoom have their own budgets, so a zoom no longer slows the pan down.
+      const maxDz =
+        (opts.maxZoomPx ?? motion.camera.maxZoomWithLabelPx) / toPx;
       for (let f = 1; f <= frames; f++) {
         const w = motion.easing.inOut(Math.min(1, f / blend));
         const wantDz = Math.max(
@@ -342,7 +346,7 @@ export const followLine = (
         );
         z += dz;
         const mpp = metersPerPx(z);
-        const panLimit = opts.maxSpeed - Math.abs(dz) * toPx;
+        const panLimit = opts.maxPanPx;
         const c = aim(ctx.startFrame + f);
         let [wantX, wantY] = [(c.x - x) * chaseGain, (c.y - y) * chaseGain];
         const fast = Math.hypot(wantX, wantY) / (panLimit * mpp);

@@ -104,6 +104,9 @@ const FLOOD_FRAMES = Math.round(
 const STRIP_FRAMES = Math.round(
   (voice.timeOf("NASA's figure") - voice.timeOf("By our reasoning")) * 30,
 );
+const READING_END = voice.between("than mud does", "So why does");
+// The glow runs from the key word to the end of the shot, so the head keeps moving.
+const READING_GLOW = Math.round((READING_END - voice.timeOf("water explains")) * 30);
 
 const shots = [
   // The Strip
@@ -381,13 +384,15 @@ const shots = [
       "roughly ninety-seven",
     ),
   ]),
-  shot("reading", EGYPT, "Our reading", voice.between("than mud does", "So why does"), fly(31.1, 29, 6.62), [
+  // On "water" the glow runs the whole length of the river for the rest of the shot, and the
+  // label sits against the valley it is about, not out in the Eastern Desert.
+  shot("reading", EGYPT, "Our reading", READING_END, fly(31.1, 29, 6.62), [
     ...nileE(),
-    ...nileGlow("water explains", 40),
-    label("water-word", "Water (our reading)", "region", [32.9, 28.1], "water explains", undefined, "right"),
+    ...nileGlow("water explains", READING_GLOW),
+    label("water-word", "Water (our reading)", "region", [30.76, 28.1], "water explains", undefined, "left"),
   ]),
   // The Answer
-  shot("question", EGYPT, voice.between("than mud does", "So why does"), "along the Nile", fly(30.6, 26.4, 5.95), [
+  shot("question", EGYPT, READING_END, "along the Nile", fly(30.6, 26.4, 5.95), [
     tag("The Answer", "along the Nile"),
     ...nileE(),
     mask("egypt-question", OUTLINE_E, "neutral", "all of Egypt", { enterFrames: 20 }),
@@ -409,7 +414,9 @@ const shots = [
     [...nileE(), label("desert-rest", "Desert", "region", [26.5, 26], "mostly desert")],
     "crossfade",
   ),
-  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(36, 17.4, 5.1), [
+  // Wide: this is where The Answer places Egypt's water in the whole basin, one scale above
+  // the rest of the section (the rule of a wide shot per section, docs/visual-grammar.md).
+  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(36, 17.4, 4.95), [
     ...nileB(),
     river("blue-back", BLUE, "far to the south", 40, { glow: true }),
     label("blue-back-name", "Blue Nile", "river", [35.2, 12.2], "far to the south", undefined, "left"),
