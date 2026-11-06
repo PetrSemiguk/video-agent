@@ -28,6 +28,7 @@ import { RiverLine, riverLineSchema } from "./map/RiverLine";
 import { RouteLine, routeLineSchema } from "./map/RouteLine";
 import { HistoricalLayer, historicalLayerSchema } from "./map/HistoricalLayer";
 import { ArrowAdvance, arrowAdvanceSchema } from "./map/ArrowAdvance";
+import { ArrowRetreat, arrowRetreatSchema } from "./map/ArrowRetreat";
 import { PlaceLabel, placeLabelSchema } from "./map/PlaceLabel";
 import { MapAttribution, mapAttributionSchema } from "./MapAttribution";
 
@@ -173,6 +174,15 @@ export const componentRegistry = {
     when: "In PlateStage geo, when narration describes a movement of force — a campaign, an invasion, a migration. For a sourced course that is travelled rather than advanced along, such as a canal or a trade road, use RouteLine.",
     notes:
       "path is the course in lon/lat, origin first, at least two points; its nodes come from sources named in the episode's facts.md, never from memory. style dashed says on screen that the course is approximate, which is the honest default for an advance drawn from a narrative rather than a mapped route. The head keeps its size on the map, so it takes a smaller share of a longer path; the optional label appears at the head as the arrow arrives. An advance always asserts that someone moved this way, so the storyboard layer needs claims. The arrow fades out over exitFrames at the end of its layer; 0 keeps it to the last frame.",
+  },
+  ArrowRetreat: {
+    component: ArrowRetreat,
+    schema: arrowRetreatSchema,
+    purpose:
+      "One withdrawal: an arrow whole from the first frame whose tail collapses back onto the line fallen back to, leaving the ground let go as a faint trace.",
+    when: "In PlateStage geo, when narration says a force or a frontier pulled back from a line it held — a withdrawal, a retreat, garrisons falling back. For a movement of force forwards use ArrowAdvance; for the area itself changing hands use RegionHighlight or HistoricalLayer.",
+    notes:
+      "path is the course in lon/lat, the line held first and the line fallen back to last, at least two points; its nodes come from sources named in the episode's facts.md, never from memory. Nothing grows forwards: the head sits on the line fallen back to from the start, the shaft only shortens, the bar across the front is released over retreatArrow.held.releaseFraction of the withdrawal, and the vacated course stays as a thin dashed trace. style dashed says on screen that the course is approximate, which is the honest default for a withdrawal drawn from a narrative rather than a mapped route. The head keeps its size on the map, so it takes a smaller share of a longer path; the optional label appears at the head as the force arrives. A withdrawal always asserts that someone pulled back, so the storyboard layer needs claims. It draws no ground lost as an area — that is RegionHighlight's business, with its own sourced polygon. The arrow fades out over exitFrames at the end of its layer; 0 keeps it to the last frame.",
   },
   PlaceLabel: {
     component: PlaceLabel,

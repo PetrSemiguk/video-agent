@@ -321,10 +321,12 @@ export const polityPalette = styleReview.polity;
  * campaign or a migration. Sizes are plate px, so they hold their place on the map under zoom.
  */
 export const advanceArrow = {
-  /** Shaft width at the head; it starts at `taperStart` of this at the origin. */
+  /**
+   * Shaft width, constant along the course. A shaft that tapers has to be one filled polygon:
+   * stacked strokes of growing width leave a hairline of casing at every joint, and the arrow
+   * then reads as dashed, which is reserved for an approximate course.
+   */
   width: 15,
-  taperStart: 0.3,
-  taperSteps: 14,
   headLength: 44,
   headWidth: 36,
   /** Dash and gap for an advance whose course is approximate. */
@@ -334,6 +336,31 @@ export const advanceArrow = {
   /** Half length, as a fraction of the path, of the piece giving the head its direction. */
   tangentFraction: 0.01,
   labelGap: 20,
+} as const;
+
+/**
+ * Retreat arrows: a shaft that is whole from the first frame and collapses back onto a single head
+ * at the line fallen back to, leaving a faint trace over the ground let go. Shaft and head sizes
+ * are the advance arrow's, so the two read as one family of movement; only the retreat's own
+ * marks are new.
+ */
+export const retreatArrow = {
+  width: advanceArrow.width,
+  headLength: advanceArrow.headLength,
+  headWidth: advanceArrow.headWidth,
+  /** Dash and gap for a withdrawal whose course is approximate. */
+  dash: advanceArrow.dash,
+  tangentFraction: advanceArrow.tangentFraction,
+  labelGap: advanceArrow.labelGap,
+  /** The ground let go: the course behind the force, thin, dashed and faint. */
+  trace: { width: 6, dash: [10, 14], opacity: 0.4 },
+  /**
+   * The line held at the front: a bar across the course at its first point, released over this
+   * share of the withdrawal, so the viewer sees the held ground given up rather than only motion.
+   */
+  held: { length: 96, width: 9, releaseFraction: 0.2 },
+  /** Frames over which the whole arrow fades in; it is on the map from the layer's first frame. */
+  enterFrames: motion.frames.base,
 } as const;
 
 export const routeLine = {

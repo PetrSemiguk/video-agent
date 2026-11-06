@@ -1,8 +1,10 @@
 // Text on screen that states a fact needs a claim id from the episode's facts.md.
 // Place names and navigation are not claims, unless they carry a number.
 const ALWAYS_FACTUAL = new Set([
-  // An advance arrow asserts that someone moved this way, with or without a label.
+  // An advance arrow asserts that someone moved this way, with or without a label;
+  // a retreat arrow asserts they pulled back from a line they held.
   "ArrowAdvance",
+  "ArrowRetreat",
   "LowerThird",
   "KeyFact",
   "BigDate",

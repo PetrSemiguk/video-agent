@@ -96,18 +96,8 @@ const ArrowAdvanceView: React.FC<z.output<typeof arrowAdvanceSchema>> = ({
     advanceArrow.headLength / Math.max(1, totalLength(line)),
   );
   const end = shaftEnd(p, headFraction);
-  const width = (f: number) =>
-    advanceArrow.width *
-    (advanceArrow.taperStart + (1 - advanceArrow.taperStart) * f) *
-    k;
-  const pieces = Array.from({ length: advanceArrow.taperSteps }, (_, i) => {
-    const f0 = (i / advanceArrow.taperSteps) * end;
-    const f1 = ((i + 1) / advanceArrow.taperSteps) * end;
-    const d = polylineD(sliceByFraction(line, f0, f1));
-    return d
-      ? { d, w: width((i + 0.5) / advanceArrow.taperSteps) }
-      : null;
-  }).filter((piece): piece is { d: string; w: number } => piece !== null);
+  const shaft = polylineD(sliceByFraction(line, 0, end));
+  const width = advanceArrow.width * k;
   const tip = tipDirection(line, p);
   const [headLength, headWidth] = [
     advanceArrow.headLength * k,
@@ -123,17 +113,17 @@ const ArrowAdvanceView: React.FC<z.output<typeof arrowAdvanceSchema>> = ({
       style={{ opacity: lineExitOpacity(frame, durationInFrames, exitFrames) }}
     >
       <g opacity={appear}>
-        {pieces.map((piece, i) => (
-          <g key={i} fill="none" strokeLinecap="butt" strokeLinejoin="round">
+        {shaft ? (
+          <g fill="none" strokeLinecap="butt" strokeLinejoin="round">
             <path
-              d={piece.d}
+              d={shaft}
               stroke={colors.routeCasing}
-              strokeWidth={piece.w + stroke.routeHalo * k}
+              strokeWidth={width + stroke.routeHalo * k}
             />
             <path
-              d={piece.d}
+              d={shaft}
               stroke={fill}
-              strokeWidth={piece.w}
+              strokeWidth={width}
               strokeDasharray={
                 style === "dashed"
                   ? advanceArrow.dash.map((n) => n * k).join(" ")
@@ -141,7 +131,7 @@ const ArrowAdvanceView: React.FC<z.output<typeof arrowAdvanceSchema>> = ({
               }
             />
           </g>
-        ))}
+        ) : null}
         <path
           d={`M0 0L${-headLength} ${headWidth / 2}L${-headLength} ${-headWidth / 2}Z`}
           fill={fill}

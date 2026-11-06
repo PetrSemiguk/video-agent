@@ -146,6 +146,7 @@ export const layerSchema = z.discriminatedUnion("type", [
   layer("RouteLine"),
   layer("HistoricalLayer"),
   layer("ArrowAdvance"),
+  layer("ArrowRetreat"),
   layer("PlaceLabel"),
   layer("MapAttribution"),
 ]);

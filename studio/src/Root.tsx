@@ -18,6 +18,16 @@ import { StyleSheet } from "./design/StyleSheet";
 import { Composition, Still } from "remotion";
 import "./design/fonts";
 import { ProjectionCheck } from "./qa/ProjectionCheck";
+import {
+  ARROW_CHECK_FRAMES,
+  ArrowCheck,
+  arrowCheckDefaults,
+} from "./qa/ArrowCheck";
+import {
+  RETREAT_CHECK_FRAMES,
+  RetreatCheck,
+  retreatCheckDefaults,
+} from "./qa/RetreatCheck";
 import { TransitionCheck } from "./qa/TransitionCheck";
 import { CameraShowreel } from "./demo/CameraShowreel";
 import { SHOWREEL } from "./demo/showreelCamera";
@@ -187,6 +197,24 @@ export const RemotionRoot: React.FC = () => {
         fps={SHOWREEL.fps}
         width={SHOWREEL.width}
         height={SHOWREEL.height}
+      />
+      <Composition
+        id="ArrowCheck"
+        component={ArrowCheck}
+        durationInFrames={ARROW_CHECK_FRAMES}
+        fps={motion.fps}
+        width={cards.showreel.width}
+        height={cards.showreel.height}
+        defaultProps={arrowCheckDefaults}
+      />
+      <Composition
+        id="RetreatCheck"
+        component={RetreatCheck}
+        durationInFrames={RETREAT_CHECK_FRAMES}
+        fps={motion.fps}
+        width={cards.showreel.width}
+        height={cards.showreel.height}
+        defaultProps={retreatCheckDefaults}
       />
       <Composition
         id="TransitionCheck"

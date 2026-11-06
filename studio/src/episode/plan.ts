@@ -73,10 +73,12 @@ export const geoLayerTypes = new Set([
   "RouteLine",
   "HistoricalLayer",
   "ArrowAdvance",
+  "ArrowRetreat",
 ]);
 /**
- * Geo layers whose geometry comes from Natural Earth, so the frame must credit it. An advance
- * arrow is a course of our own, from the episode's own sources, and credits nothing by itself.
+ * Geo layers whose geometry comes from Natural Earth, so the frame must credit it. An advance or
+ * retreat arrow is a course of our own, from the episode's own sources, and credits nothing by
+ * itself.
  */
 export const naturalEarthLayers = new Set([
   "RegionHighlight",

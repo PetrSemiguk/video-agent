@@ -169,10 +169,12 @@ describe("Episode assembly", () => {
       "RouteLine",
       "HistoricalLayer",
       "ArrowAdvance",
+      "ArrowRetreat",
     ]);
     expect(geoLayerTypes.has("PlaceLabel")).toBe(false);
-    // An advance arrow is a course of our own, so it adds no Natural Earth credit.
+    // An advance or retreat arrow is a course of our own, so it adds no Natural Earth credit.
     expect(naturalEarthLayers.has("ArrowAdvance")).toBe(false);
+    expect(naturalEarthLayers.has("ArrowRetreat")).toBe(false);
     expect([...naturalEarthLayers].every((t) => geoLayerTypes.has(t))).toBe(
       true,
     );

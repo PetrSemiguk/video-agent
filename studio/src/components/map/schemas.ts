@@ -215,6 +215,21 @@ export const arrowAdvanceSchema = z.strictObject({
   label: shortText(40).optional(),
   ...lineExit,
 });
+export const arrowRetreatSchema = z.strictObject({
+  /**
+   * The course of the withdrawal: the line held first, the line fallen back to last, so the
+   * first point is where the force stood. Nodes come from sources, never from memory.
+   */
+  path: line,
+  color: semanticSchema.default("conflict"),
+  /** Frames over which the ground is let go and the force reaches the line behind. */
+  drawFrames: frames.default(motion.frames.draw),
+  /** dashed says on screen that the course is approximate. */
+  style: z.enum(["solid", "dashed"]).default("solid"),
+  /** Label at the line fallen back to, appearing as the withdrawal completes. */
+  label: shortText(40).optional(),
+  ...lineExit,
+});
 export const placeLabelSchema = z.strictObject({
   lonLat: point,
   text: shortText(40),

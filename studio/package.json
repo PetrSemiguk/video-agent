@@ -50,6 +50,8 @@
     "ab:side-by-side": "node scripts/ab-side-by-side.mjs",
     "still:geodebug": "remotion still GeoDebug",
     "still:hist": "remotion still HistDebug --frame=60 --gl=angle",
+    "still:arrows": "remotion still ArrowCheck out/arrow-check.png --frame=60 --gl=angle",
+    "still:retreat": "remotion still RetreatCheck out/retreat-check.png --frame=60 --gl=angle",
     "hist:compare": "node scripts/hist-compare.mjs",
     "render:demo-china-rivers": "remotion render DemoChinaRivers out/demo-china-rivers.mp4",
     "test": "vitest run",
