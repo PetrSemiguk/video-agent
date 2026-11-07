@@ -1,8 +1,9 @@
 # Egypt visual pass — nine owner findings
 
-Status: **all nine done. The episode's camera passes on every shot, every section has a wide
-shot, and the preview is built. The full MP4 is not re-rendered yet: the render guard refuses
-below 6 GB of free RAM and the machine has about 5 GB (see "The render" at the end).**
+Status: **eight of nine done and rendered — `studio/out/egypt_final.mp4`, 2:55.7, every check
+green. Finding 2 is not done: the three shots that name the Ethiopian highlands pass every
+automated check and still frame them badly, because this plate cannot hold them. See "What the
+rendered frames showed" at the end; it needs the `nile-basin` plate rebuilt with room.**
 
 ## Done
 
@@ -202,14 +203,60 @@ unchanged, and hard cuts are inside the 1-3 range the style guide asks for. The 
 
 ### The render
 
-The storyboard validates, the camera passes on all 28 shots, the preview is built, the 29 review
-stills and the sheets are regenerated, and the camera audit reports all **5271 frames credited**,
-max centre step 6.77 px/frame, max step change 0.73 px/frame. The full MP4 is **not** re-rendered:
-`vap.system.check_render_memory` refuses below 6 GB of free RAM and the machine had 6.3 GB when
-this pass began and 4.95 GB when the render was due, all of it the desktop's own applications.
-The guard exists because a render out of memory is killed rather than slowed, so it was not worked
-around. Re-run `uv run python -m vap.episode build egypt-nile --stage render` with a few GB free;
-everything it depends on is cached and green.
+Rendered once the owner freed memory: 8.3 GB available, one worker, **440.5 s**. The file is
+`studio/out/episode-egypt-nile-synced.mp4`, copied byte-for-byte to `studio/out/egypt_final.mp4`
+(the canonical name is left in place so the build cache stays valid).
+
+| Check | Result |
+|---|---|
+| Container | 1920x1080, 30 fps, h264 + aac 48 kHz stereo, 5271 frames, **175.70 s**, 247 MB |
+| `vap.qa.episode_audit` | 470 words, 28 shots, shortest shot 74 frames, 45 label leads; MP4 audio against the source voice **lag 0 samples, correlation 0.99996** |
+| `vap.qa.motion --check` | **Gate passed.** Max pan 6.77 px/frame, max zoom 8.63 px/frame, no still stretch over 2 s, no failures |
+| Loudness (ebur128) | **-16.1 LUFS** integrated, LRA 2.8 LU, true peak **-4.5 dBFS** |
+| Contact sheets | `egypt_final-contact.png`, `egypt_final-changed.png` — attribution on every sampled frame, no bare plate |
+
+### What the rendered frames showed, and what I got wrong
+
+Reading the review stills after the render turned up a defect the numbers had hidden, and it is
+mine. I resolved finding 2 for `highlands`, `share-86` and `ethiopia` by declaring their subject
+to be the basin rather than the highlands, on the reasoning that the shot's ground is where the
+Nile's water comes from. The subject check then passed at 50/50 — because it was checking the
+basin. The thing the sentence actually names lands somewhere else entirely:
+
+| Shot | Mask centre on screen | Mask height | Outline in frame |
+|---|---|---|---|
+| `highlands` (now) | 60% across, **86% down** | 430 px | 87% — 60 px cut off below |
+| `share-86`, `ethiopia` (now) | 59% across, **82% down** | 388 px | 99% |
+| `highlands` (before this pass) | 62% across, 66% down | 533 px | 100% |
+
+In the rendered `highlands` frame the Ethiopian highlands are clipped by the bottom edge, their
+label sits just above the attribution strip, and most of the picture is Egypt, the Red Sea and
+Arabia. That is the very thing the subject rule was written against — "the valley sat at the edge
+with half the frame on Arabia" — reproduced by declaring a wider subject. My own note in
+`docs/visual-grammar.md` says declaring the wider ground is not a way around the check and that
+the test is whether the lit thing reads in the frame. I wrote that and then did not look until
+after the render.
+
+**The conclusion I drew earlier — that no plate rebuild was needed — was wrong.** It rested on
+`highlands` failing only the pan-speed check, which was true of the automated checks and false of
+the picture. The plate is the cause, exactly as the room rule predicts. On `nile-basin` the
+options are:
+
+- the old framing, lat 13 at zoom 5.25: the highlands read well (66% down, 533 px tall) and the
+  frame sits **5.6 plate px** from the south edge;
+- a wide framing: the plate edge is safe and the highlands fall to 82–86% down.
+
+There is nothing in between, because the plate was cut at lat 3 and the highlands run from lat 5.0
+to 14.7 — they live in the bottom sixth of it. Putting their centre at 60% down needs zoom 5.5 to
+clear the south edge, and that leaves 7 px of margin.
+
+**The fix is the one the rule prescribes: rebuild `nile-basin` with room to the south,** about
+lat -2 to 33, which puts the highlands' centre a frame-half above the plate's edge at the zoom
+the shot wants. To keep 0.1 of headroom under the tightest basin framing (`rivers`, 5.52) the
+plate needs roughly 4736x2664 px against today's 3840x2160. That means re-extracting and
+re-verifying every `nile-basin` vector — the egypt rebuild caught the Nile losing its Rosetta
+reach that way — and re-rendering. It is a real piece of work and it invalidates `egypt_final.mp4`,
+so it is the owner's call, not something to start unasked.
 
 ## Checks
 
