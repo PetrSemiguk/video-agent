@@ -1,6 +1,8 @@
 // Generates episodes/egypt-nile/storyboard.json: node episodes/egypt-nile/make-storyboard.cjs
-// See shot-plan.md. Everything is on two plates: `egypt` (6950 px, sharp to zoom about 6.78) and
-// `basin` (nile-basin). A crossfade between them needs a frame both cover: zoom near 5.5, lat near 24.
+// See shot-plan.md. Everything is on two plates: `egypt` (7400 px, sharp to zoom 6.760) and
+// `basin` (nile-basin, 3840 px, sharp to zoom 5.569). A crossfade shows both, so its pose must be
+// legal on each: the egypt plate stops at lat 14 and the basin plate at lat 33, which leaves only
+// zoom about 5.48 at lat 22.6-25.5. All travel further south happens on the basin plate.
 const kit = require("../../studio/scripts/storyboard-kit.cjs");
 
 const { camera, fly, label, layer, shot } = kit;
@@ -136,12 +138,11 @@ const shots = [
     EGYPT,
     0,
     "you see is desert",
-    // The episode opens on the widest the plate can safely show and pushes in. The centre sits
-    // low because the plate's north edge is close in Mercator: at this zoom a frame centred on
-    // Egypt itself would show it. Egypt therefore sits in the upper half, inside the desert belt
-    // the narration is about.
+    // The episode opens on the widest the plate can safely show and pushes in. The plate was
+    // rebuilt with room around Egypt, so this frame is both wide (it ends at 4.990, inside the
+    // 5.040 bar) and centred on it (50/50) -- which the old plate could not do at once.
     camera("establish", {
-      target: { center: { lon: 30.8, lat: 24.3 }, zoom: 5.36 },
+      target: { center: { lon: 30.3, lat: 26.7 }, zoom: 4.96 },
       push: 0.05,
       drift: [0.006, 0],
     }),
@@ -170,6 +171,10 @@ const shots = [
       label("nile-name", "Nile", "river", [32.1, 26.0], "That is the Nile"),
       label("delta-name", "Delta", "region", [30.9, 30.9], "Delta at its end"),
     ],
+    // The opening frame is wide, so by its nature it has only about 100 px of plate margin above
+    // and below. Settling here keeps the pull towards this shot from swinging the establish off
+    // the plate's north edge in the middle of it.
+    { settle: true },
   ),
   shot("why", EGYPT, "Why here", "almost nowhere else", fly(30.6, 26.8, 6.1), [
     ...nileE(),
@@ -260,7 +265,9 @@ const shots = [
     EGYPT,
     "The north coast",
     "leans on one river",
-    fly(29.7, 30.3, 6.62),
+    // The egypt plate is sharp to zoom 6.760; the camera spline overshoots a shot's target
+    // between keys, so a framing leaves headroom under the plate rather than sitting on it.
+    fly(29.7, 30.3, 6.5),
     [
       ...nileE(),
       label("north-coast", "North coast: the most rain", "region", [30.15, 31.4], "The north coast"),
@@ -288,7 +295,10 @@ const shots = [
     EGYPT,
     "But follow the river",
     "beyond Egypt's border",
-    fly(32.4, 24.8, 5.5),
+    // The sentence follows the river south, so the valley sits high in the frame and the empty
+    // south fills the rest. That also shortens the traverse into `highlands`, which has 74
+    // frames for it and would otherwise pan faster than the limit.
+    fly(32.4, 23.6, 5.5),
     [
       ...nileE(),
       river("nile-upstream", NILE_FULL_E, "far beyond", 40),
@@ -298,12 +308,17 @@ const shots = [
     ],
     "crossfade",
   ),
+  // The sentence names the highlands, but the shot's ground is where the Nile's water comes
+  // from: the basin, with the highlands lit inside it. They cannot be both centred and wide on
+  // this plate -- their centre sits 0.271 of the plate's span below its middle against a 0.167
+  // limit, which is the room rule's own "wide, or centred, never both" (docs/maps.md). Centred
+  // would need zoom 5.72, past the plate's native 5.569. The close look at them is `rivers`.
   shot(
     "highlands",
     BASIN,
     "Here are the highlands",
     "of Ethiopia",
-    fly(35.0, 13.0, 5.25),
+    fly(34.5, 18.4, 4.94),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral"),
@@ -312,15 +327,19 @@ const shots = [
       }),
       label("highlands-name", "Ethiopian highlands (approximate)", "region", [38.4, 11.6], "highlands of Ethiopia"),
     ],
+    // The camera is still through the dissolve: the egypt plate stops at lat 14 and cannot hold
+    // this shot's wide frame, so the zoom-out has to wait until it is off screen.
+    { settle: true },
   ),
   shot(
     "share-86",
     BASIN,
     "By a common estimate",
     "which rivers are counted",
-    // Wide for The Water: pulled back to near the basin plate's own limit. The centre moves west
-    // of the highlands so the frame stays on the plate at this zoom.
-    fly(35.4, 13.7, 4.9),
+    // Wide for The Water: the figure is a share, so the denominator -- the whole basin -- is on
+    // screen and the highlands light inside it. This is the section's wide shot: it pulls back
+    // off `highlands` into the widest frame the plate can hold, slowly, over 8.6 s.
+    fly(34.5, 18.4, 4.79),
     [
       ...nileB(),
       keptMask("egypt-border", OUTLINE_B, "neutral", { exitAt: 0, exitFrames: 30 }),
@@ -334,6 +353,10 @@ const shots = [
       label("highlands-name-2", "Ethiopian highlands (approximate)", "region", [38.4, 10.0]),
       fact("share-86-card", "Around 86% of the flow starts here", "Around 86%", "upper-right", "around eighty-six percent"),
     ],
+    // `highlands` travels from Egypt to this frame and then stays, so the camera settles at the
+    // cut: without it the spline has nowhere to put that velocity and coasts 366 px off the
+    // plate's south edge in the middle of this shot.
+    { settle: true },
   ),
   shot(
     "rivers",
@@ -388,6 +411,7 @@ const shots = [
       layer("date-1960", "BigDate", { year: 1960, fromYear: 1940, era: "CE", caption: "Work on the High Dam began", placement: "lower-left" }, "nineteen sixty", voice.timeOf("It was completed")),
       layer("date-1970", "BigDate", { year: 1970, fromYear: 1960, era: "CE", caption: "High Dam completed", placement: "lower-left" }, "completed in nineteen"),
     ],
+    { settle: true },
   ),
   shot("lake", EGYPT, "Behind it lies", "floods to an end", fly(32.2, 23.0, 6.65), [
     ...nileE(),
@@ -408,7 +432,10 @@ const shots = [
     river("nile-strip", NILE_E, "By our reasoning", 130, { glow: true }),
     label("the-strip", "This strip", "region", [30.6, 27.6], "this strip should", undefined, "left"),
   ]),
-  shot("nasa", EGYPT, "NASA's figure", "decades after the dam", fly(30.2, 27.6, 6.3), [
+  // The figure is a share of all of Egypt, so the frame is all of Egypt. It also carries the
+  // first half of the pull-back into `reading`: done in one shot the zoom-out ran at 9.9 px/frame
+  // under a label, over the strict limit of 9.
+  shot("nasa", EGYPT, "NASA's figure", "decades after the dam", fly(30.5, 26.9, 5.6), [
     ...nileE(),
     ...shareOfEgypt("nasa", "roughly ninety-seven"),
     layer(
@@ -431,7 +458,10 @@ const shots = [
   // label sits against the valley it is about, not out in the Eastern Desert.
   // Wide for The Dam, and its last shot: the sentence is about this whole map, so the whole
   // country is in frame while the glow runs the length of the river.
-  shot("reading", EGYPT, "Our reading", READING_END, fly(30.8, 25.4, 5.45), [
+  // The Dam's wide shot, and the scale change The Answer opens on. The sentence is about all of
+  // Egypt with the settled band lit inside it, so the frame is all of Egypt: pulled back to
+  // 5.00, inside the 5.040 bar, with Egypt centred on the rebuilt plate.
+  shot("reading", EGYPT, "Our reading", READING_END, fly(30.6, 26.7, 5.0), [
     ...nileE(),
     ...shareOfEgypt("reading", "water explains"),
     ...nileGlow("water explains", READING_GLOW),
@@ -457,15 +487,18 @@ const shots = [
     EGYPT,
     "The rest is mostly",
     "very little rain",
-    fly(30.8, 25.2, 5.58),
+    // Crossfades onto the basin plate, so this pose must be legal there as well: zoom under its
+    // native 5.569 with headroom, and far enough south that the frame clears its north edge.
+    fly(30.8, 24.6, 5.48),
     [
       ...nileE(),
       label("desert-rest", "Desert", "region", [26.5, 26], "mostly desert", undefined, undefined, { openGround: true }),
     ],
     "crossfade",
   ),
-  // Wide for The Answer: Egypt's water placed in the whole basin, at the basin plate's limit.
-  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(35.4, 13.4, 4.89), [
+  // Wide for The Answer: Egypt's water placed in the whole basin -- the same frame as
+  // `highlands`, which is the callback the script asks for.
+  shot("ethiopia", BASIN, "The river brings", "mostly from Ethiopia", fly(34.5, 18.4, 4.79), [
     ...nileB(),
     river("blue-back", BLUE, "far to the south", 40, { glow: true }),
     label("blue-back-name", "Blue Nile", "river", [34.55, 12.2], "far to the south", undefined, "left"),
@@ -473,13 +506,15 @@ const shots = [
       enterFrames: 20,
     }),
     label("highlands-back-name", "Ethiopian highlands (approximate)", "region", [38.4, 10.0], "mostly from Ethiopia"),
-  ]),
+  ], { settle: true }),
   shot(
     "recap",
     BASIN,
     "By recent estimates",
     "ninety-seven percent of the people",
-    fly(33.2, 20.6, 5.62),
+    // 5.62 was past the basin plate's native 5.569, and at lat 20.6 the crossfade onto the egypt
+    // plate ran off its south edge (lat 14). This pose is legal on both plates.
+    fly(33.2, 22.6, 5.48),
     [
       ...nileB(),
       keptRiver("blue-kept", BLUE),
@@ -504,7 +539,7 @@ const shots = [
       river("nile-upstream-close", NILE_FULL_E, "mostly starts in another", 40),
       label("from-south", "From far to the south", "river", [33.2, 22.0], "mostly starts in another", undefined, "right"),
     ],
-    null,
+    { transition: null, settle: true },
   ),
 ];
 
@@ -562,20 +597,22 @@ const SUBJECTS = {
   source: VALLEY,
   flood: VALLEY,
   south: UPPER,
-  highlands: HIGHLANDS_AREA,
-  "share-86": HIGHLANDS_AREA,
+  // The highlands are named, but the ground these shots are about is the basin they feed: the
+  // mask is lit inside it, and for `share-86` the basin is also the share's denominator.
+  highlands: BASIN_ALL,
+  "share-86": BASIN_ALL,
   rivers: CONFLUENCE,
   another: [30.0, 17.5, 34.5, 26.0], // the reach entering Egypt
   aswan: ASWAN_AREA,
   lake: ASWAN_AREA,
   sediment: ASWAN_AREA,
   strip: VALLEY,
-  nasa: VALLEY,
+  nasa: EGYPT_ALL,
   reading: EGYPT_ALL,
   question: EGYPT_ALL,
   answer: VALLEY,
   rest: WESTERN_DESERT,
-  ethiopia: HIGHLANDS_AREA,
+  ethiopia: BASIN_ALL,
   recap: [29.0, 8.0, 40.0, 32.0], // Egypt and where its water comes from
   green: VALLEY,
 };

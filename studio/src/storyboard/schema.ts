@@ -160,6 +160,12 @@ export const shotSchema = z.strictObject({
    * it lands in the middle third of the frame, so the subject is not pushed to an edge.
    */
   subject: bounds.optional(),
+  /**
+   * The camera comes to rest at this shot's cut: the joint gets zero velocity, which also ends
+   * the spline's run there. Without it a long move into a shot that barely moves has nowhere to
+   * put its velocity and the picture coasts past the framing, off the plate (docs/maps.md).
+   */
+  settle: z.boolean().optional(),
   camera: cameraSchema,
   layers: z.array(layerSchema),
   // Declarative scene metadata, not a CSS transition or an animation side effect.

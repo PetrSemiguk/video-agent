@@ -91,11 +91,17 @@ export const buildCamera = (
       }
     };
     const suffix = window.durationInFrames - active.from - frames;
-    return [
+    const segments: Segment[] = [
       ...(active.from ? [drift(active.from)] : []),
       preset(),
       ...(suffix ? [drift(suffix)] : []),
     ];
+    // `settle` brings the camera to rest at the shot's cut: the joint key gets zero velocity,
+    // which also ends the spline's run there, so a long move into this shot cannot coast past
+    // its framing. Only the first segment of the shot carries it.
+    return i && shot.settle
+      ? [{ ...segments[0], stillStart: true }, ...segments.slice(1)]
+      : segments;
   });
   const first = metas[storyboard.shots[0].plate];
   const center = toMerc(plateCenter(first));

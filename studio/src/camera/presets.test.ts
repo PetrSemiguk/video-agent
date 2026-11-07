@@ -111,6 +111,27 @@ describe("preset joints are velocity-continuous", () => {
     expect(tl.poseAt(h.start + 10)).toEqual(tl.poseAt(h.start + 20));
   });
 
+  // A drift is a rate: its amounts are measured over motion.camera.driftFrames. As a fixed move
+  // a 9-frame tail pushed as far as a 90-frame one, four times faster than the shot it followed,
+  // and the C2 spline dipped backwards ahead of it to stay smooth.
+  test("drift covers ground in proportion to how long it lasts", () => {
+    const start = { center: { lon: 110, lat: 32 }, zoom: 5 };
+    const move = (frames: number) => {
+      const tl = cameraTimeline(
+        [establish(start, 60), drift(frames)],
+        { fps: 30, width: W, height: H },
+      );
+      const [a, b] = [tl.keys[tl.keys.length - 2], tl.keys[tl.keys.length - 1]];
+      return { x: b.x - a.x, zoom: b.zoom - a.zoom };
+    };
+    const long = move(motion.camera.driftFrames);
+    const short = move(motion.camera.driftFrames / 10);
+    expect(short.zoom / long.zoom).toBeCloseTo(0.1, 6);
+    expect(short.x / long.x).toBeCloseTo(0.1, 6);
+    // And the long one is still the barely perceptible move it was tuned to be.
+    expect(long.zoom).toBeCloseTo(0.015, 6);
+  });
+
   test("showreel timeline", () => {
     const tl = buildShowreelTimeline({
       danube: load("central-europe/rivers/danube-vienna-belgrade.geojson"),

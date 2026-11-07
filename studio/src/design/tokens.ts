@@ -162,6 +162,13 @@ export const motion = {
      * Hide the labels to fly faster.
      */
     maxZoomWithLabelPx: 9,
+    /**
+     * Frames a `drift`'s default amounts are measured over. Drift is a rate, not a fixed move:
+     * a 9-frame drift covers a tenth of what a 90-frame one does. Measured as a fixed amount it
+     * made short drifts fast, and a 9-frame tail pushing 4x faster than the shot before it bent
+     * the C2 spline backwards -- the Egypt opener dipped 0.028 in zoom and left the plate.
+     */
+    driftFrames: 90,
     /** Allowed overshoot of the spline between keys before the check fails. */
     speedTolerancePx: 0.5,
     maxAccelPx: 0.25,

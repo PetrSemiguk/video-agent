@@ -1,0 +1,484 @@
+{
+  "seconds": 175.7,
+  "shots": 28,
+  "shots_per_minute": 9.22,
+  "hard_cuts": [
+    {
+      "shot": "highlands",
+      "at_s": 80.47,
+      "why": [
+        "plate",
+        "crossfade"
+      ]
+    },
+    {
+      "shot": "aswan",
+      "at_s": 103.0,
+      "why": [
+        "plate",
+        "crossfade"
+      ]
+    },
+    {
+      "shot": "ethiopia",
+      "at_s": 158.87,
+      "why": [
+        "plate",
+        "crossfade"
+      ]
+    },
+    {
+      "shot": "green",
+      "at_s": 169.13,
+      "why": [
+        "plate",
+        "crossfade"
+      ]
+    }
+  ],
+  "hard_cuts_per_minute": 1.37,
+  "hard_cuts_by_minute": [
+    0,
+    2,
+    2
+  ],
+  "seconds_by_kind": {
+    "map": 175.7,
+    "graphic": 0.0,
+    "broll": 0.0
+  },
+  "graphic_share": 0.0,
+  "shots_by_scale": {
+    "wide": 4,
+    "regional": 16,
+    "detail": 8
+  },
+  "scale_spread": 3.99,
+  "frame_width_km": {
+    "min": 1294,
+    "max": 5161
+  },
+  "sections": [
+    {
+      "name": "The Strip",
+      "shot": "open",
+      "section_tag": true,
+      "scale_change": true,
+      "wide_shots": [
+        "open"
+      ],
+      "pauses": []
+    },
+    {
+      "name": "The Water",
+      "shot": "desert",
+      "section_tag": true,
+      "scale_change": true,
+      "wide_shots": [
+        "share-86"
+      ],
+      "pauses": []
+    },
+    {
+      "name": "The Dam",
+      "shot": "aswan",
+      "section_tag": true,
+      "scale_change": true,
+      "wide_shots": [
+        "reading"
+      ],
+      "pauses": []
+    },
+    {
+      "name": "The Answer",
+      "shot": "question",
+      "section_tag": true,
+      "scale_change": true,
+      "wide_shots": [
+        "ethiopia"
+      ],
+      "pauses": []
+    }
+  ],
+  "table": [
+    {
+      "id": "open",
+      "from": 0,
+      "frames": 176,
+      "seconds": 5.87,
+      "frame_width_km": 4104,
+      "wide_from_km": 4081,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt"
+    },
+    {
+      "id": "line",
+      "from": 176,
+      "frames": 283,
+      "seconds": 9.43,
+      "frame_width_km": 1469,
+      "wide_from_km": 4048,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "why",
+      "from": 459,
+      "frames": 88,
+      "seconds": 2.93,
+      "frame_width_km": 1952,
+      "wide_from_km": 4077,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "cairo",
+      "from": 547,
+      "frames": 141,
+      "seconds": 4.7,
+      "frame_width_km": 1444,
+      "wide_from_km": 3961,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "shares",
+      "from": 688,
+      "frames": 332,
+      "seconds": 11.07,
+      "frame_width_km": 1471,
+      "wide_from_km": 4052,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "differ",
+      "from": 1020,
+      "frames": 186,
+      "seconds": 6.2,
+      "frame_width_km": 1695,
+      "wide_from_km": 4063,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "density",
+      "from": 1206,
+      "frames": 335,
+      "seconds": 11.17,
+      "frame_width_km": 2024,
+      "wide_from_km": 4084,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "desert",
+      "from": 1541,
+      "frames": 217,
+      "seconds": 7.23,
+      "frame_width_km": 1294,
+      "wide_from_km": 4085,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "coast",
+      "from": 1758,
+      "frames": 158,
+      "seconds": 5.27,
+      "frame_width_km": 1431,
+      "wide_from_km": 3944,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "source",
+      "from": 1916,
+      "frames": 131,
+      "seconds": 4.37,
+      "frame_width_km": 1750,
+      "wide_from_km": 4052,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "flood",
+      "from": 2047,
+      "frames": 249,
+      "seconds": 8.3,
+      "frame_width_km": 2085,
+      "wide_from_km": 4056,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "south",
+      "from": 2296,
+      "frames": 118,
+      "seconds": 3.93,
+      "frame_width_km": 3043,
+      "wide_from_km": 4186,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "crossfade",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "highlands",
+      "from": 2414,
+      "frames": 74,
+      "seconds": 2.47,
+      "frame_width_km": 4644,
+      "wide_from_km": 5136,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "basin",
+      "hard_cut": [
+        "plate",
+        "crossfade"
+      ]
+    },
+    {
+      "id": "share-86",
+      "from": 2488,
+      "frames": 259,
+      "seconds": 8.63,
+      "frame_width_km": 5161,
+      "wide_from_km": 5136,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "basin",
+      "hard_cut": []
+    },
+    {
+      "id": "rivers",
+      "from": 2747,
+      "frames": 223,
+      "seconds": 7.43,
+      "frame_width_km": 3139,
+      "wide_from_km": 5183,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "basin",
+      "hard_cut": []
+    },
+    {
+      "id": "another",
+      "from": 2970,
+      "frames": 120,
+      "seconds": 4.0,
+      "frame_width_km": 3070,
+      "wide_from_km": 5005,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "crossfade",
+      "plate": "basin",
+      "hard_cut": []
+    },
+    {
+      "id": "aswan",
+      "from": 3090,
+      "frames": 249,
+      "seconds": 8.3,
+      "frame_width_km": 1467,
+      "wide_from_km": 4167,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": [
+        "plate",
+        "crossfade"
+      ]
+    },
+    {
+      "id": "lake",
+      "from": 3339,
+      "frames": 209,
+      "seconds": 6.97,
+      "frame_width_km": 1376,
+      "wide_from_km": 4205,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "sediment",
+      "from": 3548,
+      "frames": 282,
+      "seconds": 9.4,
+      "frame_width_km": 1645,
+      "wide_from_km": 4163,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "strip",
+      "from": 3830,
+      "frames": 219,
+      "seconds": 7.3,
+      "frame_width_km": 1464,
+      "wide_from_km": 4030,
+      "scale": "detail",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "nasa",
+      "from": 4049,
+      "frames": 204,
+      "seconds": 6.8,
+      "frame_width_km": 2748,
+      "wide_from_km": 4074,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "reading",
+      "from": 4253,
+      "frames": 133,
+      "seconds": 4.43,
+      "frame_width_km": 4205,
+      "wide_from_km": 4081,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "question",
+      "from": 4386,
+      "frames": 108,
+      "seconds": 3.6,
+      "frame_width_km": 2191,
+      "wide_from_km": 4092,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "answer",
+      "from": 4494,
+      "frames": 178,
+      "seconds": 5.93,
+      "frame_width_km": 2007,
+      "wide_from_km": 4062,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "rest",
+      "from": 4672,
+      "frames": 94,
+      "seconds": 3.13,
+      "frame_width_km": 3061,
+      "wide_from_km": 4153,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "crossfade",
+      "plate": "egypt",
+      "hard_cut": []
+    },
+    {
+      "id": "ethiopia",
+      "from": 4766,
+      "frames": 131,
+      "seconds": 4.37,
+      "frame_width_km": 5146,
+      "wide_from_km": 5135,
+      "scale": "wide",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "basin",
+      "hard_cut": [
+        "plate",
+        "crossfade"
+      ]
+    },
+    {
+      "id": "recap",
+      "from": 4897,
+      "frames": 177,
+      "seconds": 5.9,
+      "frame_width_km": 3109,
+      "wide_from_km": 4997,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "crossfade",
+      "plate": "basin",
+      "hard_cut": []
+    },
+    {
+      "id": "green",
+      "from": 5074,
+      "frames": 197,
+      "seconds": 6.57,
+      "frame_width_km": 2343,
+      "wide_from_km": 4100,
+      "scale": "regional",
+      "kind": "map",
+      "transition": "cut",
+      "plate": "egypt",
+      "hard_cut": [
+        "plate",
+        "crossfade"
+      ]
+    }
+  ],
+  "warnings": [
+    "3 or more shots in a row at one scale or kind: source, flood, south, highlands",
+    "3 or more shots in a row at one scale or kind: question, answer, rest"
+  ]
+}

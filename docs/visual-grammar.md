@@ -117,6 +117,24 @@ plate whose extent stops just beyond its subject forces a wide frame to sit low,
 subject out of the middle third. Give the episode a plate with room around its subject rather than
 weakening either rule.
 
+**When they collide and the plate cannot be rebuilt, name the subject the shot really has.** Two
+honest readings came out of the Egypt pass, and neither weakens the rule:
+
+- **A shot stating a share may be about the part or about the whole — and must declare the one it
+  frames.** The share rule puts the whole on screen, dimmed, with the part lit inside it, so both
+  readings are honest: go tight on the lit part, or wide on the whole it sits in. What is not
+  honest is declaring one and framing the other. In the Egypt episode `shares`, `differ` and
+  `density` go tight and declare the valley; `share-86`, `ethiopia`, `nasa` and `reading` go wide
+  and declare the basin or Egypt entire.
+- **A shot that places something is about the ground it is placed in.** "Here are the highlands of
+  Ethiopia" answers *where*, so the frame is the basin with the highlands lit inside it — and the
+  close look at them belongs to the next shot that is actually about them, `rivers`. On the
+  `nile-basin` plate the highlands cannot be both centred and wide anyway: centring them needs
+  zoom 5.72, past the plate's native 5.569, which is the room rule's own conclusion.
+
+Declaring the wider ground is not a way around the check. The test is whether the lit thing is
+large and legible in the frame — check it on the review sheet and the 640 px mobile sheet.
+
 ## Rhythm
 
 Plan the sequence of shots before the shots themselves. `vap.episode build` reports these in the preview stage, as `studio/out/episodes/<slug>/rhythm.json`, and warns when out of

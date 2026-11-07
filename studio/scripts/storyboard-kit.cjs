@@ -64,7 +64,7 @@ const layer = (id, type, props, start, end) => ({
  */
 const shot = (id, plate, start, end, cameraMove, layers, options = "cut") => {
   // A string is the transition kind; null means no transition at all, as on the last shot.
-  const { transition = "cut", subject } =
+  const { transition = "cut", subject, settle } =
     options === null || typeof options === "string"
       ? { transition: options }
       : options;
@@ -74,6 +74,7 @@ const shot = (id, plate, start, end, cameraMove, layers, options = "cut") => {
     start: anchor(start),
     end: anchor(end),
     ...(subject ? { subject } : {}),
+    ...(settle ? { settle: true } : {}),
     camera: cameraMove,
     layers,
     ...(transition ? { transition: { kind: transition } } : {}),

@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, test } from "vitest";
 import plate from "../../public/plates/china-east-hs05.json";
 import timing from "../../../docs/reports/4.6/assembly.json";
-import { metersPerPx } from "../camera/timeline";
+import { metersPerPx, toMerc } from "../camera/timeline";
 import { plateView } from "../camera/plateProjection";
 import { lowerThirdSchema } from "../components/text/LowerThird";
 import {
@@ -106,6 +106,46 @@ describe("pilot v2 by docs/visual-grammar.md", () => {
       ),
     ).toBe(true);
   });
+  // A C2 spline carries its velocity through a key. A long move into a shot that then barely
+  // moves has nowhere to put that velocity, so the picture coasts past the framing and can leave
+  // the plate; `settle` clamps the joint to zero velocity and ends the spline's run there.
+  test("settle stops the camera at a shot's cut, and the coast past it without one", () => {
+    const far = structuredClone(storyboard);
+    const [a, b] = [far.shots[1], far.shots[2]];
+    // Shot 1 travels; shot 2 asks for the pose shot 1 ends on, so it should not move at all.
+    const to = { center: { lon: 117.5, lat: 36.5 }, zoom: 4.9 };
+    a.camera = { preset: "flyTo", params: { to } };
+    b.camera = { preset: "flyTo", params: { to } };
+    const measure = (sb: typeof storyboard) => {
+      const tl = buildCamera(sb, assembly, metas, W, H);
+      const { from, durationInFrames } = assembly.shots[2];
+      const step = (f: number) => {
+        const [p, q] = [tl.poseAt(f - 1), tl.poseAt(f)];
+        return Math.hypot(q.x - p.x, q.y - p.y) / metersPerPx((p.zoom + q.zoom) / 2);
+      };
+      // How far the picture ever drifts from the framing the shot asked for.
+      const want = toMerc(to.center);
+      let drift = 0;
+      for (let f = from; f < from + durationInFrames; f++) {
+        const pose = tl.poseAt(f);
+        drift = Math.max(drift, Math.hypot(pose.x - want.x, pose.y - want.y) / metersPerPx(pose.zoom));
+      }
+      return { atCut: step(from + 1), drift };
+    };
+    const coasting = measure(far);
+    const settled = measure({
+      ...far,
+      shots: far.shots.map((shot, i) => (i === 2 ? { ...shot, settle: true } : shot)),
+    });
+    // Measured: the camera is still moving 1.6 px/frame at the cut and coasts 51 px past the
+    // framing it was given; settling leaves 0.003 px/frame and 14 px, the rest being the ease
+    // toward the shot that follows. A settle stops the camera; it does not freeze it.
+    expect(coasting.atCut).toBeGreaterThan(1);
+    expect(coasting.drift).toBeGreaterThan(40);
+    expect(settled.atCut).toBeLessThan(0.01);
+    expect(settled.drift).toBeLessThan(coasting.drift / 3);
+  });
+
   test("a shot over the speed limit fails the check and names itself", () => {
     const fast = structuredClone(storyboard);
     // A fast pan at the shot's own zoom, still on the plate: a higher zoom trips the plate's

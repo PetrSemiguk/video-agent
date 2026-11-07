@@ -316,6 +316,24 @@ Rules:
   Pseudo-pitch magnifies the near edge (~5 % at 6°, ~15 % at 25°), so keep a margin.
 - **Speed limits in episodes:** pan `motion.camera.maxPanPx` (9 px/frame) and zoom at the frame's corners `maxZoomPx` (16), apart; while a text layer is on screen a zoom keeps `maxZoomWithLabelPx` (9). `followLine` chases its aim point and zoom within `maxPanPx` and `maxZoomPx`,
   which episodes always pass; the storyboard check and `vap.qa.motion --check` fail on any preset above them.
+- **A plate crossfade shows both plates, so its pose must be legal on each.** The outgoing plate
+  is allowed `FADE_OUT_MAX_MAG` (1.4) magnification for the zoom-through, but **not** a visible
+  edge, and the incoming plate gets the normal limits from the first crossfade frame. Two plates
+  that overlap only partly therefore leave a narrow band of poses where a change is possible: for
+  the Egypt episode the `egypt` plate stops at lat 14 and `nile-basin` at lat 33, which leaves
+  zoom about 5.48 at lat 22.6–25.5. Keep the camera still through the dissolve (`settle`, below)
+  and do any zoom-out after it: zooming out while the old plate is still on screen reaches further
+  towards its edges than the pose at the cut suggests.
+- **Leave headroom under a plate's native zoom.** A framing's zoom is a key, and the spline
+  between keys overshoots, so a shot sitting exactly on `native` magnifies past 1:1 between keys.
+  The Egypt episode's `coast` at 6.62 on a plate native to 6.760 did this. Allow about 0.1.
+- **`settle` stops the camera at a cut.** The camera path is one C2 spline across the whole
+  episode: velocity carries through a key. A long move into a shot that then barely moves has
+  nowhere to put that velocity, so the picture coasts past the framing — in the Egypt episode by
+  366 px, off the plate's south edge, in the middle of an 8.6 s shot that was supposed to sit
+  still. `settle: true` on a shot clamps the joint at its start to zero velocity and ends the
+  spline's run there, which both stops the coast and decouples the shot from the move before it.
+  Use it when a shot arrives and rests, and when a plate change should dissolve on a still frame.
 - **Every frame is verified** (plate edges never visible, magnification within limits) before
   rendering; `npm test` runs the same check on the showreel timeline.
 

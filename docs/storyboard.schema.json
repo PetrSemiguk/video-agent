@@ -219,6 +219,9 @@
             "minItems": 4,
             "maxItems": 4
           },
+          "settle": {
+            "type": "boolean"
+          },
           "camera": {
             "oneOf": [
               {

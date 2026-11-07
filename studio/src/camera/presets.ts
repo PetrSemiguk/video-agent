@@ -111,7 +111,12 @@ export const establish = (
   },
 });
 
-/** Barely perceptible constant motion for "static" shots (the camera rarely stands still). */
+/**
+ * Barely perceptible constant motion for "static" shots (the camera rarely stands still).
+ * `amount` and `zoom` are the move over `motion.camera.driftFrames`, so this is a rate: a drift
+ * covers ground in proportion to how long it lasts. A fixed amount made a short drift a fast
+ * one, and a few frames of fast move next to a slow shot bend the C2 spline backwards.
+ */
 export const drift = (
   frames: number,
   opts: { dir?: [number, number]; amount?: number; zoom?: number } = {},
@@ -121,14 +126,15 @@ export const drift = (
   keys: (s, ctx) => {
     const [ux, uy] = opts.dir ?? [1, 0];
     const len = Math.hypot(ux, uy) || 1;
-    const d = (opts.amount ?? 0.015) * ctx.width * metersPerPx(s.zoom);
+    const rate = frames / motion.camera.driftFrames;
+    const d = (opts.amount ?? 0.015) * rate * ctx.width * metersPerPx(s.zoom);
     return [
       {
         f: frames,
         ...s,
         x: s.x + (ux / len) * d,
         y: s.y - (uy / len) * d,
-        zoom: s.zoom + (opts.zoom ?? 0.015),
+        zoom: s.zoom + (opts.zoom ?? 0.015) * rate,
       },
     ];
   },

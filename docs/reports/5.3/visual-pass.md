@@ -1,7 +1,8 @@
 # Egypt visual pass — nine owner findings
 
-Status: **seven of nine done; the framing rule (2) is built and has exposed more than it can fix
-on the current plates, so the episode is not re-rendered yet.**
+Status: **all nine done. The episode's camera passes on every shot, every section has a wide
+shot, and the preview is built. The full MP4 is not re-rendered yet: the render guard refuses
+below 6 GB of free RAM and the machine has about 5 GB (see "The render" at the end).**
 
 ## Done
 
@@ -70,7 +71,7 @@ Compare: `studio/out/grade-compare-egypt.png` (whole frame and a Delta crop at p
 from the new `vap.geo.grade_compare`. Both Egypt plates were rebuilt at their original sizes;
 `china-east-hs05` and `europe` still carry v2 and should be rebuilt when convenient.
 
-## The plate rule, and where the Egypt framings stand
+## 2. The plate rule, the framings, and the camera engine
 
 ### Room around the subject is now a rule with a check
 
@@ -102,69 +103,124 @@ ones to within 0.1% — 2,962.0 vs 2,963.3 km for the Nile, 1,151.9 vs 1,152.5 f
 reach, 227.4 vs 227.5 for the Damietta branch — and all endpoints are identical. The band was
 rebuilt on the new plate: 40,411 km², unchanged at 4.0% of Egypt.
 
-### The framings are not finished
+### The framings, finished
 
-The new plate fixed every shot on it that had been running off the north edge. What remains is
-four shots on the **basin** plate and at the plate-change joints:
+The honest next step named in the first draft of this report was an editorial pass by the
+storyboarder, not more nudging. That is what this was. First the failures were measured properly:
+`verifyPlates` throws on the first bad frame, so one run only ever shows one failure per shot. A
+harness that collects every bad frame instead found **9 bad stretches across 7 of 28 shots**, not
+the 4 the earlier pass could see, and said for each whether the bad pose sat **on** a camera key
+(a framing the storyboard asked for) or **between** keys (the spline's own excursion). That
+distinction decided every fix below. The record is `camera-egypt-v3.txt`.
 
-| Shot | Failure |
-|---|---|
-| `share-86` | plate edge within −2.4 px at frame 1 (needs ≥ 2) |
-| `rivers` | −127 px at frame 0, the joint out of `share-86` |
-| `recap` | −154 px at frame 0, the joint out of `ethiopia` |
-| `green` | −124 px at frame 0, the joint out of `recap` |
+Four causes, all different from "the camera overshoots at the joints":
 
-These are camera-spline overshoots at joints, not plate-room failures: the basin plate passes the
-room check for what the episode frames on it. The cause is the shot order — the episode walks from
-the Ethiopian highlands (lat ~10) to Egypt (lat ~27) and back more than once, and with each shot
-now pointed at its own subject the camera has to travel far between neighbours. Five tuning passes
-moved the numbers around without converging; each change propagates through the spline to its
-neighbours, and the last pass made `green` five times worse, so I reverted it.
+1. **Two shots asked for framings that are off the plate.** `share-86` and `ethiopia` were pointed
+   at the Ethiopian highlands at the basin plate's widest zoom, which puts the plate's south edge
+   in frame: -127 px and -154 px at their own target poses, -562 px mid-shot. The basin plate
+   fails the room check for that subject - offsets **0.271 down against a 0.167 limit** - and the
+   earlier claim that it "passes the room check for what the episode frames on it" was wrong. The
+   other three subjects on that plate do have room (0.06-0.11).
+2. **Two shots asked for a zoom past their plate's native zoom.** `recap` at 5.62 and `rest` at
+   5.58 on a basin plate sharp to **5.569** - magnification 1.036 and 1.008. `rest` is on the
+   egypt plate but crossfades onto the basin one, so its pose has to be legal there too.
+3. **A plate crossfade must be legal on both plates, and a zoom-out during one is not.** The
+   `recap` to `green` dissolve put a basin framing at lat 20.6 on the egypt plate, whose south
+   edge is lat 14: -124 px. The egypt and basin plates overlap only between about lat 22.6 and
+   25.5 at zoom 5.48, which is the whole band in which a change between them is possible at all.
+4. **The spline cannot stop without overshooting.** `highlands` travels from Egypt to the basin
+   and `share-86` then asks for almost the same frame, so the velocity at that joint had nowhere
+   to go: the picture coasted **366 px off the plate's south edge in the middle of an 8.6 s shot**
+   whose own framing has 92 px of margin.
 
-**This needs an editorial pass, not more nudging:** intermediate framings, or a shot order that
-does not cross the basin twice, or a `hold` with a reason at the joints. That is the
-storyboarder's work, and it is the honest next step.
+Cause 4 needed a mechanism that did not exist. `Segment.stillStart` already clamps a joint to zero
+velocity and ends the spline's run there, but only `hold` set it. A shot can now carry
+**`settle: true`**, which does the same at its own cut. Measured on the pilot: without it the
+camera is still moving 1.63 px/frame at the cut and drifts 51 px past the framing it was given;
+with it, 0.003 px/frame and 14 px, the remainder being the ease towards the next shot. A settle
+stops the camera; it does not freeze it. Every plate change in the episode now settles, so each
+dissolve happens on a still frame - which is also what fixes cause 3, since a camera that is not
+zooming out while the old plate is still on screen stays inside the narrow band of legal poses.
 
-**So the Egypt episode still does not build, and the render, `episode-qa` and the step review have
-not run.** Everything else in this report is in and tested.
+The editorial half of cause 1 is the part no nudging could reach. On the `nile-basin` plate the
+Ethiopian highlands **cannot be both centred and wide**: centring them needs zoom 5.72, past the
+plate's native 5.569. That is the room rule's own conclusion, and the answer is not a worse
+framing but the right subject. The three shots that name the highlands are about where the Nile's
+water comes from - the basin, with the highlands lit inside it - and `rivers` is the shot that is
+actually about them close up. `docs/visual-grammar.md` now states both readings a share shot may
+take, and that the frame and the declaration have to match.
 
-## 2. The framing rule — built, and it found more than I could fix
+### One defect in the camera engine, found on the way
 
-`verifyEpisodeCamera` now fails a shot whose subject does not settle in the **middle third** of
-the frame, from `subject` bounds declared per shot (`subjectOnScreen`, `SUBJECT_BAND`).
+With the framings fixed, `open` still grazed the plate's north edge - and its latitude never
+moved. The **zoom dipped 0.028 backwards** in mid-shot, which at a wide framing with 188 px of
+margin is enough to leave the plate. The cause is `drift`: its `amount` and `zoom` were a fixed
+move regardless of how many frames it lasted, so the 9-frame drift that `sync.ts` appends when a
+shot absorbs a short pause pushed **four times faster** than the 167-frame shot before it, and the
+C2 spline dipped backwards ahead of it to stay smooth. `drift` is documented as "barely
+perceptible constant motion", which is a rate, so it is now one: the amounts are measured over
+`motion.camera.driftFrames` (90) and scale with duration. A 9-frame drift covers a tenth of what a
+90-frame one does, and a 90-frame drift is unchanged. This affected every shot that absorbs a
+pause, not only Egypt's opener.
 
-It immediately found **12 of Egypt's 28 shots** pointing away from their own subject — including
-`recap` at **86% down**, which is the 2:48 frame where the valley sat at the edge with Arabia
-filling half the screen. Pointing the cameras at their subjects fixed all 28.
+### What the plate rebuild bought, collected
 
-**But it then pushed ten shots off the plate.** The `egypt` plate stops at 33° N and Egypt reaches
-31.7° N; `nile-basin` stops at 33° N as well. With the subjects honoured, the camera path runs out
-of plate at the turns: `shares` and `source` overshoot the north edge by 88 and 108 px at their
-joints, `rivers` and `recap` by 70 px, and six more are within 5 px of it. Two gentler passes
-halved the overshoots without clearing them.
+The previous pass rebuilt the `egypt` plate with room around Egypt but left the framings that had
+been drawn for the old one. With the stale ones replaced, the episode went from **0 wide shots to
+4**, and `open` is now both wide (it ends at 4.990, inside the 5.040 bar) and centred on Egypt
+(50/49) - which the old plate could not do at once, and which was the reason it was rebuilt.
 
-The same extent also makes **wide and centred mutually exclusive**. For Egypt's centre to sit in
-the middle third the frame must satisfy `mpp ≤ 2228` m/px, that is zoom ≥ 5.135; for the frame to
-count as wide it must be zoom ≤ 5.155. A window of 0.02 — and inside it the plate's north edge
-shows. A sweep of 48 (zoom, latitude) pairs found no framing that is safe, wide and centred.
+| Shot | Was | Now | Why |
+|---|---|---|---|
+| `open` | 5.36, Egypt at 34% down | 4.96 to 4.990, Egypt at 50/49 | The plate has room now; its comment still reasoned about the old edge |
+| `line` | - | `settle` | A wide frame has only ~100 px of margin, so its joint must not swing |
+| `coast` | 6.62 | 6.5 | 0.14 under a native 6.760 is not enough headroom for the spline |
+| `south` | lat 24.8 | lat 23.6 | Leans towards where the river comes from, and shortens the traverse |
+| `highlands` | 5.25 on the highlands | 4.94 on the basin, `settle` | Wide or centred, never both; dissolve on a still frame |
+| `share-86` | 4.9, -562 px off plate | 4.79 on the basin, `settle` | The section's wide shot; the share's denominator |
+| `nasa` | 6.3, subject the valley | 5.6, subject Egypt | A share of all Egypt, and it carries half the pull-back |
+| `reading` | 5.45 | 5.00 | The Dam's wide shot, and the scale change The Answer opens on |
+| `rest` | 5.58 | 5.48, lat 24.6 | Legal on the basin plate it crossfades onto |
+| `ethiopia` | 4.89, -154 px off plate | 4.79 on the basin, `settle` | The callback to `highlands` |
+| `recap` | 5.62, lat 20.6 | 5.48, lat 22.6 | Within the plate's native zoom, legal on both plates |
+| `aswan`, `green` | - | `settle` | The other two plate changes |
 
-**Recommended fix: give the episode a plate with room around its subject** — rebuild `egypt` on a
-bbox such as `7,14,55,38`, which puts Egypt in the middle of the plate instead of against its top
-edge (that box also happens to match the 6950×3909 Mercator aspect almost exactly). It resolves
-the edge overshoots and the wide-versus-centred conflict together. The cost is re-extracting the
-plate's vector data, which can change the geometry the storyboard inlines, so I did not do it
-mid-session.
+### Rhythm
 
-**Until then the Egypt episode does not build**, and the render, `episode-qa` and the step review
-have not run. Everything else above is in and tested.
+Measured on the built preview, `rhythm-egypt-nile-v3.json`:
+
+| | Before this pass | After |
+|---|---|---|
+| Wide shots | 0 of 28 | **4 of 28** (`open`, `share-86`, `reading`, `ethiopia`) |
+| Sections with a wide shot | 0 of 4 | **4 of 4** |
+| Warnings | 7 | **2** |
+
+Both remaining warnings are runs at one scale: `source, flood, south, highlands` (four regional)
+and `question, answer, rest` (three). Shots per minute (9.22) and hard cuts per minute (1.37) are
+unchanged, and hard cuts are inside the 1-3 range the style guide asks for. The graphic share is
+0%: every shot acts on the map.
+
+### The render
+
+The storyboard validates, the camera passes on all 28 shots, the preview is built, the 29 review
+stills and the sheets are regenerated, and the camera audit reports all **5271 frames credited**,
+max centre step 6.77 px/frame, max step change 0.73 px/frame. The full MP4 is **not** re-rendered:
+`vap.system.check_render_memory` refuses below 6 GB of free RAM and the machine had 6.3 GB when
+this pass began and 4.95 GB when the render was due, all of it the desktop's own applications.
+The guard exists because a render out of memory is killed rather than slowed, so it was not worked
+around. Re-run `uv run python -m vap.episode build egypt-nile --stage render` with a few GB free;
+everything it depends on is cached and green.
 
 ## Checks
 
 | Check | Result |
 |---|---|
-| `npm test` | 168 passed |
+| `npm test` | 170 passed (2 new: `settle`, and drift as a rate) |
 | `npm run lint` | Clean |
-| `uv run pytest` | 329 passed |
+| `uv run pytest` | 333 passed |
 | `uv run ruff check .`, `ruff format --check` | Clean |
 | `validate:storyboard` | `egypt-nile` valid, `china-unity-pilot` valid |
-| `verifyEpisodeCamera` | Pilot passes; Egypt fails on 10 shots at the plate edges |
+| `verifyEpisodeCamera` | **Egypt passes on all 28 shots**; pilot passes |
+| Preview stage | Built, 58.3 s; max camera speed 8.19 px/frame over 5270 pairs |
+| Camera audit | 5271 of 5271 frames credited; max step 6.77 px, max step change 0.73 px |
+| Full MP4 render | **Not run** - the 6 GB RAM guard refused at 4.95 GB free |

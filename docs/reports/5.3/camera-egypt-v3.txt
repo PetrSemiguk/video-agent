@@ -1,0 +1,30 @@
+ 0 open         egypt   5.87s margin [187.6]            subj 50%/49%   pan   0.5 zoom   0.4 ok
+ 1 line         egypt   9.43s margin [279]              subj 51%/60%   pan   1.8 zoom   6.4 ok
+ 2 why          egypt   2.93s margin [1199.8]           subj 55%/49%   pan   2.2 zoom   4.2 ok
+ 3 cairo        egypt    4.7s margin [862.7]            subj 50%/37%   pan   3.6 zoom   3.7 ok
+ 4 shares       egypt  11.07s margin [817.7]            subj 54%/58%   pan     3 zoom   3.1 ok
+ 5 differ       egypt    6.2s margin [1239.4]           subj 63%/53%   pan   1.6 zoom   1.1 ok
+ 6 density      egypt  11.17s margin [1193.1]           subj 64%/47%   pan   0.9 zoom   0.8 ok
+ 7 desert       egypt   7.23s margin [1195]             subj 52%/46%   pan   3.6 zoom   3.1 ok
+ 8 coast        egypt   5.27s margin [790.1]            subj 47%/42%   pan     6 zoom   1.9 ok
+ 9 source       egypt   4.37s margin [789.6]            subj 50%/57%   pan   4.3 zoom   1.9 ok
+10 flood        egypt    8.3s margin [1005.6]           subj 52%/55%   pan   6.8 zoom   4.3 ok
+11 south        egypt   3.93s margin [160.3,155.6]      subj 51%/42%   pan   4.6 zoom   4.8 ok
+12 highlands    basin   2.47s margin [155.6]            subj 50%/50%   pan   6.5 zoom   8.6 ok
+13 share-86     basin   8.63s margin [95.2]             subj 50%/50%   pan   0.7 zoom   1.4 ok
+14 rivers       basin   7.43s margin [134.8]            subj 48%/58%   pan   3.2 zoom   3.2 ok
+15 another      basin      4s margin [243.7,71.3]       subj 49%/54%   pan   4.6 zoom   0.9 ok
+16 aswan        egypt    8.3s margin [71.3]             subj 51%/56%   pan   1.1 zoom   4.3 ok
+17 lake         egypt   6.97s margin [883.2]            subj 54%/39%   pan   1.4 zoom   2.8 ok
+18 sediment     egypt    9.4s margin [849.2]            subj 50%/57%   pan     1 zoom   1.2 ok
+19 strip        egypt    7.3s margin [981]              subj 53%/66%   pan   4.1 zoom   2.4 ok
+20 nasa         egypt    6.8s margin [833.1]            subj 51%/50%   pan   1.3 zoom   5.9 ok
+21 reading      egypt   4.43s margin [180.4]            subj 50%/49%   pan   0.2 zoom   6.1 ok
+22 question     egypt    3.6s margin [239]              subj 51%/46%   pan   0.6 zoom   8.1 ok
+23 answer       egypt   5.93s margin [1095.2]           subj 51%/53%   pan   2.6 zoom   6.7 ok
+24 rest         egypt   3.13s margin [384.5,73.8]       subj 39%/36%   pan   3.3 zoom   6.2 ok
+25 ethiopia     basin   4.37s margin [73.8]             subj 50%/50%   pan   4.1 zoom   5.7 ok
+26 recap        basin    5.9s margin [109.9,86.6]       subj 54%/63%   pan   2.6 zoom   4.9 ok
+27 green        egypt   6.57s margin [86.6]             subj 56%/44%   pan   3.2 zoom   2.2 ok
+
+0 of 28 shots fail
