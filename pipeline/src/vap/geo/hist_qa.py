@@ -72,7 +72,151 @@ FACTS_590 = [
     ("Guangzhou", 113.26, 23.13, "Sui"),
     ("Chengdu", 104.07, 30.57, "Sui"),
 ]
+# --- episode china-europe-unity (step 5.3b), on the east-asia and europe-wide plates ---
+EAST_ASIA = "east-asia"
+EUROPE_WIDE = "europe-wide"
+# The -221 frame is the map BEFORE the unification: Cliopatria still has Qi in Shandong, because
+# a frame can lag its event (docs/historical-sources.md). The episode uses it that way, as the
+# seven states still separate, and cn-0215-qin-empire as the empire that follows. See the errata.
+FACTS_CN_221BC = [
+    ("Xianyang/Xi'an", 108.94, 34.34, "Qin"),
+    ("Linzi area / Shandong (Qi not yet taken)", 118.30, 36.80, "Qi"),
+    ("Jiangling (Chu)", 112.19, 30.35, "Qin"),
+    ("Beijing (Yan, taken 222 BC)", 116.40, 39.90, "Qin"),
+]
+# Lingnan came in 214 BC, after the unification, so Guangzhou is still outside the empire.
+FACTS_CN_215BC = [
+    ("Xianyang/Xi'an", 108.94, 34.34, "Qin"),
+    ("Linzi area / Shandong (now Qin)", 118.30, 36.80, "Qin"),
+    ("Beijing (Yan)", 116.40, 39.90, "Qin"),
+    ("Jiangling (Chu)", 112.19, 30.35, "Qin"),
+    ("Chengdu (Shu)", 104.07, 30.57, "Qin"),
+    ("Guangzhou (Lingnan not yet)", 113.26, 23.13, "!Qin"),
+]
+FACTS_CN_100 = [
+    ("Chang'an", 108.94, 34.34, "Han"),
+    ("Guangzhou", 113.26, 23.13, "Han"),
+    ("Dunhuang (Hexi corridor)", 94.66, 40.14, "Han"),
+    ("Steppe north of the Gobi", 106.92, 47.92, "Xiongnu"),
+    ("Seoul", 126.98, 37.57, "Mahan"),
+]
+FACTS_CN_280 = [
+    ("Luoyang", 112.45, 34.62, "Jin"),
+    ("Chang'an", 108.94, 34.34, "Jin"),
+    ("Nanjing (Wu)", 118.78, 32.06, "Wu"),
+    ("Guangzhou (Wu)", 113.26, 23.13, "Wu"),
+    ("Hangzhou (Wu)", 120.16, 30.29, "Wu"),
+]
+FACTS_CN_592 = [
+    ("Chang'an", 108.94, 34.34, "Sui"),
+    ("Nanjing (Chen fell 589)", 118.78, 32.06, "Sui"),
+    ("Guangzhou", 113.26, 23.13, "Sui"),
+    ("Chengdu", 104.07, 30.57, "Sui"),
+]
+FACTS_CN_745 = [
+    ("Chang'an", 108.94, 34.34, "Tang"),
+    ("Guangzhou", 113.26, 23.13, "Tang"),
+    ("Kashgar (Western Regions)", 75.99, 39.47, "Tang"),
+    ("Lhasa", 91.11, 29.65, "Tibet"),
+    ("Mukden (Balhae)", 123.43, 41.80, "Balhae"),
+]
+# The Sixteen Prefectures, Beijing among them, were Liao's: the Song never held the north.
+FACTS_CN_980 = [
+    ("Kaifeng (Song capital)", 114.31, 34.80, "Song"),
+    ("Guangzhou", 113.26, 23.13, "Song"),
+    ("Beijing (Sixteen Prefectures)", 116.40, 39.90, "Liao"),
+    ("Mukden", 123.43, 41.80, "Liao"),
+]
+FACTS_CN_1140 = [
+    ("Kaifeng (lost 1127)", 114.31, 34.80, "Jin"),
+    ("Luoyang", 112.45, 34.62, "Jin"),
+    ("Hangzhou (Southern Song)", 120.16, 30.29, "Song"),
+    ("Guangzhou", 113.26, 23.13, "Song"),
+]
+FACTS_CN_1310 = [
+    ("Beijing (Dadu)", 116.40, 39.90, "Yuan"),
+    ("Hangzhou", 120.16, 30.29, "Yuan"),
+    ("Guangzhou", 113.26, 23.13, "Yuan"),
+    ("Lhasa", 91.11, 29.65, "Yuan"),
+    ("Steppe north of the Gobi", 106.92, 47.92, "Yuan"),
+]
+FACTS_CN_1400 = [
+    ("Nanjing (early Ming capital)", 118.78, 32.06, "Ming"),
+    ("Beijing", 116.40, 39.90, "Ming"),
+    ("Guangzhou", 113.26, 23.13, "Ming"),
+    ("Steppe (Northern Yuan)", 106.92, 47.92, "Northern Yuan"),
+    ("Seoul", 126.98, 37.57, "Joseon"),
+]
+# 1645: Beijing has fallen, the south has not. The Southern Ming is the point of this frame.
+FACTS_CN_1645 = [
+    ("Beijing", 116.40, 39.90, "Qing"),
+    ("Mukden", 123.43, 41.80, "Qing"),
+    ("Nanjing (Southern Ming)", 118.78, 32.06, "Ming"),
+    ("Guangzhou (Southern Ming)", 113.26, 23.13, "Ming"),
+    ("Hangzhou (Southern Ming)", 120.16, 30.29, "Ming"),
+]
+FACTS_CN_1800 = [
+    ("Beijing", 116.40, 39.90, "Qing"),
+    ("Guangzhou", 113.26, 23.13, "Qing"),
+    ("Kashgar (Xinjiang)", 75.99, 39.47, "Qing"),
+    ("Lhasa (Tibet)", 91.11, 29.65, "Qing"),
+    ("Steppe (Outer Mongolia)", 106.92, 47.92, "Qing"),
+    ("Seoul (tributary, not ruled)", 126.98, 37.57, "!Qing"),
+]
+FACTS_EU_395 = [
+    ("Rome", 12.50, 41.90, "Western Roman"),
+    ("London", -0.13, 51.51, "Western Roman"),
+    ("Paris", 2.35, 48.86, "Western Roman"),
+    ("Cordoba", -4.78, 37.89, "Western Roman"),
+    ("Kyiv (outside the empire)", 30.52, 50.45, "!Roman"),
+]
+# Justinian's reconquest: Italy is back, Gaul and Spain are not. A ribbon, not a block.
+FACTS_EU_555 = [
+    ("Rome", 12.50, 41.90, "Eastern Roman"),
+    ("Milan", 9.19, 45.46, "Eastern Roman"),
+    ("Paris (Franks)", 2.35, 48.86, "Frank"),
+    ("Cordoba (Visigoths)", -4.78, 37.89, "Visigoth"),
+    ("London (not Roman)", -0.13, 51.51, "!Roman"),
+]
+FACTS_EU_800 = [
+    ("Aachen", 6.08, 50.78, "Frank|Carolingian"),
+    ("Paris", 2.35, 48.86, "Frank|Carolingian"),
+    ("Milan", 9.19, 45.46, "Frank|Carolingian"),
+    ("Rome (Papal States)", 12.50, 41.90, "Papal"),
+    ("Cordoba", -4.78, 37.89, "C.rdoba"),
+]
+FACTS_EU_1800S = [
+    ("Berlin", 13.40, 52.52, "Prussia"),
+    ("Munich", 11.58, 48.14, "Bavaria"),
+    ("Vienna", 16.37, 48.21, "Austria"),
+    ("Paris", 2.35, 48.86, "France"),
+]
+FACTS_EU_1914W = [
+    ("Paris", 2.35, 48.86, "France|French"),
+    ("Berlin", 13.40, 52.52, "German"),
+    ("Vienna", 16.37, 48.21, "Austria"),
+    ("Warsaw (Congress Poland)", 21.01, 52.23, "Russia"),
+    ("London", -0.13, 51.51, "United Kingdom|Brit"),
+]
 LAYERS = {
+    "cn-0221-qin": (EAST_ASIA, FACTS_CN_221BC),
+    "cn-0215-qin-empire": (EAST_ASIA, FACTS_CN_215BC),
+    "cn-0100-han": (EAST_ASIA, FACTS_CN_100),
+    "cn-0280-division": (EAST_ASIA, FACTS_CN_280),
+    "cn-0592-sui": (EAST_ASIA, FACTS_CN_592),
+    "cn-0745-tang": (EAST_ASIA, FACTS_CN_745),
+    "cn-0980-song-liao": (EAST_ASIA, FACTS_CN_980),
+    "cn-1140-jin-southern-song": (EAST_ASIA, FACTS_CN_1140),
+    "cn-1310-yuan": (EAST_ASIA, FACTS_CN_1310),
+    "cn-1400-ming": (EAST_ASIA, FACTS_CN_1400),
+    "cn-1645-qing": (EAST_ASIA, FACTS_CN_1645),
+    "cn-1800-qing-peak": (EAST_ASIA, FACTS_CN_1800),
+    "eu-0395-rome": (EUROPE_WIDE, FACTS_EU_395),
+    "eu-0555-justinian": (EUROPE_WIDE, FACTS_EU_555),
+    "eu-0800-carolingian": (EUROPE_WIDE, FACTS_EU_800),
+    "eu-0850-verdun": (EUROPE_WIDE, FACTS_EU_800),
+    "eu-1815-confederation": (EUROPE_WIDE, FACTS_EU_1800S),
+    "eu-1914-ohm": (EUROPE_WIDE, FACTS_EU_1914W),
     "europe-1914": (EUROPE, FACTS_1914),
     "europe-1914-cliopatria": (EUROPE, FACTS_1914),
     "europe-1815": (EUROPE, FACTS_1815),

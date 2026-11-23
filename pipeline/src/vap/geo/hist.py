@@ -469,7 +469,10 @@ def align(records: list, meta: dict) -> tuple[dict, dict]:
     props, geoms = [], []
     for p, g in records:
         merc = shapely.transform(g, _to_merc)
-        clipped = _clean_polygonal(merc.intersection(land))
+        # Make the polity valid before the overlay, not after: a self-intersecting source
+        # polygon makes GEOS raise inside intersection(), so cleaning the result is too late.
+        # Cliopatria frame 555 does this at 10.4 E, 55.9 N (Denmark).
+        clipped = _clean_polygonal(_clean_polygonal(merc).intersection(land))
         if not clipped.is_empty:
             props.append(p)
             geoms.append(clipped)
