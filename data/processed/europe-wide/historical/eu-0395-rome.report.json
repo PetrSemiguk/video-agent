@@ -1,0 +1,261 @@
+{
+  "plate": "europe-wide",
+  "resolved_plate": "europe-wide",
+  "date": "0395-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 395,
+  "states": [
+    {
+      "name": "Sasanian Empire",
+      "valid_from": 387,
+      "valid_to": 395,
+      "area_km2": 2986291
+    },
+    {
+      "name": "Western Roman Empire",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 2132727
+    },
+    {
+      "name": "Eastern Roman Empire",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 1978658
+    },
+    {
+      "name": "Huns",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 1130158
+    },
+    {
+      "name": "Xionites",
+      "valid_from": 387,
+      "valid_to": 396,
+      "area_km2": 488436
+    },
+    {
+      "name": "Kidarites",
+      "valid_from": 390,
+      "valid_to": 401,
+      "area_km2": 473122
+    },
+    {
+      "name": "Lakhmid Kingdom",
+      "valid_from": 270,
+      "valid_to": 401,
+      "area_km2": 258842
+    },
+    {
+      "name": "Nobatia",
+      "valid_from": 347,
+      "valid_to": 646,
+      "area_km2": 147534
+    },
+    {
+      "name": "Kingdom of Armenia",
+      "valid_from": 387,
+      "valid_to": 395,
+      "area_km2": 143622
+    },
+    {
+      "name": "Caucasian Albania",
+      "valid_from": 387,
+      "valid_to": 438,
+      "area_km2": 74782
+    },
+    {
+      "name": "Makuria",
+      "valid_from": 347,
+      "valid_to": 568,
+      "area_km2": 65260
+    },
+    {
+      "name": "Caucasian Iberia",
+      "valid_from": 287,
+      "valid_to": 396,
+      "area_km2": 35797
+    },
+    {
+      "name": "Vandals",
+      "valid_from": 394,
+      "valid_to": 406,
+      "area_km2": 31904
+    },
+    {
+      "name": "Ripuarian Franks",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 28283
+    },
+    {
+      "name": "Lazica",
+      "valid_from": 306,
+      "valid_to": 395,
+      "area_km2": 24529
+    },
+    {
+      "name": "Norse",
+      "valid_from": 299,
+      "valid_to": 401,
+      "area_km2": 16295
+    },
+    {
+      "name": "Salian Franks",
+      "valid_from": 358,
+      "valid_to": 438,
+      "area_km2": 7101
+    },
+    {
+      "name": "Saxons",
+      "valid_from": 283,
+      "valid_to": 454,
+      "area_km2": 6335
+    },
+    {
+      "name": "Angles",
+      "valid_from": 387,
+      "valid_to": 475,
+      "area_km2": 1293
+    }
+  ],
+  "relation_rows_left_out": 1,
+  "slug": "eu-0395-rome",
+  "qa": {
+    "coast_outside_land_km2": 2407.9,
+    "coast_max_error_px": 0.64,
+    "land_covered": 0.3689,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 4883221,
+        "at": [
+          51.33,
+          50.88
+        ]
+      },
+      {
+        "area_km2": 6084062,
+        "at": [
+          7.56,
+          28.63
+        ]
+      },
+      {
+        "area_km2": 1823559,
+        "at": [
+          42.04,
+          27.5
+        ]
+      },
+      {
+        "area_km2": 190895,
+        "at": [
+          14.2,
+          57.75
+        ]
+      },
+      {
+        "area_km2": 83193,
+        "at": [
+          -8.13,
+          53.46
+        ]
+      },
+      {
+        "area_km2": 70495,
+        "at": [
+          -3.73,
+          56.71
+        ]
+      },
+      {
+        "area_km2": 107689,
+        "at": [
+          45.56,
+          42.94
+        ]
+      },
+      {
+        "area_km2": 116258,
+        "at": [
+          35.34,
+          21.96
+        ]
+      },
+      {
+        "area_km2": 39455,
+        "at": [
+          -2.26,
+          53.31
+        ]
+      },
+      {
+        "area_km2": 11497,
+        "at": [
+          -4.11,
+          50.6
+        ]
+      },
+      {
+        "area_km2": 7568,
+        "at": [
+          11.76,
+          55.36
+        ]
+      },
+      {
+        "area_km2": 2761,
+        "at": [
+          22.34,
+          58.28
+        ]
+      },
+      {
+        "area_km2": 3692,
+        "at": [
+          34.77,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 2105,
+        "at": [
+          -6.65,
+          58.13
+        ]
+      },
+      {
+        "area_km2": 1614,
+        "at": [
+          -6.31,
+          57.37
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 19,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Eastern Roman Empire",
+        "b": "Western Roman Empire",
+        "area_km2": 8.6,
+        "share_of_smaller": 0.0,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "sliver": 1
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

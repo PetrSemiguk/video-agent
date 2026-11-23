@@ -1,0 +1,238 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "-0221-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": -221,
+  "states": [
+    {
+      "name": "Seleucid Empire",
+      "valid_from": -223,
+      "valid_to": -219,
+      "area_km2": 2033531
+    },
+    {
+      "name": "(Warring States China)",
+      "valid_from": -222,
+      "valid_to": -219,
+      "area_km2": 1632451
+    },
+    {
+      "name": "Qin",
+      "valid_from": -222,
+      "valid_to": -219,
+      "area_km2": 1523240
+    },
+    {
+      "name": "Maurya Empire",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 1140195
+    },
+    {
+      "name": "Yuezhi",
+      "valid_from": -331,
+      "valid_to": -204,
+      "area_km2": 916154
+    },
+    {
+      "name": "Satavahana Dynasty",
+      "valid_from": -225,
+      "valid_to": -171,
+      "area_km2": 535339
+    },
+    {
+      "name": "Greco-Bactrian Kingdom",
+      "valid_from": -225,
+      "valid_to": -204,
+      "area_km2": 489263
+    },
+    {
+      "name": "Minyue",
+      "valid_from": -333,
+      "valid_to": -219,
+      "area_km2": 376736
+    },
+    {
+      "name": "Parthian Empire",
+      "valid_from": -223,
+      "valid_to": -219,
+      "area_km2": 253403
+    },
+    {
+      "name": "Atropatene",
+      "valid_from": -223,
+      "valid_to": -219,
+      "area_km2": 146719
+    },
+    {
+      "name": "Âu Lạc",
+      "valid_from": -256,
+      "valid_to": -209,
+      "area_km2": 140776
+    },
+    {
+      "name": "Qi",
+      "valid_from": -222,
+      "valid_to": -219,
+      "area_km2": 109211
+    },
+    {
+      "name": "Hadhramaut",
+      "valid_from": -350,
+      "valid_to": 183,
+      "area_km2": 86171
+    },
+    {
+      "name": "Kalinga",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 81474
+    }
+  ],
+  "relation_rows_left_out": 0,
+  "slug": "cn-0221-qin",
+  "qa": {
+    "coast_outside_land_km2": 1558.2,
+    "coast_max_error_px": 0.52,
+    "land_covered": 0.1535,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 21668128,
+        "at": [
+          108.52,
+          42.75
+        ]
+      },
+      {
+        "area_km2": 276875,
+        "at": [
+          159.5,
+          56.84
+        ]
+      },
+      {
+        "area_km2": 710671,
+        "at": [
+          54.47,
+          20.84
+        ]
+      },
+      {
+        "area_km2": 229550,
+        "at": [
+          139.89,
+          37.62
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 78337,
+        "at": [
+          143.32,
+          43.49
+        ]
+      },
+      {
+        "area_km2": 97868,
+        "at": [
+          74.71,
+          16.52
+        ]
+      },
+      {
+        "area_km2": 74151,
+        "at": [
+          121.38,
+          16.83
+        ]
+      },
+      {
+        "area_km2": 37056,
+        "at": [
+          131.14,
+          32.5
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 34021,
+        "at": [
+          109.63,
+          19.17
+        ]
+      },
+      {
+        "area_km2": 18552,
+        "at": [
+          133.37,
+          33.56
+        ]
+      },
+      {
+        "area_km2": 1985,
+        "at": [
+          164.05,
+          58.84
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      },
+      {
+        "area_km2": 1862,
+        "at": [
+          137.65,
+          54.91
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 14,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "(Warring States China)",
+        "b": "Qin",
+        "area_km2": 1517240.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Qi",
+        "b": "(Warring States China)",
+        "area_km2": 103204.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 2
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

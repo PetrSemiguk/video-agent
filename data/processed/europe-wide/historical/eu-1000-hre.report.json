@@ -1,0 +1,983 @@
+{
+  "plate": "europe-wide",
+  "resolved_plate": "europe-wide",
+  "date": "1000-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1000,
+  "states": [
+    {
+      "name": "Ghaznavid Empire",
+      "valid_from": 1000,
+      "valid_to": 1014,
+      "area_km2": 2127932
+    },
+    {
+      "name": "Fatimid Caliphate",
+      "valid_from": 990,
+      "valid_to": 1014,
+      "area_km2": 1946467
+    },
+    {
+      "name": "Kimek-Kipchak confederation",
+      "valid_from": 1000,
+      "valid_to": 1045,
+      "area_km2": 1458493
+    },
+    {
+      "name": "Kievan Rus'",
+      "valid_from": 990,
+      "valid_to": 1017,
+      "area_km2": 1170311
+    },
+    {
+      "name": "Buyid Dynasty",
+      "valid_from": 1000,
+      "valid_to": 1027,
+      "area_km2": 1133689
+    },
+    {
+      "name": "Kara-Khanids",
+      "valid_from": 1000,
+      "valid_to": 1009,
+      "area_km2": 919964
+    },
+    {
+      "name": "Byzantine Empire",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 864780
+    },
+    {
+      "name": "Holy Roman Empire",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 701841
+    },
+    {
+      "name": "(Holy Roman Empire)",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 701841
+    },
+    {
+      "name": "Caliphate of Córdoba",
+      "valid_from": 990,
+      "valid_to": 1009,
+      "area_km2": 564714
+    },
+    {
+      "name": "(Kingdom of France)",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 420380
+    },
+    {
+      "name": "Oghuz Turks",
+      "valid_from": 990,
+      "valid_to": 1045,
+      "area_km2": 414814
+    },
+    {
+      "name": "Hamdanid Emirates",
+      "valid_from": 990,
+      "valid_to": 1027,
+      "area_km2": 399572
+    },
+    {
+      "name": "Old Kingdom of Norway",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 294510
+    },
+    {
+      "name": "Seljuk Dynasty",
+      "valid_from": 1000,
+      "valid_to": 1033,
+      "area_km2": 292185
+    },
+    {
+      "name": "First Bulgarian Empire",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 281113
+    },
+    {
+      "name": "Kingdom of Hungary",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 271878
+    },
+    {
+      "name": "(Kingdom of Poland)",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 248543
+    },
+    {
+      "name": "Kingdom of Poland",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 248543
+    },
+    {
+      "name": "Makuria",
+      "valid_from": 850,
+      "valid_to": 1110,
+      "area_km2": 212627
+    },
+    {
+      "name": "Kingdom of England",
+      "valid_from": 980,
+      "valid_to": 1014,
+      "area_km2": 132886
+    },
+    {
+      "name": "(Kingdom of England)",
+      "valid_from": 980,
+      "valid_to": 1014,
+      "area_km2": 132886
+    },
+    {
+      "name": "Kingdom of León",
+      "valid_from": 990,
+      "valid_to": 1009,
+      "area_km2": 132745
+    },
+    {
+      "name": "Kingdom of Arles",
+      "valid_from": 990,
+      "valid_to": 1009,
+      "area_km2": 116942
+    },
+    {
+      "name": "Duchy of Aquitaine",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 106262
+    },
+    {
+      "name": "Kingdom of Sweden",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 91891
+    },
+    {
+      "name": "Kingdom of Croatia",
+      "valid_from": 1000,
+      "valid_to": 1017,
+      "area_km2": 90424
+    },
+    {
+      "name": "Kingdom of Denmark",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 82592
+    },
+    {
+      "name": "(Kingdom of Denmark)",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 82592
+    },
+    {
+      "name": "Duchy of Bohemia",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 81126
+    },
+    {
+      "name": "Georgia",
+      "valid_from": 980,
+      "valid_to": 1009,
+      "area_km2": 61413
+    },
+    {
+      "name": "Scandinavian minor kingdoms",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 53937
+    },
+    {
+      "name": "Bagratid Armenia",
+      "valid_from": 1000,
+      "valid_to": 1009,
+      "area_km2": 53011
+    },
+    {
+      "name": "Kingdom of France",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 49071
+    },
+    {
+      "name": "Kingdom of Alba",
+      "valid_from": 980,
+      "valid_to": 1033,
+      "area_km2": 49027
+    },
+    {
+      "name": "Volga Bulgaria",
+      "valid_from": 682,
+      "valid_to": 1071,
+      "area_km2": 44239
+    },
+    {
+      "name": "(Brythonic Kingdoms)",
+      "valid_from": 980,
+      "valid_to": 1033,
+      "area_km2": 43365
+    },
+    {
+      "name": "Shirvan",
+      "valid_from": 980,
+      "valid_to": 1027,
+      "area_km2": 41891
+    },
+    {
+      "name": "Kingdom of Vaspurakan",
+      "valid_from": 990,
+      "valid_to": 1017,
+      "area_km2": 40952
+    },
+    {
+      "name": "Duchy of Gascony",
+      "valid_from": 990,
+      "valid_to": 1017,
+      "area_km2": 40197
+    },
+    {
+      "name": "Kingdom of Castile",
+      "valid_from": 961,
+      "valid_to": 1009,
+      "area_km2": 39927
+    },
+    {
+      "name": "Duchy of Normandy",
+      "valid_from": 990,
+      "valid_to": 1065,
+      "area_km2": 37896
+    },
+    {
+      "name": "Duchy of Brittany",
+      "valid_from": 990,
+      "valid_to": 1146,
+      "area_km2": 37206
+    },
+    {
+      "name": "Barghawata Conference",
+      "valid_from": 793,
+      "valid_to": 1014,
+      "area_km2": 36301
+    },
+    {
+      "name": "Viking settlements",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 35261
+    },
+    {
+      "name": "County of Rouergue",
+      "valid_from": 990,
+      "valid_to": 1055,
+      "area_km2": 27862
+    },
+    {
+      "name": "County of Ribagorza",
+      "valid_from": 990,
+      "valid_to": 1014,
+      "area_km2": 25644
+    },
+    {
+      "name": "County of Champagne",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 25388
+    },
+    {
+      "name": "Emirate of Sicily",
+      "valid_from": 960,
+      "valid_to": 1065,
+      "area_km2": 22401
+    },
+    {
+      "name": "County of Toulouse",
+      "valid_from": 990,
+      "valid_to": 1027,
+      "area_km2": 21359
+    },
+    {
+      "name": "County of Flanders",
+      "valid_from": 990,
+      "valid_to": 1009,
+      "area_km2": 19129
+    },
+    {
+      "name": "Brythons",
+      "valid_from": 980,
+      "valid_to": 1033,
+      "area_km2": 18517
+    },
+    {
+      "name": "County of Vermandois",
+      "valid_from": 990,
+      "valid_to": 1084,
+      "area_km2": 17405
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 990,
+      "valid_to": 1033,
+      "area_km2": 15874
+    },
+    {
+      "name": "County of Maine",
+      "valid_from": 990,
+      "valid_to": 1055,
+      "area_km2": 13553
+    },
+    {
+      "name": "Duchy of Benevento",
+      "valid_from": 990,
+      "valid_to": 1009,
+      "area_km2": 12882
+    },
+    {
+      "name": "County of Blôis",
+      "valid_from": 990,
+      "valid_to": 1027,
+      "area_km2": 11218
+    },
+    {
+      "name": "Giudicato of Cagliari",
+      "valid_from": 911,
+      "valid_to": 1014,
+      "area_km2": 10263
+    },
+    {
+      "name": "County of Anjou",
+      "valid_from": 990,
+      "valid_to": 1045,
+      "area_km2": 9760
+    },
+    {
+      "name": "Strathclyde",
+      "valid_from": 980,
+      "valid_to": 1027,
+      "area_km2": 9426
+    },
+    {
+      "name": "Giudicato of Logudoro",
+      "valid_from": 866,
+      "valid_to": 1014,
+      "area_km2": 8247
+    },
+    {
+      "name": "Republic of Venice",
+      "valid_from": 1000,
+      "valid_to": 1033,
+      "area_km2": 6985
+    },
+    {
+      "name": "Emirate of Nekor",
+      "valid_from": 980,
+      "valid_to": 1014,
+      "area_km2": 6813
+    },
+    {
+      "name": "Qarmatians",
+      "valid_from": 980,
+      "valid_to": 1065,
+      "area_km2": 6700
+    },
+    {
+      "name": "Kingdom of Gwynedd",
+      "valid_from": 960,
+      "valid_to": 1039,
+      "area_km2": 6364
+    },
+    {
+      "name": "County of Barcelona",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 6142
+    },
+    {
+      "name": "Principality of Salerno",
+      "valid_from": 990,
+      "valid_to": 1045,
+      "area_km2": 5232
+    },
+    {
+      "name": "County of Pallars",
+      "valid_from": 990,
+      "valid_to": 1009,
+      "area_km2": 4779
+    },
+    {
+      "name": "Giudicato of Gallura",
+      "valid_from": 866,
+      "valid_to": 1014,
+      "area_km2": 4598
+    },
+    {
+      "name": "Kingdom of Powys",
+      "valid_from": 960,
+      "valid_to": 1039,
+      "area_km2": 4359
+    },
+    {
+      "name": "County of Vexin",
+      "valid_from": 990,
+      "valid_to": 1071,
+      "area_km2": 4130
+    },
+    {
+      "name": "County of Berga",
+      "valid_from": 990,
+      "valid_to": 1002,
+      "area_km2": 4047
+    },
+    {
+      "name": "Giudicato of Arborea",
+      "valid_from": 911,
+      "valid_to": 1014,
+      "area_km2": 3855
+    },
+    {
+      "name": "County of Rosellón",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 3796
+    },
+    {
+      "name": "County of Urgell",
+      "valid_from": 1000,
+      "valid_to": 1014,
+      "area_km2": 3260
+    },
+    {
+      "name": "County of Osona",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 2257
+    },
+    {
+      "name": "Kingdom of Brycheiniog",
+      "valid_from": 960,
+      "valid_to": 1055,
+      "area_km2": 1962
+    },
+    {
+      "name": "Kingdom of Morgannwg",
+      "valid_from": 960,
+      "valid_to": 1045,
+      "area_km2": 1510
+    },
+    {
+      "name": "Kingdom of Gwent",
+      "valid_from": 960,
+      "valid_to": 1045,
+      "area_km2": 1268
+    },
+    {
+      "name": "Duchy of Naples",
+      "valid_from": 990,
+      "valid_to": 1027,
+      "area_km2": 770
+    },
+    {
+      "name": "County of Ampuria",
+      "valid_from": 1000,
+      "valid_to": 1002,
+      "area_km2": 404
+    },
+    {
+      "name": "Principality of Capua",
+      "valid_from": 990,
+      "valid_to": 1009,
+      "area_km2": 384
+    },
+    {
+      "name": "Republic of Amalfi",
+      "valid_from": 960,
+      "valid_to": 1027,
+      "area_km2": 96
+    }
+  ],
+  "relation_rows_left_out": 1,
+  "slug": "eu-1000-hre",
+  "qa": {
+    "coast_outside_land_km2": 3017.9,
+    "coast_max_error_px": 0.64,
+    "land_covered": 0.5655,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 2631785,
+        "at": [
+          45.36,
+          51.25
+        ]
+      },
+      {
+        "area_km2": 5646925,
+        "at": [
+          7.26,
+          27.58
+        ]
+      },
+      {
+        "area_km2": 1401495,
+        "at": [
+          45.22,
+          25.53
+        ]
+      },
+      {
+        "area_km2": 212012,
+        "at": [
+          24.54,
+          56.54
+        ]
+      },
+      {
+        "area_km2": 76768,
+        "at": [
+          -8.39,
+          53.46
+        ]
+      },
+      {
+        "area_km2": 75802,
+        "at": [
+          59.92,
+          45.07
+        ]
+      },
+      {
+        "area_km2": 116392,
+        "at": [
+          35.34,
+          21.96
+        ]
+      },
+      {
+        "area_km2": 46094,
+        "at": [
+          12.85,
+          53.19
+        ]
+      },
+      {
+        "area_km2": 7335,
+        "at": [
+          53.22,
+          45.99
+        ]
+      },
+      {
+        "area_km2": 2761,
+        "at": [
+          22.34,
+          58.28
+        ]
+      },
+      {
+        "area_km2": 2856,
+        "at": [
+          52.55,
+          42.24
+        ]
+      },
+      {
+        "area_km2": 3176,
+        "at": [
+          48.86,
+          38.27
+        ]
+      },
+      {
+        "area_km2": 2944,
+        "at": [
+          -0.3,
+          39.27
+        ]
+      },
+      {
+        "area_km2": 1070,
+        "at": [
+          22.69,
+          58.89
+        ]
+      },
+      {
+        "area_km2": 869,
+        "at": [
+          30.56,
+          59.9
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 83,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Holy Roman Empire",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 689666.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of Poland)",
+        "b": "Kingdom of Poland",
+        "area_km2": 244875.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of England",
+        "b": "(Kingdom of England)",
+        "area_km2": 125099.0,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "Duchy of Aquitaine",
+        "area_km2": 104731.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Denmark",
+        "b": "(Kingdom of Denmark)",
+        "area_km2": 67891.0,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "Kingdom of France",
+        "area_km2": 48815.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Duchy of Gascony",
+        "b": "(Kingdom of France)",
+        "area_km2": 39611.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "Duchy of Normandy",
+        "area_km2": 34526.9,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "Duchy of Brittany",
+        "area_km2": 33246.0,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Rouergue",
+        "b": "(Kingdom of France)",
+        "area_km2": 27870.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "County of Champagne",
+        "area_km2": 25362.0,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Toulouse",
+        "b": "(Kingdom of France)",
+        "area_km2": 21363.1,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Flanders",
+        "b": "(Kingdom of France)",
+        "area_km2": 17369.1,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Vermandois",
+        "b": "(Kingdom of France)",
+        "area_km2": 17218.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Brythons",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 14631.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Maine",
+        "b": "(Kingdom of France)",
+        "area_km2": 13545.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Blôis",
+        "b": "(Kingdom of France)",
+        "area_km2": 11209.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "County of Anjou",
+        "area_km2": 9754.2,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Strathclyde",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 9025.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Gwynedd",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 4686.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Powys",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 4351.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Vexin",
+        "b": "(Kingdom of France)",
+        "area_km2": 4125.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Brycheiniog",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 1959.0,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Morgannwg",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 1280.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Gwent",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 1235.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Berga",
+        "b": "County of Rosellón",
+        "area_km2": 142.6,
+        "share_of_smaller": 0.0376,
+        "kind": "conflict"
+      },
+      {
+        "a": "County of Toulouse",
+        "b": "County of Urgell",
+        "area_km2": 59.3,
+        "share_of_smaller": 0.0182,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "County of Urgell",
+        "area_km2": 59.3,
+        "share_of_smaller": 0.0182,
+        "kind": "sliver"
+      },
+      {
+        "a": "First Bulgarian Empire",
+        "b": "Byzantine Empire",
+        "area_km2": 47.8,
+        "share_of_smaller": 0.0002,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Toulouse",
+        "b": "County of Rosellón",
+        "area_km2": 47.4,
+        "share_of_smaller": 0.0125,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "County of Rosellón",
+        "area_km2": 47.4,
+        "share_of_smaller": 0.0125,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Barcelona",
+        "b": "County of Osona",
+        "area_km2": 35.8,
+        "share_of_smaller": 0.0159,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Toulouse",
+        "b": "County of Berga",
+        "area_km2": 23.7,
+        "share_of_smaller": 0.0059,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "County of Berga",
+        "area_km2": 23.7,
+        "share_of_smaller": 0.0059,
+        "kind": "sliver"
+      },
+      {
+        "a": "Holy Roman Empire",
+        "b": "(Kingdom of France)",
+        "area_km2": 20.6,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 20.6,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Flanders",
+        "b": "Kingdom of France",
+        "area_km2": 17.6,
+        "share_of_smaller": 0.001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of Gwynedd",
+        "b": "Kingdom of Powys",
+        "area_km2": 17.3,
+        "share_of_smaller": 0.004,
+        "kind": "sliver"
+      },
+      {
+        "a": "Holy Roman Empire",
+        "b": "County of Flanders",
+        "area_km2": 13.3,
+        "share_of_smaller": 0.0008,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Flanders",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 13.3,
+        "share_of_smaller": 0.0008,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Rosellón",
+        "b": "County of Ampuria",
+        "area_km2": 11.9,
+        "share_of_smaller": 0.0298,
+        "kind": "conflict"
+      },
+      {
+        "a": "Kingdom of Gwent",
+        "b": "Kingdom of Morgannwg",
+        "area_km2": 10.9,
+        "share_of_smaller": 0.0088,
+        "kind": "sliver"
+      },
+      {
+        "a": "Georgia",
+        "b": "Hamdanid Emirates",
+        "area_km2": 8.0,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Holy Roman Empire",
+        "b": "County of Vermandois",
+        "area_km2": 7.4,
+        "share_of_smaller": 0.0004,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Vermandois",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 7.4,
+        "share_of_smaller": 0.0004,
+        "kind": "sliver"
+      },
+      {
+        "a": "Strathclyde",
+        "b": "Old Kingdom of Norway",
+        "area_km2": 5.4,
+        "share_of_smaller": 0.0006,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Brythonic Kingdoms)",
+        "b": "Old Kingdom of Norway",
+        "area_km2": 5.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Republic of Venice",
+        "b": "Kingdom of Croatia",
+        "area_km2": 5.4,
+        "share_of_smaller": 0.0009,
+        "kind": "sliver"
+      },
+      {
+        "a": "Strathclyde",
+        "b": "Brythons",
+        "area_km2": 2.6,
+        "share_of_smaller": 0.0003,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 25,
+      "conflict": 2,
+      "sliver": 22
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

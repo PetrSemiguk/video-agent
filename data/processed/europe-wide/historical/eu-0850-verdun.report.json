@@ -1,0 +1,680 @@
+{
+  "plate": "europe-wide",
+  "resolved_plate": "europe-wide",
+  "date": "0850-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 850,
+  "states": [
+    {
+      "name": "Abbasid Caliphate",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 7867502
+    },
+    {
+      "name": "Kimek-Kipchak confederation",
+      "valid_from": 850,
+      "valid_to": 879,
+      "area_km2": 1431650
+    },
+    {
+      "name": "(Carolingian Empire)",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 1246963
+    },
+    {
+      "name": "Khazaria",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 749503
+    },
+    {
+      "name": "Byzantine Empire",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 637762
+    },
+    {
+      "name": "Rustamid dynasty",
+      "valid_from": 778,
+      "valid_to": 899,
+      "area_km2": 469781
+    },
+    {
+      "name": "Oghuz Turks",
+      "valid_from": 783,
+      "valid_to": 859,
+      "area_km2": 450019
+    },
+    {
+      "name": "East Franks",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 436487
+    },
+    {
+      "name": "First Bulgarian Empire",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 428320
+    },
+    {
+      "name": "Scandinavian minor kingdoms",
+      "valid_from": 825,
+      "valid_to": 865,
+      "area_km2": 426216
+    },
+    {
+      "name": "West Franks",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 425793
+    },
+    {
+      "name": "Emirate of Córdoba",
+      "valid_from": 825,
+      "valid_to": 869,
+      "area_km2": 412446
+    },
+    {
+      "name": "Magyars",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 399131
+    },
+    {
+      "name": "Middle Franks",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 384683
+    },
+    {
+      "name": "Turk Shahis",
+      "valid_from": 850,
+      "valid_to": 865,
+      "area_km2": 304773
+    },
+    {
+      "name": "Aghlabid Dynasty",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 247297
+    },
+    {
+      "name": "Makuria",
+      "valid_from": 850,
+      "valid_to": 1110,
+      "area_km2": 212627
+    },
+    {
+      "name": "Idrisids",
+      "valid_from": 793,
+      "valid_to": 910,
+      "area_km2": 194486
+    },
+    {
+      "name": "(Anglo-Saxon England)",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 140574
+    },
+    {
+      "name": "Kingdom of Asturias",
+      "valid_from": 825,
+      "valid_to": 869,
+      "area_km2": 123130
+    },
+    {
+      "name": "Great Moravia",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 101717
+    },
+    {
+      "name": "Viking settlements",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 69895
+    },
+    {
+      "name": "Kingdom of Mercia",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 48371
+    },
+    {
+      "name": "Volga Bulgaria",
+      "valid_from": 682,
+      "valid_to": 1071,
+      "area_km2": 44239
+    },
+    {
+      "name": "Kingdom of Northumbria",
+      "valid_from": 750,
+      "valid_to": 865,
+      "area_km2": 43718
+    },
+    {
+      "name": "(Brythonic Kingdoms)",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 42721
+    },
+    {
+      "name": "Dál Riata",
+      "valid_from": 840,
+      "valid_to": 874,
+      "area_km2": 41623
+    },
+    {
+      "name": "Principality of Serbia",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 36324
+    },
+    {
+      "name": "Barghawata Conference",
+      "valid_from": 793,
+      "valid_to": 1014,
+      "area_km2": 36301
+    },
+    {
+      "name": "Kingdom of Wessex",
+      "valid_from": 840,
+      "valid_to": 874,
+      "area_km2": 35983
+    },
+    {
+      "name": "Georgia",
+      "valid_from": 783,
+      "valid_to": 874,
+      "area_km2": 24443
+    },
+    {
+      "name": "Kingdom of the Iberians",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 24352
+    },
+    {
+      "name": "Kingdom of Brittany",
+      "valid_from": 825,
+      "valid_to": 859,
+      "area_km2": 24213
+    },
+    {
+      "name": "Duchy of Benevento",
+      "valid_from": 850,
+      "valid_to": 874,
+      "area_km2": 23590
+    },
+    {
+      "name": "Duchy of Croatia",
+      "valid_from": 850,
+      "valid_to": 875,
+      "area_km2": 20875
+    },
+    {
+      "name": "Principality of Salerno",
+      "valid_from": 840,
+      "valid_to": 879,
+      "area_km2": 17791
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 850,
+      "valid_to": 879,
+      "area_km2": 15874
+    },
+    {
+      "name": "Kingdom of Pamplona",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 15693
+    },
+    {
+      "name": "Obotrites",
+      "valid_from": 814,
+      "valid_to": 881,
+      "area_km2": 15291
+    },
+    {
+      "name": "Brythons",
+      "valid_from": 644,
+      "valid_to": 859,
+      "area_km2": 13212
+    },
+    {
+      "name": "Kingdom of East Anglia",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 12502
+    },
+    {
+      "name": "Cyprus Condominium",
+      "valid_from": 692,
+      "valid_to": 874,
+      "area_km2": 11437
+    },
+    {
+      "name": "Strathclyde",
+      "valid_from": 750,
+      "valid_to": 869,
+      "area_km2": 9448
+    },
+    {
+      "name": "Emirate of Nekor",
+      "valid_from": 793,
+      "valid_to": 921,
+      "area_km2": 7039
+    },
+    {
+      "name": "Kingdom of Gwynedd",
+      "valid_from": 705,
+      "valid_to": 859,
+      "area_km2": 6364
+    },
+    {
+      "name": "Emirate of Sicily",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 6282
+    },
+    {
+      "name": "Emirate of Crete",
+      "valid_from": 830,
+      "valid_to": 959,
+      "area_km2": 5499
+    },
+    {
+      "name": "Cornwall",
+      "valid_from": 710,
+      "valid_to": 935,
+      "area_km2": 4538
+    },
+    {
+      "name": "Kingdom of Powys",
+      "valid_from": 705,
+      "valid_to": 859,
+      "area_km2": 4359
+    },
+    {
+      "name": "County of Aragon",
+      "valid_from": 830,
+      "valid_to": 874,
+      "area_km2": 3490
+    },
+    {
+      "name": "Republic of Venice",
+      "valid_from": 705,
+      "valid_to": 859,
+      "area_km2": 2547
+    },
+    {
+      "name": "Kingdom of Brycheiniog",
+      "valid_from": 540,
+      "valid_to": 946,
+      "area_km2": 1962
+    },
+    {
+      "name": "Kingdom of Morgannwg",
+      "valid_from": 540,
+      "valid_to": 946,
+      "area_km2": 1510
+    },
+    {
+      "name": "Kingdom of Gwent",
+      "valid_from": 840,
+      "valid_to": 883,
+      "area_km2": 1355
+    },
+    {
+      "name": "Duchy of Naples",
+      "valid_from": 840,
+      "valid_to": 959,
+      "area_km2": 1059
+    },
+    {
+      "name": "Principality of Capua",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 384
+    }
+  ],
+  "relation_rows_left_out": 3,
+  "slug": "eu-0850-verdun",
+  "qa": {
+    "coast_outside_land_km2": 3255.9,
+    "coast_max_error_px": 0.62,
+    "land_covered": 0.568,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 3155321,
+        "at": [
+          35.93,
+          53.02
+        ]
+      },
+      {
+        "area_km2": 5290690,
+        "at": [
+          7.32,
+          27.75
+        ]
+      },
+      {
+        "area_km2": 222921,
+        "at": [
+          62.09,
+          43.6
+        ]
+      },
+      {
+        "area_km2": 79459,
+        "at": [
+          -8.4,
+          53.46
+        ]
+      },
+      {
+        "area_km2": 116392,
+        "at": [
+          35.34,
+          21.96
+        ]
+      },
+      {
+        "area_km2": 26654,
+        "at": [
+          17.21,
+          43.86
+        ]
+      },
+      {
+        "area_km2": 22935,
+        "at": [
+          19.55,
+          42.36
+        ]
+      },
+      {
+        "area_km2": 23887,
+        "at": [
+          9.1,
+          40.07
+        ]
+      },
+      {
+        "area_km2": 16703,
+        "at": [
+          36.61,
+          38.71
+        ]
+      },
+      {
+        "area_km2": 6906,
+        "at": [
+          53.01,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 3363,
+        "at": [
+          15.06,
+          59.89
+        ]
+      },
+      {
+        "area_km2": 2761,
+        "at": [
+          22.34,
+          58.28
+        ]
+      },
+      {
+        "area_km2": 3692,
+        "at": [
+          34.77,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 3386,
+        "at": [
+          47.69,
+          42.74
+        ]
+      },
+      {
+        "area_km2": 3693,
+        "at": [
+          2.89,
+          39.62
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 56,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "(Carolingian Empire)",
+        "b": "East Franks",
+        "area_km2": 433954.4,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "West Franks",
+        "b": "(Carolingian Empire)",
+        "area_km2": 417078.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Middle Franks",
+        "b": "(Carolingian Empire)",
+        "area_km2": 378739.2,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Anglo-Saxon England)",
+        "b": "Kingdom of Mercia",
+        "area_km2": 47453.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Northumbria",
+        "b": "(Anglo-Saxon England)",
+        "area_km2": 40688.9,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Anglo-Saxon England)",
+        "b": "Kingdom of Wessex",
+        "area_km2": 33133.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of East Anglia",
+        "b": "(Anglo-Saxon England)",
+        "area_km2": 11538.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Brythons",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 10283.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Strathclyde",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 9075.0,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Gwynedd",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 4686.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Powys",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 4351.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Cornwall",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 3217.1,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Brycheiniog",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 1959.0,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Brythonic Kingdoms)",
+        "b": "Kingdom of Gwent",
+        "area_km2": 1310.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Morgannwg",
+        "b": "(Brythonic Kingdoms)",
+        "area_km2": 1280.3,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Rustamid dynasty",
+        "b": "Aghlabid Dynasty",
+        "area_km2": 182.6,
+        "share_of_smaller": 0.0007,
+        "kind": "sliver"
+      },
+      {
+        "a": "Georgia",
+        "b": "Kingdom of the Iberians",
+        "area_km2": 118.0,
+        "share_of_smaller": 0.0049,
+        "kind": "sliver"
+      },
+      {
+        "a": "Byzantine Empire",
+        "b": "Aghlabid Dynasty",
+        "area_km2": 48.3,
+        "share_of_smaller": 0.0002,
+        "kind": "sliver"
+      },
+      {
+        "a": "Georgia",
+        "b": "Abbasid Caliphate",
+        "area_km2": 44.8,
+        "share_of_smaller": 0.0018,
+        "kind": "sliver"
+      },
+      {
+        "a": "Duchy of Benevento",
+        "b": "Aghlabid Dynasty",
+        "area_km2": 43.3,
+        "share_of_smaller": 0.0019,
+        "kind": "sliver"
+      },
+      {
+        "a": "Obotrites",
+        "b": "Viking settlements",
+        "area_km2": 35.1,
+        "share_of_smaller": 0.0025,
+        "kind": "sliver"
+      },
+      {
+        "a": "Georgia",
+        "b": "Khazaria",
+        "area_km2": 30.4,
+        "share_of_smaller": 0.0013,
+        "kind": "sliver"
+      },
+      {
+        "a": "Duchy of Benevento",
+        "b": "Byzantine Empire",
+        "area_km2": 24.1,
+        "share_of_smaller": 0.001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of Powys",
+        "b": "Kingdom of Gwynedd",
+        "area_km2": 17.3,
+        "share_of_smaller": 0.004,
+        "kind": "sliver"
+      },
+      {
+        "a": "Rustamid dynasty",
+        "b": "Idrisids",
+        "area_km2": 11.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of Morgannwg",
+        "b": "Kingdom of Gwent",
+        "area_km2": 10.9,
+        "share_of_smaller": 0.0085,
+        "kind": "sliver"
+      },
+      {
+        "a": "Strathclyde",
+        "b": "Viking settlements",
+        "area_km2": 5.4,
+        "share_of_smaller": 0.0006,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Brythonic Kingdoms)",
+        "b": "Viking settlements",
+        "area_km2": 5.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Duchy of Croatia",
+        "b": "Byzantine Empire",
+        "area_km2": 2.0,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 15,
+      "sliver": 14
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

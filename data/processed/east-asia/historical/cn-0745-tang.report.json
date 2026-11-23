@@ -1,0 +1,325 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "0745-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 745,
+  "states": [
+    {
+      "name": "Umayyad Caliphate",
+      "valid_from": 741,
+      "valid_to": 749,
+      "area_km2": 9838159
+    },
+    {
+      "name": "Türgesh",
+      "valid_from": 741,
+      "valid_to": 749,
+      "area_km2": 4040713
+    },
+    {
+      "name": "Tang Dynasty",
+      "valid_from": 705,
+      "valid_to": 749,
+      "area_km2": 4028116
+    },
+    {
+      "name": "Tibetan Empire",
+      "valid_from": 732,
+      "valid_to": 749,
+      "area_km2": 2727293
+    },
+    {
+      "name": "Chalukya Dynasty",
+      "valid_from": 732,
+      "valid_to": 749,
+      "area_km2": 810333
+    },
+    {
+      "name": "Khazaria",
+      "valid_from": 741,
+      "valid_to": 749,
+      "area_km2": 749832
+    },
+    {
+      "name": "Kannauj-Varman Dynasty",
+      "valid_from": 741,
+      "valid_to": 750,
+      "area_km2": 573391
+    },
+    {
+      "name": "Yenisei Kyrgyz",
+      "valid_from": 692,
+      "valid_to": 762,
+      "area_km2": 423937
+    },
+    {
+      "name": "Balhae",
+      "valid_from": 741,
+      "valid_to": 824,
+      "area_km2": 331752
+    },
+    {
+      "name": "Turk Shahis",
+      "valid_from": 718,
+      "valid_to": 849,
+      "area_km2": 304574
+    },
+    {
+      "name": "Gurjara-Pratihara Dynasty",
+      "valid_from": 741,
+      "valid_to": 749,
+      "area_km2": 293454
+    },
+    {
+      "name": "Nara Japan",
+      "valid_from": 710,
+      "valid_to": 787,
+      "area_km2": 230061
+    },
+    {
+      "name": "Land Chenla",
+      "valid_from": 718,
+      "valid_to": 799,
+      "area_km2": 183796
+    },
+    {
+      "name": "Unified Silla",
+      "valid_from": 682,
+      "valid_to": 891,
+      "area_km2": 149880
+    },
+    {
+      "name": "Haripuñjaya",
+      "valid_from": 666,
+      "valid_to": 1065,
+      "area_km2": 143044
+    },
+    {
+      "name": "Lavo Kingdom",
+      "valid_from": 718,
+      "valid_to": 805,
+      "area_km2": 126451
+    },
+    {
+      "name": "Karkota Dynasty",
+      "valid_from": 732,
+      "valid_to": 750,
+      "area_km2": 118537
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 84,
+      "valid_to": 849,
+      "area_km2": 116187
+    },
+    {
+      "name": "Kamarupa Kingdom",
+      "valid_from": 656,
+      "valid_to": 750,
+      "area_km2": 106215
+    },
+    {
+      "name": "Late Pallava Empire",
+      "valid_from": 656,
+      "valid_to": 771,
+      "area_km2": 104534
+    },
+    {
+      "name": "Chámpa",
+      "valid_from": 641,
+      "valid_to": 874,
+      "area_km2": 77878
+    },
+    {
+      "name": "Dabuyid Dynasty",
+      "valid_from": 718,
+      "valid_to": 749,
+      "area_km2": 64405
+    },
+    {
+      "name": "Kashmir",
+      "valid_from": 732,
+      "valid_to": 749,
+      "area_km2": 45737
+    },
+    {
+      "name": "Volga Bulgaria",
+      "valid_from": 682,
+      "valid_to": 1071,
+      "area_km2": 44239
+    },
+    {
+      "name": "Nanzhao",
+      "valid_from": 741,
+      "valid_to": 749,
+      "area_km2": 10877
+    }
+  ],
+  "relation_rows_left_out": 1,
+  "slug": "cn-0745-tang",
+  "qa": {
+    "coast_outside_land_km2": 3595.3,
+    "coast_max_error_px": 0.65,
+    "land_covered": 0.4527,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 9510913,
+        "at": [
+          70.85,
+          52.36
+        ]
+      },
+      {
+        "area_km2": 2339297,
+        "at": [
+          83.24,
+          23.37
+        ]
+      },
+      {
+        "area_km2": 276875,
+        "at": [
+          159.5,
+          56.84
+        ]
+      },
+      {
+        "area_km2": 625312,
+        "at": [
+          72.73,
+          29.31
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 78337,
+        "at": [
+          143.32,
+          43.49
+        ]
+      },
+      {
+        "area_km2": 53981,
+        "at": [
+          141.02,
+          39.72
+        ]
+      },
+      {
+        "area_km2": 74151,
+        "at": [
+          121.38,
+          16.83
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 18552,
+        "at": [
+          133.37,
+          33.56
+        ]
+      },
+      {
+        "area_km2": 1985,
+        "at": [
+          164.05,
+          58.84
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      },
+      {
+        "area_km2": 1862,
+        "at": [
+          137.65,
+          54.91
+        ]
+      },
+      {
+        "area_km2": 2081,
+        "at": [
+          155.83,
+          50.39
+        ]
+      },
+      {
+        "area_km2": 1821,
+        "at": [
+          52.21,
+          46.94
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 25,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Gurjara-Pratihara Dynasty",
+        "b": "Kannauj-Varman Dynasty",
+        "area_km2": 333.1,
+        "share_of_smaller": 0.0011,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kamarupa Kingdom",
+        "b": "Tibetan Empire",
+        "area_km2": 73.2,
+        "share_of_smaller": 0.0007,
+        "kind": "sliver"
+      },
+      {
+        "a": "Tibetan Empire",
+        "b": "Kannauj-Varman Dynasty",
+        "area_km2": 67.6,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kashmir",
+        "b": "Kannauj-Varman Dynasty",
+        "area_km2": 3.5,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Karkota Dynasty",
+        "b": "Kannauj-Varman Dynasty",
+        "area_km2": 1.3,
+        "share_of_smaller": 0.0,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "sliver": 5
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

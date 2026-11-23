@@ -1,0 +1,393 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "1800-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1800,
+  "states": [
+    {
+      "name": "Russian Empire",
+      "valid_from": 1799,
+      "valid_to": 1802,
+      "area_km2": 16718994
+    },
+    {
+      "name": "Qing Dynasty",
+      "valid_from": 1797,
+      "valid_to": 1804,
+      "area_km2": 12509346
+    },
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 11744301
+    },
+    {
+      "name": "Spanish Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 11242220
+    },
+    {
+      "name": "(Portuguese Empire)",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 7955860
+    },
+    {
+      "name": "(British Empire)",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 2403535
+    },
+    {
+      "name": "Kazakh Khanate",
+      "valid_from": 1796,
+      "valid_to": 1802,
+      "area_km2": 1904289
+    },
+    {
+      "name": "Qajar Dynasty",
+      "valid_from": 1800,
+      "valid_to": 1804,
+      "area_km2": 1743557
+    },
+    {
+      "name": "Durrani Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 1575461
+    },
+    {
+      "name": "Maratha Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 1164051
+    },
+    {
+      "name": "British Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 979252
+    },
+    {
+      "name": "Emirate of Diriyah",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 830515
+    },
+    {
+      "name": "Khanate of Khiva",
+      "valid_from": 1800,
+      "valid_to": 1821,
+      "area_km2": 738422
+    },
+    {
+      "name": "Konbaung Dynasty",
+      "valid_from": 1794,
+      "valid_to": 1814,
+      "area_km2": 675755
+    },
+    {
+      "name": "Rattanakosin Kingdom",
+      "valid_from": 1796,
+      "valid_to": 1821,
+      "area_km2": 430003
+    },
+    {
+      "name": "Emirate of Bukhara",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 368725
+    },
+    {
+      "name": "Tokugawa Shogunate",
+      "valid_from": 1799,
+      "valid_to": 1821,
+      "area_km2": 362979
+    },
+    {
+      "name": "Mughal Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 350112
+    },
+    {
+      "name": "Joseon",
+      "valid_from": 1640,
+      "valid_to": 1859,
+      "area_km2": 231658
+    },
+    {
+      "name": "Tây Sơn dynasty",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 181158
+    },
+    {
+      "name": "Nepal",
+      "valid_from": 1794,
+      "valid_to": 1802,
+      "area_km2": 179928
+    },
+    {
+      "name": "Vientiane",
+      "valid_from": 1796,
+      "valid_to": 1824,
+      "area_km2": 172157
+    },
+    {
+      "name": "Kingdom of Luang Phrabang",
+      "valid_from": 1791,
+      "valid_to": 1827,
+      "area_km2": 147905
+    },
+    {
+      "name": "Carnatic Sultanate",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 137876
+    },
+    {
+      "name": "Nawab of Awadh",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 115167
+    },
+    {
+      "name": "Sultanate of Oman",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 105642
+    },
+    {
+      "name": "Khanate of Kokand",
+      "valid_from": 1788,
+      "valid_to": 1802,
+      "area_km2": 85753
+    },
+    {
+      "name": "Chiangmai",
+      "valid_from": 1783,
+      "valid_to": 1852,
+      "area_km2": 64890
+    },
+    {
+      "name": "Sikh Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 57519
+    },
+    {
+      "name": "Kingdom of Champasak",
+      "valid_from": 1796,
+      "valid_to": 1827,
+      "area_km2": 42150
+    },
+    {
+      "name": "Kingdom of Bhutan",
+      "valid_from": 1794,
+      "valid_to": 1813,
+      "area_km2": 40456
+    },
+    {
+      "name": "Portuguese Colonies",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 26879
+    },
+    {
+      "name": "French India",
+      "valid_from": 1741,
+      "valid_to": 1814,
+      "area_km2": 10137
+    },
+    {
+      "name": "Sikh Confederacy",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 5631
+    },
+    {
+      "name": "Danish India",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 322
+    }
+  ],
+  "relation_rows_left_out": 0,
+  "slug": "cn-1800-qing-peak",
+  "qa": {
+    "coast_outside_land_km2": 5277.2,
+    "coast_max_error_px": 0.65,
+    "land_covered": 0.9674,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 600936,
+        "at": [
+          53.97,
+          19.71
+        ]
+      },
+      {
+        "area_km2": 214819,
+        "at": [
+          93.41,
+          24.62
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 126802,
+        "at": [
+          78.98,
+          33.07
+        ]
+      },
+      {
+        "area_km2": 76243,
+        "at": [
+          59.96,
+          45.14
+        ]
+      },
+      {
+        "area_km2": 115224,
+        "at": [
+          73.23,
+          24.59
+        ]
+      },
+      {
+        "area_km2": 39948,
+        "at": [
+          108.0,
+          53.63
+        ]
+      },
+      {
+        "area_km2": 44558,
+        "at": [
+          143.22,
+          43.86
+        ]
+      },
+      {
+        "area_km2": 24913,
+        "at": [
+          74.23,
+          46.05
+        ]
+      },
+      {
+        "area_km2": 8655,
+        "at": [
+          77.48,
+          42.46
+        ]
+      },
+      {
+        "area_km2": 6906,
+        "at": [
+          53.01,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 7854,
+        "at": [
+          79.59,
+          27.25
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      },
+      {
+        "area_km2": 2809,
+        "at": [
+          52.55,
+          42.24
+        ]
+      },
+      {
+        "area_km2": 1796,
+        "at": [
+          52.21,
+          46.94
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 35,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "(British Empire)",
+        "b": "British Empire",
+        "area_km2": 704079.9,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Spanish Empire",
+        "b": "(Spanish Empire)",
+        "area_km2": 73488.4,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Portuguese Empire)",
+        "b": "Portuguese Colonies",
+        "area_km2": 3657.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "French India",
+        "b": "(British Empire)",
+        "area_km2": 373.2,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "French India",
+        "b": "British Empire",
+        "area_km2": 373.2,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Nepal",
+        "b": "Mughal Empire",
+        "area_km2": 1.8,
+        "share_of_smaller": 0.0,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 5,
+      "sliver": 1
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

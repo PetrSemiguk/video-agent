@@ -1,0 +1,16 @@
+[
+  {
+    "feature": "Qi (frame -221)",
+    "problem": "The frame still shows Qi holding Shandong, although Qin's conquest of Qi in 221 BC is what completes the unification. Cliopatria frames can lag an event by a few years (docs/historical-sources.md).",
+    "correct": "This layer is the map BEFORE the unification, and is used only that way: the seven states still separate. The unified empire is cn-0215-qin-empire, frame -215, where Qin Dynasty holds Shandong, Beijing, Jiangling and Chengdu.",
+    "source": "https://github.com/Seshat-Global-History-Databank/cliopatria",
+    "severity": "warning"
+  },
+  {
+    "feature": "Lingnan / Guangzhou (frame -221)",
+    "problem": "No polity covers Guangzhou.",
+    "correct": "Correct for the date: Qin took Lingnan in 214 BC, after the 221 BC unification. Nothing should be drawn there, and no narration may place Qin on the south coast in 221.",
+    "source": "https://countrystudies.us/china/",
+    "severity": "warning"
+  }
+]

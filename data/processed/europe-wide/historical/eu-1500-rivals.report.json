@@ -1,0 +1,982 @@
+{
+  "plate": "europe-wide",
+  "resolved_plate": "europe-wide",
+  "date": "1500-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1500,
+  "states": [
+    {
+      "name": "Khanate of Sibir",
+      "valid_from": 1497,
+      "valid_to": 1520,
+      "area_km2": 2824702
+    },
+    {
+      "name": "Grand Principality of Moscow",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 2139300
+    },
+    {
+      "name": "Timurid Empire",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 1946400
+    },
+    {
+      "name": "Kazakh Khanate",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 1864454
+    },
+    {
+      "name": "Aq Qoyunlu",
+      "valid_from": 1475,
+      "valid_to": 1501,
+      "area_km2": 1701512
+    },
+    {
+      "name": "Mamluk Sultanate",
+      "valid_from": 1468,
+      "valid_to": 1515,
+      "area_km2": 1480794
+    },
+    {
+      "name": "(Kalmar Union)",
+      "valid_from": 1482,
+      "valid_to": 1501,
+      "area_km2": 1285990
+    },
+    {
+      "name": "Kalmar Union",
+      "valid_from": 1482,
+      "valid_to": 1501,
+      "area_km2": 1285990
+    },
+    {
+      "name": "House of Jagiellon",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 1021300
+    },
+    {
+      "name": "Ottoman Empire",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 930613
+    },
+    {
+      "name": "Nogai Horde",
+      "valid_from": 1468,
+      "valid_to": 1501,
+      "area_km2": 704314
+    },
+    {
+      "name": "Golden Horde",
+      "valid_from": 1468,
+      "valid_to": 1501,
+      "area_km2": 550524
+    },
+    {
+      "name": "(Kingdom of France)",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 467711
+    },
+    {
+      "name": "Crown of Castile",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 412242
+    },
+    {
+      "name": "Shaybanids",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 395934
+    },
+    {
+      "name": "Wattasid dynasty",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 383974
+    },
+    {
+      "name": "Kingdom of France",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 365876
+    },
+    {
+      "name": "(Holy Roman Empire)",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 344060
+    },
+    {
+      "name": "Holy Roman Empire Minor States",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 344060
+    },
+    {
+      "name": "Kingdom of Hungary",
+      "valid_from": 1492,
+      "valid_to": 1520,
+      "area_km2": 337524
+    },
+    {
+      "name": "Hafsid Dynasty",
+      "valid_from": 1453,
+      "valid_to": 1511,
+      "area_km2": 224190
+    },
+    {
+      "name": "Makuria Kingdom",
+      "valid_from": 1415,
+      "valid_to": 1506,
+      "area_km2": 212627
+    },
+    {
+      "name": "(Habsburg Monarchy)",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 170768
+    },
+    {
+      "name": "Khanate of Kazan",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 170172
+    },
+    {
+      "name": "Kingdom of England",
+      "valid_from": 1487,
+      "valid_to": 1501,
+      "area_km2": 166388
+    },
+    {
+      "name": "(Kingdom of England)",
+      "valid_from": 1487,
+      "valid_to": 1501,
+      "area_km2": 166388
+    },
+    {
+      "name": "Astrakhan Khanate",
+      "valid_from": 1475,
+      "valid_to": 1501,
+      "area_km2": 161772
+    },
+    {
+      "name": "Crown of Aragon",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 156423
+    },
+    {
+      "name": "Crimean Khanate",
+      "valid_from": 1487,
+      "valid_to": 1501,
+      "area_km2": 136570
+    },
+    {
+      "name": "Kingdom of Bohemia",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 128571
+    },
+    {
+      "name": "(Kingdom of Bohemia)",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 128571
+    },
+    {
+      "name": "Zayyanid dynasty",
+      "valid_from": 1363,
+      "valid_to": 1506,
+      "area_km2": 126172
+    },
+    {
+      "name": "Livonian Conference",
+      "valid_from": 1422,
+      "valid_to": 1511,
+      "area_km2": 116338
+    },
+    {
+      "name": "Kingdom of Portugal",
+      "valid_from": 1497,
+      "valid_to": 1506,
+      "area_km2": 113407
+    },
+    {
+      "name": "House of Habsburg",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 100156
+    },
+    {
+      "name": "Kingdom of Scotland",
+      "valid_from": 1475,
+      "valid_to": 1551,
+      "area_km2": 88868
+    },
+    {
+      "name": "Principality of Moldavia",
+      "valid_from": 1487,
+      "valid_to": 1506,
+      "area_km2": 82069
+    },
+    {
+      "name": "Principality of Wallachia",
+      "valid_from": 1422,
+      "valid_to": 1528,
+      "area_km2": 74280
+    },
+    {
+      "name": "Habsburg Monarchy",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 70612
+    },
+    {
+      "name": "Bahrani Dynasty",
+      "valid_from": 1475,
+      "valid_to": 1518,
+      "area_km2": 69706
+    },
+    {
+      "name": "Kingdom of Naples",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 68689
+    },
+    {
+      "name": "Republic of Venice",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 64189
+    },
+    {
+      "name": "Shirvan",
+      "valid_from": 1468,
+      "valid_to": 1533,
+      "area_km2": 47520
+    },
+    {
+      "name": "County of Foix",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 45144
+    },
+    {
+      "name": "House of Bourbon",
+      "valid_from": 1497,
+      "valid_to": 1518,
+      "area_km2": 43426
+    },
+    {
+      "name": "Samtskhe-Saatabago",
+      "valid_from": 1468,
+      "valid_to": 1501,
+      "area_km2": 42721
+    },
+    {
+      "name": "Electorate of Brandenburg",
+      "valid_from": 1492,
+      "valid_to": 1528,
+      "area_km2": 42293
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 1487,
+      "valid_to": 1506,
+      "area_km2": 39617
+    },
+    {
+      "name": "Teutonic Order",
+      "valid_from": 1497,
+      "valid_to": 1520,
+      "area_km2": 38518
+    },
+    {
+      "name": "Duchy of Bavaria",
+      "valid_from": 1459,
+      "valid_to": 1506,
+      "area_km2": 36211
+    },
+    {
+      "name": "County of Savoy",
+      "valid_from": 1497,
+      "valid_to": 1511,
+      "area_km2": 35779
+    },
+    {
+      "name": "Electorate of Saxony",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 34252
+    },
+    {
+      "name": "Duchy of Milan",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 33694
+    },
+    {
+      "name": "Beylik of Dulkadir",
+      "valid_from": 1463,
+      "valid_to": 1511,
+      "area_km2": 30414
+    },
+    {
+      "name": "Kingdom of Georgia",
+      "valid_from": 1468,
+      "valid_to": 1506,
+      "area_km2": 27616
+    },
+    {
+      "name": "Republic of Genoa",
+      "valid_from": 1453,
+      "valid_to": 1525,
+      "area_km2": 26141
+    },
+    {
+      "name": "Ramadanid Emirate",
+      "valid_from": 1468,
+      "valid_to": 1511,
+      "area_km2": 24477
+    },
+    {
+      "name": "Qasim Khanate",
+      "valid_from": 1453,
+      "valid_to": 1501,
+      "area_km2": 23757
+    },
+    {
+      "name": "Kingdom of Kakheti",
+      "valid_from": 1468,
+      "valid_to": 1578,
+      "area_km2": 23396
+    },
+    {
+      "name": "Swiss Confederation",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 22792
+    },
+    {
+      "name": "Pskov Republic",
+      "valid_from": 1482,
+      "valid_to": 1506,
+      "area_km2": 21734
+    },
+    {
+      "name": "Duchy of Lorraine",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 17569
+    },
+    {
+      "name": "Electorate of Trier",
+      "valid_from": 1459,
+      "valid_to": 1555,
+      "area_km2": 17043
+    },
+    {
+      "name": "Ryazan",
+      "valid_from": 1453,
+      "valid_to": 1501,
+      "area_km2": 17026
+    },
+    {
+      "name": "County of Nevers",
+      "valid_from": 1482,
+      "valid_to": 1518,
+      "area_km2": 13539
+    },
+    {
+      "name": "Principality of Mingrelia",
+      "valid_from": 1468,
+      "valid_to": 1571,
+      "area_km2": 13251
+    },
+    {
+      "name": "Republic of Florence",
+      "valid_from": 1487,
+      "valid_to": 1506,
+      "area_km2": 12065
+    },
+    {
+      "name": "Kingdom of Imereti",
+      "valid_from": 1468,
+      "valid_to": 1578,
+      "area_km2": 11442
+    },
+    {
+      "name": "Principality of Abkhazia",
+      "valid_from": 1468,
+      "valid_to": 1571,
+      "area_km2": 6066
+    },
+    {
+      "name": "Mahdids",
+      "valid_from": 1475,
+      "valid_to": 1501,
+      "area_km2": 4396
+    },
+    {
+      "name": "Principality of Guria",
+      "valid_from": 1468,
+      "valid_to": 1506,
+      "area_km2": 4180
+    },
+    {
+      "name": "Comtat Venaissin",
+      "valid_from": 1482,
+      "valid_to": 1672,
+      "area_km2": 2319
+    },
+    {
+      "name": "Duchy of Styria",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 2004
+    },
+    {
+      "name": "Republic of Ragusa",
+      "valid_from": 1429,
+      "valid_to": 1771,
+      "area_km2": 1540
+    },
+    {
+      "name": "County of Auvergne",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 706
+    },
+    {
+      "name": "County of Urgell",
+      "valid_from": 1279,
+      "valid_to": 1515,
+      "area_km2": 380
+    },
+    {
+      "name": "Principality of Orange",
+      "valid_from": 1459,
+      "valid_to": 1563,
+      "area_km2": 141
+    }
+  ],
+  "relation_rows_left_out": 2,
+  "slug": "eu-1500-rivals",
+  "qa": {
+    "coast_outside_land_km2": 3528.3,
+    "coast_max_error_px": 0.64,
+    "land_covered": 0.7216,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 5546428,
+        "at": [
+          7.26,
+          27.58
+        ]
+      },
+      {
+        "area_km2": 1598238,
+        "at": [
+          44.22,
+          27.38
+        ]
+      },
+      {
+        "area_km2": 275064,
+        "at": [
+          55.0,
+          56.11
+        ]
+      },
+      {
+        "area_km2": 204250,
+        "at": [
+          42.43,
+          43.98
+        ]
+      },
+      {
+        "area_km2": 79399,
+        "at": [
+          -8.43,
+          53.46
+        ]
+      },
+      {
+        "area_km2": 86002,
+        "at": [
+          31.88,
+          47.57
+        ]
+      },
+      {
+        "area_km2": 75756,
+        "at": [
+          59.96,
+          45.14
+        ]
+      },
+      {
+        "area_km2": 116392,
+        "at": [
+          35.34,
+          21.96
+        ]
+      },
+      {
+        "area_km2": 36854,
+        "at": [
+          45.58,
+          56.77
+        ]
+      },
+      {
+        "area_km2": 6906,
+        "at": [
+          53.01,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 3763,
+        "at": [
+          34.77,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 2856,
+        "at": [
+          52.55,
+          42.24
+        ]
+      },
+      {
+        "area_km2": 1368,
+        "at": [
+          27.59,
+          58.77
+        ]
+      },
+      {
+        "area_km2": 3003,
+        "at": [
+          48.85,
+          38.27
+        ]
+      },
+      {
+        "area_km2": 2848,
+        "at": [
+          -0.3,
+          39.27
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 77,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "(Kingdom of France)",
+        "b": "Kingdom of France",
+        "area_km2": 355334.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Holy Roman Empire)",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 335264.1,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kalmar Union)",
+        "b": "Kalmar Union",
+        "area_km2": 247935.2,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of England",
+        "b": "(Kingdom of England)",
+        "area_km2": 153553.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Bohemia",
+        "b": "(Kingdom of Bohemia)",
+        "area_km2": 128361.1,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "House of Habsburg",
+        "b": "(Habsburg Monarchy)",
+        "area_km2": 100011.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Habsburg Monarchy",
+        "b": "(Habsburg Monarchy)",
+        "area_km2": 66749.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "County of Foix",
+        "area_km2": 45156.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "House of Bourbon",
+        "area_km2": 43414.7,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Nevers",
+        "b": "(Kingdom of France)",
+        "area_km2": 13475.8,
+        "share_of_smaller": 0.996,
+        "kind": "nesting"
+      },
+      {
+        "a": "Republic of Genoa",
+        "b": "Ottoman Empire",
+        "area_km2": 5141.0,
+        "share_of_smaller": 0.2418,
+        "kind": "conflict"
+      },
+      {
+        "a": "Republic of Genoa",
+        "b": "Duchy of Milan",
+        "area_km2": 4383.3,
+        "share_of_smaller": 0.2061,
+        "kind": "conflict"
+      },
+      {
+        "a": "Comtat Venaissin",
+        "b": "(Kingdom of France)",
+        "area_km2": 2320.9,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Comtat Venaissin",
+        "b": "Kingdom of France",
+        "area_km2": 2320.9,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "County of Nevers",
+        "b": "Kingdom of France",
+        "area_km2": 925.5,
+        "share_of_smaller": 0.0684,
+        "kind": "conflict"
+      },
+      {
+        "a": "Republic of Genoa",
+        "b": "Crimean Khanate",
+        "area_km2": 797.8,
+        "share_of_smaller": 0.0375,
+        "kind": "conflict"
+      },
+      {
+        "a": "Republic of Genoa",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 777.8,
+        "share_of_smaller": 0.0366,
+        "kind": "conflict"
+      },
+      {
+        "a": "Republic of Genoa",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 777.8,
+        "share_of_smaller": 0.0366,
+        "kind": "conflict"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "County of Auvergne",
+        "area_km2": 404.5,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Principality of Orange",
+        "b": "(Kingdom of France)",
+        "area_km2": 140.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Principality of Orange",
+        "b": "Kingdom of France",
+        "area_km2": 140.6,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Habsburg Monarchy)",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 128.7,
+        "share_of_smaller": 0.0008,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Habsburg Monarchy)",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 128.7,
+        "share_of_smaller": 0.0008,
+        "kind": "sliver"
+      },
+      {
+        "a": "Habsburg Monarchy",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 121.1,
+        "share_of_smaller": 0.0018,
+        "kind": "sliver"
+      },
+      {
+        "a": "Habsburg Monarchy",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 121.1,
+        "share_of_smaller": 0.0018,
+        "kind": "sliver"
+      },
+      {
+        "a": "Golden Horde",
+        "b": "Astrakhan Khanate",
+        "area_km2": 90.3,
+        "share_of_smaller": 0.0006,
+        "kind": "sliver"
+      },
+      {
+        "a": "Electorate of Saxony",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 82.4,
+        "share_of_smaller": 0.0024,
+        "kind": "sliver"
+      },
+      {
+        "a": "Electorate of Saxony",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 82.4,
+        "share_of_smaller": 0.0024,
+        "kind": "sliver"
+      },
+      {
+        "a": "Hafsid Dynasty",
+        "b": "Mamluk Sultanate",
+        "area_km2": 67.5,
+        "share_of_smaller": 0.0003,
+        "kind": "sliver"
+      },
+      {
+        "a": "Habsburg Monarchy",
+        "b": "Duchy of Lorraine",
+        "area_km2": 67.0,
+        "share_of_smaller": 0.0038,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Habsburg Monarchy)",
+        "b": "Duchy of Lorraine",
+        "area_km2": 67.0,
+        "share_of_smaller": 0.0038,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Nevers",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 54.0,
+        "share_of_smaller": 0.004,
+        "kind": "sliver"
+      },
+      {
+        "a": "County of Nevers",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 54.0,
+        "share_of_smaller": 0.004,
+        "kind": "sliver"
+      },
+      {
+        "a": "Bahrani Dynasty",
+        "b": "Aq Qoyunlu",
+        "area_km2": 48.4,
+        "share_of_smaller": 0.0008,
+        "kind": "sliver"
+      },
+      {
+        "a": "Swiss Confederation",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 41.7,
+        "share_of_smaller": 0.0018,
+        "kind": "sliver"
+      },
+      {
+        "a": "Swiss Confederation",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 41.7,
+        "share_of_smaller": 0.0018,
+        "kind": "sliver"
+      },
+      {
+        "a": "Principality of Orange",
+        "b": "Comtat Venaissin",
+        "area_km2": 28.3,
+        "share_of_smaller": 0.2015,
+        "kind": "conflict"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 19.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of France)",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 19.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Holy Roman Empire)",
+        "b": "Kingdom of France",
+        "area_km2": 19.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Holy Roman Empire Minor States",
+        "b": "Kingdom of France",
+        "area_km2": 19.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Livonian Conference",
+        "b": "Grand Principality of Moscow",
+        "area_km2": 16.4,
+        "share_of_smaller": 0.0002,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of England",
+        "b": "(Kingdom of France)",
+        "area_km2": 15.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of England",
+        "b": "County of Auvergne",
+        "area_km2": 15.4,
+        "share_of_smaller": 0.038,
+        "kind": "conflict"
+      },
+      {
+        "a": "(Kingdom of England)",
+        "b": "(Kingdom of France)",
+        "area_km2": 15.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of England)",
+        "b": "County of Auvergne",
+        "area_km2": 15.4,
+        "share_of_smaller": 0.038,
+        "kind": "conflict"
+      },
+      {
+        "a": "Crimean Khanate",
+        "b": "Ottoman Empire",
+        "area_km2": 11.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "House of Habsburg",
+        "b": "Holy Roman Empire Minor States",
+        "area_km2": 7.6,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "House of Habsburg",
+        "b": "(Holy Roman Empire)",
+        "area_km2": 7.6,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of England",
+        "b": "(Habsburg Monarchy)",
+        "area_km2": 5.5,
+        "share_of_smaller": 0.0,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of England",
+        "b": "Habsburg Monarchy",
+        "area_km2": 5.5,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of England)",
+        "b": "(Habsburg Monarchy)",
+        "area_km2": 5.5,
+        "share_of_smaller": 0.0,
+        "kind": "sliver"
+      },
+      {
+        "a": "(Kingdom of England)",
+        "b": "Habsburg Monarchy",
+        "area_km2": 5.5,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      },
+      {
+        "a": "Kingdom of Hungary",
+        "b": "Republic of Venice",
+        "area_km2": 5.4,
+        "share_of_smaller": 0.0001,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 15,
+      "conflict": 9,
+      "sliver": 30
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

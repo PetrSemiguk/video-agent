@@ -1,0 +1,310 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "0592-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 592,
+  "states": [
+    {
+      "name": "Sui Dynasty",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 3318043
+    },
+    {
+      "name": "Western Göktürks",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 3120785
+    },
+    {
+      "name": "Sasanian Empire",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 3047535
+    },
+    {
+      "name": "Eastern Göktürks",
+      "valid_from": 587,
+      "valid_to": 611,
+      "area_km2": 2647479
+    },
+    {
+      "name": "Tuyuhun",
+      "valid_from": 587,
+      "valid_to": 601,
+      "area_km2": 554703
+    },
+    {
+      "name": "Protectorate of the Western Regions",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 533421
+    },
+    {
+      "name": "Maukhari Dynasty",
+      "valid_from": 555,
+      "valid_to": 601,
+      "area_km2": 533393
+    },
+    {
+      "name": "Yenisei Kyrgyz",
+      "valid_from": 555,
+      "valid_to": 681,
+      "area_km2": 423937
+    },
+    {
+      "name": "Kingdom of Axum",
+      "valid_from": 534,
+      "valid_to": 601,
+      "area_km2": 392798
+    },
+    {
+      "name": "Goguryeo",
+      "valid_from": 555,
+      "valid_to": 611,
+      "area_km2": 360601
+    },
+    {
+      "name": "Himyarite Kingdom",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 295961
+    },
+    {
+      "name": "Asuka Japan",
+      "valid_from": 540,
+      "valid_to": 704,
+      "area_km2": 230061
+    },
+    {
+      "name": "Chalukya Dynasty",
+      "valid_from": 555,
+      "valid_to": 601,
+      "area_km2": 203427
+    },
+    {
+      "name": "Chenla",
+      "valid_from": 555,
+      "valid_to": 616,
+      "area_km2": 183852
+    },
+    {
+      "name": "(Chenla)",
+      "valid_from": 555,
+      "valid_to": 616,
+      "area_km2": 183852
+    },
+    {
+      "name": "Maitraka Dynasty",
+      "valid_from": 555,
+      "valid_to": 611,
+      "area_km2": 149998
+    },
+    {
+      "name": "Turk Shahis",
+      "valid_from": 561,
+      "valid_to": 643,
+      "area_km2": 138143
+    },
+    {
+      "name": "Kamarupa Kingdom",
+      "valid_from": 555,
+      "valid_to": 655,
+      "area_km2": 134185
+    },
+    {
+      "name": "Karkota Dynasty",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 127360
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 84,
+      "valid_to": 849,
+      "area_km2": 116187
+    },
+    {
+      "name": "Early Lý Dynasty",
+      "valid_from": 592,
+      "valid_to": 601,
+      "area_km2": 90334
+    },
+    {
+      "name": "Silla",
+      "valid_from": 567,
+      "valid_to": 660,
+      "area_km2": 86616
+    },
+    {
+      "name": "Chámpa",
+      "valid_from": 555,
+      "valid_to": 616,
+      "area_km2": 77375
+    },
+    {
+      "name": "Late Pallava Empire",
+      "valid_from": 555,
+      "valid_to": 601,
+      "area_km2": 38378
+    },
+    {
+      "name": "Baekje",
+      "valid_from": 567,
+      "valid_to": 655,
+      "area_km2": 34639
+    },
+    {
+      "name": "Tamna",
+      "valid_from": 263,
+      "valid_to": 681,
+      "area_km2": 1959
+    }
+  ],
+  "relation_rows_left_out": 0,
+  "slug": "cn-0592-sui",
+  "qa": {
+    "coast_outside_land_km2": 3377.3,
+    "coast_max_error_px": 0.61,
+    "land_covered": 0.4162,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 7787092,
+        "at": [
+          70.75,
+          52.44
+        ]
+      },
+      {
+        "area_km2": 6544004,
+        "at": [
+          72.19,
+          27.96
+        ]
+      },
+      {
+        "area_km2": 276875,
+        "at": [
+          159.5,
+          56.84
+        ]
+      },
+      {
+        "area_km2": 642397,
+        "at": [
+          54.62,
+          21.21
+        ]
+      },
+      {
+        "area_km2": 297826,
+        "at": [
+          54.37,
+          43.2
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 78337,
+        "at": [
+          143.32,
+          43.49
+        ]
+      },
+      {
+        "area_km2": 53981,
+        "at": [
+          141.02,
+          39.72
+        ]
+      },
+      {
+        "area_km2": 74151,
+        "at": [
+          121.38,
+          16.83
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 18552,
+        "at": [
+          133.37,
+          33.56
+        ]
+      },
+      {
+        "area_km2": 1985,
+        "at": [
+          164.05,
+          58.84
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      },
+      {
+        "area_km2": 1862,
+        "at": [
+          137.65,
+          54.91
+        ]
+      },
+      {
+        "area_km2": 2081,
+        "at": [
+          155.83,
+          50.39
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 26,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Chenla",
+        "b": "(Chenla)",
+        "area_km2": 70834.4,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kingdom of Axum",
+        "b": "Himyarite Kingdom",
+        "area_km2": 32008.9,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 2
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

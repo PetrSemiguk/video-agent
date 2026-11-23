@@ -1,0 +1,251 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "0280-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 280,
+  "states": [
+    {
+      "name": "Sasanian Empire",
+      "valid_from": 270,
+      "valid_to": 282,
+      "area_km2": 3040260
+    },
+    {
+      "name": "Western Jin",
+      "valid_from": 265,
+      "valid_to": 282,
+      "area_km2": 2972633
+    },
+    {
+      "name": "Eastern Wu",
+      "valid_from": 270,
+      "valid_to": 282,
+      "area_km2": 1399751
+    },
+    {
+      "name": "Western Satraps",
+      "valid_from": 270,
+      "valid_to": 305,
+      "area_km2": 842057
+    },
+    {
+      "name": "Indo-Sasanian Empire",
+      "valid_from": 260,
+      "valid_to": 282,
+      "area_km2": 750668
+    },
+    {
+      "name": "Vakataka Kingdom",
+      "valid_from": 260,
+      "valid_to": 305,
+      "area_km2": 574588
+    },
+    {
+      "name": "Eastern Kushans",
+      "valid_from": 270,
+      "valid_to": 282,
+      "area_km2": 312512
+    },
+    {
+      "name": "Goguryeo",
+      "valid_from": 238,
+      "valid_to": 305,
+      "area_km2": 126469
+    },
+    {
+      "name": "Indo-Scythians",
+      "valid_from": 270,
+      "valid_to": 282,
+      "area_km2": 121799
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 84,
+      "valid_to": 849,
+      "area_km2": 116187
+    },
+    {
+      "name": "Hadhramaut",
+      "valid_from": 184,
+      "valid_to": 282,
+      "area_km2": 97893
+    },
+    {
+      "name": "Chámpa",
+      "valid_from": 207,
+      "valid_to": 545,
+      "area_km2": 72677
+    },
+    {
+      "name": "Huns",
+      "valid_from": 106,
+      "valid_to": 370,
+      "area_km2": 58475
+    },
+    {
+      "name": "Mahan",
+      "valid_from": -91,
+      "valid_to": 337,
+      "area_km2": 49731
+    },
+    {
+      "name": "Wusun",
+      "valid_from": 165,
+      "valid_to": 386,
+      "area_km2": 39947
+    },
+    {
+      "name": "Dongye",
+      "valid_from": -36,
+      "valid_to": 312,
+      "area_km2": 29016
+    },
+    {
+      "name": "Jinhan",
+      "valid_from": -91,
+      "valid_to": 372,
+      "area_km2": 23506
+    },
+    {
+      "name": "Byeonhan",
+      "valid_from": -91,
+      "valid_to": 533,
+      "area_km2": 13603
+    },
+    {
+      "name": "Tamna",
+      "valid_from": 263,
+      "valid_to": 681,
+      "area_km2": 1959
+    }
+  ],
+  "relation_rows_left_out": 0,
+  "slug": "cn-0280-division",
+  "qa": {
+    "coast_outside_land_km2": 2835.9,
+    "coast_max_error_px": 0.61,
+    "land_covered": 0.2139,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 13891912,
+        "at": [
+          95.55,
+          51.35
+        ]
+      },
+      {
+        "area_km2": 5753970,
+        "at": [
+          88.14,
+          27.96
+        ]
+      },
+      {
+        "area_km2": 276875,
+        "at": [
+          159.5,
+          56.84
+        ]
+      },
+      {
+        "area_km2": 653173,
+        "at": [
+          54.19,
+          20.58
+        ]
+      },
+      {
+        "area_km2": 229550,
+        "at": [
+          139.89,
+          37.62
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 78337,
+        "at": [
+          143.32,
+          43.49
+        ]
+      },
+      {
+        "area_km2": 74064,
+        "at": [
+          73.89,
+          17.43
+        ]
+      },
+      {
+        "area_km2": 74151,
+        "at": [
+          121.38,
+          16.83
+        ]
+      },
+      {
+        "area_km2": 37056,
+        "at": [
+          131.14,
+          32.5
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 18552,
+        "at": [
+          133.37,
+          33.56
+        ]
+      },
+      {
+        "area_km2": 1985,
+        "at": [
+          164.05,
+          58.84
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      },
+      {
+        "area_km2": 1862,
+        "at": [
+          137.65,
+          54.91
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 19,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [],
+    "overlap_kinds": {},
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

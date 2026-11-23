@@ -1,0 +1,9 @@
+[
+  {
+    "feature": "Golden Horde (frame 1645)",
+    "problem": "The steppe north of the Gobi is labelled 'Golden Horde' in a 1645 frame. The Golden Horde had broken up by about 1502; the Mongol polities there in 1645 were the Khalkha and Oirat groupings.",
+    "correct": "Do not name this polity on screen in this episode. It may be drawn as unnamed steppe, or left out. The name is a stale label in the source, not a dating error of the frame as a whole.",
+    "source": "https://github.com/Seshat-Global-History-Databank/cliopatria",
+    "severity": "warning"
+  }
+]

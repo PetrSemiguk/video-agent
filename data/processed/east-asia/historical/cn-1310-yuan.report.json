@@ -1,0 +1,323 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "1310-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1310,
+  "states": [
+    {
+      "name": "Yuan Dynasty",
+      "valid_from": 1294,
+      "valid_to": 1351,
+      "area_km2": 14249991
+    },
+    {
+      "name": "Golden Horde",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 4926668
+    },
+    {
+      "name": "Ilkhanate",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 3709466
+    },
+    {
+      "name": "Chagatai Khanate",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 2460790
+    },
+    {
+      "name": "Khalji Dynasty",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 1013846
+    },
+    {
+      "name": "(Delhi Sultanate)",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 1013846
+    },
+    {
+      "name": "Khmer Empire",
+      "valid_from": 1241,
+      "valid_to": 1313,
+      "area_km2": 515874
+    },
+    {
+      "name": "Yadava Dynasty",
+      "valid_from": 1260,
+      "valid_to": 1313,
+      "area_km2": 484133
+    },
+    {
+      "name": "Sukhothai Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1343,
+      "area_km2": 395110
+    },
+    {
+      "name": "Rasulid Dynasty",
+      "valid_from": 1236,
+      "valid_to": 1452,
+      "area_km2": 377950
+    },
+    {
+      "name": "Kamakura Shogunate",
+      "valid_from": 1192,
+      "valid_to": 1325,
+      "area_km2": 320516
+    },
+    {
+      "name": "Kakatiya Dynasty",
+      "valid_from": 1260,
+      "valid_to": 1313,
+      "area_km2": 297558
+    },
+    {
+      "name": "Shan States",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 293250
+    },
+    {
+      "name": "Eastern Ganga Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 205769
+    },
+    {
+      "name": "Kashmir",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 201709
+    },
+    {
+      "name": "Myinsaing Kingdom",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 193597
+    },
+    {
+      "name": "Ngô Dynasty",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 140280
+    },
+    {
+      "name": "Chámpa",
+      "valid_from": 1220,
+      "valid_to": 1313,
+      "area_km2": 123379
+    },
+    {
+      "name": "Mahdids",
+      "valid_from": 1260,
+      "valid_to": 1474,
+      "area_km2": 84465
+    },
+    {
+      "name": "Chandela Kingdom",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 80126
+    },
+    {
+      "name": "Hanthawaddy Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1374,
+      "area_km2": 78823
+    },
+    {
+      "name": "Bahrani Dynasty",
+      "valid_from": 1260,
+      "valid_to": 1439,
+      "area_km2": 73757
+    },
+    {
+      "name": "Lan Na Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1343,
+      "area_km2": 73682
+    },
+    {
+      "name": "Lavo Kingdom",
+      "valid_from": 1241,
+      "valid_to": 1351,
+      "area_km2": 42717
+    },
+    {
+      "name": "Kampili Kingdom",
+      "valid_from": 1285,
+      "valid_to": 1325,
+      "area_km2": 5373
+    },
+    {
+      "name": "Phayao Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 5231
+    },
+    {
+      "name": "Shunten Dynasty",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 2186
+    },
+    {
+      "name": "Kathmandu",
+      "valid_from": 1202,
+      "valid_to": 1743,
+      "area_km2": 661
+    }
+  ],
+  "relation_rows_left_out": 3,
+  "slug": "cn-1310-yuan",
+  "qa": {
+    "coast_outside_land_km2": 4350.3,
+    "coast_max_error_px": 0.65,
+    "land_covered": 0.788,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 2407031,
+        "at": [
+          72.92,
+          58.51
+        ]
+      },
+      {
+        "area_km2": 792661,
+        "at": [
+          91.88,
+          24.62
+        ]
+      },
+      {
+        "area_km2": 276875,
+        "at": [
+          159.5,
+          56.84
+        ]
+      },
+      {
+        "area_km2": 577314,
+        "at": [
+          54.47,
+          20.84
+        ]
+      },
+      {
+        "area_km2": 250155,
+        "at": [
+          70.92,
+          25.29
+        ]
+      },
+      {
+        "area_km2": 241325,
+        "at": [
+          84.28,
+          23.03
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 78337,
+        "at": [
+          143.32,
+          43.49
+        ]
+      },
+      {
+        "area_km2": 74151,
+        "at": [
+          121.38,
+          16.83
+        ]
+      },
+      {
+        "area_km2": 24983,
+        "at": [
+          73.98,
+          45.92
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 6906,
+        "at": [
+          53.01,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 1985,
+        "at": [
+          164.05,
+          58.84
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      },
+      {
+        "area_km2": 1862,
+        "at": [
+          137.65,
+          54.91
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 28,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Khalji Dynasty",
+        "b": "(Delhi Sultanate)",
+        "area_km2": 1013796.9,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Kakatiya Dynasty",
+        "b": "Kampili Kingdom",
+        "area_km2": 48.4,
+        "share_of_smaller": 0.0992,
+        "kind": "conflict"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 1,
+      "conflict": 1
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

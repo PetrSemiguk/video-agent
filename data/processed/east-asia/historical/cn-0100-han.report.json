@@ -1,0 +1,255 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "0100-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 100,
+  "states": [
+    {
+      "name": "Han Dynasty",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 4582897
+    },
+    {
+      "name": "Parthian Empire",
+      "valid_from": 51,
+      "valid_to": 113,
+      "area_km2": 2702645
+    },
+    {
+      "name": "Kushan Empire",
+      "valid_from": 91,
+      "valid_to": 116,
+      "area_km2": 1709275
+    },
+    {
+      "name": "Xiongnu",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 1441438
+    },
+    {
+      "name": "Xianbei",
+      "valid_from": 84,
+      "valid_to": 105,
+      "area_km2": 998277
+    },
+    {
+      "name": "Satavahana Dynasty",
+      "valid_from": -27,
+      "valid_to": 105,
+      "area_km2": 890001
+    },
+    {
+      "name": "Western Satraps",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 327527
+    },
+    {
+      "name": "Southern Xiongnu",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 186818
+    },
+    {
+      "name": "Indo-Scythians",
+      "valid_from": 91,
+      "valid_to": 269,
+      "area_km2": 121799
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 84,
+      "valid_to": 849,
+      "area_km2": 116187
+    },
+    {
+      "name": "Goguryeo",
+      "valid_from": 60,
+      "valid_to": 153,
+      "area_km2": 94711
+    },
+    {
+      "name": "Hadhramaut",
+      "valid_from": -350,
+      "valid_to": 183,
+      "area_km2": 86171
+    },
+    {
+      "name": "Mahan",
+      "valid_from": -91,
+      "valid_to": 337,
+      "area_km2": 49731
+    },
+    {
+      "name": "Wusun",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 39947
+    },
+    {
+      "name": "Dong-okjeo",
+      "valid_from": 43,
+      "valid_to": 126,
+      "area_km2": 31981
+    },
+    {
+      "name": "Dongye",
+      "valid_from": -36,
+      "valid_to": 312,
+      "area_km2": 29016
+    },
+    {
+      "name": "Jinhan",
+      "valid_from": -91,
+      "valid_to": 372,
+      "area_km2": 23506
+    },
+    {
+      "name": "Byeonhan",
+      "valid_from": -91,
+      "valid_to": 533,
+      "area_km2": 13603
+    }
+  ],
+  "relation_rows_left_out": 1,
+  "slug": "cn-0100-han",
+  "qa": {
+    "coast_outside_land_km2": 2806.8,
+    "coast_max_error_px": 0.61,
+    "land_covered": 0.3142,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 11192715,
+        "at": [
+          73.61,
+          51.92
+        ]
+      },
+      {
+        "area_km2": 5426204,
+        "at": [
+          90.24,
+          27.87
+        ]
+      },
+      {
+        "area_km2": 276875,
+        "at": [
+          159.5,
+          56.84
+        ]
+      },
+      {
+        "area_km2": 653173,
+        "at": [
+          54.19,
+          20.58
+        ]
+      },
+      {
+        "area_km2": 229550,
+        "at": [
+          139.89,
+          37.62
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 78337,
+        "at": [
+          143.32,
+          43.49
+        ]
+      },
+      {
+        "area_km2": 74151,
+        "at": [
+          121.38,
+          16.83
+        ]
+      },
+      {
+        "area_km2": 37056,
+        "at": [
+          131.14,
+          32.5
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 18552,
+        "at": [
+          133.37,
+          33.56
+        ]
+      },
+      {
+        "area_km2": 1985,
+        "at": [
+          164.05,
+          58.84
+        ]
+      },
+      {
+        "area_km2": 5944,
+        "at": [
+          74.49,
+          15.25
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      },
+      {
+        "area_km2": 1862,
+        "at": [
+          137.65,
+          54.91
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 18,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Han Dynasty",
+        "b": "Xiongnu",
+        "area_km2": 12.2,
+        "share_of_smaller": 0.0,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "sliver": 1
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}

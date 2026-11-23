@@ -1,0 +1,379 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "1400-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1400,
+  "states": [
+    {
+      "name": "Ming Dynasty",
+      "valid_from": 1385,
+      "valid_to": 1401,
+      "area_km2": 4940730
+    },
+    {
+      "name": "Golden Horde",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 4293855
+    },
+    {
+      "name": "Timurid Empire",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 3963657
+    },
+    {
+      "name": "Northern Yuan",
+      "valid_from": 1375,
+      "valid_to": 1401,
+      "area_km2": 3439109
+    },
+    {
+      "name": "Blue Horde",
+      "valid_from": 1375,
+      "valid_to": 1401,
+      "area_km2": 1827828
+    },
+    {
+      "name": "Chagatai Khanate",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 1763272
+    },
+    {
+      "name": "Tibet",
+      "valid_from": 1385,
+      "valid_to": 1401,
+      "area_km2": 1545058
+    },
+    {
+      "name": "Novgorod Republic",
+      "valid_from": 1375,
+      "valid_to": 1428,
+      "area_km2": 1490417
+    },
+    {
+      "name": "Bahmani Sultanate",
+      "valid_from": 1375,
+      "valid_to": 1449,
+      "area_km2": 439315
+    },
+    {
+      "name": "(Delhi Sultanate)",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 431439
+    },
+    {
+      "name": "Tughlaq Dynasty",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 431439
+    },
+    {
+      "name": "Vijayanagara Empire",
+      "valid_from": 1375,
+      "valid_to": 1449,
+      "area_km2": 395114
+    },
+    {
+      "name": "Rasulid Dynasty",
+      "valid_from": 1236,
+      "valid_to": 1452,
+      "area_km2": 377950
+    },
+    {
+      "name": "Lan Xang",
+      "valid_from": 1385,
+      "valid_to": 1406,
+      "area_km2": 375702
+    },
+    {
+      "name": "Ayutthaya Kingdom",
+      "valid_from": 1395,
+      "valid_to": 1449,
+      "area_km2": 320542
+    },
+    {
+      "name": "Ashikaga Shogunate",
+      "valid_from": 1344,
+      "valid_to": 1458,
+      "area_km2": 320516
+    },
+    {
+      "name": "Sultanate of Bengal",
+      "valid_from": 1395,
+      "valid_to": 1481,
+      "area_km2": 305893
+    },
+    {
+      "name": "Shan States",
+      "valid_from": 1385,
+      "valid_to": 1428,
+      "area_km2": 274022
+    },
+    {
+      "name": "Joseon",
+      "valid_from": 1395,
+      "valid_to": 1414,
+      "area_km2": 208184
+    },
+    {
+      "name": "Ava Kingdom",
+      "valid_from": 1375,
+      "valid_to": 1428,
+      "area_km2": 193597
+    },
+    {
+      "name": "Jaunpur Sultanate",
+      "valid_from": 1395,
+      "valid_to": 1474,
+      "area_km2": 159344
+    },
+    {
+      "name": "Kashmiri Sultanate",
+      "valid_from": 1375,
+      "valid_to": 1401,
+      "area_km2": 152046
+    },
+    {
+      "name": "Ngô Dynasty",
+      "valid_from": 1385,
+      "valid_to": 1401,
+      "area_km2": 133419
+    },
+    {
+      "name": "Sind-Samma Dynasty",
+      "valid_from": 1352,
+      "valid_to": 1520,
+      "area_km2": 123201
+    },
+    {
+      "name": "Chámpa",
+      "valid_from": 1363,
+      "valid_to": 1428,
+      "area_km2": 111123
+    },
+    {
+      "name": "Mahdids",
+      "valid_from": 1260,
+      "valid_to": 1474,
+      "area_km2": 84465
+    },
+    {
+      "name": "Hanthawaddy Kingdom",
+      "valid_from": 1375,
+      "valid_to": 1428,
+      "area_km2": 78768
+    },
+    {
+      "name": "Bahrani Dynasty",
+      "valid_from": 1260,
+      "valid_to": 1439,
+      "area_km2": 73757
+    },
+    {
+      "name": "Sukhothai Kingdom",
+      "valid_from": 1375,
+      "valid_to": 1421,
+      "area_km2": 63192
+    },
+    {
+      "name": "Lan Na Kingdom",
+      "valid_from": 1363,
+      "valid_to": 1452,
+      "area_km2": 52549
+    },
+    {
+      "name": "Tondo",
+      "valid_from": 1375,
+      "valid_to": 1496,
+      "area_km2": 4953
+    },
+    {
+      "name": "Hokuzan",
+      "valid_from": 1314,
+      "valid_to": 1414,
+      "area_km2": 1278
+    },
+    {
+      "name": "Kathmandu",
+      "valid_from": 1202,
+      "valid_to": 1743,
+      "area_km2": 661
+    },
+    {
+      "name": "Chüzan",
+      "valid_from": 1314,
+      "valid_to": 1401,
+      "area_km2": 561
+    },
+    {
+      "name": "Nanzan",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 321
+    }
+  ],
+  "relation_rows_left_out": 4,
+  "slug": "cn-1400-ming",
+  "qa": {
+    "coast_outside_land_km2": 4101.6,
+    "coast_max_error_px": 0.65,
+    "land_covered": 0.61,
+    "largest_uncovered_land": [
+      {
+        "area_km2": 5503352,
+        "at": [
+          132.2,
+          52.71
+        ]
+      },
+      {
+        "area_km2": 1207600,
+        "at": [
+          76.29,
+          23.81
+        ]
+      },
+      {
+        "area_km2": 276875,
+        "at": [
+          159.5,
+          56.84
+        ]
+      },
+      {
+        "area_km2": 700020,
+        "at": [
+          92.54,
+          24.59
+        ]
+      },
+      {
+        "area_km2": 505281,
+        "at": [
+          100.14,
+          35.35
+        ]
+      },
+      {
+        "area_km2": 577314,
+        "at": [
+          54.47,
+          20.84
+        ]
+      },
+      {
+        "area_km2": 75221,
+        "at": [
+          142.96,
+          50.35
+        ]
+      },
+      {
+        "area_km2": 78337,
+        "at": [
+          143.32,
+          43.49
+        ]
+      },
+      {
+        "area_km2": 91467,
+        "at": [
+          75.58,
+          35.26
+        ]
+      },
+      {
+        "area_km2": 74027,
+        "at": [
+          121.38,
+          16.83
+        ]
+      },
+      {
+        "area_km2": 25052,
+        "at": [
+          73.98,
+          45.92
+        ]
+      },
+      {
+        "area_km2": 36025,
+        "at": [
+          120.83,
+          23.62
+        ]
+      },
+      {
+        "area_km2": 6906,
+        "at": [
+          53.01,
+          45.84
+        ]
+      },
+      {
+        "area_km2": 1985,
+        "at": [
+          164.05,
+          58.84
+        ]
+      },
+      {
+        "area_km2": 3033,
+        "at": [
+          147.83,
+          44.98
+        ]
+      }
+    ],
+    "land_clip": "Natural Earth 10m",
+    "features": 35,
+    "coverage_valid": false,
+    "simplify": "per polygon",
+    "overlaps": [
+      {
+        "a": "Blue Horde",
+        "b": "Golden Horde",
+        "area_km2": 487510.9,
+        "share_of_smaller": 0.9984,
+        "kind": "nesting"
+      },
+      {
+        "a": "(Delhi Sultanate)",
+        "b": "Tughlaq Dynasty",
+        "area_km2": 433109.8,
+        "share_of_smaller": 1.0,
+        "kind": "nesting"
+      },
+      {
+        "a": "Sind-Samma Dynasty",
+        "b": "Timurid Empire",
+        "area_km2": 145.5,
+        "share_of_smaller": 0.0012,
+        "kind": "sliver"
+      },
+      {
+        "a": "Chüzan",
+        "b": "Hokuzan",
+        "area_km2": 5.3,
+        "share_of_smaller": 0.0156,
+        "kind": "sliver"
+      }
+    ],
+    "overlap_kinds": {
+      "nesting": 2,
+      "sliver": 2
+    },
+    "palette_conflicts": 0
+  },
+  "attribution": {
+    "credit": "Historical borders: Cliopatria (Seshat), CC BY 4.0 — see description",
+    "lines": [
+      "Bennett, J. S. et al. Cliopatria - A geospatial database of world-wide political entities from 3400BCE to 2024CE. Scientific Data 12, 247 (2025). https://doi.org/10.1038/s41597-025-04516-9. Data v0.2.1: https://github.com/Seshat-Global-History-Databank/cliopatria. License: https://creativecommons.org/licenses/by/4.0/. Changes: clipped to Natural Earth land, simplified."
+    ]
+  }
+}
