@@ -1,0 +1,125 @@
+{
+  "plate": "china-east-hs05",
+  "resolved_plate": "china-east-hs05",
+  "date": "1310-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1310,
+  "states": [
+    {
+      "name": "Yuan Dynasty",
+      "valid_from": 1294,
+      "valid_to": 1351,
+      "area_km2": 14249991
+    },
+    {
+      "name": "Chagatai Khanate",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 2460790
+    },
+    {
+      "name": "Khalji Dynasty",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 1013846
+    },
+    {
+      "name": "(Delhi Sultanate)",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 1013846
+    },
+    {
+      "name": "Khmer Empire",
+      "valid_from": 1241,
+      "valid_to": 1313,
+      "area_km2": 515874
+    },
+    {
+      "name": "Yadava Dynasty",
+      "valid_from": 1260,
+      "valid_to": 1313,
+      "area_km2": 484133
+    },
+    {
+      "name": "Sukhothai Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1343,
+      "area_km2": 395110
+    },
+    {
+      "name": "Kamakura Shogunate",
+      "valid_from": 1192,
+      "valid_to": 1325,
+      "area_km2": 320516
+    },
+    {
+      "name": "Kakatiya Dynasty",
+      "valid_from": 1260,
+      "valid_to": 1313,
+      "area_km2": 297558
+    },
+    {
+      "name": "Shan States",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 293250
+    },
+    {
+      "name": "Eastern Ganga Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 205769
+    },
+    {
+      "name": "Myinsaing Kingdom",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 193597
+    },
+    {
+      "name": "Ngô Dynasty",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 140280
+    },
+    {
+      "name": "Chandela Kingdom",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 80126
+    },
+    {
+      "name": "Hanthawaddy Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1374,
+      "area_km2": 78823
+    },
+    {
+      "name": "Lan Na Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1343,
+      "area_km2": 73682
+    },
+    {
+      "name": "Phayao Kingdom",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 5231
+    },
+    {
+      "name": "Shunten Dynasty",
+      "valid_from": 1305,
+      "valid_to": 1313,
+      "area_km2": 2186
+    },
+    {
+      "name": "Kathmandu",
+      "valid_from": 1202,
+      "valid_to": 1743,
+      "area_km2": 661
+    }
+  ],
+  "relation_rows_left_out": 3
+}

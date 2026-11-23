@@ -1,0 +1,83 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "-0210-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": -210,
+  "states": [
+    {
+      "name": "Seleucid Empire",
+      "valid_from": -210,
+      "valid_to": -209,
+      "area_km2": 2277782
+    },
+    {
+      "name": "Qin Dynasty",
+      "valid_from": -210,
+      "valid_to": -209,
+      "area_km2": 2132724
+    },
+    {
+      "name": "Maurya Empire",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 1140195
+    },
+    {
+      "name": "Yuezhi",
+      "valid_from": -331,
+      "valid_to": -204,
+      "area_km2": 916154
+    },
+    {
+      "name": "Satavahana Dynasty",
+      "valid_from": -225,
+      "valid_to": -171,
+      "area_km2": 535339
+    },
+    {
+      "name": "Greco-Bactrian Kingdom",
+      "valid_from": -225,
+      "valid_to": -204,
+      "area_km2": 489263
+    },
+    {
+      "name": "Minyue",
+      "valid_from": -210,
+      "valid_to": -209,
+      "area_km2": 267357
+    },
+    {
+      "name": "Parthian Empire",
+      "valid_from": -218,
+      "valid_to": -165,
+      "area_km2": 253596
+    },
+    {
+      "name": "Atropatene",
+      "valid_from": -210,
+      "valid_to": -209,
+      "area_km2": 146793
+    },
+    {
+      "name": "Âu Lạc",
+      "valid_from": -256,
+      "valid_to": -209,
+      "area_km2": 140776
+    },
+    {
+      "name": "Hadhramaut",
+      "valid_from": -350,
+      "valid_to": 183,
+      "area_km2": 86171
+    },
+    {
+      "name": "Kalinga",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 81474
+    }
+  ],
+  "relation_rows_left_out": 0
+}

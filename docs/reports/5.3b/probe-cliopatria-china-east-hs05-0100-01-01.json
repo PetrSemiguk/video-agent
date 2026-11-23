@@ -1,0 +1,83 @@
+{
+  "plate": "china-east-hs05",
+  "resolved_plate": "china-east-hs05",
+  "date": "0100-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 100,
+  "states": [
+    {
+      "name": "Han Dynasty",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 4582897
+    },
+    {
+      "name": "Xiongnu",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 1441438
+    },
+    {
+      "name": "Xianbei",
+      "valid_from": 84,
+      "valid_to": 105,
+      "area_km2": 998277
+    },
+    {
+      "name": "Satavahana Dynasty",
+      "valid_from": -27,
+      "valid_to": 105,
+      "area_km2": 890001
+    },
+    {
+      "name": "Southern Xiongnu",
+      "valid_from": 91,
+      "valid_to": 105,
+      "area_km2": 186818
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 84,
+      "valid_to": 849,
+      "area_km2": 116187
+    },
+    {
+      "name": "Goguryeo",
+      "valid_from": 60,
+      "valid_to": 153,
+      "area_km2": 94711
+    },
+    {
+      "name": "Mahan",
+      "valid_from": -91,
+      "valid_to": 337,
+      "area_km2": 49731
+    },
+    {
+      "name": "Dong-okjeo",
+      "valid_from": 43,
+      "valid_to": 126,
+      "area_km2": 31981
+    },
+    {
+      "name": "Dongye",
+      "valid_from": -36,
+      "valid_to": 312,
+      "area_km2": 29016
+    },
+    {
+      "name": "Jinhan",
+      "valid_from": -91,
+      "valid_to": 372,
+      "area_km2": 23506
+    },
+    {
+      "name": "Byeonhan",
+      "valid_from": -91,
+      "valid_to": 533,
+      "area_km2": 13603
+    }
+  ],
+  "relation_rows_left_out": 1
+}

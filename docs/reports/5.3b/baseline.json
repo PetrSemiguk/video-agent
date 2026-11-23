@@ -1,0 +1,11 @@
+{
+  "at": "2026-11-08T15:35:15.355198+08:00",
+  "measurement": "single baseline snapshot, not peak",
+  "available_ram_gib": 4.815296173095703,
+  "disk_free_bytes": 19188445184,
+  "gpu_csv": "NVIDIA GeForce RTX 4060, 1509, 8188",
+  "sizes": {
+    "..\\episodes\\china-europe-unity": 99927,
+    "..\\docs\\reports\\5.3b": 108672
+  }
+}

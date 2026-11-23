@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-08T15:58:13.016337+08:00",
+  "status": "fact-check-pass-awaiting-user-script-approval",
+  "script_sha256": "a13d0ba653126d01044b5d1ce2ede44ed957b4119da4777cba8f322fad91e233",
+  "spoken_words": 2009,
+  "chunks": 189,
+  "paragraphs": 34,
+  "sections": 8,
+  "max_normalized_chunk_chars": 165,
+  "inserted_pause_seconds": 61.75000000000003,
+  "tts_run": false,
+  "estimate_minutes_at_pilot_overall_162_wpm": 12.401234567901234,
+  "estimate_minutes_at_pilot_speech_174_wpm_plus_gaps": 12.57514367816092,
+  "note": "No audio measured. Overall rate already includes pauses; only speech-rate estimate adds gaps."
+}

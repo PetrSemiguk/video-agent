@@ -1,0 +1,131 @@
+{
+  "plate": "china-east-hs05",
+  "resolved_plate": "china-east-hs05",
+  "date": "1400-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1400,
+  "states": [
+    {
+      "name": "Ming Dynasty",
+      "valid_from": 1385,
+      "valid_to": 1401,
+      "area_km2": 4940730
+    },
+    {
+      "name": "Northern Yuan",
+      "valid_from": 1375,
+      "valid_to": 1401,
+      "area_km2": 3439109
+    },
+    {
+      "name": "Chagatai Khanate",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 1763272
+    },
+    {
+      "name": "Tibet",
+      "valid_from": 1385,
+      "valid_to": 1401,
+      "area_km2": 1545058
+    },
+    {
+      "name": "Bahmani Sultanate",
+      "valid_from": 1375,
+      "valid_to": 1449,
+      "area_km2": 439315
+    },
+    {
+      "name": "Lan Xang",
+      "valid_from": 1385,
+      "valid_to": 1406,
+      "area_km2": 375702
+    },
+    {
+      "name": "Ashikaga Shogunate",
+      "valid_from": 1344,
+      "valid_to": 1458,
+      "area_km2": 320516
+    },
+    {
+      "name": "Sultanate of Bengal",
+      "valid_from": 1395,
+      "valid_to": 1481,
+      "area_km2": 305893
+    },
+    {
+      "name": "Shan States",
+      "valid_from": 1385,
+      "valid_to": 1428,
+      "area_km2": 274022
+    },
+    {
+      "name": "Joseon",
+      "valid_from": 1395,
+      "valid_to": 1414,
+      "area_km2": 208184
+    },
+    {
+      "name": "Ava Kingdom",
+      "valid_from": 1375,
+      "valid_to": 1428,
+      "area_km2": 193597
+    },
+    {
+      "name": "Jaunpur Sultanate",
+      "valid_from": 1395,
+      "valid_to": 1474,
+      "area_km2": 159344
+    },
+    {
+      "name": "Ngô Dynasty",
+      "valid_from": 1385,
+      "valid_to": 1401,
+      "area_km2": 133419
+    },
+    {
+      "name": "Hanthawaddy Kingdom",
+      "valid_from": 1375,
+      "valid_to": 1428,
+      "area_km2": 78768
+    },
+    {
+      "name": "Sukhothai Kingdom",
+      "valid_from": 1375,
+      "valid_to": 1421,
+      "area_km2": 63192
+    },
+    {
+      "name": "Lan Na Kingdom",
+      "valid_from": 1363,
+      "valid_to": 1452,
+      "area_km2": 52549
+    },
+    {
+      "name": "Hokuzan",
+      "valid_from": 1314,
+      "valid_to": 1414,
+      "area_km2": 1278
+    },
+    {
+      "name": "Kathmandu",
+      "valid_from": 1202,
+      "valid_to": 1743,
+      "area_km2": 661
+    },
+    {
+      "name": "Chüzan",
+      "valid_from": 1314,
+      "valid_to": 1401,
+      "area_km2": 561
+    },
+    {
+      "name": "Nanzan",
+      "valid_from": 1395,
+      "valid_to": 1401,
+      "area_km2": 321
+    }
+  ],
+  "relation_rows_left_out": 1
+}

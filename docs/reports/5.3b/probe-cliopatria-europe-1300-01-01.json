@@ -1,0 +1,635 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1300-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1300,
+  "states": [
+    {
+      "name": "Golden Horde",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 4933986
+    },
+    {
+      "name": "Ilkhanate",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 3941078
+    },
+    {
+      "name": "Mamluk Sultanate",
+      "valid_from": 1294,
+      "valid_to": 1343,
+      "area_km2": 1468646
+    },
+    {
+      "name": "(Holy Roman Empire)",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 1000611
+    },
+    {
+      "name": "Holy Roman Empire Minor States",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 555266
+    },
+    {
+      "name": "Novgorod Republic",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 496382
+    },
+    {
+      "name": "(Kingdom of France)",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 466150
+    },
+    {
+      "name": "Old Kingdom of Norway",
+      "valid_from": 1272,
+      "valid_to": 1313,
+      "area_km2": 439492
+    },
+    {
+      "name": "Almohad Caliphate",
+      "valid_from": 1285,
+      "valid_to": 1332,
+      "area_km2": 388541
+    },
+    {
+      "name": "Crown of Castile",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 353152
+    },
+    {
+      "name": "Kingdom of Hungary",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 334038
+    },
+    {
+      "name": "Byzantine Empire",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 251647
+    },
+    {
+      "name": "Kingdom of France",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 242371
+    },
+    {
+      "name": "Kingdom of England",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 225068
+    },
+    {
+      "name": "(Kingdom of England)",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 225068
+    },
+    {
+      "name": "Hafsid Dynasty",
+      "valid_from": 1294,
+      "valid_to": 1343,
+      "area_km2": 224190
+    },
+    {
+      "name": "Principality of Vladimir-Suzdal",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 215209
+    },
+    {
+      "name": "Kingdom of Sweden",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 198811
+    },
+    {
+      "name": "(Duchies of Poland)",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 175863
+    },
+    {
+      "name": "Principality of Smolensk",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 150993
+    },
+    {
+      "name": "Galicia-Volhynia",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 132428
+    },
+    {
+      "name": "Zayyanid dynasty",
+      "valid_from": 1285,
+      "valid_to": 1343,
+      "area_km2": 126172
+    },
+    {
+      "name": "Crown of Aragon",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 122175
+    },
+    {
+      "name": "Teutonic Order",
+      "valid_from": 1272,
+      "valid_to": 1304,
+      "area_km2": 112373
+    },
+    {
+      "name": "Kingdom of Bohemia",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 107451
+    },
+    {
+      "name": "(Kingdom of Bohemia)",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 107451
+    },
+    {
+      "name": "Kingdom of Denmark",
+      "valid_from": 1285,
+      "valid_to": 1332,
+      "area_km2": 100985
+    },
+    {
+      "name": "(Kingdom of Denmark)",
+      "valid_from": 1285,
+      "valid_to": 1332,
+      "area_km2": 100985
+    },
+    {
+      "name": "Second Bulgarian Empire",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 100461
+    },
+    {
+      "name": "Principality of Minsk",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 98908
+    },
+    {
+      "name": "Kingdom of Portugal",
+      "valid_from": 1250,
+      "valid_to": 1414,
+      "area_km2": 91911
+    },
+    {
+      "name": "Grand Duchy of Lithuania",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 91094
+    },
+    {
+      "name": "Kingdom of Scotland",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 86071
+    },
+    {
+      "name": "Kingdom of Serbia",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 79358
+    },
+    {
+      "name": "Kingdom of Naples",
+      "valid_from": 1285,
+      "valid_to": 1449,
+      "area_km2": 68689
+    },
+    {
+      "name": "House of Habsburg",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 59377
+    },
+    {
+      "name": "Duchies of Poland",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 55447
+    },
+    {
+      "name": "Capetian House of Anjou",
+      "valid_from": 1272,
+      "valid_to": 1325,
+      "area_km2": 49551
+    },
+    {
+      "name": "Viking settlements",
+      "valid_from": 1028,
+      "valid_to": 1325,
+      "area_km2": 47313
+    },
+    {
+      "name": "Armenian Kingdom of Cilicia",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 43640
+    },
+    {
+      "name": "Margraviate of Brandenburg",
+      "valid_from": 1272,
+      "valid_to": 1304,
+      "area_km2": 41456
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 1285,
+      "valid_to": 1313,
+      "area_km2": 39501
+    },
+    {
+      "name": "Duchy of Brittany",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 37363
+    },
+    {
+      "name": "Duchy of Bavaria",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 35323
+    },
+    {
+      "name": "Principality of Pinsk",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 34430
+    },
+    {
+      "name": "Duchy of Masovia",
+      "valid_from": 1279,
+      "valid_to": 1304,
+      "area_km2": 31334
+    },
+    {
+      "name": "Emirate of Granada",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 31106
+    },
+    {
+      "name": "County of Flanders",
+      "valid_from": 1272,
+      "valid_to": 1304,
+      "area_km2": 29180
+    },
+    {
+      "name": "Principality of Turov",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 28994
+    },
+    {
+      "name": "House of Ascania",
+      "valid_from": 1272,
+      "valid_to": 1325,
+      "area_km2": 28700
+    },
+    {
+      "name": "Republic of Pisa",
+      "valid_from": 1260,
+      "valid_to": 1394,
+      "area_km2": 27741
+    },
+    {
+      "name": "Republic of Genoa",
+      "valid_from": 1285,
+      "valid_to": 1304,
+      "area_km2": 25775
+    },
+    {
+      "name": "Duchy of Greater Poland",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 25762
+    },
+    {
+      "name": "Duchy of Sandomierz",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 25670
+    },
+    {
+      "name": "County of Anjou",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 25109
+    },
+    {
+      "name": "Kingdom of Syrmia",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 24036
+    },
+    {
+      "name": "Pskov Republic",
+      "valid_from": 1285,
+      "valid_to": 1421,
+      "area_km2": 22601
+    },
+    {
+      "name": "Kingdom of Arles",
+      "valid_from": 1285,
+      "valid_to": 1332,
+      "area_km2": 20762
+    },
+    {
+      "name": "Despotate of Epirus",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 20648
+    },
+    {
+      "name": "County of Auvergne",
+      "valid_from": 1272,
+      "valid_to": 1332,
+      "area_km2": 19453
+    },
+    {
+      "name": "Banate of Bosnia",
+      "valid_from": 1285,
+      "valid_to": 1325,
+      "area_km2": 19361
+    },
+    {
+      "name": "Republic of Venice",
+      "valid_from": 1285,
+      "valid_to": 1304,
+      "area_km2": 19241
+    },
+    {
+      "name": "Duchy of Silesia",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 19123
+    },
+    {
+      "name": "House of Wittelsbach",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 17686
+    },
+    {
+      "name": "County of Savoy",
+      "valid_from": 1260,
+      "valid_to": 1384,
+      "area_km2": 14987
+    },
+    {
+      "name": "Empire of Trebizond",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 14924
+    },
+    {
+      "name": "Principality of Achaea",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 14691
+    },
+    {
+      "name": "Thessaly",
+      "valid_from": 1272,
+      "valid_to": 1325,
+      "area_km2": 14407
+    },
+    {
+      "name": "County of Nevers",
+      "valid_from": 1285,
+      "valid_to": 1325,
+      "area_km2": 13311
+    },
+    {
+      "name": "County of Brabant",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 13184
+    },
+    {
+      "name": "Kingdom of Majorca",
+      "valid_from": 1279,
+      "valid_to": 1304,
+      "area_km2": 12509
+    },
+    {
+      "name": "Kingdom of Cyprus",
+      "valid_from": 1192,
+      "valid_to": 1362,
+      "area_km2": 11437
+    },
+    {
+      "name": "Grand Principality of Moscow",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 10246
+    },
+    {
+      "name": "Republic of Florence",
+      "valid_from": 1279,
+      "valid_to": 1401,
+      "area_km2": 10107
+    },
+    {
+      "name": "County of Touraine",
+      "valid_from": 1272,
+      "valid_to": 1304,
+      "area_km2": 10094
+    },
+    {
+      "name": "Principality of Beloozero",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 10010
+    },
+    {
+      "name": "Duchy of Aquitaine",
+      "valid_from": 1206,
+      "valid_to": 1304,
+      "area_km2": 9582
+    },
+    {
+      "name": "Dauphiné",
+      "valid_from": 1272,
+      "valid_to": 1313,
+      "area_km2": 9291
+    },
+    {
+      "name": "County of Foix",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 8813
+    },
+    {
+      "name": "County of Périgord",
+      "valid_from": 1272,
+      "valid_to": 1332,
+      "area_km2": 8593
+    },
+    {
+      "name": "County of Holland",
+      "valid_from": 1260,
+      "valid_to": 1304,
+      "area_km2": 8421
+    },
+    {
+      "name": "Duchy of Athens",
+      "valid_from": 1279,
+      "valid_to": 1304,
+      "area_km2": 8242
+    },
+    {
+      "name": "Patriarchate of Aquileia",
+      "valid_from": 1294,
+      "valid_to": 1313,
+      "area_km2": 8103
+    },
+    {
+      "name": "County of Artois",
+      "valid_from": 1260,
+      "valid_to": 1304,
+      "area_km2": 7588
+    },
+    {
+      "name": "Tver",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 7060
+    },
+    {
+      "name": "County of Armagnac",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 6844
+    },
+    {
+      "name": "Duchy of Opole",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 6637
+    },
+    {
+      "name": "House of Luxembourg",
+      "valid_from": 1294,
+      "valid_to": 1362,
+      "area_km2": 5715
+    },
+    {
+      "name": "Nizhny Novgorod",
+      "valid_from": 1294,
+      "valid_to": 1384,
+      "area_km2": 5416
+    },
+    {
+      "name": "Giudicato of Arborea",
+      "valid_from": 1072,
+      "valid_to": 1325,
+      "area_km2": 3855
+    },
+    {
+      "name": "County of Blôis",
+      "valid_from": 1294,
+      "valid_to": 1332,
+      "area_km2": 3681
+    },
+    {
+      "name": "Duchy of Racibórz",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 3384
+    },
+    {
+      "name": "Duchy of Głogów",
+      "valid_from": 1279,
+      "valid_to": 1304,
+      "area_km2": 2954
+    },
+    {
+      "name": "Swiss Confederation",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 2926
+    },
+    {
+      "name": "Duchy of Legnica",
+      "valid_from": 1279,
+      "valid_to": 1304,
+      "area_km2": 2368
+    },
+    {
+      "name": "Comtat Venaissin",
+      "valid_from": 1272,
+      "valid_to": 1351,
+      "area_km2": 2109
+    },
+    {
+      "name": "Duchy of Bytom",
+      "valid_from": 1294,
+      "valid_to": 1304,
+      "area_km2": 2085
+    },
+    {
+      "name": "Duchy of the Archipelago",
+      "valid_from": 1210,
+      "valid_to": 1304,
+      "area_km2": 1233
+    },
+    {
+      "name": "Duchy of Jawor",
+      "valid_from": 1279,
+      "valid_to": 1304,
+      "area_km2": 1099
+    },
+    {
+      "name": "County of Ampuria",
+      "valid_from": 1279,
+      "valid_to": 1343,
+      "area_km2": 833
+    },
+    {
+      "name": "House of Anjou-Sicily",
+      "valid_from": 1294,
+      "valid_to": 1325,
+      "area_km2": 725
+    },
+    {
+      "name": "County of Urgell",
+      "valid_from": 1279,
+      "valid_to": 1515,
+      "area_km2": 380
+    },
+    {
+      "name": "Duchy of Styria",
+      "valid_from": 1272,
+      "valid_to": 1421,
+      "area_km2": 277
+    },
+    {
+      "name": "Principality of Orange",
+      "valid_from": 1272,
+      "valid_to": 1458,
+      "area_km2": 141
+    }
+  ],
+  "relation_rows_left_out": 2
+}

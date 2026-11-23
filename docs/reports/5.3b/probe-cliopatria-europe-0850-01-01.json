@@ -1,0 +1,311 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "0850-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 850,
+  "states": [
+    {
+      "name": "Abbasid Caliphate",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 7867502
+    },
+    {
+      "name": "(Carolingian Empire)",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 1246963
+    },
+    {
+      "name": "Khazaria",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 749503
+    },
+    {
+      "name": "Byzantine Empire",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 637762
+    },
+    {
+      "name": "Rustamid dynasty",
+      "valid_from": 778,
+      "valid_to": 899,
+      "area_km2": 469781
+    },
+    {
+      "name": "East Franks",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 436487
+    },
+    {
+      "name": "First Bulgarian Empire",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 428320
+    },
+    {
+      "name": "Scandinavian minor kingdoms",
+      "valid_from": 825,
+      "valid_to": 865,
+      "area_km2": 426216
+    },
+    {
+      "name": "West Franks",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 425793
+    },
+    {
+      "name": "Emirate of Córdoba",
+      "valid_from": 825,
+      "valid_to": 869,
+      "area_km2": 412446
+    },
+    {
+      "name": "Magyars",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 399131
+    },
+    {
+      "name": "Middle Franks",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 384683
+    },
+    {
+      "name": "Aghlabid Dynasty",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 247297
+    },
+    {
+      "name": "Idrisids",
+      "valid_from": 793,
+      "valid_to": 910,
+      "area_km2": 194486
+    },
+    {
+      "name": "(Anglo-Saxon England)",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 140574
+    },
+    {
+      "name": "Kingdom of Asturias",
+      "valid_from": 825,
+      "valid_to": 869,
+      "area_km2": 123130
+    },
+    {
+      "name": "Great Moravia",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 101717
+    },
+    {
+      "name": "Viking settlements",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 69895
+    },
+    {
+      "name": "Kingdom of Mercia",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 48371
+    },
+    {
+      "name": "Kingdom of Northumbria",
+      "valid_from": 750,
+      "valid_to": 865,
+      "area_km2": 43718
+    },
+    {
+      "name": "(Brythonic Kingdoms)",
+      "valid_from": 840,
+      "valid_to": 859,
+      "area_km2": 42721
+    },
+    {
+      "name": "Dál Riata",
+      "valid_from": 840,
+      "valid_to": 874,
+      "area_km2": 41623
+    },
+    {
+      "name": "Principality of Serbia",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 36324
+    },
+    {
+      "name": "Kingdom of Wessex",
+      "valid_from": 840,
+      "valid_to": 874,
+      "area_km2": 35983
+    },
+    {
+      "name": "Georgia",
+      "valid_from": 783,
+      "valid_to": 874,
+      "area_km2": 24443
+    },
+    {
+      "name": "Kingdom of the Iberians",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 24352
+    },
+    {
+      "name": "Kingdom of Brittany",
+      "valid_from": 825,
+      "valid_to": 859,
+      "area_km2": 24213
+    },
+    {
+      "name": "Duchy of Benevento",
+      "valid_from": 850,
+      "valid_to": 874,
+      "area_km2": 23590
+    },
+    {
+      "name": "Duchy of Croatia",
+      "valid_from": 850,
+      "valid_to": 875,
+      "area_km2": 20875
+    },
+    {
+      "name": "Principality of Salerno",
+      "valid_from": 840,
+      "valid_to": 879,
+      "area_km2": 17791
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 850,
+      "valid_to": 879,
+      "area_km2": 15874
+    },
+    {
+      "name": "Kingdom of Pamplona",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 15693
+    },
+    {
+      "name": "Obotrites",
+      "valid_from": 814,
+      "valid_to": 881,
+      "area_km2": 15291
+    },
+    {
+      "name": "Brythons",
+      "valid_from": 644,
+      "valid_to": 859,
+      "area_km2": 13212
+    },
+    {
+      "name": "Kingdom of East Anglia",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 12502
+    },
+    {
+      "name": "Cyprus Condominium",
+      "valid_from": 692,
+      "valid_to": 874,
+      "area_km2": 11437
+    },
+    {
+      "name": "Strathclyde",
+      "valid_from": 750,
+      "valid_to": 869,
+      "area_km2": 9448
+    },
+    {
+      "name": "Emirate of Nekor",
+      "valid_from": 793,
+      "valid_to": 921,
+      "area_km2": 7039
+    },
+    {
+      "name": "Kingdom of Gwynedd",
+      "valid_from": 705,
+      "valid_to": 859,
+      "area_km2": 6364
+    },
+    {
+      "name": "Emirate of Sicily",
+      "valid_from": 850,
+      "valid_to": 859,
+      "area_km2": 6282
+    },
+    {
+      "name": "Emirate of Crete",
+      "valid_from": 830,
+      "valid_to": 959,
+      "area_km2": 5499
+    },
+    {
+      "name": "Cornwall",
+      "valid_from": 710,
+      "valid_to": 935,
+      "area_km2": 4538
+    },
+    {
+      "name": "Kingdom of Powys",
+      "valid_from": 705,
+      "valid_to": 859,
+      "area_km2": 4359
+    },
+    {
+      "name": "County of Aragon",
+      "valid_from": 830,
+      "valid_to": 874,
+      "area_km2": 3490
+    },
+    {
+      "name": "Republic of Venice",
+      "valid_from": 705,
+      "valid_to": 859,
+      "area_km2": 2547
+    },
+    {
+      "name": "Kingdom of Brycheiniog",
+      "valid_from": 540,
+      "valid_to": 946,
+      "area_km2": 1962
+    },
+    {
+      "name": "Kingdom of Morgannwg",
+      "valid_from": 540,
+      "valid_to": 946,
+      "area_km2": 1510
+    },
+    {
+      "name": "Kingdom of Gwent",
+      "valid_from": 840,
+      "valid_to": 883,
+      "area_km2": 1355
+    },
+    {
+      "name": "Duchy of Naples",
+      "valid_from": 840,
+      "valid_to": 959,
+      "area_km2": 1059
+    },
+    {
+      "name": "Principality of Capua",
+      "valid_from": 840,
+      "valid_to": 865,
+      "area_km2": 384
+    }
+  ],
+  "relation_rows_left_out": 3
+}

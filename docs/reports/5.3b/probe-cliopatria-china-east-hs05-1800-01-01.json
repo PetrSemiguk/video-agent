@@ -1,0 +1,137 @@
+{
+  "plate": "china-east-hs05",
+  "resolved_plate": "china-east-hs05",
+  "date": "1800-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1800,
+  "states": [
+    {
+      "name": "Qing Dynasty",
+      "valid_from": 1797,
+      "valid_to": 1804,
+      "area_km2": 12509346
+    },
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 11744301
+    },
+    {
+      "name": "Spanish Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 11242220
+    },
+    {
+      "name": "(Portuguese Empire)",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 7955860
+    },
+    {
+      "name": "(British Empire)",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 2403535
+    },
+    {
+      "name": "Maratha Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 1164051
+    },
+    {
+      "name": "British Empire",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 979252
+    },
+    {
+      "name": "Konbaung Dynasty",
+      "valid_from": 1794,
+      "valid_to": 1814,
+      "area_km2": 675755
+    },
+    {
+      "name": "Rattanakosin Kingdom",
+      "valid_from": 1796,
+      "valid_to": 1821,
+      "area_km2": 430003
+    },
+    {
+      "name": "Tokugawa Shogunate",
+      "valid_from": 1799,
+      "valid_to": 1821,
+      "area_km2": 362979
+    },
+    {
+      "name": "Joseon",
+      "valid_from": 1640,
+      "valid_to": 1859,
+      "area_km2": 231658
+    },
+    {
+      "name": "Tây Sơn dynasty",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 181158
+    },
+    {
+      "name": "Nepal",
+      "valid_from": 1794,
+      "valid_to": 1802,
+      "area_km2": 179928
+    },
+    {
+      "name": "Vientiane",
+      "valid_from": 1796,
+      "valid_to": 1824,
+      "area_km2": 172157
+    },
+    {
+      "name": "Kingdom of Luang Phrabang",
+      "valid_from": 1791,
+      "valid_to": 1827,
+      "area_km2": 147905
+    },
+    {
+      "name": "Nawab of Awadh",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 115167
+    },
+    {
+      "name": "Chiangmai",
+      "valid_from": 1783,
+      "valid_to": 1852,
+      "area_km2": 64890
+    },
+    {
+      "name": "Kingdom of Bhutan",
+      "valid_from": 1794,
+      "valid_to": 1813,
+      "area_km2": 40456
+    },
+    {
+      "name": "Portuguese Colonies",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 26879
+    },
+    {
+      "name": "French India",
+      "valid_from": 1741,
+      "valid_to": 1814,
+      "area_km2": 10137
+    },
+    {
+      "name": "Danish India",
+      "valid_from": 1800,
+      "valid_to": 1802,
+      "area_km2": 322
+    }
+  ],
+  "relation_rows_left_out": 0
+}

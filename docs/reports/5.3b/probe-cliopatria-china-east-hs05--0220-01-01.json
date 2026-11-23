@@ -1,0 +1,65 @@
+{
+  "plate": "china-east-hs05",
+  "resolved_plate": "china-east-hs05",
+  "date": "-0220-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": -220,
+  "states": [
+    {
+      "name": "(Warring States China)",
+      "valid_from": -222,
+      "valid_to": -219,
+      "area_km2": 1632451
+    },
+    {
+      "name": "Qin",
+      "valid_from": -222,
+      "valid_to": -219,
+      "area_km2": 1523240
+    },
+    {
+      "name": "Maurya Empire",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 1140195
+    },
+    {
+      "name": "Yuezhi",
+      "valid_from": -331,
+      "valid_to": -204,
+      "area_km2": 916154
+    },
+    {
+      "name": "Satavahana Dynasty",
+      "valid_from": -225,
+      "valid_to": -171,
+      "area_km2": 535339
+    },
+    {
+      "name": "Minyue",
+      "valid_from": -333,
+      "valid_to": -219,
+      "area_km2": 376736
+    },
+    {
+      "name": "Âu Lạc",
+      "valid_from": -256,
+      "valid_to": -209,
+      "area_km2": 140776
+    },
+    {
+      "name": "Qi",
+      "valid_from": -222,
+      "valid_to": -219,
+      "area_km2": 109211
+    },
+    {
+      "name": "Kalinga",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 81474
+    }
+  ],
+  "relation_rows_left_out": 0
+}

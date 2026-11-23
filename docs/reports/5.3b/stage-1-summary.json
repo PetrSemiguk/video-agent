@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-08T15:58:59.312004+08:00",
+  "stage": "script-and-fact-check",
+  "status": "PASS, awaiting corrected-script approval",
+  "elapsed_wall_seconds_since_first_recorded_operation": 1541.312004,
+  "elapsed_note": "Includes user interruption and resumption; not active compute time. Original draft production predates this run.",
+  "agent_calls": {
+    "interrupted_checker": 1,
+    "completed_checker_initial_and_followups": 3,
+    "supplemental_researcher": 1,
+    "scriptwriter": 1
+  },
+  "script_sha256": "a13d0ba653126d01044b5d1ce2ede44ed957b4119da4777cba8f322fad91e233",
+  "episode_text_bytes": 161164,
+  "step_evidence_bytes_before_this_file": 370987,
+  "disk_free_bytes": 19178205184,
+  "peak_ram": null,
+  "peak_vram": null,
+  "peak_note": "Not sampled during text-only agent work; initial machine snapshot is baseline.json, not a peak.",
+  "tts_run": false,
+  "render_run": false
+}

@@ -1,0 +1,95 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "0395-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 395,
+  "states": [
+    {
+      "name": "Sasanian Empire",
+      "valid_from": 387,
+      "valid_to": 395,
+      "area_km2": 2986291
+    },
+    {
+      "name": "Western Roman Empire",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 2132727
+    },
+    {
+      "name": "Eastern Roman Empire",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 1978658
+    },
+    {
+      "name": "Huns",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 1130158
+    },
+    {
+      "name": "Kingdom of Armenia",
+      "valid_from": 387,
+      "valid_to": 395,
+      "area_km2": 143622
+    },
+    {
+      "name": "Caucasian Albania",
+      "valid_from": 387,
+      "valid_to": 438,
+      "area_km2": 74782
+    },
+    {
+      "name": "Caucasian Iberia",
+      "valid_from": 287,
+      "valid_to": 396,
+      "area_km2": 35797
+    },
+    {
+      "name": "Vandals",
+      "valid_from": 394,
+      "valid_to": 406,
+      "area_km2": 31904
+    },
+    {
+      "name": "Ripuarian Franks",
+      "valid_from": 395,
+      "valid_to": 395,
+      "area_km2": 28283
+    },
+    {
+      "name": "Lazica",
+      "valid_from": 306,
+      "valid_to": 395,
+      "area_km2": 24529
+    },
+    {
+      "name": "Norse",
+      "valid_from": 299,
+      "valid_to": 401,
+      "area_km2": 16295
+    },
+    {
+      "name": "Salian Franks",
+      "valid_from": 358,
+      "valid_to": 438,
+      "area_km2": 7101
+    },
+    {
+      "name": "Saxons",
+      "valid_from": 283,
+      "valid_to": 454,
+      "area_km2": 6335
+    },
+    {
+      "name": "Angles",
+      "valid_from": 387,
+      "valid_to": 475,
+      "area_km2": 1293
+    }
+  ],
+  "relation_rows_left_out": 1
+}

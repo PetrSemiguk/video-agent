@@ -1,5 +1,211 @@
 [
   {
+    "layer": "cn-0221-qin",
+    "features": 14,
+    "land_covered": 0.1535,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 2
+    },
+    "facts_ok": 4,
+    "facts_checked": 4
+  },
+  {
+    "layer": "cn-0215-qin-empire",
+    "features": 12,
+    "land_covered": 0.1536,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {},
+    "facts_ok": 5,
+    "facts_checked": 6
+  },
+  {
+    "layer": "cn-0100-han",
+    "features": 18,
+    "land_covered": 0.3142,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "sliver": 1
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "cn-0280-division",
+    "features": 19,
+    "land_covered": 0.2139,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {},
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "cn-0592-sui",
+    "features": 26,
+    "land_covered": 0.4162,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 2
+    },
+    "facts_ok": 4,
+    "facts_checked": 4
+  },
+  {
+    "layer": "cn-0745-tang",
+    "features": 25,
+    "land_covered": 0.4527,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "sliver": 5
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "cn-0980-song-liao",
+    "features": 39,
+    "land_covered": 0.4485,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "sliver": 6
+    },
+    "facts_ok": 4,
+    "facts_checked": 4
+  },
+  {
+    "layer": "cn-1140-jin-southern-song",
+    "features": 38,
+    "land_covered": 0.4882,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "sliver": 6
+    },
+    "facts_ok": 4,
+    "facts_checked": 4
+  },
+  {
+    "layer": "cn-1310-yuan",
+    "features": 28,
+    "land_covered": 0.788,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 1,
+      "conflict": 1
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "cn-1400-ming",
+    "features": 35,
+    "land_covered": 0.61,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 2,
+      "sliver": 2
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "cn-1645-qing",
+    "features": 37,
+    "land_covered": 0.7847,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 4,
+      "conflict": 2,
+      "sliver": 2
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "cn-1800-qing-peak",
+    "features": 35,
+    "land_covered": 0.9674,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 5,
+      "sliver": 1
+    },
+    "facts_ok": 6,
+    "facts_checked": 6
+  },
+  {
+    "layer": "eu-0395-rome",
+    "features": 19,
+    "land_covered": 0.3689,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "sliver": 1
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "eu-0555-justinian",
+    "features": 39,
+    "land_covered": 0.3977,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 17,
+      "sliver": 7
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "eu-0800-carolingian",
+    "features": 46,
+    "land_covered": 0.5362,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 13,
+      "sliver": 12
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "eu-0850-verdun",
+    "features": 56,
+    "land_covered": 0.568,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 15,
+      "sliver": 14
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
+    "layer": "eu-1815-confederation",
+    "features": 69,
+    "land_covered": 0.7835,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 6,
+      "sliver": 29,
+      "conflict": 3
+    },
+    "facts_ok": 3,
+    "facts_checked": 4
+  },
+  {
+    "layer": "eu-1914-ohm",
+    "features": 48,
+    "land_covered": 0.9126,
+    "land_covered_before_cc_by": null,
+    "overlap_kinds": {
+      "nesting": 4,
+      "conflict": 1,
+      "sliver": 3
+    },
+    "facts_ok": 5,
+    "facts_checked": 5
+  },
+  {
     "layer": "europe-1914",
     "features": 36,
     "land_covered": 0.9985,

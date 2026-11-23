@@ -1,0 +1,197 @@
+{
+  "plate": "east-asia",
+  "resolved_plate": "east-asia",
+  "date": "-0205-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": -205,
+  "states": [
+    {
+      "name": "Xiongnu",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 3685389
+    },
+    {
+      "name": "Seleucid Empire",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 2277637
+    },
+    {
+      "name": "(Eighteen Kingdoms)",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 1640790
+    },
+    {
+      "name": "Maurya Empire",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 1140195
+    },
+    {
+      "name": "Yuezhi",
+      "valid_from": -331,
+      "valid_to": -204,
+      "area_km2": 916154
+    },
+    {
+      "name": "Satavahana Dynasty",
+      "valid_from": -225,
+      "valid_to": -171,
+      "area_km2": 535339
+    },
+    {
+      "name": "Greco-Bactrian Kingdom",
+      "valid_from": -225,
+      "valid_to": -204,
+      "area_km2": 489263
+    },
+    {
+      "name": "Han",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 454874
+    },
+    {
+      "name": "Minyue",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 431219
+    },
+    {
+      "name": "Nanyue",
+      "valid_from": -206,
+      "valid_to": -203,
+      "area_km2": 351993
+    },
+    {
+      "name": "Parthian Empire",
+      "valid_from": -218,
+      "valid_to": -165,
+      "area_km2": 253596
+    },
+    {
+      "name": "Western Chu",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 217084
+    },
+    {
+      "name": "Linjiang",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 216393
+    },
+    {
+      "name": "Atropatene",
+      "valid_from": -206,
+      "valid_to": -198,
+      "area_km2": 146793
+    },
+    {
+      "name": "Jiujiang",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 86995
+    },
+    {
+      "name": "Hán",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 86684
+    },
+    {
+      "name": "Hadhramaut",
+      "valid_from": -350,
+      "valid_to": 183,
+      "area_km2": 86171
+    },
+    {
+      "name": "Kalinga",
+      "valid_from": -225,
+      "valid_to": -189,
+      "area_km2": 81474
+    },
+    {
+      "name": "Liaodong",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 70288
+    },
+    {
+      "name": "Yong",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 61876
+    },
+    {
+      "name": "Qi",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 60204
+    },
+    {
+      "name": "Wei",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 59926
+    },
+    {
+      "name": "Dai",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 57016
+    },
+    {
+      "name": "Jiaodong",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 51055
+    },
+    {
+      "name": "Jibei",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 44210
+    },
+    {
+      "name": "Yan",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 42088
+    },
+    {
+      "name": "Henan",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 40946
+    },
+    {
+      "name": "Chang-shan",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 34632
+    },
+    {
+      "name": "Zhai",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 25977
+    },
+    {
+      "name": "Sai",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 16521
+    },
+    {
+      "name": "Yin",
+      "valid_from": -206,
+      "valid_to": -204,
+      "area_km2": 14022
+    }
+  ],
+  "relation_rows_left_out": 0
+}

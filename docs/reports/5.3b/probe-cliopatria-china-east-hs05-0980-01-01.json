@@ -1,0 +1,125 @@
+{
+  "plate": "china-east-hs05",
+  "resolved_plate": "china-east-hs05",
+  "date": "0980-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 980,
+  "states": [
+    {
+      "name": "Northern Song",
+      "valid_from": 980,
+      "valid_to": 989,
+      "area_km2": 2765922
+    },
+    {
+      "name": "Liao Dynasty",
+      "valid_from": 980,
+      "valid_to": 989,
+      "area_km2": 1924516
+    },
+    {
+      "name": "Tibetans",
+      "valid_from": 960,
+      "valid_to": 1009,
+      "area_km2": 1846183
+    },
+    {
+      "name": "Qocho Kingdom",
+      "valid_from": 888,
+      "valid_to": 1009,
+      "area_km2": 652974
+    },
+    {
+      "name": "Kara-Khanids",
+      "valid_from": 960,
+      "valid_to": 999,
+      "area_km2": 408908
+    },
+    {
+      "name": "Kingdom of Dali",
+      "valid_from": 970,
+      "valid_to": 1055,
+      "area_km2": 360363
+    },
+    {
+      "name": "Kingdom of Khotan",
+      "valid_from": 900,
+      "valid_to": 999,
+      "area_km2": 297819
+    },
+    {
+      "name": "Heian Japan",
+      "valid_from": 814,
+      "valid_to": 1093,
+      "area_km2": 243510
+    },
+    {
+      "name": "Ganzhou Kingdom",
+      "valid_from": 926,
+      "valid_to": 989,
+      "area_km2": 232647
+    },
+    {
+      "name": "Kamarupa Kingdom",
+      "valid_from": 960,
+      "valid_to": 999,
+      "area_km2": 230539
+    },
+    {
+      "name": "Haripuñjaya",
+      "valid_from": 666,
+      "valid_to": 1065,
+      "area_km2": 143044
+    },
+    {
+      "name": "Goryeo",
+      "valid_from": 936,
+      "valid_to": 1138,
+      "area_km2": 142875
+    },
+    {
+      "name": "Ngô Dynasty",
+      "valid_from": 980,
+      "valid_to": 1055,
+      "area_km2": 135575
+    },
+    {
+      "name": "Chandela Kingdom",
+      "valid_from": 960,
+      "valid_to": 1084,
+      "area_km2": 80124
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 960,
+      "valid_to": 1039,
+      "area_km2": 77433
+    },
+    {
+      "name": "Pala Empire",
+      "valid_from": 980,
+      "valid_to": 989,
+      "area_km2": 76509
+    },
+    {
+      "name": "Chandra Dynasty",
+      "valid_from": 947,
+      "valid_to": 1045,
+      "area_km2": 76440
+    },
+    {
+      "name": "Pagan Kingdom",
+      "valid_from": 960,
+      "valid_to": 1045,
+      "area_km2": 44586
+    },
+    {
+      "name": "Tamna",
+      "valid_from": 936,
+      "valid_to": 1271,
+      "area_km2": 1959
+    }
+  ],
+  "relation_rows_left_out": 0
+}

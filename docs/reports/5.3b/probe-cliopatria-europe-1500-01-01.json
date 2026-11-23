@@ -1,0 +1,407 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1500-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1500,
+  "states": [
+    {
+      "name": "Grand Principality of Moscow",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 2139300
+    },
+    {
+      "name": "Aq Qoyunlu",
+      "valid_from": 1475,
+      "valid_to": 1501,
+      "area_km2": 1701512
+    },
+    {
+      "name": "Mamluk Sultanate",
+      "valid_from": 1468,
+      "valid_to": 1515,
+      "area_km2": 1480794
+    },
+    {
+      "name": "(Kalmar Union)",
+      "valid_from": 1482,
+      "valid_to": 1501,
+      "area_km2": 1285990
+    },
+    {
+      "name": "Kalmar Union",
+      "valid_from": 1482,
+      "valid_to": 1501,
+      "area_km2": 1285990
+    },
+    {
+      "name": "House of Jagiellon",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 1021300
+    },
+    {
+      "name": "Ottoman Empire",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 930613
+    },
+    {
+      "name": "Golden Horde",
+      "valid_from": 1468,
+      "valid_to": 1501,
+      "area_km2": 550524
+    },
+    {
+      "name": "(Kingdom of France)",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 467711
+    },
+    {
+      "name": "Crown of Castile",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 412242
+    },
+    {
+      "name": "Wattasid dynasty",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 383974
+    },
+    {
+      "name": "Kingdom of France",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 365876
+    },
+    {
+      "name": "(Holy Roman Empire)",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 344060
+    },
+    {
+      "name": "Holy Roman Empire Minor States",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 344060
+    },
+    {
+      "name": "Kingdom of Hungary",
+      "valid_from": 1492,
+      "valid_to": 1520,
+      "area_km2": 337524
+    },
+    {
+      "name": "Hafsid Dynasty",
+      "valid_from": 1453,
+      "valid_to": 1511,
+      "area_km2": 224190
+    },
+    {
+      "name": "(Habsburg Monarchy)",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 170768
+    },
+    {
+      "name": "Kingdom of England",
+      "valid_from": 1487,
+      "valid_to": 1501,
+      "area_km2": 166388
+    },
+    {
+      "name": "(Kingdom of England)",
+      "valid_from": 1487,
+      "valid_to": 1501,
+      "area_km2": 166388
+    },
+    {
+      "name": "Astrakhan Khanate",
+      "valid_from": 1475,
+      "valid_to": 1501,
+      "area_km2": 161772
+    },
+    {
+      "name": "Crown of Aragon",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 156423
+    },
+    {
+      "name": "Crimean Khanate",
+      "valid_from": 1487,
+      "valid_to": 1501,
+      "area_km2": 136570
+    },
+    {
+      "name": "Kingdom of Bohemia",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 128571
+    },
+    {
+      "name": "(Kingdom of Bohemia)",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 128571
+    },
+    {
+      "name": "Zayyanid dynasty",
+      "valid_from": 1363,
+      "valid_to": 1506,
+      "area_km2": 126172
+    },
+    {
+      "name": "Livonian Conference",
+      "valid_from": 1422,
+      "valid_to": 1511,
+      "area_km2": 116338
+    },
+    {
+      "name": "Kingdom of Portugal",
+      "valid_from": 1497,
+      "valid_to": 1506,
+      "area_km2": 113407
+    },
+    {
+      "name": "House of Habsburg",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 100156
+    },
+    {
+      "name": "Kingdom of Scotland",
+      "valid_from": 1475,
+      "valid_to": 1551,
+      "area_km2": 88868
+    },
+    {
+      "name": "Principality of Moldavia",
+      "valid_from": 1487,
+      "valid_to": 1506,
+      "area_km2": 82069
+    },
+    {
+      "name": "Principality of Wallachia",
+      "valid_from": 1422,
+      "valid_to": 1528,
+      "area_km2": 74280
+    },
+    {
+      "name": "Habsburg Monarchy",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 70612
+    },
+    {
+      "name": "Kingdom of Naples",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 68689
+    },
+    {
+      "name": "Republic of Venice",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 64189
+    },
+    {
+      "name": "County of Foix",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 45144
+    },
+    {
+      "name": "House of Bourbon",
+      "valid_from": 1497,
+      "valid_to": 1518,
+      "area_km2": 43426
+    },
+    {
+      "name": "Samtskhe-Saatabago",
+      "valid_from": 1468,
+      "valid_to": 1501,
+      "area_km2": 42721
+    },
+    {
+      "name": "Electorate of Brandenburg",
+      "valid_from": 1492,
+      "valid_to": 1528,
+      "area_km2": 42293
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 1487,
+      "valid_to": 1506,
+      "area_km2": 39617
+    },
+    {
+      "name": "Teutonic Order",
+      "valid_from": 1497,
+      "valid_to": 1520,
+      "area_km2": 38518
+    },
+    {
+      "name": "Duchy of Bavaria",
+      "valid_from": 1459,
+      "valid_to": 1506,
+      "area_km2": 36211
+    },
+    {
+      "name": "County of Savoy",
+      "valid_from": 1497,
+      "valid_to": 1511,
+      "area_km2": 35779
+    },
+    {
+      "name": "Electorate of Saxony",
+      "valid_from": 1492,
+      "valid_to": 1501,
+      "area_km2": 34252
+    },
+    {
+      "name": "Duchy of Milan",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 33694
+    },
+    {
+      "name": "Beylik of Dulkadir",
+      "valid_from": 1463,
+      "valid_to": 1511,
+      "area_km2": 30414
+    },
+    {
+      "name": "Kingdom of Georgia",
+      "valid_from": 1468,
+      "valid_to": 1506,
+      "area_km2": 27616
+    },
+    {
+      "name": "Republic of Genoa",
+      "valid_from": 1453,
+      "valid_to": 1525,
+      "area_km2": 26141
+    },
+    {
+      "name": "Ramadanid Emirate",
+      "valid_from": 1468,
+      "valid_to": 1511,
+      "area_km2": 24477
+    },
+    {
+      "name": "Qasim Khanate",
+      "valid_from": 1453,
+      "valid_to": 1501,
+      "area_km2": 23757
+    },
+    {
+      "name": "Swiss Confederation",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 22792
+    },
+    {
+      "name": "Pskov Republic",
+      "valid_from": 1482,
+      "valid_to": 1506,
+      "area_km2": 21734
+    },
+    {
+      "name": "Duchy of Lorraine",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 17569
+    },
+    {
+      "name": "Electorate of Trier",
+      "valid_from": 1459,
+      "valid_to": 1555,
+      "area_km2": 17043
+    },
+    {
+      "name": "Ryazan",
+      "valid_from": 1453,
+      "valid_to": 1501,
+      "area_km2": 17026
+    },
+    {
+      "name": "County of Nevers",
+      "valid_from": 1482,
+      "valid_to": 1518,
+      "area_km2": 13539
+    },
+    {
+      "name": "Principality of Mingrelia",
+      "valid_from": 1468,
+      "valid_to": 1571,
+      "area_km2": 13251
+    },
+    {
+      "name": "Republic of Florence",
+      "valid_from": 1487,
+      "valid_to": 1506,
+      "area_km2": 12065
+    },
+    {
+      "name": "Kingdom of Imereti",
+      "valid_from": 1468,
+      "valid_to": 1578,
+      "area_km2": 11442
+    },
+    {
+      "name": "Principality of Abkhazia",
+      "valid_from": 1468,
+      "valid_to": 1571,
+      "area_km2": 6066
+    },
+    {
+      "name": "Principality of Guria",
+      "valid_from": 1468,
+      "valid_to": 1506,
+      "area_km2": 4180
+    },
+    {
+      "name": "Comtat Venaissin",
+      "valid_from": 1482,
+      "valid_to": 1672,
+      "area_km2": 2319
+    },
+    {
+      "name": "Duchy of Styria",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 2004
+    },
+    {
+      "name": "Republic of Ragusa",
+      "valid_from": 1429,
+      "valid_to": 1771,
+      "area_km2": 1540
+    },
+    {
+      "name": "County of Auvergne",
+      "valid_from": 1497,
+      "valid_to": 1501,
+      "area_km2": 706
+    },
+    {
+      "name": "County of Urgell",
+      "valid_from": 1279,
+      "valid_to": 1515,
+      "area_km2": 380
+    },
+    {
+      "name": "Principality of Orange",
+      "valid_from": 1459,
+      "valid_to": 1563,
+      "area_km2": 141
+    }
+  ],
+  "relation_rows_left_out": 2
+}

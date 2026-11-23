@@ -1,0 +1,209 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "0555-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 555,
+  "states": [
+    {
+      "name": "Sasanian Empire",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 3172782
+    },
+    {
+      "name": "Eastern Roman Empire",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 2555171
+    },
+    {
+      "name": "(Kingdom of the Franks)",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 732954
+    },
+    {
+      "name": "Kingdom of the Franks",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 732954
+    },
+    {
+      "name": "(Merovingian Empire)",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 732954
+    },
+    {
+      "name": "Visigothic Kingdom",
+      "valid_from": 555,
+      "valid_to": 566,
+      "area_km2": 399429
+    },
+    {
+      "name": "Scandinavian minor kingdoms",
+      "valid_from": 523,
+      "valid_to": 792,
+      "area_km2": 382454
+    },
+    {
+      "name": "Lombards",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 175112
+    },
+    {
+      "name": "Kingdom of the Gepids",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 131448
+    },
+    {
+      "name": "(Brythonic Kingdoms)",
+      "valid_from": 555,
+      "valid_to": 568,
+      "area_km2": 119469
+    },
+    {
+      "name": "Brythons",
+      "valid_from": 555,
+      "valid_to": 568,
+      "area_km2": 100778
+    },
+    {
+      "name": "Kingdom of the Suebi",
+      "valid_from": 476,
+      "valid_to": 576,
+      "area_km2": 91850
+    },
+    {
+      "name": "(Anglo-Saxon England)",
+      "valid_from": 555,
+      "valid_to": 576,
+      "area_km2": 82677
+    },
+    {
+      "name": "Saxons",
+      "valid_from": 534,
+      "valid_to": 566,
+      "area_km2": 82666
+    },
+    {
+      "name": "Bavarians",
+      "valid_from": 555,
+      "valid_to": 566,
+      "area_km2": 81235
+    },
+    {
+      "name": "Ostrogothic Kingdom",
+      "valid_from": 555,
+      "valid_to": 560,
+      "area_km2": 32729
+    },
+    {
+      "name": "Kingdom of Mercia",
+      "valid_from": 534,
+      "valid_to": 576,
+      "area_km2": 23472
+    },
+    {
+      "name": "Dál Riata",
+      "valid_from": 540,
+      "valid_to": 586,
+      "area_km2": 15792
+    },
+    {
+      "name": "Kingdom of Deira",
+      "valid_from": 555,
+      "valid_to": 591,
+      "area_km2": 12981
+    },
+    {
+      "name": "Kingdom of East Anglia",
+      "valid_from": 534,
+      "valid_to": 665,
+      "area_km2": 12391
+    },
+    {
+      "name": "Kingdom of Bernicia",
+      "valid_from": 555,
+      "valid_to": 611,
+      "area_km2": 10529
+    },
+    {
+      "name": "Kingdom of Wessex",
+      "valid_from": 534,
+      "valid_to": 576,
+      "area_km2": 9586
+    },
+    {
+      "name": "Kingdom of Gwynedd",
+      "valid_from": 540,
+      "valid_to": 591,
+      "area_km2": 8086
+    },
+    {
+      "name": "Kingdom of Powys",
+      "valid_from": 540,
+      "valid_to": 616,
+      "area_km2": 5787
+    },
+    {
+      "name": "Kingdom of Sussex",
+      "valid_from": 490,
+      "valid_to": 691,
+      "area_km2": 5657
+    },
+    {
+      "name": "Kingdom of Kent",
+      "valid_from": 534,
+      "valid_to": 691,
+      "area_km2": 4063
+    },
+    {
+      "name": "Kingdom of Essex",
+      "valid_from": 534,
+      "valid_to": 627,
+      "area_km2": 4001
+    },
+    {
+      "name": "Kingdom of Lindsey",
+      "valid_from": 555,
+      "valid_to": 611,
+      "area_km2": 3933
+    },
+    {
+      "name": "Kingdom of Brycheiniog",
+      "valid_from": 540,
+      "valid_to": 946,
+      "area_km2": 1962
+    },
+    {
+      "name": "Kingdom of Morgannwg",
+      "valid_from": 540,
+      "valid_to": 946,
+      "area_km2": 1510
+    },
+    {
+      "name": "Kingdom of Gwent",
+      "valid_from": 540,
+      "valid_to": 576,
+      "area_km2": 1355
+    },
+    {
+      "name": "Wihtgar",
+      "valid_from": 523,
+      "valid_to": 660,
+      "area_km2": 508
+    },
+    {
+      "name": "Hunnic Empire",
+      "valid_from": 476,
+      "valid_to": 629,
+      "area_km2": 185
+    }
+  ],
+  "relation_rows_left_out": 0
+}

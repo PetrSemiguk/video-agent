@@ -1,0 +1,83 @@
+{
+  "plate": "china-east-hs05",
+  "resolved_plate": "china-east-hs05",
+  "date": "0745-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 745,
+  "states": [
+    {
+      "name": "Türgesh",
+      "valid_from": 741,
+      "valid_to": 749,
+      "area_km2": 4040713
+    },
+    {
+      "name": "Tang Dynasty",
+      "valid_from": 705,
+      "valid_to": 749,
+      "area_km2": 4028116
+    },
+    {
+      "name": "Tibetan Empire",
+      "valid_from": 732,
+      "valid_to": 749,
+      "area_km2": 2727293
+    },
+    {
+      "name": "Chalukya Dynasty",
+      "valid_from": 732,
+      "valid_to": 749,
+      "area_km2": 810333
+    },
+    {
+      "name": "Kannauj-Varman Dynasty",
+      "valid_from": 741,
+      "valid_to": 750,
+      "area_km2": 573391
+    },
+    {
+      "name": "Balhae",
+      "valid_from": 741,
+      "valid_to": 824,
+      "area_km2": 331752
+    },
+    {
+      "name": "Nara Japan",
+      "valid_from": 710,
+      "valid_to": 787,
+      "area_km2": 230061
+    },
+    {
+      "name": "Unified Silla",
+      "valid_from": 682,
+      "valid_to": 891,
+      "area_km2": 149880
+    },
+    {
+      "name": "Haripuñjaya",
+      "valid_from": 666,
+      "valid_to": 1065,
+      "area_km2": 143044
+    },
+    {
+      "name": "Pyu City-States",
+      "valid_from": 84,
+      "valid_to": 849,
+      "area_km2": 116187
+    },
+    {
+      "name": "Kamarupa Kingdom",
+      "valid_from": 656,
+      "valid_to": 750,
+      "area_km2": 106215
+    },
+    {
+      "name": "Nanzhao",
+      "valid_from": 741,
+      "valid_to": 749,
+      "area_km2": 10877
+    }
+  ],
+  "relation_rows_left_out": 0
+}

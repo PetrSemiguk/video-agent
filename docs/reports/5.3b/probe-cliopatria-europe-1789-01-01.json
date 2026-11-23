@@ -1,0 +1,299 @@
+{
+  "plate": "europe",
+  "resolved_plate": "europe",
+  "date": "1789-01-01",
+  "source": "cliopatria",
+  "version": "v0.2.1",
+  "frame_year": 1789,
+  "states": [
+    {
+      "name": "Russian Empire",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 16309904
+    },
+    {
+      "name": "(Spanish Empire)",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 11750683
+    },
+    {
+      "name": "(Portuguese Empire)",
+      "valid_from": 1778,
+      "valid_to": 1791,
+      "area_km2": 7955945
+    },
+    {
+      "name": "Ottoman Empire",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 2872480
+    },
+    {
+      "name": "(British Empire)",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 1557125
+    },
+    {
+      "name": "Swedish Empire",
+      "valid_from": 1763,
+      "valid_to": 1808,
+      "area_km2": 790048
+    },
+    {
+      "name": "British Colonial Empire",
+      "valid_from": 1788,
+      "valid_to": 1793,
+      "area_km2": 695466
+    },
+    {
+      "name": "Habsburg Monarchy",
+      "valid_from": 1780,
+      "valid_to": 1790,
+      "area_km2": 669034
+    },
+    {
+      "name": "(Habsburg Monarchy)",
+      "valid_from": 1780,
+      "valid_to": 1790,
+      "area_km2": 669034
+    },
+    {
+      "name": "(Dutch Republic)",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 641837
+    },
+    {
+      "name": "(Kingdom of France)",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 603250
+    },
+    {
+      "name": "Kingdom of France",
+      "valid_from": 1780,
+      "valid_to": 1790,
+      "area_km2": 533813
+    },
+    {
+      "name": "Polish-Lithuanian Commonwealth",
+      "valid_from": 1775,
+      "valid_to": 1790,
+      "area_km2": 532851
+    },
+    {
+      "name": "Denmark-Norway",
+      "valid_from": 1775,
+      "valid_to": 1806,
+      "area_km2": 526384
+    },
+    {
+      "name": "Kingdom of Spain",
+      "valid_from": 1781,
+      "valid_to": 1795,
+      "area_km2": 504116
+    },
+    {
+      "name": "Morocco",
+      "valid_from": 1769,
+      "valid_to": 1841,
+      "area_km2": 387614
+    },
+    {
+      "name": "Kingdom of Great Britain",
+      "valid_from": 1762,
+      "valid_to": 1793,
+      "area_km2": 341693
+    },
+    {
+      "name": "Dutch Republic",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 325212
+    },
+    {
+      "name": "Regency of Algiers",
+      "valid_from": 1709,
+      "valid_to": 1791,
+      "area_km2": 210874
+    },
+    {
+      "name": "Kingdom of Prussia",
+      "valid_from": 1780,
+      "valid_to": 1790,
+      "area_km2": 205709
+    },
+    {
+      "name": "Khanates of the Caucasus",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 194383
+    },
+    {
+      "name": "Holy Roman Empire Minor States",
+      "valid_from": 1780,
+      "valid_to": 1790,
+      "area_km2": 178323
+    },
+    {
+      "name": "(Holy Roman Empire)",
+      "valid_from": 1780,
+      "valid_to": 1790,
+      "area_km2": 178323
+    },
+    {
+      "name": "Kingdom of Portugal",
+      "valid_from": 1709,
+      "valid_to": 1808,
+      "area_km2": 96467
+    },
+    {
+      "name": "Kingdom of Naples (Napoleonic)",
+      "valid_from": 1762,
+      "valid_to": 1798,
+      "area_km2": 92354
+    },
+    {
+      "name": "Beylik of Tunis",
+      "valid_from": 1762,
+      "valid_to": 1793,
+      "area_km2": 79482
+    },
+    {
+      "name": "Kingdom of Sardinia",
+      "valid_from": 1748,
+      "valid_to": 1791,
+      "area_km2": 77675
+    },
+    {
+      "name": "Principality of Wallachia",
+      "valid_from": 1775,
+      "valid_to": 1790,
+      "area_km2": 74280
+    },
+    {
+      "name": "Principality of Moldavia",
+      "valid_from": 1775,
+      "valid_to": 1790,
+      "area_km2": 70566
+    },
+    {
+      "name": "Duchy of Bavaria",
+      "valid_from": 1780,
+      "valid_to": 1790,
+      "area_km2": 55636
+    },
+    {
+      "name": "Kingdom of Georgia",
+      "valid_from": 1775,
+      "valid_to": 1795,
+      "area_km2": 54778
+    },
+    {
+      "name": "Republic of Venice",
+      "valid_from": 1748,
+      "valid_to": 1795,
+      "area_km2": 45349
+    },
+    {
+      "name": "Swiss Confederation",
+      "valid_from": 1780,
+      "valid_to": 1791,
+      "area_km2": 43745
+    },
+    {
+      "name": "Papal States",
+      "valid_from": 1748,
+      "valid_to": 1796,
+      "area_km2": 41741
+    },
+    {
+      "name": "Electorate of Saxony",
+      "valid_from": 1763,
+      "valid_to": 1790,
+      "area_km2": 33373
+    },
+    {
+      "name": "Electorate of Hanover",
+      "valid_from": 1775,
+      "valid_to": 1795,
+      "area_km2": 31786
+    },
+    {
+      "name": "Duchy of Courland",
+      "valid_from": 1772,
+      "valid_to": 1791,
+      "area_km2": 27951
+    },
+    {
+      "name": "Republic of Genoa",
+      "valid_from": 1748,
+      "valid_to": 1793,
+      "area_km2": 14307
+    },
+    {
+      "name": "Kingdom of Imereti",
+      "valid_from": 1775,
+      "valid_to": 1802,
+      "area_km2": 11182
+    },
+    {
+      "name": "Principality of Abkhazia",
+      "valid_from": 1788,
+      "valid_to": 1810,
+      "area_km2": 10232
+    },
+    {
+      "name": "Principality of Mingrelia",
+      "valid_from": 1788,
+      "valid_to": 1808,
+      "area_km2": 5036
+    },
+    {
+      "name": "Principality of Guria",
+      "valid_from": 1772,
+      "valid_to": 1810,
+      "area_km2": 3728
+    },
+    {
+      "name": "Principality of Svaneti",
+      "valid_from": 1775,
+      "valid_to": 1810,
+      "area_km2": 2507
+    },
+    {
+      "name": "Comtat Venaissin",
+      "valid_from": 1788,
+      "valid_to": 1790,
+      "area_km2": 2132
+    },
+    {
+      "name": "Republic of Ragusa",
+      "valid_from": 1772,
+      "valid_to": 1806,
+      "area_km2": 1516
+    },
+    {
+      "name": "County of Urgell",
+      "valid_from": 1734,
+      "valid_to": 1795,
+      "area_km2": 309
+    },
+    {
+      "name": "Principality of Monaco",
+      "valid_from": 1645,
+      "valid_to": 1793,
+      "area_km2": 164
+    },
+    {
+      "name": "Principality of Liechtenstein",
+      "valid_from": 1721,
+      "valid_to": 1813,
+      "area_km2": 137
+    }
+  ],
+  "relation_rows_left_out": 0
+}

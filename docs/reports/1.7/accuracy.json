@@ -1,5 +1,803 @@
 [
   {
+    "layer": "cn-0221-qin",
+    "place": "Xianyang/Xi'an",
+    "expected": "Qin",
+    "found": [
+      "(Warring States China)",
+      "Qin"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0221-qin",
+    "place": "Linzi area / Shandong (Qi not yet taken)",
+    "expected": "Qi",
+    "found": [
+      "Qi",
+      "(Warring States China)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0221-qin",
+    "place": "Jiangling (Chu)",
+    "expected": "Qin",
+    "found": [
+      "(Warring States China)",
+      "Qin"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0221-qin",
+    "place": "Beijing (Yan, taken 222 BC)",
+    "expected": "Qin",
+    "found": [
+      "(Warring States China)",
+      "Qin"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0215-qin-empire",
+    "place": "Xianyang/Xi'an",
+    "expected": "Qin",
+    "found": [
+      "Qin Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0215-qin-empire",
+    "place": "Linzi area / Shandong (now Qin)",
+    "expected": "Qin",
+    "found": [
+      "Qin Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0215-qin-empire",
+    "place": "Beijing (Yan)",
+    "expected": "Qin",
+    "found": [
+      "Qin Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0215-qin-empire",
+    "place": "Jiangling (Chu)",
+    "expected": "Qin",
+    "found": [
+      "Qin Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0215-qin-empire",
+    "place": "Chengdu (Shu)",
+    "expected": "Qin",
+    "found": [
+      "Qin Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0215-qin-empire",
+    "place": "Guangzhou (Lingnan not yet)",
+    "expected": "!Qin",
+    "found": [],
+    "status": "no polity"
+  },
+  {
+    "layer": "cn-0100-han",
+    "place": "Chang'an",
+    "expected": "Han",
+    "found": [
+      "Han Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0100-han",
+    "place": "Guangzhou",
+    "expected": "Han",
+    "found": [
+      "Han Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0100-han",
+    "place": "Dunhuang (Hexi corridor)",
+    "expected": "Han",
+    "found": [
+      "Han Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0100-han",
+    "place": "Steppe north of the Gobi",
+    "expected": "Xiongnu",
+    "found": [
+      "Xiongnu"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0100-han",
+    "place": "Seoul",
+    "expected": "Mahan",
+    "found": [
+      "Mahan"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0280-division",
+    "place": "Luoyang",
+    "expected": "Jin",
+    "found": [
+      "Western Jin"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0280-division",
+    "place": "Chang'an",
+    "expected": "Jin",
+    "found": [
+      "Western Jin"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0280-division",
+    "place": "Nanjing (Wu)",
+    "expected": "Wu",
+    "found": [
+      "Eastern Wu"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0280-division",
+    "place": "Guangzhou (Wu)",
+    "expected": "Wu",
+    "found": [
+      "Eastern Wu"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0280-division",
+    "place": "Hangzhou (Wu)",
+    "expected": "Wu",
+    "found": [
+      "Eastern Wu"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0592-sui",
+    "place": "Chang'an",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0592-sui",
+    "place": "Nanjing (Chen fell 589)",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0592-sui",
+    "place": "Guangzhou",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0592-sui",
+    "place": "Chengdu",
+    "expected": "Sui",
+    "found": [
+      "Sui Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0745-tang",
+    "place": "Chang'an",
+    "expected": "Tang",
+    "found": [
+      "Tang Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0745-tang",
+    "place": "Guangzhou",
+    "expected": "Tang",
+    "found": [
+      "Tang Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0745-tang",
+    "place": "Kashgar (Western Regions)",
+    "expected": "Tang",
+    "found": [
+      "Tang Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0745-tang",
+    "place": "Lhasa",
+    "expected": "Tibet",
+    "found": [
+      "Tibetan Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0745-tang",
+    "place": "Mukden (Balhae)",
+    "expected": "Balhae",
+    "found": [
+      "Balhae"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0980-song-liao",
+    "place": "Kaifeng (Song capital)",
+    "expected": "Song",
+    "found": [
+      "Northern Song"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0980-song-liao",
+    "place": "Guangzhou",
+    "expected": "Song",
+    "found": [
+      "Northern Song"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0980-song-liao",
+    "place": "Beijing (Sixteen Prefectures)",
+    "expected": "Liao",
+    "found": [
+      "Liao Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-0980-song-liao",
+    "place": "Mukden",
+    "expected": "Liao",
+    "found": [
+      "Liao Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1140-jin-southern-song",
+    "place": "Kaifeng (lost 1127)",
+    "expected": "Jin",
+    "found": [
+      "Great Jin"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1140-jin-southern-song",
+    "place": "Luoyang",
+    "expected": "Jin",
+    "found": [
+      "Great Jin"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1140-jin-southern-song",
+    "place": "Hangzhou (Southern Song)",
+    "expected": "Song",
+    "found": [
+      "Southern Song"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1140-jin-southern-song",
+    "place": "Guangzhou",
+    "expected": "Song",
+    "found": [
+      "Southern Song"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1310-yuan",
+    "place": "Beijing (Dadu)",
+    "expected": "Yuan",
+    "found": [
+      "Yuan Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1310-yuan",
+    "place": "Hangzhou",
+    "expected": "Yuan",
+    "found": [
+      "Yuan Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1310-yuan",
+    "place": "Guangzhou",
+    "expected": "Yuan",
+    "found": [
+      "Yuan Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1310-yuan",
+    "place": "Lhasa",
+    "expected": "Yuan",
+    "found": [
+      "Yuan Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1310-yuan",
+    "place": "Steppe north of the Gobi",
+    "expected": "Yuan",
+    "found": [
+      "Yuan Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1400-ming",
+    "place": "Nanjing (early Ming capital)",
+    "expected": "Ming",
+    "found": [
+      "Ming Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1400-ming",
+    "place": "Beijing",
+    "expected": "Ming",
+    "found": [
+      "Ming Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1400-ming",
+    "place": "Guangzhou",
+    "expected": "Ming",
+    "found": [
+      "Ming Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1400-ming",
+    "place": "Steppe (Northern Yuan)",
+    "expected": "Northern Yuan",
+    "found": [
+      "Northern Yuan"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1400-ming",
+    "place": "Seoul",
+    "expected": "Joseon",
+    "found": [
+      "Joseon"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1645-qing",
+    "place": "Beijing",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1645-qing",
+    "place": "Mukden",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1645-qing",
+    "place": "Nanjing (Southern Ming)",
+    "expected": "Ming",
+    "found": [
+      "Southern Ming"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1645-qing",
+    "place": "Guangzhou (Southern Ming)",
+    "expected": "Ming",
+    "found": [
+      "Southern Ming"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1645-qing",
+    "place": "Hangzhou (Southern Ming)",
+    "expected": "Ming",
+    "found": [
+      "Southern Ming"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1800-qing-peak",
+    "place": "Beijing",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1800-qing-peak",
+    "place": "Guangzhou",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1800-qing-peak",
+    "place": "Kashgar (Xinjiang)",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1800-qing-peak",
+    "place": "Lhasa (Tibet)",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1800-qing-peak",
+    "place": "Steppe (Outer Mongolia)",
+    "expected": "Qing",
+    "found": [
+      "Qing Dynasty"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "cn-1800-qing-peak",
+    "place": "Seoul (tributary, not ruled)",
+    "expected": "!Qing",
+    "found": [
+      "Joseon"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0395-rome",
+    "place": "Rome",
+    "expected": "Western Roman",
+    "found": [
+      "Western Roman Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0395-rome",
+    "place": "London",
+    "expected": "Western Roman",
+    "found": [
+      "Western Roman Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0395-rome",
+    "place": "Paris",
+    "expected": "Western Roman",
+    "found": [
+      "Western Roman Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0395-rome",
+    "place": "Cordoba",
+    "expected": "Western Roman",
+    "found": [
+      "Western Roman Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0395-rome",
+    "place": "Kyiv (outside the empire)",
+    "expected": "!Roman",
+    "found": [
+      "Huns"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0555-justinian",
+    "place": "Rome",
+    "expected": "Eastern Roman",
+    "found": [
+      "Eastern Roman Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0555-justinian",
+    "place": "Milan",
+    "expected": "Eastern Roman",
+    "found": [
+      "Eastern Roman Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0555-justinian",
+    "place": "Paris (Franks)",
+    "expected": "Frank",
+    "found": [
+      "(Kingdom of the Franks)",
+      "Kingdom of the Franks",
+      "(Merovingian Empire)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0555-justinian",
+    "place": "Cordoba (Visigoths)",
+    "expected": "Visigoth",
+    "found": [
+      "Visigothic Kingdom"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0555-justinian",
+    "place": "London (not Roman)",
+    "expected": "!Roman",
+    "found": [
+      "Kingdom of Wessex",
+      "(Anglo-Saxon England)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0800-carolingian",
+    "place": "Aachen",
+    "expected": "Frank|Carolingian",
+    "found": [
+      "(Kingdom of the Franks)",
+      "(Carolingian Empire)",
+      "Kingdom of the Franks"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0800-carolingian",
+    "place": "Paris",
+    "expected": "Frank|Carolingian",
+    "found": [
+      "(Kingdom of the Franks)",
+      "(Carolingian Empire)",
+      "Kingdom of the Franks"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0800-carolingian",
+    "place": "Milan",
+    "expected": "Frank|Carolingian",
+    "found": [
+      "(Kingdom of the Franks)",
+      "(Carolingian Empire)",
+      "Kingdom of the Franks"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0800-carolingian",
+    "place": "Rome (Papal States)",
+    "expected": "Papal",
+    "found": [
+      "Papal States"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0800-carolingian",
+    "place": "Cordoba",
+    "expected": "C.rdoba",
+    "found": [
+      "Emirate of Córdoba"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0850-verdun",
+    "place": "Aachen",
+    "expected": "Frank|Carolingian",
+    "found": [
+      "Middle Franks",
+      "(Carolingian Empire)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0850-verdun",
+    "place": "Paris",
+    "expected": "Frank|Carolingian",
+    "found": [
+      "West Franks",
+      "(Carolingian Empire)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0850-verdun",
+    "place": "Milan",
+    "expected": "Frank|Carolingian",
+    "found": [
+      "Middle Franks",
+      "(Carolingian Empire)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0850-verdun",
+    "place": "Rome (Papal States)",
+    "expected": "Papal",
+    "found": [
+      "Papal States"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-0850-verdun",
+    "place": "Cordoba",
+    "expected": "C.rdoba",
+    "found": [
+      "Emirate of Córdoba"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1815-confederation",
+    "place": "Berlin",
+    "expected": "Prussia",
+    "found": [
+      "German Confederation"
+    ],
+    "status": "differs"
+  },
+  {
+    "layer": "eu-1815-confederation",
+    "place": "Munich",
+    "expected": "Bavaria",
+    "found": [
+      "Kingdom of Bavaria"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1815-confederation",
+    "place": "Vienna",
+    "expected": "Austria",
+    "found": [
+      "Austrian Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1815-confederation",
+    "place": "Paris",
+    "expected": "France",
+    "found": [
+      "Bourbon Kingdom of France",
+      "(Bourbon Kingdom of France)"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1914-ohm",
+    "place": "Paris",
+    "expected": "France|French",
+    "found": [
+      "French Republic"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1914-ohm",
+    "place": "Berlin",
+    "expected": "German",
+    "found": [
+      "German Reich"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1914-ohm",
+    "place": "Vienna",
+    "expected": "Austria",
+    "found": [
+      "Austria-Hungary"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1914-ohm",
+    "place": "Warsaw (Congress Poland)",
+    "expected": "Russia",
+    "found": [
+      "Russian Empire"
+    ],
+    "status": "ok"
+  },
+  {
+    "layer": "eu-1914-ohm",
+    "place": "London",
+    "expected": "United Kingdom|Brit",
+    "found": [
+      "United Kingdom of Great Britain and Ireland"
+    ],
+    "status": "ok"
+  },
+  {
     "layer": "europe-1914",
     "place": "Strasbourg (Alsace)",
     "expected": "German",
