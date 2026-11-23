@@ -30,6 +30,23 @@ const metadataArgument = process.argv.find((arg) =>
   arg.startsWith("--metadata="),
 );
 const videoOnly = process.argv.includes("--video-only");
+// A long episode is rendered in parts and joined afterwards, because one pass over tens of
+// thousands of frames outgrows this machine's memory. A part renders a frame range with no
+// audio; the parts are concatenated without re-encoding and the episode's own continuous
+// voice track is muxed in once, so no join can drift the sound (docs/automation.md).
+const framesArgument = process.argv.find((arg) => arg.startsWith("--frames="));
+const frameRange = framesArgument
+  ? framesArgument
+      .slice("--frames=".length)
+      .split("-")
+      .map((n) => Number(n))
+  : null;
+if (frameRange && (frameRange.length !== 2 || frameRange.some((n) => !Number.isInteger(n) || n < 0)))
+  throw new Error("--frames=START-END needs two whole frame numbers");
+const outArgument = process.argv.find((arg) => arg.startsWith("--out="));
+const muted = process.argv.includes("--muted");
+// A part is one slice of the video: no stills, no preview sheet, no camera plan.
+const partOnly = frameRange !== null;
 // Render workers. The caller sets it from the free memory (vap.system); 1 is the safe default
 // on this 16 GB machine, where a render is killed rather than slowed when memory runs out.
 const concurrencyArgument = process.argv.find((arg) =>
@@ -111,7 +128,7 @@ const prepared = composition.props.prepared;
 const slug = prepared.storyboard.episode.slug;
 const previewShots = [];
 const firstFrames = prepared.assembly.shots.map((s) => s.from);
-if (!smoke) {
+if (!smoke && !partOnly) {
   // Every frame's camera, for vap.qa.motion: the gate runs before anything is rendered.
   const timeline = buildCamera(
     prepared.storyboard,
@@ -170,7 +187,7 @@ if (!smoke) {
   );
 }
 const smokeStart = prepared.assembly.shots[1].from;
-for (const frame of videoOnly
+for (const frame of videoOnly || partOnly
   ? []
   : smoke
     ? [smokeStart + 12, smokeStart + 49]
@@ -202,7 +219,7 @@ for (const frame of videoOnly
     previewShots.push({ id, from: frame, text, image: path.resolve(image) });
   }
 }
-if (!smoke && !videoOnly) {
+if (!smoke && !videoOnly && !partOnly) {
   const payload = {
     slug,
     width: composition.width,
@@ -261,15 +278,24 @@ if (!smoke && !videoOnly) {
 }
 if (!process.argv.includes("--stills-only") && !smoke) {
   let previous = -1;
+  const finalPath = outArgument
+    ? outArgument.slice("--out=".length)
+    : `out/episode-${slug}-synced.mp4`;
+  const partialPath = `${finalPath.replace(/\.mp4$/, "")}.partial.mp4`;
+  if (frameRange && frameRange[1] >= composition.durationInFrames)
+    throw new Error(
+      `--frames ends at ${frameRange[1]}, past the last frame ${composition.durationInFrames - 1}`,
+    );
   await renderMedia({
     serveUrl,
     composition,
     inputProps,
-    outputLocation: `out/episode-${slug}-synced.partial.mp4`,
+    outputLocation: partialPath,
     chromiumOptions,
     concurrency,
     codec: "h264",
-    audioCodec: "aac",
+    ...(muted ? { muted: true } : { audioCodec: "aac" }),
+    ...(frameRange ? { frameRange } : {}),
     imageFormat: "jpeg",
     pixelFormat: "yuv420p",
     colorSpace: "bt709",
@@ -282,9 +308,9 @@ if (!process.argv.includes("--stills-only") && !smoke) {
       }
     },
   });
-  fs.renameSync(
-    `out/episode-${slug}-synced.partial.mp4`,
-    `out/episode-${slug}-synced.mp4`,
+  fs.renameSync(partialPath, finalPath);
+  console.log(
+    `Rendered ${finalPath}` +
+      (frameRange ? ` (frames ${frameRange[0]}-${frameRange[1]}${muted ? ", muted" : ""})` : ""),
   );
-  console.log(`Rendered out/episode-${slug}-synced.mp4`);
 }
