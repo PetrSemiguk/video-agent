@@ -118,6 +118,46 @@ Authorize factual research and original narration only. No text, maps, images or
 | Power Technology, [Aswan High Dam project profile](https://www.power-technology.com/projects/aswan-high-dam-nile-sudan-egypt-2/) | Publisher website; facts only | Yes, facts only | Opened in the fact-check, not cited. It gives 1968 for completion, against 1970 elsewhere. |
 | Maps of the World, [January 9, 1960](https://www.mapsofworld.com/amp/on-this-day/january-9-1960-construction-of-the-aswan-dam-in-egypt-begins/) | Publisher website; facts only | Yes, facts only | Opened in the fact-check, not cited. |
 
+## China-Europe unity factual research sources (episode `china-europe-unity`, checked 2026-11-07)
+
+Authorize factual research and original narration only. No text, maps, figures, images or logos are imported; the
+copyright of each paper stays with its publisher or authors. Wikipedia was used only to find sources, never cited.
+
+| Source | License / permitted use | Commercial use? | Attribution / handling |
+|---|---|---|---|
+| Ko, Koyama and Sng, "Unified China and Divided Europe", International Economic Review 59(1), 2018, [author copy](https://markkoyama.github.io/Papers/unified_china_europe.pdf), [RePEc record](https://econpapers.repec.org/RePEc:wly:iecrev:v:59:y:2018:i:1:p:285-327) | Journal article; facts and argument summaries only | Yes, facts only | Cite in the facts ledger. Its Figures 1-4 are not reproduced. |
+| Fernández-Villaverde, Koyama, Lin and Sng, "The Fractured-Land Hypothesis", [NBER WP 27774](https://www.nber.org/papers/w27774) (rev. Aug 2022); published in QJE 138(2), 2023 | Working paper; facts and argument summaries only | Yes, facts only | The QJE text was not opened, only the NBER version. |
+| Chen and Ma, "States and Wars: China's Long March towards Unity", [Oxford Economic and Social History WP 199](https://ora.ox.ac.uk/objects/uuid:5ee854e1-9ded-438f-b1fe-db5a5e322013), 2022 | Working paper; facts and argument summaries only | Yes, facts only | Working paper, not peer-reviewed. Its Figures 2-3 are not reproduced. |
+| Hechter and Brustein, "Regional Modes of Production and Patterns of State Formation in Western Europe", American Journal of Sociology 85(5), 1980, p. 1062 ([author-hosted copy](https://michaelhechter.wordpress.com/wp-content/uploads/2014/06/regional-modes-of-production.pdf)) | Journal article; one quoted figure of Tilly's, used as a fact with attribution | Yes, facts only | Cite in the facts ledger. |
+| Grzymala-Busse, "Tilly Goes to Church", [American Political Science Review 118(1), 2024](https://www.cambridge.org/core/journals/american-political-science-review/article/tilly-goes-to-church-the-religious-and-medieval-roots-of-european-state-fragmentation/4EEE3598EF17E46DF0050C375C9FDD45) | Journal article; facts and argument summaries only | Yes, facts only | Cite in the facts ledger. |
+| Abramson, "The Economic Origins of the Territorial State", [International Organization 71(1), 2017](https://www.cambridge.org/core/product/BAFAD6019A07EFA5219B247131839264/core-reader) | Journal article; facts and argument summaries only | Yes, facts only | Cite in the facts ledger. |
+| Carneiro, "A Theory of the Origin of the State", Science 169, 1970 (reprint, Studies in Social Theory 3, 1977, [copy](https://mason.gmu.edu/~trustici/archive/ORIGIN.pdf)) | Journal article; one argument summarised | Yes, facts only | Cite in the facts ledger. |
+| Bai and Jia, "Elite Recruitment and Political Stability", Econometrica 84(2), 2016, [abstract at IDEAS](https://ideas.repec.org/a/wly/emetrp/v84y2016ip677-733.html) | Abstract only was opened | Yes, facts only | Cite as abstract. |
+| Library of Congress Country Studies, Germany ([countrystudies.us/germany](https://countrystudies.us/germany/), chs. 6, 10, 22, 23) and China ([chs. 7-12, 32](https://countrystudies.us/china/)) | US federal publication | Yes, facts only | Original wording. China study (1987) is already listed above for the pilot; Germany study is about 1996. |
+| Columbia University, Asia for Educators, [Timeline of Chinese history](https://afe.easia.columbia.edu/timelines/china_timeline.htm) | University site; dates only | Yes, facts only | Cite in the facts ledger. |
+| Encyclopedia.com, [German Confederation](https://encyclopedia.com/reference/encyclopedias-almanacs-transcripts-and-maps/german-confederation) and [Holy Roman Empire](https://www.encyclopedia.com/history/modern-europe/german-history/holy-roman-empire) | Publisher website (Gale/Cengage reference entries); facts only | Yes, facts only | Cite in the facts ledger. |
+| Princeton University Press, [Scheidel on Escape from Rome](https://press.princeton.edu/ideas/walter-scheidel-on-escape-from-rome) | Publisher website; author's own summary; facts only | Yes, facts only | Cite in the facts ledger. |
+| Peter Brown, "No Barbarians Necessary", [New York Review of Books, 24 Sep 2020](https://www.nybooks.com/articles/2020/09/24/roman-empire-no-barbarians-necessary/) | Press review; facts and attributed arguments only | Yes, facts only | Reputable press. Never the only source of a number said aloud. |
+| Turchin, ["Why Europe is not China"](http://peterturchin.com/cliodynamica/why-europe-is-not-china/), Cliodynamica blog | Personal blog by a scholar; argument summary only | Yes, facts only | Tier `other`. Never the only source of a key claim. |
+| China Daily, [Q&A: How long is the Great Wall?](https://www.chinadaily.com.cn/a/202406/03/WS665d2a2fa31082fc043ca8b8.html), 3 Jun 2024 | Publisher website; one number | Yes, facts only | State-run press. Never the only source of a key claim. |
+| Euratlas, [summary](https://www.euratlas.net/PHA/summary.htm) and [Europe 1500](https://www.euratlas.com/big/bis1500.htm) pages | Euratlas states no commercial use of its data. Pages opened only to look for a count; **nothing used, no data downloaded**. | No data use | Not cited. Euratlas/Nüssli data enters only as a count reported in Ko et al. (2018). |
+
+## Supplemental China-Europe factual research (2026-11-08)
+
+Facts and independently worded narration only; no text, maps, photographs, illustrations or other page assets are imported.
+
+| Source | License / permitted use | Commercial use? | Attribution / handling |
+|---|---|---|---|
+| Asian Art Museum, [An Introduction to the Han Dynasty](https://education.asianart.org/resources/an-introduction-to-the-han-dynasty/) | Museum education page; factual research only | Yes, facts only | Verify Han periods and capitals; no media or prose reuse. |
+| National Museum of Asian Art, Smithsonian Institution, [Han dynasty introduction](https://smarthistory.org/han-dynasty-intro/) | Museum-authored educational article; factual research only | Yes, facts only | Independent wording; no map or image reuse. |
+| Metropolitan Museum of Art, [Byzantium (ca. 330–1453)](https://www.metmuseum.org/essays/byzantium-ca-330-1453) | Museum-authored history essay; factual research only | Yes, facts only | Verify continued eastern Roman empire; no media or prose reuse. |
+| Byzantine and Christian Museum, [From Byzantium to Modern Era](https://byzantinemuseum.gr/en/exhibitions/51/permanent-exhibition/from-byzantium-to-modern-era/9/from-byzantium-to-modern-era) | Museum interpretation; factual research only | Yes, facts only | Independent wording; no media reuse. |
+| UNESCO World Heritage Centre, [The Great Wall](https://whc.unesco.org/en/list/438/) | Description CC BY-SA IGO 3.0; facts used in original wording only | Yes, facts only | Earlier walls and later reconstruction; no maps, images, logos or prose imported. |
+| Oxford University Press, [Carolingian Era](https://academic.oup.com/reference/62384/reference-article-abstract/555061229) | Reference entry; factual research only | Yes, facts only | Distinguish East Frankish branch from entire dynasty; only opened material may be cited. |
+| Fernández-Villaverde et al., [CEPR author summary of the fractured-land model](https://cepr.org/voxeu/columns/fractured-land-hypothesis-why-china-unified-europe-not) | Author-written research summary; factual argument summary only | Yes, facts only | Alternative access to the already registered study; not an independent second source for that study. No figures reproduced. |
+| Smithsonian National Museum of Asian Art, [Song dynasty](https://asia.si.edu/education/educator-resources/teaching-china-with-the-smithsonian/explore-by-dynasty/song-dynasty/) and [historical timeline](https://asia-archive.si.edu/learn/for-educators/teaching-china-with-the-smithsonian/interactives/timelines/timeline-of-chinese-history-art-and-culture/) | Museum education; factual research only | Yes, facts only | Verify northern territory and southward court flight; no images or prose imported. Two pages from the same institution are one source. |
+| Chen and Ma, [CAGE WP 505 (2020)](https://warwick.ac.uk/fac/soc/economics/research/centres/cage/manage/publications/wp505.2020.pdf) | Earlier university-hosted version of registered Oxford study; factual argument summary only | Yes, facts only | Alternative access; identify the 2020 version. Not an independent second source for Chen and Ma (2022). No figures reproduced. |
+
 ## Voice models and watermarking
 
 Step 3.3 alignment sources (checked 2026-11-04, before installation/download):
